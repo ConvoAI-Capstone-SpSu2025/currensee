@@ -1,14 +1,5 @@
 <a id="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![Unlicense License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -132,9 +123,57 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Repository Structure
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+For this repository, we leverage the [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) standard to define a structure
+that optimizes code quality, prioritizing correctness and reproucibility. Below is an outline of the repository and the contents you should expect
+to find in each folder/file.
+
+```
+├── LICENSE            <- Open-source license 
+├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+├── README.md          <- The top-level README for developers using this project.
+├── data (if we do not have a DB, which we should...)
+│   ├── external       <- Data from third party sources.
+│   ├── interim        <- Intermediate data that has been transformed.
+│   ├── processed      <- The final, canonical data sets for modeling.
+│   └── raw            <- The original, immutable data dump.
+│
+├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+│
+├── models             <- Trained and serialized models, model predictions, or model summaries
+│
+├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
+│                         the creator's initials, and a short `-` delimited description, e.g.
+│                         `1.0-jqp-initial-data-exploration`.
+│
+├── pyproject.toml     <- Project configuration file with package metadata for 
+│                         {{ cookiecutter.module_name }} and configuration for tools like black
+│
+├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+│
+├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+│   └── figures        <- Generated graphics and figures to be used in reporting
+|
+├── app                <- Contains the app-specific files (e.g API router, streamlit/UI files, etc.)
+|
+├── src
+    | 
+    └── sopho-scribe  <- Source code for use in this project.
+        |
+        ├── data_loading            <- Files necessary to perform data ingestion
+        |
+        ├── evaluation              <- Defines files for the evaluation framework (if necessary)
+        |
+        ├── modeling                <- Files necessary for model development
+        |
+        ├── serve                   <- Files that define project-wide schemas and modules necessary for communicating model results with the UI
+        |
+        ├── utils                   <- Utility files (e.g. workflow_utils.py, db_utils.py, etc.)
+|
+├── tests                           <- Test files to evaluate model performance
+
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
