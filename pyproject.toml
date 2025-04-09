@@ -1,5 +1,5 @@
 [project]
-name = "sopho-scribe"
+name = "currensee"
 version = "0.1.0"
 description = "Conversational AI interface to aid in client p-facing work using data from Microsoft 365, google products, earnings reports, and more."
 authors = [
@@ -15,7 +15,8 @@ requires-python = ">=3.13,<4.0"
 dependencies = [
     "faker (>=37.1.0,<38.0.0)",
     "pandas (>=2.2.3,<3.0.0)",
-    "msgraph-sdk (>=1.26.0,<2.0.0)"
+    "msgraph-sdk (>=1.26.0,<2.0.0)",
+    "google-genai (>=1.10.0,<2.0.0)"
 ]
 
 

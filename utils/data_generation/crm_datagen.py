@@ -8,8 +8,20 @@ fake = Faker()
 
 # Helper function to generate synthetic employee data
 def generate_employee_data(num_employees=10):
-    employees = []
-    for _ in range(num_employees):
+    employees = [
+        {
+            'EmployeeID': fake.unique.uuid4(),
+            'FirstName': "Jane",
+            'LastName': "Moneypenny",
+            'Title': "Senior Analyst",
+            'Email': "jane.moneypenny1@outlook.com",
+            'Phone': fake.phone_number(),
+            'HireDate': fake.date_this_decade(),
+            'Department': 'Finance',
+        }
+    ]
+
+    for _ in range(num_employees-1):
         employees.append({
             'EmployeeID': fake.unique.uuid4(),
             'FirstName': fake.first_name(),
@@ -65,7 +77,7 @@ def generate_employee_contact_data(employees_df, accounts_df, num_relationships_
                 'EmployeeID': employee['EmployeeID'],
                 'AccountID': account,
                 'ContactName': fake.name(),
-                'ContactTitle': random.choice(['CEO', 'Manager', 'Director', 'VP', 'Consultant']),
+                'ContactTitle': random.choice(['Senior Director', 'Manager', 'Director', 'VP', 'Consultant']),
                 'ContactEmail': fake.email(),
                 'ContactPhone': fake.phone_number(),
             })
@@ -75,10 +87,10 @@ def generate_employee_contact_data(employees_df, accounts_df, num_relationships_
 if __name__ == "__main__":
 
     # Generate synthetic data for the tables
-    employees_df = generate_employee_data(num_employees=10)
-    accounts_df = generate_account_data(num_accounts=5)
+    employees_df = generate_employee_data(num_employees=100)
+    accounts_df = generate_account_data(num_accounts=500)
     opportunities_df = generate_opportunity_data(accounts_df, num_opportunities_per_account=3)
-    contacts_df = generate_employee_contact_data(employees_df, accounts_df, num_relationships_per_employee=5)
+    contacts_df = generate_employee_contact_data(employees_df, accounts_df, num_relationships_per_employee=30)
 
     # Print the first few rows of each DataFrame
     print("Employees Data:")
@@ -95,14 +107,22 @@ if __name__ == "__main__":
 
     out_dir = os.path.dirname(os.path.abspath(__file__))
 
-    employees_path = os.path.join(out_dir, "../../data/employees.csv")
+    employees_path = os.path.join(out_dir, "../../data/crm/employees.csv")
     employees_df.to_csv(employees_path)
 
-    accounts_path = os.path.join(out_dir, "../../data/accounts.csv")
+    accounts_path = os.path.join(out_dir, "../../data/crm/accounts.csv")
     accounts_df.to_csv(accounts_path)
 
-    opportunities_path = os.path.join(out_dir, "../../data/opportunities.csv")
+    opportunities_path = os.path.join(out_dir, "../../data/crm/opportunities.csv")
     opportunities_df.to_csv(opportunities_path)
 
-    contacts_path = os.path.join(out_dir, "../../data/contacts.csv")
+    contacts_path = os.path.join(out_dir, "../../data/crm/contacts.csv")
     contacts_df.to_csv(contacts_path)
+
+    # Identify the contacts specifically assigned to Jane and produce CSV to create synthetic email
+    # correspondence and events
+    janes_id = employees_df[employees_df['LastName'] == 'Moneypenny'].iloc[0]['EmployeeID']
+    contacts_accounts_df = contacts_df.merge(accounts_df, on='AccountID', how='left')
+    janes_contacts_accounts_df = contacts_accounts_df[contacts_accounts_df['EmployeeID'] == janes_id]
+    janes_contacts_path = os.path.join(out_dir, "../../data/crm/janes_contacts.csv")
+    janes_contacts_accounts_df.to_csv(janes_contacts_path)

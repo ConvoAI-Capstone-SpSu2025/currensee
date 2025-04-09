@@ -1,0 +1,101 @@
+,EmployeeID,FirstName,LastName,Title,Email,Phone,HireDate,Department
+0,4a133a59-3d02-423b-84f8-02ce243dfb54,Jane,Moneypenny,Senior Analyst,jane.moneypenny1@outlook.com,+1-767-451-3380,2021-01-04,Finance
+1,dcac15b5-a707-4caf-8b64-0c4c517ba3f8,Kari,Ellis,Consultant,jerry40@example.com,765-985-9585,2022-09-19,Finance
+2,eeb8e2bb-41f3-460f-a870-bc904cd85f0b,Cody,Baker,Senior Consultant,paula96@example.net,+1-289-549-0493x995,2024-07-15,Finance
+3,879f58f6-a771-4a21-a95e-3bb8724694ed,Wayne,Bailey,Senior Consultant,seanbaker@example.net,361-662-4478x6501,2024-10-17,Operations
+4,d5288050-cbb2-4077-a307-ebcf818b4db8,Miranda,Thomas,Consultant,dianemay@example.com,6389462760,2025-02-21,Finance
+5,5c85210b-8fc9-4d31-b7fb-6b9e7b5604c4,Matthew,Pitts,Consultant,jill87@example.com,2505485583,2024-12-06,Consulting
+6,e811821d-b856-4ee4-8c43-3a658a7af7be,Barbara,Stafford,Director,qbrown@example.com,952-592-2781x871,2020-10-28,Operations
+7,d8f94ec8-1f7a-42ca-8b8c-7c60eb2f6d49,Darlene,Cox,Consultant,brian05@example.net,(978)957-2263,2020-12-24,Consulting
+8,b483aaf4-7758-4250-917c-ce38c81e091b,Edward,Meyer,Consultant,ymendoza@example.org,001-426-585-0972x80547,2020-04-12,Operations
+9,7e8ec7a8-1ff3-430e-8b5f-67ba1b411a9b,Heather,Miller,Manager,natashaparsons@example.net,001-963-264-6048x39809,2024-12-13,Sales
+10,a46743c3-c01a-4d07-8805-74058f8b9c94,Madison,Griffin,Consultant,kellyjohn@example.com,001-586-908-8644x382,2024-07-18,Finance
+11,839b9b37-84ea-4469-906b-9d7fdf15a3d8,Courtney,Durham,Director,destinyglenn@example.com,(648)925-4262,2024-06-07,Operations
+12,f5814896-ed7f-4748-9c26-fdd481b5d7b9,Aaron,Burns,Senior Consultant,zthompson@example.org,624.608.8858x262,2023-08-12,Sales
+13,8b74077d-1e5b-4a61-bde0-5a6d280c7a06,Cynthia,Williams,Director,kingdavid@example.org,+1-984-794-6190,2023-07-05,Consulting
+14,4c167d9f-efae-4b03-abf6-21167f1d4b69,Alyssa,Barnett,Consultant,paulastanley@example.com,(738)644-6468x664,2020-10-18,Finance
+15,58bc159b-5e72-462e-8700-a1937304ee7d,Emily,Johnson,Consultant,brittanymoran@example.net,+1-515-580-0092,2021-01-02,Sales
+16,bd081441-5ff1-4b5f-8c3c-3a3e85e571ea,Katelyn,Johnson,Manager,josephsteven@example.net,807.528.4583,2020-09-12,Marketing
+17,716ca168-5d64-4e17-9b6b-a77a11caf933,George,Peters,Director,amycline@example.org,001-395-328-0041x910,2020-05-27,Marketing
+18,6d8f4b60-5c5a-46c2-90ba-9c522b1bec75,Anthony,Barnes,Consultant,farmererik@example.net,(661)766-8715,2021-01-25,Sales
+19,da82ef29-5964-4a72-b0d5-393a451d1088,Danny,Michael,Consultant,ibarrakelly@example.org,622.964.0025x565,2022-10-06,Finance
+20,62b39aa9-2e95-418e-9bd4-fdeaf2f991ee,Courtney,Lopez,Consultant,wendywang@example.com,(921)676-2880x9822,2020-11-14,Consulting
+21,b4fbd110-cf42-4151-b533-564c354a5fa8,Warren,Mejia,Senior Consultant,clarkcarla@example.org,001-712-924-6729,2020-06-27,Consulting
+22,29289498-1661-4c8a-b29f-b3668d5d8bbb,Katie,Patterson,Senior Consultant,manuel92@example.net,001-257-385-3129,2024-08-28,Finance
+23,cf4b2f2f-9b89-48d6-b89a-8dfc11c523da,Cody,Davenport,Consultant,brendamunoz@example.net,486-881-1326,2022-02-21,Operations
+24,b86b0b1a-58a3-4617-941a-da7a2f889044,James,Maynard,Manager,martinezandrea@example.org,001-617-811-3349x778,2023-02-15,Consulting
+25,593df861-faa2-49ec-ad69-38526923531c,Jason,Becker,Director,rwallace@example.net,001-594-841-8602x15353,2024-10-04,Finance
+26,10d5abc9-5879-4361-9f98-273546e9048b,Ronnie,Anderson,Manager,jessicaherrera@example.com,254.431.5754,2024-07-24,Sales
+27,8a9c3f13-eb4f-4328-8b2c-5f75957bd6df,Pamela,Bowman,Director,ejuarez@example.com,(214)635-8281x741,2022-12-17,Sales
+28,953eb945-f73d-4b80-8f3e-2375b37eb82d,Colleen,Bartlett,Consultant,cruzdylan@example.org,(772)687-5896x7076,2021-12-12,Finance
+29,ea4f07de-4ec7-4e2e-a68c-f8278964441f,James,Reed,Manager,terriberg@example.net,(343)432-5824x9289,2024-12-02,Sales
+30,4aaab3de-02c7-43f0-a881-b085d952f59a,Jessica,Valencia,Manager,sshah@example.com,001-270-319-9658,2024-12-03,Marketing
+31,1fd791c6-85ca-4966-8da9-20674d89cae3,Jeffrey,Nelson,Director,gilesbeth@example.org,+1-586-709-2251x3111,2022-07-29,Finance
+32,2e8d2e1f-3e0e-4f57-b5ac-48685316ca05,Ashley,Rivers,Consultant,smithadam@example.com,(707)316-7390,2021-01-19,Operations
+33,f2e1d195-c0ed-48bc-84bb-8a260315df86,Alec,Thompson,Director,iwyatt@example.org,667.266.4565x7494,2020-02-19,Sales
+34,ed1cacee-d2c2-4aa2-b2a1-47173e51a150,Kelly,Escobar,Senior Consultant,ndorsey@example.org,752.251.7207x16262,2023-11-24,Marketing
+35,7d8c223d-7845-43f1-9625-c37e5c99d91c,Karen,Howard,Consultant,johnsoncharles@example.org,629.456.9121,2023-09-09,Operations
+36,532a268e-2aa6-48fc-8e9f-2e7bf6181526,Carrie,Chavez,Director,chelsea00@example.org,001-959-601-0502x32604,2023-12-14,Operations
+37,f1cce2f1-d297-4d2c-90a2-0106bab62ecc,Lindsey,Alvarez,Senior Consultant,ystout@example.com,816.730.9234x9684,2024-10-12,Consulting
+38,85601d6f-3e48-496e-9322-0034110df45f,Kathryn,Spence,Director,nrodriguez@example.com,215.996.6997,2021-02-16,Consulting
+39,30210762-9fd5-4837-91f4-afa9e947fdb9,Kristen,Barrett,Senior Consultant,carlsonjohn@example.com,240.667.1419,2024-09-22,Consulting
+40,e76c88f8-e6fe-4726-a1a0-04fdfb49160b,Kevin,Hernandez,Senior Consultant,csnow@example.com,804-536-7645x0745,2020-04-07,Finance
+41,4a26356c-eee1-41f4-8f87-83682655a932,Bianca,Torres,Senior Consultant,timothytaylor@example.org,740-547-1780x1821,2021-05-01,Marketing
+42,08351d37-fb1b-44d8-9072-7576916ef67c,Kevin,Dunn,Manager,browndebbie@example.com,001-892-863-1305x1330,2022-03-10,Finance
+43,0945edad-c454-488e-897e-3dc2d48be91c,Melissa,Tran,Senior Consultant,paul30@example.net,001-496-332-7136x102,2023-09-02,Sales
+44,3d9c3e21-973f-4374-ae13-0a813a2a274d,Clayton,Cunningham,Senior Consultant,vlynn@example.org,+1-448-589-2916,2020-01-07,Consulting
+45,12d47e1a-567c-48d6-a068-b5b7af143728,Matthew,Herrera,Consultant,matthewowens@example.net,(474)353-1058,2020-10-11,Consulting
+46,7492d9e8-8574-459e-bad2-e7d2f4ee418f,David,Rivera,Director,ginathomas@example.com,612-206-9733x2549,2021-06-02,Sales
+47,fe7d9887-c802-4e69-b464-efab7e55f467,Alyssa,Fuller,Senior Consultant,brian14@example.net,261-769-9546x108,2020-05-14,Consulting
+48,6c2395ba-c266-495d-80c4-4fb6baee39c8,Katherine,Mcpherson,Director,erin43@example.org,805.911.2404x838,2022-11-01,Operations
+49,1d5a2451-168d-4259-9e3a-6b2763156270,Sharon,Harris,Consultant,vreed@example.com,001-776-931-0744x967,2020-01-08,Sales
+50,a7e48e67-3116-4ebd-9a0b-6b0942c3220b,Caitlin,Perez,Director,davisjessica@example.com,438.262.0052x9970,2022-01-19,Consulting
+51,749058cc-7d34-4d01-bdc2-b7d9ab4b9977,Rebecca,Davis,Manager,juan98@example.com,+1-415-580-1587x065,2022-12-19,Sales
+52,a12963f3-5d17-443c-98dc-49a51639cba0,Karina,Henry,Consultant,markhuang@example.net,001-934-754-0408x61343,2023-03-18,Consulting
+53,f243c1d2-6e03-4050-ad8d-9a05f8f7e5c3,Deborah,Young,Senior Consultant,lawrencestephanie@example.net,001-575-833-4932x1907,2020-08-05,Consulting
+54,ac8043af-4a61-474c-bde6-fce6a888f8eb,Michelle,Thompson,Consultant,cassie00@example.net,+1-667-641-0280x92160,2022-05-06,Operations
+55,4a749e1c-acbb-4475-b5be-f614844db68f,Lisa,Hendricks,Consultant,sray@example.org,+1-889-938-5190,2022-12-07,Operations
+56,fc4b237b-256e-4f64-838c-a3e3659839cf,Brenda,Allen,Director,perezmichael@example.org,001-212-556-7081x56836,2022-11-07,Consulting
+57,80cf7820-9fc8-4c82-b31e-835c238b5a75,Stephen,Price,Consultant,smithdiana@example.net,963-299-2414,2025-03-16,Marketing
+58,22a58c31-bf76-4d77-9361-7dc7e281cbf6,Connor,Woods,Consultant,stephanie57@example.org,+1-300-393-3345x0358,2020-10-12,Finance
+59,04f2dfbe-6127-41d1-8de0-8c53737d5f23,James,Shepard,Manager,jesserichmond@example.com,924-774-3647,2023-07-29,Consulting
+60,b606ea81-3146-4fe3-a7ec-d04a6dcb8c60,Gail,Thompson,Consultant,annetteedwards@example.net,+1-590-870-8377x16453,2024-05-10,Finance
+61,4d9d6c94-e215-4643-b2b7-9c2fd389fbe0,Amanda,Duran,Consultant,blackstephen@example.org,289-307-9253x93746,2020-08-03,Finance
+62,7099d97d-dbb9-4a0d-9a20-c8b2767af02d,Gregg,Miller,Senior Consultant,uroberts@example.org,499.389.8505x4298,2025-03-17,Consulting
+63,358f4f96-d185-47ef-9a77-18495ee7d650,Danielle,Bennett,Director,hannahfitzgerald@example.com,884.662.4706x8770,2021-08-18,Consulting
+64,be32eedb-29c0-4617-9007-21792dc601c5,Michael,Smith,Manager,millermary@example.net,805-478-8270x6004,2022-01-21,Consulting
+65,42c1b543-d888-4d97-971a-baa06f009f32,Kim,Hammond,Manager,danielruiz@example.net,+1-928-201-7595x111,2022-12-22,Operations
+66,62b3b9f8-adf1-4dec-96c6-5323eba760b5,Eric,Garcia,Consultant,tbarajas@example.org,(923)434-5059x55248,2021-10-28,Operations
+67,46ede02b-c7d7-4bfb-861f-7d23266d4be0,Derek,Melendez,Senior Consultant,timothy16@example.org,901.883.3840,2023-09-02,Operations
+68,7c1422c1-7077-4a05-8240-8f4d2496cb5d,Theresa,Johnson,Consultant,david89@example.com,001-477-272-0983x907,2021-12-15,Operations
+69,c7867ae7-c5f2-4618-92ba-5f806182fe65,Marilyn,Dixon,Director,chapmanrobin@example.org,001-971-515-9830x96178,2023-02-24,Operations
+70,da4d8792-399b-402e-9824-5fbd25b73a59,Michelle,Williams,Director,robert74@example.com,(483)812-2001,2023-08-23,Operations
+71,61868be6-852e-4d5b-907c-4e59d8d15ef3,Darren,Jarvis,Manager,alicia62@example.com,474-804-5508x930,2023-04-26,Consulting
+72,f828ed6a-d6ab-4f36-970c-3f7d5077d437,Brianna,Gomez,Consultant,adamsdylan@example.net,729.843.1900x918,2021-08-10,Marketing
+73,dd66d954-b95e-46a5-8ce0-c9f65168aab8,Diane,Taylor,Director,iwarner@example.com,816.403.9050x90915,2021-01-22,Operations
+74,29b711ec-2501-4a1a-b11f-960ca0c40fe7,Leah,Kennedy,Senior Consultant,carlosgraves@example.org,278-719-2222x30730,2024-02-20,Marketing
+75,c4718714-59bb-4997-a071-8bd2137c265b,Sarah,Taylor,Manager,angelrobertson@example.com,001-838-667-2825x80778,2024-04-12,Finance
+76,19f29fa0-a53a-4ca8-a0fe-6688e61413aa,Robert,Roberts,Director,nthomas@example.net,+1-912-480-2563x4378,2021-09-08,Marketing
+77,5489bdec-023a-4c86-8570-a28d552ab254,Vanessa,Schmitt,Consultant,vbryant@example.org,001-364-565-0398x47166,2023-12-08,Consulting
+78,e7d08fa7-2831-4556-9580-cf1d8e673c09,Justin,Hopkins,Director,tvelazquez@example.org,001-331-934-9957x44263,2024-02-07,Sales
+79,470df900-0acf-4b52-ad88-491c2857ea11,Timothy,Bailey,Senior Consultant,jcook@example.net,7997028349,2022-08-25,Finance
+80,94b9729b-1855-4ea9-a798-1b5648cf889a,Hannah,Stanley,Consultant,johnsonjerry@example.com,(394)709-5462x47278,2024-05-12,Finance
+81,eb2f601c-9083-4871-9423-3b1e948482c6,Brad,Maynard,Senior Consultant,nathanschneider@example.com,241-976-1393,2020-07-27,Finance
+82,8f05eac6-e655-48a0-9f11-62c2d15e0251,Samantha,Serrano,Consultant,johneaton@example.org,(768)707-6229x2778,2024-07-05,Marketing
+83,0a678991-3105-4a14-bc1a-09f7d3d003c7,Deborah,White,Director,smithelizabeth@example.net,643.739.0795x25875,2021-07-04,Operations
+84,b3fdd5af-1b4c-4408-9aa4-33b733138f51,Justin,Hall,Senior Consultant,nicolas13@example.com,341.335.0814,2021-10-11,Sales
+85,79c0f1c8-7bd3-4a8e-839d-ea7db3d1955f,Taylor,Wilson,Senior Consultant,sbyrd@example.org,753.640.7741x7333,2020-03-15,Sales
+86,528f9ce0-b963-4c1d-9ca1-6c07663267f6,Anthony,Kane,Director,mendezmichaela@example.com,567.508.7949,2025-01-28,Consulting
+87,ff2b7f78-edb7-4b1d-aeaa-ccc9d46028c7,Kim,Rodriguez,Consultant,davidwagner@example.org,001-918-880-7384,2024-04-07,Operations
+88,fc7c86d7-3180-4d91-a6c8-c0169c864d85,John,Rodriguez,Consultant,lucas07@example.net,635.439.7785x01452,2021-12-31,Consulting
+89,dd023658-32e6-4fd0-a75d-6697616f21ee,Lauren,Sims,Consultant,christopher09@example.net,001-606-219-8354x3762,2020-09-13,Finance
+90,8d3a6e24-81b4-4237-939e-cbe39b899a25,Marcus,Cochran,Manager,dvincent@example.org,(959)608-6798,2020-11-09,Sales
+91,0889d62c-2002-4fcb-9868-b3a9ca6682ed,Diana,Parker,Consultant,william10@example.net,(249)365-9907x04306,2024-01-02,Operations
+92,29265c70-b23e-4316-aca3-0793eb1f2938,Michaela,Baxter,Senior Consultant,oconnordanny@example.com,001-986-416-4563,2023-09-29,Finance
+93,859ed6bd-3e01-45d1-992c-c9972c011105,Jeffery,Brown,Manager,yjones@example.net,(539)991-0443x865,2023-06-23,Sales
+94,c39508f6-5fd7-4911-a6ad-1849434e66b2,Michael,Jones,Manager,xmckenzie@example.org,238-431-4393,2021-08-20,Consulting
+95,3dcc743a-b192-4465-9e54-555daf3fdfc0,Travis,Parker,Consultant,whitebrittney@example.org,455.512.2154,2022-09-08,Operations
+96,d5b48427-7582-4adc-a11a-2fbf860af0dc,Edwin,Mcbride,Senior Consultant,scott37@example.com,+1-497-554-0800x917,2022-10-13,Operations
+97,a4baaebb-44ed-45dc-ba76-69343b4a4abe,Chad,Robinson,Consultant,morrisjames@example.com,8788205203,2021-02-26,Marketing
+98,70081cc3-a9e0-4231-a923-dcc1a36c5afe,Olivia,Butler,Senior Consultant,jamesreeves@example.net,533.582.7418x262,2020-11-30,Consulting
+99,1f4cb656-ae92-423f-a50e-3a23d073c271,Diana,Stewart,Manager,michaelrichardson@example.com,533-490-3185,2022-06-08,Sales
