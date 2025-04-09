@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/SophoScribe/sopho-scribe">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/currensee.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">CurrenSee</h3>
