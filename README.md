@@ -7,7 +7,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">SophoScribe</h3>
+  <h3 align="center">CurrenSee</h3>
 
   <p align="center">
     Conversational AI interface to aid in client preparation using data from Microsoft 365, google products, earnings reports, and more.
