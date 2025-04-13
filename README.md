@@ -161,13 +161,11 @@ to find in each folder/file.
 ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures        <- Generated graphics and figures to be used in reporting
 |
-├── app                <- Contains the app-specific files (e.g API router, streamlit/UI files, etc.)
+├── app                <- Contains the app-specific files (e.g API router, streamlit/UI files, teams/outlook interaction, etc.)
 |
 ├── src
     | 
-    └── currensee_app  <- Source code for app/ui-related implementation.
-    | 
-    └── currensee_dev  <- Source code for modeling/workflows.
+    └── currensee  <- Source code for the project containing modeling/workflows files.
         |
         ├── data_loading            <- Files necessary to perform data ingestion
         |
