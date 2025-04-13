@@ -53,7 +53,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,6 +94,7 @@ If you decide to use VSCode, these extensions will make your experience much eas
 
 2. (Windows ONLY) Configure `git bash` as your default terminal.
 * Now that you have git/git bash installed, you should be able to open a git bash terminal in vscode. Follow the instructions [here](https://csweb.wooster.edu/mionescu/cs232/guides/vs-code-default-terminal/#:~:text=Open%20Visual%20Studio%20Code,the%20menu%20that%20pops%20up.) to configure git bash as you default terminal.
+* Mac users will likely prefer to use `xcode` or another terminal.
 
 #### Configure Git
 
