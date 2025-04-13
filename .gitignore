@@ -121,6 +121,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.python-version
 .env
 .venv
 env/
@@ -168,3 +169,4 @@ cython_debug/
 
 # data storage
 .DS_Store
+data/outlook/eml_files/

@@ -6,6 +6,7 @@ NOTE: This is a work in progress!
 import faker
 import datetime
 import random
+import pandas as pd
 
 # Initialize Faker for generating synthetic names
 fake = faker.Faker()

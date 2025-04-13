@@ -82,33 +82,64 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+### Environment Configuration
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Below are the recommended operating-system-specific instructions for:
+* Installing & configuring git
+* Setting up visual studio code
 
-### Installation
+**NOTE**: While it is not necessary that you use visual studio code, it is recommended, as it contains useful extensions and add-ins that will assist with development, especially those related to microsoft tools.
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+#### Install Necessary Tools
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-2. Activate poetry environment & install the packages
-   ```sh
-   poetry shell
-   poetry install
-   ```
-3. Install the poetry packages
-   ```sh
-   poetry install
-   ```
+**NOTE**: It is assumed that you have python 13.0 installed. If you need assistance with installing python, please contact one of the administrators of this repository.
+
+1. Install [VSCode](https://code.visualstudio.com/download) 
+2. Install [git](https://git-scm.com/downloads)
+* If you have a mac, git may already be installed on your system. To test this, run `git --version` in xcode.
+
+*If you are using a Windows 11 machine, you should now open a git bash terminal (search in the search bar) for the remaining steps.*
+
+3. Install [poetry](https://python-poetry.org/docs/#installation)
+* IMPORTANT: You may need to add your `~/.local/bin` folder to your path if you are on a windows machine. The install of `pipx` should prompt you to do this. In order to do this, you will need to run the following command in your git bash terminal: `export PATH="$PATH:/path/to/your/bin"`.
+* Run `poetry --version` to validate that the installation was successful.
+
+
+#### Configure VSCode
+If you decide to use VSCode, these extensions will make your experience much easier.
+
+1. Enable `git` in the settings.
+* Follow the instructions in [this youtube video](https://youtu.be/3Tsaxxv9sls?si=VsSBTenx6jm_K_tY&t=153)
+
+2. (Windows ONLY) Configure `git bash` as your default terminal.
+* Now that you have git/git bash installed, you should be able to open a git bash terminal in vscode. Follow the instructions [here](https://csweb.wooster.edu/mionescu/cs232/guides/vs-code-default-terminal/#:~:text=Open%20Visual%20Studio%20Code,the%20menu%20that%20pops%20up.) to configure git bash as you default terminal.
+
+#### Configure Git
+
+1. Add your ssh keys to your git account. 
+* Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
+2. Configure your git username and email
+```bash
+git config user.name "<your-username>"
+git config user.email "<your-github-email>"
+```
+
+3. Clone the repostiory
+```bash
+git clone git@github.com:ConvoAI-Capstone-SpSu2025/currensee.git
+```
+
+#### Configure the Python Environment
+
+1. Create the environment from the existing poetry specs in the repository
+```bash
+poetry env activate
+# copy the command and call it to activate the environment
+poetry install # install the packages into the environment
+```
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -154,7 +185,9 @@ to find in each folder/file.
 |
 ├── src
     | 
-    └── sopho-scribe  <- Source code for use in this project.
+    └── currensee_app  <- Source code for app/ui-related implementation.
+    | 
+    └── currensee_dev  <- Source code for modeling/workflows.
         |
         ├── data_loading            <- Files necessary to perform data ingestion
         |
