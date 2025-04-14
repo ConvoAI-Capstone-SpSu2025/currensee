@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/SophoScribe/sopho-scribe">
+  <a href="https://github.com/ConvoAI-Capstone-SpSu2025/currensee">
     <img src="images/currensee.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -12,14 +12,14 @@
   <p align="center">
     Conversational AI interface to aid in client preparation using data from Microsoft 365, google products, earnings reports, and more.
     <br />
-    <a href="https://github.com/SophoScribe/sopho-scribe"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ConvoAI-Capstone-SpSu2025/currensee"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/SophoScribe/sopho-scribe">View Demo</a>
+    <a href="https://github.com/ConvoAI-Capstone-SpSu2025/currensee">View Demo</a>
     &middot;
-    <a href="https://github.com/SophoScribe/sopho-scribe/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/ConvoAI-Capstone-SpSu2025/currensee/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/SophoScribe/sopho-scribe/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/ConvoAI-Capstone-SpSu2025/currensee/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -63,7 +63,43 @@
 
 To get a local copy up and running follow these simple steps.
 
-### Environment Configuration
+### First-Time GCP Environment Setup
+
+0. Turn on the instance via [the workbench UI](https://console.cloud.google.com/vertex-ai/workbench/instances?invt=AbuvFw&orgonly=true&project=adsp-34002-on02-sopho-scribe&supportedpurview=project)
+
+1. Clone the github repo by selecting the git button in the UI or cloning in the terminal
+```bash
+git clone https://github.com/ConvoAI-Capstone-SpSu2025/currensee.git
+```
+
+2. Install pipx
+```bash
+sudo apt update
+sudo apt install pipx
+pipx ensurepath
+sudo pipx ensurepath 
+```
+
+2. Install poetry
+```bash
+pipx install poetry
+source ~/.bashrc
+```
+
+
+3. Create conda env
+```bash
+conda create -n <your_initials>_currensee python=3.10.11
+
+```
+
+4. Install the required packages via poetry
+```bash
+poetry install
+```
+
+
+### Local Environment Configuration
 
 Below are the recommended operating-system-specific instructions for:
 * Installing & configuring git
