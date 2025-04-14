@@ -4,6 +4,8 @@ import os
 from faker import Faker
 
 # Initialize Faker instance
+#Faker is a Python package that generates fake data for you.
+
 fake = Faker()
 
 # Helper function to generate synthetic employee data
