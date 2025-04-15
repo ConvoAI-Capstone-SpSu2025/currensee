@@ -119,6 +119,7 @@ Below are the recommended operating-system-specific instructions for:
 
 3. Install [poetry](https://python-poetry.org/docs/#installation)
 * IMPORTANT: You may need to add your `~/.local/bin` folder to your path if you are on a windows machine. The install of `pipx` should prompt you to do this. In order to do this, you will need to run the following command in your git bash terminal: `export PATH="$PATH:/path/to/your/bin"`.
+* For MAC I had to follow the instructions in this article to add the '/Users/<myusername>/.local/bin' to my path https://medium.com/@B-Treftz/macos-adding-a-directory-to-your-path-fe7f19edd2f7
 * Run `poetry --version` to validate that the installation was successful.
 
 
