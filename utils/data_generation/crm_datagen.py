@@ -4,7 +4,8 @@ import os
 from faker import Faker
 
 # Initialize Faker instance
-#Faker is a Python package that generates fake data for you.
+#Lily's modification of CRM data
+#Faker is a Python package that integrates fake data for you.
 
 fake = Faker()
 
