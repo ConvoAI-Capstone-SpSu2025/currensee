@@ -1,101 +1,101 @@
-,EmployeeID,FirstName,LastName,Title,Email,Phone,HireDate,Department
-0,4a133a59-3d02-423b-84f8-02ce243dfb54,Jane,Moneypenny,Senior Analyst,jane.moneypenny1@outlook.com,+1-767-451-3380,2021-01-04,Finance
-1,dcac15b5-a707-4caf-8b64-0c4c517ba3f8,Kari,Ellis,Consultant,jerry40@example.com,765-985-9585,2022-09-19,Finance
-2,eeb8e2bb-41f3-460f-a870-bc904cd85f0b,Cody,Baker,Senior Consultant,paula96@example.net,+1-289-549-0493x995,2024-07-15,Finance
-3,879f58f6-a771-4a21-a95e-3bb8724694ed,Wayne,Bailey,Senior Consultant,seanbaker@example.net,361-662-4478x6501,2024-10-17,Operations
-4,d5288050-cbb2-4077-a307-ebcf818b4db8,Miranda,Thomas,Consultant,dianemay@example.com,6389462760,2025-02-21,Finance
-5,5c85210b-8fc9-4d31-b7fb-6b9e7b5604c4,Matthew,Pitts,Consultant,jill87@example.com,2505485583,2024-12-06,Consulting
-6,e811821d-b856-4ee4-8c43-3a658a7af7be,Barbara,Stafford,Director,qbrown@example.com,952-592-2781x871,2020-10-28,Operations
-7,d8f94ec8-1f7a-42ca-8b8c-7c60eb2f6d49,Darlene,Cox,Consultant,brian05@example.net,(978)957-2263,2020-12-24,Consulting
-8,b483aaf4-7758-4250-917c-ce38c81e091b,Edward,Meyer,Consultant,ymendoza@example.org,001-426-585-0972x80547,2020-04-12,Operations
-9,7e8ec7a8-1ff3-430e-8b5f-67ba1b411a9b,Heather,Miller,Manager,natashaparsons@example.net,001-963-264-6048x39809,2024-12-13,Sales
-10,a46743c3-c01a-4d07-8805-74058f8b9c94,Madison,Griffin,Consultant,kellyjohn@example.com,001-586-908-8644x382,2024-07-18,Finance
-11,839b9b37-84ea-4469-906b-9d7fdf15a3d8,Courtney,Durham,Director,destinyglenn@example.com,(648)925-4262,2024-06-07,Operations
-12,f5814896-ed7f-4748-9c26-fdd481b5d7b9,Aaron,Burns,Senior Consultant,zthompson@example.org,624.608.8858x262,2023-08-12,Sales
-13,8b74077d-1e5b-4a61-bde0-5a6d280c7a06,Cynthia,Williams,Director,kingdavid@example.org,+1-984-794-6190,2023-07-05,Consulting
-14,4c167d9f-efae-4b03-abf6-21167f1d4b69,Alyssa,Barnett,Consultant,paulastanley@example.com,(738)644-6468x664,2020-10-18,Finance
-15,58bc159b-5e72-462e-8700-a1937304ee7d,Emily,Johnson,Consultant,brittanymoran@example.net,+1-515-580-0092,2021-01-02,Sales
-16,bd081441-5ff1-4b5f-8c3c-3a3e85e571ea,Katelyn,Johnson,Manager,josephsteven@example.net,807.528.4583,2020-09-12,Marketing
-17,716ca168-5d64-4e17-9b6b-a77a11caf933,George,Peters,Director,amycline@example.org,001-395-328-0041x910,2020-05-27,Marketing
-18,6d8f4b60-5c5a-46c2-90ba-9c522b1bec75,Anthony,Barnes,Consultant,farmererik@example.net,(661)766-8715,2021-01-25,Sales
-19,da82ef29-5964-4a72-b0d5-393a451d1088,Danny,Michael,Consultant,ibarrakelly@example.org,622.964.0025x565,2022-10-06,Finance
-20,62b39aa9-2e95-418e-9bd4-fdeaf2f991ee,Courtney,Lopez,Consultant,wendywang@example.com,(921)676-2880x9822,2020-11-14,Consulting
-21,b4fbd110-cf42-4151-b533-564c354a5fa8,Warren,Mejia,Senior Consultant,clarkcarla@example.org,001-712-924-6729,2020-06-27,Consulting
-22,29289498-1661-4c8a-b29f-b3668d5d8bbb,Katie,Patterson,Senior Consultant,manuel92@example.net,001-257-385-3129,2024-08-28,Finance
-23,cf4b2f2f-9b89-48d6-b89a-8dfc11c523da,Cody,Davenport,Consultant,brendamunoz@example.net,486-881-1326,2022-02-21,Operations
-24,b86b0b1a-58a3-4617-941a-da7a2f889044,James,Maynard,Manager,martinezandrea@example.org,001-617-811-3349x778,2023-02-15,Consulting
-25,593df861-faa2-49ec-ad69-38526923531c,Jason,Becker,Director,rwallace@example.net,001-594-841-8602x15353,2024-10-04,Finance
-26,10d5abc9-5879-4361-9f98-273546e9048b,Ronnie,Anderson,Manager,jessicaherrera@example.com,254.431.5754,2024-07-24,Sales
-27,8a9c3f13-eb4f-4328-8b2c-5f75957bd6df,Pamela,Bowman,Director,ejuarez@example.com,(214)635-8281x741,2022-12-17,Sales
-28,953eb945-f73d-4b80-8f3e-2375b37eb82d,Colleen,Bartlett,Consultant,cruzdylan@example.org,(772)687-5896x7076,2021-12-12,Finance
-29,ea4f07de-4ec7-4e2e-a68c-f8278964441f,James,Reed,Manager,terriberg@example.net,(343)432-5824x9289,2024-12-02,Sales
-30,4aaab3de-02c7-43f0-a881-b085d952f59a,Jessica,Valencia,Manager,sshah@example.com,001-270-319-9658,2024-12-03,Marketing
-31,1fd791c6-85ca-4966-8da9-20674d89cae3,Jeffrey,Nelson,Director,gilesbeth@example.org,+1-586-709-2251x3111,2022-07-29,Finance
-32,2e8d2e1f-3e0e-4f57-b5ac-48685316ca05,Ashley,Rivers,Consultant,smithadam@example.com,(707)316-7390,2021-01-19,Operations
-33,f2e1d195-c0ed-48bc-84bb-8a260315df86,Alec,Thompson,Director,iwyatt@example.org,667.266.4565x7494,2020-02-19,Sales
-34,ed1cacee-d2c2-4aa2-b2a1-47173e51a150,Kelly,Escobar,Senior Consultant,ndorsey@example.org,752.251.7207x16262,2023-11-24,Marketing
-35,7d8c223d-7845-43f1-9625-c37e5c99d91c,Karen,Howard,Consultant,johnsoncharles@example.org,629.456.9121,2023-09-09,Operations
-36,532a268e-2aa6-48fc-8e9f-2e7bf6181526,Carrie,Chavez,Director,chelsea00@example.org,001-959-601-0502x32604,2023-12-14,Operations
-37,f1cce2f1-d297-4d2c-90a2-0106bab62ecc,Lindsey,Alvarez,Senior Consultant,ystout@example.com,816.730.9234x9684,2024-10-12,Consulting
-38,85601d6f-3e48-496e-9322-0034110df45f,Kathryn,Spence,Director,nrodriguez@example.com,215.996.6997,2021-02-16,Consulting
-39,30210762-9fd5-4837-91f4-afa9e947fdb9,Kristen,Barrett,Senior Consultant,carlsonjohn@example.com,240.667.1419,2024-09-22,Consulting
-40,e76c88f8-e6fe-4726-a1a0-04fdfb49160b,Kevin,Hernandez,Senior Consultant,csnow@example.com,804-536-7645x0745,2020-04-07,Finance
-41,4a26356c-eee1-41f4-8f87-83682655a932,Bianca,Torres,Senior Consultant,timothytaylor@example.org,740-547-1780x1821,2021-05-01,Marketing
-42,08351d37-fb1b-44d8-9072-7576916ef67c,Kevin,Dunn,Manager,browndebbie@example.com,001-892-863-1305x1330,2022-03-10,Finance
-43,0945edad-c454-488e-897e-3dc2d48be91c,Melissa,Tran,Senior Consultant,paul30@example.net,001-496-332-7136x102,2023-09-02,Sales
-44,3d9c3e21-973f-4374-ae13-0a813a2a274d,Clayton,Cunningham,Senior Consultant,vlynn@example.org,+1-448-589-2916,2020-01-07,Consulting
-45,12d47e1a-567c-48d6-a068-b5b7af143728,Matthew,Herrera,Consultant,matthewowens@example.net,(474)353-1058,2020-10-11,Consulting
-46,7492d9e8-8574-459e-bad2-e7d2f4ee418f,David,Rivera,Director,ginathomas@example.com,612-206-9733x2549,2021-06-02,Sales
-47,fe7d9887-c802-4e69-b464-efab7e55f467,Alyssa,Fuller,Senior Consultant,brian14@example.net,261-769-9546x108,2020-05-14,Consulting
-48,6c2395ba-c266-495d-80c4-4fb6baee39c8,Katherine,Mcpherson,Director,erin43@example.org,805.911.2404x838,2022-11-01,Operations
-49,1d5a2451-168d-4259-9e3a-6b2763156270,Sharon,Harris,Consultant,vreed@example.com,001-776-931-0744x967,2020-01-08,Sales
-50,a7e48e67-3116-4ebd-9a0b-6b0942c3220b,Caitlin,Perez,Director,davisjessica@example.com,438.262.0052x9970,2022-01-19,Consulting
-51,749058cc-7d34-4d01-bdc2-b7d9ab4b9977,Rebecca,Davis,Manager,juan98@example.com,+1-415-580-1587x065,2022-12-19,Sales
-52,a12963f3-5d17-443c-98dc-49a51639cba0,Karina,Henry,Consultant,markhuang@example.net,001-934-754-0408x61343,2023-03-18,Consulting
-53,f243c1d2-6e03-4050-ad8d-9a05f8f7e5c3,Deborah,Young,Senior Consultant,lawrencestephanie@example.net,001-575-833-4932x1907,2020-08-05,Consulting
-54,ac8043af-4a61-474c-bde6-fce6a888f8eb,Michelle,Thompson,Consultant,cassie00@example.net,+1-667-641-0280x92160,2022-05-06,Operations
-55,4a749e1c-acbb-4475-b5be-f614844db68f,Lisa,Hendricks,Consultant,sray@example.org,+1-889-938-5190,2022-12-07,Operations
-56,fc4b237b-256e-4f64-838c-a3e3659839cf,Brenda,Allen,Director,perezmichael@example.org,001-212-556-7081x56836,2022-11-07,Consulting
-57,80cf7820-9fc8-4c82-b31e-835c238b5a75,Stephen,Price,Consultant,smithdiana@example.net,963-299-2414,2025-03-16,Marketing
-58,22a58c31-bf76-4d77-9361-7dc7e281cbf6,Connor,Woods,Consultant,stephanie57@example.org,+1-300-393-3345x0358,2020-10-12,Finance
-59,04f2dfbe-6127-41d1-8de0-8c53737d5f23,James,Shepard,Manager,jesserichmond@example.com,924-774-3647,2023-07-29,Consulting
-60,b606ea81-3146-4fe3-a7ec-d04a6dcb8c60,Gail,Thompson,Consultant,annetteedwards@example.net,+1-590-870-8377x16453,2024-05-10,Finance
-61,4d9d6c94-e215-4643-b2b7-9c2fd389fbe0,Amanda,Duran,Consultant,blackstephen@example.org,289-307-9253x93746,2020-08-03,Finance
-62,7099d97d-dbb9-4a0d-9a20-c8b2767af02d,Gregg,Miller,Senior Consultant,uroberts@example.org,499.389.8505x4298,2025-03-17,Consulting
-63,358f4f96-d185-47ef-9a77-18495ee7d650,Danielle,Bennett,Director,hannahfitzgerald@example.com,884.662.4706x8770,2021-08-18,Consulting
-64,be32eedb-29c0-4617-9007-21792dc601c5,Michael,Smith,Manager,millermary@example.net,805-478-8270x6004,2022-01-21,Consulting
-65,42c1b543-d888-4d97-971a-baa06f009f32,Kim,Hammond,Manager,danielruiz@example.net,+1-928-201-7595x111,2022-12-22,Operations
-66,62b3b9f8-adf1-4dec-96c6-5323eba760b5,Eric,Garcia,Consultant,tbarajas@example.org,(923)434-5059x55248,2021-10-28,Operations
-67,46ede02b-c7d7-4bfb-861f-7d23266d4be0,Derek,Melendez,Senior Consultant,timothy16@example.org,901.883.3840,2023-09-02,Operations
-68,7c1422c1-7077-4a05-8240-8f4d2496cb5d,Theresa,Johnson,Consultant,david89@example.com,001-477-272-0983x907,2021-12-15,Operations
-69,c7867ae7-c5f2-4618-92ba-5f806182fe65,Marilyn,Dixon,Director,chapmanrobin@example.org,001-971-515-9830x96178,2023-02-24,Operations
-70,da4d8792-399b-402e-9824-5fbd25b73a59,Michelle,Williams,Director,robert74@example.com,(483)812-2001,2023-08-23,Operations
-71,61868be6-852e-4d5b-907c-4e59d8d15ef3,Darren,Jarvis,Manager,alicia62@example.com,474-804-5508x930,2023-04-26,Consulting
-72,f828ed6a-d6ab-4f36-970c-3f7d5077d437,Brianna,Gomez,Consultant,adamsdylan@example.net,729.843.1900x918,2021-08-10,Marketing
-73,dd66d954-b95e-46a5-8ce0-c9f65168aab8,Diane,Taylor,Director,iwarner@example.com,816.403.9050x90915,2021-01-22,Operations
-74,29b711ec-2501-4a1a-b11f-960ca0c40fe7,Leah,Kennedy,Senior Consultant,carlosgraves@example.org,278-719-2222x30730,2024-02-20,Marketing
-75,c4718714-59bb-4997-a071-8bd2137c265b,Sarah,Taylor,Manager,angelrobertson@example.com,001-838-667-2825x80778,2024-04-12,Finance
-76,19f29fa0-a53a-4ca8-a0fe-6688e61413aa,Robert,Roberts,Director,nthomas@example.net,+1-912-480-2563x4378,2021-09-08,Marketing
-77,5489bdec-023a-4c86-8570-a28d552ab254,Vanessa,Schmitt,Consultant,vbryant@example.org,001-364-565-0398x47166,2023-12-08,Consulting
-78,e7d08fa7-2831-4556-9580-cf1d8e673c09,Justin,Hopkins,Director,tvelazquez@example.org,001-331-934-9957x44263,2024-02-07,Sales
-79,470df900-0acf-4b52-ad88-491c2857ea11,Timothy,Bailey,Senior Consultant,jcook@example.net,7997028349,2022-08-25,Finance
-80,94b9729b-1855-4ea9-a798-1b5648cf889a,Hannah,Stanley,Consultant,johnsonjerry@example.com,(394)709-5462x47278,2024-05-12,Finance
-81,eb2f601c-9083-4871-9423-3b1e948482c6,Brad,Maynard,Senior Consultant,nathanschneider@example.com,241-976-1393,2020-07-27,Finance
-82,8f05eac6-e655-48a0-9f11-62c2d15e0251,Samantha,Serrano,Consultant,johneaton@example.org,(768)707-6229x2778,2024-07-05,Marketing
-83,0a678991-3105-4a14-bc1a-09f7d3d003c7,Deborah,White,Director,smithelizabeth@example.net,643.739.0795x25875,2021-07-04,Operations
-84,b3fdd5af-1b4c-4408-9aa4-33b733138f51,Justin,Hall,Senior Consultant,nicolas13@example.com,341.335.0814,2021-10-11,Sales
-85,79c0f1c8-7bd3-4a8e-839d-ea7db3d1955f,Taylor,Wilson,Senior Consultant,sbyrd@example.org,753.640.7741x7333,2020-03-15,Sales
-86,528f9ce0-b963-4c1d-9ca1-6c07663267f6,Anthony,Kane,Director,mendezmichaela@example.com,567.508.7949,2025-01-28,Consulting
-87,ff2b7f78-edb7-4b1d-aeaa-ccc9d46028c7,Kim,Rodriguez,Consultant,davidwagner@example.org,001-918-880-7384,2024-04-07,Operations
-88,fc7c86d7-3180-4d91-a6c8-c0169c864d85,John,Rodriguez,Consultant,lucas07@example.net,635.439.7785x01452,2021-12-31,Consulting
-89,dd023658-32e6-4fd0-a75d-6697616f21ee,Lauren,Sims,Consultant,christopher09@example.net,001-606-219-8354x3762,2020-09-13,Finance
-90,8d3a6e24-81b4-4237-939e-cbe39b899a25,Marcus,Cochran,Manager,dvincent@example.org,(959)608-6798,2020-11-09,Sales
-91,0889d62c-2002-4fcb-9868-b3a9ca6682ed,Diana,Parker,Consultant,william10@example.net,(249)365-9907x04306,2024-01-02,Operations
-92,29265c70-b23e-4316-aca3-0793eb1f2938,Michaela,Baxter,Senior Consultant,oconnordanny@example.com,001-986-416-4563,2023-09-29,Finance
-93,859ed6bd-3e01-45d1-992c-c9972c011105,Jeffery,Brown,Manager,yjones@example.net,(539)991-0443x865,2023-06-23,Sales
-94,c39508f6-5fd7-4911-a6ad-1849434e66b2,Michael,Jones,Manager,xmckenzie@example.org,238-431-4393,2021-08-20,Consulting
-95,3dcc743a-b192-4465-9e54-555daf3fdfc0,Travis,Parker,Consultant,whitebrittney@example.org,455.512.2154,2022-09-08,Operations
-96,d5b48427-7582-4adc-a11a-2fbf860af0dc,Edwin,Mcbride,Senior Consultant,scott37@example.com,+1-497-554-0800x917,2022-10-13,Operations
-97,a4baaebb-44ed-45dc-ba76-69343b4a4abe,Chad,Robinson,Consultant,morrisjames@example.com,8788205203,2021-02-26,Marketing
-98,70081cc3-a9e0-4231-a923-dcc1a36c5afe,Olivia,Butler,Senior Consultant,jamesreeves@example.net,533.582.7418x262,2020-11-30,Consulting
-99,1f4cb656-ae92-423f-a50e-3a23d073c271,Diana,Stewart,Manager,michaelrichardson@example.com,533-490-3185,2022-06-08,Sales
+,EmployeeID,FirstName,LastName,Title,Email,Phone,HireDate,Department,Market
+0,1362cb97-4fb2-4852-8c43-8667939265f6,Jane,Moneypenny,Relationship Manager,jane.moneypenny1@bankwell.com,531-701-1131,2020-10-03,Enterprise Investment,San Fransisco
+1,fa44b0a9-22f3-490c-a84f-3863168d6596,Catherine,Crawford,Relationship Manager,catherine.crawford@bankwell.com,342-226-8081,2023-08-01,Customer Support,Boston
+2,0a17f756-e4e0-4da1-ab69-db63ff64dbc2,Darren,Cruz,Financial Advisor,darren.cruz@bankwell.com,+1-508-694-0530,2025-03-28,Small Business Investment,Miami
+3,1012bed9-9618-4379-a337-13a046a15608,Daniel,Page,Financial Advisor,daniel.page@bankwell.com,832-921-8598x830,2024-02-20,Customer Support,Seattle
+4,d00a6857-1577-4019-8363-f54b69c88348,Thomas,Allen,Finance Assistant,thomas.allen@bankwell.com,769.952.3893x11932,2025-02-13,Enterprise Investment,Seattle
+5,ce75d93c-c473-45a5-91e5-55c535b2003c,Brooke,Burton,Finance Assistant,brooke.burton@bankwell.com,(745)543-5246,2021-09-24,Operations,Chicago
+6,6c933967-cdd7-43e4-b9c9-1312ee75d607,Emily,Martin,Finance Assistant,emily.martin@bankwell.com,(420)277-6952x57792,2020-07-07,Small Business Investment,Denver
+7,4a2591bd-49a7-40c4-b80d-111f9cdab201,Patrick,Ellis,Relationship Manager,patrick.ellis@bankwell.com,992-746-8770,2020-12-14,Enterprise Investment,Dallas
+8,324eab73-26b8-49af-be8f-f2dd2049ea34,Felicia,Griffith,Senior Relationship Manager,felicia.griffith@bankwell.com,001-997-822-4260x3398,2021-06-30,Operations,Los Angeles
+9,995dd092-310e-4bcc-82f8-8a095a1c7013,Hannah,Thompson,Financial Advisor,hannah.thompson@bankwell.com,579-655-8655x88786,2021-09-30,Operations,Denver
+10,b335e395-781e-4be3-a9da-ae046b638d15,Gabrielle,Murphy,Product Specialist,gabrielle.murphy@bankwell.com,674-657-6369,2025-02-28,Customer Support,Miami
+11,13faa153-c70b-4a52-ae48-d030f4127c5b,Mark,Howell,Finance Assistant,mark.howell@bankwell.com,+1-904-359-4048x782,2020-08-23,Small Business Investment,Washington DC
+12,12e05519-be8d-462b-a5e9-3ab4e9b2602f,Amber,Fuller,Product Specialist,amber.fuller@bankwell.com,(215)923-2402x4845,2025-04-14,Small Business Investment,Chicago
+13,bafc6a86-9e21-4c83-843f-91163bd38c44,April,Miller,Financial Advisor,april.miller@bankwell.com,549-458-1386,2021-09-08,Sales,Los Angeles
+14,88f0b53d-821c-4b2f-925a-b37112cdfbd6,Thomas,Smith,Finance Assistant,thomas.smith@bankwell.com,001-915-910-8904x46398,2025-01-15,Customer Support,Los Angeles
+15,dca7bd24-e3b4-4652-bf0d-c7d2c704b256,Kurt,Mullins,Financial Advisor,kurt.mullins@bankwell.com,001-252-222-0059x539,2022-05-13,Enterprise Investment,Washington DC
+16,a22252b9-d9fc-490c-85d2-00514278a833,Virginia,White,Financial Advisor,virginia.white@bankwell.com,(717)332-8747x8466,2023-06-06,Operations,Washington DC
+17,43b79ab8-7f90-490e-bfa5-a3479a175dae,Nicole,Robinson,Finance Assistant,nicole.robinson@bankwell.com,718-355-8210,2020-05-18,Customer Support,Miami
+18,cd0bbddc-39c4-4348-9dd6-bffd9bf1c5b0,Carlos,Ward,Product Specialist,carlos.ward@bankwell.com,001-940-876-0081x6808,2023-01-14,Operations,Dallas
+19,362be8dd-2280-42e8-9e55-e9fdffa858b1,Jeffrey,Palmer,Financial Advisor,jeffrey.palmer@bankwell.com,8132906334,2024-07-31,Small Business Investment,Denver
+20,6b1f4e57-4a24-46c8-9657-f41dba5e5780,Jacob,Malone,Finance Assistant,jacob.malone@bankwell.com,785.290.0199,2023-04-23,Sales,Chicago
+21,f9fd200f-6625-49d3-9ba1-1e6d68fed66f,Brian,Lozano,Financial Advisor,brian.lozano@bankwell.com,(845)503-7058x5701,2020-06-24,Operations,Chicago
+22,a54ecbd7-0426-4a6f-a3ab-4b57a7e20650,Anna,Harrison,Relationship Manager,anna.harrison@bankwell.com,+1-570-213-9983x068,2024-03-07,Enterprise Investment,Dallas
+23,ab23f0bf-aeef-4add-9d04-0b748b35a829,Tracy,Tate,Senior Relationship Manager,tracy.tate@bankwell.com,(901)355-3282x682,2021-02-04,Customer Support,Los Angeles
+24,e4b95797-6e60-4af9-8889-d589e350e953,Stacey,Fuentes,Senior Relationship Manager,stacey.fuentes@bankwell.com,(770)474-9641,2022-04-11,Sales,San Fransisco
+25,009d8d35-e2c1-4cfa-890b-b57bc0fab505,Amanda,Cruz,Finance Assistant,amanda.cruz@bankwell.com,497.352.8154x849,2020-04-23,Small Business Investment,Chicago
+26,00a4b576-91cb-4399-b954-e472e2b796cb,Jennifer,Long,Senior Relationship Manager,jennifer.long@bankwell.com,(467)974-9366x307,2024-12-16,Small Business Investment,Seattle
+27,50e8774d-15fd-4c0e-9301-e9994eef7d58,Jared,Bradford,Relationship Manager,jared.bradford@bankwell.com,893.626.0984,2022-12-21,Customer Support,Washington DC
+28,aba43773-34a4-4b61-a5b4-906e03f4ff21,Barbara,Wright,Relationship Manager,barbara.wright@bankwell.com,001-465-298-7734,2021-01-28,Small Business Investment,Los Angeles
+29,618e501e-a2c7-46d8-8617-f21aabe7b113,Christopher,Hunter,Relationship Manager,christopher.hunter@bankwell.com,(710)486-8469,2023-08-13,Operations,Washington DC
+30,9415f907-13fb-4eba-81cc-47ad8ebc9900,Brandon,Robertson,Financial Advisor,brandon.robertson@bankwell.com,596-783-5390,2023-04-24,Enterprise Investment,San Fransisco
+31,434a4075-e34d-45a1-9145-5cd50fceece5,Mary,Brown,Financial Advisor,mary.brown@bankwell.com,933.947.1926x6348,2024-03-16,Customer Support,Seattle
+32,a00c70b5-c6d4-4ac0-8585-b0cd8042726f,Andrew,Medina,Financial Advisor,andrew.medina@bankwell.com,001-316-734-4129x089,2021-07-26,Customer Support,Boston
+33,67559479-b8a0-4ffd-8cb8-a12fdab82bfa,Danielle,Church,Financial Advisor,danielle.church@bankwell.com,+1-796-596-7669x824,2024-09-30,Customer Support,Dallas
+34,a2caf1ab-bedc-4b53-99f1-b53c6a0f18ff,Wendy,Vargas,Product Specialist,wendy.vargas@bankwell.com,926-948-7202x460,2022-07-19,Customer Support,Los Angeles
+35,2f02b5c9-adc7-4ef4-8add-14d7ee144511,Nathan,Wade,Product Specialist,nathan.wade@bankwell.com,811-259-5726x0366,2023-03-23,Sales,Chicago
+36,d0388784-0597-4117-9538-227dd9564100,Jeremy,Henry,Finance Assistant,jeremy.henry@bankwell.com,5888214826,2021-11-21,Small Business Investment,Denver
+37,6b55d4ba-6408-4cbc-9e99-aaf03b02c5a6,Christopher,Myers,Financial Advisor,christopher.myers@bankwell.com,749.886.0674,2020-07-19,Operations,Chicago
+38,93edd9ea-d691-46a4-9f92-75d1ffad2531,Andrew,Bell,Senior Relationship Manager,andrew.bell@bankwell.com,578.574.7600x158,2024-03-25,Sales,Dallas
+39,b1aab74b-f60c-4475-a4f0-f9383071de82,Julia,Smith,Relationship Manager,julia.smith@bankwell.com,363.998.9714,2024-09-26,Sales,Boston
+40,360009aa-60be-4bc7-b00d-c2c07397108f,Mitchell,Burton,Financial Advisor,mitchell.burton@bankwell.com,(424)769-4703x873,2023-03-02,Sales,Washington DC
+41,99012618-d21b-48db-9ff6-9f23ffa2c67e,John,Allen,Senior Relationship Manager,john.allen@bankwell.com,(672)774-9273,2025-01-30,Enterprise Investment,Washington DC
+42,bbc572a6-1dd7-47f9-8f93-a2db97d61831,Matthew,Smith,Relationship Manager,matthew.smith@bankwell.com,001-872-449-8377x862,2024-07-21,Sales,New York City
+43,4c7743a7-5f6a-4a44-b84d-1d08945e5ddb,Stacy,Weber,Relationship Manager,stacy.weber@bankwell.com,216.745.7199,2023-08-08,Customer Support,San Fransisco
+44,5544048f-063a-42f4-9844-3390a4f5ae84,Brendan,Heath,Senior Relationship Manager,brendan.heath@bankwell.com,(871)875-1785,2020-02-19,Customer Support,Miami
+45,a58c10a2-c137-4de9-ba10-9768be30afc2,Jacqueline,Johnson,Product Specialist,jacqueline.johnson@bankwell.com,(590)873-0487x59096,2024-05-06,Enterprise Investment,Dallas
+46,d44a81f4-795e-4885-af5d-b4420122126a,Nicole,Mack,Product Specialist,nicole.mack@bankwell.com,+1-643-304-2338x3956,2021-04-01,Customer Support,Denver
+47,03c98f71-9e07-4a77-997d-e47efbcf7fe3,Christopher,Johnson,Product Specialist,christopher.johnson@bankwell.com,+1-918-709-1076x2208,2020-07-14,Sales,Los Angeles
+48,ba16470b-d4d7-40bf-b014-37eb36330f6b,Carolyn,Williams,Financial Advisor,carolyn.williams@bankwell.com,245.557.1078x055,2022-11-20,Operations,Chicago
+49,12fc072a-74f6-47a9-ba0f-877431a2f149,Michelle,Nixon,Finance Assistant,michelle.nixon@bankwell.com,+1-554-638-8881,2024-09-05,Enterprise Investment,San Fransisco
+50,01848782-2e2f-4ac0-8a2f-f4e3b9ca43c1,Sean,Fritz,Relationship Manager,sean.fritz@bankwell.com,292.324.2527x81383,2020-02-08,Enterprise Investment,Seattle
+51,1a406425-97dd-4421-924d-9893a9b735dc,Tiffany,Morrison,Product Specialist,tiffany.morrison@bankwell.com,642.494.5304,2020-03-05,Customer Support,Miami
+52,4846d663-c973-4b67-b5f4-806e4a4c1cbe,Philip,Morris,Financial Advisor,philip.morris@bankwell.com,001-933-393-2375,2020-09-22,Operations,Chicago
+53,aaaa6ac6-91f6-4b09-b132-a0ee0ad5de3d,Kelly,Wagner,Finance Assistant,kelly.wagner@bankwell.com,(302)466-9133x65089,2022-06-25,Enterprise Investment,Washington DC
+54,ee0fe663-e64e-47af-90f1-475d979a2ecd,Todd,Garner,Relationship Manager,todd.garner@bankwell.com,789.688.2870x7547,2022-10-15,Operations,Boston
+55,0672e359-a218-4f0b-b715-f267b78c5903,Carrie,Hall,Financial Advisor,carrie.hall@bankwell.com,(812)662-6205,2021-08-23,Small Business Investment,Denver
+56,97d3294c-c8c0-48c3-a7fe-1abf24dc1655,Travis,Garcia,Finance Assistant,travis.garcia@bankwell.com,507-317-7567x013,2022-11-11,Small Business Investment,Los Angeles
+57,c2523415-b6d2-49b0-8d16-b72d7bbb17f0,Brandy,Reed,Financial Advisor,brandy.reed@bankwell.com,001-324-577-5472x41760,2024-11-19,Sales,Washington DC
+58,d5ad8b04-a575-49c3-9c26-e02ccc018cf9,Sharon,Johnson,Financial Advisor,sharon.johnson@bankwell.com,001-909-734-2104x6266,2023-10-06,Enterprise Investment,New York City
+59,88829234-1c61-4e5a-a125-06d0d28f3b37,Adam,Murphy,Product Specialist,adam.murphy@bankwell.com,931-200-2886,2025-04-08,Small Business Investment,Chicago
+60,1d03e425-8af9-4a9c-96d6-99806db3d917,Emily,Ortiz,Relationship Manager,emily.ortiz@bankwell.com,346.654.2495x12006,2021-04-20,Enterprise Investment,Chicago
+61,feaa68a2-6749-4ac7-a7c9-f4c268ae13dc,Erika,Christensen,Finance Assistant,erika.christensen@bankwell.com,001-880-663-1741x072,2021-08-07,Small Business Investment,Chicago
+62,b7495f7e-5e28-4f26-81c6-d4586ee160ff,Logan,Flores,Financial Advisor,logan.flores@bankwell.com,5077142480,2020-12-01,Operations,San Fransisco
+63,9159f324-e96f-435a-996f-ce667746a159,Joseph,Heath,Financial Advisor,joseph.heath@bankwell.com,572.650.7294,2024-09-28,Small Business Investment,San Fransisco
+64,4d0672f8-c09f-432e-9b8e-3d333db7511c,Andrea,Figueroa,Financial Advisor,andrea.figueroa@bankwell.com,+1-390-394-4875x549,2023-04-07,Customer Support,Dallas
+65,5443a5cf-04bb-4123-b78f-3bf8955c0b91,Ryan,Taylor,Relationship Manager,ryan.taylor@bankwell.com,618-370-0740x6559,2023-02-13,Operations,Washington DC
+66,fa1212e4-508e-4aab-8092-523be24d4f66,Linda,Reed,Relationship Manager,linda.reed@bankwell.com,001-394-527-3867,2021-02-09,Enterprise Investment,Miami
+67,7852c27a-9229-4f02-aa54-192de03580fe,Sandra,Steele,Financial Advisor,sandra.steele@bankwell.com,629.656.4889,2024-07-20,Small Business Investment,San Fransisco
+68,e520e4c9-0101-4237-8bba-8cccd90ec1ce,Sarah,Phillips,Senior Relationship Manager,sarah.phillips@bankwell.com,(430)754-8229x18471,2020-06-17,Operations,Los Angeles
+69,76a29cee-ebdb-4baf-a554-aca46c503d33,Crystal,Olsen,Financial Advisor,crystal.olsen@bankwell.com,695-380-3020,2023-08-22,Customer Support,Miami
+70,e53c50be-fd4a-419f-8544-59859098ef05,Nathan,Snyder,Product Specialist,nathan.snyder@bankwell.com,(710)388-8930x0431,2020-10-03,Small Business Investment,Miami
+71,27aae8ef-8ea4-4baf-81ba-22decd5f4d4e,Rachel,Rivera,Relationship Manager,rachel.rivera@bankwell.com,829.449.8278x33404,2021-12-28,Enterprise Investment,Miami
+72,92059896-9eec-4a62-962a-6c9344681289,Norman,Garrett,Relationship Manager,norman.garrett@bankwell.com,(376)900-5127x0113,2021-12-20,Customer Support,New York City
+73,372ccc03-d0d4-4afe-8ff8-fa221caef4c4,Stacey,Miles,Relationship Manager,stacey.miles@bankwell.com,(942)513-9647x64951,2024-02-02,Enterprise Investment,Denver
+74,b339379a-a401-4575-9a37-952d79d510b1,Mary,Lucas,Relationship Manager,mary.lucas@bankwell.com,001-984-436-0171,2021-03-15,Operations,Seattle
+75,03357360-14e5-4d39-9660-83f6c204899b,Rhonda,Ferguson,Product Specialist,rhonda.ferguson@bankwell.com,(262)792-9564,2021-11-16,Customer Support,San Fransisco
+76,d6863c26-3be5-4550-a549-5fc59c20d02d,Dominique,Juarez,Financial Advisor,dominique.juarez@bankwell.com,365-515-6493x92258,2025-01-04,Customer Support,New York City
+77,60b806bd-b906-4714-8973-660042aa1943,Andrew,Haynes,Finance Assistant,andrew.haynes@bankwell.com,+1-510-718-2934x47435,2023-09-21,Enterprise Investment,San Fransisco
+78,56f0177c-9ff0-4b22-b58e-2b8225b465bd,Karen,Reyes,Financial Advisor,karen.reyes@bankwell.com,(380)702-9456x2905,2024-03-03,Enterprise Investment,Chicago
+79,d2002453-7d68-4262-974b-4804304cea5e,Roger,Evans,Product Specialist,roger.evans@bankwell.com,801-325-5810x596,2022-07-14,Small Business Investment,New York City
+80,d59016d4-cab5-4d1e-b2d6-8cb7707c457c,Paul,Coffey,Relationship Manager,paul.coffey@bankwell.com,211-690-0985,2024-10-02,Enterprise Investment,Seattle
+81,b2309029-0f0b-4941-a408-31c6d3927cc5,Victoria,Steele,Finance Assistant,victoria.steele@bankwell.com,001-972-890-2130x0541,2020-04-17,Operations,Boston
+82,8808cada-4dd0-4881-be28-68695ed6654c,Melvin,Moore,Senior Relationship Manager,melvin.moore@bankwell.com,6729182011,2020-06-23,Enterprise Investment,Dallas
+83,d68fa7a5-bfd1-4661-8148-388f3fb8d8f8,Joseph,Jones,Product Specialist,joseph.jones@bankwell.com,772-926-9699x83264,2022-04-02,Operations,Washington DC
+84,85da46ea-1889-4bd2-9e3d-f3bb9eec7264,Christian,Nelson,Relationship Manager,christian.nelson@bankwell.com,739.427.1895x44517,2024-02-24,Small Business Investment,Los Angeles
+85,1b5228e8-2dc2-4c49-b290-4f14e13bb332,Barbara,Rhodes,Finance Assistant,barbara.rhodes@bankwell.com,227.873.4737x7900,2020-01-11,Operations,New York City
+86,1da05ee3-bb26-47f9-b2e1-c48474946953,Joan,Cruz,Financial Advisor,joan.cruz@bankwell.com,(483)454-7088x073,2024-06-13,Enterprise Investment,Denver
+87,0e416f18-399e-46ca-9b19-2c11b182cb8e,Brandon,Gibson,Financial Advisor,brandon.gibson@bankwell.com,001-631-934-5906x007,2024-10-21,Small Business Investment,Dallas
+88,29deff0d-9104-4285-a2dd-5a441ac36983,Martha,Wright,Product Specialist,martha.wright@bankwell.com,867-901-3699,2024-05-05,Customer Support,New York City
+89,24357f7c-1e2a-49e2-b526-c8c021d25a05,Alicia,Adams,Finance Assistant,alicia.adams@bankwell.com,846.809.1742,2024-10-31,Small Business Investment,Los Angeles
+90,d9aee858-e406-4d50-80da-a03bd4a53cc7,James,Nelson,Product Specialist,james.nelson@bankwell.com,001-295-681-2351x4843,2020-02-20,Small Business Investment,New York City
+91,9760e1d0-c2a3-4715-b6b5-8db8aef8e08f,Aaron,Simpson,Relationship Manager,aaron.simpson@bankwell.com,+1-961-656-5142x34087,2022-08-21,Customer Support,Chicago
+92,0eda32df-81b9-48f8-a21d-0bf08442af4e,Amber,Singleton,Financial Advisor,amber.singleton@bankwell.com,001-877-324-1671,2022-07-03,Operations,Seattle
+93,0333c882-ade0-4f34-bd2b-39113f0b5dae,Michael,Ruiz,Senior Relationship Manager,michael.ruiz@bankwell.com,(693)900-3725,2024-06-12,Sales,Boston
+94,8209fd22-ca0b-496f-ae80-6783954895cb,Jessica,Contreras,Senior Relationship Manager,jessica.contreras@bankwell.com,+1-386-277-4596x52189,2025-04-10,Operations,Chicago
+95,fea79b48-d95a-46fc-91b5-5bae131f68c5,Curtis,Anthony,Relationship Manager,curtis.anthony@bankwell.com,773-306-5393,2022-11-25,Small Business Investment,Chicago
+96,e2c8b35c-cc98-440f-87fd-f0bf0f2c1159,Jonathan,Olson,Financial Advisor,jonathan.olson@bankwell.com,(561)475-9532,2020-12-07,Enterprise Investment,Seattle
+97,f14633a0-0c15-4441-957e-6f2dfd555369,Tracy,Key,Financial Advisor,tracy.key@bankwell.com,001-562-431-9971x44492,2023-08-23,Customer Support,Seattle
+98,49f841d0-2090-41f9-a5c8-1c0fb5728041,Corey,Hill,Finance Assistant,corey.hill@bankwell.com,483.332.5512,2024-06-17,Enterprise Investment,Seattle
+99,b5c08391-7d93-4968-bc6f-fd0e5ee90d32,Maria,George,Senior Relationship Manager,maria.george@bankwell.com,001-902-444-6111x854,2024-10-20,Enterprise Investment,Washington DC

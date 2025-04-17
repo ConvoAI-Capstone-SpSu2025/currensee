@@ -1,1019 +1,161 @@
 ,OpportunityID,AccountID,OpportunityName,Stage,Type,CloseDate,Amount
-0,415c5e41-7c89-4db9-9d13-3bb1973b3478,66f6f513-66df-4c2f-b909-86e85a43e1f8,visualize proactive communities,Qualification,New Business,2025-03-20,427736
-1,dc9d82d9-73e4-4de0-bc6f-0ed00ec73b53,66f6f513-66df-4c2f-b909-86e85a43e1f8,repurpose efficient communities,Prospecting,Upsell,2025-03-25,410079
-2,4e3d2b3b-a618-4638-bc00-1260cc85b564,e715eaa2-1f1d-4dba-869d-7108bbb173be,architect out-of-the-box web services,Qualification,New Business,2025-03-24,153226
-3,c60ab336-f97b-44d9-9ea7-a74da9c114fa,45e1a1d3-b1fb-43b8-8029-c974e5417f93,incubate dot-com systems,Closed,New Business,2025-03-24,390514
-4,8b83ce9a-9705-4e75-b6ea-292ad5916886,45e1a1d3-b1fb-43b8-8029-c974e5417f93,repurpose bricks-and-clicks models,Lost,New Business,2025-01-10,460625
-5,d1f18cb1-78ea-49a9-a8a4-333e55cd4c68,45e1a1d3-b1fb-43b8-8029-c974e5417f93,architect seamless architectures,Proposal,Upsell,2025-01-04,308857
-6,918966bf-d022-49d8-8cd7-f28a23c2aaf4,83475ff7-bc57-42b4-b90a-89aea66f2a56,productize 24/7 markets,Qualification,Renewal,2025-02-17,242125
-7,bb32daa5-2493-45e3-b452-95ba39e119fc,83475ff7-bc57-42b4-b90a-89aea66f2a56,utilize enterprise applications,Lost,Renewal,2025-03-17,426461
-8,7abf541e-bf73-4123-8b5d-09ff10d63296,7ce157f2-b2ab-4224-ba95-f29a28896dc4,repurpose leading-edge info-mediaries,Negotiation,Existing Business,2025-03-23,130277
-9,db0db063-3cfa-4a44-82a9-e37974dc000e,9cdc0365-91c4-4871-8774-2c1b6b8d5f54,productize front-end bandwidth,Qualification,Existing Business,2025-03-13,494692
-10,118cecd8-1a62-4d9c-bc25-1d4008564491,9cdc0365-91c4-4871-8774-2c1b6b8d5f54,engineer virtual channels,Proposal,Renewal,2025-03-08,173864
-11,79e8bac3-1a10-4426-988e-7c7c36ae5a60,55eea52b-27f9-4d19-b450-5d972aa63f19,redefine revolutionary relationships,Lost,Upsell,2025-03-28,216171
-12,d73a012b-043e-4d07-ae8f-d5d2ac886a0b,55eea52b-27f9-4d19-b450-5d972aa63f19,embrace compelling infrastructures,Proposal,Existing Business,2025-01-10,461461
-13,2a44dcee-a3b3-4bab-914f-85d26c3f02e8,dd146326-d6f0-4457-9a02-5a001bd05bd2,benchmark cutting-edge users,Negotiation,New Business,2025-01-21,100076
-14,8e705f6d-ff09-49d7-b942-b324345f42d4,dd146326-d6f0-4457-9a02-5a001bd05bd2,enhance cross-platform users,Prospecting,Existing Business,2025-03-03,395457
-15,c6a6a170-75ea-4218-8c8d-c6ab1b85cc3b,f48cfe33-c561-419b-bf41-d3ce4ce76d1b,disintermediate frictionless synergies,Negotiation,Existing Business,2025-02-23,281104
-16,e9aeb5c2-bbba-4c78-a36f-8db136dac783,dfd143a5-5c66-4914-87b8-6729a533207d,repurpose viral web services,Negotiation,Renewal,2025-03-02,239082
-17,0a4a6496-a1c4-4e0b-a958-c73f1403ffba,dfd143a5-5c66-4914-87b8-6729a533207d,facilitate sticky eyeballs,Won,Renewal,2025-03-15,483638
-18,986b2ca6-a226-420f-b731-06b2457226f4,dfd143a5-5c66-4914-87b8-6729a533207d,architect strategic applications,Prospecting,New Business,2025-03-18,432163
-19,a0c9940c-32ce-480b-a986-fe32d9bc61cd,043daa4a-2824-470d-a033-fb57c4e5b164,benchmark world-class initiatives,Closed,Existing Business,2025-02-10,66261
-20,c5fa6e0a-c8b3-478c-90d8-b9c782271250,cd53bd71-4487-4425-a147-fb9b5f976c24,disintermediate viral e-services,Negotiation,Renewal,2025-01-13,197538
-21,04ac9bd6-278b-4ac4-877a-235726a94d89,d2ad7d9f-611c-4a20-9f6c-aa0d5e794bd7,empower magnetic channels,Won,Renewal,2025-03-03,135641
-22,a3404e59-90e2-45bd-9937-fabbe3b32490,d2ad7d9f-611c-4a20-9f6c-aa0d5e794bd7,mesh proactive mindshare,Closed,Upsell,2025-01-09,100083
-23,9acdb5cf-fd92-4026-97c5-dafb9674edb3,b38df655-b456-42ae-9b88-a487cc614c72,scale cross-platform action-items,Lost,Renewal,2025-02-01,121305
-24,8348efc3-954f-4893-a3ad-0d61180ca125,c983e29c-9126-4b14-9e95-323934de4675,optimize turn-key users,Lost,Upsell,2025-04-03,321262
-25,ea550d84-05c4-42fa-bf30-7dfd282fa824,65b6fe73-2460-4194-b449-8cb268ee9076,deliver dot-com web-readiness,Won,New Business,2025-01-05,243513
-26,4b815be2-cc90-4606-8dd0-4f845f5860c7,65b6fe73-2460-4194-b449-8cb268ee9076,matrix cutting-edge communities,Proposal,Upsell,2025-01-27,157005
-27,74e5df5e-a9e7-4e54-8d23-87aacff43972,430ee155-83f0-46d7-b69e-4f4c157d81c1,leverage dynamic networks,Prospecting,New Business,2025-02-06,339589
-28,885ccc00-0caf-4439-aa9f-b8ac6bbd2e23,430ee155-83f0-46d7-b69e-4f4c157d81c1,harness distributed e-tailers,Qualification,Upsell,2025-03-27,225744
-29,ef87d00f-90e8-4ec6-ac6a-23e992eca274,430ee155-83f0-46d7-b69e-4f4c157d81c1,optimize end-to-end partnerships,Proposal,Existing Business,2025-01-11,150829
-30,6dda9e50-7921-492b-95c3-507f0797017a,a138d67a-09e9-4b2e-b7e4-7eea57c8dbaf,e-enable collaborative partnerships,Closed,Existing Business,2025-02-24,331172
-31,cf65e747-2005-4630-8549-3d0e7b6e2549,2b747beb-9d69-458a-8125-74b0f145e328,orchestrate e-business users,Lost,Upsell,2025-03-08,193897
-32,c5a23b0a-b010-407a-8808-c215bce1667e,6380070e-88ce-4a44-8f3c-d8fb93f248bf,monetize next-generation models,Qualification,Renewal,2025-02-18,291676
-33,29d7a5ab-cba5-4342-8321-42638385d098,6380070e-88ce-4a44-8f3c-d8fb93f248bf,embrace intuitive e-business,Proposal,Renewal,2025-03-12,158858
-34,f0b99548-bb36-4f9f-8093-e0a58a74305b,6380070e-88ce-4a44-8f3c-d8fb93f248bf,integrate innovative web services,Qualification,Upsell,2025-03-06,411556
-35,9593fc61-c14f-48ed-b690-b663c1a7f47b,a911e0c0-6d59-4ecc-9451-3226342a0be3,mesh revolutionary deliverables,Won,New Business,2025-01-25,137388
-36,3403b3bb-edcf-4e96-aa48-32362494aa82,08274bc1-6f9c-487e-a91b-381a72e36fb2,seize distributed infrastructures,Qualification,Renewal,2025-02-28,487916
-37,9dd91969-a0ad-4afb-9a31-b94e8abadfe4,8fde826e-6ed7-4914-8f34-859326a698cd,synthesize seamless convergence,Prospecting,New Business,2025-02-22,290030
-38,d8798215-47e3-454d-8ec8-73523fb848b9,8fde826e-6ed7-4914-8f34-859326a698cd,architect dynamic technologies,Prospecting,Upsell,2025-01-14,126310
-39,aacd2697-d8bb-43e2-b2b9-3d18ce8cc475,2f3de7ed-19cd-422c-82c9-84b9ddbaa632,syndicate distributed initiatives,Won,New Business,2025-01-30,182907
-40,f4e7275d-70c6-49c6-ba48-7f49301ea5a8,2f3de7ed-19cd-422c-82c9-84b9ddbaa632,seize bleeding-edge technologies,Closed,Renewal,2025-03-01,180961
-41,f3ed68fa-4c43-403f-b5a2-a78c45bcd5c4,2f3de7ed-19cd-422c-82c9-84b9ddbaa632,brand distributed convergence,Closed,Upsell,2025-03-25,239147
-42,71f41454-e42b-430e-8729-c88e866123dd,85cb8357-3940-44fb-934d-226d69c04552,re-intermediate rich initiatives,Negotiation,New Business,2025-01-17,350517
-43,5192b433-363d-4022-a055-6a83ad4d23b7,85cb8357-3940-44fb-934d-226d69c04552,strategize killer e-tailers,Lost,Existing Business,2025-04-08,456671
-44,74952d6c-3753-41f1-9acc-7211e61c28b0,85cb8357-3940-44fb-934d-226d69c04552,drive best-of-breed technologies,Prospecting,Upsell,2025-03-04,59164
-45,66053b2d-63f5-429c-ac5f-9efdf7050bd9,bcff8b67-ec48-4fc5-a068-197c76d8569e,mesh killer channels,Negotiation,New Business,2025-02-05,330802
-46,c4e9d0ae-d4cc-4faf-9c0b-e4ab96ff9c4c,9d6d787e-d791-4a16-89e1-dc2d32cfa4f4,incubate end-to-end vortals,Qualification,New Business,2025-03-22,314525
-47,09c249ec-cfa7-4f75-aad9-93d0b0527de0,9d6d787e-d791-4a16-89e1-dc2d32cfa4f4,e-enable virtual e-business,Won,Renewal,2025-03-24,297196
-48,cf9d528f-65aa-44f9-acac-d0f5ed35de3e,0681b740-7588-438f-8325-04eeebf0d11f,facilitate B2C web-readiness,Prospecting,Renewal,2025-01-30,203194
-49,9aa45ecf-180e-444f-a03b-f08f4d25daba,0681b740-7588-438f-8325-04eeebf0d11f,maximize turn-key paradigms,Negotiation,Upsell,2025-02-10,73495
-50,d3e9084f-1dad-4ca6-a814-4684241186c7,0681b740-7588-438f-8325-04eeebf0d11f,synergize distributed functionalities,Lost,Existing Business,2025-01-31,428387
-51,9db1c78f-b94d-412a-94cb-e769810eaab5,50810d68-2657-413d-9706-ff850a3f14b4,transform customized portals,Won,Existing Business,2025-03-13,366653
-52,a530c200-b719-4f30-bc06-c6713e5c9541,50810d68-2657-413d-9706-ff850a3f14b4,evolve vertical e-tailers,Won,Renewal,2025-02-12,53164
-53,0a5d338c-f88f-487b-8117-99ef19caa253,3813ff15-0e67-4b46-b5e1-1675443fdbbb,facilitate robust partnerships,Negotiation,Upsell,2025-03-17,81308
-54,3acba037-084a-4133-a3b8-6a7b6c4aba92,3813ff15-0e67-4b46-b5e1-1675443fdbbb,target revolutionary schemas,Proposal,Upsell,2025-02-16,200702
-55,d7dbc4ad-9660-4f24-bc60-c587f2016dd3,3813ff15-0e67-4b46-b5e1-1675443fdbbb,redefine global metrics,Negotiation,Existing Business,2025-02-10,311876
-56,2a0e3f24-1d90-4071-9966-a208c5bd9a9c,b8ef68d1-4b42-42d4-8f9b-cc3a62d441b5,enable visionary communities,Qualification,Renewal,2025-03-15,112956
-57,7eff06ea-a6cd-4e43-aac0-19d7597baf4e,b8ef68d1-4b42-42d4-8f9b-cc3a62d441b5,harness global portals,Closed,Renewal,2025-02-10,342547
-58,7414474a-6e91-4f0b-9016-40f0519aacaa,2ebfbf11-32a6-4af6-997b-5c77de61ed1d,drive front-end infrastructures,Proposal,Renewal,2025-01-25,318311
-59,0e9bd92a-9901-4836-b6b8-e5673280aa8e,220778a0-8dda-4dfb-8988-633486a43986,deploy plug-and-play web services,Proposal,Existing Business,2025-01-05,432760
-60,789d8421-4767-4063-b92a-78818f2fece1,220778a0-8dda-4dfb-8988-633486a43986,extend e-business models,Prospecting,New Business,2025-02-25,58713
-61,7d7bb089-11b9-410c-9fad-3294aaff839c,4f64e782-a7e1-45a3-9026-761434f7a9d6,incubate plug-and-play experiences,Lost,Renewal,2025-01-03,355968
-62,0affcf68-10b3-458f-a8b1-127ff04a439b,4f64e782-a7e1-45a3-9026-761434f7a9d6,deploy viral partnerships,Lost,Renewal,2025-03-25,118034
-63,f65ee3cf-164e-4d2c-94bc-3efb4d1c5533,4f64e782-a7e1-45a3-9026-761434f7a9d6,monetize leading-edge models,Lost,Existing Business,2025-02-25,90431
-64,b9bc4478-8238-4468-936a-4b48b57af322,12905ae7-49b4-4161-8de8-bb1f7b50185b,optimize compelling e-tailers,Prospecting,Renewal,2025-01-30,170845
-65,eda368b7-f25a-4c03-8e11-0b4f34b06440,12905ae7-49b4-4161-8de8-bb1f7b50185b,disintermediate scalable info-mediaries,Prospecting,Upsell,2025-02-07,414829
-66,5af90469-8830-4efe-b57d-29a1dc3c7ee8,12905ae7-49b4-4161-8de8-bb1f7b50185b,disintermediate web-enabled bandwidth,Proposal,New Business,2025-03-07,65008
-67,9199672a-6f78-4c32-a7da-d7284a259c9c,38c4adf0-8e8b-408f-b346-987f9e9494c9,cultivate compelling networks,Qualification,Renewal,2025-03-30,65757
-68,7491a841-e31d-4c9a-8b73-1c332f4acfeb,280f241a-7492-4956-958d-5a4088db3d56,revolutionize mission-critical paradigms,Lost,Upsell,2025-01-11,172124
-69,ea8f85c5-7f6a-433c-9530-94697d2524cd,280f241a-7492-4956-958d-5a4088db3d56,orchestrate virtual niches,Closed,Upsell,2025-03-26,265691
-70,8f01680c-e4c4-4bba-9d20-3ed727572f6a,87bab433-f70c-4662-b22f-286e2f9d00f0,synergize enterprise systems,Closed,Upsell,2025-03-29,86672
-71,88fdc942-95de-4485-b10b-011207f48902,87bab433-f70c-4662-b22f-286e2f9d00f0,innovate dot-com infrastructures,Prospecting,Upsell,2025-03-18,144890
-72,f7f91892-9a32-4e72-9108-9c8c02999334,87bab433-f70c-4662-b22f-286e2f9d00f0,streamline turn-key action-items,Qualification,Existing Business,2025-01-24,187274
-73,5ae359ca-f366-4d80-aad2-739c03d985aa,008d8716-62bb-46a9-8cfb-1672bbca95ea,incentivize frictionless e-tailers,Closed,New Business,2025-02-18,263170
-74,f5346f12-db4b-4a45-b197-c7a38d189c9c,008d8716-62bb-46a9-8cfb-1672bbca95ea,engineer 24/7 relationships,Won,Existing Business,2025-01-07,386857
-75,b8af5dfc-3587-4666-be4e-bf75551a3623,ca714216-2e6d-4506-9ace-0e7253e1340e,aggregate cross-media interfaces,Prospecting,Upsell,2025-03-01,58862
-76,4c7e6d49-9d1d-4b79-8407-6232fc20ac09,ca714216-2e6d-4506-9ace-0e7253e1340e,empower clicks-and-mortar communities,Qualification,New Business,2025-03-12,430101
-77,a7ab7310-eed6-44e1-a170-5d637cdd0051,5ca76d28-6935-4477-81c1-6f2d0ac8d59d,transform strategic technologies,Qualification,New Business,2025-01-19,382349
-78,30f3861b-d7cc-46cc-a536-3b003ef78c91,5ca76d28-6935-4477-81c1-6f2d0ac8d59d,evolve revolutionary users,Prospecting,Upsell,2025-04-05,219018
-79,ecd9c3b4-2fee-4bfe-b139-646917a6acf1,5ca76d28-6935-4477-81c1-6f2d0ac8d59d,visualize one-to-one infrastructures,Closed,Upsell,2025-04-07,491674
-80,230ea52f-8d39-4ccf-8ae5-0034bf7d7051,32df1e12-3b51-4640-8a44-87ef2a90e0d9,unleash turn-key paradigms,Prospecting,New Business,2025-01-22,200994
-81,970a933e-d298-4860-8b4f-21a8ce924fef,653edf3c-b002-4e36-b783-4cad10af18f1,aggregate impactful relationships,Prospecting,Renewal,2025-02-04,196472
-82,12b0255f-6f6c-4156-a7dd-e6ff3dbb9924,653edf3c-b002-4e36-b783-4cad10af18f1,incubate real-time initiatives,Negotiation,Existing Business,2025-02-17,362657
-83,32367f59-6878-4188-8aae-d589ea233172,9d742752-9212-4666-b1a5-bb2733b08ab1,extend rich e-markets,Prospecting,Renewal,2025-03-13,448654
-84,04857229-3d67-4183-ad4a-ff3f012cb77a,3b02bb92-8420-4269-8578-3bc7a9f38826,deploy dot-com deliverables,Lost,Renewal,2025-01-12,443155
-85,ba8df3d3-7b02-4ef8-baf2-ac86167452d2,3b02bb92-8420-4269-8578-3bc7a9f38826,optimize real-time experiences,Qualification,Existing Business,2025-03-03,285896
-86,47ab8296-f387-420f-916d-6f337dbb944e,38c77ca1-06c9-47a7-8a61-0bd21d425b25,embrace integrated relationships,Prospecting,Existing Business,2025-03-15,183792
-87,33da7e5f-3ed1-4c96-b122-bd9bd288df96,38c77ca1-06c9-47a7-8a61-0bd21d425b25,maximize open-source vortals,Negotiation,New Business,2025-03-01,225331
-88,532d9eca-0e1d-4d01-b626-cd9dfa7c11fc,38c77ca1-06c9-47a7-8a61-0bd21d425b25,architect interactive systems,Closed,New Business,2025-04-08,210436
-89,9f2c4157-ae69-4139-8d07-51e2f314848b,2e885c10-28ab-4d09-a9d3-c92c9a0b6d76,maximize one-to-one metrics,Lost,Existing Business,2025-01-19,191656
-90,92941d22-514a-4964-ad8c-d8d624125674,2e885c10-28ab-4d09-a9d3-c92c9a0b6d76,streamline revolutionary info-mediaries,Won,Renewal,2025-01-01,348604
-91,488bf1fb-6e24-4097-b459-35bc079d3d33,2e885c10-28ab-4d09-a9d3-c92c9a0b6d76,leverage mission-critical content,Negotiation,Existing Business,2025-01-08,386430
-92,221be7d0-ad37-4f6d-9ebb-636405207dd7,662b571a-786f-48f8-ad91-5ffb6e5383ff,synergize B2C paradigms,Prospecting,Existing Business,2025-02-07,418150
-93,ffe688a7-c460-4344-a22a-d408b6126437,bc07b7e6-550d-4ed7-b9a8-df65eabd9ab8,exploit e-business channels,Qualification,Existing Business,2025-03-19,358575
-94,fd7d3637-1d2b-4418-b679-0efec2a1850f,bc07b7e6-550d-4ed7-b9a8-df65eabd9ab8,harness extensible models,Negotiation,Upsell,2025-01-07,52937
-95,c1a26fa3-4afb-40e0-8ac2-bf64cbd42329,d021ee44-97a1-4d3c-ab85-64491d9a6053,deploy impactful synergies,Negotiation,Upsell,2025-02-21,341340
-96,63c77c72-803c-4643-b7bd-0d9c23ec1a7d,d021ee44-97a1-4d3c-ab85-64491d9a6053,e-enable best-of-breed functionalities,Negotiation,Upsell,2025-01-05,187482
-97,8cc74e6e-fb23-413c-aa59-675c247a1794,60bba526-56d8-4ba8-af93-1d99a240d6c9,incubate world-class infrastructures,Closed,Renewal,2025-02-20,158524
-98,23f54724-4694-4245-9dac-c4c4b4d5046a,60bba526-56d8-4ba8-af93-1d99a240d6c9,architect dynamic functionalities,Lost,Existing Business,2025-02-07,115494
-99,06ac5a10-737d-43d7-b29f-2339ccaee37a,60bba526-56d8-4ba8-af93-1d99a240d6c9,maximize bleeding-edge e-business,Qualification,Upsell,2025-03-07,460862
-100,4c04d620-4a53-4cfa-86b3-5b8efe2f6c8d,d13b40b2-851c-4452-994d-1cbf78a9cf6d,morph robust infrastructures,Lost,Existing Business,2025-02-02,262791
-101,26b303ae-3c72-473c-a55c-cb8d3276d071,8a111e87-a4e3-459d-9b87-aea83a820def,transform end-to-end eyeballs,Closed,New Business,2025-03-29,413287
-102,a8f51a1f-cbc2-4f0e-934f-96bae00bc106,8a111e87-a4e3-459d-9b87-aea83a820def,extend wireless info-mediaries,Closed,New Business,2025-04-07,383769
-103,8d290591-7be2-4784-a8c8-de2f05bb2299,8a111e87-a4e3-459d-9b87-aea83a820def,aggregate global models,Closed,Upsell,2025-01-11,189899
-104,9ccfbcd5-6b3c-44af-a8d7-eeb2241c3577,21c72bca-d137-489e-a04a-3eaf4443fd30,grow compelling architectures,Prospecting,Existing Business,2025-01-13,432216
-105,76e77ba2-de9e-446d-b0f7-d6a0a16269ce,00b4dd51-a532-4fc0-8a23-6ce20231cf97,engage 24/365 eyeballs,Prospecting,New Business,2025-02-06,110963
-106,da3591d3-e94c-4309-9930-3d907731821d,07ae88c5-e536-41b1-95f5-b35d855e45c5,expedite killer systems,Qualification,Existing Business,2025-02-17,339885
-107,0a1af96c-9936-4132-84b8-b527ea5f8968,07ae88c5-e536-41b1-95f5-b35d855e45c5,engineer best-of-breed experiences,Negotiation,Renewal,2025-03-06,262898
-108,9b063249-9f64-48d8-979f-6dbb0538391b,722198c7-b5f5-4ad3-abd1-aefd4efeb5ef,enhance dynamic applications,Lost,New Business,2025-03-02,196053
-109,309b3617-91c6-4ad6-8322-e9bb8cdf8f9c,722198c7-b5f5-4ad3-abd1-aefd4efeb5ef,generate strategic solutions,Won,Upsell,2025-04-02,71896
-110,c53d457e-0988-4f3f-b812-fb9bb6ad5fd3,722198c7-b5f5-4ad3-abd1-aefd4efeb5ef,strategize compelling relationships,Qualification,Renewal,2025-02-24,271367
-111,447b3882-1648-4a1c-931c-9afde9845ef4,ae1f9261-f09a-4ac8-bc49-df098619c1d2,integrate open-source vortals,Proposal,Renewal,2025-01-11,265713
-112,6a936b13-aa66-465e-b290-5b30060cb258,ae1f9261-f09a-4ac8-bc49-df098619c1d2,strategize customized vortals,Proposal,Upsell,2025-03-24,99358
-113,9022e10f-ac45-4365-beba-8df890b3ba0e,e0171481-4cfd-4ef3-98fe-4ea5763df3f2,visualize cross-media metrics,Won,Existing Business,2025-02-01,257084
-114,c145d8a3-212c-4600-80da-d945dbb75d63,3a3e1eec-756b-4514-a60c-12071cf08d99,streamline magnetic metrics,Negotiation,Renewal,2025-02-18,260521
-115,6c33836d-021b-44bb-ae12-68bf50a78d1e,3a3e1eec-756b-4514-a60c-12071cf08d99,grow robust metrics,Closed,Upsell,2025-02-23,414147
-116,2d55e618-ecef-42e5-9139-d53faa866bee,24c5622c-374f-4bec-8a99-de8f56139ef5,monetize compelling relationships,Negotiation,Existing Business,2025-01-10,497220
-117,e0cfdd08-d934-483f-9fbf-009c8d063c82,bd541903-55ba-4126-b306-2ca4f2f8e11c,embrace killer partnerships,Negotiation,Existing Business,2025-01-18,444634
-118,f1158459-dab8-401d-ab8b-8bd167fd93b4,bd541903-55ba-4126-b306-2ca4f2f8e11c,orchestrate impactful supply-chains,Closed,New Business,2025-02-06,170663
-119,bbad3ab1-a02a-46ca-ab38-0713ed9cc5bf,bd541903-55ba-4126-b306-2ca4f2f8e11c,extend global solutions,Won,Existing Business,2025-01-16,479764
-120,d26a5545-66c0-4ef0-bce7-ae2d5af29e26,a4a06914-3b3d-4294-9ce0-2fc7adf05edd,aggregate best-of-breed metrics,Lost,Renewal,2025-01-24,144319
-121,e578e507-af06-480f-8273-9f9f644f1503,a4a06914-3b3d-4294-9ce0-2fc7adf05edd,integrate revolutionary web-readiness,Closed,Existing Business,2025-01-05,459787
-122,29611449-4b3f-4e7a-bc17-1f45e358fe6f,a1af07a7-efaa-4d88-845d-d46c2199373e,facilitate magnetic ROI,Prospecting,Renewal,2025-02-05,251951
-123,2cdf29ae-40a6-4b04-9214-6127ec43e25c,a1af07a7-efaa-4d88-845d-d46c2199373e,unleash out-of-the-box portals,Won,New Business,2025-04-07,189594
-124,b8e376d3-00ae-444b-96b2-4740e5ae8a76,e1dab3a4-a839-456b-8328-97b3ff987005,scale B2B e-markets,Proposal,Renewal,2025-01-18,412840
-125,35f93953-d0ee-45ea-9870-0436aff68b15,e1dab3a4-a839-456b-8328-97b3ff987005,monetize robust e-commerce,Proposal,Upsell,2025-03-22,257583
-126,3146a1ae-80c5-493f-ad69-5869c2252ce7,e1dab3a4-a839-456b-8328-97b3ff987005,repurpose virtual initiatives,Won,Existing Business,2025-03-07,375663
-127,971c3388-e7f8-4cad-98e1-58feb852b865,06b55f9c-6916-4c3d-931f-1cf768687877,implement bleeding-edge users,Lost,Existing Business,2025-04-03,302629
-128,73f05c7e-5121-4942-90d3-4f2c8eac1d38,b83814a5-f9ba-46ea-81bf-7bbb3ecf7fe6,synergize interactive experiences,Negotiation,New Business,2025-01-02,329576
-129,31f31f07-cf73-4515-ba85-ba769a0aea29,b83814a5-f9ba-46ea-81bf-7bbb3ecf7fe6,leverage integrated mindshare,Prospecting,Upsell,2025-03-14,299070
-130,9c4afa10-59e2-425e-a46a-30d613118428,b83814a5-f9ba-46ea-81bf-7bbb3ecf7fe6,enable best-of-breed ROI,Lost,Upsell,2025-03-16,140490
-131,bd9bd9c8-69cf-4e1c-9513-4e98ba93cd4f,45406701-2e6a-4fd1-8f53-d155f8209fb9,streamline killer communities,Negotiation,Existing Business,2025-04-02,154789
-132,46261743-964d-4e3c-8ee3-1062184001cb,a2fe0354-d478-4a0e-8a4d-8fe31d1e2a7e,optimize innovative users,Closed,New Business,2025-01-15,310433
-133,f6e36482-8301-4fe9-bd74-53a87bea0f2c,6f649caf-8706-4604-9500-11364118d012,engineer innovative vortals,Qualification,Existing Business,2025-01-28,300550
-134,1bffa039-d21d-4a70-880c-eda35fa9ea82,6f649caf-8706-4604-9500-11364118d012,whiteboard cutting-edge experiences,Prospecting,Renewal,2025-03-31,222818
-135,6f261c09-2ee1-465e-9b1c-01bb88f375b8,8146d07e-cfbb-45a3-a6ac-e6eebb6fa4d4,maximize wireless methodologies,Qualification,Renewal,2025-04-05,271089
-136,59bb9f6f-95a7-4699-a40c-c73cbbced3c1,8146d07e-cfbb-45a3-a6ac-e6eebb6fa4d4,synergize proactive ROI,Won,Existing Business,2025-04-05,491325
-137,193325ea-77cc-4118-8452-2509cda549e8,093d7591-8c2d-4ab9-a308-41700497fcce,disintermediate synergistic supply-chains,Closed,Existing Business,2025-03-06,280724
-138,f28821d2-403f-46ca-bb9a-3d6838362130,acd34596-b02b-4085-9202-fd7f360c8924,repurpose out-of-the-box vortals,Won,New Business,2025-01-13,191114
-139,8a2e2485-c592-48db-bf94-9e1c43ea26ad,acd34596-b02b-4085-9202-fd7f360c8924,incubate virtual paradigms,Lost,New Business,2025-02-21,160080
-140,839bba91-41d5-4cce-82c8-3d4ef16b6242,acd34596-b02b-4085-9202-fd7f360c8924,aggregate dot-com initiatives,Proposal,Renewal,2025-03-14,131179
-141,9a75ea75-a9eb-4553-98f8-5a68b38f6c57,3f1e2b2e-d514-401a-af09-23b256378be6,target integrated synergies,Prospecting,New Business,2025-03-24,249583
-142,d3433d75-60e4-429c-887a-5955ae100a9d,3f1e2b2e-d514-401a-af09-23b256378be6,innovate bleeding-edge ROI,Qualification,Existing Business,2025-02-28,343226
-143,27f58b4b-7c3f-4b5d-99a4-4db4bc336767,0d33dcae-fe8e-4dd2-bd64-093589ee05d7,synthesize cross-media metrics,Closed,Renewal,2025-03-02,174319
-144,6b489d60-76db-4c01-a0b0-037daabf156b,0d33dcae-fe8e-4dd2-bd64-093589ee05d7,engage leading-edge solutions,Prospecting,Upsell,2025-01-15,58372
-145,31036ef0-072e-440d-9091-554d09e839f5,0679d1fb-8187-4e53-bc06-d1ede2849510,redefine efficient markets,Negotiation,Renewal,2025-03-16,387333
-146,78f4c3d9-e170-4c14-92aa-ecc1149285aa,0679d1fb-8187-4e53-bc06-d1ede2849510,e-enable proactive schemas,Closed,Upsell,2025-03-12,330509
-147,b2be0f89-3915-45be-b9ef-14f0927821bf,0679d1fb-8187-4e53-bc06-d1ede2849510,maximize dynamic e-commerce,Qualification,Renewal,2025-04-07,292579
-148,67635e53-f371-4795-9c7f-261dc11283bb,8bd527b8-cc30-4dad-87ad-468cd247c5b5,extend viral channels,Proposal,Upsell,2025-02-08,478477
-149,0b8efb57-020a-431e-be74-766a5f14d05c,10edddf2-085f-4437-9d84-9cdc817023f7,whiteboard value-added technologies,Lost,Renewal,2025-03-29,449286
-150,ee18fd50-9fac-4f87-abaa-4188351924b0,8581d85d-8226-4d8f-98bb-912239c20906,extend leading-edge paradigms,Won,Upsell,2025-02-17,298442
-151,cb27473b-ff2d-4a51-bb59-a9c22e58ba27,9746ec08-34f4-40f6-ae5b-26966d49cc53,scale value-added mindshare,Won,New Business,2025-01-08,416703
-152,2a50755a-bf49-46ca-9901-3236cc0866fd,9746ec08-34f4-40f6-ae5b-26966d49cc53,leverage frictionless networks,Won,Renewal,2025-01-02,158495
-153,14218e24-879f-4a39-8246-8b0bf02d0f4c,b0ef6dd9-8710-4cd5-b1a8-0778d00bf9e6,enhance e-business deliverables,Lost,Renewal,2025-03-09,436488
-154,c41ac366-5e7f-4b7c-b432-24b68643fc23,b0ef6dd9-8710-4cd5-b1a8-0778d00bf9e6,reinvent cross-platform portals,Negotiation,Upsell,2025-02-12,398616
-155,5e9d878c-a915-4ba7-8282-f062cb894021,22ec5ca1-284a-4cf7-a808-77e43c1f4255,mesh plug-and-play networks,Closed,Renewal,2025-01-14,330348
-156,771f93dd-693b-4101-8255-eaeed1199d55,22ec5ca1-284a-4cf7-a808-77e43c1f4255,monetize dot-com architectures,Negotiation,Existing Business,2025-03-17,138068
-157,ee18a050-cd72-4bd3-928c-2398e9c340c2,22ec5ca1-284a-4cf7-a808-77e43c1f4255,streamline robust supply-chains,Closed,Existing Business,2025-02-16,167250
-158,f7f95566-0ee9-488a-b1e4-677ebda9e8ee,fe29328f-ff8e-43ac-b5d3-3cf968133a92,seize impactful e-commerce,Closed,Renewal,2025-02-13,194656
-159,cf0f4e7b-aa7e-4807-9475-ae73d0f96272,6897ad1c-ecda-4eca-acb6-927da7f3f24e,generate mission-critical technologies,Proposal,Upsell,2025-02-16,322997
-160,b647fa53-a48f-435a-9432-f780013b06cd,6897ad1c-ecda-4eca-acb6-927da7f3f24e,disintermediate leading-edge initiatives,Proposal,Renewal,2025-02-04,412819
-161,2d52f442-b793-469f-a0ed-97cb1477fb73,6897ad1c-ecda-4eca-acb6-927da7f3f24e,disintermediate B2B markets,Negotiation,Existing Business,2025-02-07,343129
-162,603f03eb-b21d-4a29-8a79-16ecd540148e,7910aa73-5c7b-42b0-8b61-b6174fb0e21d,visualize back-end communities,Proposal,Upsell,2025-02-01,245089
-163,7a884783-9d20-4899-8f0a-b8bc257169bc,32ee86be-be45-4882-8b8f-71ffe7105952,extend 24/365 paradigms,Won,Upsell,2025-02-11,300900
-164,5ca0ffac-0100-48de-badb-7d5600325851,32ee86be-be45-4882-8b8f-71ffe7105952,cultivate synergistic e-business,Closed,Renewal,2025-01-16,109123
-165,979391a2-ce64-4e4e-9eca-71f3cce74f6a,32ee86be-be45-4882-8b8f-71ffe7105952,aggregate extensible convergence,Qualification,Upsell,2025-02-12,85535
-166,13667a66-b5c0-4ded-81ed-c6ee6f93c57d,4bd4e1ae-edac-441e-9176-8ef099d57c43,revolutionize 24/7 platforms,Proposal,New Business,2025-02-24,303678
-167,fb4c3c1e-f01c-4fa5-9810-98d9e1633812,b7b2b495-420e-40fa-a934-62a9fae00b72,exploit granular metrics,Prospecting,Upsell,2025-04-02,263985
-168,ec1aa274-3f28-4926-93fb-28b5997c72be,b7b2b495-420e-40fa-a934-62a9fae00b72,maximize clicks-and-mortar e-business,Proposal,Existing Business,2025-04-04,158497
-169,655972ff-3d60-4e14-bb3f-6958d24ba438,a53be15d-d873-4fd4-b323-9e5fb8ea58c7,target efficient interfaces,Won,Renewal,2025-01-02,259671
-170,bd8bdf29-333a-41c0-93a7-da60f00c737b,2a15c4cf-cfad-4bfe-9a1e-63246732b94c,drive clicks-and-mortar web services,Qualification,New Business,2025-02-16,323153
-171,bdf9401e-39fd-4ae9-b906-4cfd136a734d,c42b8ea2-40f4-46dc-9fdf-49e36a48b56c,re-contextualize revolutionary metrics,Negotiation,New Business,2025-01-06,417229
-172,26c92fe7-35af-4075-960b-352ddd031f22,c42b8ea2-40f4-46dc-9fdf-49e36a48b56c,matrix dynamic platforms,Lost,Existing Business,2025-03-04,227497
-173,283f6db4-548f-4391-a83a-8fc8ffae4cd1,830a1c53-7c8c-4218-a6a0-a178d3c9b22d,matrix turn-key bandwidth,Lost,Existing Business,2025-01-23,166187
-174,c5fd86b4-9cf9-493e-9fcc-5c1255a42507,830a1c53-7c8c-4218-a6a0-a178d3c9b22d,revolutionize proactive e-business,Proposal,Existing Business,2025-02-09,90810
-175,a747e50f-bfde-4007-968f-92b07fcbc8fd,830a1c53-7c8c-4218-a6a0-a178d3c9b22d,unleash back-end paradigms,Lost,Renewal,2025-02-10,433657
-176,42e468b1-5fc3-47fc-aaa4-1223da1aa5eb,5f0ab0a7-a694-4ebc-b701-cf5f4c0f836c,optimize e-business supply-chains,Prospecting,Existing Business,2025-01-23,165373
-177,e1668004-b13b-4d75-bb06-df8f80e8d9e1,5f0ab0a7-a694-4ebc-b701-cf5f4c0f836c,syndicate rich e-services,Negotiation,New Business,2025-04-02,288930
-178,1604655e-4e3b-4373-9cfb-571d7c0ec95a,5f0ab0a7-a694-4ebc-b701-cf5f4c0f836c,facilitate mission-critical e-tailers,Qualification,New Business,2025-03-13,281984
-179,46ffb683-9a3d-4ff9-8bf8-159f3838018c,d2cdb27e-eabc-45c8-ba6d-adb236866f7f,optimize front-end models,Negotiation,New Business,2025-01-20,407337
-180,a4c9efca-ff8e-45aa-8c9a-f03f0787b158,d2cdb27e-eabc-45c8-ba6d-adb236866f7f,e-enable killer eyeballs,Negotiation,Existing Business,2025-01-27,73130
-181,3bf3f15a-d32d-4f85-87d7-28f827250a5e,6313f52d-bc0f-4ea7-867d-33430c6cc0e8,benchmark customized portals,Negotiation,Upsell,2025-01-11,218482
-182,5254f7ea-f676-4f47-a26a-a19212ef2dbd,6313f52d-bc0f-4ea7-867d-33430c6cc0e8,e-enable integrated info-mediaries,Closed,Renewal,2025-02-11,244090
-183,5dfdb771-add1-40d7-b24c-bdd89a82546f,662615cc-d4bb-4f8f-ba2a-9254ae9d8f7d,repurpose global channels,Closed,Existing Business,2025-02-07,138371
-184,0b4596c3-f774-481b-8c81-042f00d3a283,662615cc-d4bb-4f8f-ba2a-9254ae9d8f7d,envisioneer best-of-breed architectures,Won,Upsell,2025-03-08,287528
-185,e178ac3d-e5fe-4c6b-9b59-2c673c5726bc,662615cc-d4bb-4f8f-ba2a-9254ae9d8f7d,generate granular initiatives,Lost,Upsell,2025-01-07,165585
-186,b2a27f59-ec87-4971-85b6-17870fea14df,80cbfff0-bca6-4f7f-a580-254982242d75,visualize clicks-and-mortar vortals,Negotiation,Renewal,2025-01-27,494207
-187,e356c029-1ffc-4a25-9764-581369c31967,80cbfff0-bca6-4f7f-a580-254982242d75,productize enterprise deliverables,Lost,Upsell,2025-04-08,338326
-188,08e2e91d-8095-4e44-a97d-c36d78c0edec,2df22416-81e5-49b4-8389-c39259209758,expedite interactive deliverables,Proposal,Upsell,2025-01-10,186358
-189,5cc40d49-fad3-4762-b187-52f697eb9f41,e39b0f51-cd00-46a1-8677-ea7c7502fc4b,implement collaborative e-commerce,Prospecting,New Business,2025-02-10,386450
-190,69234cbf-1363-47e3-bc89-f497042c238e,e39b0f51-cd00-46a1-8677-ea7c7502fc4b,orchestrate rich architectures,Won,New Business,2025-02-09,404993
-191,4759d0ae-4b21-44be-aa45-086061593677,e39b0f51-cd00-46a1-8677-ea7c7502fc4b,morph strategic niches,Won,New Business,2025-03-31,264082
-192,17fffe9f-2135-47ef-925d-c7cf4982c5f8,b24738f2-495d-4431-b356-ea6041900e85,morph B2C solutions,Lost,Renewal,2025-01-18,417151
-193,51cd1d6c-17b3-4389-9b96-b5029b0aba1f,b5820635-a0ec-49ff-920c-7dc34dca803f,re-intermediate strategic action-items,Lost,Upsell,2025-02-01,259803
-194,4f91fc35-d406-492b-86eb-ef7eaf563382,b5820635-a0ec-49ff-920c-7dc34dca803f,drive robust technologies,Qualification,New Business,2025-01-16,433852
-195,da8fff43-de46-4ebd-ba0e-29045c83d632,31f30a21-7550-4117-b0bb-0ec57bfa0992,engineer e-business platforms,Lost,New Business,2025-01-12,450052
-196,c6c2d560-19be-4043-8f37-18e74d911db2,31f30a21-7550-4117-b0bb-0ec57bfa0992,matrix viral synergies,Lost,Renewal,2025-03-09,149860
-197,1dc7a007-c68e-481e-a898-c7f9a5132581,31f30a21-7550-4117-b0bb-0ec57bfa0992,envisioneer efficient mindshare,Won,Existing Business,2025-03-29,414207
-198,115c7e25-b1cd-46f0-9447-6d2f5943c75b,911e53ce-4934-44d2-98eb-c26c023022e3,utilize one-to-one infrastructures,Closed,Renewal,2025-02-19,86205
-199,44f88cf2-e5a7-48f4-a6ea-133c11de2735,911e53ce-4934-44d2-98eb-c26c023022e3,enhance holistic bandwidth,Won,Upsell,2025-01-28,153721
-200,cb00224a-78c3-455b-895b-c27c13ab2d0e,85b44ce3-0c3a-4299-8c31-aae77cc1103e,integrate ubiquitous networks,Proposal,New Business,2025-02-01,361486
-201,e2d4da70-72b1-48ce-a5b9-8098cd819fa2,85b44ce3-0c3a-4299-8c31-aae77cc1103e,maximize leading-edge mindshare,Proposal,Existing Business,2025-02-14,157253
-202,a8b8349d-0db6-45b0-9e6f-ab14996e8e91,85b44ce3-0c3a-4299-8c31-aae77cc1103e,brand visionary ROI,Closed,Renewal,2025-04-05,228595
-203,147257e6-b331-4775-9a35-094f7874680d,3db38a38-159c-4609-8bb3-4b1f87fdaf47,visualize web-enabled synergies,Won,New Business,2025-01-08,374940
-204,dab3c4cf-98dc-4da4-beae-5cc570dd30f9,89838e94-33cb-4f16-b93c-6264190b99a0,scale collaborative supply-chains,Qualification,Upsell,2025-03-02,112659
-205,9f14021f-8cd8-422f-8006-9f2d0517acaa,2e640af6-091f-42b7-8fd6-cb15ea2d3eca,innovate wireless mindshare,Negotiation,New Business,2025-02-22,280183
-206,5f46e4a4-7d45-47bf-88aa-41da8ba59f4b,a5342638-c01e-431b-88ea-79a82759ea7d,incubate proactive web-readiness,Prospecting,Renewal,2025-02-23,188828
-207,99ce0941-986f-48d5-a896-4890c31f0cf9,12c55442-7681-48fd-a507-2d22b5dea85f,utilize proactive interfaces,Closed,Existing Business,2025-02-10,130957
-208,c1858b2e-e6d6-4d5f-b3c9-949a17b8ca25,34448c00-0c06-48d7-bf99-af9ac52d2ff9,matrix ubiquitous mindshare,Proposal,Renewal,2025-02-23,296835
-209,e5a160fd-2941-4524-8d3c-5b115c75a150,34448c00-0c06-48d7-bf99-af9ac52d2ff9,strategize 24/365 e-business,Closed,New Business,2025-01-14,359810
-210,ec766e5c-506d-4857-bd0e-36820dfd37c0,7c8458b7-8eba-4042-b8a7-aaddf25fe419,transition bleeding-edge ROI,Closed,Existing Business,2025-03-14,463589
-211,41490e9e-791e-4e39-b73d-b78949f90b12,7c8458b7-8eba-4042-b8a7-aaddf25fe419,engage rich paradigms,Won,Existing Business,2025-01-24,283588
-212,56c4c044-8967-4ffe-acb6-ca92464bf033,7c8458b7-8eba-4042-b8a7-aaddf25fe419,drive distributed technologies,Won,Renewal,2025-03-26,145467
-213,7f8f6735-2014-4e10-ba18-ea5774ffd0e6,c8169776-37a4-4462-be03-0abf885031dc,iterate cutting-edge eyeballs,Prospecting,Renewal,2025-03-10,303338
-214,01f72cb0-6fe5-4ceb-8a87-ad52c9366046,9e91493a-1b6e-42f6-baa8-46a16880963f,seize integrated web services,Lost,Renewal,2025-04-03,398661
-215,3e53f2ec-00e4-44f3-8f39-79b59c20a0c4,fc8a1cac-10cd-463f-9e63-c6e6a9a66238,scale web-enabled niches,Lost,Upsell,2025-03-22,354584
-216,5f2d8a51-6308-4bfd-a52f-b6612d5bf33b,fc8a1cac-10cd-463f-9e63-c6e6a9a66238,integrate cross-media paradigms,Prospecting,Upsell,2025-02-22,246737
-217,cb1fbfb7-481b-400a-9262-d6d0aefdcc97,22be5a7f-c31b-486b-ad6a-b7b427767bd2,syndicate user-centric channels,Closed,Renewal,2025-01-10,136888
-218,e6ec4461-9ff4-465a-80ee-42c28aa917f2,22be5a7f-c31b-486b-ad6a-b7b427767bd2,integrate killer systems,Negotiation,Upsell,2025-03-25,77623
-219,823de896-e5b1-44e8-90ac-c3f2de1a0dae,a3ac0f98-1b69-4b6b-9442-6d3cd9fcce99,extend efficient markets,Qualification,Existing Business,2025-01-04,113779
-220,e4e573e8-a118-4e8e-b62e-3efea43b0b1d,a3ac0f98-1b69-4b6b-9442-6d3cd9fcce99,visualize revolutionary synergies,Negotiation,New Business,2025-02-11,470350
-221,b0c3db69-10d2-4a7f-ac9e-f83cb1889db6,a3ac0f98-1b69-4b6b-9442-6d3cd9fcce99,expedite transparent models,Closed,Renewal,2025-04-06,294176
-222,839d6187-fe64-46ce-9d5c-580286d1e62c,5aaadb02-1494-42bd-9418-d62cf6401394,leverage e-business portals,Closed,New Business,2025-01-12,95957
-223,8e49c5fa-266e-46a9-b01f-571088af8262,5aaadb02-1494-42bd-9418-d62cf6401394,incentivize efficient paradigms,Qualification,Existing Business,2025-03-28,264439
-224,a0c4a597-ef99-43b4-904b-f7b99aff3240,5aaadb02-1494-42bd-9418-d62cf6401394,transform rich mindshare,Proposal,Renewal,2025-03-26,66957
-225,e4fa63a2-d77b-4b13-a662-c43459e687d1,ac195610-acc2-4f45-a971-9e5a23841c00,revolutionize user-centric info-mediaries,Lost,New Business,2025-03-20,369511
-226,a00b7cf3-577d-499b-8299-ad65c3849902,8e8477ae-56a4-45a9-810e-7e535423ce6f,transform virtual e-tailers,Won,Renewal,2025-03-30,481693
-227,137f7a66-009d-45f3-9854-7108f97ab8b8,c67a8c3c-8e05-4766-82ac-3818ccf75058,envisioneer extensible content,Lost,New Business,2025-03-20,461674
-228,3be2016a-4743-48d0-b0cc-9a83f2374706,c67a8c3c-8e05-4766-82ac-3818ccf75058,morph clicks-and-mortar eyeballs,Lost,Upsell,2025-03-01,396283
-229,1d3c7ff2-98f1-4081-be3d-2d55d29eee88,9d15ec4b-be77-4b7f-b72c-17b3226e4d2e,transition global architectures,Closed,Upsell,2025-04-06,481175
-230,80436835-8584-4e64-86f7-26199013603d,9d15ec4b-be77-4b7f-b72c-17b3226e4d2e,streamline bricks-and-clicks vortals,Proposal,Upsell,2025-03-16,389515
-231,b565f5cb-2e8b-4da2-909b-a109a4c666dd,858a6cf6-c006-45a3-a55b-f624b64e39ad,cultivate killer info-mediaries,Qualification,Existing Business,2025-02-01,318922
-232,76ac96c1-85b4-49a0-944d-0e0c333f20b4,615d221e-b9a7-4448-b6a6-20188d0740d8,enable frictionless models,Closed,Renewal,2025-03-21,239911
-233,baf1d7ed-737a-4e31-a329-070d6309f26a,615d221e-b9a7-4448-b6a6-20188d0740d8,enhance leading-edge models,Proposal,New Business,2025-02-08,132810
-234,a2ce0269-91e6-4a99-91f7-e847eb8ce720,615d221e-b9a7-4448-b6a6-20188d0740d8,leverage best-of-breed info-mediaries,Prospecting,Upsell,2025-03-09,408005
-235,63f24bc6-1e89-435c-a5a2-919a3b24867a,6ec1e6f6-8fbf-4033-833a-d34a42c1f225,drive synergistic bandwidth,Closed,Renewal,2025-01-09,320604
-236,a253bd87-3217-4782-97ea-9baa51582a4f,6ec1e6f6-8fbf-4033-833a-d34a42c1f225,utilize visionary e-services,Lost,Upsell,2025-02-14,471285
-237,1a9e14e3-d01f-42cd-b595-818eda412a1b,6ec1e6f6-8fbf-4033-833a-d34a42c1f225,engage compelling e-business,Negotiation,Existing Business,2025-03-10,438016
-238,12a83a7c-7978-4caf-9308-b703e5fecea8,9983d380-d725-494f-b490-d5eebcccfd9c,cultivate proactive interfaces,Proposal,New Business,2025-03-19,144448
-239,b8b74439-e0b5-49cb-b8b9-d45ed5082bc9,1355de5d-a6c7-47f9-8e5b-0f707acf7d16,synergize granular markets,Prospecting,Upsell,2025-02-21,451678
-240,6d970ea9-0898-4aca-8b55-05b08ff4b31d,1355de5d-a6c7-47f9-8e5b-0f707acf7d16,enhance end-to-end e-commerce,Qualification,New Business,2025-02-01,202066
-241,75d61a1d-792e-4227-b947-ab1010af5f94,6eb3f66c-af99-4835-8939-a26120886257,implement robust eyeballs,Qualification,New Business,2025-03-24,482215
-242,174de6cf-0940-40a8-a54c-8829a60f85f2,6eb3f66c-af99-4835-8939-a26120886257,incubate B2C e-business,Prospecting,Renewal,2025-01-11,493038
-243,94cc6724-4805-4a4f-b1bc-01b688e31786,6eb3f66c-af99-4835-8939-a26120886257,streamline robust e-business,Won,Renewal,2025-03-27,64039
-244,fc1ab5d2-b5e0-4e5d-8891-7af966f514af,15aa8a4b-aaa1-4021-b575-3047181cc6c6,grow bleeding-edge deliverables,Proposal,Renewal,2025-03-04,374586
-245,45a63bcd-cb8f-42a3-9e01-5d723eb6732b,32856c54-fe80-433a-bdae-c59fb48e76a0,revolutionize front-end functionalities,Proposal,Upsell,2025-02-09,125164
-246,b4041354-e237-4837-911e-9e8ef1df1ed8,32856c54-fe80-433a-bdae-c59fb48e76a0,synthesize scalable technologies,Qualification,Renewal,2025-01-27,212150
-247,4c14d368-a5b2-4f93-9417-3b9de9bc8e33,62a7e276-2498-4d02-84fc-6d3e7b8c5a18,benchmark intuitive architectures,Lost,Renewal,2025-03-03,443572
-248,2c66b452-cc15-4ac4-b22f-44b74af5d82f,62a7e276-2498-4d02-84fc-6d3e7b8c5a18,whiteboard 24/365 metrics,Lost,Renewal,2025-02-28,392905
-249,41a693b5-832b-4b5a-b87a-1316c0a24f18,e2091467-9de2-4d41-afcf-eec5d644d398,implement compelling convergence,Qualification,Renewal,2025-03-12,308566
-250,7a5e1b17-3d4e-496e-ba55-0eda4c7feaea,e2091467-9de2-4d41-afcf-eec5d644d398,e-enable best-of-breed info-mediaries,Qualification,Existing Business,2025-01-08,295604
-251,7554df41-3ec4-486e-b99e-6e49acbdd30e,e2091467-9de2-4d41-afcf-eec5d644d398,envisioneer out-of-the-box functionalities,Qualification,New Business,2025-01-29,362342
-252,5671fe11-dc2f-4e05-9961-208547a38f5a,f1f004ec-b849-49dc-9b67-e1af03d0e30c,iterate intuitive web-readiness,Negotiation,Existing Business,2025-04-08,154770
-253,8370b0d3-3577-48f3-aab8-d02159adca7e,892778d1-d586-466e-bca1-c089e53fa7a1,revolutionize dynamic users,Closed,Upsell,2025-01-19,370279
-254,c9eaf3d2-bf4c-4e2b-9f7a-1ab187a1d08d,892778d1-d586-466e-bca1-c089e53fa7a1,reinvent B2B markets,Won,New Business,2025-02-20,141703
-255,26ad793b-6efc-4dbb-86b9-9fa31f6a3f5c,892778d1-d586-466e-bca1-c089e53fa7a1,integrate compelling schemas,Prospecting,Renewal,2025-01-24,487561
-256,70b7eb64-54d1-46f2-90b7-b92e9db1c40f,80c33354-086d-4e16-ae29-395cf1d48955,unleash frictionless partnerships,Won,Existing Business,2025-01-23,468621
-257,715542b4-4a7c-45aa-8a45-19fd16ab7a16,80c33354-086d-4e16-ae29-395cf1d48955,facilitate integrated functionalities,Qualification,Renewal,2025-04-03,179286
-258,6169de18-48c6-4f4c-b851-e0ea831eae4a,0c40921f-6f45-4b39-bfd4-e4ebaf628d41,optimize next-generation portals,Lost,Existing Business,2025-03-05,294111
-259,fb2d8e92-7750-418b-a5db-925ebabb006f,0c40921f-6f45-4b39-bfd4-e4ebaf628d41,morph proactive applications,Won,Renewal,2025-01-06,118719
-260,8cec274e-891e-48d9-b36f-6f4878f176d2,4e0e0c37-e288-4e54-90f5-0e6bf8d7ddd3,utilize revolutionary infrastructures,Won,Existing Business,2025-01-18,213665
-261,0071166c-d753-4004-85e9-7e89fbf38639,dcf49a86-8e66-4ae8-a1f8-dcfcda41b2bb,reinvent killer e-services,Prospecting,Upsell,2025-01-24,138495
-262,d41cc216-d251-4403-914b-c59e330832d5,dcf49a86-8e66-4ae8-a1f8-dcfcda41b2bb,morph proactive systems,Closed,New Business,2025-03-26,395385
-263,e94abfd2-b759-4119-a954-ebd6ee64fa3a,0d42ea94-b952-475e-9b16-19a41ff8b94a,enhance B2B ROI,Proposal,Renewal,2025-03-01,476632
-264,8d6a888c-8138-4616-96c7-ed9ce23fcc41,0d42ea94-b952-475e-9b16-19a41ff8b94a,monetize dynamic initiatives,Prospecting,Upsell,2025-01-25,119556
-265,2c5a33d5-e55f-4819-a144-892481fd4c34,fe4d4f20-e06e-4020-815d-3363b3abbcba,syndicate turn-key relationships,Lost,Renewal,2025-02-11,200997
-266,70e9d45e-7371-4aed-8b01-94fc60192a06,3ca84a58-cd06-4dfa-82c1-01432a9ee44f,envisioneer vertical architectures,Closed,New Business,2025-03-24,374114
-267,ce9e92b7-a7d8-472b-8ca5-c30090daf9bf,3ca84a58-cd06-4dfa-82c1-01432a9ee44f,disintermediate synergistic methodologies,Lost,Existing Business,2025-02-02,235348
-268,2ad6af03-2e65-40b2-b52d-5fad41635eda,3ca84a58-cd06-4dfa-82c1-01432a9ee44f,target B2C niches,Won,Renewal,2025-02-19,316691
-269,60153064-46d4-4aef-b19d-1dc2c0dc69a4,f3a21d06-8985-4fde-8299-5eba10f7dd82,repurpose visionary e-services,Qualification,Renewal,2025-01-01,283265
-270,6f1bc5fe-d6b7-44bc-8ba9-baf7ec67234d,f3a21d06-8985-4fde-8299-5eba10f7dd82,maximize rich technologies,Negotiation,Upsell,2025-03-31,270492
-271,e39d01d1-8467-4950-bce6-188e3716d344,728d0b0d-21ca-4990-ae82-ba945e55b1da,mesh rich e-services,Proposal,Upsell,2025-01-07,335050
-272,93668731-e368-4bbf-9bbf-b7d703010ab2,ffc6f543-294b-45c0-a254-2cd665407b8e,re-intermediate transparent synergies,Qualification,Renewal,2025-01-19,94012
-273,b07e8799-2725-4ac7-96e1-1ab7dec8786b,ffc6f543-294b-45c0-a254-2cd665407b8e,productize out-of-the-box functionalities,Closed,Existing Business,2025-03-16,181179
-274,2a767832-821e-4122-9def-bc5a1f75f2d5,ffc6f543-294b-45c0-a254-2cd665407b8e,exploit virtual e-services,Lost,New Business,2025-02-07,308801
-275,8f0960e0-01cd-4ebc-a8b8-f5a31f0692bf,63baa36d-28a6-4f8e-ba16-bc1e4ea24b04,implement clicks-and-mortar infrastructures,Closed,Existing Business,2025-02-16,115925
-276,c37a3111-ff28-40e0-bf52-41d81db30087,63baa36d-28a6-4f8e-ba16-bc1e4ea24b04,extend back-end architectures,Won,Existing Business,2025-02-04,51383
-277,18abbd35-ea3d-48d8-9fa8-cfeaa8d5c6c2,63baa36d-28a6-4f8e-ba16-bc1e4ea24b04,deliver distributed solutions,Prospecting,Existing Business,2025-02-22,286716
-278,e6d44168-1ef8-4120-9355-eddc444b5bb4,6bfbd1e3-daef-4a5d-a5ae-5bb1a11eb5fc,morph visionary interfaces,Won,Upsell,2025-01-20,244680
-279,f81940dc-97ee-4a63-9637-c88718ebf3ad,6bfbd1e3-daef-4a5d-a5ae-5bb1a11eb5fc,streamline revolutionary relationships,Negotiation,Renewal,2025-03-15,140528
-280,1f5371ed-a559-45f6-ae9d-2ad7d3e2c25a,6bfbd1e3-daef-4a5d-a5ae-5bb1a11eb5fc,synergize bleeding-edge e-business,Closed,Renewal,2025-02-09,308017
-281,4ebcc076-f915-4109-86ad-85aa7bc0b92b,288a6efa-015a-4361-b85b-c132e4f9fadd,brand efficient platforms,Closed,Renewal,2025-01-17,295135
-282,3584d425-ead8-48e7-89dc-1d66357ce0a6,288a6efa-015a-4361-b85b-c132e4f9fadd,engage global experiences,Prospecting,Upsell,2025-03-23,127158
-283,dfc6ebd2-9a50-422b-8ff0-19de2f28b7ce,9e03c183-f3f9-472d-8221-c1e5971fac28,generate one-to-one synergies,Lost,New Business,2025-02-15,369950
-284,a3b7f6f3-a099-4acb-bc82-24752738fff3,9e03c183-f3f9-472d-8221-c1e5971fac28,embrace dot-com content,Closed,Renewal,2025-02-06,347978
-285,26d30be5-300b-443d-9fdf-c289324ad5c8,1c849fd1-e5df-4635-8c7c-58a185b16120,whiteboard integrated vortals,Prospecting,Renewal,2025-03-13,271988
-286,59458dc7-b5e6-4424-856d-74022c607fc6,1c849fd1-e5df-4635-8c7c-58a185b16120,facilitate dot-com users,Closed,Existing Business,2025-02-03,289741
-287,2015889d-4732-441a-acdb-58ff78553f61,d4734a58-12b9-4a49-9b10-3b7766b76f1b,drive impactful eyeballs,Won,Existing Business,2025-03-01,194843
-288,b8e41a57-5dea-4afc-9322-b657dd82f309,1f273628-59f1-4bf1-beda-a94658fa0ec8,orchestrate vertical networks,Closed,Upsell,2025-02-02,225340
-289,d28b4c32-3c0c-44bc-9670-a0e6bc4cdf7e,1f273628-59f1-4bf1-beda-a94658fa0ec8,incubate extensible technologies,Won,Renewal,2025-02-11,366789
-290,a7d61969-50c0-4eeb-84da-d2be584de83f,1f273628-59f1-4bf1-beda-a94658fa0ec8,incubate real-time partnerships,Prospecting,Renewal,2025-01-10,316083
-291,6fa98690-5721-4ccb-874f-18f51fa95de3,7a977fde-e6fe-4965-a496-31f7bb2c0f09,syndicate best-of-breed infrastructures,Negotiation,New Business,2025-02-09,343180
-292,e5e16cb9-ab86-4b5b-8105-b8d56bbab400,7a977fde-e6fe-4965-a496-31f7bb2c0f09,extend robust markets,Prospecting,Renewal,2025-03-25,264408
-293,dc6317c2-a9d4-4ae3-ab8b-48f8a9521b43,7a977fde-e6fe-4965-a496-31f7bb2c0f09,cultivate web-enabled web services,Negotiation,New Business,2025-01-18,193913
-294,460e965c-d5cd-4a98-8c78-38f68606225c,01510172-9258-4c63-b4ce-52108577c485,re-contextualize back-end interfaces,Lost,New Business,2025-01-20,93541
-295,8d966cc1-90f8-4455-9452-8cae60922ce5,01510172-9258-4c63-b4ce-52108577c485,iterate next-generation bandwidth,Proposal,Upsell,2025-02-27,133178
-296,e3251755-d7a3-4d07-8cfa-1bd70af1dffd,82894ae2-150a-43fa-89f5-404e82d34521,morph B2B supply-chains,Negotiation,Renewal,2025-03-29,75571
-297,52f4797d-bc6e-44ac-8fa1-a044be12617c,82894ae2-150a-43fa-89f5-404e82d34521,empower best-of-breed architectures,Qualification,Existing Business,2025-03-06,370407
-298,a5c3f279-320d-4e76-abad-39eb34773ffb,82894ae2-150a-43fa-89f5-404e82d34521,utilize best-of-breed solutions,Negotiation,Upsell,2025-02-24,101931
-299,f81aff61-16a6-4b15-8d51-ea44667fad25,10bf7359-8d15-4554-9846-47793a2df3ac,transform proactive partnerships,Proposal,Renewal,2025-01-01,283166
-300,bdcd3fd0-431c-41fe-8065-1d8730e09555,168b4809-df12-40d5-8525-d557a0a9c5af,innovate synergistic partnerships,Negotiation,Upsell,2025-01-22,425514
-301,a6831003-87d9-4d78-95a3-ffef13ccf991,168b4809-df12-40d5-8525-d557a0a9c5af,architect visionary platforms,Prospecting,Renewal,2025-02-05,441238
-302,a6ef13b0-8cd4-41fd-8bcd-b0db5463c115,168b4809-df12-40d5-8525-d557a0a9c5af,empower dynamic solutions,Prospecting,Upsell,2025-02-03,290696
-303,31895130-e4ae-4aae-a652-018253d1d002,e09866f2-a67a-4e3b-b627-7bea01762208,syndicate frictionless mindshare,Prospecting,New Business,2025-04-02,273882
-304,4ac02cfd-c1f1-4cdd-b516-9e856e3bc30b,e09866f2-a67a-4e3b-b627-7bea01762208,mesh back-end portals,Lost,Upsell,2025-04-04,330965
-305,4403fd25-792f-4ed7-bc36-065e6033b123,e09866f2-a67a-4e3b-b627-7bea01762208,drive efficient e-tailers,Proposal,New Business,2025-02-18,63547
-306,66331791-bc5b-49be-9f00-e6a53d64e144,37c95556-0b25-4d00-855a-00581c843f5c,re-contextualize scalable experiences,Lost,Renewal,2025-03-05,492642
-307,47672952-f3d3-40c9-8ed6-d58e46b3cbf4,37c95556-0b25-4d00-855a-00581c843f5c,unleash holistic experiences,Negotiation,Renewal,2025-01-09,178574
-308,cfa88d41-dccb-4a28-b46d-55c1651f08f6,db5534a1-1492-4543-8e27-e5bc79e3769d,incubate B2B methodologies,Lost,Renewal,2025-03-24,498159
-309,874e950f-452d-4345-97b8-ba86c5451718,db5534a1-1492-4543-8e27-e5bc79e3769d,enable intuitive mindshare,Proposal,New Business,2025-03-25,270402
-310,5ceb0ff7-a2bd-4e39-8adb-192f20df3b96,460ab777-181a-4c4e-b4b5-f39b32739a3c,harness frictionless vortals,Prospecting,Upsell,2025-03-01,241938
-311,856424b8-e4a4-4767-8f93-36f1322c619d,1e79bf08-4012-484f-a838-f1c6a145ec76,maximize innovative communities,Closed,Renewal,2025-03-13,202760
-312,ca9b8437-11ea-417b-b8a6-2ea13d04c6f4,1e79bf08-4012-484f-a838-f1c6a145ec76,engage e-business bandwidth,Lost,Upsell,2025-03-16,240904
-313,5f50fc0e-8b77-418d-a74a-9e5a0cde237b,cad8914a-730e-4127-bd95-ad6f8f7f07ca,synergize cutting-edge bandwidth,Prospecting,Upsell,2025-04-07,140898
-314,e4c54c8a-8465-468c-b09b-bbe049d535a2,0c253a61-2af8-4903-9a1b-443762b7ad90,aggregate visionary mindshare,Won,New Business,2025-04-05,97847
-315,39297165-684e-498d-8d86-47ab51e4810b,0c253a61-2af8-4903-9a1b-443762b7ad90,optimize robust networks,Qualification,Existing Business,2025-03-26,283756
-316,8a790516-ea6c-47e1-b56f-c37d3c4b61c5,ffa820d6-2125-4e60-9ee7-a08f10e4f93d,envisioneer B2B vortals,Negotiation,Upsell,2025-01-31,243643
-317,e469b2bc-cb1c-4d2b-96b6-9c230cb15b66,ce5709a1-b871-4c93-8e96-68f90fda264e,reinvent dot-com partnerships,Qualification,Upsell,2025-02-21,436456
-318,f38069a2-a81b-43d3-a004-bf0a1eb10ea7,ce5709a1-b871-4c93-8e96-68f90fda264e,generate killer web-readiness,Negotiation,Renewal,2025-04-07,497398
-319,f54fbee4-ab49-45da-9ad2-710ad0381522,cae81595-7a11-43fb-be41-0ea3f1e5048b,drive killer e-commerce,Qualification,Upsell,2025-02-11,180825
-320,0c6d23da-ab0c-4bab-938c-4f3062905c1b,cae81595-7a11-43fb-be41-0ea3f1e5048b,morph visionary convergence,Negotiation,New Business,2025-03-18,297475
-321,d98e058d-85ba-4c08-ac7d-0dc1241c569c,6269fb98-da2d-4af9-8b3b-fb2d4771b4c8,leverage robust functionalities,Negotiation,New Business,2025-01-24,69892
-322,9876e2e6-c660-49c7-a84d-347b1410e86b,6269fb98-da2d-4af9-8b3b-fb2d4771b4c8,mesh open-source architectures,Qualification,Upsell,2025-03-16,280266
-323,479dfd81-8596-4acc-b6de-54db65e4e561,6269fb98-da2d-4af9-8b3b-fb2d4771b4c8,drive bleeding-edge content,Negotiation,Existing Business,2025-03-26,277179
-324,e59ebcf8-1920-4982-bb05-f04f9407877a,0689cd78-5431-4dd6-8bd5-f4c7da058848,cultivate cross-platform ROI,Closed,Existing Business,2025-02-02,430247
-325,94bd0a7f-37bb-4dc4-9a98-c3b452e100ca,0689cd78-5431-4dd6-8bd5-f4c7da058848,aggregate efficient solutions,Proposal,Renewal,2025-04-03,213675
-326,329fba48-7f70-438e-beb5-870a8465c6f3,0689cd78-5431-4dd6-8bd5-f4c7da058848,strategize seamless communities,Closed,New Business,2025-03-06,357606
-327,fd2b3359-ff71-4a32-81c5-bc610cb5453e,40d98e44-6e9e-4973-b2b1-fe3e246a8e57,target turn-key metrics,Qualification,Upsell,2025-01-18,179968
-328,cc6531ce-1602-4ba8-b794-53e33354cebc,f84c0b18-9d62-4c4c-9a2b-b17c6e1ad613,visualize 24/365 vortals,Closed,New Business,2025-03-04,139733
-329,602ffc9e-800f-49e7-a2f6-2bdb23aa4efe,f84c0b18-9d62-4c4c-9a2b-b17c6e1ad613,grow intuitive channels,Negotiation,Existing Business,2025-01-29,329615
-330,01a5fcc4-db10-4401-a9df-aff73bab4ca7,f84c0b18-9d62-4c4c-9a2b-b17c6e1ad613,cultivate killer solutions,Lost,Existing Business,2025-03-18,178354
-331,1c39f570-c8b4-4265-9435-2dfc3b4af7ab,97846859-9b37-47b4-827b-e0b979555635,embrace impactful metrics,Closed,Renewal,2025-01-12,160987
-332,fb6ab179-24f4-4e5e-b9b8-e7ed500388af,97846859-9b37-47b4-827b-e0b979555635,e-enable bricks-and-clicks e-tailers,Qualification,New Business,2025-01-29,260237
-333,5f2c53af-b69a-4c1e-b578-bbf5739befce,97846859-9b37-47b4-827b-e0b979555635,e-enable sticky infrastructures,Proposal,Existing Business,2025-02-08,304382
-334,ec63078c-6165-4d95-bd3a-a62fff0af69f,0ff00526-9ff2-4841-992a-5536b06b68e5,unleash dynamic models,Closed,Upsell,2025-02-20,127921
-335,05f35370-23ea-484b-91f4-9af3774f45ce,f6dcf584-5f8c-4528-a0e7-da09934ef8bb,morph best-of-breed niches,Won,Upsell,2025-01-29,137472
-336,f5d57bf8-683f-40d8-8db3-ac1d84a0486d,f6dcf584-5f8c-4528-a0e7-da09934ef8bb,target efficient models,Prospecting,Renewal,2025-03-05,348788
-337,0f633d61-a3d9-4ff3-8a5c-be7b044bcc28,3918000c-4897-432e-bd32-98073ad326ba,matrix rich web services,Won,Existing Business,2025-03-27,296651
-338,58b0c1a2-1cad-4965-adad-e06af6df46b8,3918000c-4897-432e-bd32-98073ad326ba,architect sticky portals,Proposal,Upsell,2025-01-30,406085
-339,73cdb4d0-46a0-4af6-b155-e30b2abd3328,3918000c-4897-432e-bd32-98073ad326ba,implement integrated portals,Proposal,New Business,2025-02-22,345361
-340,8dcfcc30-083d-4490-b77f-efeca884c06e,c5011f5b-06f6-4211-86bc-a70f676b43de,embrace plug-and-play infrastructures,Prospecting,New Business,2025-02-09,377452
-341,31ce4ff4-c61e-4831-98ef-276e5ce7be32,c5011f5b-06f6-4211-86bc-a70f676b43de,generate cutting-edge portals,Negotiation,Renewal,2025-03-28,300967
-342,ffc3e024-3beb-4920-858b-69a22c9f6305,c5011f5b-06f6-4211-86bc-a70f676b43de,incubate viral applications,Qualification,Upsell,2025-01-11,438823
-343,a0841af3-31f8-4c0a-8944-4ea9246f7052,837adae1-57ea-4457-9067-50062aa2db3a,target wireless e-tailers,Qualification,Upsell,2025-01-11,366535
-344,22b9fb59-31bb-4721-a5c1-5e694fa27408,837adae1-57ea-4457-9067-50062aa2db3a,synthesize scalable bandwidth,Negotiation,Existing Business,2025-02-25,302794
-345,52cbeafc-6f7a-47e8-ad30-3f72c17c3260,837adae1-57ea-4457-9067-50062aa2db3a,maximize front-end channels,Closed,Existing Business,2025-01-08,257303
-346,b382a9e6-d2ca-4c32-a831-5c351b3cdebf,0ec9a028-dbcd-4517-a7e2-24b05fdf9939,strategize compelling web services,Negotiation,Upsell,2025-03-03,436619
-347,7a7bee1a-c511-4143-b5ab-113c97651879,0ec9a028-dbcd-4517-a7e2-24b05fdf9939,embrace turn-key bandwidth,Proposal,New Business,2025-02-02,496994
-348,9dee75bf-2937-4b52-9dc7-81f1492babc4,0ec9a028-dbcd-4517-a7e2-24b05fdf9939,harness B2B markets,Won,New Business,2025-02-24,456234
-349,3ee277e9-485c-47d0-91e8-26fa0742cbad,3a734c43-d05b-477a-8e6c-d4f87338046d,incubate visionary e-services,Proposal,Existing Business,2025-02-16,465365
-350,e6888c24-90da-4abb-9ec5-67aaac4954a4,3a734c43-d05b-477a-8e6c-d4f87338046d,engineer seamless e-commerce,Won,New Business,2025-01-20,426355
-351,52016305-83ff-4395-bc0d-b53bbf22cefc,108cfbf7-8a9f-40bf-83fc-cb2324cdc469,deliver rich systems,Proposal,Upsell,2025-02-10,187961
-352,52f480af-4b81-438c-98e3-7e737e1e268f,d1ac1d85-e00b-46f6-84fb-cc89d8e4ecdd,engage sticky eyeballs,Negotiation,New Business,2025-03-05,193294
-353,77722b85-2571-49c7-8036-199206dc8223,d1ac1d85-e00b-46f6-84fb-cc89d8e4ecdd,synthesize value-added e-services,Lost,Existing Business,2025-03-27,452597
-354,77e5466d-c005-4b03-a664-5ad9297d3006,d1ac1d85-e00b-46f6-84fb-cc89d8e4ecdd,exploit e-business schemas,Lost,Renewal,2025-01-14,392357
-355,b71efcf2-e3aa-4731-a3d2-56549428707a,ad7ef245-fd83-4620-b119-714ccc8b392e,mesh dot-com convergence,Proposal,New Business,2025-03-25,359200
-356,1c6e39e8-2c4b-4b04-bace-3c00af765387,6c4c2774-94ee-472f-b503-a8dd31575029,engage frictionless solutions,Negotiation,Existing Business,2025-03-23,206918
-357,20e47db6-6ced-44a5-8abb-b672882449b4,6c4c2774-94ee-472f-b503-a8dd31575029,e-enable customized schemas,Negotiation,New Business,2025-03-20,224830
-358,43435693-f58e-4843-b320-348107687c25,6c4c2774-94ee-472f-b503-a8dd31575029,iterate cutting-edge paradigms,Prospecting,Renewal,2025-04-01,368245
-359,2b697fa3-d391-47d8-8f6d-5cb81ea9327b,a1311129-6845-44a8-a4b5-45583b80eb64,empower impactful experiences,Lost,Existing Business,2025-03-30,96310
-360,4639ccbe-e62d-4172-bf47-069f9da44a05,a1311129-6845-44a8-a4b5-45583b80eb64,engineer frictionless functionalities,Lost,Renewal,2025-03-25,129697
-361,a6603e0b-84a4-4753-9933-031daa091cd4,63e2e353-e1a6-42b2-9db3-f64078eb2510,transform clicks-and-mortar channels,Qualification,Upsell,2025-03-11,140224
-362,4f2d0172-f123-4ebb-962f-df46b12911ac,63e2e353-e1a6-42b2-9db3-f64078eb2510,transform best-of-breed models,Lost,New Business,2025-04-04,371229
-363,b2f3cf0f-0743-4ffe-a131-5175efa7f47b,61d5a51a-0cd9-417a-9ebc-2870ee6f0dd2,redefine visionary action-items,Won,New Business,2025-04-06,353551
-364,feecfb6a-b5b9-4cba-bca5-de928cf91638,61d5a51a-0cd9-417a-9ebc-2870ee6f0dd2,exploit frictionless e-business,Won,New Business,2025-04-05,104405
-365,8b5549c7-472f-4967-9707-4e69ef3fb73b,e501da31-1a60-4ff3-bd10-9b7cf4a90d30,expedite bricks-and-clicks web services,Qualification,Renewal,2025-01-15,162290
-366,96be8b61-2db6-4815-862f-683bb519acc0,e501da31-1a60-4ff3-bd10-9b7cf4a90d30,transition mission-critical metrics,Prospecting,New Business,2025-02-21,435924
-367,5dbd3af4-9086-4187-82b9-fa4019e211b2,e501da31-1a60-4ff3-bd10-9b7cf4a90d30,generate bricks-and-clicks action-items,Qualification,New Business,2025-04-03,182843
-368,1da3dde0-3c66-4403-8a4d-b64ab54ab9ce,d3ccda45-0ca5-4c0b-97f1-504fd400b1d0,drive B2C paradigms,Proposal,New Business,2025-01-27,218448
-369,132a7c23-8b20-49d1-ad64-3c6c3690bab1,17d67e41-81bb-4abd-84fe-fb17f0d20059,deploy synergistic experiences,Proposal,Renewal,2025-03-27,239594
-370,3e3a6168-4471-4472-bee0-b4b5ee740462,17d67e41-81bb-4abd-84fe-fb17f0d20059,utilize holistic solutions,Proposal,Existing Business,2025-01-18,359090
-371,19da6cc2-bfd7-4b96-9f5b-be4224c4e835,e561fc81-793b-4640-b332-c5689cc78041,maximize integrated partnerships,Proposal,Renewal,2025-04-08,274023
-372,2d311c2d-269f-4a63-9c3f-665b227da1ec,e561fc81-793b-4640-b332-c5689cc78041,innovate seamless synergies,Closed,New Business,2025-02-20,419715
-373,6775c42d-afb8-4a69-94b7-b8d0a6cc23ca,d4422cca-19d7-43f0-ba53-4a7fa65093ff,facilitate clicks-and-mortar infrastructures,Qualification,Upsell,2025-02-08,140582
-374,1cefae4d-8821-4168-8c6b-fc6f66ab7d98,0e9450ed-645f-47cb-b069-ea6b2ac20151,engage rich ROI,Proposal,New Business,2025-01-28,374249
-375,75b42131-8348-4055-ab60-0b1d81ac0f3e,0e9450ed-645f-47cb-b069-ea6b2ac20151,synergize web-enabled web services,Lost,Existing Business,2025-03-09,247479
-376,f746250d-4ff5-4d6f-bb29-f8c39c3edf1c,0e9450ed-645f-47cb-b069-ea6b2ac20151,architect magnetic web-readiness,Proposal,Upsell,2025-02-10,219090
-377,f56074f9-45fa-414d-9054-96ee3452a081,fa54de75-184e-4224-82ad-8860cf37b8eb,synthesize collaborative bandwidth,Negotiation,Renewal,2025-04-05,71620
-378,2e802d0b-ee32-43a5-ace6-2942d698e5a4,4d7101ed-d5c0-437c-af0d-628abfbe7f00,matrix back-end relationships,Qualification,Renewal,2025-01-08,229603
-379,8c2fb822-3b2b-42f7-a94e-c7ddb3b2f0d5,4d7101ed-d5c0-437c-af0d-628abfbe7f00,syndicate cross-media info-mediaries,Proposal,New Business,2025-01-12,251177
-380,b2c1aef2-1174-453d-9c65-d688cca14e08,6dc1d0ba-dc68-4dbb-9392-82874a8b21c8,whiteboard dot-com paradigms,Negotiation,New Business,2025-03-14,167420
-381,ae528134-d7b6-4adc-b330-5ace0ed4a6ac,6dc1d0ba-dc68-4dbb-9392-82874a8b21c8,extend virtual infrastructures,Qualification,New Business,2025-01-06,105359
-382,6414b9b5-7e52-4dd3-8a5b-320f3b9fbce5,ec073e04-acaa-4c95-9c88-5264fba8e897,productize seamless partnerships,Negotiation,Renewal,2025-01-15,488380
-383,c6315822-5dac-4af4-a758-b3b4eaca8416,ec073e04-acaa-4c95-9c88-5264fba8e897,utilize viral initiatives,Proposal,Upsell,2025-01-20,325174
-384,6d2e5e2f-b825-465b-bafe-911b945a86a2,f47473b3-baf1-43cb-b84b-47053fab3278,matrix plug-and-play info-mediaries,Qualification,Renewal,2025-02-04,362693
-385,f5ae1a70-bd1a-4cd2-a7e3-d3b3b6e6a604,c1a5bc1d-0cc4-449f-b501-c2f9d63e004f,orchestrate world-class niches,Negotiation,Upsell,2025-03-10,247452
-386,181c1e94-a3fe-4ee8-8bac-677e61aa0f8a,a8694b26-4dad-4fe6-8c1c-9ae76a749f7b,iterate clicks-and-mortar partnerships,Won,New Business,2025-03-28,340747
-387,31599f97-778b-4887-b3e4-0a5a4e91f2e4,569a4576-fef4-4ff9-b97f-f2e3cc27a1b5,embrace plug-and-play functionalities,Closed,Renewal,2025-03-17,320843
-388,3f5b5aaf-a39d-45ed-853c-e6f59818d272,569a4576-fef4-4ff9-b97f-f2e3cc27a1b5,iterate 24/7 solutions,Closed,Upsell,2025-01-31,254236
-389,954e2b46-5cfd-4cae-9e5f-345ef5b3dadf,569a4576-fef4-4ff9-b97f-f2e3cc27a1b5,synthesize distributed content,Negotiation,Upsell,2025-03-31,197260
-390,216897fd-e122-425b-bb73-71e4f09b88aa,53de4b74-d9e0-4bec-8d41-96c7e080f723,mesh turn-key users,Won,New Business,2025-02-23,230069
-391,d9cd4494-1d5d-4f27-adc5-68a251cf0e08,e12b5dc4-1202-4317-8d34-3f01b4ce82d1,harness wireless relationships,Negotiation,Existing Business,2025-02-04,89196
-392,eee31f5a-81e8-489c-855c-884b39cf8130,92a58039-496e-4b7f-9972-90153cfdeed2,productize innovative supply-chains,Prospecting,Renewal,2025-03-19,472579
-393,8180e49c-a0db-4b97-bfac-0c26992bb1e4,f939027d-75b4-4e13-8934-8d327c326f51,evolve impactful e-services,Prospecting,Existing Business,2025-01-16,155638
-394,4cc0588e-c974-4c06-88bf-5d8bd41a7f3f,223f696a-c86b-475b-9cf5-bc1fb933a123,morph sticky eyeballs,Proposal,New Business,2025-02-28,358641
-395,2264bb6a-ad03-4121-a390-a9e921ee13ec,30112e5a-1c76-405d-bd2a-dc13e2f397f8,orchestrate visionary metrics,Won,Upsell,2025-02-05,364600
-396,935d682c-2414-4130-97da-a34d221104d9,0fdf324f-99c0-40c5-821e-1dbf6d533a85,grow holistic content,Qualification,Renewal,2025-02-19,497266
-397,ad175f62-cccb-4f9f-9547-b02c26d87046,a1405a05-4c14-49de-8331-d28fb3a6cda4,optimize dynamic portals,Closed,Existing Business,2025-03-27,277475
-398,37cb0723-1c83-4bdc-9558-edceb5b9137e,a1405a05-4c14-49de-8331-d28fb3a6cda4,unleash end-to-end architectures,Proposal,Existing Business,2025-03-15,77337
-399,4d0bff67-e5d2-4481-8fd0-dd8fcc5f98fd,a1405a05-4c14-49de-8331-d28fb3a6cda4,drive next-generation interfaces,Won,Existing Business,2025-03-11,408028
-400,9f080334-2206-4335-baed-0d146adc3a6d,dd537638-6575-4f4f-ab4a-e50f19853568,reinvent wireless e-services,Won,Upsell,2025-01-27,52096
-401,a7954acf-4c16-4dba-a91a-055521c25396,dd537638-6575-4f4f-ab4a-e50f19853568,embrace dot-com content,Proposal,Upsell,2025-01-07,275466
-402,c0444775-ae74-4821-b168-75e2d71fc3f7,22106524-5599-49c3-8c2a-3df945a6dd89,syndicate robust architectures,Lost,Existing Business,2025-02-03,188296
-403,17e40247-efd4-4ca3-b197-097bc61c50cd,3e45cdb8-b5ac-4aec-aebe-7a9c03c139da,benchmark cross-platform ROI,Proposal,New Business,2025-03-31,444778
-404,c4367baf-4c6c-4cc6-8068-ce7b5f41fc31,3e45cdb8-b5ac-4aec-aebe-7a9c03c139da,cultivate granular eyeballs,Won,Upsell,2025-01-14,299888
-405,95760b58-592e-4723-9a0f-c23fbf22fbe7,3e45cdb8-b5ac-4aec-aebe-7a9c03c139da,deploy world-class applications,Qualification,Upsell,2025-04-07,122748
-406,328dbde7-fe5d-4d27-9bea-3445daf5d07a,b5e8a4f6-c216-4949-a735-d50af5d9c1e1,evolve transparent relationships,Won,Upsell,2025-01-03,411912
-407,5504f8d0-145f-4d6d-a229-fd47a9595bf9,0fd2797d-8d95-4418-8921-93134137066f,deliver extensible e-business,Lost,Existing Business,2025-02-04,489475
-408,4ff63a6b-2c22-4970-95d9-b97797553539,0fd2797d-8d95-4418-8921-93134137066f,whiteboard impactful relationships,Negotiation,Existing Business,2025-02-05,322388
-409,b7e0af91-6f4f-4d2a-8283-8c3bf2410cc7,0fd2797d-8d95-4418-8921-93134137066f,deliver ubiquitous functionalities,Prospecting,Upsell,2025-01-02,339282
-410,61a68d0a-edaa-45ed-9cdc-d182768f2230,2645f28f-9397-4525-8746-f813aa8be987,unleash e-business communities,Won,Upsell,2025-03-11,460794
-411,25410f9f-df70-461d-8ffc-cd5dc5802c00,2645f28f-9397-4525-8746-f813aa8be987,evolve e-business interfaces,Closed,Upsell,2025-03-04,429072
-412,8cf16f54-a50d-4cd1-91fd-1abc83cf9f51,9233809f-c910-41c9-9793-0dbe7284b765,visualize distributed functionalities,Prospecting,Existing Business,2025-02-28,290523
-413,42831400-632f-451d-b099-5681e270eca4,9233809f-c910-41c9-9793-0dbe7284b765,utilize front-end convergence,Proposal,Renewal,2025-01-07,233935
-414,661f641c-3217-4d0f-a79d-4ad1f84cdde5,9233809f-c910-41c9-9793-0dbe7284b765,repurpose dot-com paradigms,Lost,Upsell,2025-03-19,234120
-415,2c62a942-71b5-4937-89f5-c922d966ffb9,8355eaf5-2f11-4122-9426-2a7e78b52cbf,unleash extensible applications,Qualification,Renewal,2025-03-03,403746
-416,87faeab9-57e8-4de0-8712-3a0418ed1647,8355eaf5-2f11-4122-9426-2a7e78b52cbf,deliver next-generation architectures,Lost,Upsell,2025-02-08,400452
-417,a85a8497-07c1-4345-81a2-7f5bd18db0ff,8355eaf5-2f11-4122-9426-2a7e78b52cbf,envisioneer out-of-the-box niches,Closed,Existing Business,2025-02-11,88499
-418,b8b5798b-4fca-4352-a1a2-17244800e5ed,834f47ac-fb94-4880-b96a-d3d17527b2c5,exploit dot-com communities,Negotiation,New Business,2025-02-15,449836
-419,e4a546ee-a163-44f2-8db7-6273f3c49c1d,dc3054de-cab5-4e21-b169-8af5b0955f6d,brand scalable architectures,Proposal,New Business,2025-02-26,78024
-420,55204912-0145-4601-bf65-b3e425e4bde6,dc3054de-cab5-4e21-b169-8af5b0955f6d,strategize granular experiences,Won,New Business,2025-02-28,490212
-421,5502f19c-f418-47e0-ad3a-f485ef80b2c9,dc3054de-cab5-4e21-b169-8af5b0955f6d,aggregate end-to-end e-business,Qualification,Existing Business,2025-02-04,130847
-422,f0dfe498-686b-47f1-9473-905f8f8bd289,9e4283c2-68ba-4576-91f3-636714e95110,revolutionize dot-com info-mediaries,Negotiation,Existing Business,2025-01-23,75617
-423,3461c8cb-39cb-411b-ac70-2ee7c628f6e4,9e4283c2-68ba-4576-91f3-636714e95110,engineer frictionless solutions,Won,Renewal,2025-03-23,99391
-424,a780f8e5-df3b-4643-b2d8-60d62dcba6ef,9e4283c2-68ba-4576-91f3-636714e95110,unleash interactive vortals,Qualification,New Business,2025-03-12,190314
-425,e871fab0-d229-4f6d-a7ee-3dc5eed6ddb9,64f87d76-5c6a-40f9-b002-1a94828ae02d,matrix wireless applications,Closed,Existing Business,2025-03-09,362258
-426,c0d8b7dc-d1d5-4168-a1bb-f4ba74124548,3c085001-009a-46d0-9c37-73c4e452f3d5,innovate seamless web services,Prospecting,Existing Business,2025-02-22,268731
-427,9af0983f-8ea0-445a-ab9d-14556969c53b,3c085001-009a-46d0-9c37-73c4e452f3d5,streamline distributed infrastructures,Won,Renewal,2025-01-20,358338
-428,89a502d2-fc37-4fce-9984-6edbbf15c3ce,c8923660-f156-4cff-8552-93d2d9f10f3a,aggregate scalable ROI,Proposal,Renewal,2025-01-21,306999
-429,48bf7061-6a4b-4908-a22e-187836665d19,c8923660-f156-4cff-8552-93d2d9f10f3a,target 24/365 niches,Proposal,Renewal,2025-02-17,385414
-430,4686452b-cd7c-4de4-a94f-e7eef1a18410,c8923660-f156-4cff-8552-93d2d9f10f3a,reinvent back-end metrics,Won,Renewal,2025-01-18,209618
-431,6b505877-a717-4690-a67f-b0f244ae569c,5f42b52b-cd85-4c5f-965e-972bbf7b30de,enable enterprise e-markets,Proposal,Upsell,2025-02-01,212255
-432,b767dc8c-2b6c-48ca-98fd-1c8edd211baa,5f42b52b-cd85-4c5f-965e-972bbf7b30de,strategize vertical architectures,Closed,Existing Business,2025-03-05,324607
-433,b3fc3f24-4884-492a-b2d2-d773eaba120e,5f42b52b-cd85-4c5f-965e-972bbf7b30de,maximize leading-edge platforms,Qualification,Renewal,2025-01-31,284235
-434,31d3a8b4-0132-48be-9f5a-5d07b74dc6f2,19b9a16b-5f9d-4cce-994c-0a5d1b0b01ea,incentivize plug-and-play mindshare,Lost,Renewal,2025-03-07,437512
-435,396fe32d-be7b-4033-84d2-3bb85f9a09b5,97376a7d-328a-48ba-b240-4dbd54e43bd0,reinvent intuitive info-mediaries,Negotiation,Existing Business,2025-01-10,230946
-436,746e2ea8-b141-40f0-97ac-252c8477a6d2,ddafdb70-0286-4860-9b22-6ab5239545b1,innovate visionary web services,Closed,Existing Business,2025-03-05,181503
-437,8fdfe9ad-e049-4701-9d4f-c2b4b8267d48,ddafdb70-0286-4860-9b22-6ab5239545b1,exploit global ROI,Closed,Upsell,2025-01-29,65519
-438,8cb8ff43-ea7e-440d-bad4-dd638b74130b,ddafdb70-0286-4860-9b22-6ab5239545b1,productize leading-edge methodologies,Closed,Renewal,2025-03-22,131395
-439,e2a7e21c-efb9-4dc2-be87-51ecea0055db,0e17fd2e-d792-435e-bca3-82028704c32a,aggregate global channels,Negotiation,New Business,2025-01-23,375857
-440,f5d4b822-8991-4790-9a29-7d25b56e4483,0e17fd2e-d792-435e-bca3-82028704c32a,incentivize rich applications,Won,Upsell,2025-01-04,70321
-441,1c4c0a42-d266-469f-831e-cb68e3bf2979,b99a99af-5862-4f66-af77-fa2b8e065535,whiteboard sticky interfaces,Prospecting,Upsell,2025-03-11,429104
-442,7896c045-e016-4ad1-90ad-a22a60b3cea4,e2718f61-e94f-465d-94cc-33eb1b1d8f1f,e-enable value-added e-commerce,Prospecting,Existing Business,2025-02-01,159661
-443,9a2c4dc4-ec34-44cc-8685-c3d2e707690a,e2718f61-e94f-465d-94cc-33eb1b1d8f1f,aggregate best-of-breed systems,Won,Renewal,2025-03-23,430510
-444,7904f4c9-b385-4564-885c-8700dd0b7637,e2718f61-e94f-465d-94cc-33eb1b1d8f1f,brand next-generation synergies,Lost,Existing Business,2025-04-02,83706
-445,51b2c40a-694d-4eb1-b4fd-995adfffc873,48fcc27a-cc09-43d3-9b40-a4d6dd071d2b,monetize vertical e-services,Closed,Upsell,2025-02-08,234705
-446,6a68b802-7583-4779-87f5-2ea27741d2a9,bfd14276-3c27-43fc-a3a8-5c1ff30eaf74,embrace best-of-breed functionalities,Won,New Business,2025-03-31,245133
-447,a845c640-d503-4b02-bf38-d7aea995199c,bfd14276-3c27-43fc-a3a8-5c1ff30eaf74,optimize frictionless eyeballs,Won,Existing Business,2025-01-26,330358
-448,f34c4101-38de-4c45-a6e3-d1debff3ba57,616e82ab-d3ce-4024-8a39-9769aef5a623,enhance interactive relationships,Negotiation,Renewal,2025-01-18,362655
-449,9e8729c4-9366-4a58-8105-86267a822f15,616e82ab-d3ce-4024-8a39-9769aef5a623,revolutionize end-to-end supply-chains,Won,New Business,2025-04-02,231483
-450,3ae72cfd-ed1d-45bb-b2be-9cfefc6553f4,616e82ab-d3ce-4024-8a39-9769aef5a623,revolutionize scalable portals,Closed,Renewal,2025-03-21,330772
-451,0ce3c7f9-0cb9-4c82-8ee7-27c209f5f36e,6208aa28-4230-4826-80f9-1a9efb45656d,innovate world-class convergence,Closed,Existing Business,2025-02-10,88685
-452,c17f8901-86f3-4636-a695-1fec8951e653,6208aa28-4230-4826-80f9-1a9efb45656d,deliver global web-readiness,Proposal,Renewal,2025-04-06,112261
-453,0c6c4208-31a5-47a7-a7bd-bc157a45c92b,4da7de3f-d9d8-4cc1-859c-7dad10dc6d77,benchmark wireless web services,Won,Upsell,2025-01-24,249803
-454,ee8717ea-57ab-49dd-8414-a61f4c71f3a2,4da7de3f-d9d8-4cc1-859c-7dad10dc6d77,incubate 24/7 mindshare,Prospecting,New Business,2025-01-28,454244
-455,9299af02-915c-417a-a17b-96928323a919,4da7de3f-d9d8-4cc1-859c-7dad10dc6d77,strategize visionary partnerships,Closed,Upsell,2025-01-04,443670
-456,a3848989-9e4f-492f-880f-255bc46b9c1c,a2d807b0-1880-440a-bbbc-d51601f58421,cultivate visionary applications,Closed,New Business,2025-02-09,345653
-457,7b6e3235-22e4-4f6c-8719-1bb5427d65ae,a2d807b0-1880-440a-bbbc-d51601f58421,strategize 24/7 eyeballs,Qualification,Renewal,2025-02-21,225613
-458,dd077f8d-9094-4a24-9bd4-8657190965eb,c287cbda-3589-4cc0-b5e7-4591a05e5f3d,aggregate leading-edge supply-chains,Qualification,Upsell,2025-02-20,317708
-459,ad759d85-ca93-4fe2-bb93-cbfe94fe65a6,c287cbda-3589-4cc0-b5e7-4591a05e5f3d,empower e-business communities,Closed,Existing Business,2025-03-09,385991
-460,53104730-22d2-46c2-9cf5-1af07a79a436,c287cbda-3589-4cc0-b5e7-4591a05e5f3d,morph integrated ROI,Closed,Existing Business,2025-01-17,199121
-461,38549711-4640-4fe0-b45a-f02ff37deabf,aae773a3-5ec4-4d0a-ad02-8f7d514c26d1,visualize strategic schemas,Proposal,Renewal,2025-02-23,331578
-462,c8d70448-7df4-4dbe-8f51-3c9226811d38,aae773a3-5ec4-4d0a-ad02-8f7d514c26d1,engage 24/365 synergies,Proposal,Existing Business,2025-03-07,169775
-463,164d345b-f8f2-4666-b5ba-e52cc8987af2,8dd55e87-ce08-407a-b0cc-e86edd971496,transform killer info-mediaries,Lost,New Business,2025-02-10,68364
-464,cf2c42ae-0379-4a6b-a078-ac930dd7b581,6c3d5d23-1306-4e50-bf20-8efdc686b613,leverage web-enabled users,Negotiation,Existing Business,2025-01-23,315297
-465,cbcf3692-b1b6-48d9-bb4a-b9e89a4eb105,6c3d5d23-1306-4e50-bf20-8efdc686b613,scale sticky synergies,Proposal,Upsell,2025-01-25,469918
-466,40876038-c4a0-4414-be5e-0bb491830092,6c3d5d23-1306-4e50-bf20-8efdc686b613,engineer strategic deliverables,Lost,New Business,2025-03-08,376108
-467,cfb40e5b-aca8-4508-a83a-25433b05e871,6c6cc9ae-6141-4c22-8453-1e209d560aec,e-enable robust vortals,Proposal,Upsell,2025-02-14,126887
-468,a604aa2a-b013-46fc-9cc8-9732ed874182,6c6cc9ae-6141-4c22-8453-1e209d560aec,streamline proactive e-commerce,Negotiation,Renewal,2025-02-25,275312
-469,6d9ec801-116f-4651-936b-1ce3f6660342,a35e1ff5-d43f-478c-ad3c-58690eb0799c,unleash back-end metrics,Won,New Business,2025-02-20,178560
-470,4f4940cc-754a-49e3-9b79-09330f7c9e84,ef67aaac-7dfa-4123-8563-14d953c1642b,deliver enterprise infrastructures,Proposal,New Business,2025-03-12,307279
-471,b584035e-d911-4068-9cb9-f254f23b33b7,835fea59-abd9-4bf2-b0ce-ce45327994ba,productize impactful content,Negotiation,Renewal,2025-03-16,488267
-472,8978f43c-6e08-4bc4-8633-ec73920a8c69,835fea59-abd9-4bf2-b0ce-ce45327994ba,monetize customized paradigms,Won,Renewal,2025-03-02,178506
-473,388830b4-6a48-4124-b050-0de684f14699,835fea59-abd9-4bf2-b0ce-ce45327994ba,matrix intuitive e-commerce,Negotiation,New Business,2025-03-24,438579
-474,ea3fa6dc-874d-4677-98b2-d4079e2e3f9c,c4b2edc7-173a-4b07-96ba-4f013a8c4ba4,exploit user-centric functionalities,Lost,Existing Business,2025-01-02,308760
-475,8a0d1d55-4efe-424e-a3ef-001df4af1037,c4b2edc7-173a-4b07-96ba-4f013a8c4ba4,re-contextualize real-time solutions,Closed,Existing Business,2025-03-20,164638
-476,d705c807-1053-4a03-a044-f9035d67318b,8dc84c0b-8cfe-4648-9d09-d998f38de611,empower out-of-the-box markets,Lost,Upsell,2025-01-05,230637
-477,50430d38-97a6-4534-aace-5930d4d9952b,8dc84c0b-8cfe-4648-9d09-d998f38de611,innovate viral functionalities,Proposal,Existing Business,2025-01-06,67684
-478,cbb418cc-4a61-41bb-873c-22c7ae1290ee,8dc84c0b-8cfe-4648-9d09-d998f38de611,maximize dynamic models,Negotiation,Existing Business,2025-02-14,395336
-479,60c0f013-53bd-491f-a88f-100a2c1f56cd,f8ad9cfb-539b-4d62-8273-a04b49772c34,disintermediate granular supply-chains,Lost,Existing Business,2025-01-31,143727
-480,973e7bd6-a8be-4783-90fe-734e5772dad0,6ad0f426-aec8-4ee2-8d9d-bf21733fd766,whiteboard wireless markets,Negotiation,Renewal,2025-03-04,57354
-481,f2ee834b-6283-435d-8413-08228a588128,6ad0f426-aec8-4ee2-8d9d-bf21733fd766,exploit compelling vortals,Lost,New Business,2025-02-06,221247
-482,91e5b0df-b51f-4731-997c-37c657b742ae,2bbcad29-7589-4359-89ec-eeed5b7a58ab,e-enable dot-com vortals,Closed,Renewal,2025-02-25,54115
-483,53de0985-2ccd-4028-8339-928188224daa,2bbcad29-7589-4359-89ec-eeed5b7a58ab,engage cross-media methodologies,Proposal,Upsell,2025-03-30,358923
-484,764cd03f-9776-4e31-ba04-9b8382ef313f,2bbcad29-7589-4359-89ec-eeed5b7a58ab,expedite robust synergies,Qualification,Upsell,2025-01-09,106788
-485,5968163d-7623-4ac9-a530-1c5dfeca52bc,5bbd2f66-e93e-4583-857d-819b4ffef169,cultivate strategic infrastructures,Won,Existing Business,2025-02-20,360391
-486,8602c642-013c-4441-a0be-0fe84e6e9e9e,5bbd2f66-e93e-4583-857d-819b4ffef169,streamline visionary deliverables,Won,Renewal,2025-01-04,289602
-487,28d2953d-8d17-4a9d-ac94-1d6720fe96f4,c2574b21-5a0d-40d6-aee5-79927e5ac5d0,scale synergistic portals,Won,Upsell,2025-03-11,209063
-488,d1d27c14-5fb3-4879-a150-96f5b36e9b66,637f4833-b311-4245-a8e1-b6ba15c71bf1,engineer killer models,Closed,New Business,2025-03-31,335691
-489,92fbe5d0-d794-412d-9c29-50f8baafa600,637f4833-b311-4245-a8e1-b6ba15c71bf1,synthesize transparent supply-chains,Lost,New Business,2025-02-02,377748
-490,62de255d-713d-43e4-b319-d4c88eaab043,637f4833-b311-4245-a8e1-b6ba15c71bf1,transform customized info-mediaries,Lost,Existing Business,2025-03-24,270359
-491,95dd035e-ff84-4b88-a9d7-ee4fbc2958f6,7a741cf1-2b2b-41fc-9f34-9704de2d79bd,aggregate synergistic synergies,Lost,Renewal,2025-01-13,365097
-492,b35f55b7-f848-49a1-9eb7-bc06d0e48e52,7a741cf1-2b2b-41fc-9f34-9704de2d79bd,e-enable distributed supply-chains,Won,Renewal,2025-01-16,127214
-493,66fc25ca-5228-405a-a0e6-baf4d21276e2,7a741cf1-2b2b-41fc-9f34-9704de2d79bd,unleash revolutionary relationships,Proposal,Existing Business,2025-01-04,61520
-494,58735419-1d6f-4744-9d18-a9abee0fba02,28669778-e50e-4a86-9f95-760384ad26bd,synergize proactive solutions,Closed,Renewal,2025-02-03,367552
-495,bcf3c216-0b1f-464b-82e8-a1ddcae0a857,265e7ac7-767c-481e-99ec-8abf3ff67f37,mesh extensible action-items,Negotiation,New Business,2025-02-06,254216
-496,77cf790b-cb71-43c5-a833-24782a988bdb,962dc1ca-4284-4239-ae85-c4f7fbdd0111,deploy global vortals,Won,Upsell,2025-03-10,188496
-497,fff1f182-d76e-484f-a018-f2af88f08b71,cbac98dc-dc2d-43d2-9ccc-d545167b47bc,transform proactive deliverables,Negotiation,Renewal,2025-04-03,64695
-498,f7f06246-8024-4052-a934-d64d2f757aac,cbac98dc-dc2d-43d2-9ccc-d545167b47bc,syndicate holistic e-tailers,Lost,Renewal,2025-01-24,238095
-499,e7d63934-cfb5-48a1-bf35-ac7a9f55a9d0,58aa66d5-df85-4eea-b02e-bce04001b17b,reinvent B2B paradigms,Negotiation,Renewal,2025-01-29,354301
-500,ffd185f9-a88f-4099-9671-f15344a6f918,58aa66d5-df85-4eea-b02e-bce04001b17b,revolutionize 24/365 vortals,Qualification,Existing Business,2025-03-09,369775
-501,d90701d3-c5ea-4000-b30e-7b52d2085016,24576b70-30a4-4560-8a32-5c3390acd01e,scale killer niches,Won,Upsell,2025-03-13,139402
-502,f4b5ccd6-795d-4e47-bcb2-ee9b241d36ef,24576b70-30a4-4560-8a32-5c3390acd01e,seize out-of-the-box architectures,Proposal,Renewal,2025-01-30,353096
-503,aa45cc2d-ac7e-4f12-89a2-4fe526f0aca4,daefa619-bcdd-4eca-8958-7f414a1c3dcb,whiteboard bricks-and-clicks supply-chains,Lost,Renewal,2025-01-14,276500
-504,4308bf76-a9b5-4ad6-8c14-004b9484034a,daefa619-bcdd-4eca-8958-7f414a1c3dcb,monetize robust markets,Proposal,Renewal,2025-01-27,443272
-505,4853b58d-337c-49d2-b2c4-ab5c44e0c57d,8c81c582-9be6-4cb1-8723-50e54c6c2891,innovate killer e-markets,Proposal,Renewal,2025-02-01,237174
-506,e5e0dfde-b304-427f-b740-efe780d0f2bd,416ab0ea-1e58-47c2-8349-b4b22f9d5a93,repurpose value-added schemas,Lost,New Business,2025-04-04,141864
-507,80a38cfd-0310-420f-bd93-cc60ccaabec4,416ab0ea-1e58-47c2-8349-b4b22f9d5a93,generate cross-media supply-chains,Prospecting,New Business,2025-02-16,120787
-508,9c21058f-2aa7-4793-85fc-9579186521ff,9745afb2-6bcc-4d58-92a0-f8d29c165673,re-contextualize intuitive networks,Closed,Existing Business,2025-01-24,432758
-509,6b92f196-c242-4e6e-a327-630a0a3ad242,c376ee71-6782-48d3-8df5-2d8f6accdd03,unleash distributed convergence,Qualification,New Business,2025-01-27,271168
-510,f16f55ba-d5f1-4bb6-986e-ff7afcdb51c9,b3cf9311-e0e8-4bc1-b1c6-abcac618483d,architect sticky ROI,Closed,Existing Business,2025-02-21,271787
-511,51a64779-894f-4347-b685-2148b95de074,b3cf9311-e0e8-4bc1-b1c6-abcac618483d,utilize holistic channels,Closed,New Business,2025-04-08,458185
-512,3397f801-885f-412a-aafc-06656a57796b,b3cf9311-e0e8-4bc1-b1c6-abcac618483d,maximize open-source networks,Lost,Upsell,2025-01-21,331317
-513,d0ce0163-ccc0-4733-bfcc-a53d53bcd8b5,46161fed-dc5f-4577-8b10-2fab69ee2b56,e-enable cross-media interfaces,Closed,Renewal,2025-03-10,127033
-514,f827a823-f510-4ee6-bf4e-53791c161ad3,46161fed-dc5f-4577-8b10-2fab69ee2b56,generate value-added action-items,Qualification,Upsell,2025-04-05,269534
-515,4eb33066-f613-4dd5-996c-f8e256d49cbd,46161fed-dc5f-4577-8b10-2fab69ee2b56,empower cross-platform functionalities,Proposal,Upsell,2025-01-24,321345
-516,348272f3-0db0-47b1-a806-40daa25f0f3a,9ca0073a-3578-40a6-93dd-f054205e2e48,architect dynamic methodologies,Qualification,Renewal,2025-03-07,99961
-517,dc632fde-e865-4c27-855f-f1d217fe9bd9,9ca0073a-3578-40a6-93dd-f054205e2e48,revolutionize B2B paradigms,Negotiation,Upsell,2025-03-07,106860
-518,a9390d73-f1a0-49c8-8768-f1944785a23a,169fccf5-3830-4fe9-a5a4-b1d3f8e476fb,productize extensible e-commerce,Lost,Upsell,2025-02-01,396482
-519,19a283de-6791-49aa-aa88-2d2612405a6e,169fccf5-3830-4fe9-a5a4-b1d3f8e476fb,innovate clicks-and-mortar partnerships,Qualification,Renewal,2025-02-06,292432
-520,629e7ab9-7571-4379-9202-8610aca27245,e46e631d-a47b-4d80-bff3-a4094f09a82e,visualize compelling relationships,Proposal,Renewal,2025-02-04,102699
-521,e130f06f-8c12-42d8-ac9d-8b30f632a95c,e46e631d-a47b-4d80-bff3-a4094f09a82e,optimize efficient communities,Lost,New Business,2025-03-15,296698
-522,763a3144-1ec2-497f-b8a6-75c4e4adad98,e46e631d-a47b-4d80-bff3-a4094f09a82e,transition clicks-and-mortar synergies,Prospecting,Renewal,2025-03-28,77293
-523,f623cef1-6ee3-410f-b798-5e1d81fb9117,806bf831-886f-4f99-b07b-bc203ec7acac,aggregate intuitive models,Prospecting,New Business,2025-01-11,462468
-524,cd7e1ddd-6362-4afa-aaea-5ff63041355e,806bf831-886f-4f99-b07b-bc203ec7acac,revolutionize sticky e-markets,Won,Existing Business,2025-03-13,357183
-525,cf659986-6309-4e41-9637-0385e8c6c243,806bf831-886f-4f99-b07b-bc203ec7acac,empower intuitive niches,Proposal,New Business,2025-01-08,397188
-526,551baca6-9260-4849-9b42-d4de9534071d,3d5a9c2e-cd47-408a-a8b0-160cc5d01f5d,productize world-class vortals,Proposal,Upsell,2025-01-20,278254
-527,621264c6-6d7b-415b-9bbd-a4b5a61b12ed,3d5a9c2e-cd47-408a-a8b0-160cc5d01f5d,productize enterprise content,Proposal,New Business,2025-01-11,103316
-528,ccf68576-a239-4622-95a9-e3ceb7ef9c2f,8e9aef49-cb96-46e8-af42-72eede00670e,seize front-end metrics,Qualification,Existing Business,2025-01-22,201122
-529,7d88cd5b-0e47-4980-be07-6e848f55922a,c25eff29-10a5-467c-a008-8d03b0f445b3,evolve dot-com networks,Proposal,Renewal,2025-03-15,276005
-530,edcdecdc-5fc2-4a44-afa5-8af0cbb2d643,c25eff29-10a5-467c-a008-8d03b0f445b3,optimize frictionless methodologies,Lost,Renewal,2025-01-23,466651
-531,643229de-5e98-4cb8-a5d2-93acbac150fb,c25eff29-10a5-467c-a008-8d03b0f445b3,innovate global e-commerce,Proposal,Upsell,2025-03-21,224213
-532,d1f4e649-4cf4-4692-8ab0-87d988651df1,01c53ccc-01ba-45cf-9970-9f9b16b6b58d,deliver visionary models,Won,Renewal,2025-01-27,278445
-533,58c6a179-fe73-4bb3-a694-37c186d6b242,01c53ccc-01ba-45cf-9970-9f9b16b6b58d,transition bleeding-edge systems,Negotiation,Upsell,2025-01-20,393578
-534,7d053f95-fc96-4ed2-a469-a0360d93fabd,01c53ccc-01ba-45cf-9970-9f9b16b6b58d,facilitate cutting-edge e-business,Qualification,Existing Business,2025-03-17,91547
-535,b3d0a310-c8a6-44d7-b091-a236e86f4f3b,b070c897-2bf5-4764-ade1-0b5c0f3b7cbc,expedite best-of-breed e-commerce,Lost,Renewal,2025-01-10,437871
-536,eb26fc4f-eda2-4582-abd0-5d1b3d2c73d6,b070c897-2bf5-4764-ade1-0b5c0f3b7cbc,matrix dynamic systems,Closed,Existing Business,2025-02-01,170057
-537,71d6367f-d731-453e-92df-a9cc36f6df2b,b070c897-2bf5-4764-ade1-0b5c0f3b7cbc,cultivate intuitive architectures,Qualification,New Business,2025-02-24,341892
-538,2be0c3d0-ced3-4e81-a131-f9b180e52bf5,440d5213-acf6-48c7-b9a1-8ee404a7bb22,benchmark transparent technologies,Prospecting,Renewal,2025-01-04,167752
-539,7a3466e0-4b13-45cf-b3e3-c764baf56ad2,440d5213-acf6-48c7-b9a1-8ee404a7bb22,re-contextualize sticky metrics,Negotiation,Renewal,2025-01-29,224885
-540,948b9a64-da1b-4030-840d-3126c9a29c86,440d5213-acf6-48c7-b9a1-8ee404a7bb22,synthesize revolutionary technologies,Won,Renewal,2025-04-03,476491
-541,23186549-d3dd-4391-8507-022786c42abc,cdca5acb-21c0-4551-97b7-f302f6c01b34,exploit magnetic schemas,Prospecting,Upsell,2025-01-29,89301
-542,52b3e61a-70b3-4e0d-a136-5b32500fbfef,cdca5acb-21c0-4551-97b7-f302f6c01b34,embrace open-source partnerships,Proposal,Renewal,2025-02-20,333249
-543,ad4935b8-0beb-445c-8d4b-ba75e6d98b7a,5a98fe9e-e7c5-44d4-900b-7e7e06758a3b,harness synergistic experiences,Closed,Renewal,2025-01-03,299563
-544,c396f1e9-0514-4796-ba6a-4715fbca818f,5a98fe9e-e7c5-44d4-900b-7e7e06758a3b,drive user-centric e-markets,Prospecting,Existing Business,2025-01-24,90128
-545,1b6e0169-1238-492f-87e7-827875da22f0,72b4f529-bc38-483f-a9ea-656063428ec5,matrix virtual communities,Won,New Business,2025-01-17,200900
-546,35f126c5-e2ba-4c59-8c81-15a5cbca33eb,72b4f529-bc38-483f-a9ea-656063428ec5,visualize e-business web-readiness,Prospecting,New Business,2025-01-28,362181
-547,90f616a9-f139-4828-9888-ee076a8c11c9,72b4f529-bc38-483f-a9ea-656063428ec5,reinvent real-time ROI,Won,Existing Business,2025-01-30,386878
-548,c2381168-a86c-4a70-a678-daf864c902c2,f81f374d-282b-45db-8bc9-65286128f3e6,transition robust technologies,Won,Renewal,2025-02-04,387897
-549,0e007a97-babd-47d2-8801-5673898ee225,f81f374d-282b-45db-8bc9-65286128f3e6,deploy web-enabled e-tailers,Proposal,Upsell,2025-02-26,468963
-550,40105c93-9e3c-4f9b-9151-8743fc992bfb,f81f374d-282b-45db-8bc9-65286128f3e6,benchmark strategic methodologies,Closed,Existing Business,2025-01-25,76429
-551,cb03cd4e-4083-4457-afa0-9ee02d52d4d3,912b3ed7-ecae-477b-b233-7ba6daa41f6f,architect enterprise models,Qualification,New Business,2025-01-29,267052
-552,33c145a9-0564-4965-9cec-2b70690d6f99,912b3ed7-ecae-477b-b233-7ba6daa41f6f,productize value-added e-commerce,Proposal,Upsell,2025-03-13,268989
-553,24b20a56-9018-4589-94fe-317f6c37de12,912b3ed7-ecae-477b-b233-7ba6daa41f6f,deliver back-end info-mediaries,Qualification,New Business,2025-04-06,387761
-554,20c21af8-da1a-4481-b6cb-5bd8398f00e5,ebba32fb-dbeb-4bc9-b96a-eb0d19b5c835,mesh collaborative paradigms,Proposal,Upsell,2025-03-01,231970
-555,7ebd7de9-68c8-429d-886b-19305927608d,ebba32fb-dbeb-4bc9-b96a-eb0d19b5c835,integrate open-source web services,Closed,Renewal,2025-01-28,405848
-556,d1ad312b-9297-44cb-bab9-e3808e850587,ebba32fb-dbeb-4bc9-b96a-eb0d19b5c835,leverage mission-critical paradigms,Lost,Upsell,2025-01-14,103348
-557,373e6a9c-15cf-480d-8707-bef56576c1e4,0a5136e0-e86c-48a7-84a4-f32ed90692d0,aggregate 24/365 functionalities,Lost,Renewal,2025-03-11,73831
-558,4f59c464-77f8-41cc-a2a3-077c2a5f68eb,addb7fe9-2265-43c3-a921-64b91fe5c3ec,facilitate one-to-one partnerships,Proposal,New Business,2025-03-31,328186
-559,64c168ef-ffe8-4743-94ba-58820e957fe5,addb7fe9-2265-43c3-a921-64b91fe5c3ec,enhance impactful experiences,Qualification,Upsell,2025-02-02,201036
-560,ee554522-8e90-4eed-968f-94c2c7698c34,addb7fe9-2265-43c3-a921-64b91fe5c3ec,syndicate B2C experiences,Closed,Existing Business,2025-02-17,305818
-561,b30fb1b1-3d96-4ff6-b35d-6936348a41c5,7e33b3d1-8398-4723-9e1b-f4b1965203e5,revolutionize viral users,Qualification,Upsell,2025-01-29,254182
-562,df365cd3-c7b8-42b8-8113-fc1faec17a1a,7e33b3d1-8398-4723-9e1b-f4b1965203e5,enable bricks-and-clicks experiences,Negotiation,Upsell,2025-02-22,318610
-563,75b26604-37e5-4220-a492-e516ab486007,ad2cb6a0-ddcc-4297-840a-8fde6efecab7,architect robust architectures,Proposal,Renewal,2025-02-18,257388
-564,d9e9a7d8-c508-4c5b-8ff4-abe996bac435,f0ded5fd-bdc2-446d-bb92-4b1b5620173b,exploit leading-edge models,Negotiation,Existing Business,2025-03-23,454376
-565,34b1f71b-25c7-4769-affa-3b40e7e5f2ea,f0ded5fd-bdc2-446d-bb92-4b1b5620173b,benchmark user-centric paradigms,Negotiation,Renewal,2025-02-14,296131
-566,3d66275c-c52e-4d21-88b9-4578942aaaad,8ff9d63e-c078-456f-a053-fa8176499152,maximize rich experiences,Proposal,Existing Business,2025-02-15,248619
-567,dba6ceba-e7fc-4ccd-8c5f-5ee50d932c92,8ff9d63e-c078-456f-a053-fa8176499152,benchmark next-generation applications,Lost,Existing Business,2025-02-03,391444
-568,27a355b0-b26a-4def-9c1d-0ba5143a9a98,7304e03f-5bec-4ab7-a394-5dfa3408632e,redefine turn-key markets,Proposal,Existing Business,2025-01-19,78081
-569,e4b87536-ef1f-40be-8278-c7ce2b4c5c15,96d6994e-010d-4bd1-be94-4dfddf25ad65,synergize web-enabled solutions,Lost,Existing Business,2025-01-31,317592
-570,84ce06f4-e466-46c3-8899-a253a1601336,47847c8c-1a25-43c0-9f95-0f52076abb6d,iterate cross-platform mindshare,Lost,Renewal,2025-01-28,83522
-571,9e7763e0-2a2a-4a58-a5e2-06106fc6027f,47847c8c-1a25-43c0-9f95-0f52076abb6d,mesh transparent e-services,Negotiation,Renewal,2025-03-15,250078
-572,3e0127f0-a595-46c9-9815-05be80b7b0e9,47847c8c-1a25-43c0-9f95-0f52076abb6d,whiteboard end-to-end synergies,Lost,Upsell,2025-03-20,172967
-573,b9ec7ae2-9957-474a-9fa1-a73f85a6f103,bba268ef-be24-4c2a-b9d1-46386eb06a2c,architect impactful functionalities,Lost,Existing Business,2025-01-22,437546
-574,d2dd97af-f191-4f34-ae1c-98542a6e73ec,bba268ef-be24-4c2a-b9d1-46386eb06a2c,harness one-to-one functionalities,Lost,Renewal,2025-03-11,374552
-575,9debcf8d-cf53-4c0c-9d55-2528a04716e9,bba268ef-be24-4c2a-b9d1-46386eb06a2c,disintermediate enterprise solutions,Qualification,Existing Business,2025-03-09,237342
-576,52512f37-e3d3-4698-a0f8-641155a45ab5,84b8ff49-066e-4cb8-ac9f-0ccab9a51f6c,iterate visionary functionalities,Lost,Upsell,2025-03-11,357501
-577,94e84c2b-4056-4472-99af-3ed5dea8eb18,84b8ff49-066e-4cb8-ac9f-0ccab9a51f6c,whiteboard dot-com e-business,Prospecting,New Business,2025-01-25,411371
-578,37c00e6f-2f7a-4f2f-90c7-e9c19106b2fd,84b8ff49-066e-4cb8-ac9f-0ccab9a51f6c,visualize distributed architectures,Negotiation,Existing Business,2025-01-24,402413
-579,98e300db-fe3a-4aa5-90c4-f6627838c441,3bfd7c90-5cd0-4b07-a7bd-10f2385f47b2,e-enable bricks-and-clicks supply-chains,Won,Existing Business,2025-01-12,261389
-580,ac0b81f3-b36b-40a7-917a-5f8c21ecadff,3bfd7c90-5cd0-4b07-a7bd-10f2385f47b2,matrix synergistic e-business,Closed,Existing Business,2025-04-03,238430
-581,8f3b64a1-0189-46c0-9b5c-59524696793b,3bfd7c90-5cd0-4b07-a7bd-10f2385f47b2,productize virtual systems,Closed,Upsell,2025-01-07,483921
-582,c4fd3fd5-4432-4bf1-84f5-8f47c08bd08e,03c742c1-5078-492b-829c-05a268cfba41,empower magnetic synergies,Won,Renewal,2025-02-13,112691
-583,9492d51a-4d10-44a6-a688-53afdb4413e4,fa7879b7-661b-4cb4-bc47-9f6c01566dc3,transform interactive solutions,Prospecting,Existing Business,2025-03-18,55258
-584,d398be98-f77f-416b-a75d-432138ba85e6,fa7879b7-661b-4cb4-bc47-9f6c01566dc3,syndicate synergistic systems,Won,Renewal,2025-02-18,312624
-585,5984e73f-6906-4998-820f-ef2124b35f57,bade0087-3c4f-482e-bddd-3c8b06b8af05,syndicate compelling e-commerce,Closed,New Business,2025-02-06,132668
-586,e8dae824-8f47-4249-85f9-e48f88c44f8e,bade0087-3c4f-482e-bddd-3c8b06b8af05,deploy magnetic functionalities,Negotiation,Renewal,2025-01-23,437332
-587,b7f06554-4d9b-412b-8ebe-4df2e46cdca9,06fbeaa4-36f4-4437-b098-01eb27099c35,exploit vertical applications,Prospecting,New Business,2025-02-25,251400
-588,950fc27d-8efc-402e-877a-143cbd3ba966,06fbeaa4-36f4-4437-b098-01eb27099c35,iterate next-generation applications,Proposal,Existing Business,2025-03-05,280852
-589,40a7b548-af03-413b-a5f5-43afbd56c3d6,6e7a6ede-86ee-4314-a88c-43e5e36be6c7,enable compelling e-services,Won,Existing Business,2025-01-10,281000
-590,42b936ab-35be-4f46-b03d-cc174b9101a9,6e7a6ede-86ee-4314-a88c-43e5e36be6c7,visualize virtual vortals,Lost,Upsell,2025-03-23,106086
-591,231589a5-f51f-4de4-aa2f-9996d4d25caf,6e7a6ede-86ee-4314-a88c-43e5e36be6c7,seize bricks-and-clicks portals,Negotiation,New Business,2025-03-31,288521
-592,6f01bbc2-7e3e-42a3-9979-0a447c588f18,8450218f-cb3c-4638-984c-c04440a8904f,visualize one-to-one methodologies,Lost,Renewal,2025-03-16,422972
-593,9bdfda61-6e84-418e-a081-719810e34ded,883a5e64-6633-4207-a8a2-25f8255a599a,leverage holistic supply-chains,Lost,Renewal,2025-03-23,311762
-594,af28d16a-121b-4888-bb8b-b36e42a3efcb,883a5e64-6633-4207-a8a2-25f8255a599a,benchmark viral supply-chains,Won,Renewal,2025-01-17,145394
-595,24401f65-41ee-47c6-8e7b-450675d7ee7e,883a5e64-6633-4207-a8a2-25f8255a599a,repurpose cutting-edge bandwidth,Proposal,New Business,2025-02-16,272195
-596,820227da-c4de-4d8b-a6ce-b19d2c8c05c4,1a0ccf44-2e8e-4a18-8553-f5bc1d6a08b2,deliver 24/7 methodologies,Closed,Upsell,2025-01-02,465407
-597,cd95f43a-0cde-4386-8858-7fd9a8e295c1,1a0ccf44-2e8e-4a18-8553-f5bc1d6a08b2,enable revolutionary paradigms,Closed,Upsell,2025-01-18,164151
-598,d929a6d1-80f8-4d50-a4ba-908cc431de8a,44523e51-653a-4985-b262-815f7bb6ff1a,engage turn-key solutions,Proposal,Upsell,2025-01-05,179757
-599,2e4a1304-8c7a-4f2b-abf2-aa8ada7cc2d3,d7f70bed-c830-40be-b714-000c1cea7601,target sticky e-services,Lost,Existing Business,2025-03-17,484246
-600,6d57d437-612c-4860-9d05-fd9cfcb0274d,d7f70bed-c830-40be-b714-000c1cea7601,matrix collaborative communities,Lost,Renewal,2025-04-02,427041
-601,cf0eea4c-4bf1-4b21-b42b-66d2704b1989,e31cc09c-9803-4392-9c24-73f3cb182d96,repurpose holistic relationships,Won,Upsell,2025-02-27,460001
-602,71c369c3-889d-4c56-ad81-e1078a0bab3a,e31cc09c-9803-4392-9c24-73f3cb182d96,implement granular applications,Lost,Upsell,2025-01-10,407933
-603,8a664005-4da0-4b7a-a5c3-562af7331dd9,9d2d08b6-e105-4168-8087-f5cf8714e97c,grow real-time paradigms,Proposal,Existing Business,2025-03-22,369898
-604,ab34361e-1b4c-47ff-92bb-6e5db6fbae75,9d2d08b6-e105-4168-8087-f5cf8714e97c,engineer distributed platforms,Won,Existing Business,2025-01-23,477899
-605,08c6aa52-783b-49fb-8d8e-498ee4d9e6ce,2403bd36-8159-4209-a8d6-4e9a64455017,incubate front-end schemas,Closed,New Business,2025-04-02,494257
-606,6f87ece1-42e2-4b40-be81-b4bd2e931c55,2403bd36-8159-4209-a8d6-4e9a64455017,innovate customized networks,Proposal,Renewal,2025-01-07,338242
-607,83357a4a-d7e2-4ae8-af8e-5f4b715f91c7,4775a441-6786-476a-931f-75caf5f0cf77,e-enable strategic experiences,Lost,Existing Business,2025-03-22,499074
-608,715a626e-f8a3-48f6-84dd-a71f00e940bf,53def9c7-f0a0-468d-b5ea-6b2a6714cc4f,implement B2B convergence,Closed,New Business,2025-01-05,449724
-609,53ae8615-aea9-46ab-a324-09a6fc9ab9b4,53def9c7-f0a0-468d-b5ea-6b2a6714cc4f,engage vertical bandwidth,Lost,Existing Business,2025-01-15,310818
-610,41c8f06b-d452-47d8-b4d5-17716b314dec,53def9c7-f0a0-468d-b5ea-6b2a6714cc4f,iterate B2C e-tailers,Prospecting,Existing Business,2025-03-13,267797
-611,fe5e54c0-6ada-44c3-9bba-0577d9070b3c,2e402e82-c962-448b-8204-6af26729d75c,envisioneer world-class applications,Won,New Business,2025-03-28,76126
-612,09d060d4-ec5e-4ffc-9b8b-5ab9f5448a57,2e402e82-c962-448b-8204-6af26729d75c,syndicate efficient niches,Closed,Renewal,2025-02-13,413393
-613,3648879b-bdf0-48c7-a16d-0501d2c9179b,2e402e82-c962-448b-8204-6af26729d75c,benchmark dot-com portals,Prospecting,Upsell,2025-03-24,153430
-614,fc1980e4-c6c4-4c41-abdd-f4d30cff39da,91ef5ced-d1a1-4910-917f-5112f5768396,re-intermediate cutting-edge e-tailers,Prospecting,Upsell,2025-01-20,330514
-615,af7e3f37-a7b1-46c3-a785-337e912d7447,91ef5ced-d1a1-4910-917f-5112f5768396,visualize user-centric systems,Proposal,New Business,2025-03-10,448365
-616,6419050d-914c-4399-9808-7bfc126e83ce,d25ea4a2-9ee9-4043-8d1b-0694a9796520,iterate world-class solutions,Closed,New Business,2025-02-27,283745
-617,a27ceea4-dbe0-4064-895b-a99d7b064aa3,368e4869-f2fa-440d-9930-f427d910a4f0,brand transparent platforms,Lost,New Business,2025-01-29,375650
-618,fa247221-8866-43c3-ba5c-f6838b3900d2,368e4869-f2fa-440d-9930-f427d910a4f0,deploy proactive web services,Lost,Existing Business,2025-01-11,298212
-619,7e1b4aba-18ef-4adf-9ef4-774da6e7c10e,368e4869-f2fa-440d-9930-f427d910a4f0,envisioneer extensible methodologies,Won,Renewal,2025-01-23,285305
-620,65f3f0ba-136f-4a7f-a83d-05792c3af935,d6eaf529-3d2f-47e2-b239-ac9dcf6ec703,mesh revolutionary platforms,Lost,Upsell,2025-01-21,64238
-621,2f370dca-0773-49e1-ba2a-eccbb639a0fc,d6eaf529-3d2f-47e2-b239-ac9dcf6ec703,incentivize compelling e-commerce,Negotiation,Upsell,2025-03-12,190852
-622,b70213cb-27e2-40d0-9300-3364cb2d33f5,d82a57e5-d215-44d7-809a-fcbd3720d084,expedite intuitive communities,Prospecting,Upsell,2025-02-25,190591
-623,f32df319-f02c-4c2c-bd6a-e86855899dcf,d82a57e5-d215-44d7-809a-fcbd3720d084,redefine mission-critical technologies,Prospecting,Upsell,2025-02-03,481486
-624,b561263a-edf9-42f6-a1dc-c1d88826b88c,34281836-7b17-4dae-a212-92de3aa6045b,whiteboard back-end e-markets,Lost,Existing Business,2025-03-22,416791
-625,75680237-aaeb-48d9-8006-8e5a8bce2a4e,65aff282-20a0-4890-9583-e275716f2365,revolutionize value-added relationships,Won,Renewal,2025-01-18,299850
-626,a8e77ca8-c734-42c2-89aa-739b6544ff0b,65aff282-20a0-4890-9583-e275716f2365,morph real-time applications,Qualification,Renewal,2025-01-07,288988
-627,216a57a3-08c9-4f79-ac53-1c0f1cae1387,c7423b7e-4564-413f-9b25-2d3a3a0bd87c,synthesize proactive applications,Prospecting,Upsell,2025-03-26,142743
-628,127ad23d-cb7d-4aff-9caf-e38167c1d554,c7423b7e-4564-413f-9b25-2d3a3a0bd87c,evolve cross-platform eyeballs,Qualification,Upsell,2025-03-27,412837
-629,9c9d9e78-1cc2-442b-8dc5-e304c7bc8bb3,162e47eb-c050-429f-88d4-e13a7a24e307,architect killer architectures,Qualification,Existing Business,2025-01-20,202088
-630,f6ff9f42-6e88-43c9-adb8-3f51cabbdd97,d623d3ee-ccf3-4f2b-a7f4-f4d37e26afc1,re-contextualize interactive e-tailers,Closed,Upsell,2025-02-17,57124
-631,eebab159-f5b0-4a9d-b661-f0ea43bbb287,d623d3ee-ccf3-4f2b-a7f4-f4d37e26afc1,enhance cross-media web services,Closed,New Business,2025-03-28,71433
-632,a093fdeb-c2d1-4534-9f22-f5ac6c279197,d623d3ee-ccf3-4f2b-a7f4-f4d37e26afc1,transition strategic e-commerce,Closed,New Business,2025-01-24,333761
-633,2f4753c6-a1c2-4d9e-9d61-37c5407cf430,daec670d-b39c-4b82-94c4-ec8025762077,unleash B2B channels,Lost,Renewal,2025-02-20,266587
-634,7c5a0e40-fcc3-4402-a666-c4fdc449b2a4,daec670d-b39c-4b82-94c4-ec8025762077,whiteboard value-added metrics,Prospecting,Existing Business,2025-01-24,136777
-635,5c7ef9c6-08ed-4d59-8534-a05cb0b4576b,daec670d-b39c-4b82-94c4-ec8025762077,brand web-enabled relationships,Negotiation,New Business,2025-03-11,451260
-636,768b33a2-9288-4c01-9288-e72b7bf31d96,969f2c0d-d82c-4491-9672-eb350b2e0166,synergize proactive methodologies,Lost,Upsell,2025-03-26,136214
-637,63f372c2-4ec7-4f18-b38d-9671255d6010,15661d4a-0c3c-4c43-a683-77936c692d57,repurpose value-added schemas,Proposal,New Business,2025-01-16,462760
-638,01edc804-adb4-47cb-a4fa-76689c786cbe,15661d4a-0c3c-4c43-a683-77936c692d57,e-enable dynamic e-tailers,Proposal,Existing Business,2025-03-24,116255
-639,4b93459d-1557-4a70-9ecf-427716cebd3c,15661d4a-0c3c-4c43-a683-77936c692d57,strategize cross-media partnerships,Prospecting,New Business,2025-01-19,180631
-640,12c7f6c1-f399-4a81-94bf-87148436b35d,abda930e-93d3-4e8c-96a8-b0e59aa51b4e,synthesize global communities,Prospecting,Existing Business,2025-03-18,161847
-641,c984391c-2d62-498b-bf3d-c675e35dbe3f,abda930e-93d3-4e8c-96a8-b0e59aa51b4e,seize vertical schemas,Lost,New Business,2025-01-20,144240
-642,757e5d67-acf6-474c-b9c4-33e415487ce7,de0017b6-e83b-4332-b2b8-20ac54a10d01,maximize end-to-end experiences,Lost,Renewal,2025-01-31,157188
-643,12058f9d-762c-41a8-a88d-efc1abb19211,de0017b6-e83b-4332-b2b8-20ac54a10d01,productize enterprise content,Won,Upsell,2025-03-08,117951
-644,bab23eb4-c00d-4abd-9bb3-6a03365ea120,de0017b6-e83b-4332-b2b8-20ac54a10d01,deliver plug-and-play e-services,Prospecting,Renewal,2025-03-18,77945
-645,ee6741f1-0e7f-4e6e-9cc5-b76c6d18b697,47f3ef9c-c8b2-4c4d-879c-b84517aa98d0,synergize real-time e-markets,Proposal,New Business,2025-04-08,160031
-646,36724436-93c8-47ea-b54e-49f4ebd3f6f7,8d4978a8-3298-4485-9e8c-ef74a031f5d1,incentivize one-to-one networks,Qualification,New Business,2025-01-08,284344
-647,fa25c41f-eb67-4a1f-87c8-818f1f978811,8d4978a8-3298-4485-9e8c-ef74a031f5d1,harness real-time interfaces,Won,Existing Business,2025-03-24,143165
-648,8ec8d322-32b1-4fea-9201-2bc711ad5440,2af3ffa7-ce91-4c37-95b7-49e24c0f5f55,synthesize rich web services,Negotiation,New Business,2025-02-24,142905
-649,aa12211e-cd73-451b-a8d4-9086a7dba03b,1370194e-175c-44f8-b743-ff292df870c0,leverage efficient channels,Qualification,Renewal,2025-01-26,243170
-650,5ade849c-1c2d-41dd-97b3-65da7b922fc6,1370194e-175c-44f8-b743-ff292df870c0,aggregate next-generation solutions,Lost,Renewal,2025-03-02,246760
-651,d0bf697c-e884-4495-9de9-ab61a8def968,2143e588-f715-483e-b41b-7978cd2ec501,streamline integrated mindshare,Lost,Renewal,2025-01-12,175932
-652,6668cb6a-0709-42aa-ae9f-c41a9f7ef434,2143e588-f715-483e-b41b-7978cd2ec501,productize holistic deliverables,Won,New Business,2025-02-27,164237
-653,4d47857b-9a06-4689-9eaf-a9d70319aad9,68f186ee-6e29-4d17-b569-622eab67e8f8,whiteboard open-source supply-chains,Closed,Upsell,2025-03-28,294093
-654,ef700e2d-994a-4df3-931d-1c031b1e9738,68f186ee-6e29-4d17-b569-622eab67e8f8,seize efficient models,Won,Upsell,2025-03-06,237108
-655,1cd7d1d3-8c42-4605-ae42-833ef11f235f,68f186ee-6e29-4d17-b569-622eab67e8f8,scale distributed experiences,Closed,New Business,2025-03-14,160545
-656,376a9459-3e77-43fe-9523-ce90908a4f2e,0fb5139d-6e90-4464-88aa-b57a21a21c66,visualize distributed info-mediaries,Prospecting,New Business,2025-02-25,397850
-657,42e36833-9c4e-4e3e-8fcf-5d473c04911f,f485e826-5096-4be9-be04-341dcf03ab1f,expedite open-source infrastructures,Qualification,Upsell,2025-02-10,374617
-658,a220b5a5-2e9b-4422-8c49-e13a46d4a302,f18b5310-a539-4d69-8eed-e9c5a3eac9b9,drive interactive supply-chains,Lost,Existing Business,2025-01-18,333241
-659,afa1e63d-a730-49bd-b6c9-543924bb88f4,b90f1a85-7e58-422d-a27f-b14a70855c01,repurpose world-class deliverables,Lost,Existing Business,2025-03-26,265008
-660,e0dabc81-a1ec-4a4a-8086-1643deb1b1d0,b90f1a85-7e58-422d-a27f-b14a70855c01,embrace user-centric technologies,Negotiation,Existing Business,2025-02-23,424004
-661,86a71cba-827c-44c8-a19e-65af9250cb7f,d98c50dd-2ad2-4462-84eb-f11ad93a4a37,implement plug-and-play initiatives,Prospecting,Renewal,2025-02-14,436711
-662,5b251526-c299-4645-b778-d0f936e36a3c,d98c50dd-2ad2-4462-84eb-f11ad93a4a37,drive collaborative deliverables,Closed,New Business,2025-01-26,473630
-663,235b10f8-bfca-410a-b3b1-a83c737fc1a2,d98c50dd-2ad2-4462-84eb-f11ad93a4a37,reinvent impactful initiatives,Qualification,Upsell,2025-03-19,381507
-664,05779bc5-a36a-45dc-ac89-3b54a8bc6a33,285ddccf-f1ce-4180-89d7-38ca66d989b3,target dynamic supply-chains,Proposal,Renewal,2025-02-13,69952
-665,679510d8-318d-406e-bc32-3b6595c1f531,285ddccf-f1ce-4180-89d7-38ca66d989b3,mesh bricks-and-clicks e-markets,Proposal,Upsell,2025-03-12,264801
-666,8bb57725-49b2-4d45-9468-c997919a7df1,11af5b26-1ea7-4869-a147-0433a98eb8f7,cultivate efficient networks,Qualification,Upsell,2025-01-28,190203
-667,d26865fe-69aa-4b85-a13a-12e9a1a65250,45936337-a11f-4ca6-969a-9d78bad889bb,maximize best-of-breed models,Prospecting,New Business,2025-01-11,144170
-668,b0377c26-f855-43d2-8c38-1e63259ceeec,45936337-a11f-4ca6-969a-9d78bad889bb,architect innovative convergence,Prospecting,Upsell,2025-04-06,109242
-669,2113cbae-77c2-49c7-9f54-540fd0dbbfed,e1197225-215e-4e0e-ad0e-33f056899e48,repurpose integrated web services,Prospecting,Existing Business,2025-02-28,380220
-670,885a24d7-c55d-4071-88d7-6fb3f95db52e,e1197225-215e-4e0e-ad0e-33f056899e48,harness distributed e-markets,Proposal,Renewal,2025-03-05,259597
-671,2509d947-8963-45df-87d2-7e22aac30c91,e1197225-215e-4e0e-ad0e-33f056899e48,innovate collaborative partnerships,Qualification,Renewal,2025-02-24,77072
-672,cf04552f-6bff-4f9b-a30f-19cf95ca54a7,575999e3-4e8c-4bbc-a987-8b7769fe8975,engineer distributed functionalities,Closed,Renewal,2025-03-08,304026
-673,15ce57bf-7997-43c4-8b30-2ce82db4d4d3,139ff035-0ee7-4177-98f5-0c76bff59ee4,cultivate real-time initiatives,Lost,Renewal,2025-01-06,270556
-674,05e89467-fef5-461d-895b-2ce049ed3d4b,139ff035-0ee7-4177-98f5-0c76bff59ee4,engineer collaborative partnerships,Lost,Upsell,2025-03-29,138940
-675,df572bdf-3c80-485b-9c3d-54ce73ab066a,139ff035-0ee7-4177-98f5-0c76bff59ee4,empower web-enabled methodologies,Lost,Renewal,2025-01-23,55661
-676,34409554-e954-4d0d-b3df-7e4654e4b6cb,41826484-f7ab-437b-83c9-f3663a23f8c4,evolve customized e-services,Won,Existing Business,2025-01-09,142521
-677,4611273b-b751-44ab-a945-400f1d475a8a,41826484-f7ab-437b-83c9-f3663a23f8c4,utilize web-enabled e-services,Qualification,Upsell,2025-03-29,413583
-678,405bc98b-ea2a-4c52-86de-b0a34d6e38cc,41826484-f7ab-437b-83c9-f3663a23f8c4,expedite bleeding-edge interfaces,Negotiation,Existing Business,2025-02-14,356999
-679,5257691d-3eeb-4933-8f9c-51dd665dde7e,4ca451c5-4d24-4b71-b314-02a7edf1a65e,productize intuitive vortals,Closed,Existing Business,2025-02-08,200460
-680,a0f8cdf6-fd86-4f56-b922-30e234162fd7,4ca451c5-4d24-4b71-b314-02a7edf1a65e,incubate bleeding-edge e-commerce,Proposal,Upsell,2025-02-10,146971
-681,a2da4d78-b028-49a2-959d-5bcc303b8caf,5ad43a97-8704-4098-a298-37d407caa7d1,syndicate vertical models,Lost,Renewal,2025-04-07,278874
-682,7181a712-d2a7-420c-8fa0-a2119d626c3b,ffc5406c-62fb-4d6e-9fe8-34ac165b4193,e-enable customized models,Lost,New Business,2025-03-30,334969
-683,0af4cd7d-d777-4ba7-89a4-9aa46340bf48,ffc5406c-62fb-4d6e-9fe8-34ac165b4193,empower visionary bandwidth,Prospecting,Renewal,2025-01-13,316364
-684,a8a4df8e-9907-416e-ad6c-3939452452bd,ffc5406c-62fb-4d6e-9fe8-34ac165b4193,monetize proactive interfaces,Prospecting,Upsell,2025-01-01,63181
-685,9b90f5a8-9a2a-4591-88d8-144be5132874,3af8812e-9f9c-47a2-9ecd-f60887c27e49,innovate real-time info-mediaries,Closed,Existing Business,2025-01-08,97815
-686,cc30e172-0da9-4631-871e-d7e7a92b05a8,2f1d2af6-571f-4cd6-9c27-8dcb8bcedcb8,engage collaborative action-items,Qualification,Existing Business,2025-01-21,281730
-687,05d369f3-59ee-423c-88b2-36a201e4ff5b,2f1d2af6-571f-4cd6-9c27-8dcb8bcedcb8,evolve compelling experiences,Proposal,Existing Business,2025-04-08,132599
-688,b26485ac-500b-4898-837f-8891f05ff6a3,2f1d2af6-571f-4cd6-9c27-8dcb8bcedcb8,unleash scalable markets,Prospecting,New Business,2025-02-08,304518
-689,020aa48e-5b79-4079-8806-de02ac6f0216,d9aee333-191f-4ae2-bf5c-1c0ae2d42d01,deploy back-end methodologies,Negotiation,New Business,2025-03-02,305153
-690,1f7356ee-652e-46b0-be6f-43cca7826ca6,fba96635-212a-4fdd-9633-49b9cbe7f7b8,unleash granular partnerships,Proposal,Renewal,2025-04-06,326358
-691,43b0048e-a89d-43c5-a5b4-94f98f322ae9,69f85f41-d708-4f2b-a5b2-476fcaa71efa,strategize synergistic methodologies,Closed,New Business,2025-01-17,325822
-692,6d13960d-4553-44cb-a6bf-593a18adbe41,69f85f41-d708-4f2b-a5b2-476fcaa71efa,grow next-generation niches,Closed,Upsell,2025-02-23,355558
-693,07c374a6-3fb7-493b-8e0c-12091d671aa6,cbde9af5-b5b0-43d0-954e-fedbbe4b559c,innovate turn-key interfaces,Lost,Existing Business,2025-03-11,315663
-694,5ab7f6c8-b036-45d7-95fb-eef51f471eac,cbde9af5-b5b0-43d0-954e-fedbbe4b559c,brand e-business communities,Won,Existing Business,2025-01-13,418751
-695,41c1fe8e-d0cc-4025-98b4-9ff003a79ab2,0c1bb6ef-d4a2-44d9-aeea-2f7f88013d42,maximize cutting-edge supply-chains,Closed,New Business,2025-01-21,101476
-696,0e84cdbd-11e9-4df0-9060-5611600d11fb,5cd7fb78-ecf6-4356-b37c-013cc1396ea1,unleash next-generation e-commerce,Proposal,Upsell,2025-03-22,430743
-697,94c8a60d-6d04-44a7-8917-fa27eca4a3b6,5cd7fb78-ecf6-4356-b37c-013cc1396ea1,target seamless metrics,Lost,Renewal,2025-01-01,98223
-698,7c257e20-b744-4bb6-b5d4-3ba82aa812aa,6b192922-300a-4fd7-b819-87fb451dc6bd,facilitate one-to-one channels,Lost,New Business,2025-01-14,106863
-699,48130504-6d27-4ca2-8dc7-5c3af1c93caf,cc34089b-4b48-45c4-a126-eb2167f9a9c0,harness magnetic info-mediaries,Closed,Renewal,2025-02-05,378130
-700,79453569-6a91-4ad8-942d-72fc083dc733,cc34089b-4b48-45c4-a126-eb2167f9a9c0,optimize 24/365 action-items,Closed,Existing Business,2025-01-08,334767
-701,27064bbd-de38-4748-8282-c80418046f83,cc34089b-4b48-45c4-a126-eb2167f9a9c0,unleash B2C eyeballs,Prospecting,Renewal,2025-03-15,60512
-702,64ea8300-310f-4dd1-97fe-81651a9344b7,58dc463a-cf1c-47a2-85c5-a4ecc4fe2645,reinvent collaborative communities,Lost,Renewal,2025-03-31,490198
-703,7ae828a6-c85f-4724-b686-5a939db90aef,58dc463a-cf1c-47a2-85c5-a4ecc4fe2645,benchmark next-generation communities,Qualification,New Business,2025-02-01,475865
-704,314bed96-cf89-4518-8152-287b6db6d99d,58dc463a-cf1c-47a2-85c5-a4ecc4fe2645,target global niches,Lost,New Business,2025-01-14,442768
-705,e634f001-c747-4cef-bc13-da7ac940f2c6,dd003a76-605f-41cf-a906-de2e2997aac3,leverage impactful e-tailers,Lost,New Business,2025-03-08,395967
-706,350ecda3-fb55-4bad-af20-50dcf0b14300,b61f9f84-2a75-4a0b-9428-3fb818ddacb3,facilitate user-centric networks,Negotiation,Renewal,2025-01-22,67849
-707,3be86241-8d60-4cb2-98a5-da914fb84392,b61f9f84-2a75-4a0b-9428-3fb818ddacb3,re-intermediate integrated e-business,Negotiation,Renewal,2025-04-03,186555
-708,ab7fd10f-a48a-4ebc-93ca-50bca9c693ef,b61f9f84-2a75-4a0b-9428-3fb818ddacb3,repurpose distributed interfaces,Proposal,Existing Business,2025-02-10,84644
-709,29521851-7d86-4775-90c1-4d23a437670e,b33a3617-e956-42e9-89a4-a2f05f234acf,optimize cutting-edge technologies,Negotiation,Existing Business,2025-02-01,270051
-710,7a194b8c-24ca-475f-bdc8-b9c9d4e52d14,41c948c4-66a7-4285-8ecd-2ed6ee4f2cbe,iterate collaborative ROI,Prospecting,Renewal,2025-01-23,77818
-711,46ea6386-2f9c-46a8-aca3-88c4055b7e79,41c948c4-66a7-4285-8ecd-2ed6ee4f2cbe,enhance frictionless markets,Prospecting,Upsell,2025-03-08,297235
-712,795bfdcf-2e7f-45c9-9164-fd7a768ccdcf,d02a3d47-e7e5-43f1-a12f-e55a08286ada,engineer viral platforms,Negotiation,Existing Business,2025-03-14,70609
-713,22a2b6c9-586a-4a3e-b3d7-ec73e76199f4,d02a3d47-e7e5-43f1-a12f-e55a08286ada,benchmark bleeding-edge synergies,Negotiation,New Business,2025-01-13,73583
-714,760c7706-3989-49a5-863b-7a6fb0258b2d,d02a3d47-e7e5-43f1-a12f-e55a08286ada,harness synergistic eyeballs,Won,New Business,2025-03-24,486314
-715,0aa04f9d-3fa2-4cf4-862d-fb10abe5dc3d,d7c03992-ac8e-4dbf-b87f-35c73936e817,visualize enterprise mindshare,Won,New Business,2025-03-16,287036
-716,ffeff49f-5138-4d53-93d5-071d4b8a0061,d7c03992-ac8e-4dbf-b87f-35c73936e817,morph robust paradigms,Qualification,Upsell,2025-02-23,424785
-717,8d886c53-b03a-4a7d-887c-85156ee69840,d7c03992-ac8e-4dbf-b87f-35c73936e817,disintermediate strategic e-commerce,Prospecting,Upsell,2025-02-10,381181
-718,64b5c230-4fc0-459b-b66f-9cfa18477897,f29e14ab-65ff-4980-bd52-60ecca6ac389,optimize global web services,Lost,Upsell,2025-01-18,378259
-719,f1fcf8a9-c398-405e-8678-1373ce82c2fa,6e9bb766-9ac7-45c5-baaf-28dc592ccec0,leverage e-business synergies,Proposal,Upsell,2025-03-11,69119
-720,e6b13f86-b85c-4601-a93b-1a43c2c25545,6e9bb766-9ac7-45c5-baaf-28dc592ccec0,embrace synergistic paradigms,Lost,Upsell,2025-01-11,160978
-721,d8be77f9-30b3-4a3e-956a-6cd9d80b1deb,bccf0a01-491c-41c1-8dee-60f133d413e9,extend plug-and-play synergies,Proposal,Renewal,2025-01-06,105446
-722,ca9c544d-5ab5-4639-86e7-4cbfdd0b82c7,bccf0a01-491c-41c1-8dee-60f133d413e9,reinvent transparent networks,Lost,Existing Business,2025-03-04,280271
-723,079cb326-48a2-4209-95ef-5219d575e311,bccf0a01-491c-41c1-8dee-60f133d413e9,matrix real-time functionalities,Won,Existing Business,2025-03-21,219038
-724,401b3e98-b74d-4613-a461-7bf50fb89305,201afa7c-a3a1-4bcf-b872-6ac49bd79499,embrace extensible infrastructures,Won,Renewal,2025-04-05,341132
-725,15f62f54-6012-47ba-864d-9b600808dfd0,201afa7c-a3a1-4bcf-b872-6ac49bd79499,enhance rich architectures,Lost,Renewal,2025-03-27,207823
-726,3a70f436-d96f-41cb-b36f-1079ccda4771,fb0816a9-2f4b-4f22-95da-39c629824c45,evolve dynamic convergence,Proposal,Existing Business,2025-01-13,352318
-727,76fa6dd6-ba41-433c-8238-45176dca3e58,fb0816a9-2f4b-4f22-95da-39c629824c45,leverage seamless functionalities,Negotiation,Existing Business,2025-02-07,121635
-728,8137c4d3-448d-433e-9ede-ec121bf24a40,fb0816a9-2f4b-4f22-95da-39c629824c45,innovate front-end relationships,Closed,Renewal,2025-01-10,480852
-729,1f44cd22-5361-41bb-aa7a-6edd54c4ad6c,1341c4fa-b818-4d84-95dd-bc5466172dc9,e-enable interactive networks,Negotiation,Renewal,2025-03-23,57557
-730,afa166a1-a228-4483-9e7f-8aabc7a43b5d,1341c4fa-b818-4d84-95dd-bc5466172dc9,incubate ubiquitous e-markets,Qualification,New Business,2025-01-12,118158
-731,ef331ef1-b827-46f3-bbd4-63fff8009f1f,bd558c68-5027-4013-8f87-cd05b90dd913,drive dot-com e-services,Won,Existing Business,2025-02-22,464791
-732,ad5b6efa-3abb-41b5-8300-6cdb82ba8b26,bd558c68-5027-4013-8f87-cd05b90dd913,benchmark virtual convergence,Lost,Renewal,2025-02-04,366459
-733,78b62105-5c21-4a01-9a45-11ff4ccef2f5,bd558c68-5027-4013-8f87-cd05b90dd913,syndicate vertical solutions,Negotiation,New Business,2025-03-20,384598
-734,14d5b885-ec7a-415f-b85a-4befd1f8a181,6bde4583-fb99-4341-926b-cb517639e076,iterate user-centric solutions,Negotiation,Renewal,2025-01-30,223487
-735,3f87cf50-5ea7-49ce-ae5c-cd36c06175d2,6bde4583-fb99-4341-926b-cb517639e076,redefine back-end synergies,Lost,New Business,2025-03-30,261863
-736,a5964512-0241-4871-ac1e-fb0e44795b35,6bde4583-fb99-4341-926b-cb517639e076,grow rich interfaces,Prospecting,New Business,2025-02-08,255653
-737,ded7c2ea-70c9-4622-92c1-f380ba34b16a,06f16e5e-6586-47ef-b3b4-b32232353702,grow clicks-and-mortar paradigms,Closed,Existing Business,2025-01-04,385636
-738,fbcb213b-9f32-4173-b434-d15b6c295cc3,06f16e5e-6586-47ef-b3b4-b32232353702,monetize innovative initiatives,Lost,Renewal,2025-02-04,379713
-739,25947fdd-d52f-43cb-ba61-860eece6dc8a,06f16e5e-6586-47ef-b3b4-b32232353702,mesh 24/7 action-items,Negotiation,Existing Business,2025-02-01,475497
-740,c7f1cb83-e8e1-44b7-bcda-c322fa3a6517,8bcf63c5-ca5b-48a4-ad49-6f5493e3d337,strategize synergistic mindshare,Negotiation,Renewal,2025-01-19,319878
-741,8634fb8e-784e-4b81-9afd-ee762b62a109,8bcf63c5-ca5b-48a4-ad49-6f5493e3d337,generate revolutionary relationships,Prospecting,Upsell,2025-01-17,441853
-742,6966f3a3-20c6-4cd0-b574-28d28d94d006,8bcf63c5-ca5b-48a4-ad49-6f5493e3d337,unleash integrated interfaces,Negotiation,Existing Business,2025-03-22,298316
-743,e36fe014-9091-4c28-8732-e860a9a84c06,6fd2d8f1-6041-48fe-ac68-f845927190f5,morph bleeding-edge vortals,Lost,Renewal,2025-02-04,472712
-744,913a3e60-0a5b-49a0-a054-8a228508aeed,6518b510-45b7-4453-9a26-6c9a918ba90d,enhance proactive e-tailers,Qualification,Renewal,2025-02-14,91481
-745,669b92e4-8c3e-42b5-9bc0-137c54b0a641,6518b510-45b7-4453-9a26-6c9a918ba90d,repurpose plug-and-play channels,Won,New Business,2025-02-17,197722
-746,14edf31f-66c1-43cd-af24-a4923a6854de,6518b510-45b7-4453-9a26-6c9a918ba90d,architect virtual networks,Qualification,Renewal,2025-03-11,207727
-747,42b88246-81f7-4475-bc87-f7eb4b1f2e7e,82f5d41a-a57f-4e69-809c-b9101015d00a,deploy customized solutions,Won,Upsell,2025-01-19,207106
-748,ef8b6204-42d9-4f8c-988c-7a0bc1b2b75b,82f5d41a-a57f-4e69-809c-b9101015d00a,mesh user-centric mindshare,Won,Upsell,2025-02-19,387376
-749,2a07192d-39e5-4d2b-8a38-ce5cfbaad184,82f5d41a-a57f-4e69-809c-b9101015d00a,optimize holistic e-markets,Won,Renewal,2025-03-30,172492
-750,c2be212e-668e-46e5-bd85-204f45f6bd01,61ed14f7-c76c-4294-b400-44c1938b7a76,aggregate out-of-the-box paradigms,Qualification,Existing Business,2025-03-14,67647
-751,b0c6f9be-9d1a-4359-9b46-f9444d60f2de,61ed14f7-c76c-4294-b400-44c1938b7a76,utilize plug-and-play e-tailers,Won,Renewal,2025-03-25,235486
-752,661b1654-272a-4765-bf9b-3b4a9a99fc73,c13b81b5-a63e-4c11-ac5b-da72c87d3f7c,target granular partnerships,Closed,New Business,2025-01-23,353934
-753,5d5c6577-97ce-48a9-8d60-82b39846cbbe,c13b81b5-a63e-4c11-ac5b-da72c87d3f7c,seize killer relationships,Lost,Existing Business,2025-01-14,79988
-754,a4e5254f-5c9d-41aa-b27c-f5d0be78d72f,c13b81b5-a63e-4c11-ac5b-da72c87d3f7c,enhance distributed systems,Prospecting,New Business,2025-03-31,379931
-755,f02105d6-bfac-4d94-b528-b67e7ec8fb71,4b3dbd72-5415-44fb-a3cc-2f3a0cc79a5e,transition dynamic convergence,Closed,New Business,2025-01-20,252498
-756,0010a927-9f7a-4630-9ad8-40ead4f9350d,8b0387bc-b667-4aa4-9d50-ba230e162c8c,unleash visionary e-business,Negotiation,New Business,2025-02-05,283034
-757,b04b747c-b0af-4c71-aa6a-9d9f44ae68d3,8b0387bc-b667-4aa4-9d50-ba230e162c8c,repurpose open-source portals,Prospecting,Upsell,2025-01-18,442548
-758,f7eb071f-9343-4a10-befc-780938a57584,8b0387bc-b667-4aa4-9d50-ba230e162c8c,brand interactive markets,Prospecting,New Business,2025-03-09,252720
-759,21cad0a7-7654-4d7c-9dc5-fa93a682497f,53ea6179-9187-42dd-8d54-dd89f43d072b,matrix B2B e-tailers,Won,Existing Business,2025-03-08,84889
-760,e941a8d8-3ed8-40e3-9ef5-09503c2a5153,6fcf0aaf-f06c-4c8b-ab2b-fb9dc3d89a18,drive bleeding-edge systems,Lost,New Business,2025-03-21,360237
-761,d146ac7a-1499-487d-a42d-dd3320499159,6fcf0aaf-f06c-4c8b-ab2b-fb9dc3d89a18,integrate web-enabled channels,Closed,Existing Business,2025-04-03,428789
-762,06de1487-9ff6-4954-8c6c-ba2adea803fa,d37f0462-54c1-490f-959e-6790c27c175f,deliver strategic supply-chains,Proposal,New Business,2025-02-11,143099
-763,8b43f1a5-5286-40cf-bb48-09e8edf1fe58,d37f0462-54c1-490f-959e-6790c27c175f,monetize e-business initiatives,Proposal,Renewal,2025-02-21,259868
-764,7927fa84-9901-4cb8-b884-60b5e7b84b6f,d37f0462-54c1-490f-959e-6790c27c175f,repurpose efficient e-markets,Lost,New Business,2025-02-21,142126
-765,d2f28ac0-7816-441a-a572-91e6e1981e94,97a12154-6d53-4292-9e89-910eaa6be314,engineer next-generation e-business,Lost,Upsell,2025-02-07,54156
-766,d582e7e0-cba9-4a35-8a1f-a437890fe0a7,97a12154-6d53-4292-9e89-910eaa6be314,incubate B2C methodologies,Proposal,New Business,2025-03-27,135842
-767,42b8b3bd-cb90-4bfe-be0e-cad89969d519,97a12154-6d53-4292-9e89-910eaa6be314,deliver clicks-and-mortar schemas,Qualification,Upsell,2025-01-07,422200
-768,7bbe73c1-2d0d-4611-ab0b-f7254c8c51aa,8b08f343-b18e-4e13-9494-365576703d68,iterate back-end e-business,Prospecting,Upsell,2025-02-19,160814
-769,91671bfc-47d9-49eb-bae3-bc5933d1e8ce,8b08f343-b18e-4e13-9494-365576703d68,expedite mission-critical action-items,Proposal,Upsell,2025-01-15,203040
-770,afdd25ce-c36d-4e6d-b19c-4cd094e459a7,8b08f343-b18e-4e13-9494-365576703d68,integrate next-generation synergies,Closed,New Business,2025-03-13,97721
-771,066c37fc-de4f-4ac1-a2c1-b1cc5972266d,ad630891-4183-4bd6-8c12-c4238defd7ae,evolve B2C systems,Prospecting,New Business,2025-01-19,333367
-772,acb9cb99-4128-4fd1-84f9-1164897a5b3b,f0478358-34d3-4626-b95e-d3b9dd267c03,incentivize strategic paradigms,Closed,Renewal,2025-03-15,354401
-773,a87f5878-e2a2-45d7-9adb-3b305e0f3543,f0478358-34d3-4626-b95e-d3b9dd267c03,whiteboard one-to-one relationships,Won,New Business,2025-03-31,458003
-774,1f6c1c2e-f6d9-4504-a0b0-bab223913e64,1f93b324-3935-4e83-8a75-74dd20a20c0c,reinvent frictionless web services,Qualification,Upsell,2025-02-10,168934
-775,15cf122f-8d8b-46eb-87bf-ffde72ebae27,1f93b324-3935-4e83-8a75-74dd20a20c0c,brand open-source infrastructures,Qualification,Renewal,2025-04-04,169259
-776,3bf89c31-b6c5-4344-87a9-5e8e23eb79df,1506959f-7e18-4206-afac-42b99f46c7b5,re-contextualize collaborative platforms,Won,Renewal,2025-02-16,96542
-777,6fa44b99-af5e-48a8-893a-da9a9dadf9f9,1506959f-7e18-4206-afac-42b99f46c7b5,empower user-centric markets,Proposal,Renewal,2025-02-01,294286
-778,db4bf1b0-f00c-4d78-a025-e52c7cd7b41d,e613ea1c-b20c-45b4-84aa-e037d8787da0,evolve efficient experiences,Won,Existing Business,2025-03-26,391697
-779,0c51919b-87fb-408e-8532-b607336f3f62,e613ea1c-b20c-45b4-84aa-e037d8787da0,visualize B2B infrastructures,Negotiation,Renewal,2025-03-10,265030
-780,908588f5-1464-4d0d-8b09-f63fc420e521,e613ea1c-b20c-45b4-84aa-e037d8787da0,extend efficient platforms,Lost,Upsell,2025-01-25,302783
-781,ac97f770-8ed6-4670-9058-dfc064c816ed,11424313-41bb-4dc5-9871-b4fae0112206,extend plug-and-play communities,Qualification,Renewal,2025-01-31,52088
-782,f958294a-6a3b-4979-8bf4-1ddf4d524e18,83bf921f-019c-416d-8a51-c0e2d56eca1c,envisioneer virtual initiatives,Won,Existing Business,2025-04-01,434920
-783,67372fe2-84de-46b8-abeb-d4c8b97827a5,83bf921f-019c-416d-8a51-c0e2d56eca1c,implement cross-platform technologies,Lost,Existing Business,2025-01-26,235459
-784,d40a3851-1ed9-4ea9-a3f0-57fc5dd0d853,1c7d221a-af81-4ed7-916b-03445589fc01,extend value-added interfaces,Won,Existing Business,2025-02-24,120201
-785,a970ff0b-cc57-4dab-a228-77e6600a6d77,e686d8f4-9ea8-4655-bcbb-98a0dd776b4d,cultivate turn-key eyeballs,Lost,Renewal,2025-01-30,437189
-786,2894ed5f-2c05-4e06-bcc6-3fc70444ba14,e686d8f4-9ea8-4655-bcbb-98a0dd776b4d,expedite robust deliverables,Prospecting,New Business,2025-01-09,132264
-787,a6b03678-03db-4084-a92a-db4157b9bc2b,c41d2349-8b21-4671-afe9-e89cfecd3fd5,reinvent cross-platform functionalities,Closed,New Business,2025-03-06,361107
-788,178ad225-6375-424c-87c7-106a3d59df11,c41d2349-8b21-4671-afe9-e89cfecd3fd5,empower compelling users,Won,Existing Business,2025-02-27,98720
-789,fb130606-de3d-44dc-99b1-6fec0780da0e,ac20bdad-22be-48b3-a126-af3740291b55,empower B2C action-items,Qualification,New Business,2025-01-17,498361
-790,b12a9582-2815-47dc-991a-25652e532cc4,ac20bdad-22be-48b3-a126-af3740291b55,disintermediate collaborative e-commerce,Qualification,Existing Business,2025-01-06,337472
-791,444343fd-bc86-4e7a-a08e-a7dba34aca58,ac20bdad-22be-48b3-a126-af3740291b55,enhance enterprise metrics,Proposal,New Business,2025-01-12,372714
-792,2f5ad0da-1a53-41c5-9cb2-1ac814acfd8a,76faed48-d962-4d84-a83c-fd419351b916,integrate robust channels,Lost,Upsell,2025-03-27,338587
-793,6c594b45-b216-448f-96f4-4100c897726d,76faed48-d962-4d84-a83c-fd419351b916,evolve web-enabled systems,Prospecting,Renewal,2025-03-05,79031
-794,47d67fab-d2cd-4c5f-a70a-e08f597d15ff,21aeeb79-f056-4629-a175-5ed570facf4b,matrix dot-com functionalities,Negotiation,Renewal,2025-03-12,241341
-795,11beaca3-2be8-478a-a74d-fdd0a1c531c3,568a2aeb-eb4f-4feb-a509-f662fba20e87,embrace distributed communities,Prospecting,Upsell,2025-02-24,286686
-796,5dba833f-471a-49c6-91f9-d720fd418d42,568a2aeb-eb4f-4feb-a509-f662fba20e87,aggregate synergistic synergies,Lost,Existing Business,2025-01-11,120792
-797,49159c21-202d-455b-aebd-a5fb5048834a,568a2aeb-eb4f-4feb-a509-f662fba20e87,engineer one-to-one supply-chains,Lost,Renewal,2025-01-18,246226
-798,9c342306-8cb7-4d86-92ee-a47b25a706d3,f6a41b19-2958-4589-8296-f288e46c6e56,deploy wireless users,Won,Renewal,2025-01-31,367021
-799,922ada45-50fd-45d3-b92b-16a6ef431111,f6a41b19-2958-4589-8296-f288e46c6e56,transition magnetic relationships,Closed,Existing Business,2025-04-08,211532
-800,acb391a6-9164-44e4-86b3-a378a8d75f45,f6a41b19-2958-4589-8296-f288e46c6e56,iterate robust technologies,Negotiation,Renewal,2025-04-06,233452
-801,f8aea291-8f8d-486c-af6a-552d96a08b22,e4404cf4-7604-435b-aa97-fef5cfe69a75,incubate e-business eyeballs,Prospecting,Renewal,2025-02-03,116000
-802,97c1e114-5f35-49dd-8a9e-6c800899314e,e4404cf4-7604-435b-aa97-fef5cfe69a75,synergize bricks-and-clicks platforms,Qualification,Renewal,2025-03-03,123409
-803,dcc814e3-4102-41c7-bfdd-d06146b9bf7b,e4404cf4-7604-435b-aa97-fef5cfe69a75,drive transparent networks,Qualification,Upsell,2025-01-30,121084
-804,e136643b-bc22-4eb2-987c-81a79d80974b,424d98c2-8600-462f-8119-333e541c5034,harness one-to-one web services,Proposal,Renewal,2025-03-23,238998
-805,8863d33d-738d-43bf-871f-1057ddcacdfb,424d98c2-8600-462f-8119-333e541c5034,matrix bricks-and-clicks synergies,Proposal,New Business,2025-03-26,372950
-806,f03d16a2-a415-4072-acb8-df9526329aeb,424d98c2-8600-462f-8119-333e541c5034,grow front-end ROI,Proposal,Renewal,2025-01-07,270512
-807,4129fa8d-e003-4c89-ba82-4e4f760db8e5,2de1e601-ec0f-4e25-9a8b-628ab5014b6b,re-contextualize virtual users,Negotiation,Renewal,2025-01-04,277210
-808,98af84e5-bd22-4ebf-a2fa-28f9fbd32f0f,2de1e601-ec0f-4e25-9a8b-628ab5014b6b,productize intuitive solutions,Proposal,Renewal,2025-01-25,253271
-809,831b7b1a-80a9-4074-802c-5318b4e066ff,2de1e601-ec0f-4e25-9a8b-628ab5014b6b,seize back-end technologies,Lost,New Business,2025-01-02,282059
-810,f4ee231a-43df-4556-8c76-33d8971894d2,ac303d67-e958-4925-9141-2b9ceadd94f5,grow real-time solutions,Lost,Upsell,2025-01-18,483867
-811,915d242f-c9ee-43af-82d2-966b5cc6f699,ac303d67-e958-4925-9141-2b9ceadd94f5,brand turn-key partnerships,Proposal,Existing Business,2025-03-22,149927
-812,1d1e71c9-1fd1-4eb4-b872-398638a94a55,ac303d67-e958-4925-9141-2b9ceadd94f5,iterate out-of-the-box channels,Lost,Upsell,2025-02-15,245109
-813,3b8e9ab1-5588-4810-b1de-8619aec9f926,1aa2d4d6-55b8-4d04-b6f3-e68f0d1ab52e,e-enable value-added partnerships,Won,Renewal,2025-01-03,191643
-814,3bb64d99-dc25-462d-aaf8-c9d3eadcf2d3,00313353-fa7f-462a-b4a7-77e793c43c08,re-intermediate B2C eyeballs,Closed,Renewal,2025-03-03,331636
-815,e7dad0aa-049a-4222-b379-5821dd4dd5a0,00313353-fa7f-462a-b4a7-77e793c43c08,implement out-of-the-box e-tailers,Lost,New Business,2025-02-16,157543
-816,7abbdfef-e8a0-426e-918d-95f56c9146ac,00313353-fa7f-462a-b4a7-77e793c43c08,leverage bricks-and-clicks metrics,Won,Upsell,2025-03-18,259811
-817,87073009-a84d-4dd5-9692-ae88287ee86c,522be488-fada-4ff7-b364-b976013edf6a,aggregate magnetic supply-chains,Lost,New Business,2025-01-05,325596
-818,6b1e0f8a-b9df-4532-b68f-ffbf028f8b13,522be488-fada-4ff7-b364-b976013edf6a,facilitate strategic users,Lost,New Business,2025-03-21,268435
-819,1ceed540-2311-4bdb-81e0-ae0edd78ae77,522be488-fada-4ff7-b364-b976013edf6a,drive end-to-end architectures,Won,Existing Business,2025-03-09,256663
-820,46e5d5e8-7bb2-419c-8efb-c4b8cd40f0df,07532f36-3b6c-4a86-86f5-7e31555db6fb,reinvent seamless networks,Closed,Upsell,2025-02-04,277463
-821,948e52d4-97e9-472f-b651-8062ca7b38c4,ee407877-73d4-4a95-a447-44cab269ef93,repurpose ubiquitous deliverables,Proposal,Renewal,2025-04-05,273381
-822,47120564-1d95-4477-9142-48a342437142,ee407877-73d4-4a95-a447-44cab269ef93,drive turn-key action-items,Proposal,New Business,2025-01-21,130620
-823,8678980f-30c9-4c4a-a398-86107853dfd4,ee407877-73d4-4a95-a447-44cab269ef93,enable interactive users,Qualification,Renewal,2025-01-29,397887
-824,84a57525-0dfa-4a8f-8dea-f66d88aabad5,ed3a8bd9-263e-4cec-977b-cde541818c24,brand customized networks,Proposal,Renewal,2025-02-05,218680
-825,72072568-c3d1-4577-9119-bf3a538b8b6c,ed3a8bd9-263e-4cec-977b-cde541818c24,expedite compelling experiences,Qualification,Upsell,2025-02-28,339904
-826,0e166126-277a-4ef4-ba97-05d691aa4551,ed3a8bd9-263e-4cec-977b-cde541818c24,harness sticky supply-chains,Negotiation,New Business,2025-03-27,254243
-827,eb1ce56a-4573-4e7b-a1fd-3bb25051d938,a5da879a-2126-41f6-a291-c0316b25a4e1,redefine value-added supply-chains,Qualification,Existing Business,2025-03-17,276469
-828,3ed23142-5769-403d-90b3-45abf448b485,03267ebc-763c-47e0-86c5-29a25b158632,orchestrate user-centric metrics,Lost,Renewal,2025-01-27,446253
-829,fd6ed2c3-0d0e-42f9-9985-e5c9042367c8,03267ebc-763c-47e0-86c5-29a25b158632,mesh cross-platform metrics,Proposal,Renewal,2025-04-03,230869
-830,9269eec6-f3c8-4e33-b64f-911b1a8c827a,03267ebc-763c-47e0-86c5-29a25b158632,transition enterprise initiatives,Negotiation,Renewal,2025-01-14,361949
-831,ddb38b03-fbe2-44d7-8081-3c3c040d56f8,dfea4fa4-60bf-4fa7-99e0-c335d58ed656,e-enable 24/7 niches,Qualification,New Business,2025-01-20,303555
-832,76ddebf4-39b7-4841-aa5d-b96c643a777f,dfea4fa4-60bf-4fa7-99e0-c335d58ed656,maximize seamless bandwidth,Proposal,Upsell,2025-03-03,356083
-833,549e39e3-c84a-457e-88ba-d51f55796a97,8f33433f-d89f-495f-8fce-a49a11e43cd2,target rich users,Prospecting,Existing Business,2025-03-02,410221
-834,3205f82c-cd96-45b5-9782-5a492a61c9d8,8f33433f-d89f-495f-8fce-a49a11e43cd2,re-contextualize seamless deliverables,Negotiation,New Business,2025-03-23,115819
-835,84d4363e-f937-4e03-a668-313ef310fd8a,ed11edca-f54c-4187-a58c-38d04c5ce74a,target back-end models,Closed,New Business,2025-02-01,201385
-836,d57c407e-1488-4298-9468-7c33259f4373,635b3350-52c8-4a24-a795-eeb10bf24f5a,utilize compelling interfaces,Proposal,Upsell,2025-01-20,460811
-837,01d56900-9df0-49ff-b756-791b08d96f48,02fe3649-7fff-41e0-8fda-002b14f7df95,disintermediate clicks-and-mortar initiatives,Negotiation,Renewal,2025-02-03,383393
-838,6b74630b-8381-4260-ac1e-6517fe2151e1,02fe3649-7fff-41e0-8fda-002b14f7df95,cultivate cross-media communities,Won,New Business,2025-04-08,399831
-839,193ab7e1-4d00-4ae7-b043-edfa731218c6,5ccd814a-7a22-4a2a-a335-b8baee62ad1f,mesh transparent action-items,Negotiation,Existing Business,2025-03-19,255114
-840,8ac14de1-809d-4e74-8519-3af99b6e6215,6a402062-7500-41e3-b031-5afe943f3580,orchestrate integrated action-items,Prospecting,Renewal,2025-03-10,216697
-841,e83d45b6-c0ed-41d9-91cb-7f508f9b40c7,6a402062-7500-41e3-b031-5afe943f3580,incentivize one-to-one applications,Lost,Upsell,2025-02-13,365173
-842,0150b0a4-fdef-4367-b954-e8cfea874309,691de258-6811-4199-a7d2-b4848e0ab122,expedite viral relationships,Won,Existing Business,2025-02-12,57295
-843,9e9a0ae5-afc9-45fb-b064-b4f0edb12ea9,665109e7-d323-404c-9932-ed35e72aee03,redefine customized info-mediaries,Closed,New Business,2025-02-23,491733
-844,357c4e91-8587-4eb9-8f79-b06eb012061e,665109e7-d323-404c-9932-ed35e72aee03,re-intermediate transparent solutions,Lost,Upsell,2025-02-11,354698
-845,da1ba7ad-f417-4c4c-ad4a-1a6f7243c667,665109e7-d323-404c-9932-ed35e72aee03,maximize cutting-edge ROI,Negotiation,New Business,2025-01-24,205514
-846,29fab90d-1158-441e-b4c4-3c34d274c68f,96003c78-dcec-4b34-845b-fab37ab8136b,syndicate intuitive technologies,Won,Upsell,2025-03-29,97226
-847,b1ccf073-b81e-48c7-9dce-9d28ac74a079,fbe126c2-dc39-4c33-a487-c4bf061d5d37,drive vertical systems,Prospecting,Renewal,2025-04-01,144755
-848,da29804f-bbe9-4edd-a4b9-d47d819767a1,fbe126c2-dc39-4c33-a487-c4bf061d5d37,visualize bleeding-edge communities,Prospecting,Upsell,2025-01-11,70271
-849,784b90a7-1c21-4a2f-83af-3b69e34c001e,fbe126c2-dc39-4c33-a487-c4bf061d5d37,disintermediate revolutionary bandwidth,Qualification,Existing Business,2025-01-01,393270
-850,2de08ed0-62ae-4e86-a9db-42e5514b2fc7,09750b57-a4f9-48d2-8b1c-67fb04f0ae33,innovate cross-media web-readiness,Lost,Existing Business,2025-03-09,275555
-851,57e64618-69a4-445e-9c6e-e409b4ab6ccd,09750b57-a4f9-48d2-8b1c-67fb04f0ae33,extend user-centric architectures,Proposal,Existing Business,2025-02-25,453737
-852,c40cdf59-2b99-4962-adf3-9ec3db62f386,4608dccd-83c8-470e-9f3e-670ce1926f33,iterate wireless applications,Won,Existing Business,2025-02-03,213493
-853,ffc4eec2-9787-4545-876a-5842d12c13cf,4608dccd-83c8-470e-9f3e-670ce1926f33,exploit web-enabled deliverables,Negotiation,New Business,2025-01-17,324655
-854,c7d0b778-6f1b-40e2-a225-0222086b95aa,4608dccd-83c8-470e-9f3e-670ce1926f33,grow B2B technologies,Lost,Renewal,2025-02-07,117267
-855,e1591311-7dc8-4304-a900-89f23bd25d83,0c836591-9c45-4e79-825d-317096894e56,implement 24/7 communities,Negotiation,New Business,2025-03-08,431775
-856,028a516b-a238-49e4-a909-228490b67aeb,0c836591-9c45-4e79-825d-317096894e56,synthesize best-of-breed metrics,Won,Existing Business,2025-03-23,210990
-857,062ed5a2-14d8-4f93-94a1-19fad65ea382,0c836591-9c45-4e79-825d-317096894e56,exploit granular web services,Negotiation,Upsell,2025-02-09,51920
-858,82687516-9c23-47e9-8f85-7b4c1a5d136a,27a2db4f-7961-4d1d-bc36-54eac7b53a66,extend out-of-the-box eyeballs,Closed,Renewal,2025-03-13,72325
-859,9f66e606-96de-44e4-ae27-7c4970b8009a,27a2db4f-7961-4d1d-bc36-54eac7b53a66,expedite intuitive relationships,Negotiation,Renewal,2025-03-09,291543
-860,b727806f-ea63-4ec7-ad0f-6ccf67ccc12e,7d8c3c97-7662-4f04-a4c4-c342ba8dc424,integrate B2C users,Proposal,New Business,2025-01-07,278570
-861,3386abf3-08ff-4e90-9be7-087f7ef2e996,7d8c3c97-7662-4f04-a4c4-c342ba8dc424,strategize one-to-one technologies,Qualification,Upsell,2025-03-02,181074
-862,1bb8a421-4fe8-45b8-b465-9dbaaad465f6,7d8c3c97-7662-4f04-a4c4-c342ba8dc424,benchmark turn-key web-readiness,Qualification,New Business,2025-01-25,201240
-863,81f0849e-821f-48fd-9a54-6c0ffa71faa6,ef8e79ce-09c5-4edb-9434-88001f2c01e1,exploit user-centric convergence,Won,Renewal,2025-02-24,330378
-864,0184d713-4964-442d-acce-cbcc8cbef936,ef8e79ce-09c5-4edb-9434-88001f2c01e1,engineer real-time infrastructures,Closed,Existing Business,2025-01-31,406878
-865,2cf8728a-2ea2-4805-ab3d-7ca77ce3ed4d,f4b1c0d4-aae4-4302-a376-cef5bd25e21d,cultivate one-to-one relationships,Qualification,Upsell,2025-02-27,308348
-866,0cee1be5-9ad1-4d37-a089-676b229be899,e4c2b562-d9d4-4073-b614-ef092bcfc1af,exploit rich paradigms,Negotiation,Existing Business,2025-01-15,131509
-867,8818727d-5c4b-41b6-b931-51f4ce3d4250,f9eff7b8-6830-467b-8462-6d45789781d0,unleash sticky platforms,Prospecting,New Business,2025-02-22,99706
-868,0b6c6fae-7b98-4fda-8146-f08f435f7f35,f9eff7b8-6830-467b-8462-6d45789781d0,iterate virtual deliverables,Prospecting,Existing Business,2025-01-30,484818
-869,09cd0bac-14e9-4ec8-a81d-137055520b2e,dafc63aa-a441-4b8e-8341-a390ad9f49aa,extend one-to-one e-markets,Prospecting,Existing Business,2025-01-31,320966
-870,fd6430b2-815d-4458-9688-b287f3a6e66c,3a0e57e9-784c-42a0-af03-da6b8b66bce3,harness B2C architectures,Closed,Upsell,2025-01-09,457035
-871,2820c717-ba79-4b65-b1fb-1a1445b906b3,937a46d7-25e0-45ea-a1a3-ae636c16b44e,whiteboard bricks-and-clicks applications,Won,Renewal,2025-01-18,300997
-872,83f16453-8bf9-4a52-9e32-b29106ecc0a4,937a46d7-25e0-45ea-a1a3-ae636c16b44e,maximize innovative relationships,Won,Upsell,2025-02-18,394468
-873,5704e93a-19c5-458c-935c-9b6022b59d5f,937a46d7-25e0-45ea-a1a3-ae636c16b44e,target cross-platform architectures,Proposal,Existing Business,2025-03-19,132429
-874,fa6276b8-6655-4032-b71d-dd1cb2caccb1,ab326063-5ac6-43c7-a0cf-41b7edce8e08,facilitate front-end web-readiness,Prospecting,Upsell,2025-01-15,58061
-875,9fb9aa3a-cf26-4bfd-89b3-9b6944eee109,ab326063-5ac6-43c7-a0cf-41b7edce8e08,whiteboard open-source mindshare,Qualification,Renewal,2025-04-07,401460
-876,863f68a6-e16e-4a84-9dc3-6d9333a20f39,6989005e-65a1-4180-ba0a-b0fca52c4a51,embrace sticky paradigms,Won,Renewal,2025-01-21,222382
-877,33f151d5-11c5-4689-98dc-383d8a9a7d4c,6989005e-65a1-4180-ba0a-b0fca52c4a51,seize viral systems,Closed,New Business,2025-03-24,74630
-878,69cc1ecb-77aa-46d1-860f-550606f011a3,6989005e-65a1-4180-ba0a-b0fca52c4a51,iterate turn-key applications,Proposal,Existing Business,2025-01-20,371874
-879,fced3dd3-3649-47f4-a27c-071a936dcc1d,fa5eb4ff-0503-474e-b202-a9d456459b4b,incentivize collaborative bandwidth,Negotiation,Upsell,2025-02-11,372886
-880,303151ce-92a4-406d-a579-04ce24191c32,fa5eb4ff-0503-474e-b202-a9d456459b4b,implement turn-key experiences,Lost,Upsell,2025-03-14,174100
-881,1e8ba81e-2dc4-42e1-b0a2-0ff23789d04d,fa5eb4ff-0503-474e-b202-a9d456459b4b,reinvent visionary paradigms,Prospecting,New Business,2025-03-31,264598
-882,23aecb0d-d764-4126-9b75-bb2cfbbcf1cb,7d7b2afa-f7ce-4076-ac13-aac18294b279,iterate dynamic partnerships,Prospecting,Renewal,2025-01-16,70461
-883,44dc6cb8-f9e4-47ec-ad4c-30bc5b1f71cd,7d7b2afa-f7ce-4076-ac13-aac18294b279,benchmark intuitive content,Lost,New Business,2025-02-09,464490
-884,fe8ba158-147d-4af7-8cd1-c8813930a544,e255bc4a-e9d3-4cb2-b112-dec394426b04,monetize turn-key infrastructures,Lost,Existing Business,2025-03-29,232047
-885,28ce92e4-f9cc-4766-9b09-60ffcc23d9b0,e255bc4a-e9d3-4cb2-b112-dec394426b04,expedite best-of-breed e-commerce,Closed,Existing Business,2025-02-25,362604
-886,4bb612c5-dd53-4ed2-8530-7241ea69d787,e255bc4a-e9d3-4cb2-b112-dec394426b04,monetize turn-key applications,Lost,New Business,2025-02-23,219540
-887,e890685b-444b-4bc9-b985-b7c8f31d11cb,a4fb51c5-f342-4412-8209-9caae7871c63,embrace visionary infrastructures,Proposal,Upsell,2025-01-31,248700
-888,890ce15a-25d3-4025-84ba-7b1ff8a081b3,a4fb51c5-f342-4412-8209-9caae7871c63,leverage mission-critical functionalities,Negotiation,Renewal,2025-03-09,59235
-889,33013e06-ffa6-4746-bc5e-89e282c3229f,70f1640a-950e-41a9-9fc7-227b065d9123,mesh leading-edge bandwidth,Proposal,Renewal,2025-03-08,93535
-890,0471d3c2-9df9-4788-bb90-0060b0d14b18,60034475-7382-4c39-b920-0fb15d63679a,deploy world-class infrastructures,Closed,Renewal,2025-03-26,191364
-891,c1b0cf72-c866-4444-b613-383bdab0e3c5,60034475-7382-4c39-b920-0fb15d63679a,empower front-end infrastructures,Lost,Existing Business,2025-01-09,155086
-892,b31bb09b-8252-4482-935c-7e3a292dec6e,60034475-7382-4c39-b920-0fb15d63679a,whiteboard rich e-commerce,Lost,New Business,2025-01-19,495894
-893,53992de8-1c01-4462-8b13-3c8c93e50c02,0a4482ac-86ff-4d21-a298-e54e431133cc,enable cutting-edge interfaces,Negotiation,Upsell,2025-01-02,457422
-894,c7ac8893-8066-405f-b2b4-c0cde37529cd,0a4482ac-86ff-4d21-a298-e54e431133cc,mesh plug-and-play niches,Prospecting,Renewal,2025-03-27,367105
-895,818ca5bd-ccbc-445b-94b8-4acf17fdc823,2da31c6b-faa0-492b-a84a-94b00c2e1f7b,visualize integrated initiatives,Prospecting,Upsell,2025-03-20,436553
-896,feca3d99-952f-4f05-bdcd-dd47daf4a687,2da31c6b-faa0-492b-a84a-94b00c2e1f7b,architect compelling action-items,Won,Upsell,2025-04-04,256963
-897,76168aa6-fa4c-4e29-8033-ba59e06c33c8,2da31c6b-faa0-492b-a84a-94b00c2e1f7b,synthesize virtual web services,Qualification,New Business,2025-01-19,289533
-898,3203ce18-a4fe-4176-89ae-3fd6af12a766,6d6f510d-9ec7-40d7-9a8f-1ca179f59512,architect cross-platform ROI,Won,Renewal,2025-01-24,334920
-899,392f6872-2821-4282-ae2d-e693884c62b9,a2f2431e-1f49-4d87-aa4d-592ce270997f,repurpose collaborative schemas,Closed,Renewal,2025-02-22,150096
-900,d8280f2a-d53e-43b5-a716-1f6d0a66ec47,27965165-2d14-40bc-b27a-67d6bd62ffb3,evolve open-source experiences,Prospecting,Existing Business,2025-01-01,88703
-901,d86180ca-80ab-44d5-8e55-5f75f32f4265,27965165-2d14-40bc-b27a-67d6bd62ffb3,facilitate customized networks,Lost,New Business,2025-03-13,58150
-902,31e4b2f1-c639-4aa7-bbeb-9a72a9aaa6a1,9d4d05d1-9781-42cd-ae65-ce99a87b133a,optimize integrated networks,Closed,Upsell,2025-01-16,272929
-903,f89fae0f-582e-4f0d-9c3f-59afcb96d8fd,9d4d05d1-9781-42cd-ae65-ce99a87b133a,unleash dot-com technologies,Closed,Existing Business,2025-03-06,446659
-904,074ce29e-f7a8-41d9-9e3a-9c3973c52891,9d4d05d1-9781-42cd-ae65-ce99a87b133a,disintermediate B2B content,Closed,New Business,2025-02-25,149199
-905,2c43c83b-d85f-4d29-bc67-450e15ddb0cc,7d562b53-3343-4b6e-9c78-92100094fd35,generate vertical niches,Won,Upsell,2025-02-09,197441
-906,5d322790-acd8-4c90-92e7-27b9bb816940,7d562b53-3343-4b6e-9c78-92100094fd35,facilitate viral e-business,Won,Upsell,2025-01-01,458287
-907,cb569d6d-67fe-41c8-92b8-0bfffd9bd63b,95d8241a-7e4c-4b19-81a5-e4f8597d67cc,unleash innovative niches,Prospecting,New Business,2025-01-08,166399
-908,a24874fb-6705-418d-b4a1-bdb43d3c51fd,95d8241a-7e4c-4b19-81a5-e4f8597d67cc,engage impactful functionalities,Lost,Renewal,2025-04-01,391804
-909,a32966b3-1e9e-44d8-9fb7-33307fb056f5,c0c681a5-bc35-481b-9e18-0ccb03aec5c5,expedite next-generation paradigms,Lost,Upsell,2025-02-24,79169
-910,8409b6a9-2730-46ae-aaa4-a80b86c34bb5,c0c681a5-bc35-481b-9e18-0ccb03aec5c5,transition holistic applications,Won,Renewal,2025-02-24,480379
-911,b06fd707-09c2-4ff7-af19-fdfb5f7a8498,c0c681a5-bc35-481b-9e18-0ccb03aec5c5,envisioneer value-added relationships,Negotiation,New Business,2025-04-04,266109
-912,499e765d-4893-4759-9a3b-425c4802974a,1973ac7d-9ec5-448b-ac0f-65e8becd842a,whiteboard distributed architectures,Prospecting,Upsell,2025-01-22,147693
-913,2b85fd7a-e098-4fd9-9d3e-fc08a28bb2e4,fa273530-22d5-485e-9281-afaf10fb82b9,re-intermediate front-end paradigms,Negotiation,Renewal,2025-04-02,185485
-914,139369e6-79a7-49f8-bc5d-aa3155eaeb61,728de88b-81ae-4bd1-be50-f26fde4b77c6,incubate customized action-items,Prospecting,Renewal,2025-04-01,102077
-915,f2d3098c-64a3-4046-955d-24de19971d10,728de88b-81ae-4bd1-be50-f26fde4b77c6,repurpose turn-key architectures,Lost,Existing Business,2025-03-17,277929
-916,b6f1a6f7-696c-4073-9a41-a2540f396aeb,728de88b-81ae-4bd1-be50-f26fde4b77c6,engineer rich bandwidth,Qualification,Existing Business,2025-03-04,436684
-917,5744f471-0743-4d93-bb90-c618c682886e,eabf6d22-117f-4edc-82c2-7ea918d61e29,whiteboard customized action-items,Prospecting,New Business,2025-01-17,215002
-918,6e288b4e-0ad7-4b58-978e-3f9d2fab9181,eabf6d22-117f-4edc-82c2-7ea918d61e29,strategize 24/7 applications,Proposal,New Business,2025-01-18,181284
-919,363d1db1-1295-4fef-b060-020b2d588259,eabf6d22-117f-4edc-82c2-7ea918d61e29,evolve enterprise technologies,Proposal,New Business,2025-02-19,335620
-920,370e57bd-1ed1-4901-b4b2-c83b8c0f1264,f7ffd101-a364-461b-a99f-e0315b0ba107,strategize wireless paradigms,Qualification,Existing Business,2025-02-18,245141
-921,2d36b2f4-52bb-4ef3-9449-42d934efb9e6,f7ffd101-a364-461b-a99f-e0315b0ba107,redefine web-enabled users,Lost,New Business,2025-03-26,270529
-922,4e0bb90b-6967-4623-a7f1-d8989cc5efc4,f7ffd101-a364-461b-a99f-e0315b0ba107,transition cutting-edge web-readiness,Closed,Existing Business,2025-02-01,228909
-923,2eb5c179-3ccb-4ccb-812f-4cf7dbd69cc6,fe8dde65-7bb8-4e45-8396-d1786a6bc83d,aggregate customized action-items,Won,Upsell,2025-03-07,209613
-924,4d9e6587-142c-4d16-80ca-1407d318d239,3b049ca2-4462-4ba5-83f9-bfae02fe36f6,engage impactful communities,Negotiation,Renewal,2025-03-13,478266
-925,d3b399cb-b8b2-4f0f-8cb3-ed0470b9c506,d9545985-c422-4310-b1d0-1edef2902bb8,generate integrated infrastructures,Prospecting,Upsell,2025-03-30,161396
-926,683ae39b-eabf-4401-88fb-cf1de22748bb,c669a6c1-dfa3-46c1-96fc-c067c7358634,engage B2C e-business,Won,Existing Business,2025-02-04,423925
-927,9e36ee78-5856-4001-a945-b700d2978e89,c669a6c1-dfa3-46c1-96fc-c067c7358634,transform holistic models,Proposal,Upsell,2025-01-24,98249
-928,1788b1ef-6d53-41cc-ba70-73d868c5b5a8,c669a6c1-dfa3-46c1-96fc-c067c7358634,re-contextualize synergistic action-items,Qualification,New Business,2025-04-01,333086
-929,f0b166ae-a56a-4a5a-a22d-e1caf1cf6ccc,a6800fb6-89cd-4745-96fc-9649d434763e,re-intermediate extensible eyeballs,Negotiation,Upsell,2025-02-09,234199
-930,7596f620-8a6f-4973-b17f-86813346dcad,9dddda32-1eb7-4f7b-9cf7-2e388f2b9db5,utilize B2C metrics,Closed,Upsell,2025-04-01,277105
-931,78013c28-c8db-43db-9e34-16fcddbe27e4,9dddda32-1eb7-4f7b-9cf7-2e388f2b9db5,whiteboard intuitive schemas,Lost,Renewal,2025-03-12,196423
-932,308f1c32-7571-4288-9b91-33bc7c32f1fd,9dddda32-1eb7-4f7b-9cf7-2e388f2b9db5,architect cross-platform content,Negotiation,Renewal,2025-02-16,169511
-933,7e7e12f6-932d-436c-8a2e-5d3233477efc,c325ac34-97b7-4aca-bd2d-8859ec5c1707,innovate plug-and-play convergence,Qualification,Renewal,2025-02-05,58308
-934,a483fd0e-7ce7-41ef-8b1c-beea709b24d5,c325ac34-97b7-4aca-bd2d-8859ec5c1707,disintermediate synergistic niches,Closed,Upsell,2025-01-28,243985
-935,567e47b9-d2ee-4ba7-a8db-9d5f320e274b,c325ac34-97b7-4aca-bd2d-8859ec5c1707,synergize innovative bandwidth,Closed,Upsell,2025-03-27,416655
-936,c33b43ba-6d58-44ed-beaa-e6189776c139,6297e9ad-36c8-49c0-acc9-32f2b726a1a8,exploit frictionless applications,Won,Upsell,2025-01-22,165016
-937,62f19e34-d5d1-4cb1-8687-7975a802fc7d,2727e1dd-1f26-4b2b-bc33-597377950247,e-enable bleeding-edge channels,Lost,Upsell,2025-01-16,383056
-938,b0a196d2-60ab-4371-afa9-9c03c1348377,2727e1dd-1f26-4b2b-bc33-597377950247,aggregate dot-com action-items,Prospecting,Renewal,2025-02-28,443265
-939,11dd38fd-9e6c-44aa-aafa-d396a9105682,433e679e-fe15-4f40-9ab7-a3e30aea72b2,syndicate innovative partnerships,Prospecting,Existing Business,2025-03-02,188884
-940,45fa2ee0-e21e-4322-999c-bd7f940ca22c,433e679e-fe15-4f40-9ab7-a3e30aea72b2,orchestrate value-added channels,Proposal,Renewal,2025-02-06,113576
-941,d6a00e36-7df5-4d57-a69f-0f1212c99335,433e679e-fe15-4f40-9ab7-a3e30aea72b2,reinvent virtual partnerships,Closed,Existing Business,2025-01-30,440908
-942,246595d0-d6c3-49ac-918d-51e6dd623415,f8e52d99-66b5-4e0f-82da-e12afe113a81,architect front-end solutions,Negotiation,Renewal,2025-02-07,246208
-943,8f98117b-07ee-481e-88db-9858d10202c7,f8e52d99-66b5-4e0f-82da-e12afe113a81,synthesize dot-com web-readiness,Closed,Existing Business,2025-01-29,425671
-944,90855ab6-7c27-4643-8637-c03af06b4257,2c698da5-30af-4acc-bd42-3ad0051c2db5,orchestrate seamless ROI,Lost,New Business,2025-03-03,314565
-945,f9461c2d-f99c-460c-8475-97ec31ddfa61,2c698da5-30af-4acc-bd42-3ad0051c2db5,transform visionary markets,Negotiation,New Business,2025-02-20,362221
-946,c828bb05-4fe6-44d8-9177-248986d13c71,033f975a-05bf-4a30-8256-5a50b62b065a,drive vertical supply-chains,Won,New Business,2025-02-27,74658
-947,8bd8f02e-cb66-422e-be67-9c02bba17566,033f975a-05bf-4a30-8256-5a50b62b065a,embrace ubiquitous content,Lost,Upsell,2025-01-17,366723
-948,760e1f5d-0a4f-4122-b6b9-047128f0340a,033f975a-05bf-4a30-8256-5a50b62b065a,embrace wireless functionalities,Prospecting,Upsell,2025-02-28,208408
-949,b5bbb656-8a6b-4832-9cfe-ef2093c15058,69d94ffb-e009-41a0-9669-8d05af739ee5,enable impactful communities,Closed,Renewal,2025-02-06,489387
-950,07559da4-79f9-4284-be8a-36028bb1e7c9,69d94ffb-e009-41a0-9669-8d05af739ee5,brand innovative technologies,Prospecting,Upsell,2025-02-03,256044
-951,92cf64e8-f965-4168-82a2-7e2f12c102c7,de441fac-2744-4155-8d8d-f0d3abbaf5ad,grow bricks-and-clicks channels,Prospecting,New Business,2025-03-06,51169
-952,50f898ea-ef45-4755-98ff-1a80d39c3f61,de441fac-2744-4155-8d8d-f0d3abbaf5ad,extend wireless experiences,Lost,New Business,2025-01-02,301486
-953,cfb145b4-e63a-4397-9dca-938395a42cba,de441fac-2744-4155-8d8d-f0d3abbaf5ad,transform 24/7 action-items,Lost,Upsell,2025-04-02,87591
-954,2842e2e0-1dba-46e2-8c54-6d3149161864,395f6077-1fdf-4062-af90-8fadfdc05538,innovate impactful channels,Negotiation,Upsell,2025-01-11,238876
-955,095fea14-f87a-4151-9a76-8f8071d7f135,b8cbac1b-0690-46c0-a22d-cae3f315b7a3,re-contextualize viral initiatives,Lost,Renewal,2025-04-03,358430
-956,1be7f1e8-cd3f-41b8-933f-1d3ea6ac45c9,b8cbac1b-0690-46c0-a22d-cae3f315b7a3,envisioneer virtual e-commerce,Won,Existing Business,2025-01-05,50202
-957,1ab9e041-8d92-4825-bb72-8b1e721ab8b8,5eccc14a-c788-4657-9012-73bedab6a06f,monetize synergistic initiatives,Won,Upsell,2025-03-09,258968
-958,a5e2f14e-ff0c-4ce4-8401-04e3b508d535,5eccc14a-c788-4657-9012-73bedab6a06f,streamline revolutionary networks,Prospecting,Upsell,2025-03-06,129358
-959,765a5b06-795d-46c2-b9b2-100f9f14025a,5eccc14a-c788-4657-9012-73bedab6a06f,reinvent wireless functionalities,Qualification,Renewal,2025-04-04,66310
-960,f2cf59c8-370b-4e6e-98c5-4322ad0b97a6,c4341e6c-0404-4b05-ba1b-3c4997cfb9ca,grow killer technologies,Proposal,Upsell,2025-02-05,277367
-961,38aa98ad-5d4a-49b7-ba9f-0dcb5d98e84c,c4341e6c-0404-4b05-ba1b-3c4997cfb9ca,engage granular synergies,Proposal,Renewal,2025-02-01,230759
-962,2ab43d89-d930-4d1e-a181-f7b4aeab875f,c4341e6c-0404-4b05-ba1b-3c4997cfb9ca,strategize turn-key portals,Lost,Existing Business,2025-02-26,300705
-963,a95d8b8c-50f8-49e9-9872-24d0561d29eb,66d19078-783d-4444-a728-11c06a27f32e,engage seamless deliverables,Closed,New Business,2025-01-01,290482
-964,c54c1307-6984-4107-9add-96cce77ddfc0,66d19078-783d-4444-a728-11c06a27f32e,aggregate world-class web services,Qualification,New Business,2025-04-06,332684
-965,05212684-8723-4d53-85ff-b5e72188995e,26316dd1-64ca-479d-8e25-a168c237fef8,e-enable wireless synergies,Proposal,New Business,2025-03-28,146225
-966,92af0d34-636d-4314-a1e5-bdfffdb5ce4d,26316dd1-64ca-479d-8e25-a168c237fef8,transform 24/7 action-items,Negotiation,Renewal,2025-01-28,167622
-967,d35632f4-c630-4661-b64c-6774fd0f1ff2,26316dd1-64ca-479d-8e25-a168c237fef8,unleash revolutionary relationships,Won,Existing Business,2025-01-01,297482
-968,36223c6b-a13c-4759-9976-0b6541c93a14,972c9db2-0cfe-4920-b1a6-bcab1d753109,enhance seamless users,Prospecting,Upsell,2025-01-23,363157
-969,90fd9f6e-071b-4b24-9d44-6836ebefd176,3ab97a60-64dc-4a30-8d68-3e78f242252f,generate innovative networks,Lost,Existing Business,2025-01-23,195344
-970,44ba6c8c-ddd9-4e68-b86e-0f42a8c096f4,2a0f054f-11a0-43a8-ad1a-f29f23770ca4,engage front-end supply-chains,Qualification,Renewal,2025-03-14,174010
-971,1040d172-7deb-4428-9b1e-b9f1d70f1d16,2a0f054f-11a0-43a8-ad1a-f29f23770ca4,enable collaborative portals,Prospecting,Renewal,2025-01-13,296165
-972,6a123891-5abe-4c35-be61-25fc33601be3,2a0f054f-11a0-43a8-ad1a-f29f23770ca4,whiteboard open-source paradigms,Lost,New Business,2025-01-22,290804
-973,c226c357-728d-42da-baf8-9b287a5dcbc2,4295c02c-adad-41d0-ba76-2ea6e0fe331c,iterate customized e-tailers,Qualification,New Business,2025-02-28,385201
-974,edd63173-26ec-49d1-b085-0b0f8757a5f8,e1dbe31b-b348-4b76-9826-ab98205b0508,innovate next-generation content,Proposal,Existing Business,2025-03-28,227529
-975,64986b36-5083-4e2d-8150-fcf26af4b457,e1dbe31b-b348-4b76-9826-ab98205b0508,engage interactive web services,Qualification,Upsell,2025-01-09,429113
-976,e60daf74-2cd0-4cab-b89a-ec932410bd3a,d50fc7f7-16a3-4fa6-9af2-1dc1977903c7,cultivate transparent solutions,Prospecting,Renewal,2025-01-10,52616
-977,373ecd86-ac8a-4197-8068-482f44f0fd69,d50fc7f7-16a3-4fa6-9af2-1dc1977903c7,scale magnetic niches,Won,New Business,2025-01-29,204224
-978,6ca5ff7b-1a45-4bd0-953d-9242aef2ea0f,d50fc7f7-16a3-4fa6-9af2-1dc1977903c7,strategize leading-edge partnerships,Negotiation,Existing Business,2025-01-01,163628
-979,64f8b1fb-489b-4993-ab5d-1b2450486a09,8b169073-6849-4d15-909d-01ef74cdfe97,extend enterprise ROI,Proposal,Upsell,2025-01-20,358701
-980,227ead5d-418b-4d45-b116-568a17cbe09e,8b169073-6849-4d15-909d-01ef74cdfe97,revolutionize 24/365 experiences,Qualification,Upsell,2025-03-13,408596
-981,1c3f0bd0-31a3-4a37-9afe-4c8696a33aab,8b169073-6849-4d15-909d-01ef74cdfe97,benchmark end-to-end architectures,Proposal,Upsell,2025-03-18,409433
-982,2f4a5e0f-5595-4ebf-abd3-8dcaba3a9217,2b7a6633-e26f-47da-ac90-dfc9160090c6,deliver global systems,Proposal,Upsell,2025-01-23,212261
-983,64db1aff-a7a6-4a59-b7bd-198067a0407c,2b7a6633-e26f-47da-ac90-dfc9160090c6,engineer web-enabled supply-chains,Proposal,New Business,2025-03-15,196781
-984,f4c7c68b-e3c4-4ef5-94d9-90c806032a74,2b7a6633-e26f-47da-ac90-dfc9160090c6,aggregate innovative technologies,Negotiation,New Business,2025-03-02,50466
-985,c098b461-b6ac-4a26-8183-68935cde8cc5,a66d551e-ab89-41e8-b0a1-ee702d0f3e6f,streamline magnetic portals,Won,Upsell,2025-02-15,410727
-986,d1ab1253-c2a6-4682-937d-9da44abd1478,a66d551e-ab89-41e8-b0a1-ee702d0f3e6f,deploy rich content,Qualification,Existing Business,2025-04-05,286579
-987,6d3b2799-a98a-4907-bced-10a82b4ec5ac,a66d551e-ab89-41e8-b0a1-ee702d0f3e6f,whiteboard user-centric niches,Closed,Renewal,2025-01-31,68766
-988,df495f9a-ffa8-4c6c-8402-8f01799dd7db,c9b38742-14e3-4b30-a886-f8880ca94ce3,synergize innovative info-mediaries,Qualification,Existing Business,2025-01-23,174463
-989,f2ef8213-1954-48c9-8bcf-d8b8dfcdcd63,947e02e0-72c5-4037-b464-54cc7b46042a,deploy extensible schemas,Qualification,New Business,2025-01-02,97045
-990,452ab9bd-1447-4ef8-a1e7-acf0fbfe1c1c,947e02e0-72c5-4037-b464-54cc7b46042a,deploy cross-platform schemas,Closed,Renewal,2025-02-23,328506
-991,74e105a3-fc39-4af3-820b-d4115956168f,947e02e0-72c5-4037-b464-54cc7b46042a,architect granular supply-chains,Lost,Upsell,2025-01-30,478510
-992,2d4f028b-b4dd-44d4-9598-c892ee446e42,2a0b6e7a-db47-4fbd-8529-d077b578a1c6,target cross-platform deliverables,Lost,Upsell,2025-03-24,485681
-993,abf28fb7-ed51-418e-b589-9596f5ca5a33,2a0b6e7a-db47-4fbd-8529-d077b578a1c6,syndicate e-business platforms,Lost,Upsell,2025-02-07,396538
-994,039d76f8-dc0a-4b57-af85-b34704a746d8,64fc2c88-aa7e-4d02-8d50-14849cb143ff,facilitate frictionless experiences,Lost,Renewal,2025-01-29,268427
-995,e057156f-0ffb-415c-b8ab-32258fbeec3a,64fc2c88-aa7e-4d02-8d50-14849cb143ff,engage magnetic e-markets,Proposal,Existing Business,2025-01-02,267395
-996,3c9ccb6b-af96-4d4c-9f32-d412f29b62a0,5ffb447c-53c8-4106-b0aa-2245f3cd704f,benchmark sticky paradigms,Closed,New Business,2025-03-04,273653
-997,5a1840ee-47bb-4f5a-a442-eaae84abf81e,5ffb447c-53c8-4106-b0aa-2245f3cd704f,incubate transparent deliverables,Won,Existing Business,2025-02-08,97489
-998,882b5bec-a931-48f3-9c21-dc90d19b2db9,5ffb447c-53c8-4106-b0aa-2245f3cd704f,evolve user-centric networks,Won,Existing Business,2025-01-09,388844
-999,34d3197b-44a8-4d5c-b6f1-99783691a4d3,9d6b5de1-d1f5-4139-9843-d482f67e3c0e,incentivize global e-commerce,Closed,Existing Business,2025-02-19,60751
-1000,95dce96c-7b5c-4b97-a98d-dc56ad26e30e,9d6b5de1-d1f5-4139-9843-d482f67e3c0e,grow back-end communities,Lost,Existing Business,2025-03-21,333684
-1001,b66f5791-eedd-466f-a778-c961bf472a1c,9e840bee-1dc8-43ec-81d6-d3de84a45c8d,e-enable 24/7 portals,Closed,Upsell,2025-04-07,236728
-1002,1ffccfb6-1b9d-4cf2-b063-7621ff464437,68e1b047-4502-4140-a958-cdf8b2b798d1,engineer transparent infrastructures,Won,Renewal,2025-02-27,132244
-1003,c438014a-67f1-409c-af3d-1e399bcb3ac9,68e1b047-4502-4140-a958-cdf8b2b798d1,visualize turn-key experiences,Qualification,New Business,2025-04-01,273798
-1004,09299048-99bb-4927-9698-4aaf200444bb,68e1b047-4502-4140-a958-cdf8b2b798d1,embrace integrated vortals,Prospecting,Existing Business,2025-01-03,324597
-1005,21ab5b29-8e92-458a-a70d-9f5d69560fcf,917c9426-8bc1-4327-840d-3ec21edb0954,seize efficient technologies,Qualification,Existing Business,2025-01-24,404663
-1006,eee3130f-2765-4e6c-866f-545e4898bd7c,4652ece0-eda1-47e1-8bac-62b93a22d3c0,seize seamless e-business,Negotiation,New Business,2025-01-30,62113
-1007,5ce55e52-74aa-4f3b-83bf-36077d0ad50f,fdc85ad7-28df-4c1d-a321-14d98fb174e5,generate distributed e-commerce,Closed,Renewal,2025-01-21,465617
-1008,f2ab0366-0365-440f-9564-19b3a6354c6e,2e280816-321f-46b4-b0af-0663c5b58f91,re-contextualize compelling e-markets,Qualification,Existing Business,2025-03-30,74821
-1009,65405443-a25d-46a1-a6b2-7000cbcde7e6,2e280816-321f-46b4-b0af-0663c5b58f91,streamline cross-media architectures,Closed,Upsell,2025-01-24,472209
-1010,bfbb92d9-950d-4fd9-b3b5-9774137ae58e,2e280816-321f-46b4-b0af-0663c5b58f91,redefine mission-critical supply-chains,Proposal,Upsell,2025-03-20,55928
-1011,98dcee83-bcf4-4c2c-b597-3647ac99c1ae,023af3e8-c6b3-41f5-a509-cf6b9b95a5cf,matrix cross-media systems,Prospecting,New Business,2025-03-14,205748
-1012,990b4fe6-385c-4109-81e9-66f48b20a2f5,80a727a5-5cfc-470d-8121-e97873e1cd41,benchmark collaborative partnerships,Qualification,Renewal,2025-01-09,161275
-1013,2de78901-09cb-44fc-a23c-72624c834b50,f2f9d3e2-9c5b-4a72-9be0-9b5860cd92ac,redefine proactive vortals,Closed,Existing Business,2025-03-01,136734
-1014,877339a1-fb73-4ab7-b263-ef7ce2e8512c,f2f9d3e2-9c5b-4a72-9be0-9b5860cd92ac,aggregate collaborative metrics,Lost,Existing Business,2025-04-08,67736
-1015,f57109e0-857b-4ab9-a33e-7a0efb44428c,26c29c36-732f-4e5d-8a1a-c8f8fcf1fdbe,architect web-enabled synergies,Proposal,Renewal,2025-03-24,486391
-1016,1788640b-1926-4dce-8f04-22d9768be59e,26c29c36-732f-4e5d-8a1a-c8f8fcf1fdbe,utilize next-generation solutions,Closed,Upsell,2025-02-23,405231
-1017,b576d377-479b-4baa-aecf-fdb255fe19ba,26c29c36-732f-4e5d-8a1a-c8f8fcf1fdbe,target turn-key models,Won,Existing Business,2025-04-05,325494
+0,d4a9d21c-592a-47d8-ae3c-a42e51c226b3,a9e654e8-08ea-461c-b446-080e0357c6e1,incentivize cross-platform interfaces,Prospecting,New Business,2025-02-09,376134
+1,079c5e1a-4b8c-493d-9751-c7ccf63dbde3,a9e654e8-08ea-461c-b446-080e0357c6e1,enhance end-to-end platforms,Lost,Upsell,2025-04-08,257964
+2,fc7c87c4-b150-45a6-aeef-d1298906cf76,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,maximize seamless infrastructures,Prospecting,Upsell,2025-04-12,204287
+3,212b4f82-98f8-4dd8-b89e-45b0061dfcf4,148c9011-f9f2-47fa-9f80-52a1fca106dd,empower next-generation schemas,Closed,Existing Business,2025-04-15,391096
+4,d17ca2df-e199-4eb1-8d43-d8cf4607674f,148c9011-f9f2-47fa-9f80-52a1fca106dd,aggregate rich e-tailers,Prospecting,Upsell,2025-03-14,346252
+5,b5d35301-2bb2-405f-a1e7-d6d596e9b4a9,41553d2e-1615-4ed1-981d-b8bce254d6a2,visualize customized paradigms,Won,Upsell,2025-03-04,493780
+6,9bd5e3d4-a124-4fc5-b30c-1541d7b9766a,996063e1-e6dc-4c3a-bb97-0d52e772f148,productize end-to-end communities,Lost,New Business,2025-02-14,101419
+7,89f95d26-480f-4b15-b555-c72a4f13c9fa,996063e1-e6dc-4c3a-bb97-0d52e772f148,generate B2B systems,Won,Existing Business,2025-03-07,178237
+8,176766b7-ecba-4f04-b380-0f366cb0598e,23fbb927-21e5-40f4-86b4-82e34c131a14,re-contextualize virtual infrastructures,Prospecting,Upsell,2025-03-11,395323
+9,2f321830-cc0b-418d-a7ef-2d6c3c51ab1c,23fbb927-21e5-40f4-86b4-82e34c131a14,facilitate sticky e-business,Qualification,New Business,2025-04-01,254642
+10,ceaf4b57-a786-4b52-8b9d-ef4b8ca6eb10,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,reinvent granular e-services,Prospecting,Renewal,2025-01-14,131426
+11,6bed1e56-b644-4859-8234-e68a26d865ef,a331fa92-4b77-4dc3-8265-76e00c68939b,enhance 24/365 content,Negotiation,Existing Business,2025-03-27,78449
+12,23530f34-18c5-436b-880c-e6e15f4a334d,a331fa92-4b77-4dc3-8265-76e00c68939b,utilize frictionless interfaces,Qualification,Upsell,2025-03-11,176182
+13,643a75cf-3c43-4e1b-a3a0-e24e9ed1aaa9,de201e35-6ae2-4a17-95fa-9d1797607850,scale granular channels,Closed,New Business,2025-03-31,253923
+14,bc1c64a0-312f-429c-92d7-0ac4a1f88e17,de201e35-6ae2-4a17-95fa-9d1797607850,grow cross-platform web-readiness,Prospecting,New Business,2025-04-05,336750
+15,91e5f919-e75a-40a7-9b00-544c9df439bd,860992a3-fc92-4486-aa27-ef0a0d3521c3,reinvent plug-and-play mindshare,Proposal,Upsell,2025-03-27,490599
+16,e02452d3-935f-4ee8-8183-dfb063504eef,860992a3-fc92-4486-aa27-ef0a0d3521c3,enhance turn-key experiences,Lost,Existing Business,2025-02-19,438103
+17,522593eb-345d-4611-8ddf-390dce1dd204,4a4699e7-21b6-4f90-b8e0-e71176d73f73,syndicate leading-edge action-items,Lost,Renewal,2025-04-12,129939
+18,3d9c1b3f-d0ff-46f2-a2aa-d751ac9f2857,9205a7a8-9138-4a90-85d2-435a0879ac79,unleash next-generation e-markets,Negotiation,Renewal,2025-04-14,351223
+19,ef4d7364-0a20-4918-b6b1-1725f24f15e1,46824630-3383-4541-b6a4-b5b5c7c97e43,synergize global ROI,Negotiation,Upsell,2025-04-02,371555
+20,86a3a37f-65c8-4f3b-b5e8-342f30fc4b13,46824630-3383-4541-b6a4-b5b5c7c97e43,unleash plug-and-play vortals,Lost,Existing Business,2025-03-05,493431
+21,7e267c16-bb0b-4d2b-bfd3-0b29615be912,46824630-3383-4541-b6a4-b5b5c7c97e43,streamline cross-media markets,Qualification,Upsell,2025-02-09,64369
+22,7e7470ce-0d7f-45dd-ae24-8d31e542845f,faad09d6-04c9-44a9-95f8-5fc9c22935d2,enhance synergistic bandwidth,Proposal,Existing Business,2025-01-27,390804
+23,a45990b3-004d-4e4f-b658-6f7c531269aa,faad09d6-04c9-44a9-95f8-5fc9c22935d2,embrace customized e-services,Negotiation,Upsell,2025-04-12,392399
+24,072642a7-41ec-4592-b249-810ca0f2b511,faad09d6-04c9-44a9-95f8-5fc9c22935d2,generate ubiquitous experiences,Lost,New Business,2025-02-17,263104
+25,5e621030-2997-4f63-b47b-ce896119a1b7,bc86d81c-e4f2-4bfc-9ea4-90d697d8eeda,seize dynamic bandwidth,Prospecting,Upsell,2025-03-15,447170
+26,0808a836-d26e-4b9a-8bef-f7c87fa11480,741865dd-ee13-40a2-a29e-8b921e0d6b01,expedite integrated eyeballs,Qualification,Renewal,2025-02-10,122665
+27,8897b797-782f-42d2-aaeb-f57d9fe0bf51,741865dd-ee13-40a2-a29e-8b921e0d6b01,exploit rich channels,Negotiation,New Business,2025-01-27,57212
+28,c568b30e-0faf-4fcc-adbd-ed9205d74a99,629dd1fa-732d-4425-95ed-a436446c832d,expedite rich interfaces,Lost,Renewal,2025-03-01,430291
+29,282f2f71-cf8b-4e7b-99aa-6c6cca7f237c,629dd1fa-732d-4425-95ed-a436446c832d,deploy front-end convergence,Qualification,Renewal,2025-04-08,125063
+30,8526cd33-cf8d-40f6-bba1-6e6f9204c74f,6e79b897-8bde-4d9e-920d-d94dc967c487,leverage holistic functionalities,Qualification,Renewal,2025-02-14,499002
+31,21f2196c-677e-4c77-bf83-152da156c76f,6e79b897-8bde-4d9e-920d-d94dc967c487,monetize intuitive platforms,Negotiation,Renewal,2025-02-20,277753
+32,38e931dc-83a9-467d-9d42-8e0f7f4a6572,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,facilitate scalable markets,Prospecting,Upsell,2025-03-01,246713
+33,eaa33ed7-63e5-4682-890c-426619a68431,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,extend user-centric solutions,Closed,Existing Business,2025-03-03,488430
+34,441318cd-0304-45d6-b0da-413ab0037eae,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,empower viral systems,Prospecting,Existing Business,2025-01-18,273608
+35,0373943a-766c-4416-91a0-e751bb86431c,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,seize next-generation communities,Won,Existing Business,2025-04-01,127732
+36,04db2c38-c0ae-4bc6-8ea1-cc65fc578ee4,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,iterate turn-key web services,Lost,Existing Business,2025-02-20,76133
+37,d2211388-6ca8-4a54-8ba8-fb3b5d1efcee,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,architect customized functionalities,Negotiation,Upsell,2025-01-08,467593
+38,1829534e-8a34-4804-8dd5-16b18deab11f,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,empower extensible niches,Proposal,Renewal,2025-03-16,63294
+39,1df89662-40c7-45bb-b503-de88d3212726,cb074b02-339f-4977-b86a-40f75120b03d,productize innovative initiatives,Qualification,Renewal,2025-03-19,179394
+40,e325368c-0fcc-4ff5-9e35-9b128596457a,c1768be7-6109-4d6f-ba47-8cff23266021,innovate transparent applications,Won,Renewal,2025-03-26,279214
+41,df5f10cf-2ab0-450c-b8c8-aa771e6e4d87,c1768be7-6109-4d6f-ba47-8cff23266021,embrace magnetic communities,Qualification,New Business,2025-01-27,252103
+42,92f4fb3b-b637-4a25-b077-ff5792628ed5,b71c45d8-33b5-4a53-bedc-f3315429926a,orchestrate extensible technologies,Proposal,Renewal,2025-02-22,356114
+43,e903432f-a5f0-461b-a96b-ed0d0662c401,b71c45d8-33b5-4a53-bedc-f3315429926a,e-enable back-end platforms,Prospecting,New Business,2025-04-03,283097
+44,41940448-79de-410b-b73e-930c53caa2c4,b71c45d8-33b5-4a53-bedc-f3315429926a,morph plug-and-play solutions,Closed,New Business,2025-01-30,309993
+45,42f284ea-75bd-4b38-a29b-8570ac05d307,1fb29073-689c-4c72-aba9-b30645390257,monetize cross-platform e-services,Qualification,Upsell,2025-02-23,110683
+46,9061c347-6328-4ca1-aa6e-092088e81291,1fb29073-689c-4c72-aba9-b30645390257,productize back-end functionalities,Prospecting,New Business,2025-01-24,252622
+47,563a4ff7-2071-4d2c-bef1-06abe5349b11,7808b05f-4146-4b9f-baef-d6caa8a1afdb,facilitate enterprise schemas,Proposal,Existing Business,2025-04-09,226759
+48,ee95dd39-802d-4677-953a-8894006dd57e,961eb582-6e8c-4a5d-b62b-ddc3ce547914,orchestrate open-source schemas,Negotiation,Existing Business,2025-01-27,132848
+49,86832ad2-4a97-4575-9695-f3d9672c694b,961eb582-6e8c-4a5d-b62b-ddc3ce547914,redefine web-enabled interfaces,Prospecting,Upsell,2025-03-17,52131
+50,100fc476-7ea2-4093-8090-26b9928b9715,6c066e63-68da-4b10-aa94-aa57226d4e1a,morph leading-edge niches,Lost,Existing Business,2025-02-13,294603
+51,4c4028f3-957b-4b17-9130-41a79cd0e0b5,6c066e63-68da-4b10-aa94-aa57226d4e1a,enable impactful synergies,Qualification,New Business,2025-03-31,195370
+52,399f9946-ee13-4fa5-bbe3-ed107b081a0e,6c066e63-68da-4b10-aa94-aa57226d4e1a,re-intermediate out-of-the-box platforms,Qualification,Renewal,2025-03-01,86660
+53,4f739f5e-3e86-40b7-b6bb-097bd87fd932,a1f96519-b8fd-48b2-a753-7561a9090608,expedite clicks-and-mortar infrastructures,Qualification,Renewal,2025-03-16,233527
+54,4a5f9862-c368-42ab-8663-578e88060dfd,97f519b3-e882-476d-b379-2ae4265bd91b,exploit proactive solutions,Closed,Existing Business,2025-04-13,426691
+55,086abde5-a47c-4203-8ba3-dfe11d7cba83,97f519b3-e882-476d-b379-2ae4265bd91b,iterate dynamic portals,Negotiation,Renewal,2025-03-31,253168
+56,8f8069fd-b74b-44fc-b8da-8d73a508e90d,edcb5808-f88e-4819-804a-3019dddc3d60,reinvent killer networks,Proposal,Existing Business,2025-04-03,468937
+57,3f727745-73bc-48a1-871b-900f7f0bf530,edcb5808-f88e-4819-804a-3019dddc3d60,mesh visionary web services,Closed,New Business,2025-03-09,96188
+58,02af328e-d101-4d6e-8e7d-1f5a79f46fa9,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,scale proactive initiatives,Qualification,Upsell,2025-04-04,306480
+59,67d383f9-e0d6-4032-962e-2f6cffcf86f4,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,re-intermediate vertical paradigms,Negotiation,Existing Business,2025-02-20,410695
+60,8ed819ed-ee9c-4c5c-88e8-89e8ed6f7162,d25f2c9b-2250-4c0c-bd33-5f57006b5931,engage turn-key eyeballs,Lost,New Business,2025-03-28,108974
+61,7d112cd2-0966-4fad-9cb1-d974d8a732d0,d25f2c9b-2250-4c0c-bd33-5f57006b5931,exploit real-time info-mediaries,Negotiation,New Business,2025-03-26,259745
+62,38f3bb0c-9cdf-4e0d-9125-4bec817a9f12,d25f2c9b-2250-4c0c-bd33-5f57006b5931,drive collaborative portals,Prospecting,New Business,2025-02-14,499302
+63,420eb2ab-959e-4647-80a4-9f3736dbd7bc,b2242521-730b-41e3-b666-17e00efc45e8,orchestrate revolutionary solutions,Qualification,Renewal,2025-03-17,185297
+64,06029180-4fa2-420f-b008-b31532db6e72,b2242521-730b-41e3-b666-17e00efc45e8,re-contextualize cross-platform e-business,Closed,Existing Business,2025-01-18,243934
+65,35a25533-fbbd-48b0-8e8e-b02eeb9da112,d3beac15-ba06-41cb-8f70-a95816ee6edc,aggregate plug-and-play infrastructures,Lost,Renewal,2025-04-13,212858
+66,925c8385-8f69-4c2a-b2cd-bb19b8949641,fed2c78d-f7c8-4489-b520-80b6fdf1151b,repurpose killer info-mediaries,Proposal,Upsell,2025-01-19,225852
+67,cc756eac-210d-4f56-86fe-7a6690498e04,fed2c78d-f7c8-4489-b520-80b6fdf1151b,expedite seamless e-markets,Negotiation,Existing Business,2025-04-09,282296
+68,cdc35357-00ec-410d-8133-aeb408cee676,2e8803e7-7354-46fa-aee8-ac3321f64e5e,whiteboard out-of-the-box e-markets,Negotiation,Existing Business,2025-02-15,396961
+69,ee3e2009-d5ad-4a4c-8b65-96c941cf7774,2e8803e7-7354-46fa-aee8-ac3321f64e5e,deploy interactive users,Closed,New Business,2025-02-13,340971
+70,5ae2ebed-c11e-4b9c-b71f-6c7a07892d8f,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,evolve compelling models,Prospecting,New Business,2025-02-07,373967
+71,d162b50b-4a60-4196-bff1-1a9507c4cd35,fedc2f29-ad55-4b29-87e2-d3031a078d16,aggregate dynamic niches,Prospecting,Existing Business,2025-03-04,75840
+72,85b137e3-8501-4179-adcf-e01079ad3b31,8497b8d5-8bf3-4181-971a-08e00ddc7e75,reinvent wireless info-mediaries,Qualification,New Business,2025-03-02,72348
+73,f2a758e1-03e2-4c9c-a978-b5657cc86d79,e4b5bf3a-d43e-4748-b72a-03e450cc4251,visualize back-end interfaces,Won,New Business,2025-02-12,148100
+74,f63878e9-0619-4b35-bb42-5ab2a7ab0cd7,e4b5bf3a-d43e-4748-b72a-03e450cc4251,engineer innovative communities,Closed,Existing Business,2025-02-26,324171
+75,7ec6c623-7d3e-4410-b000-7cdc2e5f60b8,e4b5bf3a-d43e-4748-b72a-03e450cc4251,incentivize magnetic web-readiness,Negotiation,New Business,2025-03-02,126630
+76,c7ccd064-b6ad-48ea-bf16-aebd2e00b7b1,e66730a8-0bcc-4700-adf9-3e186d3632ad,expedite mission-critical e-business,Lost,Upsell,2025-02-17,141295
+77,117883a7-a969-40ef-afd8-3b55844a941d,e66730a8-0bcc-4700-adf9-3e186d3632ad,enhance B2C portals,Closed,Existing Business,2025-04-09,390695
+78,11a7fd1f-862b-4712-a807-b842bd3ee6e2,e66730a8-0bcc-4700-adf9-3e186d3632ad,re-contextualize synergistic relationships,Prospecting,New Business,2025-01-21,451318
+79,d33ca89b-4043-44cf-816d-8d4346b6e32e,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,synergize 24/365 web services,Negotiation,New Business,2025-04-08,260632
+80,f3c5c07c-22dc-4094-b2e2-badb3bb1bed7,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,optimize proactive e-services,Closed,Upsell,2025-03-17,391729
+81,b13e588b-eaa9-4f8b-86d3-ee0bb8834784,b76331a3-d883-4a74-8970-7f8b40ed5e06,visualize magnetic systems,Qualification,Upsell,2025-02-22,464528
+82,66f5a474-21f8-44d6-822c-85004f3ea576,b76331a3-d883-4a74-8970-7f8b40ed5e06,engineer open-source methodologies,Won,Upsell,2025-02-07,222046
+83,b9eed952-0cb2-46db-964a-cefd35e81869,1b433d24-c7f2-415c-92aa-5b3cac5bff4b,empower cross-media niches,Won,New Business,2025-03-30,483436
+84,0de009e5-aa15-4707-9c07-29177441f439,7de0cc16-9de9-4ae8-82a6-e0c70d884781,monetize back-end schemas,Won,New Business,2025-03-20,169437
+85,364f0734-388f-40f2-9907-8d5619b572d6,7de0cc16-9de9-4ae8-82a6-e0c70d884781,evolve granular paradigms,Closed,Renewal,2025-03-19,426047
+86,9d3f9b69-26d1-4772-9f94-02581e74c3cb,7de0cc16-9de9-4ae8-82a6-e0c70d884781,empower strategic systems,Qualification,Upsell,2025-02-23,452608
+87,914dc63e-e302-461e-8e4c-8c957468ef1b,32891396-9533-42fa-8eea-a0abd7672821,synergize out-of-the-box e-business,Prospecting,Upsell,2025-03-24,213045
+88,563daf14-35e8-4d03-9f44-132b81ab1a18,32891396-9533-42fa-8eea-a0abd7672821,benchmark turn-key eyeballs,Qualification,Upsell,2025-02-20,98012
+89,f3c36619-e8f8-4e04-a590-0f2f80c52d39,32891396-9533-42fa-8eea-a0abd7672821,incentivize killer bandwidth,Prospecting,Renewal,2025-03-12,245867
+90,1b8ead21-f01c-4cb6-b548-db5d673d7cd6,0cf48241-6073-42c8-ac12-6debb14feeba,generate leading-edge methodologies,Won,New Business,2025-04-10,235941
+91,f235998f-36d4-4fb7-a7d2-7d0a47ad823b,0cf48241-6073-42c8-ac12-6debb14feeba,synergize seamless e-services,Qualification,Upsell,2025-01-24,198161
+92,86c6bd8d-72f9-4891-8678-d1317d2d5af7,0cf48241-6073-42c8-ac12-6debb14feeba,scale global functionalities,Prospecting,Existing Business,2025-04-02,423024
+93,3a88a97f-a485-4bee-8d54-077660bb6c32,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,extend innovative infrastructures,Prospecting,Upsell,2025-02-23,352450
+94,f2ac23d1-f935-4def-91f0-fa48192675f4,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,engage compelling content,Qualification,New Business,2025-02-24,161321
+95,7a03ba77-8b71-460f-b9a8-6d86f002ad1c,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,re-intermediate wireless channels,Prospecting,Existing Business,2025-03-24,69599
+96,85a6afcc-8021-4970-abea-bc99a30658a7,505eaca2-6d1e-40d2-806f-a8ad96310e59,facilitate integrated relationships,Closed,New Business,2025-02-27,56853
+97,63b24ba2-5e61-40bd-badb-bbb55a8f1aad,505eaca2-6d1e-40d2-806f-a8ad96310e59,maximize integrated communities,Negotiation,New Business,2025-02-01,254014
+98,6ae26348-2ec1-413e-ab61-7757399b8e3a,94e3a95f-2391-4050-968d-9f4e4829e2e0,exploit 24/365 communities,Closed,Renewal,2025-04-15,153517
+99,af31e2b8-65a3-4ac4-a84e-667bbc3cb69d,9b02412b-cb9b-43c1-99b8-9455d0933bec,morph killer vortals,Won,New Business,2025-03-04,67538
+100,9684dbe9-7cd0-4a92-835c-126b8610cd12,9b02412b-cb9b-43c1-99b8-9455d0933bec,strategize open-source action-items,Prospecting,Upsell,2025-04-09,91284
+101,b6f095f6-b589-43b7-b983-d2d841829738,e5e53c9c-c291-4c59-ad79-77ad61aab106,engineer dynamic paradigms,Prospecting,Existing Business,2025-01-14,81618
+102,d0b6d503-02c0-4c07-a1ed-f14555c5003a,7a42f9bb-d9e9-4282-8cff-35f4f2dc93ec,innovate innovative web services,Proposal,Upsell,2025-03-17,399462
+103,b8841c51-0c48-4b8b-bf93-a610fc40f093,e96709de-7b18-4b29-b42b-ddb1b1c4c3b6,target transparent bandwidth,Closed,New Business,2025-03-29,106518
+104,23a04e90-a197-4a46-a61d-c940fb80b574,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,unleash compelling interfaces,Prospecting,Existing Business,2025-01-07,130497
+105,76ace7cd-29c3-4e02-be3d-dafc973045ed,16613f22-10c8-4a99-90a2-d41935cb77e6,iterate strategic communities,Prospecting,Existing Business,2025-01-12,384689
+106,9d894ef5-e767-446e-9f59-3d2f23a64ae7,b4ccbb95-fb04-4655-833a-372810918adb,empower leading-edge synergies,Proposal,Renewal,2025-04-07,198221
+107,9458b1c9-cfaa-4070-bacd-0190a8ef619c,b4ccbb95-fb04-4655-833a-372810918adb,morph leading-edge deliverables,Closed,Existing Business,2025-01-15,200903
+108,626c582d-1394-4825-9422-df487b2345b8,b4ccbb95-fb04-4655-833a-372810918adb,streamline granular paradigms,Closed,New Business,2025-02-01,369989
+109,63f09ed2-617b-4e93-b063-b3df22aef1e1,3aaf3064-3ae7-43be-86d9-0c50eedc0734,iterate proactive schemas,Prospecting,New Business,2025-03-31,375040
+110,05aad88c-2dfc-4222-97dd-e9f52cfeec5f,61a81520-8816-4973-b86b-828cdef33d33,enhance user-centric experiences,Closed,New Business,2025-01-27,347272
+111,07d93543-01a1-4119-bd6c-2a9847de8bbd,61a81520-8816-4973-b86b-828cdef33d33,productize bricks-and-clicks web services,Lost,Renewal,2025-02-23,449914
+112,ec43e9fb-b126-40a3-9fbc-af6448c89145,61a81520-8816-4973-b86b-828cdef33d33,synergize cross-platform e-tailers,Closed,Upsell,2025-01-27,362185
+113,413cf0c7-0bb5-4a90-9461-02035385e9e7,c465120e-fd88-46ca-822c-37f74d6cf4c3,enable proactive methodologies,Won,Upsell,2025-02-05,172048
+114,094e539f-c274-4e29-978b-136a80ab7aa3,8c7ba28c-1677-44be-90f3-21c61d7e581a,facilitate customized mindshare,Prospecting,Renewal,2025-01-26,379023
+115,43f549e9-76aa-4d62-afef-6074832ae363,16ae09bb-fa3a-4a9c-b247-d0c364699135,revolutionize bricks-and-clicks interfaces,Closed,Existing Business,2025-01-28,474206
+116,b1948a0f-f43b-4991-ad35-95c28dc51dc0,16ae09bb-fa3a-4a9c-b247-d0c364699135,generate cross-platform functionalities,Proposal,Renewal,2025-03-02,307222
+117,6425609f-e332-41d1-b8cf-7174a167d207,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,visualize front-end infrastructures,Lost,Renewal,2025-02-23,453630
+118,837b5a23-6fff-44a0-877b-57742c038419,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,optimize ubiquitous networks,Lost,Upsell,2025-04-08,173736
+119,af3e8eba-aaa6-4fdb-bbe9-b4afc5a08652,92769a1d-d4e5-40d5-859f-0bd1368462fb,extend mission-critical deliverables,Lost,New Business,2025-01-25,381022
+120,f997ba96-f9cb-4183-81cc-4a5d25d9f5ac,92769a1d-d4e5-40d5-859f-0bd1368462fb,revolutionize customized content,Proposal,Existing Business,2025-03-09,166614
+121,c49805db-dda9-4b58-9823-e1383d6d5e0e,92769a1d-d4e5-40d5-859f-0bd1368462fb,reinvent wireless initiatives,Negotiation,New Business,2025-01-20,334869
+122,c6a3c4ba-25a2-483d-aa63-bcb43bbe51a0,4ea046dd-e59d-423f-b8ff-7972890b6244,harness efficient functionalities,Negotiation,Upsell,2025-02-06,196524
+123,45d7503d-3d90-4c9d-968e-4298c65a0d8b,4ea046dd-e59d-423f-b8ff-7972890b6244,re-intermediate value-added functionalities,Lost,Renewal,2025-03-20,147146
+124,70c33aaa-bea8-43b3-bec8-f3220aa7900f,095d931b-43a6-4891-bff5-b268a15c24d7,synergize cross-platform relationships,Won,Existing Business,2025-03-19,409459
+125,85c67536-63ab-4c48-acae-1c9c373790eb,095d931b-43a6-4891-bff5-b268a15c24d7,monetize web-enabled info-mediaries,Closed,Renewal,2025-02-24,222717
+126,00a06733-0084-47f7-8222-a8c02c4c2608,095d931b-43a6-4891-bff5-b268a15c24d7,maximize revolutionary systems,Closed,New Business,2025-02-27,435673
+127,de992630-89bf-499f-a5b1-49f981875889,5ef5457e-264b-4b68-966a-3226b75ceffb,syndicate turn-key users,Negotiation,Existing Business,2025-02-05,88340
+128,a22756b5-d1ec-433e-8be1-182ecc0b9144,5ef5457e-264b-4b68-966a-3226b75ceffb,synthesize end-to-end methodologies,Qualification,Renewal,2025-01-29,265926
+129,4fbce6cf-93d0-4de2-8cb6-f0c04b8900be,430665b8-15ed-4b91-b0b0-50e3006109ae,synthesize seamless platforms,Lost,Renewal,2025-03-13,356958
+130,d5509ec1-6686-4830-ad42-4a3e1fbb9ae6,da402851-1a85-4dd4-a6aa-620d6909da3d,repurpose scalable applications,Proposal,New Business,2025-01-04,282282
+131,d647b048-ca96-4fe7-afc3-68655d5b493a,da402851-1a85-4dd4-a6aa-620d6909da3d,generate extensible experiences,Qualification,Upsell,2025-03-22,424509
+132,939e59ea-4a09-43e9-9d35-02963e1661a3,da402851-1a85-4dd4-a6aa-620d6909da3d,morph out-of-the-box content,Qualification,Renewal,2025-01-28,386229
+133,5a32c8c6-869f-48a3-8358-5212786b1151,f22e67d3-01b7-40a4-bf9d-87552540f479,harness seamless initiatives,Proposal,Upsell,2025-04-09,118194
+134,a9cbb7c1-536c-4eaf-8e92-0f0c1272de16,f22e67d3-01b7-40a4-bf9d-87552540f479,grow revolutionary portals,Qualification,Upsell,2025-01-16,107471
+135,3be4408e-4d8f-46f9-9aa8-26983ddadd4b,f22e67d3-01b7-40a4-bf9d-87552540f479,monetize B2B partnerships,Prospecting,Existing Business,2025-03-17,122031
+136,da708a43-6f77-4007-87be-063eff30b40f,701beb5b-5db8-45a5-b9cc-e5975e908837,synergize leading-edge partnerships,Prospecting,Existing Business,2025-01-11,70923
+137,fdf289b9-aaae-4052-a1ef-b7435dfb9ae1,701beb5b-5db8-45a5-b9cc-e5975e908837,engage cross-media bandwidth,Closed,Existing Business,2025-02-10,217627
+138,5ef47f3c-d715-4f6e-90fc-444ce8815193,701beb5b-5db8-45a5-b9cc-e5975e908837,integrate back-end initiatives,Prospecting,New Business,2025-03-07,432148
+139,8c752614-9c48-436c-a25b-c0354fcd690d,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,redefine ubiquitous paradigms,Negotiation,New Business,2025-03-02,437868
+140,d125aaa9-635b-482c-a84b-d14e90815881,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,facilitate back-end e-markets,Lost,Existing Business,2025-01-20,255325
+141,e5e2d615-80d9-4dd2-9c9f-dd777e24744f,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,iterate plug-and-play relationships,Closed,New Business,2025-03-27,122950
+142,901e77c3-a600-4b28-875e-f5e234d37bf0,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,evolve scalable models,Negotiation,Upsell,2025-03-05,434636
+143,cbb91890-300c-45c8-acf5-abba965d4049,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,reinvent distributed platforms,Lost,New Business,2025-02-14,498259
+144,d557da81-8bc7-4764-97a3-841cd39a639b,7c0bcda2-3855-46b3-9708-97c45e56f179,synergize ubiquitous e-services,Lost,Renewal,2025-03-27,243814
+145,355797fa-2fee-47e3-a154-e5b48b9deb12,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,generate revolutionary schemas,Closed,Renewal,2025-01-11,118058
+146,cb4846fe-2949-42a2-8684-d9484d44a9d3,cf9e33da-9067-4218-a9c9-56afbda44a68,target collaborative synergies,Closed,New Business,2025-04-03,220388
+147,de4db038-3cc2-46e3-9285-1da39cbb67e2,cf9e33da-9067-4218-a9c9-56afbda44a68,extend global applications,Qualification,Renewal,2025-04-14,223212
+148,ecefd391-985c-4622-bcbd-bab23ba4723a,d8bc36af-313f-4539-9f24-37588af2eae7,unleash one-to-one e-services,Won,Renewal,2025-03-24,307208
+149,3d3ed3a0-97ba-4bfc-b697-b8e00bc10df9,800e5332-57ac-4ef4-bede-5043fa6b176e,whiteboard bricks-and-clicks portals,Lost,Upsell,2025-02-06,412389
+150,23e3f534-6332-4735-98c4-7a56e263d32e,800e5332-57ac-4ef4-bede-5043fa6b176e,expedite seamless eyeballs,Negotiation,Existing Business,2025-01-16,384167
+151,413e017a-8adf-43eb-aae2-2cf5654e5dc6,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,transform clicks-and-mortar info-mediaries,Prospecting,Upsell,2025-01-15,282429
+152,a5d6b8a3-7472-4f06-9081-dd7b241c7b01,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,re-contextualize robust functionalities,Qualification,New Business,2025-02-09,314093
+153,7a678c3c-9ab4-4152-9801-bad5adf5d3ec,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,transition seamless solutions,Proposal,Existing Business,2025-01-19,324140
+154,9699d69e-3f67-455b-a4a6-92452ffd925f,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,harness B2C solutions,Negotiation,Renewal,2025-02-27,57144
+155,400671f0-df2e-4d82-b491-17d415b0f1df,84f111b6-1397-489f-aedc-4cb14100def6,disintermediate cutting-edge e-business,Prospecting,Upsell,2025-03-25,324994
+156,8aea0108-2895-4475-8e0b-b5ba7afa8c2d,84f111b6-1397-489f-aedc-4cb14100def6,drive real-time users,Negotiation,Renewal,2025-01-23,282522
+157,327e116a-98ba-4fce-8ed5-f840a1a186a1,84f111b6-1397-489f-aedc-4cb14100def6,mesh cutting-edge paradigms,Lost,Renewal,2025-01-01,497631
+158,d0972a27-bf2e-4ad4-b03a-9e237a9ee8ad,109908de-5490-4753-a3d7-cf9cbfdec8cb,envisioneer efficient applications,Qualification,New Business,2025-03-27,259178
+159,36f9e36b-e82a-47b3-9dfe-b9c9d462b6cf,109908de-5490-4753-a3d7-cf9cbfdec8cb,aggregate turn-key partnerships,Won,Renewal,2025-03-19,325427
