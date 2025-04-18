@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CurrenSee Task Pane Add-in</title>
+
+  <!-- Office JavaScript API -->
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+  <!-- Fluent UI -->
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+  <!-- Template styles -->
+  <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<!--Email drop down and dialog-->
+<body class="ms-font-l ms-landing-page">
+  <main class="ms-landing-page__main">
+    <section class="ms-landing-page__content ms-font-m ms-fontColor-neutralPrimary">
+      <div id="summary-generator">
+        <label for="email-select" class="ms-font-l">Select email address:</label>
+        <!-- Dropdown to select email -->
+        <select id="email-select" class="ms-TextField-field">
+          <option value="">Select Email</option>
+        </select>
+        <!-- Generate Summary Button -->
+        <button id="generate-summary-button" class="ms-Button ms-Button--primary" style="margin-top: 10px;">
+          <span class="ms-Button-label">Generate Summary</span>
+        </button>
+
+        <!-- Summary Output block-->
+         <!-- Bio Summary Block -->
+         <div class="summary-block" id="bio-summary-block">
+          <div class="summary-header">
+            <span>🧑‍💼 Bio Summary</span>
+            <button class="close-button" data-target="#bio-summary-block">×</button>
+          </div>
+          <div class="summary-content" id="bio-summary-text">Loading...</div>
+          <div class="summary-actions">
+            <!-- Like Button with Blue Thumb -->
+            <button class="like-button" title="Like">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0078D4" viewBox="0 0 24 24">
+                <path d="M2 21h4V9H2v12zM23 11a2 2 0 0 0-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.71l-1-1-7.59 7.58A2 2 0 0 0 7 12v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-6l.7-.7a1 1 0 0 0 .3-.71V11z"/>
+              </svg>
+            </button>
+        
+            <!-- Unlike Button with Blue Thumb -->
+            <button class="unlike-button" title="Unlike" data-target="#bio-summary-block">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0078D4" viewBox="0 0 24 24">
+                <path d="M15 3H6c-.6 0-1 .4-1 1v7c0 .6.4 1 1 1h3v6.3c0 .7.8 1.2 1.5.8l6.6-4.3c.4-.2.7-.6.7-1.1V4c0-.6-.4-1-1-1zm4 0v12h2V3h-2z"/>
+              </svg>
+            </button>
+            <button class="copy-button" data-target="#bio-summary-text">Copy</button>
+          </div>
+        </div>
+          
+          
+        
+          <!-- Interaction Summary Block -->
+          <div class="summary-block" id="interaction-summary-block">
+            <div class="summary-header">
+              <span>💬 Interaction Summary</span>
+              <button class="close-button" data-target="#interaction-summary-block">×</button>
+            </div>
+            <div class="summary-content" id="interaction-summary-text"></div>
+            <button class="copy-button" data-target="#interaction-summary-text">Copy</button>
+          </div>
+        
+          <!-- Market Performance Block -->
+          <div class="summary-block" id="market-summary-block">
+            <div class="summary-header">
+              <span>📊 Market Performance</span>
+              <button class="close-button" data-target="#market-summary-block">×</button>
+            </div>
+            <div class="summary-content" id="market-summary-text">Loading...</div>
+            <button class="copy-button" data-target="#market-summary-text">Copy</button>
+          </div>
+        
+        </div>
+
+
+      </div>
+
+    <!--Not Configured Message-->
+        <div id="not-configured" style="display: none;">
+        <div class="centered ms-font-xxl ms-u-textAlignCenter">Welcome!</div>
+        <div class="ms-font-xl" id="settings-prompt">
+          Please choose the <strong>Settings</strong> icon at the bottom of this window to configure this add-in.
+        </div>
+      </div>
+      <div id="currensee-list-container" style="display: none;">
+        <form>
+          <div id="currensee-list">
+          </div>
+        </form>
+      </div>
+
+    <!-- Error Message Display -->
+    <div id="error-display" style="display: none;" class="ms-u-borderBase ms-fontColor-error ms-font-m ms-bgColor-error ms-borderColor-error">
+    </div>
+
+
+    </section>
+  </main>
+
+    
+
+  <footer class="ms-landing-page__footer ms-bgColor-themePrimary">
+    <div class="ms-landing-page__footer--left">
+      <img src="../../assets/CurrenSee_logo.png" alt="CurrenSee Logo" />
+      <h1 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-white">CurrenSee</h1>
+    </div>
+
+   <!-- Settings Icon  -->
+   <div id="settings-icon" class="ms-landing-page__footer--right" aria-label="Settings" tabindex=0>
+    <i class="ms-Icon enlarge ms-Icon--Settings ms-fontColor-white"></i>
+  </div>
+</footer>
+
+  <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="../../node_modules/showdown/dist/showdown.min.js"></script>
+  <script type="text/javascript" src="../../node_modules/urijs/src/URI.min.js"></script>
+  <script type="text/javascript" src="taskpane.js"></script>
+</body>
+
+</html>
