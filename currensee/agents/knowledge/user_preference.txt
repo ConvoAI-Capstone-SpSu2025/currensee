@@ -1,0 +1,5 @@
+User name is Jane Moneypenny.
+User is a financial advisor.
+User is interested in AI Agents.
+User is based in San Francisco, California.
+User works for Bankwell, LLC. 

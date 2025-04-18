@@ -1,7 +1,7 @@
 [project]
 name = "currensee"
 version = "0.1.0"
-description = "Conversational AI interface to aid in client p-facing work using data from Microsoft 365, google products, earnings reports, and more."
+description = "Conversational AI interface to aid in client-facing work using data from Microsoft 365, google products, earnings reports, and more."
 authors = [
     {name = "Lily Campbell",email = "lilycampbell@uchicago.edu"},
     {name = "Xiaojing Fang", email = "xjfang@uchicago.edu"},
@@ -14,13 +14,31 @@ readme = "README.md"
 requires-python = ">=3.10,<3.13"
 dependencies = [
     "faker (>=37.1.0,<38.0.0)",
-    "pandas (>=2.2.3,<3.0.0)"
+    "pandas (>=2.2.3,<3.0.0)",
+    "crewai[tools]>=0.114.0,<1.0.0",
+    "typing-extensions (>=4.13.2,<5.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "sec-api (>=1.0.31,<2.0.0)",
+    "unstructured (>=0.17.2,<0.18.0)",
+    "yfinance (>=0.2.55,<0.3.0)",
 ]
 
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=2.0.0,<3.0.0", "hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry.dependencies]
 
+[tool.crewai]
+type = "crew"
+
+
+[tool.pyright]
+# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+useLibraryCodeForTypes = true
+exclude = [".cache"]
+
+[tool.ruff]
+# https://beta.ruff.rs/docs/configuration/
+select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
+ignore = ['W291', 'W292', 'W293']
