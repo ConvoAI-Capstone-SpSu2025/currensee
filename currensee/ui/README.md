@@ -24,13 +24,13 @@ npm install
 ## 2. Run the Build Script
 Once your dependencies are installed, run the build script defined in your package.json. To do this, execute the following command in your terminal:
 ```bash
-npm build
+npm run build
 ```
 
 ## 3. Running the UI Package
 To run the ui package, you can use the following command from the terminal:
 ```bash
-npm start
+npm run start
 ```
 
 This will launch the Outlook add-in UI in the browser for development or testing. It should automatically load the UI in Outlook when integrated.
