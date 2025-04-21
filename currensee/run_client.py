@@ -7,13 +7,13 @@ from currensee.schema import ChatMessage
 
 async def amain() -> None:
     #### ASYNC ####
-    client = AgentClient(settings.BASE_URL)
+    client = AgentClient(settings.BASE_URL, agent="chatbot", get_info=False)
 
-    print("Agent info:")
-    print(client.info)
+    # print("Agent info:")
+    # print(client.info)
 
     print("Chat example:")
-    response = await client.ainvoke("Tell me a brief joke?", model="gpt-4o")
+    response = await client.ainvoke("Tell me a brief joke?")
     response.pretty_print()
 
     print("\nStream example:")
@@ -29,10 +29,10 @@ async def amain() -> None:
 
 def main() -> None:
     #### SYNC ####
-    client = AgentClient(settings.BASE_URL)
+    client = AgentClient(settings.BASE_URL, agent="chatbot", get_info=False)
 
-    print("Agent info:")
-    print(client.info)
+    # print("Agent info:")
+    # print(client.info)
 
     print("Chat example:")
     response = client.invoke("Tell me a brief joke?", model="gpt-4o")

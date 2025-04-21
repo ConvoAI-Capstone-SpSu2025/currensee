@@ -1,9 +1,11 @@
 from typing import Literal
 from typing_extensions import TypedDict
-
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import MessagesState, END
 from langgraph.types import Command
+
+from currensee.core import get_model, settings
+
+model = get_model(settings.DEFAULT_MODEL)
 
 
 members = ["market_researcher", "secretary", "company_researcher"]
@@ -26,9 +28,6 @@ class Router(TypedDict):
     next: Literal[*options]
 
 
-llm = ChatGoogleGenerativeAI(model="claude-3-5-sonnet-latest")
-
-
 class State(MessagesState):
     next: str
 
@@ -37,7 +36,7 @@ def supervisor_node(state: State) -> Command[Literal[*members, "__end__"]]:
     messages = [
         {"role": "system", "content": system_prompt},
     ] + state["messages"]
-    response = llm.with_structured_output(Router).invoke(messages)
+    response = model.with_structured_output(Router).invoke(messages)
     goto = response["next"]
     if goto == "FINISH":
         goto = END

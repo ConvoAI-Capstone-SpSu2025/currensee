@@ -2,6 +2,26 @@
 
 
 
+Current Flow
+
+           +--------+
+           | router |
+           +--------+
+               |
+   +-----------+------------+
+   |                        |
+   v                        v
++-------------+      +----------------+
+| math_expert |      | research_expert|
++-------------+      +----------------+
+        \                 /
+         \               /
+          v             v
+             +------------+
+             | summarizer |
+             +------------+
+
+
 ## Using Google GenAI via LangChain
 
 To use, you must have either:

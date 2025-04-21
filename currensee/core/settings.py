@@ -17,6 +17,7 @@ from currensee.schema.models import (
     AllModelEnum,
     FakeModelName,
     GoogleModelName,
+    Provider
 )
 
 
@@ -80,6 +81,30 @@ class Settings(BaseSettings):
         default=3, description="Minimum number of connections in the pool"
     )
     POSTGRES_MAX_IDLE: int = Field(default=5, description="Maximum number of idle connections")
+
+    def model_post_init(self, __context: Any) -> None:
+        api_keys = {
+            Provider.GOOGLE: self.GOOGLE_API_KEY,
+            Provider.FAKE: self.USE_FAKE_MODEL,
+        }
+
+        active_keys = [k for k, v in api_keys.items() if v]
+        if not active_keys:
+            raise ValueError("At least one LLM API key must be provided.")
+
+        for provider in active_keys:
+            match provider:
+                case Provider.GOOGLE:
+                    if self.DEFAULT_MODEL is None:
+                        self.DEFAULT_MODEL = GoogleModelName.GEMINI_15_FLASH
+                    self.AVAILABLE_MODELS.update(set(GoogleModelName))
+                case Provider.FAKE:
+                    if self.DEFAULT_MODEL is None:
+                        self.DEFAULT_MODEL = FakeModelName.FAKE
+                    self.AVAILABLE_MODELS.update(set(FakeModelName))
+     
+                case _:
+                    raise ValueError(f"Unknown provider: {provider}")
 
     @computed_field
     @property

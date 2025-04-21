@@ -18,7 +18,7 @@ secretary_prompt = """
 """
 
 secretary_agent = create_react_agent(
-    llm, tools=o365_tools, prompt=secretary prompt,
+    llm, tools=o365_tools, prompt=secretary_prompt,
 )
 
 
