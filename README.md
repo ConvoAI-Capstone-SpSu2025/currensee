@@ -67,46 +67,7 @@ To get a local copy up and running follow these simple steps.
 
 0. Turn on the instance via [the workbench UI](https://console.cloud.google.com/vertex-ai/workbench/instances?invt=AbuvFw&orgonly=true&project=adsp-34002-on02-sopho-scribe&supportedpurview=project)
 
-1. Create an ssh key
-   ```bash
-    ssh-keygen # Hit enter for all of the prompts
-   ```
-
-2. Copy your ssh key to your git settings
-  ```bash
-  cat .ssh/id_rsa.pub # copy the contents that appear
-  # paste the contents in your Settings > SSH and GPG keys > SSH keys > New SSH key
-  ```
-   
-
-3. Clone the github repo by selecting the git button in the UI or cloning in the terminal
-```bash
-git clone git@github.com:ConvoAI-Capstone-SpSu2025/currensee.git
-```
-
-4. Install pipx
-```bash
-sudo apt update
-sudo apt install pipx
-pipx ensurepath
-```
-
-5. Install poetry
-```bash
-pipx install poetry
-source ~/.bashrc
-```
-
-6. Create & activate conda env
-```bash
-conda create -n cs_env python=3.11.12 # Note we are using python 3.11, because it is more stable for CrewAI than newer versions
-conda activate cs_env
-```
-
-7. Install the required packages via poetry
-```bash
-poetry install
-```
+1. Read the instructions within GCP!
 
 
 ### Local Environment Configuration
@@ -163,10 +124,25 @@ git clone git@github.com:ConvoAI-Capstone-SpSu2025/currensee.git
 
 1. Create the environment from the existing poetry specs in the repository
 ```bash
+# Create an environment of your choice
 poetry env activate
-# copy the command and call it to activate the environment
+# or
+conda create -n <your_env_name> python=3.11.10 # follow the prompts
+
+conda activate <your_env_name>
+
 poetry install # install the packages into the environment
 ```
+
+#### Add the necessary credentials to your .env
+```bash
+# Assuming you are within the repo's top-level currensee/ folder
+cp .env.example .env # copy the existing .env example file
+
+# update the .env credentials as you see fit (specifically the API keys)
+
+```
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
