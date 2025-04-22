@@ -31,7 +31,6 @@ The `run()` method is set up to be awaited.
 
 In this repository, we have implemented the follow categories of workflows:
 1. SQL Workflow
-2. Vector Workflow
 
 ### SQL Workflow
 
