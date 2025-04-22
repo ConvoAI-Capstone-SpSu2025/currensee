@@ -6,12 +6,14 @@ from dotenv import find_dotenv
 from pydantic import (
     BeforeValidator,
     Field,
+    field_serializer,
     HttpUrl,
     SecretStr,
     TypeAdapter,
     computed_field,
 )
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from sqlalchemy import URL
 
 from currensee.schema.models import (
     AllModelEnum,
@@ -81,6 +83,38 @@ class Settings(BaseSettings):
         default=3, description="Minimum number of connections in the pool"
     )
     POSTGRES_MAX_IDLE: int = Field(default=5, description="Maximum number of idle connections")
+
+    # Simplify access of confidential data
+    @field_serializer(
+        "postgres_password",
+        when_used="json",
+        check_fields=False,
+    )
+    def dump_secret(self, v):
+        return v.get_secret_value()
+    
+    @property
+    def postgres(self) -> dict[str, str | int]:
+        return {
+            "host": self.POSTGRES_HOST,
+            "port": self.POSTGRES_PORT,
+            "user": self.POSTGRES_USER,
+            "password": self.POSTGRES_PASSWORD.get_secret_value(),
+            "database": self.POSTGRES_DB,
+            "perform_setup": False,
+        }
+
+    @property
+    def sqlalchemy(self) -> URL:
+        sqlalchemy_dict = {
+            "drivername": "postgresql+psycopg",
+            "username": self.POSTGRES_USER,
+            "password": self.POSTGRES_PASSWORD.get_secret_value(),
+            "host": self.POSTGRES_HOST,
+            "database": self.POSTGRES_DB,
+            "port": self.POSTGRES_PORT,
+        }
+        return URL.create(**sqlalchemy_dict)
 
     def model_post_init(self, __context: Any) -> None:
         api_keys = {

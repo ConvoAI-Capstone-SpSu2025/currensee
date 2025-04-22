@@ -5,6 +5,19 @@ from typing_extensions import TypedDict
 
 from currensee.schema.models import AllModelEnum, GoogleModelName
 
+from enum import auto, StrEnum
+
+
+
+class PostgresTables:
+    """
+        NOTE: These are just placeholders to demonstrate intended capabilities.
+    """
+    CRM_TABLE_ONE = auto()
+    CRM_TABLE_CHUNKED = auto()
+    OUTLOOK_EMAILS = auto()
+    TEAMS_MESSAGES  = auto()
+
 
 class AgentInfo(BaseModel):
     """Info about an available agent."""
