@@ -63,52 +63,6 @@
 
 To get a local copy up and running follow these simple steps.
 
-### First-Time GCP Environment Setup
-
-0. Turn on the instance via [the workbench UI](https://console.cloud.google.com/vertex-ai/workbench/instances?invt=AbuvFw&orgonly=true&project=adsp-34002-on02-sopho-scribe&supportedpurview=project)
-
-1. Create an ssh key
-   ```bash
-    ssh-keygen # Hit enter for all of the prompts
-   ```
-
-2. Copy your ssh key to your git settings
-  ```bash
-  cat .ssh/id_rsa.pub # copy the contents that appear
-  # paste the contents in your Settings > SSH and GPG keys > SSH keys > New SSH key
-  ```
-   
-
-3. Clone the github repo by selecting the git button in the UI or cloning in the terminal
-```bash
-git clone git@github.com:ConvoAI-Capstone-SpSu2025/currensee.git
-```
-
-4. Install pipx
-```bash
-sudo apt update
-sudo apt install pipx
-pipx ensurepath
-```
-
-5. Install poetry
-```bash
-pipx install poetry
-source ~/.bashrc
-```
-
-6. Create & activate conda env
-```bash
-conda create -n cs_env python=3.11.12 # Note we are using python 3.11, because it is more stable for CrewAI than newer versions
-conda activate cs_env
-```
-
-7. Install the required packages via poetry
-```bash
-poetry install
-```
-
-
 ### Local Environment Configuration
 
 Below are the recommended operating-system-specific instructions for:
@@ -161,9 +115,12 @@ git clone git@github.com:ConvoAI-Capstone-SpSu2025/currensee.git
 
 #### Configure the Python Environment
 
-1. Create the environment from the existing poetry specs in the repository
+1. Create the environment from the existing poetry specs in the repository.
+Below are instructions for creating an environment via poetry, but you can
+also use the environment of your choice (conda, pyenv, etc.) .
+
 ```bash
-poetry env activate
+poetry env activate 
 # copy the command and call it to activate the environment
 poetry install # install the packages into the environment
 ```
