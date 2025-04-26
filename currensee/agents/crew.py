@@ -22,14 +22,22 @@ class Currensee():
 
     # If you would like to add tools to your agents, you can learn more about it here:
     # https://docs.crewai.com/concepts/agents#agent-tools
+    # @agent
+    # def market_researcher(self) -> Agent:
+    #     return Agent(
+    #         config=self.agents_config['market_researcher'],
+    #         tools = [BalanceSheetsTool()],
+    #         llm = 'gemini-1.5-flash',
+    #         verbose=True
+    #     )
     @agent
-    def market_researcher(self) -> Agent:
-        return Agent(
-            config=self.agents_config['market_researcher'],
-            tools = [BalanceSheetsTool()],
-            llm = 'gemini-1.5-flash',
-            verbose=True
-        )
+    def news_researcher(self) -> Agent:
+            return Agent(
+                config=self.agents_config['news_researcher'],
+                tools = [CustomSerperDevTool()],
+                llm = 'gemini-1.5-flash',
+                verbose=True
+            )
 
     @agent
     def market_reporting_analyst(self) -> Agent:
@@ -39,21 +47,28 @@ class Currensee():
             verbose=True
         )
 
-    @agent
-    def scribe(self) -> Agent:
-        return Agent(
-            config=self.agents_config['scribe'],
-            llm = 'gemini-1.5-flash',
-            verbose=True
-        )
+    # @agent
+    # def scribe(self) -> Agent:
+    #     return Agent(
+    #         config=self.agents_config['scribe'],
+    #         llm = 'gemini-1.5-flash',
+    #         verbose=True
+    #     )
 
     # To learn more about structured task outputs,
     # task dependencies, and task callbacks, check out the documentation:
     # https://docs.crewai.com/concepts/tasks#overview-of-a-task
+    # @task
+    # def research_task(self) -> Task:
+    #     return Task(
+    #         config=self.tasks_config['research_task'],
+    #     )
+
     @task
-    def research_task(self) -> Task:
+    def news_task(self) -> Task:
         return Task(
-            config=self.tasks_config['research_task'],
+            config=self.tasks_config['news_task'],
+            output_file='news_report.md'
         )
 
     @task
@@ -63,12 +78,12 @@ class Currensee():
             output_file='report.md'
         )
 
-    @task
-    def summarization_task(self) -> Task:
-        return Task(
-            config=self.tasks_config['summarization_task'],
-            output_file='correspondence_summary.txt'
-        )
+    # @task
+    # def summarization_task(self) -> Task:
+    #     return Task(
+    #         config=self.tasks_config['summarization_task'],
+    #         output_file='correspondence_summary.txt'
+    #     )
 
     @crew
     def crew(self) -> Crew:
