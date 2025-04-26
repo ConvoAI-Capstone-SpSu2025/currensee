@@ -17,7 +17,8 @@ dependencies = [
     "faker (>=37.1.0,<38.0.0)",
     "pandas (>=2.2.3,<3.0.0)",
     "msgraph-sdk (>=1.26.0,<2.0.0)",
-    "google-genai (>=1.10.0,<2.0.0)"
+    "google-genai (>=1.10.0,<2.0.0)",
+    "ipykernel (>=6.29.5,<7.0.0)"
 ]
 
 
