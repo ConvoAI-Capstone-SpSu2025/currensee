@@ -2,6 +2,11 @@
 
 In addition to this documentation, you can explore how a query engine is called in the notebooks in `notebooks/query_engines`.
 
+## Important Setup Steps
+
+You must have your database credentials and google API key defined in your `.env` file.
+Follow the instructions in `.env.example` to configure these properly.
+
 ## :gear: Mechanics of llama-index `Workflow`
 
 <details>
