@@ -82,6 +82,11 @@ class Settings(BaseSettings):
     )
     POSTGRES_MAX_IDLE: int = Field(default=5, description="Maximum number of idle connections")
 
+    @computed_field
+    @property
+    def POSTGRES_ENGINE_STR(self) -> str:
+        return f'postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD.get_secret_value()}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}'
+
     def model_post_init(self, __context: Any) -> None:
         api_keys = {
             Provider.GOOGLE: self.GOOGLE_API_KEY,
@@ -111,8 +116,6 @@ class Settings(BaseSettings):
     def BASE_URL(self) -> str:
         return f"http://{self.HOST}:{self.PORT}"
 
-    def is_dev(self) -> bool:
-        return self.MODE == "dev"
 
 
 settings = Settings()
