@@ -17,6 +17,9 @@ class PostgresTables:
     CRM_TABLE_CHUNKED = auto()
     OUTLOOK_EMAILS = auto()
     TEAMS_MESSAGES  = auto()
+    CRM_Client_Alignment = auto()
+    CRM_Portfolio = auto()
+    CRM_Employees = auto()
 
 
 class AgentInfo(BaseModel):

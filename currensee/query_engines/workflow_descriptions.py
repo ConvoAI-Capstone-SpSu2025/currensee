@@ -1,13 +1,21 @@
 
 from currensee.schema.schema import PostgresTables
 
+crm_table_desc = """
+
+
+
+
+
+
+"""
 
 crm_portfolio_table_desc = """
 Use when query involves client accounts, portfolio information, account positions, stocks, mutual funds, or index funds.  
 Columns:
  - AccountID (PK)
  - Company_name
- - symbol
+ - symbol (PK)
  - instrument_type
 """
 
@@ -66,7 +74,10 @@ market_table_desc = """
 
 SQL_TABLE_DESC_MAPPING: dict[str, str] = {
     PostgresTables.CRM_TABLE_ONE: crm_table_desc,
-    PostgresTables.OUTLOOK_EMAILS: outlook_table_desc
+    PostgresTables.OUTLOOK_EMAILS: outlook_table_desc, 
+    PostgresTables.CRM_Client_Alignment: crm_client_alignment_table_desc,
+    PostgresTables.CRM_Portfolio: crm_portfolio_table_desc ,
+    PostgresTables.CRM_Employees: crm_employees_table_desc
 }
 
 #################################
