@@ -1,0 +1,84 @@
+,Company,industry,AccountID,ContactFirstName,ContactLastName,ContactTitle,Phone,Email,Website,Location,AnnualRevenue,TotalAccountBal
+0,Broadcom,Technology,a9e654e8-08ea-461c-b446-080e0357c6e1,Matthew,Bernard,Senior Director,(452)310-2772,matthew.bernard@broadcom.com,http://hunt-gomez.com/,Denver,20465864,13808678
+1,Cisco,Technology,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,Jennifer,Thompson,Manager,+1-993-410-3046x733,jennifer.thompson@cisco.com,https://www.newman.net/,New York City,26354765,13483443
+2,Palantir Technologies,Technology,148c9011-f9f2-47fa-9f80-52a1fca106dd,Tina,Spencer,Manager,+1-317-520-0529x323,tina.spencer@palantirtechnologies.com,http://www.thornton.com/,Chicago,42314471,47207154
+3,Fiserv,Technology,41553d2e-1615-4ed1-981d-b8bce254d6a2,Gabriel,Rice,Consultant,(260)910-2731x847,gabriel.rice@fiserv.com,https://www.chase.com/,Chicago,36049514,39989545
+4,Atlassian,Technology,996063e1-e6dc-4c3a-bb97-0d52e772f148,Rebecca,Bryant,Consultant,254-953-0035x54620,rebecca.bryant@atlassian.com,https://www.hooper-gomez.com/,Seattle,39251007,16755447
+5,Leidos,Technology,23fbb927-21e5-40f4-86b4-82e34c131a14,Daniel,Byrd,VP,786.469.7975,daniel.byrd@leidos.com,https://jimenez.info/,Dallas,10727501,3635066
+6,Duolingo,Technology,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,Phillip,Wilson,Senior Director,700-351-5609x280,phillip.wilson@duolingo.com,http://www.gonzales.com/,Denver,23540502,19978765
+7,Logitech,Technology,a331fa92-4b77-4dc3-8265-76e00c68939b,Lisa,Holt,Manager,209.874.0898x02144,lisa.holt@logitech.com,http://www.golden.com/,Chicago,38506012,22211717
+8,Celestica,Technology,de201e35-6ae2-4a17-95fa-9d1797607850,Veronica,Smith,Consultant,+1-712-691-6988x3864,veronica.smith@celestica.com,http://short-fox.com/,Denver,31385861,25196266
+9,Dropbox,Technology,860992a3-fc92-4486-aa27-ef0a0d3521c3,Laura,James,Director,(602)730-5106,laura.james@dropbox.com,https://harris.com/,Denver,16914937,32409416
+10,Plexus,Technology,4a4699e7-21b6-4f90-b8e0-e71176d73f73,Kevin,Lyons,Senior Director,2363247103,kevin.lyons@plexus.com,http://ellis.biz/,Denver,28508716,9152324
+11,Silicon Laboratories,Technology,9205a7a8-9138-4a90-85d2-435a0879ac79,Anthony,Summers,Senior Director,(558)776-8954x9189,anthony.summers@siliconlaboratories.com,https://butler.org/,Los Angeles,16267210,25342074
+12,Mobix Labs,Technology,46824630-3383-4541-b6a4-b5b5c7c97e43,Alicia,Matthews,Consultant,001-218-240-3112x8242,alicia.matthews@mobixlabs.com,https://simon-thompson.com/,Seattle,2180527,28295284
+13,Mariott,Hospitality,faad09d6-04c9-44a9-95f8-5fc9c22935d2,Ruben,Johnson,Senior Director,428.822.2598x5319,ruben.johnson@mariott.com,https://chapman.com/,Miami,14818545,46092778
+14,InterContinental Hotels Group,Hospitality,bc86d81c-e4f2-4bfc-9ea4-90d697d8eeda,Andre,Hart,Director,+1-272-789-4647,andre.hart@intercontinentalhotelsgroup.com,https://lee-daniel.biz/,Washington DC,22544242,44026278
+15,Sonder Holdings,Hospitality,741865dd-ee13-40a2-a29e-8b921e0d6b01,Linda,Parsons,Consultant,(595)501-4775,linda.parsons@sonderholdings.com,http://duarte.com/,New York City,12863254,45094401
+16,Hyatt Hotels,Hospitality,629dd1fa-732d-4425-95ed-a436446c832d,Ronald,Garcia,Manager,+1-368-515-6104,ronald.garcia@hyatthotels.com,http://www.brewer.com/,Seattle,17224973,38045102
+17,Royal Caribbean Cruises,Hospitality,6e79b897-8bde-4d9e-920d-d94dc967c487,Nicole,Romero,Director,001-472-672-3820x54944,nicole.romero@royalcaribbeancruises.com,https://www.mills.biz/,Miami,11049105,28027533
+18,UnitedHealth,Healthcare,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,Crystal,Burgess,Consultant,+1-251-299-8911x15020,crystal.burgess@unitedhealth.com,https://www.murray-gomez.com/,Dallas,12846064,12775715
+19,Johnson & Johnson,Healthcare,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,Joseph,Garcia,Manager,(376)962-2107x108,joseph.garcia@johnsonjohnson.com,https://lewis.com/,Los Angeles,6170255,49311541
+20,AbbVie,Healthcare,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,Julian,Johnson,Manager,+1-655-926-9577x169,julian.johnson@abbvie.com,http://gonzalez-larson.com/,Washington DC,5799378,21327477
+21,Novo Nordisk,Healthcare,cb074b02-339f-4977-b86a-40f75120b03d,William,Washington,Senior Director,(761)912-5003,william.washington@novonordisk.com,https://kelley-hines.org/,San Fransisco,2453753,33461057
+22,Abbott Laboratories,Healthcare,c1768be7-6109-4d6f-ba47-8cff23266021,Kara,Thomas,Consultant,250-485-6304x5001,kara.thomas@abbottlaboratories.com,http://www.buchanan.com/,Dallas,41187506,16072244
+23,AstraZeneca,Healthcare,b71c45d8-33b5-4a53-bedc-f3315429926a,Jason,Thomas,VP,837-720-8737,jason.thomas@astrazeneca.com,http://cardenas.com/,Los Angeles,31384703,46669977
+24,Merck & Co,Healthcare,1fb29073-689c-4c72-aba9-b30645390257,Michele,Scott,Manager,(629)499-2492,michele.scott@merckco.com,https://harrison.com/,Washington DC,27155299,3625124
+25,Intuitive Surgical,Healthcare,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Eric,Church,VP,001-997-486-7080x3944,eric.church@intuitivesurgical.com,http://www.richard.com/,Dallas,19899576,41599178
+26,Medtronic,Healthcare,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Patricia,Mitchell,Manager,3298769695,patricia.mitchell@medtronic.com,http://mendez.info/,Washington DC,7816595,47603515
+27,Zoetis,Healthcare,6c066e63-68da-4b10-aa94-aa57226d4e1a,Jordan,Mcgee,Director,+1-486-362-7531x6098,jordan.mcgee@zoetis.com,https://jordan.biz/,Denver,40731797,27111116
+28,Humana,Healthcare,a1f96519-b8fd-48b2-a753-7561a9090608,Karen,Johnson,Consultant,250-459-7473,karen.johnson@humana.com,https://johnson.biz/,Los Angeles,22471908,39035927
+29,Illumina,Healthcare,97f519b3-e882-476d-b379-2ae4265bd91b,Brittany,Guzman,Manager,493-534-9905x0192,brittany.guzman@illumina.com,http://jackson.com/,San Fransisco,26119252,27488652
+30,Guardant Health,Healthcare,edcb5808-f88e-4819-804a-3019dddc3d60,Billy,Lin,Senior Director,(517)627-2755,billy.lin@guardanthealth.com,http://nolan.net/,Seattle,29824989,22761511
+31,Rhythm Pharmaceuticals,Healthcare,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,Jerry,Robinson,VP,979-424-3269,jerry.robinson@rhythmpharmaceuticals.com,https://mueller.com/,Dallas,18667846,41542247
+32,Amedisys,Healthcare,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Mary,Gregory,Senior Director,+1-779-894-6343x15238,mary.gregory@amedisys.com,http://www.zimmerman.com/,Miami,24965136,42760116
+33,Rivian Automotive,Automotive,b2242521-730b-41e3-b666-17e00efc45e8,Kathleen,Watkins,VP,001-395-945-9991x5892,kathleen.watkins@rivianautomotive.com,http://fields.info/,Miami,33589564,11355999
+34,Fordy,Automotive,d3beac15-ba06-41cb-8f70-a95816ee6edc,Jennifer,Miller,Senior Director,621-956-7995x654,jennifer.miller@fordy.com,http://walker.net/,Chicago,33065347,21747329
+35,lululemon athletica,Retail,fed2c78d-f7c8-4489-b520-80b6fdf1151b,Heather,Woods,VP,(928)429-8782x268,heather.woods@lululemonathletica.com,https://weaver.com/,Boston,33373752,3250642
+36,DICK'S Sporting Goods,Retail,2e8803e7-7354-46fa-aee8-ac3321f64e5e,Kristina,Robertson,Senior Director,(350)384-8823x088,kristina.robertson@dickssportinggoods.com,http://www.evans.com/,Seattle,24070387,39265989
+37,GameStop Corp,Retail,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,John,Sharp,Manager,+1-311-596-3140,john.sharp@gamestopcorp.com,http://white.biz/,Seattle,29052635,27862004
+38,Texas Roadhouse,Retail,fedc2f29-ad55-4b29-87e2-d3031a078d16,Anthony,Jensen,Consultant,388.653.0016,anthony.jensen@texasroadhouse.com,https://mckay.com/,Chicago,34304317,35609546
+39,Hasbro,Retail,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Amber,Adams,Manager,317.377.2211,amber.adams@hasbro.com,http://trevino.com/,Dallas,47388013,15966177
+40,Mattel,Retail,e4b5bf3a-d43e-4748-b72a-03e450cc4251,Dan,Williams,Consultant,453.636.4721,dan.williams@mattel.com,http://www.miller.com/,Dallas,20256792,33679601
+41,Wayfair,Retail,e66730a8-0bcc-4700-adf9-3e186d3632ad,Madison,Lee,Manager,970-588-5142,madison.lee@wayfair.com,https://www.wilson.com/,Washington DC,46816607,23101594
+42,Peloton,Retail,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Paula,Miller,Consultant,915.370.3619x5958,paula.miller@peloton.com,http://www.stewart.com/,Washington DC,7348091,45444701
+43,Sally Beauty,Retail,b76331a3-d883-4a74-8970-7f8b40ed5e06,Stephanie,Cline,Consultant,(809)274-1237,stephanie.cline@sallybeauty.com,https://www.stevens-hobbs.com/,Los Angeles,12080619,28561202
+44,Lifetime Brand,Retail,1b433d24-c7f2-415c-92aa-5b3cac5bff4b,Joe,Young,VP,001-916-482-1534x689,joe.young@lifetimebrand.com,https://www.fuentes.net/,New York City,10518730,37664317
+45,Allbirds,Retail,7de0cc16-9de9-4ae8-82a6-e0c70d884781,Kimberly,Martin,Manager,857-359-8425x14811,kimberly.martin@allbirds.com,http://peterson-thompson.com/,Boston,1780971,49812567
+46,Walmart,Retail,32891396-9533-42fa-8eea-a0abd7672821,Terry,Sharp,Manager,678.712.1153,terry.sharp@walmart.com,https://schwartz-walker.net/,Miami,38197006,14444549
+47,Tyson Foods,Retail,0cf48241-6073-42c8-ac12-6debb14feeba,James,Zavala,Manager,(668)870-1358,james.zavala@tysonfoods.com,http://riley.net/,Washington DC,31628815,18562216
+48,Sprouts Farmers Market,Retail,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Thomas,Gutierrez,Manager,(941)852-2103x16114,thomas.gutierrez@sproutsfarmersmarket.com,https://www.smith.com/,Miami,27681776,19728836
+49,Dollar Tree,Retail,505eaca2-6d1e-40d2-806f-a8ad96310e59,Brooke,Navarro,Director,770-815-9630,brooke.navarro@dollartree.com,http://www.long.com/,Miami,27321804,17914257
+50,Stride,Retail,94e3a95f-2391-4050-968d-9f4e4829e2e0,Chase,Evans,Senior Director,001-984-928-7332x279,chase.evans@stride.com,https://mcdowell-wolfe.org/,New York City,43818663,18453952
+51,Spectrum Brands,Retail,9b02412b-cb9b-43c1-99b8-9455d0933bec,Christopher,Anderson,Director,001-395-884-1417x9780,christopher.anderson@spectrumbrands.com,https://www.hopkins.info/,Miami,30953471,43213078
+52,Udemy,Retail,e5e53c9c-c291-4c59-ad79-77ad61aab106,Ashley,Reynolds,Manager,662-933-4005x266,ashley.reynolds@udemy.com,http://www.williams.info/,Boston,20177546,35216134
+53,Vital Farms,Retail,7a42f9bb-d9e9-4282-8cff-35f4f2dc93ec,Jamie,Campbell,VP,2384686789,jamie.campbell@vitalfarms.com,http://www.rodriguez-english.net/,Denver,6036490,46752268
+54,Graham Holdings Company,Retail,e96709de-7b18-4b29-b42b-ddb1b1c4c3b6,Christopher,Camacho,Senior Director,556.770.2220,christopher.camacho@grahamholdingscompany.com,https://www.cook.com/,Boston,22806583,16831014
+55,Hims & Hers Health,Retail,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Derek,Holt,VP,001-510-463-3792x3353,derek.holt@himshershealth.com,https://www.hernandez.com/,Seattle,10299240,36871364
+56,Smithfield Foods,Retail,16613f22-10c8-4a99-90a2-d41935cb77e6,Ann,Bean,Senior Director,683-280-1848x1347,ann.bean@smithfieldfoods.com,https://www.duran.com/,Dallas,11706113,49367170
+57,Albertsons Companies,Retail,b4ccbb95-fb04-4655-833a-372810918adb,Rhonda,Rogers,Director,797-788-4304,rhonda.rogers@albertsonscompanies.com,http://www.bird.com/,Washington DC,14719539,44005967
+58,Albany International,Manufacturing,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Andrew,Walls,VP,(501)277-5908x3810,andrew.walls@albanyinternational.com,https://www.roach.biz/,Dallas,46548880,45271811
+59,IT Tech Packaging,Manufacturing,61a81520-8816-4973-b86b-828cdef33d33,Andre,Rowe,Consultant,001-455-842-3638,andre.rowe@ittechpackaging.com,http://brown.com/,New York City,15378135,48618843
+60,Lockheed Martin Corporation,Manufacturing,c465120e-fd88-46ca-822c-37f74d6cf4c3,Elizabeth,Branch,Manager,570.494.5405x1668,elizabeth.branch@lockheedmartincorporation.com,http://mccarthy.com/,Boston,19439659,2661313
+61,Landstar System,Manufacturing,8c7ba28c-1677-44be-90f3-21c61d7e581a,Dylan,Barnes,Director,854-430-8180,dylan.barnes@landstarsystem.com,https://www.rowe-monroe.com/,Miami,22234730,42918158
+62,Hexcel Corporation,Manufacturing,16ae09bb-fa3a-4a9c-b247-d0c364699135,Jacqueline,Higgins,Consultant,297.615.0488x37006,jacqueline.higgins@hexcelcorporation.com,http://williams.biz/,San Fransisco,30561001,19193097
+63,AeroVironment,Manufacturing,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,Eric,Williams,Manager,(696)888-2720,eric.williams@aerovironment.com,http://www.campbell.com/,Miami,36603743,44197978
+64,Matson,Manufacturing,92769a1d-d4e5-40d5-859f-0bd1368462fb,Brandy,Petersen,Director,936.253.2960x5156,brandy.petersen@matson.com,https://murray-clay.org/,Chicago,3396511,27035423
+65,McGrath RentCorp,Manufacturing,4ea046dd-e59d-423f-b8ff-7972890b6244,James,Clark,Manager,001-486-966-6461x68735,james.clark@mcgrathrentcorp.com,http://mccarthy.net/,Chicago,45613798,16252320
+66,Mueller Industries,Manufacturing,095d931b-43a6-4891-bff5-b268a15c24d7,Brandon,Lara,Consultant,(380)842-7886x523,brandon.lara@muellerindustries.com,https://www.chapman.com/,Washington DC,29201921,36004246
+67,Dolby Laboratories,Manufacturing,5ef5457e-264b-4b68-966a-3226b75ceffb,Tammy,Lee,Manager,514-958-2268x95490,tammy.lee@dolbylaboratories.com,http://www.hamilton.biz/,San Fransisco,16005117,24896042
+68,ManpowerGroup,Manufacturing,430665b8-15ed-4b91-b0b0-50e3006109ae,Marcus,Collins,VP,(790)228-7404x333,marcus.collins@manpowergroup.com,http://www.newman.com/,Chicago,17009480,2678240
+69,Welltower,RealEstate,da402851-1a85-4dd4-a6aa-620d6909da3d,Mary,Jackson,VP,001-787-247-3774x6484,mary.jackson@welltower.com,https://perez-owen.com/,New York City,9481149,39049624
+70,Iron Mountain Incorporated,RealEstate,f22e67d3-01b7-40a4-bf9d-87552540f479,Thomas,Stewart,Director,+1-531-259-1397x22748,thomas.stewart@ironmountainincorporated.com,http://smith.com/,San Fransisco,45024714,29164708
+71,Camden Property,RealEstate,701beb5b-5db8-45a5-b9cc-e5975e908837,Robin,Hunt,Manager,592-541-7823,robin.hunt@camdenproperty.com,https://gonzalez.org/,Washington DC,19805093,7529845
+72,CubeSmart,RealEstate,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,Elizabeth,Murray,VP,375-837-5717x574,elizabeth.murray@cubesmart.com,http://www.gonzalez.org/,San Fransisco,10952973,19638221
+73,Federal Realty Investment Trust,RealEstate,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Patrick,Wall,Senior Director,2078496776,patrick.wall@federalrealtyinvestmenttrust.com,http://www.medina.com/,Washington DC,40758133,33945872
+74,Essential Properties Realty,RealEstate,7c0bcda2-3855-46b3-9708-97c45e56f179,Mary,Edwards,VP,(627)292-7290x55280,mary.edwards@essentialpropertiesrealty.com,http://www.alexander.com/,San Fransisco,31738202,7376407
+75,Compass,RealEstate,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Lauren,Schneider,Director,001-720-403-1842x660,lauren.schneider@compass.com,https://www.duncan.biz/,Chicago,3009723,36883292
+76,Medical Properties Trust,RealEstate,cf9e33da-9067-4218-a9c9-56afbda44a68,Patrick,Phillips,Director,680-239-5461x7787,patrick.phillips@medicalpropertiestrust.com,http://www.adams-harris.info/,San Fransisco,8550636,24824866
+77,Broadstone,RealEstate,d8bc36af-313f-4539-9f24-37588af2eae7,Jamie,West,Senior Director,644.991.1825,jamie.west@broadstone.com,http://www.schmidt.info/,Washington DC,33052687,44649184
+78,Ladder Capital Corp,RealEstate,800e5332-57ac-4ef4-bede-5043fa6b176e,Jessica,Williams,Director,8538754474,jessica.williams@laddercapitalcorp.com,https://www.norris.org/,Washington DC,5036051,48932297
+79,Peakstone Realty Trus,RealEstate,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,Sarah,Wright,Senior Director,(975)921-7202,sarah.wright@peakstonerealtytrus.com,https://phillips.com/,Seattle,46361666,3983354
+80,Fathom Holdings,RealEstate,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Pamela,Lewis,Senior Director,001-319-243-6524x863,pamela.lewis@fathomholdings.com,http://www.orozco.com/,Los Angeles,19267805,18718670
+81,Presidio Property Trust,RealEstate,84f111b6-1397-489f-aedc-4cb14100def6,Jeffrey,Zamora,Senior Director,+1-981-296-3826x78458,jeffrey.zamora@presidiopropertytrust.com,http://shaw.com/,Denver,40596851,38849443
+82,Service Properties Trust,RealEstate,109908de-5490-4753-a3d7-cf9cbfdec8cb,Teresa,Hernandez,Manager,(769)598-2043x452,teresa.hernandez@servicepropertiestrust.com,https://fernandez.com/,Washington DC,47850619,49400053

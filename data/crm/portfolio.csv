@@ -1,0 +1,607 @@
+,AccountID,Company_name,symbol,instrument_type
+0,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,AMZN,Stock
+1,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,TSLA,Stock
+2,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,MSFT,Stock
+3,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,SPY,Mutual Fund
+4,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,CORP2,Bond
+5,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,FZROX,Mutual Fund
+6,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,FXAIX,Mutual Fund
+7,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,VTSAX,Mutual Fund
+8,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,MUNI1,Bond
+9,a9e654e8-08ea-461c-b446-080e0357c6e1,Broadcom,CORP1,Bond
+10,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,Cisco,META,Stock
+11,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,Cisco,CORP2,Bond
+12,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,Cisco,US30Y,Bond
+13,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,Cisco,V,Stock
+14,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,Cisco,MSFT,Stock
+15,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,Cisco,TSLA,Stock
+16,d250a8a3-04a8-4a69-a08b-66ebe9b1f099,Cisco,UNH,Stock
+17,148c9011-f9f2-47fa-9f80-52a1fca106dd,Palantir Technologies,GOOGL,Stock
+18,148c9011-f9f2-47fa-9f80-52a1fca106dd,Palantir Technologies,VTSAX,Mutual Fund
+19,148c9011-f9f2-47fa-9f80-52a1fca106dd,Palantir Technologies,CORP2,Bond
+20,148c9011-f9f2-47fa-9f80-52a1fca106dd,Palantir Technologies,NVDA,Stock
+21,148c9011-f9f2-47fa-9f80-52a1fca106dd,Palantir Technologies,MUNI1,Bond
+22,148c9011-f9f2-47fa-9f80-52a1fca106dd,Palantir Technologies,SPY,Mutual Fund
+23,148c9011-f9f2-47fa-9f80-52a1fca106dd,Palantir Technologies,FZROX,Mutual Fund
+24,148c9011-f9f2-47fa-9f80-52a1fca106dd,Palantir Technologies,TSLA,Stock
+25,41553d2e-1615-4ed1-981d-b8bce254d6a2,Fiserv,GOOGL,Stock
+26,41553d2e-1615-4ed1-981d-b8bce254d6a2,Fiserv,US10Y,Bond
+27,41553d2e-1615-4ed1-981d-b8bce254d6a2,Fiserv,TSLA,Stock
+28,41553d2e-1615-4ed1-981d-b8bce254d6a2,Fiserv,CORP2,Bond
+29,41553d2e-1615-4ed1-981d-b8bce254d6a2,Fiserv,JPM,Stock
+30,41553d2e-1615-4ed1-981d-b8bce254d6a2,Fiserv,SWPPX,Mutual Fund
+31,41553d2e-1615-4ed1-981d-b8bce254d6a2,Fiserv,CORP1,Bond
+32,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,JPM,Stock
+33,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,GOOGL,Stock
+34,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,TSLA,Stock
+35,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,US10Y,Bond
+36,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,META,Stock
+37,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,NVDA,Stock
+38,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,AMZN,Stock
+39,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,V,Stock
+40,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,VTSAX,Mutual Fund
+41,996063e1-e6dc-4c3a-bb97-0d52e772f148,Atlassian,VFIAX,Mutual Fund
+42,23fbb927-21e5-40f4-86b4-82e34c131a14,Leidos,GOOGL,Stock
+43,23fbb927-21e5-40f4-86b4-82e34c131a14,Leidos,MUNI1,Bond
+44,23fbb927-21e5-40f4-86b4-82e34c131a14,Leidos,CORP2,Bond
+45,23fbb927-21e5-40f4-86b4-82e34c131a14,Leidos,VTSAX,Mutual Fund
+46,23fbb927-21e5-40f4-86b4-82e34c131a14,Leidos,AMZN,Stock
+47,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,Duolingo,FXAIX,Mutual Fund
+48,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,Duolingo,META,Stock
+49,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,Duolingo,MUNI2,Bond
+50,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,Duolingo,FZROX,Mutual Fund
+51,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,Duolingo,MUNI1,Bond
+52,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,Duolingo,SPY,Mutual Fund
+53,392f5a5a-26bd-4745-9b1a-fe3f8a025d00,Duolingo,UNH,Stock
+54,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,TSLA,Stock
+55,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,CORP1,Bond
+56,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,NVDA,Stock
+57,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,US30Y,Bond
+58,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,META,Stock
+59,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,SWPPX,Mutual Fund
+60,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,SPY,Mutual Fund
+61,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,MUNI1,Bond
+62,a331fa92-4b77-4dc3-8265-76e00c68939b,Logitech,JPM,Stock
+63,de201e35-6ae2-4a17-95fa-9d1797607850,Celestica,META,Stock
+64,de201e35-6ae2-4a17-95fa-9d1797607850,Celestica,MSFT,Stock
+65,de201e35-6ae2-4a17-95fa-9d1797607850,Celestica,FXAIX,Mutual Fund
+66,de201e35-6ae2-4a17-95fa-9d1797607850,Celestica,US10Y,Bond
+67,de201e35-6ae2-4a17-95fa-9d1797607850,Celestica,CORP1,Bond
+68,de201e35-6ae2-4a17-95fa-9d1797607850,Celestica,NVDA,Stock
+69,de201e35-6ae2-4a17-95fa-9d1797607850,Celestica,TSLA,Stock
+70,de201e35-6ae2-4a17-95fa-9d1797607850,Celestica,SWPPX,Mutual Fund
+71,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,VFIAX,Mutual Fund
+72,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,US10Y,Bond
+73,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,MSFT,Stock
+74,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,SPY,Mutual Fund
+75,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,US30Y,Bond
+76,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,UNH,Stock
+77,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,VTSAX,Mutual Fund
+78,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,FZROX,Mutual Fund
+79,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,SWPPX,Mutual Fund
+80,860992a3-fc92-4486-aa27-ef0a0d3521c3,Dropbox,JPM,Stock
+81,4a4699e7-21b6-4f90-b8e0-e71176d73f73,Plexus,AMZN,Stock
+82,4a4699e7-21b6-4f90-b8e0-e71176d73f73,Plexus,CORP1,Bond
+83,4a4699e7-21b6-4f90-b8e0-e71176d73f73,Plexus,MSFT,Stock
+84,4a4699e7-21b6-4f90-b8e0-e71176d73f73,Plexus,CORP2,Bond
+85,4a4699e7-21b6-4f90-b8e0-e71176d73f73,Plexus,V,Stock
+86,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,NVDA,Stock
+87,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,SPY,Mutual Fund
+88,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,CORP1,Bond
+89,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,MUNI1,Bond
+90,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,CORP2,Bond
+91,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,AAPL,Stock
+92,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,FZROX,Mutual Fund
+93,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,SWPPX,Mutual Fund
+94,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,TSLA,Stock
+95,9205a7a8-9138-4a90-85d2-435a0879ac79,Silicon Laboratories,UNH,Stock
+96,46824630-3383-4541-b6a4-b5b5c7c97e43,Mobix Labs,AMZN,Stock
+97,46824630-3383-4541-b6a4-b5b5c7c97e43,Mobix Labs,VTSAX,Mutual Fund
+98,46824630-3383-4541-b6a4-b5b5c7c97e43,Mobix Labs,NVDA,Stock
+99,46824630-3383-4541-b6a4-b5b5c7c97e43,Mobix Labs,FXAIX,Mutual Fund
+100,46824630-3383-4541-b6a4-b5b5c7c97e43,Mobix Labs,GOOGL,Stock
+101,faad09d6-04c9-44a9-95f8-5fc9c22935d2,Mariott,CORP1,Bond
+102,faad09d6-04c9-44a9-95f8-5fc9c22935d2,Mariott,SWPPX,Mutual Fund
+103,faad09d6-04c9-44a9-95f8-5fc9c22935d2,Mariott,GOOGL,Stock
+104,faad09d6-04c9-44a9-95f8-5fc9c22935d2,Mariott,VTSAX,Mutual Fund
+105,faad09d6-04c9-44a9-95f8-5fc9c22935d2,Mariott,NVDA,Stock
+106,faad09d6-04c9-44a9-95f8-5fc9c22935d2,Mariott,TSLA,Stock
+107,faad09d6-04c9-44a9-95f8-5fc9c22935d2,Mariott,AAPL,Stock
+108,bc86d81c-e4f2-4bfc-9ea4-90d697d8eeda,InterContinental Hotels Group,FZROX,Mutual Fund
+109,bc86d81c-e4f2-4bfc-9ea4-90d697d8eeda,InterContinental Hotels Group,UNH,Stock
+110,bc86d81c-e4f2-4bfc-9ea4-90d697d8eeda,InterContinental Hotels Group,CORP2,Bond
+111,bc86d81c-e4f2-4bfc-9ea4-90d697d8eeda,InterContinental Hotels Group,US10Y,Bond
+112,bc86d81c-e4f2-4bfc-9ea4-90d697d8eeda,InterContinental Hotels Group,GOOGL,Stock
+113,bc86d81c-e4f2-4bfc-9ea4-90d697d8eeda,InterContinental Hotels Group,META,Stock
+114,741865dd-ee13-40a2-a29e-8b921e0d6b01,Sonder Holdings,UNH,Stock
+115,741865dd-ee13-40a2-a29e-8b921e0d6b01,Sonder Holdings,JPM,Stock
+116,741865dd-ee13-40a2-a29e-8b921e0d6b01,Sonder Holdings,MSFT,Stock
+117,741865dd-ee13-40a2-a29e-8b921e0d6b01,Sonder Holdings,SWPPX,Mutual Fund
+118,741865dd-ee13-40a2-a29e-8b921e0d6b01,Sonder Holdings,AAPL,Stock
+119,741865dd-ee13-40a2-a29e-8b921e0d6b01,Sonder Holdings,VFIAX,Mutual Fund
+120,741865dd-ee13-40a2-a29e-8b921e0d6b01,Sonder Holdings,FZROX,Mutual Fund
+121,629dd1fa-732d-4425-95ed-a436446c832d,Hyatt Hotels,US10Y,Bond
+122,629dd1fa-732d-4425-95ed-a436446c832d,Hyatt Hotels,CORP2,Bond
+123,629dd1fa-732d-4425-95ed-a436446c832d,Hyatt Hotels,MUNI2,Bond
+124,629dd1fa-732d-4425-95ed-a436446c832d,Hyatt Hotels,FXAIX,Mutual Fund
+125,629dd1fa-732d-4425-95ed-a436446c832d,Hyatt Hotels,VFIAX,Mutual Fund
+126,629dd1fa-732d-4425-95ed-a436446c832d,Hyatt Hotels,GOOGL,Stock
+127,629dd1fa-732d-4425-95ed-a436446c832d,Hyatt Hotels,MSFT,Stock
+128,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,META,Stock
+129,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,SWPPX,Mutual Fund
+130,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,VFIAX,Mutual Fund
+131,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,V,Stock
+132,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,FXAIX,Mutual Fund
+133,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,US10Y,Bond
+134,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,FZROX,Mutual Fund
+135,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,US30Y,Bond
+136,6e79b897-8bde-4d9e-920d-d94dc967c487,Royal Caribbean Cruises,SPY,Mutual Fund
+137,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,UnitedHealth,SPY,Mutual Fund
+138,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,UnitedHealth,UNH,Stock
+139,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,UnitedHealth,AMZN,Stock
+140,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,UnitedHealth,SWPPX,Mutual Fund
+141,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,UnitedHealth,V,Stock
+142,fc68af5a-f40b-4ad3-9d8a-226c2f6c878f,UnitedHealth,GOOGL,Stock
+143,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,Johnson & Johnson,V,Stock
+144,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,Johnson & Johnson,AMZN,Stock
+145,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,Johnson & Johnson,META,Stock
+146,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,Johnson & Johnson,CORP1,Bond
+147,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,Johnson & Johnson,CORP2,Bond
+148,86a4d184-67f0-4fd0-bd44-46ca7c2a187c,Johnson & Johnson,US10Y,Bond
+149,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,AbbVie,VFIAX,Mutual Fund
+150,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,AbbVie,MSFT,Stock
+151,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,AbbVie,FZROX,Mutual Fund
+152,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,AbbVie,AAPL,Stock
+153,168b2c4f-2fc1-4e7f-aa2e-0c90416f4585,AbbVie,GOOGL,Stock
+154,cb074b02-339f-4977-b86a-40f75120b03d,Novo Nordisk,MSFT,Stock
+155,cb074b02-339f-4977-b86a-40f75120b03d,Novo Nordisk,CORP2,Bond
+156,cb074b02-339f-4977-b86a-40f75120b03d,Novo Nordisk,FZROX,Mutual Fund
+157,cb074b02-339f-4977-b86a-40f75120b03d,Novo Nordisk,FXAIX,Mutual Fund
+158,cb074b02-339f-4977-b86a-40f75120b03d,Novo Nordisk,UNH,Stock
+159,cb074b02-339f-4977-b86a-40f75120b03d,Novo Nordisk,NVDA,Stock
+160,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,NVDA,Stock
+161,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,JPM,Stock
+162,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,V,Stock
+163,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,US10Y,Bond
+164,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,META,Stock
+165,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,FZROX,Mutual Fund
+166,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,AMZN,Stock
+167,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,MSFT,Stock
+168,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,UNH,Stock
+169,c1768be7-6109-4d6f-ba47-8cff23266021,Abbott Laboratories,US30Y,Bond
+170,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,UNH,Stock
+171,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,AAPL,Stock
+172,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,NVDA,Stock
+173,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,FXAIX,Mutual Fund
+174,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,TSLA,Stock
+175,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,FZROX,Mutual Fund
+176,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,JPM,Stock
+177,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,V,Stock
+178,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,MUNI2,Bond
+179,b71c45d8-33b5-4a53-bedc-f3315429926a,AstraZeneca,MUNI1,Bond
+180,1fb29073-689c-4c72-aba9-b30645390257,Merck & Co,FXAIX,Mutual Fund
+181,1fb29073-689c-4c72-aba9-b30645390257,Merck & Co,AMZN,Stock
+182,1fb29073-689c-4c72-aba9-b30645390257,Merck & Co,NVDA,Stock
+183,1fb29073-689c-4c72-aba9-b30645390257,Merck & Co,VFIAX,Mutual Fund
+184,1fb29073-689c-4c72-aba9-b30645390257,Merck & Co,VTSAX,Mutual Fund
+185,1fb29073-689c-4c72-aba9-b30645390257,Merck & Co,MSFT,Stock
+186,1fb29073-689c-4c72-aba9-b30645390257,Merck & Co,US30Y,Bond
+187,1fb29073-689c-4c72-aba9-b30645390257,Merck & Co,FZROX,Mutual Fund
+188,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Intuitive Surgical,SWPPX,Mutual Fund
+189,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Intuitive Surgical,V,Stock
+190,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Intuitive Surgical,US10Y,Bond
+191,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Intuitive Surgical,MSFT,Stock
+192,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Intuitive Surgical,NVDA,Stock
+193,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Intuitive Surgical,CORP2,Bond
+194,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Intuitive Surgical,CORP1,Bond
+195,7808b05f-4146-4b9f-baef-d6caa8a1afdb,Intuitive Surgical,MUNI2,Bond
+196,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Medtronic,TSLA,Stock
+197,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Medtronic,FZROX,Mutual Fund
+198,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Medtronic,SWPPX,Mutual Fund
+199,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Medtronic,MUNI2,Bond
+200,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Medtronic,JPM,Stock
+201,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Medtronic,CORP2,Bond
+202,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Medtronic,SPY,Mutual Fund
+203,961eb582-6e8c-4a5d-b62b-ddc3ce547914,Medtronic,CORP1,Bond
+204,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,FXAIX,Mutual Fund
+205,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,MSFT,Stock
+206,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,MUNI1,Bond
+207,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,US10Y,Bond
+208,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,VTSAX,Mutual Fund
+209,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,US30Y,Bond
+210,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,AMZN,Stock
+211,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,SPY,Mutual Fund
+212,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,META,Stock
+213,6c066e63-68da-4b10-aa94-aa57226d4e1a,Zoetis,NVDA,Stock
+214,a1f96519-b8fd-48b2-a753-7561a9090608,Humana,NVDA,Stock
+215,a1f96519-b8fd-48b2-a753-7561a9090608,Humana,META,Stock
+216,a1f96519-b8fd-48b2-a753-7561a9090608,Humana,CORP1,Bond
+217,a1f96519-b8fd-48b2-a753-7561a9090608,Humana,JPM,Stock
+218,a1f96519-b8fd-48b2-a753-7561a9090608,Humana,US30Y,Bond
+219,a1f96519-b8fd-48b2-a753-7561a9090608,Humana,V,Stock
+220,97f519b3-e882-476d-b379-2ae4265bd91b,Illumina,US10Y,Bond
+221,97f519b3-e882-476d-b379-2ae4265bd91b,Illumina,VTSAX,Mutual Fund
+222,97f519b3-e882-476d-b379-2ae4265bd91b,Illumina,MSFT,Stock
+223,97f519b3-e882-476d-b379-2ae4265bd91b,Illumina,JPM,Stock
+224,97f519b3-e882-476d-b379-2ae4265bd91b,Illumina,AAPL,Stock
+225,97f519b3-e882-476d-b379-2ae4265bd91b,Illumina,META,Stock
+226,97f519b3-e882-476d-b379-2ae4265bd91b,Illumina,AMZN,Stock
+227,edcb5808-f88e-4819-804a-3019dddc3d60,Guardant Health,TSLA,Stock
+228,edcb5808-f88e-4819-804a-3019dddc3d60,Guardant Health,UNH,Stock
+229,edcb5808-f88e-4819-804a-3019dddc3d60,Guardant Health,MSFT,Stock
+230,edcb5808-f88e-4819-804a-3019dddc3d60,Guardant Health,VFIAX,Mutual Fund
+231,edcb5808-f88e-4819-804a-3019dddc3d60,Guardant Health,SPY,Mutual Fund
+232,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,Rhythm Pharmaceuticals,UNH,Stock
+233,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,Rhythm Pharmaceuticals,VFIAX,Mutual Fund
+234,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,Rhythm Pharmaceuticals,FZROX,Mutual Fund
+235,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,Rhythm Pharmaceuticals,CORP1,Bond
+236,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,Rhythm Pharmaceuticals,MUNI1,Bond
+237,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,Rhythm Pharmaceuticals,GOOGL,Stock
+238,5f53ed1c-4a81-4efe-8e03-b4c511bc343b,Rhythm Pharmaceuticals,VTSAX,Mutual Fund
+239,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Amedisys,MSFT,Stock
+240,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Amedisys,MUNI1,Bond
+241,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Amedisys,US10Y,Bond
+242,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Amedisys,AAPL,Stock
+243,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Amedisys,GOOGL,Stock
+244,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Amedisys,VTSAX,Mutual Fund
+245,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Amedisys,FZROX,Mutual Fund
+246,d25f2c9b-2250-4c0c-bd33-5f57006b5931,Amedisys,META,Stock
+247,b2242521-730b-41e3-b666-17e00efc45e8,Rivian Automotive,GOOGL,Stock
+248,b2242521-730b-41e3-b666-17e00efc45e8,Rivian Automotive,VFIAX,Mutual Fund
+249,b2242521-730b-41e3-b666-17e00efc45e8,Rivian Automotive,AMZN,Stock
+250,b2242521-730b-41e3-b666-17e00efc45e8,Rivian Automotive,SWPPX,Mutual Fund
+251,b2242521-730b-41e3-b666-17e00efc45e8,Rivian Automotive,FZROX,Mutual Fund
+252,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,V,Stock
+253,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,VFIAX,Mutual Fund
+254,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,SPY,Mutual Fund
+255,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,TSLA,Stock
+256,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,MSFT,Stock
+257,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,FZROX,Mutual Fund
+258,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,CORP1,Bond
+259,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,VTSAX,Mutual Fund
+260,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,AMZN,Stock
+261,d3beac15-ba06-41cb-8f70-a95816ee6edc,Fordy,MUNI2,Bond
+262,fed2c78d-f7c8-4489-b520-80b6fdf1151b,lululemon athletica,SWPPX,Mutual Fund
+263,fed2c78d-f7c8-4489-b520-80b6fdf1151b,lululemon athletica,FZROX,Mutual Fund
+264,fed2c78d-f7c8-4489-b520-80b6fdf1151b,lululemon athletica,FXAIX,Mutual Fund
+265,fed2c78d-f7c8-4489-b520-80b6fdf1151b,lululemon athletica,MUNI2,Bond
+266,fed2c78d-f7c8-4489-b520-80b6fdf1151b,lululemon athletica,JPM,Stock
+267,2e8803e7-7354-46fa-aee8-ac3321f64e5e,DICK'S Sporting Goods,CORP1,Bond
+268,2e8803e7-7354-46fa-aee8-ac3321f64e5e,DICK'S Sporting Goods,AMZN,Stock
+269,2e8803e7-7354-46fa-aee8-ac3321f64e5e,DICK'S Sporting Goods,FZROX,Mutual Fund
+270,2e8803e7-7354-46fa-aee8-ac3321f64e5e,DICK'S Sporting Goods,SWPPX,Mutual Fund
+271,2e8803e7-7354-46fa-aee8-ac3321f64e5e,DICK'S Sporting Goods,NVDA,Stock
+272,2e8803e7-7354-46fa-aee8-ac3321f64e5e,DICK'S Sporting Goods,US30Y,Bond
+273,2e8803e7-7354-46fa-aee8-ac3321f64e5e,DICK'S Sporting Goods,TSLA,Stock
+274,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,GameStop Corp,US30Y,Bond
+275,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,GameStop Corp,MSFT,Stock
+276,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,GameStop Corp,FXAIX,Mutual Fund
+277,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,GameStop Corp,AAPL,Stock
+278,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,GameStop Corp,TSLA,Stock
+279,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,GameStop Corp,MUNI1,Bond
+280,9c17ff04-626c-432c-b2d2-e37d4fcd4a4d,GameStop Corp,NVDA,Stock
+281,fedc2f29-ad55-4b29-87e2-d3031a078d16,Texas Roadhouse,TSLA,Stock
+282,fedc2f29-ad55-4b29-87e2-d3031a078d16,Texas Roadhouse,AMZN,Stock
+283,fedc2f29-ad55-4b29-87e2-d3031a078d16,Texas Roadhouse,FZROX,Mutual Fund
+284,fedc2f29-ad55-4b29-87e2-d3031a078d16,Texas Roadhouse,VTSAX,Mutual Fund
+285,fedc2f29-ad55-4b29-87e2-d3031a078d16,Texas Roadhouse,V,Stock
+286,fedc2f29-ad55-4b29-87e2-d3031a078d16,Texas Roadhouse,FXAIX,Mutual Fund
+287,fedc2f29-ad55-4b29-87e2-d3031a078d16,Texas Roadhouse,META,Stock
+288,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,CORP2,Bond
+289,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,MUNI2,Bond
+290,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,CORP1,Bond
+291,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,META,Stock
+292,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,TSLA,Stock
+293,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,US30Y,Bond
+294,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,JPM,Stock
+295,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,VTSAX,Mutual Fund
+296,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,AAPL,Stock
+297,8497b8d5-8bf3-4181-971a-08e00ddc7e75,Hasbro,US10Y,Bond
+298,e4b5bf3a-d43e-4748-b72a-03e450cc4251,Mattel,META,Stock
+299,e4b5bf3a-d43e-4748-b72a-03e450cc4251,Mattel,US10Y,Bond
+300,e4b5bf3a-d43e-4748-b72a-03e450cc4251,Mattel,CORP2,Bond
+301,e4b5bf3a-d43e-4748-b72a-03e450cc4251,Mattel,V,Stock
+302,e4b5bf3a-d43e-4748-b72a-03e450cc4251,Mattel,TSLA,Stock
+303,e4b5bf3a-d43e-4748-b72a-03e450cc4251,Mattel,NVDA,Stock
+304,e4b5bf3a-d43e-4748-b72a-03e450cc4251,Mattel,SPY,Mutual Fund
+305,e66730a8-0bcc-4700-adf9-3e186d3632ad,Wayfair,JPM,Stock
+306,e66730a8-0bcc-4700-adf9-3e186d3632ad,Wayfair,US10Y,Bond
+307,e66730a8-0bcc-4700-adf9-3e186d3632ad,Wayfair,SPY,Mutual Fund
+308,e66730a8-0bcc-4700-adf9-3e186d3632ad,Wayfair,UNH,Stock
+309,e66730a8-0bcc-4700-adf9-3e186d3632ad,Wayfair,CORP1,Bond
+310,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,META,Stock
+311,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,SWPPX,Mutual Fund
+312,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,AAPL,Stock
+313,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,FZROX,Mutual Fund
+314,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,JPM,Stock
+315,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,US10Y,Bond
+316,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,MUNI2,Bond
+317,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,NVDA,Stock
+318,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,CORP1,Bond
+319,c4b74bb5-21e7-47f0-9c74-94d2c8c1e9e1,Peloton,TSLA,Stock
+320,b76331a3-d883-4a74-8970-7f8b40ed5e06,Sally Beauty,JPM,Stock
+321,b76331a3-d883-4a74-8970-7f8b40ed5e06,Sally Beauty,US30Y,Bond
+322,b76331a3-d883-4a74-8970-7f8b40ed5e06,Sally Beauty,FZROX,Mutual Fund
+323,b76331a3-d883-4a74-8970-7f8b40ed5e06,Sally Beauty,TSLA,Stock
+324,b76331a3-d883-4a74-8970-7f8b40ed5e06,Sally Beauty,SWPPX,Mutual Fund
+325,b76331a3-d883-4a74-8970-7f8b40ed5e06,Sally Beauty,FXAIX,Mutual Fund
+326,1b433d24-c7f2-415c-92aa-5b3cac5bff4b,Lifetime Brand,CORP2,Bond
+327,1b433d24-c7f2-415c-92aa-5b3cac5bff4b,Lifetime Brand,FXAIX,Mutual Fund
+328,1b433d24-c7f2-415c-92aa-5b3cac5bff4b,Lifetime Brand,FZROX,Mutual Fund
+329,1b433d24-c7f2-415c-92aa-5b3cac5bff4b,Lifetime Brand,META,Stock
+330,1b433d24-c7f2-415c-92aa-5b3cac5bff4b,Lifetime Brand,JPM,Stock
+331,7de0cc16-9de9-4ae8-82a6-e0c70d884781,Allbirds,NVDA,Stock
+332,7de0cc16-9de9-4ae8-82a6-e0c70d884781,Allbirds,CORP1,Bond
+333,7de0cc16-9de9-4ae8-82a6-e0c70d884781,Allbirds,FZROX,Mutual Fund
+334,7de0cc16-9de9-4ae8-82a6-e0c70d884781,Allbirds,VFIAX,Mutual Fund
+335,7de0cc16-9de9-4ae8-82a6-e0c70d884781,Allbirds,JPM,Stock
+336,32891396-9533-42fa-8eea-a0abd7672821,Walmart,SWPPX,Mutual Fund
+337,32891396-9533-42fa-8eea-a0abd7672821,Walmart,NVDA,Stock
+338,32891396-9533-42fa-8eea-a0abd7672821,Walmart,MSFT,Stock
+339,32891396-9533-42fa-8eea-a0abd7672821,Walmart,UNH,Stock
+340,32891396-9533-42fa-8eea-a0abd7672821,Walmart,MUNI1,Bond
+341,0cf48241-6073-42c8-ac12-6debb14feeba,Tyson Foods,CORP2,Bond
+342,0cf48241-6073-42c8-ac12-6debb14feeba,Tyson Foods,SPY,Mutual Fund
+343,0cf48241-6073-42c8-ac12-6debb14feeba,Tyson Foods,US30Y,Bond
+344,0cf48241-6073-42c8-ac12-6debb14feeba,Tyson Foods,VTSAX,Mutual Fund
+345,0cf48241-6073-42c8-ac12-6debb14feeba,Tyson Foods,UNH,Stock
+346,0cf48241-6073-42c8-ac12-6debb14feeba,Tyson Foods,VFIAX,Mutual Fund
+347,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,MSFT,Stock
+348,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,CORP1,Bond
+349,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,AMZN,Stock
+350,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,FZROX,Mutual Fund
+351,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,TSLA,Stock
+352,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,VTSAX,Mutual Fund
+353,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,MUNI1,Bond
+354,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,US10Y,Bond
+355,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,GOOGL,Stock
+356,11f6a91d-1d9d-48c3-b0a4-0f14189a588d,Sprouts Farmers Market,META,Stock
+357,505eaca2-6d1e-40d2-806f-a8ad96310e59,Dollar Tree,FXAIX,Mutual Fund
+358,505eaca2-6d1e-40d2-806f-a8ad96310e59,Dollar Tree,US30Y,Bond
+359,505eaca2-6d1e-40d2-806f-a8ad96310e59,Dollar Tree,AMZN,Stock
+360,505eaca2-6d1e-40d2-806f-a8ad96310e59,Dollar Tree,V,Stock
+361,505eaca2-6d1e-40d2-806f-a8ad96310e59,Dollar Tree,MSFT,Stock
+362,505eaca2-6d1e-40d2-806f-a8ad96310e59,Dollar Tree,MUNI1,Bond
+363,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,VFIAX,Mutual Fund
+364,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,UNH,Stock
+365,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,SPY,Mutual Fund
+366,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,TSLA,Stock
+367,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,MSFT,Stock
+368,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,US10Y,Bond
+369,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,US30Y,Bond
+370,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,CORP1,Bond
+371,94e3a95f-2391-4050-968d-9f4e4829e2e0,Stride,FXAIX,Mutual Fund
+372,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,US30Y,Bond
+373,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,SWPPX,Mutual Fund
+374,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,US10Y,Bond
+375,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,META,Stock
+376,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,JPM,Stock
+377,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,AAPL,Stock
+378,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,TSLA,Stock
+379,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,V,Stock
+380,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,GOOGL,Stock
+381,9b02412b-cb9b-43c1-99b8-9455d0933bec,Spectrum Brands,VTSAX,Mutual Fund
+382,e5e53c9c-c291-4c59-ad79-77ad61aab106,Udemy,UNH,Stock
+383,e5e53c9c-c291-4c59-ad79-77ad61aab106,Udemy,GOOGL,Stock
+384,e5e53c9c-c291-4c59-ad79-77ad61aab106,Udemy,US10Y,Bond
+385,e5e53c9c-c291-4c59-ad79-77ad61aab106,Udemy,VTSAX,Mutual Fund
+386,e5e53c9c-c291-4c59-ad79-77ad61aab106,Udemy,JPM,Stock
+387,e5e53c9c-c291-4c59-ad79-77ad61aab106,Udemy,SPY,Mutual Fund
+388,7a42f9bb-d9e9-4282-8cff-35f4f2dc93ec,Vital Farms,UNH,Stock
+389,7a42f9bb-d9e9-4282-8cff-35f4f2dc93ec,Vital Farms,TSLA,Stock
+390,7a42f9bb-d9e9-4282-8cff-35f4f2dc93ec,Vital Farms,US10Y,Bond
+391,7a42f9bb-d9e9-4282-8cff-35f4f2dc93ec,Vital Farms,MSFT,Stock
+392,7a42f9bb-d9e9-4282-8cff-35f4f2dc93ec,Vital Farms,V,Stock
+393,e96709de-7b18-4b29-b42b-ddb1b1c4c3b6,Graham Holdings Company,UNH,Stock
+394,e96709de-7b18-4b29-b42b-ddb1b1c4c3b6,Graham Holdings Company,VFIAX,Mutual Fund
+395,e96709de-7b18-4b29-b42b-ddb1b1c4c3b6,Graham Holdings Company,TSLA,Stock
+396,e96709de-7b18-4b29-b42b-ddb1b1c4c3b6,Graham Holdings Company,SPY,Mutual Fund
+397,e96709de-7b18-4b29-b42b-ddb1b1c4c3b6,Graham Holdings Company,GOOGL,Stock
+398,e96709de-7b18-4b29-b42b-ddb1b1c4c3b6,Graham Holdings Company,US30Y,Bond
+399,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,SWPPX,Mutual Fund
+400,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,AMZN,Stock
+401,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,TSLA,Stock
+402,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,FXAIX,Mutual Fund
+403,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,MSFT,Stock
+404,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,GOOGL,Stock
+405,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,JPM,Stock
+406,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,UNH,Stock
+407,83bd1ee5-4913-40a7-bf0b-c4c8b2b63a80,Hims & Hers Health,MUNI2,Bond
+408,16613f22-10c8-4a99-90a2-d41935cb77e6,Smithfield Foods,MUNI1,Bond
+409,16613f22-10c8-4a99-90a2-d41935cb77e6,Smithfield Foods,SPY,Mutual Fund
+410,16613f22-10c8-4a99-90a2-d41935cb77e6,Smithfield Foods,MSFT,Stock
+411,16613f22-10c8-4a99-90a2-d41935cb77e6,Smithfield Foods,US10Y,Bond
+412,16613f22-10c8-4a99-90a2-d41935cb77e6,Smithfield Foods,TSLA,Stock
+413,16613f22-10c8-4a99-90a2-d41935cb77e6,Smithfield Foods,SWPPX,Mutual Fund
+414,b4ccbb95-fb04-4655-833a-372810918adb,Albertsons Companies,MUNI1,Bond
+415,b4ccbb95-fb04-4655-833a-372810918adb,Albertsons Companies,MUNI2,Bond
+416,b4ccbb95-fb04-4655-833a-372810918adb,Albertsons Companies,JPM,Stock
+417,b4ccbb95-fb04-4655-833a-372810918adb,Albertsons Companies,AAPL,Stock
+418,b4ccbb95-fb04-4655-833a-372810918adb,Albertsons Companies,CORP1,Bond
+419,b4ccbb95-fb04-4655-833a-372810918adb,Albertsons Companies,NVDA,Stock
+420,b4ccbb95-fb04-4655-833a-372810918adb,Albertsons Companies,UNH,Stock
+421,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Albany International,US10Y,Bond
+422,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Albany International,META,Stock
+423,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Albany International,UNH,Stock
+424,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Albany International,US30Y,Bond
+425,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Albany International,JPM,Stock
+426,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Albany International,SWPPX,Mutual Fund
+427,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Albany International,NVDA,Stock
+428,3aaf3064-3ae7-43be-86d9-0c50eedc0734,Albany International,MSFT,Stock
+429,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,MUNI1,Bond
+430,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,VTSAX,Mutual Fund
+431,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,TSLA,Stock
+432,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,V,Stock
+433,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,JPM,Stock
+434,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,FZROX,Mutual Fund
+435,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,GOOGL,Stock
+436,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,SWPPX,Mutual Fund
+437,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,UNH,Stock
+438,61a81520-8816-4973-b86b-828cdef33d33,IT Tech Packaging,NVDA,Stock
+439,c465120e-fd88-46ca-822c-37f74d6cf4c3,Lockheed Martin Corporation,MSFT,Stock
+440,c465120e-fd88-46ca-822c-37f74d6cf4c3,Lockheed Martin Corporation,GOOGL,Stock
+441,c465120e-fd88-46ca-822c-37f74d6cf4c3,Lockheed Martin Corporation,JPM,Stock
+442,c465120e-fd88-46ca-822c-37f74d6cf4c3,Lockheed Martin Corporation,TSLA,Stock
+443,c465120e-fd88-46ca-822c-37f74d6cf4c3,Lockheed Martin Corporation,VTSAX,Mutual Fund
+444,c465120e-fd88-46ca-822c-37f74d6cf4c3,Lockheed Martin Corporation,VFIAX,Mutual Fund
+445,c465120e-fd88-46ca-822c-37f74d6cf4c3,Lockheed Martin Corporation,V,Stock
+446,c465120e-fd88-46ca-822c-37f74d6cf4c3,Lockheed Martin Corporation,US10Y,Bond
+447,8c7ba28c-1677-44be-90f3-21c61d7e581a,Landstar System,CORP2,Bond
+448,8c7ba28c-1677-44be-90f3-21c61d7e581a,Landstar System,US10Y,Bond
+449,8c7ba28c-1677-44be-90f3-21c61d7e581a,Landstar System,SWPPX,Mutual Fund
+450,8c7ba28c-1677-44be-90f3-21c61d7e581a,Landstar System,JPM,Stock
+451,8c7ba28c-1677-44be-90f3-21c61d7e581a,Landstar System,UNH,Stock
+452,8c7ba28c-1677-44be-90f3-21c61d7e581a,Landstar System,VTSAX,Mutual Fund
+453,16ae09bb-fa3a-4a9c-b247-d0c364699135,Hexcel Corporation,VFIAX,Mutual Fund
+454,16ae09bb-fa3a-4a9c-b247-d0c364699135,Hexcel Corporation,CORP1,Bond
+455,16ae09bb-fa3a-4a9c-b247-d0c364699135,Hexcel Corporation,FXAIX,Mutual Fund
+456,16ae09bb-fa3a-4a9c-b247-d0c364699135,Hexcel Corporation,VTSAX,Mutual Fund
+457,16ae09bb-fa3a-4a9c-b247-d0c364699135,Hexcel Corporation,US30Y,Bond
+458,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,CORP1,Bond
+459,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,V,Stock
+460,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,META,Stock
+461,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,MSFT,Stock
+462,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,FZROX,Mutual Fund
+463,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,AMZN,Stock
+464,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,CORP2,Bond
+465,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,AAPL,Stock
+466,190efe6d-a4b1-4554-b7fa-e467a66a5ef7,AeroVironment,MUNI1,Bond
+467,92769a1d-d4e5-40d5-859f-0bd1368462fb,Matson,TSLA,Stock
+468,92769a1d-d4e5-40d5-859f-0bd1368462fb,Matson,CORP2,Bond
+469,92769a1d-d4e5-40d5-859f-0bd1368462fb,Matson,MUNI1,Bond
+470,92769a1d-d4e5-40d5-859f-0bd1368462fb,Matson,JPM,Stock
+471,92769a1d-d4e5-40d5-859f-0bd1368462fb,Matson,VTSAX,Mutual Fund
+472,92769a1d-d4e5-40d5-859f-0bd1368462fb,Matson,FZROX,Mutual Fund
+473,92769a1d-d4e5-40d5-859f-0bd1368462fb,Matson,CORP1,Bond
+474,92769a1d-d4e5-40d5-859f-0bd1368462fb,Matson,FXAIX,Mutual Fund
+475,4ea046dd-e59d-423f-b8ff-7972890b6244,McGrath RentCorp,AAPL,Stock
+476,4ea046dd-e59d-423f-b8ff-7972890b6244,McGrath RentCorp,US30Y,Bond
+477,4ea046dd-e59d-423f-b8ff-7972890b6244,McGrath RentCorp,CORP1,Bond
+478,4ea046dd-e59d-423f-b8ff-7972890b6244,McGrath RentCorp,VFIAX,Mutual Fund
+479,4ea046dd-e59d-423f-b8ff-7972890b6244,McGrath RentCorp,META,Stock
+480,4ea046dd-e59d-423f-b8ff-7972890b6244,McGrath RentCorp,FXAIX,Mutual Fund
+481,4ea046dd-e59d-423f-b8ff-7972890b6244,McGrath RentCorp,CORP2,Bond
+482,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,US30Y,Bond
+483,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,MSFT,Stock
+484,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,FXAIX,Mutual Fund
+485,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,SWPPX,Mutual Fund
+486,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,US10Y,Bond
+487,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,CORP1,Bond
+488,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,GOOGL,Stock
+489,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,JPM,Stock
+490,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,AMZN,Stock
+491,095d931b-43a6-4891-bff5-b268a15c24d7,Mueller Industries,CORP2,Bond
+492,5ef5457e-264b-4b68-966a-3226b75ceffb,Dolby Laboratories,CORP1,Bond
+493,5ef5457e-264b-4b68-966a-3226b75ceffb,Dolby Laboratories,NVDA,Stock
+494,5ef5457e-264b-4b68-966a-3226b75ceffb,Dolby Laboratories,FZROX,Mutual Fund
+495,5ef5457e-264b-4b68-966a-3226b75ceffb,Dolby Laboratories,US10Y,Bond
+496,5ef5457e-264b-4b68-966a-3226b75ceffb,Dolby Laboratories,SWPPX,Mutual Fund
+497,5ef5457e-264b-4b68-966a-3226b75ceffb,Dolby Laboratories,US30Y,Bond
+498,430665b8-15ed-4b91-b0b0-50e3006109ae,ManpowerGroup,NVDA,Stock
+499,430665b8-15ed-4b91-b0b0-50e3006109ae,ManpowerGroup,FZROX,Mutual Fund
+500,430665b8-15ed-4b91-b0b0-50e3006109ae,ManpowerGroup,V,Stock
+501,430665b8-15ed-4b91-b0b0-50e3006109ae,ManpowerGroup,VTSAX,Mutual Fund
+502,430665b8-15ed-4b91-b0b0-50e3006109ae,ManpowerGroup,META,Stock
+503,da402851-1a85-4dd4-a6aa-620d6909da3d,Welltower,MUNI2,Bond
+504,da402851-1a85-4dd4-a6aa-620d6909da3d,Welltower,FXAIX,Mutual Fund
+505,da402851-1a85-4dd4-a6aa-620d6909da3d,Welltower,CORP2,Bond
+506,da402851-1a85-4dd4-a6aa-620d6909da3d,Welltower,GOOGL,Stock
+507,da402851-1a85-4dd4-a6aa-620d6909da3d,Welltower,V,Stock
+508,f22e67d3-01b7-40a4-bf9d-87552540f479,Iron Mountain Incorporated,CORP2,Bond
+509,f22e67d3-01b7-40a4-bf9d-87552540f479,Iron Mountain Incorporated,CORP1,Bond
+510,f22e67d3-01b7-40a4-bf9d-87552540f479,Iron Mountain Incorporated,NVDA,Stock
+511,f22e67d3-01b7-40a4-bf9d-87552540f479,Iron Mountain Incorporated,US10Y,Bond
+512,f22e67d3-01b7-40a4-bf9d-87552540f479,Iron Mountain Incorporated,UNH,Stock
+513,701beb5b-5db8-45a5-b9cc-e5975e908837,Camden Property,MUNI1,Bond
+514,701beb5b-5db8-45a5-b9cc-e5975e908837,Camden Property,UNH,Stock
+515,701beb5b-5db8-45a5-b9cc-e5975e908837,Camden Property,MSFT,Stock
+516,701beb5b-5db8-45a5-b9cc-e5975e908837,Camden Property,TSLA,Stock
+517,701beb5b-5db8-45a5-b9cc-e5975e908837,Camden Property,AMZN,Stock
+518,701beb5b-5db8-45a5-b9cc-e5975e908837,Camden Property,US10Y,Bond
+519,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,CubeSmart,SPY,Mutual Fund
+520,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,CubeSmart,TSLA,Stock
+521,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,CubeSmart,META,Stock
+522,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,CubeSmart,V,Stock
+523,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,CubeSmart,FZROX,Mutual Fund
+524,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,CubeSmart,CORP1,Bond
+525,304f2fa8-d474-4cb5-81c5-b7ef88a9835c,CubeSmart,AAPL,Stock
+526,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Federal Realty Investment Trust,AMZN,Stock
+527,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Federal Realty Investment Trust,GOOGL,Stock
+528,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Federal Realty Investment Trust,US10Y,Bond
+529,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Federal Realty Investment Trust,VFIAX,Mutual Fund
+530,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Federal Realty Investment Trust,AAPL,Stock
+531,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Federal Realty Investment Trust,MUNI1,Bond
+532,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Federal Realty Investment Trust,SWPPX,Mutual Fund
+533,f6b3a1e0-7d87-4d1b-a0e6-307c9c8364f5,Federal Realty Investment Trust,MSFT,Stock
+534,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,TSLA,Stock
+535,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,GOOGL,Stock
+536,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,VTSAX,Mutual Fund
+537,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,SWPPX,Mutual Fund
+538,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,V,Stock
+539,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,US10Y,Bond
+540,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,META,Stock
+541,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,MUNI1,Bond
+542,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,MSFT,Stock
+543,7c0bcda2-3855-46b3-9708-97c45e56f179,Essential Properties Realty,NVDA,Stock
+544,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Compass,VTSAX,Mutual Fund
+545,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Compass,AMZN,Stock
+546,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Compass,TSLA,Stock
+547,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Compass,VFIAX,Mutual Fund
+548,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Compass,V,Stock
+549,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Compass,SWPPX,Mutual Fund
+550,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Compass,FXAIX,Mutual Fund
+551,9747a9ec-8bfc-4a51-8d81-9c9f867f5e12,Compass,GOOGL,Stock
+552,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,CORP1,Bond
+553,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,V,Stock
+554,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,FXAIX,Mutual Fund
+555,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,US10Y,Bond
+556,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,MUNI1,Bond
+557,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,MSFT,Stock
+558,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,AMZN,Stock
+559,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,MUNI2,Bond
+560,cf9e33da-9067-4218-a9c9-56afbda44a68,Medical Properties Trust,VFIAX,Mutual Fund
+561,d8bc36af-313f-4539-9f24-37588af2eae7,Broadstone,CORP2,Bond
+562,d8bc36af-313f-4539-9f24-37588af2eae7,Broadstone,VFIAX,Mutual Fund
+563,d8bc36af-313f-4539-9f24-37588af2eae7,Broadstone,FZROX,Mutual Fund
+564,d8bc36af-313f-4539-9f24-37588af2eae7,Broadstone,V,Stock
+565,d8bc36af-313f-4539-9f24-37588af2eae7,Broadstone,AMZN,Stock
+566,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,FXAIX,Mutual Fund
+567,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,VFIAX,Mutual Fund
+568,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,MSFT,Stock
+569,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,AAPL,Stock
+570,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,MUNI2,Bond
+571,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,VTSAX,Mutual Fund
+572,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,MUNI1,Bond
+573,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,CORP2,Bond
+574,800e5332-57ac-4ef4-bede-5043fa6b176e,Ladder Capital Corp,JPM,Stock
+575,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,Peakstone Realty Trus,UNH,Stock
+576,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,Peakstone Realty Trus,AAPL,Stock
+577,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,Peakstone Realty Trus,FXAIX,Mutual Fund
+578,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,Peakstone Realty Trus,V,Stock
+579,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,Peakstone Realty Trus,AMZN,Stock
+580,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,Peakstone Realty Trus,CORP2,Bond
+581,d9f64ea9-b724-46fa-ac57-9cb2f8099f47,Peakstone Realty Trus,FZROX,Mutual Fund
+582,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,V,Stock
+583,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,VTSAX,Mutual Fund
+584,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,CORP1,Bond
+585,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,SWPPX,Mutual Fund
+586,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,AMZN,Stock
+587,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,VFIAX,Mutual Fund
+588,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,US30Y,Bond
+589,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,TSLA,Stock
+590,b7f12df5-8b6e-4e50-ab3d-85ab46bde9b1,Fathom Holdings,MSFT,Stock
+591,84f111b6-1397-489f-aedc-4cb14100def6,Presidio Property Trust,MSFT,Stock
+592,84f111b6-1397-489f-aedc-4cb14100def6,Presidio Property Trust,VFIAX,Mutual Fund
+593,84f111b6-1397-489f-aedc-4cb14100def6,Presidio Property Trust,AAPL,Stock
+594,84f111b6-1397-489f-aedc-4cb14100def6,Presidio Property Trust,SPY,Mutual Fund
+595,84f111b6-1397-489f-aedc-4cb14100def6,Presidio Property Trust,CORP1,Bond
+596,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,META,Stock
+597,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,V,Stock
+598,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,AAPL,Stock
+599,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,VFIAX,Mutual Fund
+600,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,MUNI2,Bond
+601,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,US10Y,Bond
+602,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,FZROX,Mutual Fund
+603,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,AMZN,Stock
+604,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,UNH,Stock
+605,109908de-5490-4753-a3d7-cf9cbfdec8cb,Service Properties Trust,TSLA,Stock

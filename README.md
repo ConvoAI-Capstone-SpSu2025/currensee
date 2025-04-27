@@ -140,6 +140,7 @@ poetry install # install the packages into the environment
 cp .env.example .env # copy the existing .env example file
 
 # update the .env credentials as you see fit (specifically the API keys)
+# You can retrieve your google API key here: https://aistudio.google.com/app/apikey
 
 ```
 

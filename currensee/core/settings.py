@@ -84,37 +84,10 @@ class Settings(BaseSettings):
     )
     POSTGRES_MAX_IDLE: int = Field(default=5, description="Maximum number of idle connections")
 
-    # Simplify access of confidential data
-    @field_serializer(
-        "postgres_password",
-        when_used="json",
-        check_fields=False,
-    )
-    def dump_secret(self, v):
-        return v.get_secret_value()
-    
+    @computed_field
     @property
-    def postgres(self) -> dict[str, str | int]:
-        return {
-            "host": self.POSTGRES_HOST,
-            "port": self.POSTGRES_PORT,
-            "user": self.POSTGRES_USER,
-            "password": self.POSTGRES_PASSWORD.get_secret_value(),
-            "database": self.POSTGRES_DB,
-            "perform_setup": False,
-        }
-
-    @property
-    def sqlalchemy(self) -> URL:
-        sqlalchemy_dict = {
-            "drivername": "postgresql+psycopg",
-            "username": self.POSTGRES_USER,
-            "password": self.POSTGRES_PASSWORD.get_secret_value(),
-            "host": self.POSTGRES_HOST,
-            "database": self.POSTGRES_DB,
-            "port": self.POSTGRES_PORT,
-        }
-        return URL.create(**sqlalchemy_dict)
+    def POSTGRES_ENGINE_STR(self) -> str:
+        return f'postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD.get_secret_value()}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}'
 
     def model_post_init(self, __context: Any) -> None:
         api_keys = {
@@ -145,8 +118,6 @@ class Settings(BaseSettings):
     def BASE_URL(self) -> str:
         return f"http://{self.HOST}:{self.PORT}"
 
-    def is_dev(self) -> bool:
-        return self.MODE == "dev"
 
 
 settings = Settings()
