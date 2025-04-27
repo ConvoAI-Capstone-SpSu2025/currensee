@@ -2,9 +2,15 @@
 from currensee.schema.schema import PostgresTables
 
 
-crm_table_desc = """
-
-
+crm_employee_table_desc = """
+# Use when query involves client account details, portfolio information, account positions, or 
+# Columns:
+# - salesforce_expert_id (PK)
+# - employee_name
+# - segment
+# - job_title
+# - global_region
+# - country
 
 
 """
