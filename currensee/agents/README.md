@@ -2,6 +2,32 @@
 
 
 
+Current Dummy Flow
+
+           +--------+
+           | router |
+           +--------+
+               |
+   +-----------+------------+
+   |                        |
+   v                        v
++-------------+      +----------------+
+| math_expert |      | research_expert|
++-------------+      +----------------+
+        \                 /
+         \               /
+          v             v
+             +------------+
+             | summarizer |
+             +------------+
+
+## Testing the Supervisor Agent
+
+To test the end-to-end supervisor agent, use the notebook in `notebooks/agent_development/1.0-gf-supervisor.ipynb`.
+
+If you would like to test the functionality of a specific tool, use `notebooks/agent_development/2.0-gf-test-tool.ipynb`.
+
+
 ## Using Google GenAI via LangChain
 
 To use, you must have either:

@@ -9,7 +9,7 @@ from typing import Annotated, Any
 from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, status
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, JSONResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from langchain_core._api import LangChainBetaWarning
 from langchain_core.messages import AIMessage, AIMessageChunk, AnyMessage, HumanMessage, ToolMessage
@@ -148,22 +148,14 @@ async def invoke(user_input: UserInput, agent_id: str = DEFAULT_AGENT) -> ChatMe
     agent: CompiledStateGraph = get_agent(agent_id)
     kwargs, run_id = await _handle_input(user_input, agent)
     try:
-        response_events = await agent.ainvoke(**kwargs, stream_mode=["updates", "values"])
-        response_type, response = response_events[-1]
-        if response_type == "values":
-            # Normal response, the agent completed successfully
-            output = langchain_to_chat_message(response["messages"][-1])
-        elif response_type == "updates" and "__interrupt__" in response:
-            # The last thing to occur was an interrupt
-            # Return the value of the first interrupt as an AIMessage
-            output = langchain_to_chat_message(
-                AIMessage(content=response["__interrupt__"][0].value)
-            )
-        else:
-            raise ValueError(f"Unexpected response type: {response_type}")
+        response = await agent.ainvoke(**kwargs)
+        messages = response.get("messages", [])
+        summary_msg = next(
+            (msg.content for msg in reversed(messages) if isinstance(msg, AIMessage)),
+            "No summary was returned."
+        )
 
-        output.run_id = str(run_id)
-        return output
+        return JSONResponse({"summary": summary_msg})
     except Exception as e:
         logger.error(f"An exception occurred: {e}")
         raise HTTPException(status_code=500, detail="Unexpected error")

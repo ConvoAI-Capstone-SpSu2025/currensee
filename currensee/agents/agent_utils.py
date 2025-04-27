@@ -6,7 +6,7 @@ from currensee.agents.chatbot import chatbot
 from currensee.agents.supervisor_agent import supervisor_agent
 from currensee.schema import AgentInfo
 
-DEFAULT_AGENT = "supervisor-agent"
+DEFAULT_AGENT = "chatbot"
 
 
 @dataclass
