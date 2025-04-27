@@ -2,19 +2,44 @@
 from currensee.schema.schema import PostgresTables
 
 
-crm_employee_table_desc = """
-# Use when query involves client account details, portfolio information, account positions, or 
-# Columns:
-# - salesforce_expert_id (PK)
-# - employee_name
-# - segment
-# - job_title
-# - global_region
-# - country
-
-
+crm_portfolio_table_desc = """
+Use when query involves client accounts, portfolio information, account positions, stocks, mutual funds, or index funds.  
+Columns:
+ - AccountID (PK)
+ - Company_name
+ - symbol
+ - instrument_type
 """
 
+crm_client_alignment_table_desc = """
+Use when query involves which clients are assigned to a bank employee, what other employees a client has spoken to, what is the email of the point of contact for a client, what is the name of the contact for a client, or what company a client represents.
+Columns:
+ - AccountID (PK)
+ - EmployeeID
+ - EmployeeFirstName
+ - EmployeeLastName
+ - Company
+ - Industry
+ - ContactFirstName
+ - ContactLastName
+ - ContactEmail
+ - ContactTitle
+ - ContactPhone
+"""
+
+
+crm_employees_table_desc = """
+Use when query involves what employee names, employee titles, employee email, employee location, employee department or employee phone.
+Columns:
+ - EmployeeID (PK)
+ - EmployeeFirstName
+ - EmployeeLastName
+ - Title
+ - Email
+ - Phone
+ - HireDate
+ - Department
+"""
 
 
 outlook_table_desc = """
