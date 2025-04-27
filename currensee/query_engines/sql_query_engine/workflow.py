@@ -65,4 +65,4 @@ class SqlWorkflow(Workflow):
         sql_query = sql_response.metadata["sql_query"] if sql_response.metadata else ""
 
 
-        return StopEvent(sql_response=sql_response, sql_query=sql_query)
+        return StopEvent(result=sql_response)

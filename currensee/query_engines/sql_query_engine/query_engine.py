@@ -5,7 +5,7 @@ from llama_index.core.prompts import PromptTemplate
 from llama_index.core.query_engine import NLSQLTableQueryEngine
 from llama_index.core.workflow import Workflow
 from llama_index.llms.google_genai import GoogleGenAI
-from sqlalchemy import create_engine
+from currensee.utils.db_utils import create_pg_engine
 
 from currensee.core.settings import Settings
 from currensee.schema.models import GoogleModelName
@@ -17,7 +17,10 @@ from currensee.query_engines.workflow_descriptions import SQL_TABLE_DESC_MAPPING
 settings = Settings()
 
 def create_sql_workflow(
-    source_table: PostgresTables = PostgresTables.CRM_TABLE_ONE,
+    source_db: str,
+    table_description_mapping: dict[str, str],
+    text_to_sql_tmpl: str = text_to_sql_tmpl,
+    response_synthesis_prompt_str: str= response_synthesis_prompt_str,
     model: GoogleModelName = GoogleModelName.GEMINI_15_FLASH,
     temperature: float = 0.0
 ) -> SqlWorkflow:
@@ -28,9 +31,18 @@ def create_sql_workflow(
 
     Parameters
     ----------
-    source_table : PostgresTables, optional
-        The name of the postgres table to use for querying
-        Default crm_table_one (note that this is a placeholder for the real table name)
+    source_db : str
+        The database where the tables are located
+    table_description_mapping: dict[str,str]
+        A mapping between table names and descriptions of the tables to 
+        pass to the SQL query engine for it to create SQL queries from
+    text_to_sql_tmpl: str, optional
+        A prompt describing how to convert the natural language query into a SQL
+        query. 
+        Defaults to the prompt defined in `prompting.py`
+    response_synthesis_prompt_str: str, optional
+        A prompt describing how to synthesize the SQL results into a response.
+        Defaults to the prompt defined in `prompting.py`
     model : GoogleModelName, optional
         The GEMINI model to use for producing a SQL query from natural language & 
         performing response synthesis - may need to consider separate implementation
@@ -47,7 +59,7 @@ def create_sql_workflow(
     """
 
 
-    pg_engine = create_engine(settings.sqlalchemy)
+    pg_engine = create_pg_engine(db_name=source_db)
 
     # Create the prompt that converts text to SQL for querying purposes and synthesizes final response
     text_to_sql_prompt = PromptTemplate(text_to_sql_tmpl)
@@ -55,7 +67,21 @@ def create_sql_workflow(
         response_synthesis_prompt_str
     )
 
-    table_description_mapping = {source_table: SQL_TABLE_DESC_MAPPING[source_table]}
+    table_names = list(table_description_mapping.keys())
+
+    # This model performs the reasoning, summary, etc.
+    llm = GoogleGenAI(
+            model=model,
+            temperature=temperature,
+            api_key=settings.GOOGLE_API_KEY.get_secret_value()
+        )
+
+    # This model creates the embeddings necessary for the retrievers
+    embed_model = GoogleGenAI(
+            model='models/text-embedding-004',
+            temperature=temperature,
+            api_key=settings.GOOGLE_API_KEY.get_secret_value()
+        )
 
 
     # Define the natural language SQL query engine
@@ -63,17 +89,14 @@ def create_sql_workflow(
     sql_query_engine = NLSQLTableQueryEngine(
         sql_database=SQLDatabase(
             pg_engine,
-            include_tables=[source_table],
-            schema=None, #TODO: Define the schema we want to use here
+            include_tables=table_names,
             max_string_length=2000,
         ),
-        tables=[source_table],
+        tables=table_names,
         context_query_kwargs=table_description_mapping,
         text_to_sql_prompt=text_to_sql_prompt,
-        llm=GoogleGenAI(
-            model=model,
-            temperature=temperature
-        ),
+        llm=llm,
+        embed_model=embed_model,
         response_synthesis_prompt=response_synthesis_prompt,
 
     )
