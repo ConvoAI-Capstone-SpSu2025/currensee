@@ -11,7 +11,7 @@ crm_table_desc = """
 """
 
 crm_portfolio_table_desc = """
-Use when query involves client accounts, portfolio information, account positions, stocks, mutual funds, or index funds.  
+Use when query involves client accounts, portfolio information, positions, stocks, mutual funds, index funds, positions, portfolio makeup, or holdings.
 Columns:
  - account_id (PK)
  - company_name
