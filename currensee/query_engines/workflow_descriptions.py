@@ -4,10 +4,6 @@ from currensee.schema.schema import PostgresTables
 crm_table_desc = """
 
 
-
-
-
-
 """
 
 crm_portfolio_table_desc = """
@@ -20,7 +16,8 @@ Columns:
 """
 
 crm_client_alignment_table_desc = """
-Use when query involves which clients are assigned to a bank employee, what other employees a client has spoken to, what is the email of the point of contact for a client, what is the name of the contact for a client, or what company a client represents.
+Use when query involves which clients are assigned to a bank employee, what other employees a client has spoken to, what is the email of the point of contact for a client, what is the name of the contact for a client, or what company a client represents. 
+
 Columns:
  - account_id (PK)
  - employee_id (PK)
@@ -52,16 +49,18 @@ Columns:
 
 
 crm_employees_table_desc = """
-Use when query involves what employee names, employee titles, employee email, employee location, employee department or employee phone.
+Use when query involves employee names, coworkers, company workers, employee titles, employee email, employee location, employee department  employee phone, or employees at bankwell. If the query mentions our company, use this table to learn about the employees.
+
 Columns:
  - employee_id (PK)
- - employee_first_name
- - employee_last_name
- - title
- - email
- - phone
- - hire_date
- - department
+ - employee_first_name: First name 
+ - employee_last_name: Last name 
+ - title: corporate title 
+ - email: email address 
+ - phone: phone number 
+ - hire_date: date the employee was hired
+ - department: what department the employee works in
+
 """
 
 
@@ -101,6 +100,22 @@ SQL_TABLE_DESC_MAPPING: dict[str, str] = {
 # FROM ANOTHER APPLICATION, DO  #
 # NOT USE FOR REAL DEVELOPMENT  #
 #################################
+
+
+#table_desc = """\
+#This table represents text chunks from an SEC filing. Each row contains the following columns:
+
+#id: id of row
+#page_label: page number 
+#file_name: top-level file name
+#text: all text chunk is here
+#embedding: the embeddings representing the text chunk
+
+#For most queries you should perform semantic search against the `embedding` column values, since \
+#that encodes the meaning of the text.
+
+#"""
+
 
 # salesforce_account_table_desc = """
 
