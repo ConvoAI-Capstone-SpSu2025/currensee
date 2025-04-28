@@ -25,7 +25,11 @@ dependencies = [
     "ipykernel (>=6.29.5,<7.0.0)",
     "langchain-core (>=0.3.55,<0.4.0)",
     "langchain-experimental (>=0.3.4,<0.4.0)",
-    "tavily-python (>=0.5.4,<0.6.0)"
+    "tavily-python (>=0.5.4,<0.6.0)",
+    "pandas-datareader (>=0.10.0,<0.11.0)",
+    "yfinance (>=0.2.56,<0.3.0)",
+    "matplotlib (>=3.10.1,<4.0.0)",
+    "seaborn (>=0.13.2,<0.14.0)"
 ]
 
 
