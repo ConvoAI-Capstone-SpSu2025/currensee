@@ -7,12 +7,12 @@ crm_table_desc = """
 """
 
 crm_portfolio_table_desc = """
-Use when query involves client accounts, portfolio information, positions, stocks, mutual funds, index funds, positions, portfolio makeup, or holdings.
+Use when query involves company accounts, portfolio information, positions, stocks, mutual funds, bonds, positions, portfolio makeup, or holdings. Each company will have one row for each stock, mutual fund, or bond that it has. Company can also be called a client.
 Columns:
- - account_id (PK)
- - company_name
- - symbol (PK)
- - instrument_type
+ - account_id (PK) : The unique identifier of a company
+ - company: The name of the company
+ - symbol (PK) : The symbol of the instrument
+ - instrument_type : Instrument type can be stock, bond, or mutual fund
 """
 
 crm_client_alignment_table_desc = """
@@ -49,7 +49,7 @@ Columns:
 
 
 crm_employees_table_desc = """
-Use when query involves employee names, coworkers, company workers, employee titles, employee email, employee location, employee department  employee phone, or employees at bankwell. If the query mentions our company, use this table to learn about the employees.
+Use when query involves employee names, coworkers, company workers, employee titles, employee email, employee location, employee department  employee phone, workers at bankwell or employees at bankwell. If the query mentions our company, use this table to learn about the employees. All employees listed here work at bankwell.
 
 Columns:
  - employee_id (PK)
