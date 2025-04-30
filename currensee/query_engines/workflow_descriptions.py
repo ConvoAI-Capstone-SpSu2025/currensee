@@ -7,16 +7,28 @@ crm_table_desc = """
 """
 
 crm_portfolio_table_desc = """
-Use when query involves company accounts, portfolio information, positions, stocks, mutual funds, bonds, positions, portfolio makeup, or holdings. Each company will have one row for each stock, mutual fund, or bond that it has. Company can also be called a client.
+Use when query involves company accounts, portfolio information, balance in a fund, total balance, positions, mutual funds, bond funds, equity funds, positions, portfolio makeup, or holdings. Each company will have one row for each fund that it has. Company can also be called a client.
 Columns:
  - account_id (PK) : The unique identifier of a company
  - company: The name of the company
  - symbol (PK) : The symbol of the instrument
- - instrument_type : Instrument type can be stock, bond, or mutual fund
+ - fund_type: Instrument type can be stock, bond, or mutual fund
+ - tot_balance: Total assets of the company
+ - fund_balance: Balance held in the fund designated by symbol
+"""
+
+crm_fund_details_desc = """ 
+Use when query involves the positions, stocks, or bonds contained within funds.
+Columns:
+- ticker : ticker of the stock or bond
+- position_name : Name of the stock or bond
+- fund : Name of the Fund that contains the position
+- weight: Portion of the fund held in the position
+- fund_type: Type of fund is Equity or Bond
 """
 
 crm_client_alignment_table_desc = """
-Use when query involves which clients are assigned to a bank employee, what other employees a client has spoken to, what is the email of the point of contact for a client, what is the name of the contact for a client, or what company a client represents. 
+Use when query involves which clients are assigned to a bank employee, what other employees a client has spoken to, what is the email of the point of contact for a client, what is the name of the contact for a client, or what company a client represents. Use when asked what employees work on a client or account.
 
 Columns:
  - account_id (PK)
@@ -33,7 +45,7 @@ Columns:
 """
 
 crm_client_info_table_desc = """
-Use when query involves clients total balance, client location, client revenue, or client company website.
+Use when query involves clients email, clients phone, client's contact name, client location, client revenue, or client company website. Use this table to learn about who is the external point of contact on a client account, or how to contact a client. Do not use to answer questions about bankwell employees.
 Columns:
  - account_id (PK)
  - company
@@ -92,7 +104,8 @@ SQL_TABLE_DESC_MAPPING: dict[str, str] = {
     PostgresTables.CRM_Client_Alignment: crm_client_alignment_table_desc,
     PostgresTables.CRM_Portfolio: crm_portfolio_table_desc ,
     PostgresTables.CRM_Employees: crm_employees_table_desc, 
-    PostgresTables.CRM_Clients_Contact: crm_client_info_table_desc
+    PostgresTables.CRM_Clients_Contact: crm_client_info_table_desc,
+    PostgresTables.CRM_Fund_Detail: crm_fund_details_desc
 }
 
 #################################
