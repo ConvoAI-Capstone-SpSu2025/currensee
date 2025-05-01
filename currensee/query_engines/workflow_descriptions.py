@@ -14,13 +14,13 @@ This table lists the investment funds held by client companies through their acc
 IMPORTANT:
 - `company` refers to the client company that owns one or more funds. It is NOT a stock or a mutual fund itself.
 - Use this table to answer questions like: "What funds does a client own?" or "What is a company's total portfolio value?"
-WARNING: When filtering by fund type (e.g., "Equity funds"), always apply the filter on the `fund_type` column in the `portfolio` table, not in `fund_detail`. The `portfolio` table represents the funds a client owns. The `fund_detail` table only describes what’s inside the fund, not its type.
+WARNING: When filtering by fund type (e.g., "Equity Fund"), always apply the filter on the `fund_type` column in the `portfolio` table, not in `fund_detail`. The `portfolio` table represents the funds a client owns. The `fund_detail` table only describes what’s inside the fund, not its type.
 
 
 Columns:
 - account_id: Unique identifier for the client's account.
 - company: Name of the client company.
-- fund_type: Category of the fund (e.g., Equity, Bond).
+- fund_type: Category of the fund (Equity Fund or Bond Fund).
 - symbol: Identifier of the fund. This is used to join with the `fund_detail` table.
 - tot_balance: Total assets held by the client.
 - fund_balance: Amount the client has invested in this particular fund.
@@ -35,7 +35,7 @@ NOTE: Do not use `fund_type` in this table to filter for client fund types (e.g.
 Columns:
 - ticker (Primary Key): Ticker of the individual asset.
 - position_name: Full name of the stock or bond.
-- fund (Foreign Key, portfolio.symbol): Ticker of the fund holding this asset.
+- fund (Foreign Key, portfolio.symbol): Symbol of the fund holding this asset.
 - weight: Proportion of the fund held in this asset.
 """
 
