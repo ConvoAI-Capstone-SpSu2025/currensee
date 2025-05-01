@@ -28,7 +28,7 @@ Columns:
 """
 
 crm_client_alignment_table_desc = """
-Use when query involves which clients are assigned to a bank employee, what other employees a client has spoken to, what is the email of the point of contact for a client, what is the name of the contact for a client, or what company a client represents. Use when asked what employees work on a client or account.
+Use when query involves which clients are assigned to a bank employee, what other employees a client has spoken to. Use when asked what employees work on a client or account.
 
 Columns:
  - account_id (PK)
@@ -36,62 +36,110 @@ Columns:
  - employee_first_name
  - employee_last_name
  - company
- - industry
- - contact_first_name
- - contact_last_name
- - contact_email
- - contact_title
- - contact_phone
 """
 
 crm_client_info_table_desc = """
-Use when query involves clients email, clients phone, client's contact name, client location, client revenue, or client company website. Use this table to learn about who is the external point of contact on a client account, or how to contact a client. Do not use to answer questions about bankwell employees.
-Columns:
- - account_id (PK)
- - company
- - industry
- - contact_first_name
- - contact_last_name
- - contact_title
- - website
- - location
- - annual_revenue
- - total_account_bal
-"""
+This workflow describes how to use the client contact table to answer user questions about client information. This table is specifically designed to provide details about the primary point of contact for each client account.
 
+**Use this table when the user's question asks for information related to:**
+
+* The client's primary contact person's **email address**.
+* The client's primary contact person's **phone number**.
+* The client's primary contact person's **full name**.
+* The **city** where the client company is located.
+* The client company's **annual revenue**.
+* The client company's **website address**.
+* Identifying the **email of the point of contact** for a specific client.
+* Identifying the **name of the contact person** for a specific client.
+* Determining the **company** that a specific contact person represents.
+
+**Key uses of this table include:**
+
+* Identifying the **primary point of contact** for a given client account.
+* Finding out **how to contact a client** (via email or phone).
+
+**Important Considerations:**
+
+* **Do not use this table** to answer questions about **Bankwell employees**. This table contains information about external client contacts only.
+* The terms **"client," "company," and "account"** can be used interchangeably to refer to the organizations listed in this table.
+
+**Table Columns and their Meanings:**
+
+* `account_id` (Primary Key): A unique identifier for each client account.
+* `company`: The name of the client company. This may also be referred to as the client or the account.
+* `industry`: The primary industry in which the client company operates.
+* `contact_first_name`: The first name of the primary contact person at the client company.
+* `contact_last_name`: The last name of the primary contact person at the client company.
+* `contact_title`: The job title of the primary contact person at the client company.
+* `email`: The email of the primary contact person at the client company.
+* `phone`: The email of the primary contact person at the client company.
+* `website`: The official website address of the client company.
+* `location`: The city in which the client company is primarily located.
+* `annual_revenue`: The total annual revenue generated from this client account by Bankwell.
+* `total_account_bal`: The total balance of all accounts held by the client at Bankwell.
+
+"""
 
 crm_employees_table_desc = """
-Use when query involves employee names, coworkers, company workers, employee titles, employee email, employee location, employee department  employee phone, workers at bankwell or employees at bankwell. If the query mentions our company, use this table to learn about the employees. All employees listed here work at bankwell.
+This workflow describes how to use the employee information table to answer user questions about individuals working within Bankwell. This table contains details about Bankwell's employees.
 
-Columns:
- - employee_id (PK)
- - employee_first_name: First name 
- - employee_last_name: Last name 
- - title: corporate title 
- - email: email address 
- - phone: phone number 
- - hire_date: date the employee was hired
- - department: what department the employee works in
+**Use this table when the user's question asks for information related to:**
 
+* An **employee's full name**.
+* An employee's **job title** or **corporate title**.
+* An employee's **email address**.
+* An employee's **phone number**.
+* An employee's **work location** (implicitly understood as being within Bankwell, though not explicitly listed as a separate column).
+* An employee's **department**.
+* Identifying **coworkers** or other **employees at Bankwell**.
+
+**Key uses of this table include:**
+
+* Finding contact information for Bankwell employees.
+* Identifying an employee's role or department within Bankwell.
+* Determining who works in the same department as a specific employee.
+
+**Important Considerations:**
+
+* This table **exclusively contains information about employees who work at Bankwell**. You can assume that any employee mentioned here is a Bankwell employee.
+* The terms **"employee," "coworker," "company worker," and "Bankwell employee"** all refer to individuals listed in this table. When a query mentions "our company" or "Bankwell," this is the appropriate table to use.
+
+**Table Columns and their Meanings:**
+
+* `employee_id` (Primary Key): A unique identifier for each Bankwell employee.
+* `first_name`: The first name of the Bankwell employee.
+* `last_name`: The last name of the Bankwell employee.
+* `title`: The official corporate title of the Bankwell employee.
+* `email`: The professional email address of the Bankwell employee.
+* `phone`: The office phone number of the Bankwell employee.
+* `hire_date`: The date when the employee was hired by Bankwell.
+* `department`: The specific department in which the Bankwell employee works.
+
+By understanding these columns and the intended use cases, you can effectively translate natural language queries into SQL to retrieve the requested employee information for Bankwell personnel.
 """
+
+#crm_employees_table_desc = """
+#Use when query involves employee names, coworkers, company workers, employee titles, employee email, employee location, employee #department  employee phone, workers at bankwell or employees at bankwell. If the query mentions our company, use this table to learn about #the employees. All employees listed here work at bankwell.
+
+#Columns:
+# - employee_id (PK)
+# - employee_first_name: First name 
+# - employee_last_name: Last name 
+# - title: corporate title 
+# - email: email address 
+# - phone: phone number 
+# - hire_date: date the employee was hired
+# - department: what department the employee works in
+#"""
 
 
 outlook_table_desc = """
-
-
-
-
-
 
 """
 
 
 
 market_table_desc = """
-
-
-
-
 
 
 """
