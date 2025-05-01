@@ -6,25 +6,37 @@ crm_table_desc = """
 
 """
 
+
+
 crm_portfolio_table_desc = """
-Use when query involves company accounts, portfolio information, balance in a fund, total balance, positions, mutual funds, bond funds, equity funds, positions, portfolio makeup, or holdings. Each company will have one row for each fund that it has. Company can also be called a client.
+This table lists the investment funds held by client companies through their accounts at our bank. Use this table to identify which funds a specific client owns, and how much is invested in each.
+
+IMPORTANT:
+- `company` refers to the client company that owns one or more funds. It is NOT a stock or a mutual fund itself.
+- Use this table to answer questions like: "What funds does a client own?" or "What is a company's total portfolio value?"
+WARNING: When filtering by fund type (e.g., "Equity funds"), always apply the filter on the `fund_type` column in the `portfolio` table, not in `fund_detail`. The `portfolio` table represents the funds a client owns. The `fund_detail` table only describes what’s inside the fund, not its type.
+
+
 Columns:
- - account_id (PK) : The unique identifier of a company
- - company: The name of the company
- - symbol (PK) : The symbol of the instrument
- - fund_type: Instrument type can be stock, bond, or mutual fund
- - tot_balance: Total assets of the company
- - fund_balance: Balance held in the fund designated by symbol
+- account_id: Unique identifier for the client's account.
+- company: Name of the client company.
+- fund_type: Category of the fund (e.g., Equity, Bond).
+- symbol: Identifier of the fund. This is used to join with the `fund_detail` table.
+- tot_balance: Total assets held by the client.
+- fund_balance: Amount the client has invested in this particular fund.
 """
 
-crm_fund_details_desc = """ 
-Use when query involves the positions, stocks, or bonds contained within funds.
+crm_fund_details_desc = """
+This table lists the specific stocks or bonds held within each mutual fund. Funds can be bond funds or equity funds. Use this table to determine which assets are held in a fund.
+
+NOTE: The `position_name` column refers to the name of the stock or bond inside a fund. It does NOT refer to a client company. 
+NOTE: Do not use `fund_type` in this table to filter for client fund types (e.g., Equity). Instead, apply the `fund_type` filter in the `portfolio` table — that’s where the type of fund the client owns is defined.
+
 Columns:
-- ticker : ticker of the stock or bond
-- position_name : Name of the stock or bond
-- fund : Name of the Fund that contains the position
-- weight: Portion of the fund held in the position
-- fund_type: Type of fund is Equity or Bond
+- ticker (Primary Key): Ticker of the individual asset.
+- position_name: Full name of the stock or bond.
+- fund (Foreign Key, portfolio.symbol): Ticker of the fund holding this asset.
+- weight: Proportion of the fund held in this asset.
 """
 
 crm_client_alignment_table_desc = """
