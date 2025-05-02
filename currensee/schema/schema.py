@@ -22,6 +22,8 @@ class PostgresTables:
     CRM_Employees = auto()
     CRM_Clients_Contact = auto()
     CRM_Fund_Detail = auto()
+    meeting_data = auto()
+    email_data = auto()
 
 
 class AgentInfo(BaseModel):

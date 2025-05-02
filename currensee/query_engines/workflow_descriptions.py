@@ -149,6 +149,81 @@ outlook_table_desc = """
 
 """
 
+outlook_email_table_desc = """
+This workflow describes how to use the `email_data` table to retrieve and analyze email communications involving Jane Moneypenny, a Financial Advisor at Bankwell Financial (Email: jane.moneypenny1@outlook.com), and her clients.
+
+**Use this table when the user's question involves:**
+
+* Emails **sent by or to Jane Moneypenny**.
+* **Identifying conversations** between Jane and her clients.
+* Retrieving the **content** of email exchanges, including subject lines and body text.
+* Filtering emails based on **recipients, senders, or email addresses**.
+* Ranking emails by **recency** or simulating communication flows over time.
+
+**Client Filtering:**
+
+* Jane’s clients are defined by the contact list in `janes_clients.csv`. This list contains full names, email addresses, titles, and company names.
+* When identifying Jane’s email interactions, **use this client list to filter valid senders or recipients**.
+* Only include emails where Jane is either the **sender or a recipient**, and the other party is in the client list.
+
+**Recency Weighting:**
+
+* Email data spans from **mid-2018 to late-2023**, with **more emails concentrated in recent years (especially post-2021)**.
+* When the user asks for recent communication or requests prioritization by time, sort by `email_timestamp` in descending order.
+
+**Table Columns and their Meanings:**
+
+* `email_timestamp`: The datetime when the email was sent. Format: `YYYY-MM-DD HH:MM:SS`. Emails are strictly chronological.
+* `from_name`: Full name of the email sender (e.g., "Jane Moneypenny", or a client contact).
+* `from_email`: The sender's email address. For Jane, this is always `jane.moneypenny1@outlook.com`.
+* `to_names`: Full name(s) of the recipient(s). If multiple, they are comma-separated and enclosed in quotes.
+* `to_emails`: The email addresses of the recipients, matching `to_names`. Also comma-separated and enclosed in quotes if multiple.
+* `email_subject`: The subject of the email, used to summarize the topic.
+* `email_body`: The **main message body**, consisting of:
+  - A salutation (e.g., "Hi Cynthia,")
+  - The **core message content only**
+
+> Do **not** include the **sign-off** (e.g., "Best regards,") or **any email signature block** from either Jane or the clients in the `email_body`.
+
+
+**Best Practices:**
+
+* Use both name and email for accurate filtering.
+* Sort by `email_timestamp` to prioritize recent emails.
+* Strip out both sign-offs and signature blocks from the email content to keep results focused and clean.
+
+
+This table supports natural language queries involving Jane's email history, client communication patterns, and time-sensitive follow-up needs.
+"""
+
+
+
+outlook_meeting_table_desc = """
+1. **Host Information**: Since Jane Moneypenny is always the host, you do not need to include the host details in the results.
+2. **Prioritize Recent Meetings**: Always prioritize recent meetings first. Ensure meetings are ordered by `meeting_timestamp` in descending order (most recent first).
+3. **Meeting Data Selection**:
+   - Filter meetings that fall within the timespan from mid-2018 to late-2023.
+   - Meetings should only occur Monday to Friday between 9:00 AM and 5:00 PM ET.
+4. **Output Format**: The response should contain only the following columns:
+   - `meeting_timestamp`: The date and time of the meeting (in format YYYY-MM-DD HH:MM:SS).
+   - `invitees`: The client representatives attending the meeting.
+   - `invitee_emails`: The email addresses corresponding to the invitees.
+   - `meeting_subject`: The subject line or primary topic of the meeting.
+5. If multiple meetings are present for the same client, return them in descending order by `meeting_timestamp` (most recent first).
+6. The subject of the meeting should logically derive from the email conversations surrounding the meeting. For historical meetings, ensure the meeting subject is relevant to the last email discussion or logical cadence of meetings.
+7. **Future Meetings**: When queried about future meetings, generate plausible next steps or continuations based on prior conversations or meeting history.
+
+Example user query: "What were the recent meetings Jane had with cynthia.hobbs@abbvie.com?"
+Expected result:
+```csv
+meeting_timestamp,invitees,invitee_emails,meeting_subject
+2023-09-19 14:00:00,"Cynthia Hobbs","cynthia.hobbs@abbvie.com","Celestica - Discuss Short-Term Investment Strategy (CDs/CP)"
+2023-04-17 10:00:00,"Cynthia Hobbs","cynthia.hobbs@abbvie.com","AbbVie - Discuss FX Hedging Strategy"
+
+
+"""
+
+
 
 
 market_table_desc = """
