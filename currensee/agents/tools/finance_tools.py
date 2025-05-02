@@ -1,23 +1,54 @@
-from langgraph.checkpoint.memory import MemorySaver
-from langchain_core.messages import HumanMessage, AIMessage
-from langgraph.graph import StateGraph, START, END
-from langgraph.prebuilt import create_react_agent
-from langchain_core.runnables import RunnableLambda
-from langchain.tools import tool
+from typing import TypedDict, List, Dict, Any, Optional
 from langchain_community.utilities import GoogleSerperAPIWrapper
-import os
-import pprint
-from currensee.core import get_model, settings
-from dotenv import load_dotenv
-import pandas_datareader.data as web
-from datetime import datetime, timedelta
 
 import matplotlib.pyplot as plt
 
-from currensee.agents.agent_utils import summarize_outputs, query_tool
+
+class FinNewsState(TypedDict):
+
+    client_name: str
+
+    client_industry: str
+
+    client_holdings: list[str]
+
+    start_date: str
+    
+    end_date: str
+
+    # Response generation
+    macro_news_summary: Optional[str]
+    client_industry_summary: Optional[str]
+    client_holdings_summary: Optional[str]
+    complete_summary: Optional[str]
+
+    # Processing metadata
+    messages: List[Dict[str, Any]]  # Track conversation with LLM for analysis
 
 
 #definitions
+
+def format_google_date(date_str):
+    parts = date_str.split("/")
+    return f"{parts[2]}{parts[0].zfill(2)}{parts[1].zfill(2)}"
+
+def score_result(result):
+        score = 0
+        keywords = keywords_client
+        link = result.get("link", "")
+        title = result.get("title", "").lower()
+        snippet = result.get("snippet", "").lower()
+
+        if any(site in link for site in allowed_sites):
+            score += 3
+
+        if any(word in title or word in snippet for word in keywords):
+            score += 2
+
+        if "date" in result:
+            score += 1
+
+        return score
 
 keywords_client = ["announces", "acquires", "launches", "earnings", "report", 
                "profit", "CEO", "crisis", "disaster","recession","recovery", "red flag", 
@@ -45,12 +76,15 @@ query_ch = "{site_filter} news about any of these top holdings:{largest_holdings
 
 #=====tools=====
 
-@tool
-def client_and_industry(client_name: str, industry: str, site_filter: str = site_filter) -> str:
+def retrieve_client_industry_news(state: FinNewsState) -> str:
     """Return the most relevant news about the client and its industry."""
-    def format_google_date(date_str):
-        parts = date_str.split("/")
-        return f"{parts[2]}{parts[0].zfill(2)}{parts[1].zfill(2)}"
+
+    print("GETTING CLIENT INDUSTRY")
+
+    start_date = state["start_date"]
+    end_date = state["end_date"]
+    client_name = state["client_name"]
+    industry = state["client_industry"]
 
     google_start = format_google_date(start_date)
     google_end = format_google_date(end_date)
@@ -62,39 +96,28 @@ def client_and_industry(client_name: str, industry: str, site_filter: str = site
     filled_query = query_ci.format(site_filter=site_filter, client_name=client_name, industry=industry)
     results = search.results(filled_query)
 
-    def score_result(result):
-        score = 0
-        keywords = keywords_client  # Assume this variable is defined elsewhere
-        link = result.get("link", "")
-        title = result.get("title", "").lower()
-        snippet = result.get("snippet", "").lower()
-
-        if any(site in link for site in allowed_sites):
-            score += 3
-
-        if any(word in title or word in snippet for word in keywords):
-            score += 2
-
-        if "date" in result:
-            score += 1
-
-        return score
-
     if results.get("organic"):
         sorted_results_client = sorted(results.get("organic", []), key=score_result, reverse=True)
-        return sorted_results_client
+        industry_summary = sorted_results_client
     else:
-        return "No results found for client or industry news."
+        industry_summary = "No results found for client or industry news."
 
+    new_state = state.copy()
+    new_state['client_industry_summary'] = industry_summary
+
+    print(new_state.keys())
+
+    return new_state
 
 
 # Function to retrieve macroeconomic events news (Tool MACRO NEWS)
-@tool
-def macro_news(site_filter: str = site_filter) -> str:
+def retrieve_macro_news(state: FinNewsState) -> str:
     """Return the most relevant macroeconomic news based on the query."""
-    def format_google_date(date_str):
-        parts = date_str.split("/")
-        return f"{parts[2]}{parts[0].zfill(2)}{parts[1].zfill(2)}"
+
+    print("GETTING MACRO")
+
+    start_date = state["start_date"]
+    end_date = state["end_date"]
 
     google_start = format_google_date(start_date)
     google_end = format_google_date(end_date)
@@ -105,39 +128,26 @@ def macro_news(site_filter: str = site_filter) -> str:
     filled_query = query_mn.format(site_filter=site_filter)
     results = search.results(filled_query)
 
-    def score_result(result):
-        score = 0
-        keywords = keywords_econ  # Assume this variable is defined elsewhere
-        link = result.get("link", "")
-        title = result.get("title", "").lower()
-        snippet = result.get("snippet", "").lower()
-
-        if any(site in link for site in allowed_sites):
-            score += 3
-
-        if any(word in title or word in snippet for word in keywords):
-            score += 2
-
-        if "date" in result:
-            score += 1
-
-        return score
-
     if results.get("organic"):
         sorted_results_econ = sorted(results.get("organic", []), key=score_result, reverse=True)
-        return sorted_results_econ
+        macro_summary = sorted_results_econ
     else:
-        return "No results found for macroeconomic events."
+        macro_summary = "No results found for macroeconomic events."
 
+    new_state = state.copy()
+    new_state['macro_news_summary'] = macro_summary
 
+    print(new_state.keys())
+
+    return new_state
 
 # Function to retrieve macroeconomic events news (Tool HOLDINGS NEWS)
-@tool
-def holdings_news(largest_holdings: list[str], site_filter: str = site_filter) -> str:
-    """Return the most relevant news based on each major holding."""
-    def format_google_date(date_str):
-        parts = date_str.split("/")
-        return f"{parts[2]}{parts[0].zfill(2)}{parts[1].zfill(2)}"
+def retrieve_holdings_news(state: FinNewsState) -> str:
+    """Return the most relevant news based on each major holding of a specific client."""
+
+    start_date = state["start_date"]
+    end_date = state["end_date"]
+    client_holdings = state["client_holdings"]
 
     google_start = format_google_date(start_date)
     google_end = format_google_date(end_date)
@@ -145,31 +155,20 @@ def holdings_news(largest_holdings: list[str], site_filter: str = site_filter) -
     sort_param = f"date:r:{google_start}:{google_end}"
 
     search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Pass sort parameter
-    filled_query = query_hn.format(site_filter=site_filter, largest_holdings=largest_holdings)
+    filled_query = query_ch.format(site_filter=site_filter, largest_holdings=client_holdings)
     results = search.results(filled_query)
-
-    def score_result(result):
-        score = 0
-        keywords = keywords_client
-        link = result.get("link", "")
-        title = result.get("title", "").lower()
-        snippet = result.get("snippet", "").lower()
-
-        if any(site in link for site in allowed_sites):
-            score += 3
-
-        if any(word in title or word in snippet for word in keywords):
-            score += 2
-
-        if "date" in result:
-            score += 1
-
-        return score
 
     if results.get("organic"):
         sorted_results_econ = sorted(results.get("organic", []), key=score_result, reverse=True)
-        return sorted_results_econ
+        holdings_summary = sorted_results_econ
     else:
-        return "No results found for holdings."
+        holdings_summary = "No results found for holdings."
+
+    new_state = state.copy()
+    new_state['client_holdings_summary'] = holdings_summary
+
+    print(new_state.keys())
+
+    return new_state
 
 

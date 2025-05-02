@@ -10,13 +10,13 @@ from currensee.utils.db_utils import create_pg_engine
 from currensee.core.settings import Settings
 from currensee.schema.models import GoogleModelName
 from currensee.schema.schema import PostgresTables
-from currensee.query_engines.prompts import text_to_sql_tmpl, response_synthesis_prompt_str
-from currensee.query_engines.sql_query_engine.workflow import SqlWorkflow
-from currensee.query_engines.workflow_descriptions import SQL_TABLE_DESC_MAPPING
+from currensee.workflows.prompts import text_to_sql_tmpl, response_synthesis_prompt_str
+from currensee.workflows.sql_workflow.workflow import SqlWorkflow
 
 settings = Settings()
 
-def create_sql_workflow(
+
+def create_sql_query_engine(
     source_db: str,
     table_description_mapping: dict[str, str],
     text_to_sql_tmpl: str = text_to_sql_tmpl,
@@ -99,6 +99,60 @@ def create_sql_workflow(
         embed_model=embed_model,
         response_synthesis_prompt=response_synthesis_prompt,
 
+    )
+
+    return sql_query_engine
+
+
+def create_sql_workflow(
+    source_db: str,
+    table_description_mapping: dict[str, str],
+    text_to_sql_tmpl: str = text_to_sql_tmpl,
+    response_synthesis_prompt_str: str= response_synthesis_prompt_str,
+    model: GoogleModelName = GoogleModelName.GEMINI_15_FLASH,
+    temperature: float = 0.0
+) -> SqlWorkflow:
+    """
+    Instantiate SQL workflow and necessary arguments.
+    Functionalized to create portability for unit testing
+    and future generalized router workflows.
+
+    Parameters
+    ----------
+    source_db : str
+        The database where the tables are located
+    table_description_mapping: dict[str,str]
+        A mapping between table names and descriptions of the tables to 
+        pass to the SQL query engine for it to create SQL queries from
+    text_to_sql_tmpl: str, optional
+        A prompt describing how to convert the natural language query into a SQL
+        query. 
+        Defaults to the prompt defined in `prompting.py`
+    response_synthesis_prompt_str: str, optional
+        A prompt describing how to synthesize the SQL results into a response.
+        Defaults to the prompt defined in `prompting.py`
+    model : GoogleModelName, optional
+        The GEMINI model to use for producing a SQL query from natural language & 
+        performing response synthesis - may need to consider separate implementation
+        if the same model isn't proficient at both
+        Default gemini-1.5-flash
+    temperature: float, optional
+        Temperature setting to pass to the model
+        Default 0.0 (minimal creativity)
+
+    Returns
+    -------
+    SQLWorkflow
+        SQL workflow object
+    """
+
+
+    sql_query_engine = create_sql_query_engine(source_db,
+        table_description_mapping,
+        text_to_sql_tmpl,
+        response_synthesis_prompt_str,
+        model,
+        temperature
     )
 
     run_kwargs: dict[str, Any] = {

@@ -1,12 +1,6 @@
 
 from currensee.schema.schema import PostgresTables
 
-crm_table_desc = """
-
-
-"""
-
-
 
 crm_portfolio_table_desc = """
 This table lists the investment funds held by client companies through their accounts at our bank. Use this table to identify which funds a specific client owns, and how much is invested in each.
@@ -130,6 +124,14 @@ This workflow describes how to use the employee information table to answer user
 By understanding these columns and the intended use cases, you can effectively translate natural language queries into SQL to retrieve the requested employee information for Bankwell personnel.
 """
 
+crm_table_description_mapping = {
+    'employees': crm_employees_table_desc,
+    'portfolio': crm_portfolio_table_desc,
+    'fund_detail': crm_fund_details_desc,
+    'client_alignment': crm_client_alignment_table_desc,
+    'clients_contact': crm_client_info_table_desc
+}
+
 #crm_employees_table_desc = """
 #Use when query involves employee names, coworkers, company workers, employee titles, employee email, employee location, employee #department  employee phone, workers at bankwell or employees at bankwell. If the query mentions our company, use this table to learn about #the employees. All employees listed here work at bankwell.
 
@@ -156,17 +158,6 @@ market_table_desc = """
 
 """
 
-#NOTE: These are just placeholders to demonstrate intended capabilities.
-
-SQL_TABLE_DESC_MAPPING: dict[str, str] = {
-    PostgresTables.CRM_TABLE_ONE: crm_table_desc,
-    PostgresTables.OUTLOOK_EMAILS: outlook_table_desc, 
-    PostgresTables.CRM_Client_Alignment: crm_client_alignment_table_desc,
-    PostgresTables.CRM_Portfolio: crm_portfolio_table_desc ,
-    PostgresTables.CRM_Employees: crm_employees_table_desc, 
-    PostgresTables.CRM_Clients_Contact: crm_client_info_table_desc,
-    PostgresTables.CRM_Fund_Detail: crm_fund_details_desc
-}
 
 #################################
 # THE STRINGS BELOW ARE SAMPLES #
