@@ -3,10 +3,12 @@ from langchain_community.utilities import GoogleSerperAPIWrapper
 
 import matplotlib.pyplot as plt
 
+from currensee.agents.tools.base import SupervisorState
+
 
 class FinNewsState(TypedDict):
 
-    client_name: str
+    client_company: str
 
     client_industry: str
 
@@ -68,7 +70,7 @@ site_filter = " OR ".join(f"site:{site}" for site in allowed_sites)
 query_mn = "{site_filter} news about relevant macro events and the economy."
 
 # Query for stock market and industry-related news
-query_ci = "{site_filter} news about {client_name} and about {industry} industry"
+query_ci = "{site_filter} news about {client_company} and about {industry} industry"
 
 # Query for holdings
 query_ch = "{site_filter} news about any of these top holdings:{largest_holdings}"
@@ -76,14 +78,14 @@ query_ch = "{site_filter} news about any of these top holdings:{largest_holdings
 
 #=====tools=====
 
-def retrieve_client_industry_news(state: FinNewsState) -> str:
+def retrieve_client_industry_news(state: SupervisorState) -> str:
     """Return the most relevant news about the client and its industry."""
 
     print("GETTING CLIENT INDUSTRY")
 
     start_date = state["start_date"]
     end_date = state["end_date"]
-    client_name = state["client_name"]
+    client_company = state["client_company"]
     industry = state["client_industry"]
 
     google_start = format_google_date(start_date)
@@ -93,7 +95,7 @@ def retrieve_client_industry_news(state: FinNewsState) -> str:
 
     # Search with date filter
     search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Pass sort parameter
-    filled_query = query_ci.format(site_filter=site_filter, client_name=client_name, industry=industry)
+    filled_query = query_ci.format(site_filter=site_filter, client_company=client_company, industry=industry)
     results = search.results(filled_query)
 
     if results.get("organic"):
@@ -111,7 +113,7 @@ def retrieve_client_industry_news(state: FinNewsState) -> str:
 
 
 # Function to retrieve macroeconomic events news (Tool MACRO NEWS)
-def retrieve_macro_news(state: FinNewsState) -> str:
+def retrieve_macro_news(state: SupervisorState) -> str:
     """Return the most relevant macroeconomic news based on the query."""
 
     print("GETTING MACRO")
@@ -142,7 +144,7 @@ def retrieve_macro_news(state: FinNewsState) -> str:
     return new_state
 
 # Function to retrieve macroeconomic events news (Tool HOLDINGS NEWS)
-def retrieve_holdings_news(state: FinNewsState) -> str:
+def retrieve_holdings_news(state: SupervisorState) -> str:
     """Return the most relevant news based on each major holding of a specific client."""
 
     start_date = state["start_date"]

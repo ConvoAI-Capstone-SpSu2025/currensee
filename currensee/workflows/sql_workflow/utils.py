@@ -22,7 +22,8 @@ def create_sql_query_engine(
     text_to_sql_tmpl: str = text_to_sql_tmpl,
     response_synthesis_prompt_str: str= response_synthesis_prompt_str,
     model: GoogleModelName = GoogleModelName.GEMINI_15_FLASH,
-    temperature: float = 0.0
+    temperature: float = 0.0,
+    synthesize_response=True
 ) -> SqlWorkflow:
     """
     Instantiate SQL workflow and necessary arguments.
@@ -92,6 +93,7 @@ def create_sql_query_engine(
             include_tables=table_names,
             max_string_length=2000,
         ),
+        synthesize_response=synthesize_response,
         tables=table_names,
         context_query_kwargs=table_description_mapping,
         text_to_sql_prompt=text_to_sql_prompt,

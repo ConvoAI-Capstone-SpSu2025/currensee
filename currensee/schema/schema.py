@@ -15,13 +15,14 @@ class PostgresTables:
     """
     CRM_TABLE_ONE = auto()
     CRM_TABLE_CHUNKED = auto()
-    OUTLOOK_EMAILS = auto()
+    OUTLOOK_Emails = auto()
     TEAMS_MESSAGES  = auto()
     CRM_Client_Alignment = auto()
     CRM_Portfolio = auto()
     CRM_Employees = auto()
     CRM_Clients_Contact = auto()
     CRM_Fund_Detail = auto()
+    OUTLOOK_Meetings = auto()
 
 
 class AgentInfo(BaseModel):
