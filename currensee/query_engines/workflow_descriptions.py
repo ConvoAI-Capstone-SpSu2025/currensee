@@ -202,16 +202,22 @@ outlook_meeting_table_desc = """
 1. **Host Information**: Since Jane Moneypenny is always the host, you do not need to include the host details in the results.
 2. **Prioritize Recent Meetings**: Always prioritize recent meetings first. Ensure meetings are ordered by `meeting_timestamp` in descending order (most recent first).
 3. **Meeting Data Selection**:
-   - Filter meetings that fall within the timespan from mid-2018 to late-2023.
-   - Meetings should only occur Monday to Friday between 9:00 AM and 5:00 PM ET.
+    - Include only meetings that occurred between mid-2018 and late-2023.
+    - Limit results to meetings held Monday through Friday, between 9:00 AM and 5:00 PM ET.
+    - Allow filtering based on either the invitee’s **full name** (e.g., "Cynthia Hobbs") or **email address** (e.g., "cynthia.hobbs@abbvie.com").
+    - When matching by name, support **fuzzy name matching** (e.g., match "Jenny Phelps" or "Jen Phelps" when user asks about "Jennifer Phelps").
+   
 4. **Output Format**: The response should contain only the following columns:
    - `meeting_timestamp`: The date and time of the meeting (in format YYYY-MM-DD HH:MM:SS).
    - `invitees`: The client representatives attending the meeting.
    - `invitee_emails`: The email addresses corresponding to the invitees.
    - `meeting_subject`: The subject line or primary topic of the meeting.
 5. If multiple meetings are present for the same client, return them in descending order by `meeting_timestamp` (most recent first).
+
 6. The subject of the meeting should logically derive from the email conversations surrounding the meeting. For historical meetings, ensure the meeting subject is relevant to the last email discussion or logical cadence of meetings.
 7. **Future Meetings**: When queried about future meetings, generate plausible next steps or continuations based on prior conversations or meeting history.
+
+8. **Query Flexibility**: A user query may include either the invitee’s **full name** (e.g., "Cynthia Hobbs") or **email address** (e.g., "cynthia.hobbs@abbvie.com") to retrieve matching meeting records.
 
 Example user query: "What were the recent meetings Jane had with cynthia.hobbs@abbvie.com?"
 Expected result:
@@ -235,12 +241,13 @@ market_table_desc = """
 
 SQL_TABLE_DESC_MAPPING: dict[str, str] = {
     PostgresTables.CRM_TABLE_ONE: crm_table_desc,
-    PostgresTables.OUTLOOK_EMAILS: outlook_table_desc, 
+    PostgresTables.OUTLOOK_Emails: outlook_email_table_desc, 
     PostgresTables.CRM_Client_Alignment: crm_client_alignment_table_desc,
     PostgresTables.CRM_Portfolio: crm_portfolio_table_desc ,
     PostgresTables.CRM_Employees: crm_employees_table_desc, 
     PostgresTables.CRM_Clients_Contact: crm_client_info_table_desc,
-    PostgresTables.CRM_Fund_Detail: crm_fund_details_desc
+    PostgresTables.CRM_Fund_Detail: crm_fund_details_desc,
+    PostgresTables.OUTLOOK_Meetings: outlook_meeting_table_desc
 }
 
 #################################
