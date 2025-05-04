@@ -5,7 +5,7 @@ from sqlalchemy import text
 from currensee.workflows.sql_workflow.utils import create_sql_workflow
 from currensee.workflows.workflow_descriptions import crm_table_description_mapping
 
-from currensee.agents.tools.base import SupervisorState, CrmState
+from currensee.agents.tools.base import SupervisorState
 
 
 DB_NAME = 'crm'
@@ -56,6 +56,8 @@ async def retrieve_all_client_emails_for_company(client_company: str) -> str:
 
 
 async def retrieve_client_metadata(state: SupervisorState) -> dict:
+
+    print(state)
 
     client_email = state['client_email']
 

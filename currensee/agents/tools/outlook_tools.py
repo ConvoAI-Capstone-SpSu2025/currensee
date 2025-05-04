@@ -5,7 +5,7 @@ from sqlalchemy import text
 from currensee.workflows.sql_workflow.utils import create_sql_workflow
 from currensee.workflows.workflow_descriptions import outlook_table_description_mapping
 
-from currensee.agents.tools.base import SupervisorState, CrmState
+from currensee.agents.tools.base import SupervisorState
 
 
 DB_NAME = 'outlook'
@@ -39,7 +39,11 @@ async def produce_client_email_summary(state: SupervisorState) -> dict:
     result = await sql_workflow.run(query=query_str)
 
     new_state = state.copy()
-    new_state['last_meeting_date'] = last_meeting_date
+    new_state['last_meeting_timestamp'] = last_meeting_date
+
+    for key, val in new_state.items():
+        print("KEY:", key)
+        print("VAL:", val)
 
     return new_state
 

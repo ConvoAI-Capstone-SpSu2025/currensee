@@ -2,7 +2,6 @@ from langchain_core.messages import HumanMessage
 from langgraph.graph import StateGraph, START, END
 
 from currensee.core import get_model, settings
-from currensee.agents.agent_utils import summarize_outputs
 
 
 from currensee.agents.tools.finance_tools import retrieve_client_industry_news, retrieve_holdings_news, retrieve_macro_news, FinNewsState
@@ -12,6 +11,9 @@ load_dotenv()
 
 # === Model ===
 model = get_model(settings.DEFAULT_MODEL)
+
+
+# === 
 
 
 # === Summary ===

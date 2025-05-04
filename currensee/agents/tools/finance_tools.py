@@ -6,28 +6,6 @@ import matplotlib.pyplot as plt
 from currensee.agents.tools.base import SupervisorState
 
 
-class FinNewsState(TypedDict):
-
-    client_company: str
-
-    client_industry: str
-
-    client_holdings: list[str]
-
-    start_date: str
-    
-    end_date: str
-
-    # Response generation
-    macro_news_summary: Optional[str]
-    client_industry_summary: Optional[str]
-    client_holdings_summary: Optional[str]
-    complete_summary: Optional[str]
-
-    # Processing metadata
-    messages: List[Dict[str, Any]]  # Track conversation with LLM for analysis
-
-
 #definitions
 
 def format_google_date(date_str):
@@ -83,8 +61,8 @@ def retrieve_client_industry_news(state: SupervisorState) -> str:
 
     print("GETTING CLIENT INDUSTRY")
 
-    start_date = state["start_date"]
-    end_date = state["end_date"]
+    start_date = state["meeting_timestamp"]
+    end_date = state["last_meeting_timestamp"]
     client_company = state["client_company"]
     industry = state["client_industry"]
 
@@ -118,8 +96,8 @@ def retrieve_macro_news(state: SupervisorState) -> str:
 
     print("GETTING MACRO")
 
-    start_date = state["start_date"]
-    end_date = state["end_date"]
+    start_date = state["meeting_timestamp"]
+    end_date = state["last_meeting_timestamp"]
 
     google_start = format_google_date(start_date)
     google_end = format_google_date(end_date)
@@ -147,8 +125,8 @@ def retrieve_macro_news(state: SupervisorState) -> str:
 def retrieve_holdings_news(state: SupervisorState) -> str:
     """Return the most relevant news based on each major holding of a specific client."""
 
-    start_date = state["start_date"]
-    end_date = state["end_date"]
+    start_date = state["meeting_timestamp"]
+    end_date = state["last_meeting_timestamp"]
     client_holdings = state["client_holdings"]
 
     google_start = format_google_date(start_date)

@@ -46,7 +46,7 @@ class SupervisorState(TypedDict):
     all_client_emails: Optional[list[str]]
 
     # outlook response generation
-    last_meeting_date: Optional[str]
+    last_meeting_timestamp: Optional[str]
     relevant_client_emails: Optional[list[str]]
     email_summary: Optional[str]
 

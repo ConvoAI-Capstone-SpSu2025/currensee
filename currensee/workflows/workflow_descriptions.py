@@ -240,7 +240,7 @@ This table contains records of past meetings hosted by Jane Moneypenny.
 
 """
 
-table_description_mapping = {
+outlook_table_description_mapping = {
     'email_data': outlook_email_table_desc,
     'meeting_data': outlook_meeting_table_desc
 }

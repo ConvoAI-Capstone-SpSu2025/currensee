@@ -112,7 +112,8 @@ def create_sql_workflow(
     text_to_sql_tmpl: str = text_to_sql_tmpl,
     response_synthesis_prompt_str: str= response_synthesis_prompt_str,
     model: GoogleModelName = GoogleModelName.GEMINI_15_FLASH,
-    temperature: float = 0.0
+    temperature: float = 0.0,
+    synthesize_response = True
 ) -> SqlWorkflow:
     """
     Instantiate SQL workflow and necessary arguments.
@@ -154,7 +155,8 @@ def create_sql_workflow(
         text_to_sql_tmpl,
         response_synthesis_prompt_str,
         model,
-        temperature
+        temperature,
+        synthesize_response=synthesize_response
     )
 
     run_kwargs: dict[str, Any] = {

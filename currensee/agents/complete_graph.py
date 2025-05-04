@@ -2,14 +2,17 @@ from langchain_core.messages import HumanMessage
 from langgraph.graph import StateGraph, START, END
 
 from currensee.core import get_model, settings
-from currensee.agents.agent_utils import summarize_outputs
+from currensee.agents.agent_utils import summarize_outputs, ReturnAsyncValue
+from currensee.agents.tools.base import SupervisorState
 
 from currensee.agents.tools.crm_tools import retrieve_client_metadata
 from currensee.agents.tools.outlook_tools import produce_client_email_summary
-from currensee.agents.tools.finance_tools import retrieve_client_industry_news, retrieve_holdings_news, retrieve_macro_news, FinNewsState
+from currensee.agents.tools.finance_tools import retrieve_client_industry_news, retrieve_holdings_news, retrieve_macro_news
 
 from dotenv import load_dotenv
 load_dotenv()
+
+import asyncio
 
 # === Model ===
 model = get_model(settings.DEFAULT_MODEL)
@@ -17,7 +20,7 @@ model = get_model(settings.DEFAULT_MODEL)
 
 # === Summary ===
 
-def summarize_outputs(state: FinNewsState) -> str:
+def summarize_outputs(state: SupervisorState) -> str:
     """
     Summarizes the outputs from all provided tools into one coherent summary.
     
@@ -56,10 +59,10 @@ def summarize_outputs(state: FinNewsState) -> str:
 
 
 # Define the multi-agent supervisor graph
-complete_graph = StateGraph(FinNewsState)
+complete_graph = StateGraph(SupervisorState)
 
-complete_graph.add_node("retrieve_client_metadata", retrieve_client_metadata)
-complete_graph.add_node("produce_outlook_summary", produce_client_email_summary)
+complete_graph.add_node("retrieve_client_metadata", ReturnAsyncValue(retrieve_client_metadata))
+complete_graph.add_node("produce_outlook_summary", ReturnAsyncValue(produce_client_email_summary))
 
 complete_graph.add_node("run_client_holdings_agent", retrieve_holdings_news)
 complete_graph.add_node("run_client_industry_agent", retrieve_client_industry_news)
@@ -76,10 +79,7 @@ complete_graph.add_edge("summarizer_agent", END)
 
 compiled_graph = complete_graph.compile()
 
-
-
-
-if __name__ == "__main__":
+def main():
     init_state = {
         'client_name': 'Adam Clay',
         'client_email': 'adam.clay@compass.com',
@@ -91,3 +91,6 @@ if __name__ == "__main__":
     result = compiled_graph.invoke(init_state)
 
     print(result)
+
+if __name__ == "__main__":
+    main()
