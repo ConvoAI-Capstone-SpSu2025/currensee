@@ -1,16 +1,23 @@
 from typing import TypedDict, List, Dict, Any, Optional
 from langchain_community.utilities import GoogleSerperAPIWrapper
+from langchain_core.messages import HumanMessage
 
 import matplotlib.pyplot as plt
 
+from currensee.core import get_model, settings
 from currensee.agents.tools.base import SupervisorState
+
+
+# === Model ===
+model = get_model(settings.DEFAULT_MODEL)
 
 
 #definitions
 
 def format_google_date(date_str):
-    parts = date_str.split("/")
-    return f"{parts[2]}{parts[0].zfill(2)}{parts[1].zfill(2)}"
+    
+    parts = date_str.split()[0].split("-")
+    return f"{parts[0]}{parts[1].zfill(2)}{parts[0].zfill(2)}"
 
 def score_result(result):
         score = 0
@@ -59,8 +66,6 @@ query_ch = "{site_filter} news about any of these top holdings:{largest_holdings
 def retrieve_client_industry_news(state: SupervisorState) -> str:
     """Return the most relevant news about the client and its industry."""
 
-    print("GETTING CLIENT INDUSTRY")
-
     start_date = state["meeting_timestamp"]
     end_date = state["last_meeting_timestamp"]
     client_company = state["client_company"]
@@ -85,7 +90,6 @@ def retrieve_client_industry_news(state: SupervisorState) -> str:
     new_state = state.copy()
     new_state['client_industry_summary'] = industry_summary
 
-    print(new_state.keys())
 
     return new_state
 
@@ -93,8 +97,6 @@ def retrieve_client_industry_news(state: SupervisorState) -> str:
 # Function to retrieve macroeconomic events news (Tool MACRO NEWS)
 def retrieve_macro_news(state: SupervisorState) -> str:
     """Return the most relevant macroeconomic news based on the query."""
-
-    print("GETTING MACRO")
 
     start_date = state["meeting_timestamp"]
     end_date = state["last_meeting_timestamp"]
@@ -116,8 +118,6 @@ def retrieve_macro_news(state: SupervisorState) -> str:
 
     new_state = state.copy()
     new_state['macro_news_summary'] = macro_summary
-
-    print(new_state.keys())
 
     return new_state
 
@@ -147,8 +147,41 @@ def retrieve_holdings_news(state: SupervisorState) -> str:
     new_state = state.copy()
     new_state['client_holdings_summary'] = holdings_summary
 
-    print(new_state.keys())
-
     return new_state
 
 
+
+def summarize_finance_outputs(state: SupervisorState) -> str:
+    """
+    Summarizes the outputs from all provided tools into one coherent summary.
+    
+    Parameters:
+    - tool_outputs: A list of strings (outputs from different tools)
+    
+    Returns:
+    - A summarized string with key points from all the tool outputs.
+    """
+
+    client_industry_output = state["client_industry_summary"]
+    client_holdings_output = state["client_holdings_summary"]
+    macro_finnews_output = state["macro_news_summary"]
+
+    # Combine all outputs into a formatted prompt
+    combined_prompt = "\n\n".join(
+        [f"Tool {i+1} Output:\n{output}" for i, output in enumerate([client_industry_output, client_holdings_output, macro_finnews_output])]
+    )
+    combined_prompt += "\n\nPlease summarize the key points from all the outputs into one concise, long summary. Include specific numbers where applicable."
+    
+    # Create the messages to pass to the model
+    messages = [
+        HumanMessage(content=combined_prompt)
+    ]
+    
+    # Use the 'invoke' method for summarization
+    summary = model.invoke(messages)
+
+    new_state = state.copy()
+    new_state["finnews_summary"] = summary.content
+    
+    # Access the message content correctly
+    return new_state
