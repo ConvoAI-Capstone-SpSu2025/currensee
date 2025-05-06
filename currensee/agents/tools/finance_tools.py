@@ -189,7 +189,6 @@ def summarize_finance_outputs(state: SupervisorState) -> str:
     return new_state
 
 
-
 def generate_macro_table() -> str:
     """Fetch macroeconomic data and return it as a Markdown-style table string."""
 
@@ -201,11 +200,15 @@ def generate_macro_table() -> str:
         cpi = web.DataReader('CPIAUCSL', 'fred')
         latest = cpi.iloc[-1, 0]
         one_month_ago = cpi.iloc[-2, 0]
+        three_months_ago = cpi.iloc[-4, 0]
+        six_months_ago = cpi.iloc[-7, 0]
         one_year_ago = cpi.iloc[-13, 0]
         two_years_ago = cpi.iloc[-25, 0]
         return {
             'level': round(latest, 2),
             '1mo': round(((latest - one_month_ago) / one_month_ago) * 100, 2),
+            '3mo': round(((latest - three_months_ago) / three_months_ago) * 100, 2),
+            '6mo': round(((latest - six_months_ago) / six_months_ago) * 100, 2),
             '1yr': round(((latest - one_year_ago) / one_year_ago) * 100, 2),
             '2yr': round(((latest - two_years_ago) / two_years_ago) * 100, 2)
         }
@@ -246,9 +249,8 @@ def generate_macro_table() -> str:
         "CL=F": "WTI Crude Oil Price",
         "DX-Y.NYB": "US Dollar Index (DXY)"
     }.items():
-        data[f"{label} 1-Month Change (%)"] = fetch_yf_change(ticker, '1mo')
-        data[f"{label} 1-Year Change (%)"] = fetch_yf_change(ticker, '1y')
-        data[f"{label} 2-Year Change (%)"] = fetch_yf_change(ticker, '2y')
+        for period, tag in [('1mo', '1-Month'), ('3mo', '3-Month'), ('6mo', '6-Month'), ('1y', '1-Year'), ('2y', '2-Year')]:
+            data[f"{label} {tag} Change (%)"] = fetch_yf_change(ticker, period)
 
     df_macrofin = pd.DataFrame({
         'Indicator': [
@@ -279,6 +281,22 @@ def generate_macro_table() -> str:
             data['WTI Crude Oil Price 1-Month Change (%)'],
             cpi_data['1mo'],
             data['US Dollar Index (DXY) 1-Month Change (%)'],
+            '', '', '', ''
+        ],
+        '3-Month Change (%)': [
+            data['S&P 500 3-Month Change (%)'],
+            data['NASDAQ 3-Month Change (%)'],
+            data['WTI Crude Oil Price 3-Month Change (%)'],
+            cpi_data['3mo'],
+            data['US Dollar Index (DXY) 3-Month Change (%)'],
+            '', '', '', ''
+        ],
+        '6-Month Change (%)': [
+            data['S&P 500 6-Month Change (%)'],
+            data['NASDAQ 6-Month Change (%)'],
+            data['WTI Crude Oil Price 6-Month Change (%)'],
+            cpi_data['6mo'],
+            data['US Dollar Index (DXY) 6-Month Change (%)'],
             '', '', '', ''
         ],
         '1-Year Change (%)': [
