@@ -144,7 +144,7 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
             from_email ~* '{'|'.join(all_client_emails)}' 
         )
         order by email_timestamp desc
-        limit 4
+        limit 3
     """
 
     result = pd.read_sql(query_str, con=engine)
