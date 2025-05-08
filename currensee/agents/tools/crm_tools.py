@@ -33,10 +33,13 @@ def retrieve_client_holdings(client_company: str) -> list[str]:
 
     query_str = f"""
         SELECT fd.position_name
-        FROM fund_detail as fd join portfolio as po on fd.fund = po.symbol
+        FROM portfolio po
+        JOIN fund_detail fd ON po.symbol = fd.fund
         WHERE po.company = '{client_company}'
         AND po.fund_type = 'Equity Fund'
-    """
+        ORDER BY (po.fund_balance * fd.weight) DESC
+        LIMIT 5
+"""
 
     portfolio_data = pd.read_sql(query_str, con=engine)
 

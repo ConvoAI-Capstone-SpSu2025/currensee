@@ -39,7 +39,7 @@ def summarize_all_outputs(state: SupervisorState) -> str:
 
     # Combine all outputs into a formatted prompt
     combined_prompt = f"""
-        You are a skilled financial advisor with an upcoming meeting with {client_name} who works for {company_name}. Below are summaries of email correspondence with that client and the relevant financial data regarding the recent company's industry performance, the performance of their stock holdings, and the performance of the overall economy.
+        You are a skilled financial advisor with an upcoming meeting with {client_name} who works for {company_name}. Below are summaries of email correspondence with that client and the relevant financial data regarding the recent company's industry performance, the performance of their holdings, and the performance of the overall economy.
 
         Combine these summaries into one document that will help prepare other meeting attendees for the meeting with all of the relevant data, keeping in mind that the topic of the meeting is {meeting_description}. Format into multiple paragraphs with separate sections (with headings) for the past meeting/email summary and the financial news data.
 
