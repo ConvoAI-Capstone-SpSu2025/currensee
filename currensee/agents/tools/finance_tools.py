@@ -7,9 +7,10 @@ import matplotlib.pyplot as plt
 from currensee.core import get_model, settings
 from currensee.agents.tools.base import SupervisorState
 import pandas_datareader.data as web
-import yfinance as yf
+#import yfinance as yf
 import pandas as pd
 from tabulate import tabulate
+
 
 # === Model ===
 model = get_model(settings.DEFAULT_MODEL)
@@ -126,7 +127,7 @@ def retrieve_macro_news(state: SupervisorState) -> str:
 
 # Function to retrieve macroeconomic events news (Tool HOLDINGS NEWS)
 def retrieve_holdings_news(state: SupervisorState) -> str:
-    """Return the most relevant news based on each major holding of a specific client."""
+    """Return the most relevant news based on each position. Focus on what are the key things that have happened in those names, not the funds."""
 
     start_date = state["meeting_timestamp"]
     end_date = state["last_meeting_timestamp"]
@@ -190,132 +191,132 @@ def summarize_finance_outputs(state: SupervisorState) -> str:
 
 
 def generate_macro_table() -> str:
-    """Fetch macroeconomic data and return it as a Markdown-style table string."""
+    """Fetch macroeconomic and market data from FRED and return a Markdown table."""
 
-    def fetch_fred_data(series_id):
+    def fetch_fred_latest(series_id):
         data = web.DataReader(series_id, 'fred')
-        return round(data.iloc[-1, 0], 2)
+        return data
 
-    def fetch_cpi_levels():
-        cpi = web.DataReader('CPIAUCSL', 'fred')
-        latest = cpi.iloc[-1, 0]
-        one_month_ago = cpi.iloc[-2, 0]
-        three_months_ago = cpi.iloc[-4, 0]
-        six_months_ago = cpi.iloc[-7, 0]
-        one_year_ago = cpi.iloc[-13, 0]
-        two_years_ago = cpi.iloc[-25, 0]
+    def compute_percent_change(series, months):
+        # Approximate months as 21 trading days per month
+        offset = months * 21
+        if len(series) <= offset:
+            return None
+        latest = series.iloc[-1]
+        past = series.iloc[-offset]
+        return round(((latest - past) / past) * 100, 2)
+
+    def fetch_cpi_changes():
+        cpi = fetch_fred_latest('CPIAUCSL')['CPIAUCSL']
         return {
-            'level': round(latest, 2),
-            '1mo': round(((latest - one_month_ago) / one_month_ago) * 100, 2),
-            '3mo': round(((latest - three_months_ago) / three_months_ago) * 100, 2),
-            '6mo': round(((latest - six_months_ago) / six_months_ago) * 100, 2),
-            '1yr': round(((latest - one_year_ago) / one_year_ago) * 100, 2),
-            '2yr': round(((latest - two_years_ago) / two_years_ago) * 100, 2)
+            'level': round(cpi.iloc[-1], 2),
+            '1mo': compute_percent_change(cpi, 1),
+            '3mo': compute_percent_change(cpi, 3),
+            '6mo': compute_percent_change(cpi, 6),
+            '1yr': compute_percent_change(cpi, 12),
+            '2yr': compute_percent_change(cpi, 24)
         }
 
-    def fetch_yf_data(ticker, period='1d', interval='1d'):
-        data = yf.download(ticker, period=period, interval=interval)
-        return float(round(data['Close'].iloc[-1], 2))
-
-    def fetch_yf_change(ticker, period):
-        data = yf.download(ticker, period=period, interval='1d')
-        start = data['Close'].iloc[0]
-        end = data['Close'].iloc[-1]
-        return float(round(((end - start) / start) * 100, 2))
-
-    indicators = {
-        "S&P 500": {"fetch_func": fetch_yf_data, "source": "^GSPC"},
-        "NASDAQ": {"fetch_func": fetch_yf_data, "source": "^IXIC"},
-        "WTI Crude Oil Price": {"fetch_func": fetch_yf_data, "source": "CL=F"},
-        "US GDP Growth Rate": {"fetch_func": fetch_fred_data, "source": "A191RL1Q225SBEA"},
-        "US Unemployment Rate": {"fetch_func": fetch_fred_data, "source": "UNRATE"},
-        "10-Year Treasury Yield": {"fetch_func": fetch_fred_data, "source": "GS10"},
-        "Fed Funds Rate": {"fetch_func": fetch_fred_data, "source": "FEDFUNDS"},
-        "US Dollar Index (DXY)": {"fetch_func": fetch_yf_data, "source": "DX-Y.NYB"},
+    # Fetch time series data for each FRED-supported indicator
+    series_ids = {
+        'S&P 500 Index': 'SP500',
+        'WTI Crude Oil Price': 'DCOILWTICO',
+        'US Dollar Index (Broad)': 'DTWEXBGS'
     }
 
-    data = {}
-    for indicator, details in indicators.items():
-        func = details["fetch_func"]
-        source = details.get("source")
-        value = func(source)
-        data[indicator] = value
+    series_data = {}
+    for label, series_id in series_ids.items():
+        try:
+            data = fetch_fred_latest(series_id)[series_id].dropna()
+            series_data[label] = {
+                'level': round(data.iloc[-1], 2),
+                '1mo': compute_percent_change(data, 1),
+                '3mo': compute_percent_change(data, 3),
+                '6mo': compute_percent_change(data, 6),
+                '1yr': compute_percent_change(data, 12),
+                '2yr': compute_percent_change(data, 24)
+            }
+        except Exception as e:
+            print(f"Failed to fetch {label}: {e}")
+            series_data[label] = {'level': None, '1mo': None, '3mo': None, '6mo': None, '1yr': None, '2yr': None}
 
-    cpi_data = fetch_cpi_levels()
+    cpi_data = fetch_cpi_changes()
 
-    for ticker, label in {
-        "^GSPC": "S&P 500",
-        "^IXIC": "NASDAQ",
-        "CL=F": "WTI Crude Oil Price",
-        "DX-Y.NYB": "US Dollar Index (DXY)"
-    }.items():
-        for period, tag in [('1mo', '1-Month'), ('3mo', '3-Month'), ('6mo', '6-Month'), ('1y', '1-Year'), ('2y', '2-Year')]:
-            data[f"{label} {tag} Change (%)"] = fetch_yf_change(ticker, period)
+    # Static latest values from FRED (single value series)
+    static_indicators = {
+        "US GDP Growth Rate": "A191RL1Q225SBEA",
+        "US Unemployment Rate": "UNRATE",
+        "10-Year Treasury Yield": "GS10",
+        "Fed Funds Rate": "FEDFUNDS",
+    }
 
-    df_macrofin = pd.DataFrame({
+    static_data = {}
+    for label, sid in static_indicators.items():
+        try:
+            data = fetch_fred_latest(sid)
+            static_data[label] = round(data.iloc[-1, 0], 2)
+        except Exception as e:
+            print(f"Failed to fetch {label}: {e}")
+            static_data[label] = None
+
+    # Build DataFrame
+    df = pd.DataFrame({
         'Indicator': [
-            'S&P 500',
-            'NASDAQ',
+            'S&P 500 Index',
             'WTI Crude Oil Price',
+            'US Dollar Index (Broad)',
             'US CPI',
-            'US Dollar Index (DXY)',
             'US GDP Growth Rate',
             'US Unemployment Rate',
             '10-Year Treasury Yield',
             'Fed Funds Rate'
         ],
         'Level': [
-            data['S&P 500'],
-            data['NASDAQ'],
-            data['WTI Crude Oil Price'],
+            series_data['S&P 500 Index']['level'],
+            series_data['WTI Crude Oil Price']['level'],
+            series_data['US Dollar Index (Broad)']['level'],
             cpi_data['level'],
-            data['US Dollar Index (DXY)'],
-            data['US GDP Growth Rate'],
-            data['US Unemployment Rate'],
-            data['10-Year Treasury Yield'],
-            data['Fed Funds Rate']
+            static_data['US GDP Growth Rate'],
+            static_data['US Unemployment Rate'],
+            static_data['10-Year Treasury Yield'],
+            static_data['Fed Funds Rate']
         ],
         '1-Month Change (%)': [
-            data['S&P 500 1-Month Change (%)'],
-            data['NASDAQ 1-Month Change (%)'],
-            data['WTI Crude Oil Price 1-Month Change (%)'],
+            series_data['S&P 500 Index']['1mo'],
+            series_data['WTI Crude Oil Price']['1mo'],
+            series_data['US Dollar Index (Broad)']['1mo'],
             cpi_data['1mo'],
-            data['US Dollar Index (DXY) 1-Month Change (%)'],
             '', '', '', ''
         ],
         '3-Month Change (%)': [
-            data['S&P 500 3-Month Change (%)'],
-            data['NASDAQ 3-Month Change (%)'],
-            data['WTI Crude Oil Price 3-Month Change (%)'],
+            series_data['S&P 500 Index']['3mo'],
+            series_data['WTI Crude Oil Price']['3mo'],
+            series_data['US Dollar Index (Broad)']['3mo'],
             cpi_data['3mo'],
-            data['US Dollar Index (DXY) 3-Month Change (%)'],
             '', '', '', ''
         ],
         '6-Month Change (%)': [
-            data['S&P 500 6-Month Change (%)'],
-            data['NASDAQ 6-Month Change (%)'],
-            data['WTI Crude Oil Price 6-Month Change (%)'],
+            series_data['S&P 500 Index']['6mo'],
+            series_data['WTI Crude Oil Price']['6mo'],
+            series_data['US Dollar Index (Broad)']['6mo'],
             cpi_data['6mo'],
-            data['US Dollar Index (DXY) 6-Month Change (%)'],
             '', '', '', ''
         ],
         '1-Year Change (%)': [
-            data['S&P 500 1-Year Change (%)'],
-            data['NASDAQ 1-Year Change (%)'],
-            data['WTI Crude Oil Price 1-Year Change (%)'],
+            series_data['S&P 500 Index']['1yr'],
+            series_data['WTI Crude Oil Price']['1yr'],
+            series_data['US Dollar Index (Broad)']['1yr'],
             cpi_data['1yr'],
-            data['US Dollar Index (DXY) 1-Year Change (%)'],
             '', '', '', ''
         ],
         '2-Year Change (%)': [
-            data['S&P 500 2-Year Change (%)'],
-            data['NASDAQ 2-Year Change (%)'],
-            data['WTI Crude Oil Price 2-Year Change (%)'],
+            series_data['S&P 500 Index']['2yr'],
+            series_data['WTI Crude Oil Price']['2yr'],
+            series_data['US Dollar Index (Broad)']['2yr'],
             cpi_data['2yr'],
-            data['US Dollar Index (DXY) 2-Year Change (%)'],
             '', '', '', ''
         ]
     })
 
-    df_macrofin.set_index('Indicator', inplace=True)
-    return tabulate(df_macrofin.reset_index(), headers="keys", tablefmt="github")
+    df.set_index('Indicator', inplace=True)
+    return tabulate(df.reset_index(), headers="keys", tablefmt="github")
