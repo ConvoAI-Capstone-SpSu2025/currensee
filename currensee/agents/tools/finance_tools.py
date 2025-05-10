@@ -189,6 +189,7 @@ def summarize_finance_outputs(state: SupervisorState) -> str:
     # Access the message content correctly
     return new_state
 
+# MACRO TABLE
 
 def generate_macro_table() -> str:
     """Fetch macroeconomic and market data from FRED and return a Markdown table."""
