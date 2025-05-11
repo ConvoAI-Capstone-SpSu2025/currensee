@@ -126,8 +126,35 @@ def retrieve_macro_news(state: SupervisorState) -> str:
     return new_state
 
 # Function to retrieve macroeconomic events news (Tool HOLDINGS NEWS)
+# def retrieve_holdings_news(state: SupervisorState) -> str:
+#     """Return the most relevant news based on each position. Focus on what are the key things that have happened in those names. Do not search for funds and their holdings."""
+
+#     start_date = state["meeting_timestamp"]
+#     end_date = state["last_meeting_timestamp"]
+#     client_holdings = state["client_holdings"]
+
+#     google_start = format_google_date(start_date)
+#     google_end = format_google_date(end_date)
+
+#     sort_param = f"date:r:{google_start}:{google_end}"
+
+#     search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Pass sort parameter
+#     filled_query = query_ch.format(site_filter=site_filter, largest_holdings=client_holdings)
+#     results = search.results(filled_query)
+
+#     if results.get("organic"):
+#         sorted_results_econ = sorted(results.get("organic", []), key=score_result, reverse=True)
+#         holdings_summary = sorted_results_econ
+#     else:
+#         holdings_summary = "No results found for holdings."
+
+#     new_state = state.copy()
+#     new_state['client_holdings_summary'] = holdings_summary
+
+#     return new_state
+
 def retrieve_holdings_news(state: SupervisorState) -> str:
-    """Return the most relevant news based on each position. Focus on what are the key things that have happened in those names, not the funds."""
+    """Return a concatenated summary of relevant news for each holding separately. Make the summary long."""
 
     start_date = state["meeting_timestamp"]
     end_date = state["last_meeting_timestamp"]
@@ -135,25 +162,36 @@ def retrieve_holdings_news(state: SupervisorState) -> str:
 
     google_start = format_google_date(start_date)
     google_end = format_google_date(end_date)
-
     sort_param = f"date:r:{google_start}:{google_end}"
 
-    search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Pass sort parameter
-    filled_query = query_ch.format(site_filter=site_filter, largest_holdings=client_holdings)
-    results = search.results(filled_query)
+    search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Serper search instance
 
-    if results.get("organic"):
-        sorted_results_econ = sorted(results.get("organic", []), key=score_result, reverse=True)
-        holdings_summary = sorted_results_econ
-    else:
-        holdings_summary = "No results found for holdings."
+    holdings_summary = ""  # Final concatenated summary
+
+    for holding in client_holdings:
+        # Fill in query template for each holding individually
+        filled_query = query_ch.format(site_filter=site_filter, largest_holdings=holding)
+
+        results = search.results(filled_query)
+
+        if results.get("organic"):
+            sorted_results = sorted(results["organic"], key=score_result, reverse=True)
+            summary = sorted_results
+        else:
+            summary = f"No news found for {holding}.\n"
+
+        holdings_summary += f"\n### Summary for {holding}:\n{summary}\n"
 
     new_state = state.copy()
-    new_state['client_holdings_summary'] = holdings_summary
+    new_state["client_holdings_summary"] = holdings_summary
 
-    return new_state
+    return new_state    
 
 
+
+
+
+    
 def summarize_finance_outputs(state: SupervisorState) -> str:
     """
     Summarizes the outputs from all provided tools into one coherent summary.
