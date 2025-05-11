@@ -5,25 +5,29 @@
 Current Dummy Flow
 
            +--------+
-           | router |
+           | START |
            +--------+
                |
    +-----------+------------+
    |                        |
    v                        v
-+-------------+      +----------------+
-| math_expert |      | research_expert|
-+-------------+      +----------------+
-        \                 /
-         \               /
++---------------+      +----------------+
+| CRM + OUTLOOK |      |     FINNEWS    |
++---------------+      +----------------+
+        |                      |
+        |                      |
+        |                +------------------+
+         |               | finnews summary  |
+          |              +------------------+
+         |                /
           v             v
-             +------------+
-             | summarizer |
-             +------------+
+         +------------+
+         | summarizer |
+         +------------+
 
 ## Testing the Supervisor Agent
 
-To test the end-to-end supervisor agent, use the notebook in `notebooks/agent_development/1.0-gf-supervisor.ipynb`.
+To test the end-to-end supervisor agent, use the notebook in `notebooks/agent_development/3.0-gf-complete-graph-testing.ipynb`.
 
 If you would like to test the functionality of a specific tool, use `notebooks/agent_development/2.0-gf-test-tool.ipynb`.
 
