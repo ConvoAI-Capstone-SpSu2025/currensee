@@ -2,13 +2,20 @@ from langchain_core.messages import HumanMessage
 from langgraph.graph import StateGraph, START, END
 
 from currensee.core import get_model, settings
-from currensee.agents.agent_utils import summarize_outputs, ReturnAsyncValue
+#from currensee.agents.agent_utils import summarize_outputs, ReturnAsyncValue
+#from currensee.agents.agent_utils import summarize_all_outputs
 from currensee.agents.tools.base import SupervisorState
 
 from currensee.agents.tools.crm_tools import retrieve_client_metadata
 from currensee.agents.tools.outlook_tools import produce_client_email_summary
 from currensee.agents.tools.outlook_tools_lc import produce_recent_client_email_summary
 from currensee.agents.tools.finance_tools import retrieve_client_industry_news, retrieve_holdings_news, retrieve_macro_news, summarize_finance_outputs
+
+from dotenv import load_dotenv
+load_dotenv()
+
+import asyncio
+
 
 from dotenv import load_dotenv
 load_dotenv()
