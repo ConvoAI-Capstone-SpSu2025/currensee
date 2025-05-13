@@ -144,7 +144,7 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
             from_email ~* '{'|'.join(all_client_emails)}' 
         )
         order by email_timestamp desc
-        limit 3
+        limit 5
     """
 
     result = pd.read_sql(query_str, con=engine)
@@ -158,7 +158,28 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
     summary_prompt = f"""
         PROMPT
 
-        Produce a summary of past emails, listed below, between {client_company} and Bankwell Financial. Do not focus on logistics or meeting scheduling. Ensure you state the main topics discussed. If the {client_company} asks a question, make sure you note it. Provide a list of questions the {client_company} asked if any.
+        You are analyzing past emails exchanged between {client_company} and Bankwell Financial.
+        
+        Please do the following:
+        
+        1. Concisely summarize the main topics discussed in the emails.  
+           - Exclude logistical or meeting scheduling content.  
+           - Focus on key themes, updates, or business-related points.
+        
+        2. Identify any questions asked by {client_company} or their email contacts.  
+           - Exclude questions related to logistics or scheduling.  
+           - Present these as a bullet-point list.  
+           - Each question should be phrased exactly or paraphrased clearly.
+        
+        Use the following format:
+        
+        Summary:
+        - [Your summary here]
+        
+        Client Questions:
+        - [First relevant question]
+        - [Second relevant question]
+        ...
 
         Emails:
 
@@ -187,5 +208,16 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
 
 
 
+'''
+    summary_prompt = f"""
+        PROMPT
 
+        Produce a summary of past emails, listed below, between {client_company} and Bankwell Financial. Do not focus on logistics or meeting scheduling. Ensure you state the main topics discussed. If the {client_company} or email contact asks a question, make sure you note it. Provide a list of questions the {client_company} or email contact asked if any. Do not list questions about logistics or meeting scheduling. 
+
+        Emails:
+
+        {recent_email_str}
+     
+    """
+'''
 
