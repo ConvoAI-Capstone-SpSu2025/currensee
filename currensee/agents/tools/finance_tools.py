@@ -153,8 +153,43 @@ def retrieve_macro_news(state: SupervisorState) -> str:
 
 #     return new_state
 
+# def retrieve_holdings_news(state: SupervisorState) -> str:
+#     """Return a concatenated summary of relevant news for each holding separately. Make the summary long."""
+
+#     start_date = state["meeting_timestamp"]
+#     end_date = state["last_meeting_timestamp"]
+#     client_holdings = state["client_holdings"]
+
+#     google_start = format_google_date(start_date)
+#     google_end = format_google_date(end_date)
+#     sort_param = f"date:r:{google_start}:{google_end}"
+
+#     search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Serper search instance
+
+#     holdings_summary = ""  # Final concatenated summary
+
+#     for holding in client_holdings:
+#         # Fill in query template for each holding individually
+#         filled_query = query_ch.format(site_filter=site_filter, largest_holdings=holding)
+
+#         results = search.results(filled_query)
+
+#         if results.get("organic"):
+#             sorted_results = sorted(results["organic"], key=score_result, reverse=True)
+#             summary = sorted_results
+#         else:
+#             summary = f"No news found for {holding}.\n"
+
+#         holdings_summary += f"\n### Summary for {holding}:\n{summary}\n"
+
+#     new_state = state.copy()
+#     new_state["client_holdings_summary"] = holdings_summary
+
+#     return new_state    
+
+
 def retrieve_holdings_news(state: SupervisorState) -> str:
-    """Return a concatenated summary of relevant news for each holding separately. Make the summary long."""
+    """Return a raw list of relevant news dictionaries for each holding separately."""
 
     start_date = state["meeting_timestamp"]
     end_date = state["last_meeting_timestamp"]
@@ -164,28 +199,36 @@ def retrieve_holdings_news(state: SupervisorState) -> str:
     google_end = format_google_date(end_date)
     sort_param = f"date:r:{google_start}:{google_end}"
 
-    search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Serper search instance
+    search = GoogleSerperAPIWrapper(k=30, sort=sort_param)
 
-    holdings_summary = ""  # Final concatenated summary
+    holdings_news_dict = {}
 
     for holding in client_holdings:
-        # Fill in query template for each holding individually
         filled_query = query_ch.format(site_filter=site_filter, largest_holdings=holding)
-
         results = search.results(filled_query)
 
         if results.get("organic"):
             sorted_results = sorted(results["organic"], key=score_result, reverse=True)
-            summary = sorted_results
+            # Select only required fields in your preferred format
+            news_items = []
+            for i, result in enumerate(sorted_results):
+                news_items.append({
+                    "title": result.get("title", ""),
+                    "link": result.get("link", ""),
+                    "snippet": result.get("snippet", ""),
+                    "date": result.get("date", ""),
+                    "position": i + 1
+                })
+            holdings_news_dict[holding] = news_items
         else:
-            summary = f"No news found for {holding}.\n"
-
-        holdings_summary += f"\n### Summary for {holding}:\n{summary}\n"
+            holdings_news_dict[holding] = []  # No news found
 
     new_state = state.copy()
-    new_state["client_holdings_summary"] = holdings_summary
+    new_state["client_holdings_summary"] = holdings_news_dict
 
-    return new_state    
+    return new_state
+
+
 
 
 
