@@ -95,7 +95,8 @@ def produce_client_email_summary(state: SupervisorState) -> dict:
         PROMPT
 
         Produce a summary of past emails, listed below, between {client_company} and Bankwell Financial that will provide context most relevant to a meeting 
-        discussing {meeting_description}.
+        discussing {meeting_description}. In the description, cite information from specific emails usingthe name of the client involved in the conversation
+        and, if available, the date of the email. Do not include the date or a reference to the date if the date is not specified. 
 
         Emails:
 

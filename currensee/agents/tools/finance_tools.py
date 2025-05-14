@@ -338,5 +338,5 @@ def generate_macro_table() -> str:
         ]
     })
 
-    df.set_index('Indicator', inplace=True)
-    return tabulate(df.reset_index(), headers="keys", tablefmt="github")
+    
+    return df

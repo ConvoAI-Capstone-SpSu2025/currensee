@@ -6,6 +6,7 @@ import weasyprint
 from weasyprint import HTML
 import webbrowser
 import os
+import markdown
 
 from currensee.agents.tools.finance_tools import generate_macro_table
 
@@ -23,30 +24,109 @@ def format_news_summary_to_html(news_summary, title):
     return html
 
 
+# Prepare Sources section
+def format_holdings_to_html(sources, title):
+    sources_html = f"<div class='sources-section'><h3>{title}</h3>"
+
+    # Handle empty list/dict
+    if not sources:
+        sources_html += "<p>No results found.</p></div>"
+        return sources_html
+
+    # Handle dics
+    for holding_name, sources_list in sources.items():
+
+        sources_html += f"<div class='article'> <h4>{holding_name}</h4>"
+        i  = 0
+        while i < min(5, len(sources_list)):
+            details_dict = sources_list[i]
+            date = details_dict.get('date', 'No Date')
+            link = details_dict.get('link', '')
+            title = details_dict.get('title', '')
+            snippet = details_dict.get('snippet', '')
+    
+            sources_html += f"""
+                <p><strong>Title:</strong> {title}</p>
+                <p><strong>Snippet:</strong> {snippet}</p>
+                <p><strong>Date:</strong> {date}</p>
+                <p><a href="{link}" target="_blank">Read more</a></p>
+            """
+            i += 1
+        sources_html += "</div>"
+
+    sources_html += "</div>"
+    return sources_html
+
+# Prepare Sources section
+def format_sources_to_html(sources, title):
+    sources_html = f"<div class='sources-section'><h3>{title}</h3>"
+
+    # Handle if summary is just a string
+    if isinstance(sources, str):
+        sources_html += f"<p>{sources}</p></div>"
+        return sources_html
+
+    # Handle empty list
+    if not sources:
+        sources_html += "<p>No results found.</p></div>"
+        return sources_html
+
+    # Handle dics
+    for article in sources:
+        if isinstance(article, dict):
+            title = article.get('title', 'No Title')
+            snippet = article.get('snippet', 'No Snippet')
+            date = article.get('date', 'No Date')
+            link = article.get('link', '')
+            source = link.split("/")[2] if link else 'No Source'
+
+            sources_html += f"""
+            <div class='article'>
+                <h4>{title}</h4>
+                <p><strong>Snippet:</strong> {snippet}</p>
+                <p><strong>Date:</strong> {date}</p>
+                <p><strong>Source:</strong> {source}</p>
+                <p><a href="{link}" target="_blank">Read more</a></p>
+            </div>
+            """
+        else:
+            sources_html += f"<p>{str(article)}</p>"
+
+    sources_html += "</div>"
+    return sources_html
+
+
 def format_paragraph_summary_to_html(summary: str, title: str) -> str:
     if not summary:
         return f"<p><strong>{title}:</strong> No summary available.</p>"
+
+    summary = markdown.markdown(summary)
     
     paragraphs = summary.strip().split("\n")
     html = f"<div class='section-heading'>{title}</div>"
-    for p in paragraphs:
-        if p.strip():
-            html += f"<p>{p.strip()}</p>"
+    html += summary
     return html
 
 
 def generate_report(result: Dict) -> str:
     
     meeting_title = result.get('meeting_description', '') + ' Preparation'
-    past_summary = result.get('email_summary', 'No past interaction.')
-    client_holdings_summary = result.get('client_holdings_summary', list())
-    client_industry_summary = result.get('client_industry_summary', list())
-    macro_news_summary = result.get('macro_news_summary', list())
-    finnews_summary = result.get("finnews_summary", '')
+    # past_summary = result.get('email_summary', 'No past interaction.')
+    client_holdings_sources = result.get('client_holdings_sources', list())
+    client_industry_sources = result.get('client_industry_sources', list())
+    macro_news_sources = result.get('macro_news_sources', list())
+    # finnews_summary = result.get("finnews_summary", '')
+    final_summary = result.get('final_summary', '')
     client_company = result.get('client_company', '')
 
     # financial news data section 
-    html_financial_news_summary = format_paragraph_summary_to_html(finnews_summary, 'A. Financial News Summary:')
+    html_summary = markdown.markdown(final_summary)
+    html_summary_split = re.split(r"\n", html_summary)
+    html_summary_title = re.sub(r"<p><strong>", "<h1>", html_summary_split[0])
+    html_summary_title = re.sub(r"</strong></p>", "</h1>", html_summary_title)
+    html_summary_final = "\n".join([html_summary_title] + html_summary_split[1:])
+
+    print(html_summary_final)
 
     # macro financial snapshot table
     financial_snapshot_html = "<table class='financial-snapshot'>"
@@ -80,48 +160,10 @@ def generate_report(result: Dict) -> str:
         """
     financial_snapshot_html += "</tbody></table>"
 
-    # Prepare Sources section
-    def format_sources_to_html(summary, title):
-        sources_html = f"<div class='sources-section'><h3>{title}</h3>"
-    
-        # Handle if summary is just a string
-        if isinstance(summary, str):
-            sources_html += f"<p>{summary}</p></div>"
-            return sources_html
-    
-        # Handle empty list
-        if not summary:
-            sources_html += "<p>No results found.</p></div>"
-            return sources_html
-    
-        # Handle dics
-        for article in summary:
-            if isinstance(article, dict):
-                title = article.get('title', 'No Title')
-                snippet = article.get('snippet', 'No Snippet')
-                date = article.get('date', 'No Date')
-                link = article.get('link', '')
-                source = link.split("/")[2] if link else 'No Source'
-    
-                sources_html += f"""
-                <div class='article'>
-                    <h4>{title}</h4>
-                    <p><strong>Snippet:</strong> {snippet}</p>
-                    <p><strong>Date:</strong> {date}</p>
-                    <p><strong>Source:</strong> {source}</p>
-                    <p><a href="{link}" target="_blank">Read more</a></p>
-                </div>
-                """
-            else:
-                sources_html += f"<p>{str(article)}</p>"
-    
-        sources_html += "</div>"
-        return sources_html
-
     # Generate HTML for Sources section
-    html_client_industry_sources = format_sources_to_html(client_industry_summary, 'Client Industry News')
-    html_client_holdings_sources = format_sources_to_html(client_holdings_summary, 'Client Holdings News')
-    html_macro_news_sources = format_sources_to_html(macro_news_summary, 'Macro Economic News')
+    html_client_industry_sources = format_sources_to_html(client_industry_sources, 'Client Industry News')
+    html_client_holdings_sources = format_holdings_to_html(client_holdings_sources, 'Client Holdings News')
+    html_macro_news_sources = format_sources_to_html(macro_news_sources, 'Macro Economic News')
 
     # Prepare the meeting preparation section
     full_html = f"""
@@ -141,45 +183,51 @@ def generate_report(result: Dict) -> str:
             h1 {{
                 text-align: center;
                 color: #2C3E50;
-                font-size: 24px;
+                font-size: 18px;
                 border-bottom: 3px solid #2980B9;
                 padding-bottom: 10px;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }}
             h2 {{
                 color: #2980B9;
-                font-size: 20px;
-                margin-top: 30px;
+                font-size: 16px;
+                margin-top: 14px;
                 border-bottom: 2px solid #BDC3C7;
                 padding-bottom: 5px;
             }}
             h3 {{
                 color: #2980B9;
-                font-size: 18px;
-                margin-top: 20px;
-                margin-bottom: 10px;
+                font-size: 12px;
+                margin-top: 12px;
+                margin-bottom: 4px;
+            }}
+            h4 {{
+                color: #2980B9;
+                font-size: 10px;
+                margin-top: 2px;
+                margin-bottom: 2px;
             }}
             p {{
-                font-size: 16px;
-                margin-bottom: 15px;
+                font-size: 10px;
+                margin-bottom: 8px;
                 text-align: justify;
             }}
             ul {{
                 padding-left: 20px;
             }}
             ul.objectives-list li {{
-                font-size: 16px;
+                font-size: 12px;
                 margin-bottom: 8px;
             }}
             table {{
                 width: 100%;
                 border-collapse: collapse;
-                margin-top: 20px;
+                margin-top: 4px;
             }}
             th, td {{
                 text-align: left;
                 padding: 12px;
-                font-size: 14px;
+                font-size: 10px;
             }}
             th {{
                 background-color: #f1f1f1;
@@ -204,44 +252,34 @@ def generate_report(result: Dict) -> str:
                 border-radius: 5px;
             }}
             .sources-section {{
-                margin-top: 20px;
+                margin-top: 10px;
                 padding: 10px;
                 background-color: #f9f9f9;
                 border: 1px solid #e0e0e0;
                 border-radius: 5px;
             }}
             .article {{
-                margin-bottom: 15px;
+                margin-bottom: 12px;
             }}
             .article h4 {{
                 color: #2980B9;
             }}
             .article p {{
-                font-size: 14px;
+                font-size: 8px;
                 line-height: 1.4;
             }}
         </style>
     </head>
     <body>
 
-        <h1>{meeting_title}</h1>
+        {html_summary_final}
 
-        <h2>I. Past Meeting/Email Summary</h2>
-        <div class="box-content">
-            <p>{past_summary}</p>
-        </div>
-
-        <h2>II. Financial News Data</h2>
-        <div class="box-content">
-            {html_financial_news_summary}
-        </div>
-
-        <h3>B. Financial Snapshot</h3>
+        <h3>Macro-Economic Snapshot</h3>
         <div class="box-content">
             {financial_snapshot_html}
         </div>
 
-        <h3>C. Resources</h3>
+        <h3>Resources</h3>
         <div class="box-content">
             {html_client_industry_sources}
             {html_client_holdings_sources}
