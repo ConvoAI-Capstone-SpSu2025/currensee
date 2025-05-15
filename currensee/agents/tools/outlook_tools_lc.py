@@ -166,19 +166,21 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
            - Exclude logistical or meeting scheduling content.  
            - Focus on key themes, updates, or business-related points.
         
-        2. Identify any questions asked by {client_company} or their email contacts.  
-           - Exclude questions related to logistics or scheduling.  
-           - Present these as a bullet-point list.  
-           - Each question should be phrased exactly or paraphrased clearly.
-        
+        2. Identify any questions asked by {client_company}.  
+           - Present these questions as a bullet-point list.  
+           - DO NOT include questions related to logistics, meeting time, availability to meet or scheduling.  
+           - Each question should be quoted exactly, do not paraphrase unless the question requires multiple sentences.
+
+
         Use the following format:
         
-        Summary:
-        - [Your summary here]
+        Recent Email Summary:
+        [Your summary here]
         
         Client Questions:
-        - [First relevant question]
-        - [Second relevant question]
+        1. [First relevant question]
+        2. [Second relevant question]
+        3. [Third relevant question]
         ...
 
         Emails:
@@ -217,7 +219,8 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
         Emails:
 
         {recent_email_str}
-     
+
+     or paraphrased clearly. Please 
     """
 '''
 
