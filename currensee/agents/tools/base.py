@@ -26,9 +26,9 @@ class SupervisorState(TypedDict):
     recent_email_summary: Optional[str] # final outlook output
 
     # Finnews response generation
-    macro_news_summary: Optional[str]
-    client_industry_summary: Optional[str]
-    client_holdings_summary: Optional[str]
+    macro_news_sources: Optional[list[dict]]
+    client_industry_sources: Optional[list[dict]]
+    client_holdings_sources: Optional[list[dict]]
     finnews_summary: Optional[str] # final finnews output
 
 
