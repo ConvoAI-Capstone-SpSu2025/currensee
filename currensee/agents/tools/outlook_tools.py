@@ -123,5 +123,91 @@ def produce_client_email_summary(state: SupervisorState) -> dict:
     
     return new_state
 
+def produce_recent_client_email_summary(state: SupervisorState) -> dict:
+    """
+        Produce a client email summary from the most recent emails based on date recieved.
+    """
+    client_company = state['client_company']
+    all_client_emails = state['all_client_emails']
+    meeting_timestamp = state['meeting_timestamp']
+    meeting_description = state['meeting_description']
+
+    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails)
+    
+    query_str = f"""
+        SELECT email_body
+        FROM email_data
+        WHERE 
+        (
+            to_emails ~* '{'|'.join(all_client_emails)}' 
+            OR 
+            from_email ~* '{'|'.join(all_client_emails)}' 
+        )
+        order by email_timestamp desc
+        limit 5
+    """
+
+    result = pd.read_sql(query_str, con=engine)
+
+    recent_emails = list(result['email_body'])
+
+    recent_email_str = '\n'.join(recent_emails)
+
+    ###### SUMMARIZE HERE #########
+    summary_prompt = f""" 
+    PROMPT
+
+    You are reviewing a series of past emails exchanged between {client_company} and Bankwell Financial.
+    
+    Please complete the following tasks:
+    
+    1. Make a bullet point list of the main topics discussed in the emails.   
+        - Exclude any content related to scheduling, logistics, or meeting arrangements.
+        - Focus only on business-related updates, decisions, issues, and key discussion points.
+        - Present this summary as a bullet-point list. Use complete sentences in the bullet points.
+    
+    2. Extract any questions asked by {client_company} or their representatives. Do not report questions asked by Bankwell Financial.
+        - Do not include questions about availability, meeting times, or scheduling logistics.
+        - Only inlucde questions asked by {client_company} or its representative, not by the Bankwell Financial Employee.
+        - Use verbatim quotes from the emails where possible. You may lightly paraphrase for clarity.
+        - Present this as a numbered list.
+        - If the client did not ask any questions, do NOT say whether the client asked questions or not. Exclude the Client Questions portion if none were asked by the client.
+    
+    Format your response like this:
+    
+    Recent Email Bullet Points:
+    • [Summary point 1]
+    • [Summary point 2]
+    • [Summary point 3]
+    ...
+    
+    Client Questions:
+    1. "[Exact client question]"
+    2. "[Exact client question]"
+    3. "[Paraphrased question if needed]"
+    ...
+    
+    Email Thread to Analyze:
+    {recent_email_str}
+    
+    """
+
+    # Create the messages to pass to the model
+    messages = [
+        HumanMessage(content=summary_prompt)
+    ]
+    
+    # Use the 'invoke' method for summarization
+    recent_email_summary = model.invoke(messages)
+
+
+    ############# Return the new state ###############
+
+    new_state = state.copy()
+    new_state['last_meeting_timestamp'] = last_meeting_date
+    new_state['recent_email_summary'] = recent_email_summary.content
+
+    
+    return new_state
 
 
