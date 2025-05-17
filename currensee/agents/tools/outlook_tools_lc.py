@@ -154,39 +154,42 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
     recent_email_str = '\n'.join(recent_emails)
 
     ###### SUMMARIZE HERE #########
+    summary_prompt = f""" 
+    PROMPT
 
-    summary_prompt = f"""
-        PROMPT
-
-        You are analyzing past emails exchanged between {client_company} and Bankwell Financial.
-        
-        Please do the following:
-        
-        1. Concisely summarize the main topics discussed in the emails.  
-           - Exclude logistical or meeting scheduling content.  
-           - Focus on key themes, updates, or business-related points.
-        
-        2. Identify any questions asked by {client_company}.  
-           - Present these questions as a bullet-point list.  
-           - DO NOT include questions related to logistics, meeting time, availability to meet or scheduling.  
-           - Each question should be quoted exactly, do not paraphrase unless the question requires multiple sentences.
-
-
-        Use the following format:
-        
-        Recent Email Summary:
-        [Your summary here]
-        
-        Client Questions:
-        1. [First relevant question]
-        2. [Second relevant question]
-        3. [Third relevant question]
-        ...
-
-        Emails:
-
-        {recent_email_str}
-     
+    You are reviewing a series of past emails exchanged between {client_company} and Bankwell Financial.
+    
+    Please complete the following tasks:
+    
+    1. Make a bullet point list of the main topics discussed in the emails.   
+        - Exclude any content related to scheduling, logistics, or meeting arrangements.
+        - Focus only on business-related updates, decisions, issues, and key discussion points.
+        - Present this summary as a bullet-point list. Use complete sentences in the bullet points.
+    
+    2. Extract any questions asked by {client_company} or their representatives. Do not report questions asked by Bankwell Financial.
+        - Do not include questions about availability, meeting times, or scheduling logistics.
+        - Only inlucde questions asked by {client_company} or its representative, not by the Bankwell Financial Employee.
+        - Use verbatim quotes from the emails where possible. You may lightly paraphrase for clarity.
+        - Present this as a numbered list.
+        - If the client did not ask any questions, do NOT say whether the client asked questions or not. Exclude the Client Questions portion if none were asked by the client.
+    
+    Format your response like this:
+    
+    Recent Email Bullet Points:
+    • [Summary point 1]
+    • [Summary point 2]
+    • [Summary point 3]
+    ...
+    
+    Client Questions:
+    1. "[Exact client question]"
+    2. "[Exact client question]"
+    3. "[Paraphrased question if needed]"
+    ...
+    
+    Email Thread to Analyze:
+    {recent_email_str}
+    
     """
 
     # Create the messages to pass to the model
@@ -224,3 +227,42 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
     """
 '''
 
+'''
+    summary_prompt = f"""
+        PROMPT
+
+        You are analyzing past emails exchanged between {client_company} and Bankwell Financial.
+        
+        Please do the following:
+        
+        1. Concisely summarize the main topics discussed in the emails.  
+           - Exclude logistical or meeting scheduling content.  
+           - Focus on key themes, updates, or business-related points.
+           - Present this as a bullet-point list.
+        
+        2. Identify any questions asked by {client_company}.  
+           - Present these questions as a bullet-point list.  
+           - DO NOT include questions related to logistics, meeting time, availability to meet or scheduling.  
+           - Each question should be quoted exactly, do not paraphrase unless the question requires multiple sentences.
+
+
+        Use the following format:
+        
+        Recent Email Summary:
+        * [First relevant summary point]
+        * [Second relevant summary point]
+        * [Third relevant summary point]
+        ...
+        
+        Client Questions:
+        1. [First relevant question]
+        2. [Second relevant question]
+        3. [Third relevant question]
+        ...
+
+        Emails:
+
+        {recent_email_str}
+     
+    """
+'''
