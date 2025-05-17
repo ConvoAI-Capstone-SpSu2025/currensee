@@ -38,21 +38,25 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     client_name = state['client_name']
     meeting_description = state['meeting_description']
     recent_email_summary = state["recent_email_summary"]
+    recent_client_questions = state['recent_client_questions']
 
     # Combine all outputs into a formatted prompt
     combined_prompt = f"""
-        You are a skilled financial advisor with an upcoming meeting with {client_name} who works for {company_name}. Below are summaries of email past correspondence with that client, recent email topics and client questions, and the relevant financial data regarding the recent company's industry performance, the performance of their holdings, and the performance of the overall economy.
+        You are a skilled financial advisor with an upcoming meeting with {client_name} who works for {company_name}. Below are summaries of email past correspondence with that client, recent email topics, recent client questions, and the relevant financial data regarding the recent company's industry performance, the performance of their holdings, and the performance of the overall economy.
 
         Combine these summaries into one document that will help prepare other meeting attendees for the meeting with all of the relevant data, keeping in mind that the topic of the meeting is {meeting_description}. 
         
-        Format into multiple parts with separate sections (with headings) for the past meeting/email summary, most recent email summary, and the financial news data. Format the financial news summary and email summary as a paragraphs. Format the recent email summary as bullet points, and bold any client questions. DO NOT include any points or questions about logistics, meeting times, proposed times, or scheduling. DO NOT say anything about client questions if none were provided in the {recent_email_summary}.
+        Format into multiple parts with separate sections (with headings) for the past meeting/email summary, most recent email summary, and the financial news data. Format the financial news summary and email summary as a paragraphs. Format the recent email summary as bullet points. 
+        
+    Format the recent client questions as a numbered list. DO NOT include any questions or summary points about logistics, meeting times, proposed times, or scheduling. If no questions are provided in the {recent_client_questions}, DO NOT say anything about client questions and omit the section.
 
-        email summary : {email_summary}
+       Past email summary : {email_summary}
+       
+       Recent email summary: {recent_email_summary}
+       
+       Recent client questions: {recent_client_questions}
 
-        recent email summary: {recent_email_summary}
-
-        financial news summary: {finance_summary}
-
+       Financial news summary: {finance_summary}
 
     """
     

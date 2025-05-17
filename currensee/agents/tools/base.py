@@ -22,8 +22,9 @@ class SupervisorState(TypedDict):
     # outlook response generation
     last_meeting_timestamp: Optional[str]
     relevant_client_emails: Optional[list[str]]
-    email_summary: Optional[str] # final outlook output
-    recent_email_summary: Optional[str] # final outlook output
+    email_summary: Optional[str] # final outlook output 1
+    recent_email_summary: Optional[str] # final outlook output 2 
+    recent_client_questions: Optional[str] # final outlook output 3
 
     # Finnews response generation
     macro_news_sources: Optional[list[dict]]

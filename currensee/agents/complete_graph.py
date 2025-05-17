@@ -6,7 +6,7 @@ from currensee.agents.tools.base import SupervisorState
 from currensee.agents.agent_utils import summarize_all_outputs
 
 from currensee.agents.tools.crm_tools import retrieve_client_metadata
-from currensee.agents.tools.outlook_tools import produce_client_email_summary, produce_recent_client_email_summary
+from currensee.agents.tools.outlook_tools import produce_client_email_summary, produce_recent_client_email_summary, produce_recent_client_questions
 from currensee.agents.tools.finance_tools import retrieve_client_industry_news, retrieve_holdings_news, retrieve_macro_news, summarize_finance_outputs
 
 from dotenv import load_dotenv
@@ -27,6 +27,7 @@ complete_graph = StateGraph(SupervisorState)
 complete_graph.add_node("retrieve_client_metadata", retrieve_client_metadata)
 complete_graph.add_node("produce_outlook_summary", produce_client_email_summary)
 complete_graph.add_node("produce_recent_outlook_summary", produce_recent_client_email_summary)
+complete_graph.add_node("produce_recent_client_questions", produce_recent_client_questions)
 
 complete_graph.add_node("run_client_holdings_agent", retrieve_holdings_news)
 complete_graph.add_node("run_client_industry_agent", retrieve_client_industry_news)
@@ -37,7 +38,8 @@ complete_graph.add_node("final_summarizer_agent", summarize_all_outputs)
 complete_graph.add_edge(START, "retrieve_client_metadata")
 complete_graph.add_edge("retrieve_client_metadata", "produce_outlook_summary")
 complete_graph.add_edge("produce_outlook_summary", "produce_recent_outlook_summary")
-complete_graph.add_edge("produce_recent_outlook_summary", "run_macro_finnews_agent")
+complete_graph.add_edge("produce_recent_outlook_summary", "produce_recent_client_questions")
+complete_graph.add_edge("produce_recent_client_questions", "run_macro_finnews_agent")
 complete_graph.add_edge("run_macro_finnews_agent", "run_client_industry_agent")
 complete_graph.add_edge("run_client_industry_agent", "run_client_holdings_agent")
 complete_graph.add_edge("run_client_holdings_agent", "finance_summarizer_agent")
