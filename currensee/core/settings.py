@@ -1,8 +1,9 @@
 from enum import StrEnum
 from json import loads
-from typing import Annotated, Any
+from typing import Annotated, Any, Optional
+import os
 
-from dotenv import find_dotenv
+from dotenv import find_dotenv, load_dotenv
 from pydantic import (
     BeforeValidator,
     Field,
@@ -21,6 +22,17 @@ from currensee.schema.models import (
     GoogleModelName,
     Provider
 )
+
+# Try to import the secrets module
+# We use a try-except to allow the settings module to work even if the secrets module isn't available
+try:
+    from currensee.core.secrets import get_secret, get_secret_str
+    HAS_SECRET_MANAGER = True
+except ImportError:
+    HAS_SECRET_MANAGER = False
+
+# Load environment variables for fallback
+load_dotenv()
 
 
 class DatabaseType(StrEnum):
@@ -56,6 +68,9 @@ class Settings(BaseSettings):
     AVAILABLE_MODELS: set[AllModelEnum] = set()  # type: ignore[assignment]
 
     OPENWEATHERMAP_API_KEY: SecretStr | None = None
+    
+    # Serper API for search functionality
+    SERPER_API_KEY: SecretStr | None = None
 
     LANGCHAIN_TRACING_V2: bool = False
     LANGCHAIN_PROJECT: str = "default"
@@ -90,6 +105,15 @@ class Settings(BaseSettings):
         return f'postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD.get_secret_value()}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}'
 
     def model_post_init(self, __context: Any) -> None:
+        # Try to load SERPER_API_KEY from Secret Manager if available
+        if HAS_SECRET_MANAGER:
+            # Only set if not already provided through environment variables
+            if self.SERPER_API_KEY is None:
+                serper_key = get_secret_str('SERPER_API_KEY')
+                if serper_key:
+                    self.SERPER_API_KEY = serper_key
+        
+        # Continue with normal initialization
         api_keys = {
             Provider.GOOGLE: self.GOOGLE_API_KEY,
             Provider.FAKE: self.USE_FAKE_MODEL,
@@ -100,18 +124,16 @@ class Settings(BaseSettings):
             raise ValueError("At least one LLM API key must be provided.")
 
         for provider in active_keys:
-            match provider:
-                case Provider.GOOGLE:
-                    if self.DEFAULT_MODEL is None:
-                        self.DEFAULT_MODEL = GoogleModelName.GEMINI_15_FLASH
-                    self.AVAILABLE_MODELS.update(set(GoogleModelName))
-                case Provider.FAKE:
-                    if self.DEFAULT_MODEL is None:
-                        self.DEFAULT_MODEL = FakeModelName.FAKE
-                    self.AVAILABLE_MODELS.update(set(FakeModelName))
-     
-                case _:
-                    raise ValueError(f"Unknown provider: {provider}")
+            if provider == Provider.GOOGLE:
+                if self.DEFAULT_MODEL is None:
+                    self.DEFAULT_MODEL = GoogleModelName.GEMINI_15_FLASH
+                self.AVAILABLE_MODELS.update(set(GoogleModelName))
+            elif provider == Provider.FAKE:
+                if self.DEFAULT_MODEL is None:
+                    self.DEFAULT_MODEL = FakeModelName.FAKE
+                self.AVAILABLE_MODELS.update(set(FakeModelName))
+            else:
+                raise ValueError(f"Unknown provider: {provider}")
 
     @computed_field
     @property
