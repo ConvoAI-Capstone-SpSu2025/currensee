@@ -33,7 +33,23 @@ class SecretManager:
 
     def __init__(self):
         """Initialize the SecretManager."""
+        # Try to load environment variables if PROJECT_ID is not set
         self._project_id = os.getenv("PROJECT_ID")
+        if not self._project_id:
+            logger.info("PROJECT_ID not found, attempting to load from .env file")
+            # Try current directory
+            if os.path.exists(".env"):
+                load_dotenv()
+                logger.info("Loaded environment from ./.env")
+                self._project_id = os.getenv("PROJECT_ID")
+            # Then try project root
+            elif os.path.exists(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), ".env")):
+                env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), ".env")
+                load_dotenv(env_path)
+                logger.info(f"Loaded environment from {env_path}")
+                self._project_id = os.getenv("PROJECT_ID")
+        
+        # If still not found, raise error
         if not self._project_id:
             raise ValueError("PROJECT_ID environment variable must be set")
         
