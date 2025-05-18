@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import logging
 
 from langchain_core.messages import HumanMessage
 from langgraph.graph.state import CompiledStateGraph
@@ -10,6 +11,7 @@ from currensee.agents.tools.base import SupervisorState
 from dotenv import load_dotenv
 load_dotenv()
 
+logger = logging.getLogger(__name__)
 model = get_model(settings.DEFAULT_MODEL)
 
 
@@ -26,10 +28,10 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     Summarizes the outputs from all provided tools into one coherent summary.
     
     Parameters:
-    - tool_outputs: A list of strings (outputs from different tools)
+    - state: SupervisorState containing all tool outputs and configurations
     
     Returns:
-    - A summarized string with key points from all the tool outputs.
+    - A modified state with the final summary added
     """
 
     finance_summary = state["finnews_summary"]
@@ -39,9 +41,70 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     meeting_description = state['meeting_description']
     recent_email_summary = state["recent_email_summary"]
     recent_client_questions = state['recent_client_questions']
+    
+    # Get report_length from state, default to 'long' if not specified
+    report_length = state.get('report_length', 'long')
+    
+    # Log the report length being used
+    print(f"\n===============================")
+    print(f"Generating report with length: {report_length}")
+    print(f"===============================\n")
 
-    # Combine all outputs into a formatted prompt
-    combined_prompt = f"""PROMPT
+    # Define different report formats based on length
+    report_formats = {
+        'short': f"""PROMPT
+
+You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on: {meeting_description}.
+
+Important Instructions:
+1. DO NOT use any section headings or titles
+2. DO NOT return a multi-section report
+3. ONLY return a single flat list of 5-7 bullet points total
+4. Each bullet point should begin with a • or - symbol
+5. DO NOT number your points
+6. Keep each bullet to 1-2 sentences maximum
+
+Your response should ONLY contain bullets covering the most critical points from these categories:
+- Past email key information
+- Recent communication highlights
+- Any critical client questions
+- Most relevant financial data
+
+Combine all information into JUST ONE bullet list with NO section headers or other text.
+
+Inputs:
+Past email summary: {email_summary}
+Recent email summary: {recent_email_summary}
+Recent client questions: {recent_client_questions}
+Financial summary: {finance_summary}
+""",
+        
+        'medium': f"""PROMPT
+
+You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on: {meeting_description}.
+
+Your task:
+Create a condensed briefing document (about 2 paragraphs total) for internal use, covering only the most relevant points.
+
+Format the report into two main sections:
+
+1. Client Communication Summary
+ - Combine past and recent email topics into one concise paragraph
+ - Include any critical client questions (excluding logistics questions)
+
+2. Financial Overview
+ - Write a concise paragraph summarizing the most important financial data points
+
+Keep each paragraph focused and brief.
+
+Inputs:
+Past email summary: {email_summary}
+Recent email summary: {recent_email_summary}
+Recent client questions: {recent_client_questions}
+Financial summary: {finance_summary}
+""",
+        
+        'long': f"""PROMPT
 
 You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on the following topic: {meeting_description}.
 
@@ -84,6 +147,10 @@ Recent client questions: {recent_client_questions}
 
 Financial summary: {finance_summary}
 """
+    }
+    
+    # Select the appropriate prompt based on report_length
+    combined_prompt = report_formats.get(report_length.lower(), report_formats['long'])
 
     
    

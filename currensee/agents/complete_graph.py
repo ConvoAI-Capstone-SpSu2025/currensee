@@ -49,16 +49,20 @@ complete_graph.add_edge("final_summarizer_agent", END)
 compiled_graph = complete_graph.compile()
 
 def main():
+    # Example demonstrating different report lengths
+    # You can specify 'short', 'medium', or 'long' (default is 'long' if not specified)
     init_state = {
         'client_name': 'Adam Clay',
         'client_email': 'adam.clay@compass.com',
         'meeting_timestamp': '2024-03-26 11:00:00',
-        'meeting_description': 'Compass - Annual Credit Facility Review Meeting'
-
+        'meeting_description': 'Compass - Annual Credit Facility Review Meeting',
+        'report_length': 'long'  # Set to 'short', 'medium', or 'long'
     }
 
+    #print(f"\n=== INITIALIZING GRAPH WITH REPORT LENGTH: {init_state.get('report_length', 'long')} ===")
+    
     result = compiled_graph.invoke(init_state)
-
+    
     print(result['final_summary'])
 
 if __name__ == "__main__":

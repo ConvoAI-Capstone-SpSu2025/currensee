@@ -35,7 +35,7 @@ class SupervisorState(TypedDict):
 
     # Complete response
     final_summary: Optional[str]
-
+    report_length: Optional[str]  # Controls report format: 'short', 'medium', or 'long'
 
     # Processing metadata
     messages: List[Dict[str, Any]]  # Track conversation with LLM for analysis
