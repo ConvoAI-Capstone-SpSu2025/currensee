@@ -129,7 +129,7 @@ Format the report using the following structure:
  - Use the list in {recent_client_questions}.
  - Present as a numbered list.
  - Exclude any questions related to logistics, availability, or scheduling.
- - If there were no questions provided in {recent_client_questions}, then omit this section.
+ - If there were no questions provided in {recent_client_questions}, then omit this section. If no client questions were asked, then skip the section and do not state whether client questions were asked.
 
 4. Financial Overview
  Use {finance_summary} to write a paragraph summarizing relevant financial data, including:
