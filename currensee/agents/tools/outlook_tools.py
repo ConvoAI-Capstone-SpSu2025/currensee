@@ -15,7 +15,7 @@ model = get_model(settings.DEFAULT_MODEL)
 
 
 # === DB Connection ===
-DB_NAME = 'outlook'
+DB_NAME = 'crm_outlook'
 engine = create_pg_engine(
    db_name=DB_NAME
 )
