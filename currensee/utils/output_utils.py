@@ -23,112 +23,165 @@ def format_news_summary_to_html(news_summary, title):
         html += "</div>"
     return html
 
-
-# Prepare Sources section
+# Prepare Holding Sources section
 def format_holdings_to_html(sources, title):
     sources_html = f"<div class='sources-section'><h3>{title}</h3>"
 
-    # Handle empty list/dict
     if not sources:
         sources_html += "<p>No results found.</p></div>"
         return sources_html
 
-    # Handle dics
     for holding_name, sources_list in sources.items():
+        sources_html += f"<details class='article'>"
+        sources_html += f"<summary style='cursor:pointer; color:#2980B9; font-size:12px;'>{holding_name}</summary>"
 
-        sources_html += f"<div class='article'> <h4>{holding_name}</h4>"
-        i  = 0
-        while i < min(5, len(sources_list)):
-            details_dict = sources_list[i]
-            date = details_dict.get('date', 'No Date')
-            link = details_dict.get('link', '')
-            title = details_dict.get('title', '')
-            snippet = details_dict.get('snippet', '')
-    
-            sources_html += f"""
-                <p><strong>Title:</strong> {title}</p>
-                <p><strong>Snippet:</strong> {snippet}</p>
-                <p><strong>Date:</strong> {date}</p>
-                <p><a href="{link}" target="_blank">Read more</a></p>
+        visible = sources_list[:3]
+        hidden = sources_list[3:]
+
+        # Show first 3 articles always inside details
+        for details_dict in visible:
+            sources_html += render_article_html(details_dict)
+
+        if hidden:
+            sources_html += """
+            <details>
+                <summary style='cursor:pointer; color:#2980B9; font-size:12px;'>See All</summary>
             """
-            i += 1
-        sources_html += "</div>"
+            for details_dict in hidden:
+                sources_html += render_article_html(details_dict)
+            sources_html += "</details>"
+
+        sources_html += "</details>" 
 
     sources_html += "</div>"
     return sources_html
 
+
 # Prepare Sources section
 def format_sources_to_html(sources, title):
-    sources_html = f"<div class='sources-section'><h3>{title}</h3>"
+    sources_html = f"<div class='sources-section' id='resources'><h3>{title}</h3>"
 
-    # Handle if summary is just a string
     if isinstance(sources, str):
         sources_html += f"<p>{sources}</p></div>"
         return sources_html
 
-    # Handle empty list
     if not sources:
         sources_html += "<p>No results found.</p></div>"
         return sources_html
 
-    # Handle dics
-    for article in sources:
-        if isinstance(article, dict):
-            title = article.get('title', 'No Title')
-            snippet = article.get('snippet', 'No Snippet')
-            date = article.get('date', 'No Date')
-            link = article.get('link', '')
-            source = link.split("/")[2] if link else 'No Source'
+    visible_articles = sources[:3]
+    hidden_articles = sources[3:]
 
-            sources_html += f"""
-            <div class='article'>
-                <h4>{title}</h4>
-                <p><strong>Snippet:</strong> {snippet}</p>
-                <p><strong>Date:</strong> {date}</p>
-                <p><strong>Source:</strong> {source}</p>
-                <p><a href="{link}" target="_blank">Read more</a></p>
-            </div>
-            """
-        else:
-            sources_html += f"<p>{str(article)}</p>"
+    for article in visible_articles:
+        if isinstance(article, dict):
+            sources_html += render_article_html(article)
+
+    if hidden_articles:
+        sources_html += """
+        <details>
+            <summary style='cursor:pointer; color:#2980B9; font-size:12px;'>See All</summary>
+        """
+        for article in hidden_articles:
+            if isinstance(article, dict):
+                sources_html += render_article_html(article)
+        sources_html += "</details>"
 
     sources_html += "</div>"
     return sources_html
 
 
+
 def format_paragraph_summary_to_html(summary: str, title: str) -> str:
     if not summary:
-        return f"<p><strong>{title}:</strong> No summary available.</p>"
+        return f"""
+        <div class="main-header">
+            <h1>{title}</h1>
+        </div>
+        <div class="box-content">
+            <p>No summary available.</p>
+        </div>
+        """
+    pattern = r'\*\*(\d+\.\s+[^*]+?)\*\*'
+    headers = re.findall(pattern, summary)
+    parts = re.split(pattern, summary)
+    html_sections = []
 
-    summary = markdown.markdown(summary)
-    
-    paragraphs = summary.strip().split("\n")
-    html = f"<div class='section-heading'>{title}</div>"
-    html += summary
-    return html
+    for i in range(1, len(parts), 2):
+        header = parts[i].strip()                    
+        body = parts[i+1].strip() if i+1 < len(parts) else '' 
+
+        header_html = f"<h2>{header}</h2>"
+        body_html = markdown.markdown(body)
+
+        if header.startswith("4. Financial Overview"):
+            body_html += """
+            <p style="margin-top:10px;text-align: right;">
+                <a href="#resources" style="color:#2980B9; font-weight:bold; text-decoration:none;">
+                    See Sources
+                </a>
+            </p>
+            """
+
+        html_sections.append(f"{header_html}\n{body_html}")
+    full_body = "\n".join(html_sections)
+
+    return f"""
+    <div class="main-header">
+        <h1>{title}</h1>
+    </div>
+    <div class="box-content">
+        {full_body}
+    </div>
+    """
+
+def render_article_html(article):
+    title = article.get('title', 'No Title')
+    snippet = article.get('snippet', 'No Snippet')
+    date = article.get('date', 'No Date')
+    link = article.get('link', '')
+    source = link.split("/")[2] if link else 'No Source'
+
+    return f"""
+    <div class='article'>
+        <h4>{title}</h4>
+        <p><strong>Snippet:</strong> {snippet}</p>
+        <p><strong>Date:</strong> {date}</p>
+        <p><strong>Source:</strong> {source}</p>
+        <p><a href="{link}" target="_blank">Read more</a></p>
+    </div>
+    """
 
 
-def generate_report(result: Dict) -> str:
-    
-    meeting_title = result.get('meeting_description', '') + ' Preparation'
-    # past_summary = result.get('email_summary', 'No past interaction.')
+def generate_report(result):
+    meeting_title = result.get('meeting_description', '') + ' : Briefing Document'
     client_holdings_sources = result.get('client_holdings_sources', list())
     client_industry_sources = result.get('client_industry_sources', list())
     macro_news_sources = result.get('macro_news_sources', list())
-    # finnews_summary = result.get("finnews_summary", '')
     final_summary = result.get('final_summary', '')
     client_company = result.get('client_company', '')
-
-    # financial news data section 
+  
+    # Email/financial news data section
     html_summary = markdown.markdown(final_summary)
     html_summary_split = re.split(r"\n", html_summary)
-    html_summary_title = re.sub(r"<p><strong>", "<h1>", html_summary_split[0])
-    html_summary_title = re.sub(r"</strong></p>", "</h1>", html_summary_title)
-    html_summary_final = "\n".join([html_summary_title] + html_summary_split[1:])
+    html_summary_final = format_paragraph_summary_to_html(final_summary, meeting_title)
+    
 
-    print(html_summary_final)
+    
+    #html_summary_title = re.sub(r"<p><strong>", "<h1>", html_summary_split[0])
+    #html_summary_title = re.sub(r"</strong></p>", "</h1>", html_summary_title)
+    #rest_of_summary = "\n".join(html_summary_split[1:])
+    
+    #html_summary_final = f"""
+    #<div class="main-header">
+    #    {html_summary_title}
+    #</div>
+    #<div class="box-content">
+    #    {rest_of_summary}
+    #</div>
+    #"""
 
-    # macro financial snapshot table
+
+    macro_news_df = generate_macro_table()
     financial_snapshot_html = "<table class='financial-snapshot'>"
     financial_snapshot_html += """
     <thead>
@@ -145,8 +198,7 @@ def generate_report(result: Dict) -> str:
     <tbody>
     """
 
-    macro_news_df = generate_macro_table()
-    for i, row in macro_news_df.iterrows():
+    for _, row in macro_news_df.iterrows():
         financial_snapshot_html += f"""
         <tr>
             <td>{row['Indicator']}</td>
@@ -158,20 +210,27 @@ def generate_report(result: Dict) -> str:
             <td>{row['2-Year Change (%)']}</td>
         </tr>
         """
+
     financial_snapshot_html += "</tbody></table>"
 
-    # Generate HTML for Sources section
     html_client_industry_sources = format_sources_to_html(client_industry_sources, 'Client Industry News')
     html_client_holdings_sources = format_holdings_to_html(client_holdings_sources, 'Client Holdings News')
     html_macro_news_sources = format_sources_to_html(macro_news_sources, 'Macro Economic News')
 
-    # Prepare the meeting preparation section
+
     full_html = f"""
     <html>
     <head>
         <meta charset='UTF-8'>
         <title>{meeting_title}</title>
         <style>
+            .main-header {{
+                font-weight: bold;
+                font-size: 24px;
+                margin-bottom: 20px;
+                color: #2980B9;
+            }}
+        
             body {{
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 margin: 30px auto;
@@ -208,6 +267,7 @@ def generate_report(result: Dict) -> str:
                 margin-bottom: 2px;
             }}
             p {{
+                font-family: font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 font-size: 10px;
                 margin-bottom: 8px;
                 text-align: justify;
@@ -242,7 +302,9 @@ def generate_report(result: Dict) -> str:
             .section-heading {{
                 color: #2980B9;
                 font-weight: bold;
-                font-size: 18px;
+                font-size: 12px;
+                margin-top: 12px;
+                margin-bottom: 4px;
             }}
             .box-content {{
                 margin-top: 20px;
@@ -271,15 +333,14 @@ def generate_report(result: Dict) -> str:
         </style>
     </head>
     <body>
-
         {html_summary_final}
 
-        <h3>Macro-Economic Snapshot</h3>
+        <h2>Macro-Economic Snapshot</h2>
         <div class="box-content">
             {financial_snapshot_html}
         </div>
 
-        <h3>Resources</h3>
+        <h2>Resources</h2>
         <div class="box-content">
             {html_client_industry_sources}
             {html_client_holdings_sources}
@@ -289,8 +350,8 @@ def generate_report(result: Dict) -> str:
     </body>
     </html>
     """
-    return full_html
 
+    return full_html
 
 def save_html_to_file (html_content: str, filename: str):
     with open(filename, 'w', encoding='utf-8') as f:
