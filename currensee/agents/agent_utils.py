@@ -41,24 +41,52 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     recent_client_questions = state['recent_client_questions']
 
     # Combine all outputs into a formatted prompt
-    combined_prompt = f"""
-        You are a skilled financial advisor with an upcoming meeting with {client_name} who works for {company_name}. Below are summaries of email past correspondence with that client, recent email topics, recent client questions, and the relevant financial data regarding the recent company's industry performance, the performance of their holdings, and the performance of the overall economy.
+    combined_prompt = f"""PROMPT
 
-        Combine these summaries into one document that will help prepare other meeting attendees for the meeting with all of the relevant data, keeping in mind that the topic of the meeting is {meeting_description}. 
-        
-        Format into multiple parts with separate sections (with headings) for the past meeting/email summary, most recent email summary, and the financial news data. Format the financial news summary and email summary as a paragraphs. Format the recent email summary as bullet points. 
-        
-    Format the recent client questions as a numbered list. DO NOT include any questions or summary points about logistics, meeting times, proposed times, or scheduling. If no questions are provided in the {recent_client_questions}, DO NOT say anything about client questions and omit the section.
+You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on the following topic: {meeting_description}.
 
-       Past email summary : {email_summary}
-       
-       Recent email summary: {recent_email_summary}
-       
-       Recent client questions: {recent_client_questions}
+Below is compiled input from multiple sources:
+- Past email summaries
+- Recent email discussion points
+- Recent client questions
+- Relevant financial data (industry performance, client holdings, overall economic conditions)
 
-       Financial news summary: {finance_summary}
+Your task:
+Create a comprehensive briefing document for internal use, to help prepare the meeting attendees. The briefing should include only relevant content and exclude any discussion about scheduling, availability, or meeting logistics.
 
-    """
+Format the report using the following structure:
+
+1. Past Email Summary
+ - Write a concise paragraph summarizing earlier correspondence from {email_summary}.
+
+2. Recent Email Topics
+ - Present the content of {recent_email_summary} as a bullet-point list, focusing on key updates and discussion items.
+
+3. Recent Client Questions
+ - Use the list in {recent_client_questions}.
+ - Present as a numbered list.
+ - Exclude any questions related to logistics, availability, or scheduling.
+ - If there were no questions provided in {recent_client_questions}, then omit this section. Do not make up questions from other sources.
+
+4. Financial Overview
+ Use {finance_summary} to write a paragraph summarizing relevant financial data, including:
+ - Industry trends
+ - Performance of the client's holdings
+ - Broader economic indicators
+
+Inputs:
+
+Past email summary: {email_summary}
+
+Recent email summary: {recent_email_summary}
+
+Recent client questions: {recent_client_questions}
+
+Financial summary: {finance_summary}
+"""
+
+    
+   
     
     # Create the messages to pass to the model
     messages = [
@@ -74,3 +102,26 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     # Access the message content correctly
     return new_state
 
+'''
+IF no questions are provided in the {recent_client_questions}, DO NOT say anything about client questions and omit the section.
+
+
+ combined_prompt = f"""
+        You are a skilled financial advisor with an upcoming meeting with {client_name} who works for {company_name}. Below are summaries of email past correspondence with that client, recent email topics, recent client questions, and the relevant financial data regarding the recent company's industry performance, the performance of their holdings, and the performance of the overall economy.
+
+        Combine these summaries into one document that will help prepare other meeting attendees for the meeting with all of the relevant data, keeping in mind that the topic of the meeting is {meeting_description}. 
+        
+        Format into multiple parts with separate sections (with headings) for the past meeting/email summary, most recent email summary, and the financial news data. Format the financial news summary and email summary as a paragraphs. Format the recent email summary as bullet points. 
+        
+    Format the recent client questions as a numbered list. DO NOT include any questions about logistics, meeting times, proposed times, or scheduling. Only include questions from {recent_client_questions} in the recent client questions section.
+
+       Past email summary : {email_summary}
+       
+       Recent email summary: {recent_email_summary}
+       
+       Recent client questions: {recent_client_questions}
+
+       Financial news summary: {finance_summary}
+
+    """
+'''

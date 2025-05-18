@@ -231,17 +231,14 @@ def produce_recent_client_questions(state: SupervisorState) -> dict:
     summary_prompt = f""" 
     PROMPT
 
-    You are reviewing a series of past emails exchanged between {client_company} and Bankwell Financial to identify important client questions.
+    You are reviewing a series of past emails exchanged between the client {client_company} and Bankwell Financial to identify client questions.
     
     Extract any questions asked by {client_company} or their representatives. 
         - Do not include questions about availability, meeting times, or scheduling logistics.
         - Only include questions asked by {client_company} or its representative, not by the Bankwell Financial Employee.
         - Use verbatim quotes from the emails where possible. You may lightly paraphrase for clarity.
-        - Present this as a numbered list.
-        - If the client did not ask any questions, do NOT say whether the client asked questions or not. 
+        - Present this as a numbered list. 
         
-    DO NOT say anything if no questions were asked by the client.
-    
     Format your response like this:
     
     Client Questions:
@@ -274,17 +271,3 @@ def produce_recent_client_questions(state: SupervisorState) -> dict:
     return new_state
 
 
-    '''   
-        2. Extract any questions asked by {client_company} or their representatives. Do not report questions asked by Bankwell Financial.
-        - Do not include questions about availability, meeting times, or scheduling logistics.
-        - Only inlucde questions asked by {client_company} or its representative, not by the Bankwell Financial Employee.
-        - Use verbatim quotes from the emails where possible. You may lightly paraphrase for clarity.
-        - Present this as a numbered list.
-        - If the client did not ask any questions, do NOT say whether the client asked questions or not. Exclude the Client Questions portion if none were asked by the client.
-        
-    Client Questions:
-    1. "[Exact client question]"
-    2. "[Exact client question]"
-    3. "[Paraphrased question if needed]"
-    ...
-    '''
