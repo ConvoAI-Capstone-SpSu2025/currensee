@@ -230,15 +230,19 @@ def generate_report(result):
                 margin-bottom: 20px;
                 color: #2980B9;
             }}
-        
-            body {{
+            body,p, ul, ol, li, div {{
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 10px
                 margin: 30px auto;
                 color: #333;
-                background-color: #f4f7fb;
                 line-height: 1.6;
                 max-width: 800px;
             }}
+            body {{
+                margin: 15px auto;
+                max-width: 800px;
+            }}
+
             h1 {{
                 text-align: center;
                 color: #2C3E50;
@@ -265,12 +269,6 @@ def generate_report(result):
                 font-size: 10px;
                 margin-top: 2px;
                 margin-bottom: 2px;
-            }}
-            p {{
-                font-family: font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                font-size: 10px;
-                margin-bottom: 8px;
-                text-align: justify;
             }}
             ul {{
                 padding-left: 20px;
