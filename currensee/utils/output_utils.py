@@ -152,7 +152,7 @@ def render_article_html(article):
     """
 
 
-def generate_report(result):
+def generate_long_report(result):
     meeting_title = result.get('meeting_description', '') + ' : Briefing Document'
     client_holdings_sources = result.get('client_holdings_sources', list())
     client_industry_sources = result.get('client_industry_sources', list())
@@ -260,7 +260,7 @@ def generate_report(result):
             }}
             h3 {{
                 color: #2980B9;
-                font-size: 12px;
+                font-size: 10px;
                 margin-top: 12px;
                 margin-bottom: 4px;
             }}
@@ -300,7 +300,7 @@ def generate_report(result):
             .section-heading {{
                 color: #2980B9;
                 font-weight: bold;
-                font-size: 12px;
+                font-size: 10px;
                 margin-top: 12px;
                 margin-bottom: 4px;
             }}
@@ -319,10 +319,11 @@ def generate_report(result):
                 border-radius: 5px;
             }}
             .article {{
-                margin-bottom: 12px;
+                margin-bottom: 10px;
             }}
             .article h4 {{
                 color: #2980B9;
+                font-size: 8px;
             }}
             .article p {{
                 font-size: 8px;
@@ -351,6 +352,168 @@ def generate_report(result):
 
     return full_html
 
+    
+
+def generate_short_report(result):
+    meeting_title = result.get('meeting_description', '') + ' : Briefing Document'
+    final_summary = result.get('final_summary', '')
+    client_holdings_sources = result.get('client_holdings_sources', list())
+    client_industry_sources = result.get('client_industry_sources', list())
+    macro_news_sources = result.get('macro_news_sources', list())
+
+    #Summary section
+    bullet_points = final_summary.strip().split('•')
+    bullet_points = [point.strip() for point in bullet_points if point.strip()]
+    html_bullets = ''.join(f'<li>{point}</li>' for point in bullet_points)
+
+    # Format source sections
+    html_client_industry_sources = format_sources_to_html(client_industry_sources, 'Client Industry News')
+    html_client_holdings_sources = format_holdings_to_html(client_holdings_sources, 'Client Holdings News')
+    html_macro_news_sources = format_sources_to_html(macro_news_sources, 'Macro Economic News')
+
+    # Summary section with "See Sources" button
+    html_summary_final = f"""
+    <div class="box-content">
+        <h1>{meeting_title}</h1>
+        <ul>
+            {html_bullets}
+        </ul>
+        <button onclick="toggleResources()" style="margin-top: 10px;">See Sources</button>
+    </div>
+    """
+
+    # Hidden Resources section
+    resources_html = f"""
+    <div id="resources-content" class="box-content" style="display:none;">
+        <h2>Resources</h2>
+        {html_client_industry_sources}
+        {html_client_holdings_sources}
+        {html_macro_news_sources}
+    </div>
+    """
+
+    # Full HTML with toggle script
+    full_html = f"""
+    <html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>{meeting_title}</title>
+        <style>
+            body, p, ul, ol, li, div {{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 15px;
+                color: #333;
+                line-height: 1.6;
+                max-width: 800px;
+                margin: 30px auto;
+            }}
+            h1 {{
+                text-align: center;
+                color: #2C3E50;
+                font-size: 18px;
+                border-bottom: 3px solid #2980B9;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }}
+            h2 {{
+                color: #2980B9;
+                font-size: 16px;
+                margin-top: 14px;
+                border-bottom: 2px solid #BDC3C7;
+                padding-bottom: 5px;
+            }}
+            h3 {{
+                color: #2980B9;
+                font-size: 10px;
+                margin-top: 12px;
+                margin-bottom: 4px;
+            }}
+            .box-content {{
+                margin-top: 20px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            }}
+            ul {{
+                padding-left: 20px;
+            }}
+            li {{
+                margin-bottom: 6px;
+            }}
+            button {{
+                padding: 6px 12px;
+                background-color: #2980B9;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }}
+            button:hover {{
+                background-color: #1A5276;
+            }}
+            tr:nth-child(even) {{
+                background-color: #f9f9f9;
+            }}
+            tr:hover {{
+                background-color: #f1f1f1;
+            }}
+            .section-heading {{
+                color: #2980B9;
+                font-weight: bold;
+                font-size: 10px;
+                margin-top: 12px;
+                margin-bottom: 4px;
+            }}
+            .box-content {{
+                margin-top: 15px;
+                padding: 10px;
+                background-color: #f9f9f9;
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+            }}
+            .sources-section {{
+                margin-top: 10px;
+                padding: 15px;
+                background-color: #f9f9f9;
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+            }}
+            .article {{
+                margin-bottom: 12px;
+            }}
+            .article h4 {{
+                color: #2980B9;
+                font-size: 10px;
+            }}
+            .article p {{
+                font-size: 10px;
+                line-height: 1.2;
+            }}
+        </style>
+        <script>
+            function toggleResources() {{
+                var content = document.getElementById('resources-content');
+                if (content.style.display === 'none') {{
+                    content.style.display = 'block';
+                }} else {{
+                    content.style.display = 'none';
+                }}
+            }}
+        </script>
+    </head>
+    <body>
+        {html_summary_final}
+        {resources_html}
+    </body>
+    </html>
+    """
+
+    return full_html
+
+
+
 def save_html_to_file (html_content: str, filename: str):
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
@@ -366,5 +529,4 @@ def convert_html_to_pdf(html_string, output_pdf):
 
 
 if __name__ == "__main__":
-
-    generate_report(dict())
+    generate_long_report(dict())
