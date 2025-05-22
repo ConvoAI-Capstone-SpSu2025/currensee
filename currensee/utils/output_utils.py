@@ -9,6 +9,8 @@ import os
 import markdown
 
 from currensee.agents.tools.finance_tools import generate_macro_table
+from currensee.utils.get_logo_utils import get_logo
+
 
 
 def format_news_summary_to_html(news_summary, title):
@@ -91,7 +93,7 @@ def format_sources_to_html(sources, title):
 
 
 
-def format_paragraph_summary_to_html(summary: str, title: str) -> str:
+def format_paragraph_summary_to_html(summary: str, title: str, logo_str: str) -> str:
     if not summary:
         return f"""
         <div class="main-header">
@@ -124,15 +126,24 @@ def format_paragraph_summary_to_html(summary: str, title: str) -> str:
 
         html_sections.append(f"{header_html}\n{body_html}")
     full_body = "\n".join(html_sections)
-
     return f"""
-    <div class="main-header">
+    <div class="header-container">
+        <img src="{logo_str}" class="logo" alt="Logo">
         <h1>{title}</h1>
     </div>
     <div class="box-content">
         {full_body}
     </div>
     """
+
+   # return f"""
+  #  <div class="main-header">
+  #      <h1>{title}</h1>
+  #  </div>
+  #  <div class="box-content">
+  #      {full_body}
+  #  </div>
+  #  """
 
 def render_article_html(article):
     title = article.get('title', 'No Title')
@@ -159,11 +170,11 @@ def generate_long_report(result):
     macro_news_sources = result.get('macro_news_sources', list())
     final_summary = result.get('final_summary', '')
     client_company = result.get('client_company', '')
-  
+    logo_str = get_logo()
     # Email/financial news data section
     html_summary = markdown.markdown(final_summary)
     html_summary_split = re.split(r"\n", html_summary)
-    html_summary_final = format_paragraph_summary_to_html(final_summary, meeting_title)
+    html_summary_final = format_paragraph_summary_to_html(final_summary, meeting_title, logo_str)
     
 
     
@@ -329,6 +340,16 @@ def generate_long_report(result):
                 font-size: 8px;
                 line-height: 1.4;
             }}
+            .header-container {{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                margin-bottom: 10px;
+            }}
+            .logo {{
+                height: 35px;
+            }}
         </style>
     </head>
     <body>
@@ -360,6 +381,7 @@ def generate_short_report(result):
     client_holdings_sources = result.get('client_holdings_sources', list())
     client_industry_sources = result.get('client_industry_sources', list())
     macro_news_sources = result.get('macro_news_sources', list())
+    logo_str = get_logo()
 
     #Summary section
     bullet_points = final_summary.strip().split('•')
@@ -372,6 +394,7 @@ def generate_short_report(result):
     html_macro_news_sources = format_sources_to_html(macro_news_sources, 'Macro Economic News')
 
     # Summary section with "See Sources" button
+          #  <img src="{logo_str}" class="logo" alt="Logo">
     html_summary_final = f"""
     <div class="box-content">
         <h1>{meeting_title}</h1>
@@ -490,6 +513,16 @@ def generate_short_report(result):
             .article p {{
                 font-size: 10px;
                 line-height: 1.2;
+            }}
+            .header-container {{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                margin-bottom: 10px;
+            }}
+            .logo {{
+                height: 35px;
             }}
         </style>
         <script>
