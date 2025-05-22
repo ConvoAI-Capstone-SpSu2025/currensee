@@ -64,10 +64,10 @@ Important Instructions:
 5. DO NOT number your points
 6. Keep each bullet to 1-2 sentences maximum
 
-Your response should ONLY contain bullets covering the most critical points from these categories:
+Your response should ONLY contain bullets covering the most critical points from these categories. List bullet points in the order below:
 - Past email key information
 - Recent communication highlights
-- Any critical client questions
+- Any critical client questions (If there were no questions provided in {recent_client_questions}, then do not state whether client questions were asked and skip this point)
 - Most relevant financial data
 
 Combine all information into JUST ONE bullet list with NO section headers or other text.
@@ -90,7 +90,7 @@ Format the report into two main sections:
 
 1. Client Communication Summary
  - Combine past and recent email topics into one concise paragraph
- - Include any critical client questions (excluding logistics questions)
+ - Include any critical client questions (excluding logistics questions). If there were no questions provided in {recent_client_questions}, then do not state whether client questions were asked.
 
 2. Financial Overview
  - Write a concise paragraph summarizing the most important financial data points
@@ -169,26 +169,3 @@ Financial summary: {finance_summary}
     # Access the message content correctly
     return new_state
 
-'''
-IF no questions are provided in the {recent_client_questions}, DO NOT say anything about client questions and omit the section.
-
-
- combined_prompt = f"""
-        You are a skilled financial advisor with an upcoming meeting with {client_name} who works for {company_name}. Below are summaries of email past correspondence with that client, recent email topics, recent client questions, and the relevant financial data regarding the recent company's industry performance, the performance of their holdings, and the performance of the overall economy.
-
-        Combine these summaries into one document that will help prepare other meeting attendees for the meeting with all of the relevant data, keeping in mind that the topic of the meeting is {meeting_description}. 
-        
-        Format into multiple parts with separate sections (with headings) for the past meeting/email summary, most recent email summary, and the financial news data. Format the financial news summary and email summary as a paragraphs. Format the recent email summary as bullet points. 
-        
-    Format the recent client questions as a numbered list. DO NOT include any questions about logistics, meeting times, proposed times, or scheduling. Only include questions from {recent_client_questions} in the recent client questions section.
-
-       Past email summary : {email_summary}
-       
-       Recent email summary: {recent_email_summary}
-       
-       Recent client questions: {recent_client_questions}
-
-       Financial news summary: {finance_summary}
-
-    """
-'''
