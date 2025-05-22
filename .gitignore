@@ -171,4 +171,4 @@ cython_debug/
 .DS_Store
 data/outlook/eml_files/
 *.pdf
-*.html
+#*.html
