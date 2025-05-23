@@ -547,6 +547,193 @@ def generate_short_report(result):
 
 
 
+
+
+
+
+
+def generate_med_report(result):
+    meeting_title = result.get('meeting_description', '') + ' : Briefing Document'
+    client_holdings_sources = result.get('client_holdings_sources', list())
+    client_industry_sources = result.get('client_industry_sources', list())
+    macro_news_sources = result.get('macro_news_sources', list())
+    final_summary = result.get('final_summary', '')
+    client_company = result.get('client_company', '')
+    logo_str = get_logo()
+    email_summary = result.get('email_summary', '')
+    recent_email_summar = result.get('recent_email_summary', '')
+    recent_client_questions = result.get('recent_client_questions', '')
+
+    # HTML for the toggle boxes
+    toggle_boxes_html = f"""
+<div class="box-content">
+    <div style="margin-top: 12px; margin-bottom: 12px;">
+        <button onclick="toggleBox('overall-box')">Overall</button>
+        <button onclick="toggleBox('recent-email-box')">Recent Email</button>
+        <button onclick="toggleBox('client-questions-box')">Client Questions</button>
+    </div>
+    <div id='overall-box' class='box-content' style='display:none;'>{email_summary}</div>
+    <div id='recent-email-box' class='box-content' style='display:none;'>{recent_email_summar}</div>
+    <div id='client-questions-box' class='box-content' style='display:none;'>{recent_client_questions}</div>
+</div>
+"""
+
+    # Insert the toggle boxes right before section 2
+    final_summary_with_boxes = re.sub(
+        r"(?=\n*\*\*2\. Financial Overview\*\*)", 
+        f"\n\n{toggle_boxes_html}\n\n", 
+        final_summary,
+        count = 1
+    )
+
+    # Convert markdown to HTML
+    html_summary_final = format_paragraph_summary_to_html(final_summary_with_boxes, meeting_title, logo_str)
+
+    # Source sections
+    html_client_industry_sources = format_sources_to_html(client_industry_sources, 'Client Industry News')
+    html_client_holdings_sources = format_holdings_to_html(client_holdings_sources, 'Client Holdings News')
+    html_macro_news_sources = format_sources_to_html(macro_news_sources, 'Macro Economic News')
+
+    # Hidden Resources section
+    resources_html = f"""
+    <div id="resources-content" class="box-content" style="display:none;">
+        <h2>Resources</h2>
+        {html_client_industry_sources}
+        {html_client_holdings_sources}
+        {html_macro_news_sources}
+    </div>
+    """
+
+    # Full HTML document
+    full_html = f"""
+    <html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>{meeting_title}</title>
+        <style>
+            body, p, ul, ol, li, div {{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 15px;
+                color: #333;
+                line-height: 1.6;
+                max-width: 800px;
+                margin: 30px auto;
+            }}
+            h1 {{
+                text-align: center;
+                color: #2C3E50;
+                font-size: 18px;
+                border-bottom: 3px solid #2980B9;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }}
+            h2 {{
+                color: #2980B9;
+                font-size: 16px;
+                margin-top: 14px;
+                border-bottom: 2px solid #BDC3C7;
+                padding-bottom: 5px;
+            }}
+            h3 {{
+                color: #2980B9;
+                font-size: 10px;
+                margin-top: 12px;
+                margin-bottom: 4px;
+            }}
+            .box-content {{
+                margin-top: 20px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            }}
+            ul {{
+                padding-left: 20px;
+            }}
+            li {{
+                margin-bottom: 6px;
+            }}
+            button {{
+                padding: 6px 12px;
+                background-color: #2980B9;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }}
+            button:hover {{
+                background-color: #1A5276;
+            }}
+            tr:nth-child(even) {{
+                background-color: #f9f9f9;
+            }}
+            tr:hover {{
+                background-color: #f1f1f1;
+            }}
+            .section-heading {{
+                color: #2980B9;
+                font-weight: bold;
+                font-size: 10px;
+                margin-top: 12px;
+                margin-bottom: 4px;
+            }}
+            .sources-section {{
+                margin-top: 10px;
+                padding: 15px;
+                background-color: #f9f9f9;
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+            }}
+            .article {{
+                margin-bottom: 12px;
+            }}
+            .article h4 {{
+                color: #2980B9;
+                font-size: 10px;
+            }}
+            .article p {{
+                font-size: 10px;
+                line-height: 1.2;
+            }}
+            .header-container {{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                margin-bottom: 10px;
+            }}
+            .logo {{
+                height: 35px;
+            }}
+        </style>
+        <script>
+            function toggleResources() {{
+                var content = document.getElementById('resources-content');
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            }}
+            function toggleBox(id) {{
+                const allBoxes = ['overall-box', 'recent-email-box', 'client-questions-box'];
+                allBoxes.forEach(boxId => {{
+                    document.getElementById(boxId).style.display = (boxId === id) ?
+                        (document.getElementById(boxId).style.display === 'none' ? 'block' : 'none') :
+                        'none';
+                }});
+            }}
+        </script>
+    </head>
+    <body>
+        {html_summary_final}
+        {resources_html}
+    </body>
+    </html>
+    """
+
+    return full_html
+
+
+
+
 def save_html_to_file (html_content: str, filename: str):
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
