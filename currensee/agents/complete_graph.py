@@ -8,6 +8,7 @@ from currensee.agents.agent_utils import summarize_all_outputs
 from currensee.agents.tools.crm_tools import retrieve_client_metadata
 from currensee.agents.tools.outlook_tools import produce_client_email_summary, produce_recent_client_email_summary, produce_recent_client_questions
 from currensee.agents.tools.finance_tools import retrieve_client_industry_news, retrieve_holdings_news, retrieve_macro_news, summarize_finance_outputs
+from currensee.agents.sourcing_utils import get_fin_linked_summary
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -34,6 +35,7 @@ complete_graph.add_node("run_client_industry_agent", retrieve_client_industry_ne
 complete_graph.add_node("run_macro_finnews_agent", retrieve_macro_news)
 complete_graph.add_node("finance_summarizer_agent", summarize_finance_outputs)
 complete_graph.add_node("final_summarizer_agent", summarize_all_outputs)
+complete_graph.add_node("add_sourcing_agent", get_fin_linked_summary)
 
 complete_graph.add_edge(START, "retrieve_client_metadata")
 complete_graph.add_edge("retrieve_client_metadata", "produce_outlook_summary")
@@ -44,7 +46,9 @@ complete_graph.add_edge("run_macro_finnews_agent", "run_client_industry_agent")
 complete_graph.add_edge("run_client_industry_agent", "run_client_holdings_agent")
 complete_graph.add_edge("run_client_holdings_agent", "finance_summarizer_agent")
 complete_graph.add_edge("finance_summarizer_agent", "final_summarizer_agent")
-complete_graph.add_edge("final_summarizer_agent", END)
+complete_graph.add_edge("final_summarizer_agent", "add_sourcing_agent")
+complete_graph.add_edge("add_sourcing_agent", END)
+#complete_graph.add_edge("final_summarizer_agent", END)
 
 compiled_graph = complete_graph.compile()
 
@@ -63,7 +67,8 @@ def main():
     
     result = compiled_graph.invoke(init_state)
     
-    print(result['final_summary'])
+    #print(result['final_summary'])
+    print(result['final_summary_sourced'])
 
 if __name__ == "__main__":
     main()
