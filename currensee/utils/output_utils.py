@@ -11,7 +11,16 @@ import markdown
 from currensee.agents.tools.finance_tools import generate_macro_table
 from currensee.utils.get_logo_utils import get_logo
 
-
+def convert_markdown_links_to_html(text: str) -> str:
+    """
+    Converts markdown-style links like [Source 1](https://example.com)
+    into <a href="https://example.com">Source 1</a>
+    """
+    return re.sub(
+        r'\[([^\]]+)\]\((https?://[^\)]+)\)',
+        r'<a href="\2" target="_blank" rel="noopener noreferrer">\1</a>',
+        text
+    )
 
 def format_news_summary_to_html(news_summary, title):
     html = f"<h2>{title}</h2>"
@@ -168,14 +177,17 @@ def generate_long_report(result):
     client_holdings_sources = result.get('client_holdings_sources', list())
     client_industry_sources = result.get('client_industry_sources', list())
     macro_news_sources = result.get('macro_news_sources', list())
-    final_summary = result.get('final_summary', '')
+    #final_summary = result.get('final_summary', '')
+    linked_summary = result.get('final_summary_sourced', '')
     client_company = result.get('client_company', '')
     logo_str = get_logo()
     # Email/financial news data section
-    html_summary = markdown.markdown(final_summary)
+    #html_summary = markdown.markdown(final_summary)
+    html_summary = markdown.markdown(linked_summary)
     html_summary_split = re.split(r"\n", html_summary)
-    html_summary_final = format_paragraph_summary_to_html(final_summary, meeting_title, logo_str)
-    
+   # html_summary_final = format_paragraph_summary_to_html(final_summary, meeting_title, logo_str)
+    html_summary_final = format_paragraph_summary_to_html(linked_summary, meeting_title, logo_str)
+    html_linked_summary = convert_markdown_links_to_html(html_summary_final)
 
     
     #html_summary_title = re.sub(r"<p><strong>", "<h1>", html_summary_split[0])
@@ -350,11 +362,15 @@ def generate_long_report(result):
             .logo {{
                 height: 35px;
             }}
+            a {{
+                color: #0645AD;
+                text-decoration: underline;
+            }}
         </style>
     </head>
     <body>
-        {html_summary_final}
-
+        {html_linked_summary}
+        
         <h2>Macro-Economic Snapshot</h2>
         <div class="box-content">
             {financial_snapshot_html}
