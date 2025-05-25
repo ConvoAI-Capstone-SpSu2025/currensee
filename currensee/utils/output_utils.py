@@ -393,7 +393,7 @@ def generate_long_report(result):
 
 def generate_short_report(result):
     meeting_title = result.get('meeting_description', '') + ' : Briefing Document'
-    final_summary = result.get('final_summary', '')
+    final_summary = result.get('final_summary_sourced', '')
     client_holdings_sources = result.get('client_holdings_sources', list())
     client_industry_sources = result.get('client_industry_sources', list())
     macro_news_sources = result.get('macro_news_sources', list())
@@ -420,6 +420,8 @@ def generate_short_report(result):
         <button onclick="toggleResources()" style="margin-top: 10px;">See Sources</button>
     </div>
     """
+
+    html_linked_summary = convert_markdown_links_to_html(html_summary_final)
 
     # Hidden Resources section
     resources_html = f"""
@@ -553,7 +555,7 @@ def generate_short_report(result):
         </script>
     </head>
     <body>
-        {html_summary_final}
+        {html_linked_summary}
         {resources_html}
     </body>
     </html>
@@ -573,7 +575,8 @@ def generate_med_report(result):
     client_holdings_sources = result.get('client_holdings_sources', list())
     client_industry_sources = result.get('client_industry_sources', list())
     macro_news_sources = result.get('macro_news_sources', list())
-    final_summary = result.get('final_summary', '')
+    final_summary = result.get('final_summary_sourced', '')
+    
     client_company = result.get('client_company', '')
     logo_str = get_logo()
     email_summary = result.get('email_summary', '')
@@ -604,6 +607,7 @@ def generate_med_report(result):
 
     # Convert markdown to HTML
     html_summary_final = format_paragraph_summary_to_html(final_summary_with_boxes, meeting_title, logo_str)
+    html_linked_summary = convert_markdown_links_to_html(html_summary_final)
 
     # Source sections
     html_client_industry_sources = format_sources_to_html(client_industry_sources, 'Client Industry News')
@@ -739,7 +743,7 @@ def generate_med_report(result):
         </script>
     </head>
     <body>
-        {html_summary_final}
+        {html_linked_summary}
         {resources_html}
     </body>
     </html>
