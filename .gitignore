@@ -169,6 +169,7 @@ cython_debug/
 
 # data storage
 .DS_Store
-data/outlook/eml_files/
+data/
+!data/README.md
 *.pdf
-#*.html
+*.html
