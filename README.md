@@ -70,7 +70,7 @@ If you decide to use VSCode, these extensions will make your experience much eas
    ```bash
    poetry config virtualenvs.in-project true
    poetry env use 3.11.12
-   poetry env activate 
+   poetry env activate
    # copy and execute the command that is printed out
    poetry install
    ```
@@ -80,7 +80,7 @@ If you decide to use VSCode, these extensions will make your experience much eas
 
 3. Initialize pre-commit
 
-    Pre-commit refers to a framework that manages and maintains scripts, called pre-commit hooks, that run automatically before a code commit is finalized in a version control system like Git. 
+    Pre-commit refers to a framework that manages and maintains scripts, called pre-commit hooks, that run automatically before a code commit is finalized in a version control system like Git.
     Think of it like a quality control checkpoint before your code changes are officially recorded in the project's history.
 
     Run the command below to ensure that pre-commit runs each time you commit files.
