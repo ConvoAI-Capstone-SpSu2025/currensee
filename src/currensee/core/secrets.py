@@ -39,7 +39,7 @@ class SecretManager:
             logger.info("PROJECT_ID not found, attempting to load from .env file")
             # Try current directory
             if os.path.exists(".env"):
-                load_dotenv()
+                load_dotenv('/home/jupyter/gf_currensee/currensee')
                 logger.info("Loaded environment from ./.env")
                 self._project_id = os.getenv("PROJECT_ID")
             # Then try project root

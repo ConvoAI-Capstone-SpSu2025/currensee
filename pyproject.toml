@@ -1,54 +1,57 @@
 [project]
 name = "currensee"
 version = "0.1.0"
-description = "Conversational AI interface to aid in client p-facing work using data from Microsoft 365, google products, earnings reports, and more."
+description = "Conversational AI interface to aid in client-facing work using data from Microsoft 365, Google products, earnings reports, and more."
 authors = [
-    {name = "Lily Campbell",email = "lilycampbell@uchicago.edu"},
-    {name = "Xiaojing Fang", email = "xjfang@uchicago.edu"},
-    {name = "Gretchen Forbush", email = "forbug@uchicago.edu"},
-    {name = "Stepan Ochodek", email = "sochodek@uchicago.edu"},
-    {name = "Alen Pavlovic", email = "apavlovic@uchicago.edu"}
+    { name = "Lily Campbell", email = "lilycampbell@uchicago.edu" },
+    { name = "Xiaojing Fang", email = "xjfang@uchicago.edu" },
+    { name = "Gretchen Forbush", email = "forbug@uchicago.edu" },
+    { name = "Stepan Ochodek", email = "sochodek@uchicago.edu" },
+    { name = "Alen Pavlovic", email = "apavlovic@uchicago.edu" }
 ]
-license = {text = "MIT"}
+license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
+
 dependencies = [
-    "faker (>=37.1.0,<38.0.0)",
-    "pandas (>=2.2.3,<3.0.0)",
-    "o365 (>=2.1.2,<3.0.0)",
-    "langchain-community (>=0.3.21,<0.4.0)",
-    "langchain-google-genai (>=2.1.3,<3.0.0)",
-    "langgraph-supervisor (>=0.0.17,<0.0.18)",
-    "fastapi (>=0.115.12,<0.116.0)",
-    "pytest (>=8.3.5,<9.0.0)",
-    "ipython (>=9.1.0,<10.0.0)",
-    "ipykernel (>=6.29.5,<7.0.0)",
-    "langchain-core (>=0.3.55,<0.4.0)",
-    "langchain-experimental (>=0.3.4,<0.4.0)",
-    "tavily-python (>=0.5.4,<0.6.0)",
-    "sqlalchemy (==2.0.40)",
-    "google-cloud-secret-manager (==2.23.3)",
-    "google-cloud-storage (>=3.1.0,<4.0.0)",
-    "llama-index-core (>=0.12.32,<0.13.0)",
-    "llama-index-llms-google-genai (>=0.1.7,<0.2.0)",
-    "psycopg (>=3.2.6,<4.0.0)",
-    "llama-index-embeddings-google-genai (>=0.1.0,<0.2.0)",
-    "llama-index (>=0.12.33,<0.13.0)",
-    "psycopg2-binary (>=2.9.10,<3.0.0)",
-    "openpyxl (>=3.1.5,<4.0.0)",
-    "pandas-datareader (>=0.10.0,<0.11.0)",
-    "yfinance (>=0.2.56,<0.3.0)",
-    "matplotlib (>=3.10.1,<4.0.0)",
-    "seaborn (>=0.13.2,<0.14.0)",
-    "tabulate (>=0.9.0,<0.10.0)",
-    "markdown (>=3.8,<4.0)",
-    "weasyprint (>=65.1,<66.0)"
+    "faker>=37.1.0,<38.0.0",
+    "pandas>=2.2.3,<3.0.0",
+    "o365>=2.1.2,<3.0.0",
+    "langchain-community>=0.3.21,<0.4.0",
+    "langchain-google-genai>=2.1.3,<3.0.0",
+    "langgraph-supervisor>=0.0.17,<0.0.18",
+    "fastapi>=0.115.12,<0.116.0",
+    "pytest>=8.3.5,<9.0.0",
+    "ipython>=9.1.0,<10.0.0",
+    "ipykernel>=6.29.5,<7.0.0",
+    "langchain-core>=0.3.55,<0.4.0",
+    "langchain-experimental>=0.3.4,<0.4.0",
+    "tavily-python>=0.5.4,<0.6.0",
+    "sqlalchemy==2.0.40",
+    "google-cloud-secret-manager==2.23.3",
+    "google-cloud-storage>=3.1.0,<4.0.0",
+    "llama-index-core>=0.12.32,<0.13.0",
+    "llama-index-llms-google-genai>=0.1.7,<0.2.0",
+    "psycopg>=3.2.6,<4.0.0",
+    "llama-index-embeddings-google-genai>=0.1.0,<0.2.0",
+    "llama-index>=0.12.33,<0.13.0",
+    "psycopg2-binary>=2.9.10,<3.0.0",
+    "openpyxl>=3.1.5,<4.0.0",
+    "pandas-datareader>=0.10.0,<0.11.0",
+    "yfinance>=0.2.56,<0.3.0",
+    "matplotlib>=3.10.1,<4.0.0",
+    "seaborn>=0.13.2,<0.14.0",
+    "tabulate>=0.9.0,<0.10.0",
+    "markdown>=3.8,<4.0",
+    "weasyprint>=65.1,<66.0"
 ]
 
+
+[tool.poetry]
+packages = [
+    { include = "currensee", from = "src" }
+]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.dependencies]
-

@@ -68,9 +68,9 @@ If you decide to use VSCode, these extensions will make your experience much eas
 
 1. Create the environment from the existing poetry specs in the repository.
    ```bash
-   poetry env use python3
+   poetry env use 3.11.12
+   poetry env activate # copy and execute the command that is printed out
    poetry install
-   poetry shell
    ```
    This will create and activate a virtual environment and install all dependencies.
 
