@@ -118,7 +118,3 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 embeddings.embed_documents(texts, batch_size, task_type, titles, output_dimensionality)
 ```
-
-
-
-

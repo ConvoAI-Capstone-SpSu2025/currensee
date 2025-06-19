@@ -11,8 +11,7 @@ settings = Settings()
 
 def create_pg_engine(db_name: str):
     engine = create_engine(
-        f'{settings.POSTGRES_ENGINE_STR}/{db_name}',
-        connect_args={'sslmode': 'require'}
+        f"{settings.POSTGRES_ENGINE_STR}/{db_name}", connect_args={"sslmode": "require"}
     )
 
     return engine

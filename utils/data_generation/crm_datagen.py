@@ -1,74 +1,122 @@
-import pandas as pd
-import random
 import os
+import random
 import re
+
+import pandas as pd
 from faker import Faker
 
 # Initialize Faker instance
-#Lily's modification of CRM data
-#Faker is a Python package that integrates fake data for you.
+# Lily's modification of CRM data
+# Faker is a Python package that integrates fake data for you.
 
-#Some hard coded data of publicly traded companies to be our mock clients
+# Some hard coded data of publicly traded companies to be our mock clients
 
 fake = Faker()
 
+
 # Helper function to generate synthetic employee data
-def generate_employee_data(num_employees=10, ourcompany_name = 'bankwell'):
+def generate_employee_data(num_employees=10, ourcompany_name="bankwell"):
     Company = ourcompany_name
     employees = [
         {
-            'EmployeeID': fake.unique.uuid4(),
-            'FirstName': "Jane",
-            'LastName': "Moneypenny",
-            'Title': "Relationship Manager",
-            'Email': "jane.moneypenny1@bankwell.com",
-            'Phone': fake.phone_number(),
-            'HireDate': fake.date_this_decade(),
-            'Department': 'Enterprise Investment',
-            'Market': 'San Fransisco'
+            "EmployeeID": fake.unique.uuid4(),
+            "FirstName": "Jane",
+            "LastName": "Moneypenny",
+            "Title": "Relationship Manager",
+            "Email": "jane.moneypenny1@bankwell.com",
+            "Phone": fake.phone_number(),
+            "HireDate": fake.date_this_decade(),
+            "Department": "Enterprise Investment",
+            "Market": "San Fransisco",
         }
     ]
 
-    for _ in range(num_employees-1):
-      EmployeeID = fake.unique.uuid4()
-      FirstName = fake.first_name()
-      LastName = fake.last_name()
-      Title = random.choice(['Finance Assistant', 'Financial Advisor', 'Senior Relationship Manager', 'Product Specialist', 'Relationship Manager'])
-      Phone = fake.phone_number()
-      Department = random.choice(['Enterprise Investment', 'Small Business Investment', 'Operations', 'Sales', 'Customer Support'])
-      HireDate = fake.date_this_decade()
-      Market = random.choice(['San Fransisco', 'New York City', 'Boston', 'Denver', 'Los Angeles', 'Miami', 'Washington DC', 'Seattle', 'Dallas', 'Chicago'])
-      Company_clean = re.sub(r'\W+', '', Company).lower()
-      Email = f"{FirstName.lower()}.{LastName.lower()}@{Company_clean}.com"
+    for _ in range(num_employees - 1):
+        EmployeeID = fake.unique.uuid4()
+        FirstName = fake.first_name()
+        LastName = fake.last_name()
+        Title = random.choice(
+            [
+                "Finance Assistant",
+                "Financial Advisor",
+                "Senior Relationship Manager",
+                "Product Specialist",
+                "Relationship Manager",
+            ]
+        )
+        Phone = fake.phone_number()
+        Department = random.choice(
+            [
+                "Enterprise Investment",
+                "Small Business Investment",
+                "Operations",
+                "Sales",
+                "Customer Support",
+            ]
+        )
+        HireDate = fake.date_this_decade()
+        Market = random.choice(
+            [
+                "San Fransisco",
+                "New York City",
+                "Boston",
+                "Denver",
+                "Los Angeles",
+                "Miami",
+                "Washington DC",
+                "Seattle",
+                "Dallas",
+                "Chicago",
+            ]
+        )
+        Company_clean = re.sub(r"\W+", "", Company).lower()
+        Email = f"{FirstName.lower()}.{LastName.lower()}@{Company_clean}.com"
 
-
-      employees.append({
-            'EmployeeID': EmployeeID,
-            'FirstName': FirstName,
-            'LastName': LastName,
-            'Title': Title,
-            'Email': Email,
-            'Phone': Phone,
-            'HireDate': HireDate,
-            'Department': Department,
-            'Market': Market
-        })
+        employees.append(
+            {
+                "EmployeeID": EmployeeID,
+                "FirstName": FirstName,
+                "LastName": LastName,
+                "Title": Title,
+                "Email": Email,
+                "Phone": Phone,
+                "HireDate": HireDate,
+                "Department": Department,
+                "Market": Market,
+            }
+        )
     return pd.DataFrame(employees)
+
 
 # Helper function to generate point of contact and info for a Company
 def generate_point_of_contact(Company_name):
     AccountID = fake.unique.uuid4()
     FirstName = fake.first_name()
     LastName = fake.last_name()
-    ContactTitle = random.choice(["Senior Director", "Manager", "Director", "VP", "Consultant"])
+    ContactTitle = random.choice(
+        ["Senior Director", "Manager", "Director", "VP", "Consultant"]
+    )
     Phone = fake.phone_number()
     Website = fake.url()
-    Location = random.choice(['San Fransisco', 'New York City', 'Boston', 'Denver', 'Los Angeles', 'Miami', 'Washington DC', 'Seattle', 'Dallas', 'Chicago'])
+    Location = random.choice(
+        [
+            "San Fransisco",
+            "New York City",
+            "Boston",
+            "Denver",
+            "Los Angeles",
+            "Miami",
+            "Washington DC",
+            "Seattle",
+            "Dallas",
+            "Chicago",
+        ]
+    )
     AnnualRevenue = random.randint(1000000, 50000000)
     TotalAccountBal = random.randint(1000000, 50000000)
 
     # Clean Company name for use in email
-    Company_clean = re.sub(r'\W+', '', Company_name).lower()
+    Company_clean = re.sub(r"\W+", "", Company_name).lower()
     Email = f"{FirstName.lower()}.{LastName.lower()}@{Company_clean}.com"
 
     return {
@@ -81,24 +129,22 @@ def generate_point_of_contact(Company_name):
         "Website": Website,
         "Location": Location,
         "AnnualRevenue": AnnualRevenue,
-        "TotalAccountBal": TotalAccountBal
+        "TotalAccountBal": TotalAccountBal,
     }
 
 
-def generate_account_data(num_accounts=5, clients_company = []):
-# Build the data
-  accounts = []
-  for company in clients_company:
-      contact = generate_point_of_contact(company["Company"])
-      record = {
-          "Company": company["Company"],
-          "industry": company["industry"],
-          **contact
-      }
-      accounts.append(record)
-  return pd.DataFrame(accounts)
-
-
+def generate_account_data(num_accounts=5, clients_company=[]):
+    # Build the data
+    accounts = []
+    for company in clients_company:
+        contact = generate_point_of_contact(company["Company"])
+        record = {
+            "Company": company["Company"],
+            "industry": company["industry"],
+            **contact,
+        }
+        accounts.append(record)
+    return pd.DataFrame(accounts)
 
 
 # Helper function to generate synthetic opportunity data
@@ -107,37 +153,70 @@ def generate_opportunity_data(accounts_df, num_opportunities_per_account=3):
     for _, account in accounts_df.iterrows():
         num_opportunities = random.randint(1, num_opportunities_per_account)
         for _ in range(num_opportunities):
-            opportunities.append({
-                'OpportunityID': fake.unique.uuid4(),
-                'AccountID': account['AccountID'],
-                'OpportunityName': fake.bs(),
-                'Stage': random.choice(['Prospecting', 'Qualification', 'Proposal', 'Negotiation', 'Won', 'Lost', 'Closed']),
-                'Type': random.choice(['New Business', 'Existing Business', 'Renewal', 'Upsell']),
-                'CloseDate': fake.date_this_year(),
-                'Amount': random.randint(50000, 500000),
-            })
+            opportunities.append(
+                {
+                    "OpportunityID": fake.unique.uuid4(),
+                    "AccountID": account["AccountID"],
+                    "OpportunityName": fake.bs(),
+                    "Stage": random.choice(
+                        [
+                            "Prospecting",
+                            "Qualification",
+                            "Proposal",
+                            "Negotiation",
+                            "Won",
+                            "Lost",
+                            "Closed",
+                        ]
+                    ),
+                    "Type": random.choice(
+                        ["New Business", "Existing Business", "Renewal", "Upsell"]
+                    ),
+                    "CloseDate": fake.date_this_year(),
+                    "Amount": random.randint(50000, 500000),
+                }
+            )
     return pd.DataFrame(opportunities)
 
+
 # Helper function to generate synthetic employee-contact relationship data
-def generate_employee_contact_data(employees_df, accounts_df, num_relationships_per_employee=2):
+def generate_employee_contact_data(
+    employees_df, accounts_df, num_relationships_per_employee=2
+):
     relationships = []
     for _, employee in employees_df.iterrows():
         num_relationships = random.randint(1, num_relationships_per_employee)
         for _ in range(num_relationships):
-            account = random.choice(accounts_df['AccountID'].tolist())
-            relationships.append({
-                'EmployeeID': employee['EmployeeID'],
-                'EmployeeFirstName': employee['FirstName'],
-                'EmployeeLastName': employee['LastName'],
-                'AccountID': account,
-                'Company': accounts_df.loc[accounts_df['AccountID'] == account, 'Company'].iloc[0],
-                'Industry': accounts_df.loc[accounts_df['AccountID'] == account, 'industry'].iloc[0],
-                'ContactFirstName': accounts_df.loc[accounts_df['AccountID'] == account, 'ContactFirstName'].iloc[0],
-                'ContactLastName': accounts_df.loc[accounts_df['AccountID'] == account, 'ContactLastName'].iloc[0],
-                'ContactEmail': accounts_df.loc[accounts_df['AccountID'] == account, 'Email'].iloc[0],
-                'ContactTitle': accounts_df.loc[accounts_df['AccountID'] == account, 'ContactTitle'].iloc[0],
-                'ContactPhone': accounts_df.loc[accounts_df['AccountID'] == account, 'Phone'].iloc[0],
-            })
+            account = random.choice(accounts_df["AccountID"].tolist())
+            relationships.append(
+                {
+                    "EmployeeID": employee["EmployeeID"],
+                    "EmployeeFirstName": employee["FirstName"],
+                    "EmployeeLastName": employee["LastName"],
+                    "AccountID": account,
+                    "Company": accounts_df.loc[
+                        accounts_df["AccountID"] == account, "Company"
+                    ].iloc[0],
+                    "Industry": accounts_df.loc[
+                        accounts_df["AccountID"] == account, "industry"
+                    ].iloc[0],
+                    "ContactFirstName": accounts_df.loc[
+                        accounts_df["AccountID"] == account, "ContactFirstName"
+                    ].iloc[0],
+                    "ContactLastName": accounts_df.loc[
+                        accounts_df["AccountID"] == account, "ContactLastName"
+                    ].iloc[0],
+                    "ContactEmail": accounts_df.loc[
+                        accounts_df["AccountID"] == account, "Email"
+                    ].iloc[0],
+                    "ContactTitle": accounts_df.loc[
+                        accounts_df["AccountID"] == account, "ContactTitle"
+                    ].iloc[0],
+                    "ContactPhone": accounts_df.loc[
+                        accounts_df["AccountID"] == account, "Phone"
+                    ].iloc[0],
+                }
+            )
     return pd.DataFrame(relationships)
 
 
@@ -150,18 +229,20 @@ def generate_portfolios(df_accounts, max_positions=10, instruments=[]):
         num_positions = random.randint(5, 10)
         positions = random.sample(instruments, num_positions)
         for symbol, instrument_type in positions:
-            portfolio_records.append({
-                "AccountID": AccountId,
-                "Company_name": Company,
-                "symbol": symbol,
-                "instrument_type": instrument_type
-            })
+            portfolio_records.append(
+                {
+                    "AccountID": AccountId,
+                    "Company_name": Company,
+                    "symbol": symbol,
+                    "instrument_type": instrument_type,
+                }
+            )
 
     return pd.DataFrame(portfolio_records)
 
 
 if __name__ == "__main__":
-    
+
     clients_company_info = [
         {"Company": "Broadcom", "industry": "Technology"},
         {"Company": "Cisco", "industry": "Technology"},
@@ -248,22 +329,41 @@ if __name__ == "__main__":
         {"Company": "Service Properties Trust", "industry": "RealEstate"},
     ]
 
-    stocks = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'NVDA', 'META', 'JPM', 'V', 'UNH']
-    bonds = ['US10Y', 'US30Y', 'CORP1', 'CORP2', 'MUNI1', 'MUNI2']
-    mutual_funds = ['VFIAX', 'SWPPX', 'FXAIX', 'VTSAX', 'FZROX', 'SPY']
+    stocks = [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "AMZN",
+        "TSLA",
+        "NVDA",
+        "META",
+        "JPM",
+        "V",
+        "UNH",
+    ]
+    bonds = ["US10Y", "US30Y", "CORP1", "CORP2", "MUNI1", "MUNI2"]
+    mutual_funds = ["VFIAX", "SWPPX", "FXAIX", "VTSAX", "FZROX", "SPY"]
     # All symbols with types
     instruments = (
-        [(sym, 'Stock') for sym in stocks] +
-        [(sym, 'Bond') for sym in bonds] +
-        [(sym, 'Mutual Fund') for sym in mutual_funds]
+        [(sym, "Stock") for sym in stocks]
+        + [(sym, "Bond") for sym in bonds]
+        + [(sym, "Mutual Fund") for sym in mutual_funds]
     )
 
     # Generate synthetic data for the tables
-    employees_df = generate_employee_data(num_employees=100, ourcompany_name = 'bankwell')
-    accounts_df = generate_account_data(num_accounts=500, clients_company = clients_company_info)
-    opportunities_df = generate_opportunity_data(accounts_df, num_opportunities_per_account=3)
-    contacts_df = generate_employee_contact_data(employees_df, accounts_df, num_relationships_per_employee=30)
-    portfolio_df = generate_portfolios(accounts_df, max_positions=10, instruments = instruments)
+    employees_df = generate_employee_data(num_employees=100, ourcompany_name="bankwell")
+    accounts_df = generate_account_data(
+        num_accounts=500, clients_company=clients_company_info
+    )
+    opportunities_df = generate_opportunity_data(
+        accounts_df, num_opportunities_per_account=3
+    )
+    contacts_df = generate_employee_contact_data(
+        employees_df, accounts_df, num_relationships_per_employee=30
+    )
+    portfolio_df = generate_portfolios(
+        accounts_df, max_positions=10, instruments=instruments
+    )
 
     # Print the first few rows of each DataFrame
     print("Employees Data:")
@@ -277,7 +377,7 @@ if __name__ == "__main__":
 
     print("\nEmployee-Contact Relationships Data:")
     print(contacts_df.head())
-    
+
     print("\nPortfolio Info for Each Account")
     print(portfolio_df.head())
 
@@ -294,14 +394,18 @@ if __name__ == "__main__":
 
     contacts_path = os.path.join(out_dir, "../../data/crm/contacts.csv")
     contacts_df.to_csv(contacts_path)
-    
+
     portfolio_path = os.path.join(out_dir, "../../data/crm/portfolio.csv")
     portfolio_df.to_csv(portfolio_path)
 
     # Identify the contacts specifically assigned to Jane and produce CSV to create synthetic email
     # correspondence and events
-    janes_id = employees_df[employees_df['LastName'] == 'Moneypenny'].iloc[0]['EmployeeID']
-    contacts_accounts_df = contacts_df.merge(accounts_df, on='AccountID', how='left')
-    janes_contacts_accounts_df = contacts_accounts_df[contacts_accounts_df['EmployeeID'] == janes_id]
+    janes_id = employees_df[employees_df["LastName"] == "Moneypenny"].iloc[0][
+        "EmployeeID"
+    ]
+    contacts_accounts_df = contacts_df.merge(accounts_df, on="AccountID", how="left")
+    janes_contacts_accounts_df = contacts_accounts_df[
+        contacts_accounts_df["EmployeeID"] == janes_id
+    ]
     janes_contacts_path = os.path.join(out_dir, "../../data/crm/janes_contacts.csv")
     janes_contacts_accounts_df.to_csv(janes_contacts_path)

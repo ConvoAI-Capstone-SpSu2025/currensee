@@ -1,32 +1,22 @@
+import os
 from enum import StrEnum
 from json import loads
 from typing import Annotated, Any, Optional
-import os
 
 from dotenv import find_dotenv, load_dotenv
-from pydantic import (
-    BeforeValidator,
-    Field,
-    field_serializer,
-    HttpUrl,
-    SecretStr,
-    TypeAdapter,
-    computed_field,
-)
+from pydantic import (BeforeValidator, Field, HttpUrl, SecretStr, TypeAdapter,
+                      computed_field, field_serializer)
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy import URL
 
-from currensee.schema.models import (
-    AllModelEnum,
-    FakeModelName,
-    GoogleModelName,
-    Provider
-)
+from currensee.schema.models import (AllModelEnum, FakeModelName,
+                                     GoogleModelName, Provider)
 
 # Try to import the secrets module
 # We use a try-except to allow the settings module to work even if the secrets module isn't available
 try:
     from currensee.core.secrets import get_secret, get_secret_str
+
     HAS_SECRET_MANAGER = True
 except ImportError:
     HAS_SECRET_MANAGER = False
@@ -68,7 +58,7 @@ class Settings(BaseSettings):
     AVAILABLE_MODELS: set[AllModelEnum] = set()  # type: ignore[assignment]
 
     OPENWEATHERMAP_API_KEY: SecretStr | None = None
-    
+
     # Serper API for search functionality
     SERPER_API_KEY: SecretStr | None = None
 
@@ -97,22 +87,24 @@ class Settings(BaseSettings):
     POSTGRES_MIN_SIZE: int = Field(
         default=3, description="Minimum number of connections in the pool"
     )
-    POSTGRES_MAX_IDLE: int = Field(default=5, description="Maximum number of idle connections")
+    POSTGRES_MAX_IDLE: int = Field(
+        default=5, description="Maximum number of idle connections"
+    )
 
     @computed_field
     @property
     def POSTGRES_ENGINE_STR(self) -> str:
-        return f'postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD.get_secret_value()}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}'
+        return f"postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD.get_secret_value()}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}"
 
     def model_post_init(self, __context: Any) -> None:
         # Try to load SERPER_API_KEY from Secret Manager if available
         if HAS_SECRET_MANAGER:
             # Only set if not already provided through environment variables
             if self.SERPER_API_KEY is None:
-                serper_key = get_secret_str('SERPER_API_KEY')
+                serper_key = get_secret_str("SERPER_API_KEY")
                 if serper_key:
                     self.SERPER_API_KEY = serper_key
-        
+
         # Continue with normal initialization
         api_keys = {
             Provider.GOOGLE: self.GOOGLE_API_KEY,
@@ -139,7 +131,6 @@ class Settings(BaseSettings):
     @property
     def BASE_URL(self) -> str:
         return f"http://{self.HOST}:{self.PORT}"
-
 
 
 settings = Settings()

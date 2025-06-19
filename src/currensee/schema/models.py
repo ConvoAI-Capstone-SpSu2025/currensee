@@ -20,7 +20,4 @@ class FakeModelName(StrEnum):
     FAKE = "fake"
 
 
-AllModelEnum: TypeAlias = (
-    GoogleModelName
-    | FakeModelName
-)
+AllModelEnum: TypeAlias = GoogleModelName | FakeModelName

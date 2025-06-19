@@ -5,12 +5,13 @@ from llama_index.core.prompts import PromptTemplate
 from llama_index.core.query_engine import NLSQLTableQueryEngine
 from llama_index.core.workflow import Workflow
 from llama_index.llms.google_genai import GoogleGenAI
-from currensee.utils.db_utils import create_pg_engine
 
 from currensee.core.settings import Settings
 from currensee.schema.models import GoogleModelName
 from currensee.schema.schema import PostgresTables
-from currensee.workflows.prompts import text_to_sql_tmpl, response_synthesis_prompt_str
+from currensee.utils.db_utils import create_pg_engine
+from currensee.workflows.prompts import (response_synthesis_prompt_str,
+                                         text_to_sql_tmpl)
 from currensee.workflows.sql_workflow.workflow import SqlWorkflow
 
 settings = Settings()
@@ -20,10 +21,10 @@ def create_sql_query_engine(
     source_db: str,
     table_description_mapping: dict[str, str],
     text_to_sql_tmpl: str = text_to_sql_tmpl,
-    response_synthesis_prompt_str: str= response_synthesis_prompt_str,
+    response_synthesis_prompt_str: str = response_synthesis_prompt_str,
     model: GoogleModelName = GoogleModelName.GEMINI_15_FLASH,
     temperature: float = 0.0,
-    synthesize_response=True
+    synthesize_response=True,
 ) -> SqlWorkflow:
     """
     Instantiate SQL workflow and necessary arguments.
@@ -35,17 +36,17 @@ def create_sql_query_engine(
     source_db : str
         The database where the tables are located
     table_description_mapping: dict[str,str]
-        A mapping between table names and descriptions of the tables to 
+        A mapping between table names and descriptions of the tables to
         pass to the SQL query engine for it to create SQL queries from
     text_to_sql_tmpl: str, optional
         A prompt describing how to convert the natural language query into a SQL
-        query. 
+        query.
         Defaults to the prompt defined in `prompting.py`
     response_synthesis_prompt_str: str, optional
         A prompt describing how to synthesize the SQL results into a response.
         Defaults to the prompt defined in `prompting.py`
     model : GoogleModelName, optional
-        The GEMINI model to use for producing a SQL query from natural language & 
+        The GEMINI model to use for producing a SQL query from natural language &
         performing response synthesis - may need to consider separate implementation
         if the same model isn't proficient at both
         Default gemini-1.5-flash
@@ -59,31 +60,27 @@ def create_sql_query_engine(
         SQL workflow object
     """
 
-
     pg_engine = create_pg_engine(db_name=source_db)
 
     # Create the prompt that converts text to SQL for querying purposes and synthesizes final response
     text_to_sql_prompt = PromptTemplate(text_to_sql_tmpl)
-    response_synthesis_prompt = PromptTemplate(
-        response_synthesis_prompt_str
-    )
+    response_synthesis_prompt = PromptTemplate(response_synthesis_prompt_str)
 
     table_names = list(table_description_mapping.keys())
 
     # This model performs the reasoning, summary, etc.
     llm = GoogleGenAI(
-            model=model,
-            temperature=temperature,
-            api_key=settings.GOOGLE_API_KEY.get_secret_value()
-        )
+        model=model,
+        temperature=temperature,
+        api_key=settings.GOOGLE_API_KEY.get_secret_value(),
+    )
 
     # This model creates the embeddings necessary for the retrievers
     embed_model = GoogleGenAI(
-            model='models/text-embedding-004',
-            temperature=temperature,
-            api_key=settings.GOOGLE_API_KEY.get_secret_value()
-        )
-
+        model="models/text-embedding-004",
+        temperature=temperature,
+        api_key=settings.GOOGLE_API_KEY.get_secret_value(),
+    )
 
     # Define the natural language SQL query engine
     # https://docs.llamaindex.ai/en/stable/examples/index_structs/struct_indices/SQLIndexDemo/
@@ -100,7 +97,6 @@ def create_sql_query_engine(
         llm=llm,
         embed_model=embed_model,
         response_synthesis_prompt=response_synthesis_prompt,
-
     )
 
     return sql_query_engine
@@ -110,10 +106,10 @@ def create_sql_workflow(
     source_db: str,
     table_description_mapping: dict[str, str],
     text_to_sql_tmpl: str = text_to_sql_tmpl,
-    response_synthesis_prompt_str: str= response_synthesis_prompt_str,
+    response_synthesis_prompt_str: str = response_synthesis_prompt_str,
     model: GoogleModelName = GoogleModelName.GEMINI_15_FLASH,
     temperature: float = 0.0,
-    synthesize_response = True
+    synthesize_response=True,
 ) -> SqlWorkflow:
     """
     Instantiate SQL workflow and necessary arguments.
@@ -125,17 +121,17 @@ def create_sql_workflow(
     source_db : str
         The database where the tables are located
     table_description_mapping: dict[str,str]
-        A mapping between table names and descriptions of the tables to 
+        A mapping between table names and descriptions of the tables to
         pass to the SQL query engine for it to create SQL queries from
     text_to_sql_tmpl: str, optional
         A prompt describing how to convert the natural language query into a SQL
-        query. 
+        query.
         Defaults to the prompt defined in `prompting.py`
     response_synthesis_prompt_str: str, optional
         A prompt describing how to synthesize the SQL results into a response.
         Defaults to the prompt defined in `prompting.py`
     model : GoogleModelName, optional
-        The GEMINI model to use for producing a SQL query from natural language & 
+        The GEMINI model to use for producing a SQL query from natural language &
         performing response synthesis - may need to consider separate implementation
         if the same model isn't proficient at both
         Default gemini-1.5-flash
@@ -149,14 +145,14 @@ def create_sql_workflow(
         SQL workflow object
     """
 
-
-    sql_query_engine = create_sql_query_engine(source_db,
+    sql_query_engine = create_sql_query_engine(
+        source_db,
         table_description_mapping,
         text_to_sql_tmpl,
         response_synthesis_prompt_str,
         model,
         temperature,
-        synthesize_response=synthesize_response
+        synthesize_response=synthesize_response,
     )
 
     run_kwargs: dict[str, Any] = {

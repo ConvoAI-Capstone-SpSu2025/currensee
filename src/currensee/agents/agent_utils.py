@@ -1,14 +1,14 @@
-from dataclasses import dataclass
 import logging
+from dataclasses import dataclass
 
+from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 from langgraph.graph.state import CompiledStateGraph
 
-from currensee.schema import AgentInfo
-from currensee.core import get_model, settings
 from currensee.agents.tools.base import SupervisorState
+from currensee.core import get_model, settings
+from currensee.schema import AgentInfo
 
-from dotenv import load_dotenv
 load_dotenv()
 
 logger = logging.getLogger(__name__)
@@ -23,28 +23,29 @@ class Agent:
 
 ## Graph-specific utils
 
+
 def summarize_all_outputs(state: SupervisorState) -> str:
     """
     Summarizes the outputs from all provided tools into one coherent summary.
-    
+
     Parameters:
     - state: SupervisorState containing all tool outputs and configurations
-    
+
     Returns:
     - A modified state with the final summary added
     """
 
     finance_summary = state["finnews_summary"]
     email_summary = state["email_summary"]
-    company_name = state['client_company']
-    client_name = state['client_name']
-    meeting_description = state['meeting_description']
+    company_name = state["client_company"]
+    client_name = state["client_name"]
+    meeting_description = state["meeting_description"]
     recent_email_summary = state["recent_email_summary"]
-    recent_client_questions = state['recent_client_questions']
-    
+    recent_client_questions = state["recent_client_questions"]
+
     # Get report_length from state, default to 'long' if not specified
-    report_length = state.get('report_length', 'long')
-    
+    report_length = state.get("report_length", "long")
+
     # Log the report length being used
     print(f"\n===============================")
     print(f"Generating report with length: {report_length}")
@@ -52,7 +53,7 @@ def summarize_all_outputs(state: SupervisorState) -> str:
 
     # Define different report formats based on length
     report_formats = {
-        'short': f"""PROMPT
+        "short": f"""PROMPT
 
 You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on: {meeting_description}.
 
@@ -78,8 +79,7 @@ Recent email summary: {recent_email_summary}
 Recent client questions: {recent_client_questions}
 Financial summary: {finance_summary}
 """,
-        
-        'medium': f"""PROMPT
+        "medium": f"""PROMPT
 
 You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on: {meeting_description}.
 
@@ -103,8 +103,7 @@ Recent email summary: {recent_email_summary}
 Recent client questions: {recent_client_questions}
 Financial summary: {finance_summary}
 """,
-        
-        'long': f"""PROMPT
+        "long": f"""PROMPT
 
 You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on the following topic: {meeting_description}.
 
@@ -146,26 +145,20 @@ Recent email summary: {recent_email_summary}
 Recent client questions: {recent_client_questions}
 
 Financial summary: {finance_summary}
-"""
+""",
     }
-    
-    # Select the appropriate prompt based on report_length
-    combined_prompt = report_formats.get(report_length.lower(), report_formats['long'])
 
-    
-   
-    
+    # Select the appropriate prompt based on report_length
+    combined_prompt = report_formats.get(report_length.lower(), report_formats["long"])
+
     # Create the messages to pass to the model
-    messages = [
-        HumanMessage(content=combined_prompt)
-    ]
-    
+    messages = [HumanMessage(content=combined_prompt)]
+
     # Use the 'invoke' method for summarization
     summary = model.invoke(messages)
 
     new_state = state.copy()
     new_state["final_summary"] = summary.content
-    
+
     # Access the message content correctly
     return new_state
-

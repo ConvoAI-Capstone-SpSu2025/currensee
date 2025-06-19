@@ -68,7 +68,7 @@ If you are seeking to use an existing workflow with a new SQL table data source,
 
 Each workflow must have the following files defined:
 - `query_engine.py`: Defines one creator function: `create_<workflow_name>_workflow`
-- `workflow.py`: Defines the workflow and workflow events, if applicable. 
+- `workflow.py`: Defines the workflow and workflow events, if applicable.
 
 
 ## Tips
@@ -76,7 +76,3 @@ Each workflow must have the following files defined:
 While developing your workflow, it is recommended that you try the following:
 * If your prompt is not causing the LLM to behave as expected, try providing the prompt to ChatGPT and ask it how it would refine the prompt for efficient and accurate performance using your model (e.g. gemini 1.5 flash)
 * Consider using a model better suited to the specific task (e.g. reasoning vs. retrieval)
-
-
-
-

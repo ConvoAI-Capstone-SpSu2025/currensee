@@ -1,14 +1,12 @@
 from functools import cache
 from typing import TypeAlias
+
 from langchain_community.chat_models import FakeListChatModel
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 from currensee.core.settings import settings
-from currensee.schema.models import (
-    AllModelEnum,
-    FakeModelName,
-    GoogleModelName,
-)
+from currensee.schema.models import (AllModelEnum, FakeModelName,
+                                     GoogleModelName)
 
 _MODEL_TABLE = {
     GoogleModelName.GEMINI_15_FLASH: "gemini-1.5-flash",
@@ -16,9 +14,7 @@ _MODEL_TABLE = {
     FakeModelName.FAKE: "fake",
 }
 
-ModelT: TypeAlias = (
-   ChatGoogleGenerativeAI 
-)
+ModelT: TypeAlias = ChatGoogleGenerativeAI
 
 
 class FakeToolModel(FakeListChatModel):

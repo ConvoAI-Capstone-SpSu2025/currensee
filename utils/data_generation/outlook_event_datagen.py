@@ -3,9 +3,10 @@ NOTE: This is a work in progress!
 
 """
 
-import faker
 import datetime
 import random
+
+import faker
 import pandas as pd
 
 # Initialize Faker for generating synthetic names
@@ -27,7 +28,7 @@ current_date = datetime.now("cst")
 for week in range(total_weeks):
     for i in range(meetings_per_week):
         meeting_type = random.choice(["internal", "external"])
-        
+
         if meeting_type == "internal":
             title, description = random.choice(internal_meetings)
         else:
@@ -38,29 +39,31 @@ for week in range(total_weeks):
                 title = f"{title} - {client_name}"
             else:
                 description = f"{description} (Client: {client_name})"
-        
+
         # Select a random day in the current week (Mon-Fri)
         weekday = random.randint(0, 4)
         meeting_date = current_date + timedelta(days=(week * 7 + weekday))
         meeting_date = meeting_date.replace(hour=0, minute=0, second=0, microsecond=0)
-        
+
         # Generate random time within business hours
         start_hour = random.randint(8, 16)
         start_minute = random.choice([0, 15, 30, 45])
         duration_minutes = random.choice([30, 45, 60])
-        
+
         start_time = meeting_date.replace(hour=start_hour, minute=start_minute)
         end_time = start_time + timedelta(minutes=duration_minutes)
-        
-        meetings.append({
-            "Subject": title,
-            "Start Date": start_time.strftime("%Y-%m-%d"),
-            "Start Time": start_time.strftime("%H:%M"),
-            "End Date": end_time.strftime("%Y-%m-%d"),
-            "End Time": end_time.strftime("%H:%M"),
-            "Location": "Microsoft Teams Meeting",
-            "Description": description
-        })
+
+        meetings.append(
+            {
+                "Subject": title,
+                "Start Date": start_time.strftime("%Y-%m-%d"),
+                "Start Time": start_time.strftime("%H:%M"),
+                "End Date": end_time.strftime("%Y-%m-%d"),
+                "End Time": end_time.strftime("%H:%M"),
+                "Location": "Microsoft Teams Meeting",
+                "Description": description,
+            }
+        )
 
 # Create DataFrame and save to CSV
 df_updated = pd.DataFrame(meetings)

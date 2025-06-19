@@ -32,7 +32,7 @@ Below are the recommended operating-system-specific instructions for:
 
 **NOTE**: It is assumed that you have Python 3.x installed (not Python 13.0 as previously stated; Python 13.0 does not exist as of this writing). If you need assistance with installing Python, please contact one of the administrators of this repository.
 
-1. Install [VSCode](https://code.visualstudio.com/download) 
+1. Install [VSCode](https://code.visualstudio.com/download)
 2. Install [git](https://git-scm.com/downloads)
    * If you have a Mac, git may already be installed on your system. To test this, run `git --version` in your terminal.
    * If you are using a Windows 11 machine, you should now open a Git Bash terminal for the remaining steps.
@@ -52,7 +52,7 @@ If you decide to use VSCode, these extensions will make your experience much eas
 
 #### Configure Git
 
-1. Add your SSH keys to your GitHub account. 
+1. Add your SSH keys to your GitHub account.
    * Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 2. Configure your git username and email:
    ```bash
@@ -68,13 +68,26 @@ If you decide to use VSCode, these extensions will make your experience much eas
 
 1. Create the environment from the existing poetry specs in the repository.
    ```bash
+   poetry config virtualenvs.in-project true
    poetry env use 3.11.12
-   poetry env activate # copy and execute the command that is printed out
+   poetry env activate 
+   # copy and execute the command that is printed out
    poetry install
    ```
    This will create and activate a virtual environment and install all dependencies.
 
 2. If you wish to use another environment manager (e.g., conda, pyenv), ensure you install all dependencies listed in [pyproject.toml](pyproject.toml).
+
+3. Initialize pre-commit
+
+    Pre-commit refers to a framework that manages and maintains scripts, called pre-commit hooks, that run automatically before a code commit is finalized in a version control system like Git. 
+    Think of it like a quality control checkpoint before your code changes are officially recorded in the project's history.
+
+    Run the command below to ensure that pre-commit runs each time you commit files.
+
+    ```bash
+    pre-commit install
+    ```
 
 #### Environment Variables
 

@@ -1,3 +1,4 @@
+from enum import StrEnum, auto
 from typing import Any, Literal, NotRequired
 
 from pydantic import BaseModel, Field, SerializeAsAny
@@ -5,18 +6,16 @@ from typing_extensions import TypedDict
 
 from currensee.schema.models import AllModelEnum, GoogleModelName
 
-from enum import auto, StrEnum
-
-
 
 class PostgresTables:
     """
-        NOTE: These are just placeholders to demonstrate intended capabilities.
+    NOTE: These are just placeholders to demonstrate intended capabilities.
     """
+
     CRM_TABLE_ONE = auto()
     CRM_TABLE_CHUNKED = auto()
     OUTLOOK_Emails = auto()
-    TEAMS_MESSAGES  = auto()
+    TEAMS_MESSAGES = auto()
     CRM_Client_Alignment = auto()
     CRM_Portfolio = auto()
     CRM_Employees = auto()
@@ -34,7 +33,9 @@ class AgentInfo(BaseModel):
     )
     description: str = Field(
         description="Description of the agent.",
-        examples=["A market researcher specialized in summarizing recent financial data about a client."],
+        examples=[
+            "A market researcher specialized in summarizing recent financial data about a client."
+        ],
     )
 
 

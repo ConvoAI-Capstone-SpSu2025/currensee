@@ -1,15 +1,17 @@
 import datetime
-from typing import TypedDict, List, Dict, Any, Optional
-import matplotlib.pyplot as plt
+import os
 import re
+import webbrowser
+from typing import Any, Dict, List, Optional, TypedDict
+
+import markdown
+import matplotlib.pyplot as plt
 import weasyprint
 from weasyprint import HTML
-import webbrowser
-import os
-import markdown
 
 from currensee.agents.tools.finance_tools import generate_macro_table
 from currensee.utils.get_logo_utils import get_logo
+
 
 def convert_markdown_links_to_html(text: str) -> str:
     """
@@ -17,10 +19,11 @@ def convert_markdown_links_to_html(text: str) -> str:
     into <a href="https://example.com">Source 1</a>
     """
     return re.sub(
-        r'\[([^\]]+)\]\((https?://[^\)]+)\)',
+        r"\[([^\]]+)\]\((https?://[^\)]+)\)",
         r'<a class="source-link" href="\2" target="_blank" rel="noopener noreferrer">\1</a>',
-        text
+        text,
     )
+
 
 def format_news_summary_to_html(news_summary, title):
     html = f"<h2>{title}</h2>"
@@ -28,11 +31,16 @@ def format_news_summary_to_html(news_summary, title):
         html += "<div style='margin-bottom:20px;'>"
         html += f"<h4>{article.get('title', 'No Title')}</h4>"
         html += f"<p><strong>Date:</strong> {article.get('date', 'No Date')}</p>"
-        html += f"<p><strong>Snippet:</strong> {article.get('snippet', 'No Snippet')}</p>"
+        html += (
+            f"<p><strong>Snippet:</strong> {article.get('snippet', 'No Snippet')}</p>"
+        )
         html += f"<p><strong>Source:</strong> {article.get('link', '').split('/')[2] if article.get('link') else 'No Source'}</p>"
-        html += f"<p><a href='{article.get('link', '')}' target='_blank'>Read more</a></p>"
+        html += (
+            f"<p><a href='{article.get('link', '')}' target='_blank'>Read more</a></p>"
+        )
         html += "</div>"
     return html
+
 
 # Prepare Holding Sources section
 def format_holdings_to_html(sources, title):
@@ -62,7 +70,7 @@ def format_holdings_to_html(sources, title):
                 sources_html += render_article_html(details_dict)
             sources_html += "</details>"
 
-        sources_html += "</details>" 
+        sources_html += "</details>"
 
     sources_html += "</div>"
     return sources_html
@@ -104,10 +112,10 @@ def format_sources_to_html(sources, title):
 def thumbs_buttons(section_id):
     return f"""
     <div style="
-        position: absolute; 
-        top: 8px; 
-        right: 8px; 
-        cursor: pointer; 
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        cursor: pointer;
         display: flex;
         gap: 8px;
         ">
@@ -139,19 +147,18 @@ def format_paragraph_summary_to_html(summary: str) -> str:
             <p>No summary available.</p>
         </div>
         """
-    
-    section_pattern = r'\*\*(\d+\.\s+[^*]+?)\*\*'
+
+    section_pattern = r"\*\*(\d+\.\s+[^*]+?)\*\*"
     parts = re.split(section_pattern, summary)
 
     html_sections = []
 
     for i in range(1, len(parts), 2):
         header = parts[i].strip()
-        body = parts[i + 1].strip() if i + 1 < len(parts) else ''
+        body = parts[i + 1].strip() if i + 1 < len(parts) else ""
 
         header_html = f"<h2>{header}</h2>"
         body_html = markdown.markdown(body)
-
 
         html_sections.append(f"{header_html}\n{body_html}")
 
@@ -164,15 +171,12 @@ def format_paragraph_summary_to_html(summary: str) -> str:
     """
 
 
-
-
-
 def render_article_html(article):
-    title = article.get('title', 'No Title')
-    snippet = article.get('snippet', 'No Snippet')
-    date = article.get('date', 'No Date')
-    link = article.get('link', '')
-    source = link.split("/")[2] if link else 'No Source'
+    title = article.get("title", "No Title")
+    snippet = article.get("snippet", "No Snippet")
+    date = article.get("date", "No Date")
+    link = article.get("link", "")
+    source = link.split("/")[2] if link else "No Source"
 
     return f"""
     <div class='article'>
@@ -186,19 +190,18 @@ def render_article_html(article):
 
 
 def generate_long_report(result):
-    meeting_title = result.get('meeting_description', '') + ' : Briefing Document'
-    client_holdings_sources = result.get('client_holdings_sources', list())
-    client_industry_sources = result.get('client_industry_sources', list())
-    macro_news_sources = result.get('macro_news_sources', list())
-    #final_summary = result.get('final_summary', '')
-    linked_summary = result.get('final_summary_sourced', '')
-    client_company = result.get('client_company', '')
-    client_name = result.get('client_name', '')
-    meeting_time = result.get('meeting_timestamp', '')
-    client_holdings = result.get('client_holdings', '')
+    meeting_title = result.get("meeting_description", "") + " : Briefing Document"
+    client_holdings_sources = result.get("client_holdings_sources", list())
+    client_industry_sources = result.get("client_industry_sources", list())
+    macro_news_sources = result.get("macro_news_sources", list())
+    # final_summary = result.get('final_summary', '')
+    linked_summary = result.get("final_summary_sourced", "")
+    client_company = result.get("client_company", "")
+    client_name = result.get("client_name", "")
+    meeting_time = result.get("meeting_timestamp", "")
+    client_holdings = result.get("client_holdings", "")
     client_holdings_list = [str(h).strip() for h in client_holdings if str(h).strip()]
     logo_str = get_logo()
-
 
     # Title block with logos
     document_title_html = f"""
@@ -208,10 +211,11 @@ def generate_long_report(result):
     </div>
     """
 
-    #Meeting info block with emojis
+    # Meeting info block with emojis
     client_holdings_html = "".join(
-    f'<span class="client-holding-pill">💼{holding}</span>' for holding in client_holdings_list
-)
+        f'<span class="client-holding-pill">💼{holding}</span>'
+        for holding in client_holdings_list
+    )
     meeting_info_html = f"""
     <div class="box-content">
         <table class="meeting-info-table">
@@ -238,14 +242,14 @@ def generate_long_report(result):
         </table>
     </div>
     """
-    
-    #Email Summary Section
+
+    # Email Summary Section
     html_summary = markdown.markdown(linked_summary)
     html_summary_split = re.split(r"\n", html_summary)
     html_summary_final = format_paragraph_summary_to_html(linked_summary)
     html_linked_summary = convert_markdown_links_to_html(html_summary_final)
 
-    #Macro Table section
+    # Macro Table section
     macro_news_df = generate_macro_table()
     financial_snapshot_html = "<table class='financial-snapshot'>"
     financial_snapshot_html += """
@@ -278,11 +282,16 @@ def generate_long_report(result):
 
     financial_snapshot_html += "</tbody></table>"
 
-    #News Resource Section
-    html_client_industry_sources = format_sources_to_html(client_industry_sources, 'Client Industry News')
-    html_client_holdings_sources = format_holdings_to_html(client_holdings_sources, 'Client Holdings News')
-    html_macro_news_sources = format_sources_to_html(macro_news_sources, 'Macro Economic News')
-
+    # News Resource Section
+    html_client_industry_sources = format_sources_to_html(
+        client_industry_sources, "Client Industry News"
+    )
+    html_client_holdings_sources = format_holdings_to_html(
+        client_holdings_sources, "Client Holdings News"
+    )
+    html_macro_news_sources = format_sources_to_html(
+        macro_news_sources, "Macro Economic News"
+    )
 
     full_html = f"""
     <html>
@@ -375,7 +384,7 @@ def generate_long_report(result):
                 padding: 8px 20px;
                 background-color: #f9f9f9;
                 border: 1px solid #e0e0e0;
-                font-size: 13px; 
+                font-size: 13px;
                 border-radius: 5px;
             }}
             .sources-section {{
@@ -432,13 +441,13 @@ def generate_long_report(result):
                 gap: 6px;
                 margin-top: 4px;
             }}
-            
+
             .client-holding-pill {{
                 background-color: #2980B9;
                 color: white;
-                padding: 5px 10px;   
-                border-radius: 12px;    
-                font-size: 10px;       
+                padding: 5px 10px;
+                border-radius: 12px;
+                font-size: 10px;
                 white-space: nowrap;
                 box-shadow: 0 1px 3px rgba(0,0,0,0.2);
             }}
@@ -458,7 +467,7 @@ def generate_long_report(result):
             .source-link:hover {{
                 background-color: #1f6392;
             }}
-                                    
+
         </style>
     </head>
     <body>
@@ -466,13 +475,13 @@ def generate_long_report(result):
             <img src="{logo_str}" alt="Logo" class="logo" />
             <h1>{meeting_title}</h1>
         </div>
-        
+
         <h2>Meeting Information</h2>
         {meeting_info_html}
 
-        
+
         {html_linked_summary}
-        
+
         <h2>Macro-Economic Snapshot</h2>
         <div class="box-content">
             {financial_snapshot_html}
@@ -491,23 +500,21 @@ def generate_long_report(result):
 
     return full_html
 
-    
 
 def generate_short_report(result):
-    meeting_title = result.get('meeting_description', '') + ' : Briefing Document'
-    final_summary = result.get('final_summary_sourced', '')
-    client_holdings_sources = result.get('client_holdings_sources', list())
-    client_industry_sources = result.get('client_industry_sources', list())
-    macro_news_sources = result.get('macro_news_sources', list())
-    client_company = result.get('client_company', '')
-    client_name = result.get('client_name', '')
-    meeting_time = result.get('meeting_timestamp', '')
-    client_holdings = result.get('client_holdings', '')
+    meeting_title = result.get("meeting_description", "") + " : Briefing Document"
+    final_summary = result.get("final_summary_sourced", "")
+    client_holdings_sources = result.get("client_holdings_sources", list())
+    client_industry_sources = result.get("client_industry_sources", list())
+    macro_news_sources = result.get("macro_news_sources", list())
+    client_company = result.get("client_company", "")
+    client_name = result.get("client_name", "")
+    meeting_time = result.get("meeting_timestamp", "")
+    client_holdings = result.get("client_holdings", "")
     client_holdings_list = [str(h).strip() for h in client_holdings if str(h).strip()]
     logo_str = get_logo()
 
-
-        # Title block with logos
+    # Title block with logos
     document_title_html = f"""
     <div class="header-container">
         {logo_str}
@@ -515,10 +522,11 @@ def generate_short_report(result):
     </div>
     """
 
-    #Meeting info block with emojis
+    # Meeting info block with emojis
     client_holdings_html = "".join(
-    f'<span class="client-holding-pill">💼{holding}</span>' for holding in client_holdings_list
-)
+        f'<span class="client-holding-pill">💼{holding}</span>'
+        for holding in client_holdings_list
+    )
     meeting_info_html = f"""
     <div class="box-content">
         <table class="meeting-info-table">
@@ -546,15 +554,21 @@ def generate_short_report(result):
     </div>
     """
 
-    #Summary section
-    bullet_points = final_summary.strip().split('•')
+    # Summary section
+    bullet_points = final_summary.strip().split("•")
     bullet_points = [point.strip() for point in bullet_points if point.strip()]
-    html_bullets = ''.join(f'<li>{point}</li>' for point in bullet_points)
+    html_bullets = "".join(f"<li>{point}</li>" for point in bullet_points)
 
     # Format source sections
-    html_client_industry_sources = format_sources_to_html(client_industry_sources, 'Client Industry News')
-    html_client_holdings_sources = format_holdings_to_html(client_holdings_sources, 'Client Holdings News')
-    html_macro_news_sources = format_sources_to_html(macro_news_sources, 'Macro Economic News')
+    html_client_industry_sources = format_sources_to_html(
+        client_industry_sources, "Client Industry News"
+    )
+    html_client_holdings_sources = format_holdings_to_html(
+        client_holdings_sources, "Client Holdings News"
+    )
+    html_macro_news_sources = format_sources_to_html(
+        macro_news_sources, "Macro Economic News"
+    )
 
     # Summary section with "See Sources" button
     html_summary_final = f"""
@@ -591,8 +605,8 @@ def generate_short_report(result):
                 font-size: 15px;
                 color: #333;
                 max-width: 800px;
-                margin: 20px auto; 
-                line-height: 2.0; 
+                margin: 20px auto;
+                line-height: 2.0;
             }}
             p, ul, ol, li, div {{
                 margin: 0 0 8px 0;
@@ -663,7 +677,7 @@ def generate_short_report(result):
                 padding: 8px 20px;
                 background-color: #f9f9f9;
                 border: 1px solid #e0e0e0;
-                font-size: 13px; 
+                font-size: 13px;
                 border-radius: 5px;
             }}
             .sources-section {{
@@ -719,13 +733,13 @@ def generate_short_report(result):
             .client-holding-pill {{
                 background-color: #2980B9;
                 color: white;
-                padding: 5px 10px;   
-                border-radius: 12px;    
-                font-size: 10px;       
+                padding: 5px 10px;
+                border-radius: 12px;
+                font-size: 10px;
                 white-space: nowrap;
                 box-shadow: 0 1px 3px rgba(0,0,0,0.2);
             }}
-            
+
         </style>
         <script>
             function toggleResources() {{
@@ -743,11 +757,11 @@ def generate_short_report(result):
             <img src="{logo_str}" alt="Logo" class="logo" />
             <h1>{meeting_title}</h1>
         </div>
-        
+
         <h2>Meeting Information</h2>
         {meeting_info_html}
 
-        
+
         {html_linked_summary}
         {resources_html}
     </body>
@@ -757,59 +771,61 @@ def generate_short_report(result):
     return full_html
 
 
-
-
 def generate_med_report(result):
-    meeting_title = result.get('meeting_description', '') + ' : Briefing Document'
-    client_holdings_sources = result.get('client_holdings_sources', list())
-    client_industry_sources = result.get('client_industry_sources', list())
-    macro_news_sources = result.get('macro_news_sources', list())
-    final_summary = result.get('final_summary_sourced', '')
-    client_company = result.get('client_company', '')
-    client_name = result.get('client_name', '')
-    meeting_time = result.get('meeting_timestamp', '')
-    client_holdings = result.get('client_holdings', '')
+    meeting_title = result.get("meeting_description", "") + " : Briefing Document"
+    client_holdings_sources = result.get("client_holdings_sources", list())
+    client_industry_sources = result.get("client_industry_sources", list())
+    macro_news_sources = result.get("macro_news_sources", list())
+    final_summary = result.get("final_summary_sourced", "")
+    client_company = result.get("client_company", "")
+    client_name = result.get("client_name", "")
+    meeting_time = result.get("meeting_timestamp", "")
+    client_holdings = result.get("client_holdings", "")
     client_holdings_list = [str(h).strip() for h in client_holdings if str(h).strip()]
     logo_str = get_logo()
-    email_summary = result.get('email_summary', '')
-    recent_email_summary = result.get('recent_email_summary', '')
-    recent_client_questions = result.get('recent_client_questions', '')
+    email_summary = result.get("email_summary", "")
+    recent_email_summary = result.get("recent_email_summary", "")
+    recent_client_questions = result.get("recent_client_questions", "")
 
     # Extract the summary into two
-    split_sections = re.split(r'\n*\*\*2\. Financial Overview\*\*\n*', final_summary, maxsplit=1)
+    split_sections = re.split(
+        r"\n*\*\*2\. Financial Overview\*\*\n*", final_summary, maxsplit=1
+    )
     email_sec = split_sections[0].strip()
-    finance_sec = "**2. Financial Overview**\n" + split_sections[1].strip() if len(split_sections) > 1 else ''
+    finance_sec = (
+        "**2. Financial Overview**\n" + split_sections[1].strip()
+        if len(split_sections) > 1
+        else ""
+    )
 
-    #Format bullet point
+    # Format bullet point
     # Format recent email summary as <ul>
-    numbered_line_re = re.compile(r'^\d+\.\s+')
-    strip_number_re = re.compile(r'^\d+\.\s*')
+    numbered_line_re = re.compile(r"^\d+\.\s+")
+    strip_number_re = re.compile(r"^\d+\.\s*")
 
     if recent_email_summary:
-        email_lines = recent_email_summary.split('\n')
+        email_lines = recent_email_summary.split("\n")
         recent_email_summary = (
-            "<ul>" +
-            ''.join(
+            "<ul>"
+            + "".join(
                 f"<li>{line_stripped.strip('•-* ').strip()}</li>"
                 for line in email_lines
-                if (line_stripped := line.strip()).startswith(('•', '-', '*'))
-            ) +
-            "</ul>"
+                if (line_stripped := line.strip()).startswith(("•", "-", "*"))
+            )
+            + "</ul>"
         )
-    
+
     if recent_client_questions:
-        question_lines = recent_client_questions.split('\n')
+        question_lines = recent_client_questions.split("\n")
         recent_client_questions = (
-            "<ol>" +
-            ''.join(
+            "<ol>"
+            + "".join(
                 f"<li>{strip_number_re.sub('', line).strip()}</li>"
                 for line in question_lines
                 if numbered_line_re.match(line.strip())
-            ) +
-            "</ol>"
+            )
+            + "</ol>"
         )
-
-
 
     # Title block with logos
     document_title_html = f"""
@@ -819,10 +835,11 @@ def generate_med_report(result):
     </div>
     """
 
-    #Meeting info block with emojis
+    # Meeting info block with emojis
     client_holdings_html = "".join(
-    f'<span class="client-holding-pill">💼{holding}</span>' for holding in client_holdings_list
-)
+        f'<span class="client-holding-pill">💼{holding}</span>'
+        for holding in client_holdings_list
+    )
     meeting_info_html = f"""
     <div class="box-content" style="position: relative;">
         <table class="meeting-info-table">
@@ -851,7 +868,7 @@ def generate_med_report(result):
     </div>
     """
 
-    #Macro Table section
+    # Macro Table section
     macro_news_df = generate_macro_table()
     financial_snapshot_html = "<table class='financial-snapshot'>"
     financial_snapshot_html += """
@@ -884,11 +901,17 @@ def generate_med_report(result):
 
     financial_snapshot_html += "</tbody></table>"
 
-    #News Resource Section
-    html_client_industry_sources = format_sources_to_html(client_industry_sources, 'Client Industry News')
-    html_client_holdings_sources = format_holdings_to_html(client_holdings_sources, 'Client Holdings News')
-    html_macro_news_sources = format_sources_to_html(macro_news_sources, 'Macro Economic News')
-    
+    # News Resource Section
+    html_client_industry_sources = format_sources_to_html(
+        client_industry_sources, "Client Industry News"
+    )
+    html_client_holdings_sources = format_holdings_to_html(
+        client_holdings_sources, "Client Holdings News"
+    )
+    html_macro_news_sources = format_sources_to_html(
+        macro_news_sources, "Macro Economic News"
+    )
+
     resources_html = f"""
     <div id="resources-content" class="box-content">
         {html_client_industry_sources}
@@ -897,12 +920,10 @@ def generate_med_report(result):
     </div>
     """
 
-
-    #Summary Section
+    # Summary Section
     html_email_section = format_paragraph_summary_to_html(email_sec)
     html_fin_section = format_paragraph_summary_to_html(finance_sec)
 
-    
     # Toggle boxes for "Email Summary" section
     email_section_full = f"""
     <div class="box-main box-content" style="margin-bottom: 8px;">
@@ -922,7 +943,7 @@ def generate_med_report(result):
     </div>
     """
 
-    #Toggle boxes for "Financial News" section
+    # Toggle boxes for "Financial News" section
     financial_section_full = f"""
     <div class="box-main box-content" style="margin-bottom: 8px;">
         <div style="position: relative; margin-bottom: 12px;">
@@ -933,8 +954,7 @@ def generate_med_report(result):
         <div id='macro-snap' class='toggle-box' style='display:none;'>{financial_snapshot_html}</div>
         <div id='resources' class='toggle-box' style='display:none;'> {resources_html}</div>
     </div>
-    """    
-
+    """
 
     # Full HTML document
     full_html = f"""
@@ -1065,13 +1085,13 @@ def generate_med_report(result):
                 gap: 6px;
                 margin-top: 4px;
             }}
-            
+
             .client-holding-pill {{
                 background-color: #2980B9;
                 color: white;
-                padding: 5px 10px;   
-                border-radius: 12px;    
-                font-size: 10px;       
+                padding: 5px 10px;
+                border-radius: 12px;
+                font-size: 10px;
                 white-space: nowrap;
                 box-shadow: 0 1px 3px rgba(0,0,0,0.2);
             }}
@@ -1090,27 +1110,27 @@ def generate_med_report(result):
                 display: block;
                 border: 1px solid #ccc;
             }}
-            
+
             .financial-snapshot thead {{
                 background-color: #f0f4f8;
             }}
-            
-            .financial-snapshot th, 
+
+            .financial-snapshot th,
             .financial-snapshot td {{
                 padding: 10px 12px;
                 text-align: center;
                 border: 1px solid #ddd;
                 white-space: nowrap;
             }}
-            
+
             .financial-snapshot tr:nth-child(even) {{
                 background-color: #fafafa;
             }}
-            
+
             .financial-snapshot tr:hover {{
                 background-color: #f1f8ff;
             }}
-            
+
             @media (max-width: 768px) {{
                 .financial-snapshot {{
                     font-size: 12px;
@@ -1119,23 +1139,23 @@ def generate_med_report(result):
                 }}
             }}
                     </style>
-        
+
         <script>
             function toggleBox(id) {{
                 const allBoxes = [
-                  'overall-box', 'recent-email-box', 'client-questions-box', 
+                  'overall-box', 'recent-email-box', 'client-questions-box',
                   'macro-snap', 'resources'
                 ];
                 allBoxes.forEach(boxId => {{
                     document.getElementById(boxId).style.display = (boxId === id) ?
                         (document.getElementById(boxId).style.display === 'none' ? 'block' : 'none') :
                         'none';
-                }});    
+                }});
             }}
             function toggleThumb(elem, sectionId, isUp) {{
                 const container = elem.parentElement;
                 [...container.children].forEach(sibling => sibling.style.color = '#2980B9');
-        
+
                 if(isUp) {{
                     elem.style.color = '#0000FF'; // bright blue
                     document.getElementById(sectionId).style.display = 'block';
@@ -1144,7 +1164,7 @@ def generate_med_report(result):
                     elem.style.color = '#0000FF';
                 }}
             }}
-                            
+
         </script>
 
     </head>
@@ -1160,7 +1180,7 @@ def generate_med_report(result):
         {email_section_full}
         {financial_section_full}
 
-        
+
     </body>
     </html>
     """
@@ -1168,10 +1188,8 @@ def generate_med_report(result):
     return full_html
 
 
-
-
-def save_html_to_file (html_content: str, filename: str):
-    with open(filename, 'w', encoding='utf-8') as f:
+def save_html_to_file(html_content: str, filename: str):
+    with open(filename, "w", encoding="utf-8") as f:
         f.write(html_content)
 
 
@@ -1180,7 +1198,7 @@ def convert_html_to_pdf(html_string, output_pdf):
         output_pdf,
         stylesheets=None,
         presentational_hints=True,
-        page_size='Letter',
+        page_size="Letter",
     )
 
 

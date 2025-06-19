@@ -1,6 +1,4 @@
-
 from currensee.schema.schema import PostgresTables
-
 
 crm_portfolio_table_desc = """
 This table lists the investment funds held by client companies through their accounts at our bank. Use this table to identify which funds a specific client owns, and how much is invested in each.
@@ -23,7 +21,7 @@ Columns:
 crm_fund_details_desc = """
 This table lists the specific stocks or bonds held within each mutual fund. Funds can be bond funds or equity funds. Use this table to determine which assets are held in a fund.
 
-NOTE: The `position_name` column refers to the name of the stock or bond inside a fund. It does NOT refer to a client company. 
+NOTE: The `position_name` column refers to the name of the stock or bond inside a fund. It does NOT refer to a client company.
 NOTE: Do not use `fund_type` in this table to filter for client fund types (e.g., Equity). Instead, apply the `fund_type` filter in the `portfolio` table — that’s where the type of fund the client owns is defined.
 
 Columns:
@@ -125,28 +123,26 @@ Stores profile information for current Bankwell employees. Assume all individual
 """
 
 crm_table_description_mapping = {
-    'employees': crm_employees_table_desc,
-    'portfolio': crm_portfolio_table_desc,
-    'fund_detail': crm_fund_details_desc,
-    'client_alignment': crm_client_alignment_table_desc,
-    'clients_contact': crm_client_info_table_desc
+    "employees": crm_employees_table_desc,
+    "portfolio": crm_portfolio_table_desc,
+    "fund_detail": crm_fund_details_desc,
+    "client_alignment": crm_client_alignment_table_desc,
+    "clients_contact": crm_client_info_table_desc,
 }
 
-#crm_employees_table_desc = """
-#Use when query involves employee names, coworkers, company workers, employee titles, employee email, employee location, employee #department  employee phone, workers at bankwell or employees at bankwell. If the query mentions our company, use this table to learn about #the employees. All employees listed here work at bankwell.
+# crm_employees_table_desc = """
+# Use when query involves employee names, coworkers, company workers, employee titles, employee email, employee location, employee #department  employee phone, workers at bankwell or employees at bankwell. If the query mentions our company, use this table to learn about #the employees. All employees listed here work at bankwell.
 
-#Columns:
+# Columns:
 # - employee_id (PK)
-# - employee_first_name: First name 
-# - employee_last_name: Last name 
-# - title: corporate title 
-# - email: email address 
-# - phone: phone number 
+# - employee_first_name: First name
+# - employee_last_name: Last name
+# - title: corporate title
+# - email: email address
+# - phone: phone number
 # - hire_date: date the employee was hired
 # - department: what department the employee works in
-#"""
-
-
+# """
 
 
 outlook_email_table_desc = """
@@ -191,7 +187,6 @@ Stores email communications involving Jane Moneypenny (`jane.moneypenny1@outlook
 
 
 """
-
 
 
 outlook_meeting_table_desc = """
@@ -241,12 +236,9 @@ This table contains records of past meetings hosted by Jane Moneypenny.
 """
 
 outlook_table_description_mapping = {
-    'email_data': outlook_email_table_desc,
-    'meeting_data': outlook_meeting_table_desc
+    "email_data": outlook_email_table_desc,
+    "meeting_data": outlook_meeting_table_desc,
 }
-
-
-
 
 
 #################################
@@ -256,19 +248,19 @@ outlook_table_description_mapping = {
 #################################
 
 
-#table_desc = """\
-#This table represents text chunks from an SEC filing. Each row contains the following columns:
+# table_desc = """\
+# This table represents text chunks from an SEC filing. Each row contains the following columns:
 
-#id: id of row
-#page_label: page number 
-#file_name: top-level file name
-#text: all text chunk is here
-#embedding: the embeddings representing the text chunk
+# id: id of row
+# page_label: page number
+# file_name: top-level file name
+# text: all text chunk is here
+# embedding: the embeddings representing the text chunk
 
-#For most queries you should perform semantic search against the `embedding` column values, since \
-#that encodes the meaning of the text.
+# For most queries you should perform semantic search against the `embedding` column values, since \
+# that encodes the meaning of the text.
 
-#"""
+# """
 
 
 # salesforce_account_table_desc = """
@@ -310,4 +302,3 @@ outlook_table_description_mapping = {
 
 
 # """
-

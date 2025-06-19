@@ -43,11 +43,22 @@ dependencies = [
     "seaborn>=0.13.2,<0.14.0",
     "tabulate>=0.9.0,<0.10.0",
     "markdown>=3.8,<4.0",
-    "weasyprint>=65.1,<66.0"
+    "weasyprint>=65.1,<66.0",
+    "pre-commit (>=4.2.0,<5.0.0)"
 ]
 
 
 [tool.poetry]
+name = "currensee"
+version = "0.1.0"
+description = "Conversational AI interface to aid in client-facing work using data from Microsoft 365, Google products, earnings reports, and more."
+authors = [
+    "Lily Campbell <lilycampbell@uchicago.edu>",
+    "Xiaojing Fang <xjfang@uchicago.edu>",
+    "Gretchen Forbush <forbug@uchicago.edu>",
+    "Stepan Ochodek <sochodek@uchicago.edu>",
+    "Alen Pavlovic <apavlovic@uchicago.edu>"
+]
 packages = [
     { include = "currensee", from = "src" }
 ]

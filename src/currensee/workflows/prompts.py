@@ -1,5 +1,3 @@
-
-
 text_to_sql_tmpl = """
     Given an input question, first create a syntactically correct {dialect} query to run, then look at the results of the query and return the answer.
     You can order the results by the find_date column (from earliest to latest) to return the most interesting examples in the database.
@@ -29,7 +27,6 @@ text_to_sql_tmpl = """
     Question: {query_str}
     SQLQuery:
 """
-
 
 
 response_synthesis_prompt_str = """
