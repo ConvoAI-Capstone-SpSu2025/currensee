@@ -44,6 +44,7 @@ dependencies = [
     "tabulate>=0.9.0,<0.10.0",
     "markdown>=3.8,<4.0",
     "weasyprint>=65.1,<66.0",
+    "uvicorn>=0.32.1,<0.33.0",
     "pre-commit (>=4.2.0,<5.0.0)"
 ]
 
