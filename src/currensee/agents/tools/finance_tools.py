@@ -122,7 +122,7 @@ def retrieve_client_industry_news(state: SupervisorState) -> str:
     sort_param = f"date:r:{google_start}:{google_end}"  # Google's date range format
 
     # Search with date filter
-    search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Pass sort parameter
+    search = GoogleSerperAPIWrapper(k=40, sort=sort_param)  # Pass sort parameter
     filled_query = query_ci.format(
         site_filter=site_filter, client_company=client_company, industry=industry
     )
@@ -132,7 +132,10 @@ def retrieve_client_industry_news(state: SupervisorState) -> str:
         sorted_results_client = sorted(
             results.get("organic", []), key=score_result, reverse=True
         )
-        industry_summary = sorted_results_client
+        
+        top_results = sorted_results_client[:30]
+        industry_summary = top_results
+        
     else:
         industry_summary = "No results found for client or industry news."
 
@@ -146,15 +149,15 @@ def retrieve_client_industry_news(state: SupervisorState) -> str:
 def retrieve_macro_news(state: SupervisorState) -> str:
     """Return the most relevant macroeconomic news based on the query."""
 
-    start_date = state["meeting_timestamp"]
-    end_date = state["last_meeting_timestamp"]
+    start_date = state["last_meeting_timestamp"]
+    end_date = state["meeting_timestamp"]
 
     google_start = format_google_date(start_date)
     google_end = format_google_date(end_date)
 
     sort_param = f"date:r:{google_start}:{google_end}"
 
-    search = GoogleSerperAPIWrapper(k=30, sort=sort_param)  # Pass sort parameter
+    search = GoogleSerperAPIWrapper(k=40, sort=sort_param)
     filled_query = query_mn.format(site_filter=site_filter)
     results = search.results(filled_query)
 
@@ -162,7 +165,9 @@ def retrieve_macro_news(state: SupervisorState) -> str:
         sorted_results_econ = sorted(
             results.get("organic", []), key=score_result, reverse=True
         )
-        macro_summary = sorted_results_econ
+        
+        top_results = sorted_results_econ[:30]
+        macro_summary = top_results
     else:
         macro_summary = "No results found for macroeconomic events."
 

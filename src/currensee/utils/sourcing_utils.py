@@ -153,37 +153,75 @@ def extract_claim_url_pairs(response_text: str) -> list[tuple[str, list[str]]]:
     return claim_url_pairs
 
 
+# def insert_links_into_summary(
+#     summary: str, claim_url_pairs: list[tuple[str, list[str]]]
+# ) -> str:
+#     """
+#     Inserts Markdown-style [Source] links after corresponding claims in the summary.
+#     Only includes up to 3 sources per claim (truncates any extra).
+#     """
+#     updated_summary = summary
+
+#     for claim, urls in claim_url_pairs:
+#         truncated_urls = urls[:3]  # Truncate to at most 3 URLs
+
+#         if len(truncated_urls) == 1:
+#             link_text = f" ([Source]({truncated_urls[0]}))"
+#         else:
+#             link_text = (
+#                 " ("
+#                 + ", ".join(
+#                     f"[Source {i+1}]({url})" for i, url in enumerate(truncated_urls)
+#                 )
+#                 + ")"
+#             )
+
+#         pattern = re.escape(claim)
+#         replacement = f"{claim}{link_text}"
+
+#         updated_summary, count = re.subn(pattern, replacement, updated_summary, count=1)
+#     #  if count == 0:
+#     #     print(f" Could not find claim in summary: '{claim}'")
+
+#     return updated_summary
+
+
 def insert_links_into_summary(
     summary: str, claim_url_pairs: list[tuple[str, list[str]]]
 ) -> str:
     """
-    Inserts Markdown-style [Source] links after corresponding claims in the summary.
+    Inserts Markdown-style numbered links after corresponding claims in the summary.
     Only includes up to 3 sources per claim (truncates any extra).
     """
     updated_summary = summary
+    global_index = 1 
 
     for claim, urls in claim_url_pairs:
-        truncated_urls = urls[:3]  # Truncate to at most 3 URLs
+        truncated_urls = urls[:3]
 
         if len(truncated_urls) == 1:
-            link_text = f" ([Source]({truncated_urls[0]}))"
+            link_text = f" ([{global_index}]({truncated_urls[0]}))"
+            global_index += 1
         else:
             link_text = (
                 " ("
                 + ", ".join(
-                    f"[Source {i+1}]({url})" for i, url in enumerate(truncated_urls)
+                    f"[{global_index + i}]({url})" for i, url in enumerate(truncated_urls)
                 )
                 + ")"
             )
+            global_index += len(truncated_urls)
 
         pattern = re.escape(claim)
         replacement = f"{claim}{link_text}"
 
         updated_summary, count = re.subn(pattern, replacement, updated_summary, count=1)
-    #  if count == 0:
-    #     print(f" Could not find claim in summary: '{claim}'")
+        # if count == 0:
+        #     print(f"Could not find claim in summary: '{claim}'")
 
     return updated_summary
+
+
 
 
 def get_fin_linked_summary(state: SupervisorState) -> str:
