@@ -44,17 +44,6 @@ Follow the instructions here:
 - Click **Save**
 
 
-
-
-## Installation
-
-The API is part of the main Currensee project. Ensure you have the project dependencies installed:
-
-```bash
-cd /Users/gforbus/Documents/Personal/currensee
-poetry install
-```
-
 ## Running the Server
 
 ### Option 1: Using the startup script (recommended)
@@ -103,28 +92,6 @@ If you see "Error: Cannot read properties of null (reading 'document')", make su
 Press ctrl+c to shut down server
 
 
-## API Endpoints
-
-### Health Check
-- **GET** `/health` - Health status for monitoring
-
-### Outlook UI
-- **GET** `/` - Access Outlook UI page
-
-### Report Generation
-- **POST** `/generate-report` - Execute graph and return JSON results
-- **POST** `/generate-report/html` - Execute graph and return HTML report
-- **POST** `/generate-report/pdf` - Execute graph and return PDF download
-
-### Demo Endpoints (for testing)
-- **GET** `/demo` - Demo with sample data (JSON)
-- **GET** `/demo/html` - Demo with sample data (HTML)
-- **GET** `/demo/pdf` - Demo with sample data (PDF)
-
-### API Documentation
-- **GET** `/docs` - Interactive Swagger UI
-- **GET** `/redoc` - ReDoc documentation
-
 ## Request Format
 
 All POST endpoints expect a JSON payload with the following structure:
@@ -147,147 +114,188 @@ All POST endpoints expect a JSON payload with the following structure:
 - `meeting_description` (required): Description of the meeting
 - `report_length` (optional): One of "short", "medium", or "long" (default: "long")
 
-## Response Formats
+## Key Features Implemented
 
-### JSON Response (`/generate-report`)
-```json
-{
-  "success": true,
-  "data": {
-    "client_name": "John Doe",
-    "final_summary_sourced": "...",
-    // ... other graph execution results
-  },
-  "execution_time": 45.67
-}
+### 1. **Core API Endpoints**
+- **POST** `/generate-report` - Execute graph and return JSON results
+- **POST** `/generate-report/html` - Execute graph and return HTML report
+- **POST** `/generate-report/pdf` - Execute graph and return PDF download
+- **GET** `/health` - Health check for monitoring
+- **GET** `/` - Basic health check
+
+### 2. **Demo Endpoints for Testing**
+- **GET** `/demo` - Demo with sample data (JSON)
+- **GET** `/demo/html` - Demo with sample data (HTML) 
+- **GET** `/demo/pdf` - Demo with sample data (PDF)
+
+### 3. **Input Validation & Error Handling**
+- Comprehensive Pydantic models for request validation
+- Email format validation
+- Timestamp format validation (YYYY-MM-DD HH:MM:SS)
+- Report length validation (short/medium/long)
+- Proper HTTP status codes and error messages
+- Timeout protection for long-running graph executions
+
+### 4. **Multiple Output Formats**
+- **JSON**: Raw graph execution results with metadata
+- **HTML**: Styled reports using existing `output_utils` functions
+- **PDF**: Downloadable PDF reports with proper filenames
+
+### 5. **Configuration Management**
+- Environment variable support
+- CORS configuration for Outlook integration
+- Configurable timeouts and rate limits
+- Debug/production mode settings
+
+### 6. **Security & Production Features**
+- CORS middleware configured for Outlook domains
+- Input sanitization and validation
+- Comprehensive logging
+- Error handling without information leakage
+- Timeout protection
+
+## Technical Implementation Details
+
+### FastAPI Application (`main.py`)
+- Uses async/await for non-blocking operations
+- Implements graph execution with timeout protection using `asyncio.wait_for`
+- Leverages existing `output_utils` for HTML/PDF generation
+- Provides comprehensive error handling and logging
+
+### Configuration System (`config.py`)
+- Centralized settings management
+- Environment variable override support
+- Production-ready defaults
+- CORS origins configured for Outlook integration
+
+### Input/Output Models
+```python
+class ClientRequest(BaseModel):
+    client_name: str
+    client_email: str  # Validated
+    meeting_timestamp: str  # Format validated
+    meeting_description: str
+    report_length: Optional[str] = "long"  # Validated against allowed values
+
+class GraphResponse(BaseModel):
+    success: bool
+    data: Optional[dict] = None
+    error: Optional[str] = None
+    execution_time: Optional[float] = None
 ```
 
-### HTML Response (`/generate-report/html`)
-Returns a complete HTML document with styled report content.
+### Integration with Existing Codebase
+The API seamlessly integrates with the existing Currensee codebase:
+- Imports `compiled_graph` from `currensee.agents.complete_graph`
+- Uses `generate_long_report`, `generate_med_report`, `generate_short_report` from `currensee.utils.output_utils`
+- Maintains the same state structure as defined in `SupervisorState`
 
-### PDF Response (`/generate-report/pdf`)
-Returns a PDF file as a download with filename: `currensee_report_{meeting_desc}_{timestamp}.pdf`
+## How to Use
 
-## Configuration
-
-Configuration is handled in `api/config.py`. Key settings include:
-
-- `HOST`: Server host (default: "0.0.0.0")
-- `PORT`: Server port (default: 8000)
-- `DEBUG`: Debug mode (default: false)
-- `GRAPH_EXECUTION_TIMEOUT`: Timeout for graph execution (default: 300 seconds)
-- `CORS_ORIGINS`: Allowed origins for CORS
-
-## Environment Variables
-
-You can override configuration using environment variables:
-
+### 1. **Start the Server**
 ```bash
-export HOST=localhost
-export PORT=8080
-export DEBUG=true
-export GRAPH_EXECUTION_TIMEOUT=600
+# Option 1: Use the startup script (recommended)
+python api/server.py
+
+# Option 2: Use uvicorn directly
+uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+# Option 3: With environment variables
+export HOST=localhost PORT=8080 DEBUG=true
+python api/server.py
 ```
 
-## Error Handling
+### 2. **Test with the Browser Client**
+Open `api/test_client.html` in a web browser to test all functionality interactively.
 
-The API provides comprehensive error handling:
-
-- **400 Bad Request**: Invalid input data or validation errors
-- **422 Unprocessable Entity**: Pydantic validation errors
-- **500 Internal Server Error**: Graph execution errors or server issues
-- **504 Gateway Timeout**: Graph execution timeout
-
-## Usage Examples
-
-### Using curl
-
+### 3. **API Request Example**
 ```bash
-# Test the health endpoint
-curl http://localhost:8000/health
-
-# Generate a report (JSON)
-curl -X POST http://localhost:8000/generate-report \
-  -H "Content-Type: application/json" \
-  -d '{
-    "client_name": "John Doe",
-    "client_email": "john.doe@company.com",
-    "meeting_timestamp": "2024-03-26 11:00:00",
-    "meeting_description": "Client Review Meeting",
-    "report_length": "medium"
-  }'
-
-# Download PDF report
 curl -X POST http://localhost:8000/generate-report/pdf \
   -H "Content-Type: application/json" \
   -d '{
     "client_name": "John Doe",
     "client_email": "john.doe@company.com",
     "meeting_timestamp": "2024-03-26 11:00:00",
-    "meeting_description": "Client Review Meeting"
+    "meeting_description": "Annual Review Meeting",
+    "report_length": "long"
   }' \
   --output report.pdf
 ```
 
-### Using Python requests
+### 4. **Integration with Outlook Add-in**
+The API is designed to work with Outlook add-ins:
+- CORS configured for Outlook domains
+- JSON/HTML/PDF output formats
+- Proper error handling for UI consumption
+- Timeout protection for user experience
 
-```python
-import requests
+## Testing
 
-# Client data
-data = {
-    "client_name": "John Doe",
-    "client_email": "john.doe@company.com",
-    "meeting_timestamp": "2024-03-26 11:00:00",
-    "meeting_description": "Client Review Meeting",
-    "report_length": "long"
-}
+### Automated Tests (`test_api.py`)
+- Health check validation
+- Input validation testing
+- Demo endpoint verification
+- Error handling verification
 
-# Generate JSON report
-response = requests.post("http://localhost:8000/generate-report", json=data)
-result = response.json()
+### Interactive Testing (`test_client.html`)
+- Web-based test interface
+- Real-time API connectivity testing
+- All output formats supported
+- Pre-filled with sample data
 
-# Download PDF
-pdf_response = requests.post("http://localhost:8000/generate-report/pdf", json=data)
-with open("report.pdf", "wb") as f:
-    f.write(pdf_response.content)
-```
-
-## Integration with Outlook
-
-The API is designed to work with Outlook add-ins. Key considerations:
-
-1. **CORS**: Configured to allow requests from Outlook domains
-2. **Authentication**: Currently no authentication - add if needed for production
-3. **Rate Limiting**: Not implemented - consider adding for production use
-4. **SSL/TLS**: Use HTTPS in production for security
-
-## Logging
-
-The API uses Python's built-in logging. In debug mode, you'll see detailed request/response information. In production, only INFO level and above are logged.
-
-## Development
-
-To extend the API:
-
-1. Add new endpoints in `api/main.py`
-2. Update configuration in `api/config.py`
-3. Add new response models as needed
-4. Update this README with new functionality
-
-## Production Deployment
-
-For production deployment:
-
-1. Set `DEBUG=false`
-2. Configure specific CORS origins
-3. Use a production ASGI server like Gunicorn with Uvicorn workers
-4. Add authentication/authorization as needed
-5. Implement rate limiting
-6. Use HTTPS/SSL
-7. Set up proper logging and monitoring
-
-Example production command:
+### Manual Testing
 ```bash
-gunicorn api.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+# Run the test suite
+python api/test_api.py
+
+# Test specific endpoints
+curl http://localhost:8000/health
+curl http://localhost:8000/demo/html
 ```
+
+## Production Considerations
+
+### Security
+- Currently no authentication (add as needed)
+- CORS configured for specific domains
+- Input validation and sanitization
+- Error messages don't leak sensitive information
+
+### Performance
+- Async operation support
+- Configurable timeouts (default: 5 minutes)
+- Efficient PDF generation
+- Proper memory management for large reports
+
+### Monitoring
+- Health check endpoints
+- Comprehensive logging
+- Execution time tracking
+- Error tracking and reporting
+
+### Deployment
+- Environment variable configuration
+- Production-ready defaults
+- Support for Gunicorn with Uvicorn workers
+- SSL/HTTPS ready
+
+## Benefits for Outlook Integration
+
+1. **Multiple Output Formats**: UI can choose JSON for processing, HTML for preview, or PDF for download
+2. **CORS Support**: Configured to work with Outlook domains out of the box
+3. **Error Handling**: Proper HTTP status codes and error messages for UI consumption
+4. **Timeout Protection**: Prevents UI from hanging on long-running operations
+5. **Validation**: Client-side validation errors are clearly communicated
+6. **Demo Endpoints**: Easy testing and development support
+
+## Next Steps
+
+1. **Authentication**: Add OAuth or API key authentication if needed
+2. **Rate Limiting**: Implement rate limiting for production use
+3. **Caching**: Add caching for frequently generated reports
+4. **Monitoring**: Add application performance monitoring
+5. **SSL/HTTPS**: Configure SSL certificates for production
+6. **Database**: Add database logging for audit trails
+7. **Webhooks**: Add webhook support for async processing
+
+The API is ready for immediate use and can be easily extended with additional features as needed.
