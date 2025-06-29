@@ -78,17 +78,6 @@ If you decide to use VSCode, these extensions will make your experience much eas
 
 2. If you wish to use another environment manager (e.g., conda, pyenv), ensure you install all dependencies listed in [pyproject.toml](pyproject.toml).
 
-3. Initialize pre-commit
-
-    Pre-commit refers to a framework that manages and maintains scripts, called pre-commit hooks, that run automatically before a code commit is finalized in a version control system like Git.
-    Think of it like a quality control checkpoint before your code changes are officially recorded in the project's history.
-
-    Run the command below to ensure that pre-commit runs each time you commit files.
-
-    ```bash
-    pre-commit install
-    ```
-
 #### Environment Variables
 
 - Copy `.env.example` to `.env` and fill in any required secrets or configuration values.
