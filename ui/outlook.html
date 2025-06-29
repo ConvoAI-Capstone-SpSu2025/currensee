@@ -555,7 +555,7 @@
                 <h1 class="content-title">Client Email Summary & Report Generation</h1>
                 <div class="api-status" id="apiStatus">Checking connection...</div>
             </div>
-            
+
             <div class="content-body">
                 <!-- Client Information Form -->
                 <div class="form-section">
@@ -573,7 +573,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="meetingTimestamp">Meeting Date & Time *</label>
-                            <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00" 
+                            <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00"
                                    placeholder="YYYY-MM-DD HH:MM:SS" required>
                         </div>
                         <div class="form-group">
@@ -604,7 +604,7 @@
                             <p>Generate and download a professional PDF report ready for client presentation.</p>
                         </div>
                     </div>
-                    
+
                     <div class="button-group">
                         <button class="btn btn-secondary" onclick="generateReport('html')">
                             <i class="fas fa-eye"></i> Preview HTML
@@ -626,7 +626,7 @@
 
     <script>
         const API_BASE_URL = 'http://localhost:8000';
-        
+
         // Check API connection on page load
         async function checkApiConnection() {
             const statusElement = document.getElementById('apiStatus');
@@ -657,11 +657,11 @@
         function showStatus(message, type) {
             const statusElement = document.getElementById('statusMessage');
             const progressContainer = document.getElementById('progressContainer');
-            
+
             statusElement.textContent = message;
             statusElement.className = `status-message ${type}`;
             statusElement.style.display = 'block';
-            
+
             if (type === 'loading') {
                 progressContainer.style.display = 'block';
                 animateProgress();
@@ -690,7 +690,7 @@
 
         async function generateReport(format) {
             const data = getFormData();
-            
+
             // Validate required fields
             if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
                 showStatus('Please fill in all required fields', 'error');
@@ -736,7 +736,7 @@
                     const result = await response.json();
                     showStatus(`JSON report generated successfully! ${result.execution_time ? `Completed in ${result.execution_time.toFixed(2)} seconds.` : ''}`, 'success');
                     console.log('Report result:', result);
-                    
+
                     // Optionally display some key metrics
                     if (result.data && result.data.final_summary_sourced) {
                         // You could show a preview of the summary here
@@ -744,23 +744,23 @@
                 } else if (format === 'html') {
                     const html = await response.text();
                     showStatus('HTML report generated successfully! Opening in new window...', 'success');
-                    
+
                     const newWindow = window.open('', '_blank');
                     newWindow.document.write(html);
                     newWindow.document.close();
                 } else if (format === 'pdf') {
                     const blob = await response.blob();
                     showStatus('PDF report generated successfully! Download started.', 'success');
-                    
+
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    
+
                     // Generate a more descriptive filename
                     const clientName = data.client_name.replace(/[^a-zA-Z0-9]/g, '_');
                     const timestamp = new Date().toISOString().slice(0,19).replace(/[:-]/g, '');
                     a.download = `currensee_${clientName}_${timestamp}.pdf`;
-                    
+
                     document.body.appendChild(a);
                     a.click();
                     window.URL.revokeObjectURL(url);
@@ -801,11 +801,11 @@
             item.addEventListener('click', () => {
                 document.querySelectorAll('.email-item').forEach(i => i.classList.remove('selected'));
                 item.classList.add('selected');
-                
+
                 // You could populate the form with email data here
                 const sender = item.querySelector('.email-sender').textContent;
                 const subject = item.querySelector('.email-subject').textContent;
-                
+
                 if (sender === 'Adam Clay') {
                     document.getElementById('clientName').value = 'Adam Clay';
                     document.getElementById('clientEmail').value = 'adam.clay@compass.com';
