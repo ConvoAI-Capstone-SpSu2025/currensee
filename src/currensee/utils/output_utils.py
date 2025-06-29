@@ -481,6 +481,14 @@ def generate_long_report(result):
 
 
         {html_linked_summary}
+        <div class="feedback-buttons">
+            <button onclick="handleFeedback(this, 'more')">I want to see more of this</button>
+            <button onclick="handleFeedback(this, 'less')">I do not want to see this</button>
+        </div>
+        <div class="feedback-message" style="display:none; margin-top:5px; color: green;">
+            Got it! We'll remember it next time.
+        </div>
+            
 
         <h2>Macro-Economic Snapshot</h2>
         <div class="box-content">
@@ -495,6 +503,22 @@ def generate_long_report(result):
         </div>
 
     </body>
+    <script>
+    function handleFeedback(button, type) {
+        const feedbackSection = button.closest('.feedback-section');
+        const buttons = feedbackSection.querySelector('.feedback-buttons');
+        const message = feedbackSection.querySelector('.feedback-message');
+    
+        buttons.style.display = 'none';
+        message.style.display = 'block';
+    
+        setTimeout(() => {
+            message.style.display = 'none';
+        }, 5000);
+    }
+    </script>
+
+    
     </html>
     """
 

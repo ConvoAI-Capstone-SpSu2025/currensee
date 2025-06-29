@@ -98,16 +98,15 @@ app.mount("/static", StaticFiles(directory=BASE_DIR / "ui"), name="static")
 
 
 @app.get("/", response_class=HTMLResponse)
-async def serve_outlook():
-    """Serve the Outlook HTML UI at the root path `/`"""
-    outlook_path = BASE_DIR / "ui" / "outlook.html"
-    if not outlook_path.exists():
+async def serve_notification():
+    """Serve the notification HTML UI at root /"""
+    notification_path = BASE_DIR / "ui" / "notification.html"
+    if not notification_path.exists():
         return HTMLResponse(
-            content="<h1>Outlook HTML file not found</h1>", status_code=404
+            content="<h1>Notification HTML file not found</h1>", status_code=404
         )
-    content = outlook_path.read_text(encoding="utf-8")
+    content = notification_path.read_text(encoding="utf-8")
     return HTMLResponse(content=content)
-
 
 @app.get("/health")
 async def health_check():
@@ -248,6 +247,18 @@ async def generate_report_pdf(request: ClientRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/outlook", response_class=HTMLResponse)
+async def serve_outlook():
+    """Serve the Outlook HTML UI at /outlook"""
+    outlook_path = BASE_DIR / "ui" / "outlook.html"
+    if not outlook_path.exists():
+        return HTMLResponse(
+            content="<h1>Outlook HTML file not found</h1>", status_code=404
+        )
+    content = outlook_path.read_text(encoding="utf-8")
+    return HTMLResponse(content=content)
+
+
 
 @app.get("/demo")
 async def demo_endpoint():
@@ -308,6 +319,9 @@ async def demo_pdf():
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+
 
 
 if __name__ == "__main__":

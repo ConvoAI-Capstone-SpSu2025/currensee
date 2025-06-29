@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,42 +22,66 @@
         }
 
         /* Top Bar */
-        .top-bar {
-            background: #106ebe;
-            color: white;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            padding: 0 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .top-bar .logo {
-            font-size: 18px;
-            font-weight: 600;
-            margin-right: 20px;
-        }
-
-        .top-bar .search-box {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 3px;
-            padding: 6px 12px;
-            color: white;
-            width: 300px;
-        }
-
-        .top-bar .search-box::placeholder {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .top-bar .user-info {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+    .top-bar {
+        background: #0078d4;
+        color: white;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .top-bar .logo {
+        font-size: 18px;
+        font-weight: 600;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .search-box {
+        flex: 1;
+        max-width: 400px;
+        margin-left: 40px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: none;
+        font-size: 14px;
+        background-color: rgba(255,255,255,0.9);
+        color: #323130;
+    }
+    
+    .top-bar .user-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-left: auto;
+    }
+    
+    .top-bar .user-info i {
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    
+    .top-bar .user-info i:hover {
+        color: #d0e7ff;
+    }
+    
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        background-color: #106ebe;
+        color: white;
+        font-weight: bold;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
         /* Ribbon */
         .ribbon {
             background: #f3f2f1;
@@ -221,7 +246,7 @@
             border-bottom: 1px solid #edebe9;
             padding: 16px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
         }
 
@@ -236,6 +261,7 @@
             overflow-y: auto;
             flex: 1;
         }
+        
 
         /* Forms */
         .form-section {
@@ -442,38 +468,70 @@
             font-size: 13px;
             line-height: 1.4;
         }
+
+         /* Change User Input to Readonly */
+        .form-section.read-only {
+            opacity: 0.6;
+            font-size: 13px;
+        }        
+
+        .form-section.read-only input,
+        .form-section.read-only textarea,
+        .form-section.read-only select {
+            background-color: #f3f2f1;
+            border-color: #d1d1d1;
+            color: #605e5c;
+            pointer-events: none;
+        }        
+
+        
     </style>
 </head>
 <body>
+    
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="logo">
-            <i class="fas fa-chart-line"></i> Currensee
+            <i class="fas fa-envelope-open-text"></i> OutlookMail
         </div>
-        <input type="text" class="search-box" placeholder="Search emails, clients, reports...">
+    
+        <input type="text" class="search-box" placeholder="Search mail and people">
+    
         <div class="user-info">
-            <span>Welcome, User</span>
-            <i class="fas fa-user-circle" style="font-size: 20px;"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-question-circle"></i>
+            <i class="fas fa-cog"></i>
+            <div class="user-avatar">
+                <span>J</span>
+            </div>
         </div>
     </div>
-
+    
     <!-- Ribbon -->
     <div class="ribbon">
         <div class="ribbon-section active">
-            <i class="fas fa-home ribbon-icon"></i>
-            <span class="ribbon-text">Home</span>
+            <i class="fas fa-inbox ribbon-icon"></i>
+            <span class="ribbon-text">Mail</span>
         </div>
         <div class="ribbon-section">
-            <i class="fas fa-envelope ribbon-icon"></i>
-            <span class="ribbon-text">Emails</span>
+            <i class="fas fa-calendar-alt ribbon-icon"></i>
+            <span class="ribbon-text">Calendar</span>
         </div>
         <div class="ribbon-section">
-            <i class="fas fa-file-pdf ribbon-icon"></i>
-            <span class="ribbon-text">Reports</span>
+            <i class="fas fa-user-friends ribbon-icon"></i>
+            <span class="ribbon-text">People</span>
         </div>
         <div class="ribbon-section">
-            <i class="fas fa-chart-bar ribbon-icon"></i>
-            <span class="ribbon-text">Analytics</span>
+            <i class="fas fa-tasks ribbon-icon"></i>
+            <span class="ribbon-text">Tasks</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-file-alt ribbon-icon"></i>
+            <span class="ribbon-text">Files</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-chart-line ribbon-icon"></i>
+            <span class="ribbon-text">Insights</span>
         </div>
         <div class="ribbon-section">
             <i class="fas fa-cog ribbon-icon"></i>
@@ -484,38 +542,52 @@
     <!-- Main Layout -->
     <div class="main-layout">
         <!-- Navigation Pane -->
-        <div class="nav-pane">
-            <div class="nav-section">
-                <h3>Currensee</h3>
-                <div class="nav-item active">
-                    <i class="fas fa-users"></i>
-                    Client Summaries
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-file-alt"></i>
-                    Reports
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-calendar"></i>
-                    Meetings
-                </div>
+    <div class="nav-pane">
+        <div class="nav-section main-folders">
+            <h3>Mail Folders</h3>
+            <div class="nav-item active">
+                <i class="fas fa-inbox"></i>
+                Inbox
             </div>
-            <div class="nav-section">
-                <h3>Recent Clients</h3>
-                <div class="nav-item">
-                    <i class="fas fa-building"></i>
-                    Compass Inc.
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-building"></i>
-                    TechCorp Ltd.
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-building"></i>
-                    Global Finance
-                </div>
+            <div class="nav-item">
+                <i class="fas fa-paper-plane"></i>
+                Sent
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                Drafts
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-star"></i>
+                Important
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-trash-alt"></i>
+                Deleted Items
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-archive"></i>
+                Archive
             </div>
         </div>
+    
+        <!-- Currensee New Add On -->
+        <div class="nav-section recent-clients">
+            <h3>Recent Clients</h3>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                Compass Inc.
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                TechCorp Ltd.
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                Global Finance
+            </div>
+        </div>
+    </div>
 
         <!-- Email List Pane -->
         <div class="email-list-pane">
@@ -551,43 +623,48 @@
 
         <!-- Main Content Pane -->
         <div class="content-pane">
-            <div class="content-header">
-                <h1 class="content-title">Client Email Summary & Report Generation</h1>
-                <div class="api-status" id="apiStatus">Checking connection...</div>
-            </div>
-
+<div class="content-header" style="display: flex; align-items: center; gap: 12px;">
+    <i class="fas fa-chart-line" style="font-size: 28px; color: #106ebe;"></i>
+    <h1 class="content-title" style="margin: 0;">Currensee Client Summary & Email Report</h1>
+</div>
             <div class="content-body">
-                <!-- Client Information Form -->
-                <div class="form-section">
-                    <h3><i class="fas fa-user"></i> Client Information</h3>
+                <!-- Client Information (Read-Only) -->
+             <h3><i class="fas fa-user"></i> Client Information</h3>
+                <div class="form-section read-only">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="clientName">Client Name *</label>
+                            <label for="clientName">Client Name</label>
                             <input type="text" id="clientName" value="Adam Clay" required>
                         </div>
                         <div class="form-group">
-                            <label for="clientEmail">Client Email *</label>
+                            <label for="clientEmail">Client Email</label>
                             <input type="email" id="clientEmail" value="adam.clay@compass.com" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="meetingTimestamp">Meeting Date & Time *</label>
+                            <label for="meetingTimestamp">Meeting Date & Time</label>
                             <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00"
                                    placeholder="YYYY-MM-DD HH:MM:SS" required>
                         </div>
-                        <div class="form-group">
-                            <label for="reportLength">Report Length</label>
-                            <select id="reportLength">
-                                <option value="short">Short Report</option>
-                                <option value="medium">Medium Report</option>
-                                <option value="long" selected>Long Report</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="meetingDescription">Meeting Description *</label>
+                        <label for="meetingDescription">Meeting Description</label>
                         <textarea id="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
+                    </div>
+                </div>
+        
+                <!-- NEW: Report Type Selector -->
+                <div class="form-section">
+                    <h3><i class="fas fa-sliders-h"></i> Report Type</h3>
+                    <div class="form-group">
+                        <label for="reportLength">Select Report Length</label>
+                            <select id="reportLength">
+                                <option value="short">Snapshot</option>
+                                <option value="medium">Interactive Report</option>
+                                <option value="long" selected>Full Report</option>
+                                <option value="customized" selected> Customized Report</option>
+                            </select>
                     </div>
                 </div>
 
