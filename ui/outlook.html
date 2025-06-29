@@ -595,10 +595,6 @@
                 <div class="form-section">
                     <h3><i class="fas fa-file-alt"></i> Generate Reports</h3>
                     <div class="report-options">
-                        <div class="report-option" onclick="generateReport('json')">
-                            <h4><i class="fas fa-code"></i> JSON Data</h4>
-                            <p>Get the raw data from the agent graph execution in JSON format for further processing.</p>
-                        </div>
                         <div class="report-option" onclick="generateReport('html')">
                             <h4><i class="fas fa-globe"></i> HTML Preview</h4>
                             <p>View a formatted HTML report in a new window for review before generating PDF.</p>
@@ -610,9 +606,6 @@
                     </div>
                     
                     <div class="button-group">
-                        <button class="btn btn-primary" onclick="generateReport('json')">
-                            <i class="fas fa-code"></i> Generate JSON
-                        </button>
                         <button class="btn btn-secondary" onclick="generateReport('html')">
                             <i class="fas fa-eye"></i> Preview HTML
                         </button>
@@ -707,10 +700,6 @@
             let endpoint;
             let buttonText;
             switch(format) {
-                case 'json':
-                    endpoint = '/generate-report';
-                    buttonText = 'JSON report';
-                    break;
                 case 'html':
                     endpoint = '/generate-report/html';
                     buttonText = 'HTML report';

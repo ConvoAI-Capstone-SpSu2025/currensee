@@ -16,6 +16,36 @@ This API serves as a bridge between Outlook add-ins or other UI applications and
 - **Error Handling**: Proper error responses and logging
 - **Timeout Protection**: Prevents long-running requests from hanging
 
+## Pre-Setup
+
+### 1. Configure the Poetry Environment
+
+Follow the instructions here:
+[Currensee README.md](https://github.com/ConvoAI-Capstone-SpSu2025/currensee/blob/main/README.md)
+
+
+### 2. Set Up the Cloud SQL Connection
+
+#### Step 1: Find the External IP of Your JupyterLab VM
+
+- Go to [VM Instances](https://console.cloud.google.com/compute/instances?project=adsp-34002-on02-sopho-scribe&authuser=1)
+- Locate your **JupyterLab VM**
+- Copy the **External IP address** (e.g., `34.91.100.45`)
+
+#### Step 2: Add the IP to Cloud SQL Authorized Networks
+
+- Visit [Cloud SQL Networking](https://console.cloud.google.com/sql/instances/currensee-sql/connections/networking?authuser=1&project=adsp-34002-on02-sopho-scribe)
+- Select your SQL instance
+- Click **Connections** in the left sidebar
+- Scroll to **Authorized networks** and click **Add network**
+  - **Name**: e.g., `jupyterlab-vm`
+  - **Network**: paste the IP with `/32` suffix (e.g., `34.91.100.45/32`)
+- The `/32` ensures only that single IP is allowed
+- Click **Save**
+
+
+
+
 ## Installation
 
 The API is part of the main Currensee project. Ensure you have the project dependencies installed:
@@ -29,14 +59,13 @@ poetry install
 
 ### Option 1: Using the startup script (recommended)
 ```bash
-python api/server.py
+python src/currensee/api/server.py
 ```
+Make sure this script is entered at (currensee-py3.11) (base) jupyter@vertex-workbench-cpu:~/(your initial)_currensee/currensee$
 
 ### Option 2: Using uvicorn directly
 ```bash
 uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
-
-uvicorn currensee.api.main:app --host 0.0.0.0 --port 8000 --reload
 
 ```
 
@@ -50,11 +79,37 @@ python api/server.py
 
 The server will start on `http://localhost:8000` by default.
 
+## SSH Port Forwarding (Optional)
+
+It lets you access FastAPI server, which is running on localhost of a remote VM — as if it were running on your own local machine.
+
+In your **local terminal**, run
+```bash
+gcloud compute ssh vertex-workbench-cpu -- -L 8000:localhost:8000
+```
+
+### Health Check
+Open http://localhost:8000/health to do the connection health check
+
+If connected, it will show as message similar to this {"status":"healthy","service":"currensee-api","timestamp":"2025-06-28T16:17:25.457157"}
+
+### Open the landing page in your localhost
+Open http://localhost:8000 on your local browser to access Outlook UI page.
+
+### Error Check
+If you see "Error: Cannot read properties of null (reading 'document')", make sure your local browser allow popups from about:blank
+
+## Shut Down Server
+Press ctrl+c to shut down server
+
+
 ## API Endpoints
 
 ### Health Check
-- **GET** `/` - Basic health check
 - **GET** `/health` - Health status for monitoring
+
+### Outlook UI
+- **GET** `/` - Access Outlook UI page
 
 ### Report Generation
 - **POST** `/generate-report` - Execute graph and return JSON results

@@ -176,7 +176,7 @@ def render_article_html(article):
     snippet = article.get("snippet", "No Snippet")
     date = article.get("date", "No Date")
     link = article.get("link", "")
-    source = link.split("/")[2] if link else "No Source"
+    source = link.split("/")[2] if link and len(link.split("/")) > 2 else "No Source"
 
     return f"""
     <div class='article'>
