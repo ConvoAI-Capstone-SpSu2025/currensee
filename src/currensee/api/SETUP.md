@@ -125,7 +125,7 @@ All POST endpoints expect a JSON payload with the following structure:
 
 ### 2. **Demo Endpoints for Testing**
 - **GET** `/demo` - Demo with sample data (JSON)
-- **GET** `/demo/html` - Demo with sample data (HTML) 
+- **GET** `/demo/html` - Demo with sample data (HTML)
 - **GET** `/demo/pdf` - Demo with sample data (PDF)
 
 ### 3. **Input Validation & Error Handling**
