@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Client Holdings Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            font-family: "Salesforce Sans", "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .holding-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px 25px;
+            margin-bottom: 32px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            border: 1px solid #e0e5ee;
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            background-color: #fafafa;
+            object-fit: contain;
+            border: 1px solid #d8dde6;
+        }
+
+        .card-content {
+            flex-grow: 1;
+        }
+
+        .holding-card h2 {
+            color: #16325c;
+            font-size: 18px;
+            margin: 0 0 8px 0;
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #e5f3ff;
+            color: #0070d2;
+            padding: 3px 8px;
+            font-size: 11px;
+            border-radius: 1rem;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .info-table td {
+            padding: 4px 0;
+        }
+
+        .info-table td.label {
+            font-weight: 600;
+            color: #3e3e3c;
+            width: 180px;
+        }
+
+        .performance-card {
+            background-color: #f1fef6;
+            border-left: 4px solid #2e844a;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-top: 10px;
+            color: #2e844a;
+            font-size: 13px;
+        }
+
+        .performance-card strong {
+            display: inline-block;
+            width: 180px;
+        }
+
+        .chart-placeholder {
+            position: relative;
+            width: 200px;
+            height: 80px;
+            background-color: #e0f3ff;
+            background-image:
+                linear-gradient(to top, #51a9ee 50%, transparent 50%),
+                linear-gradient(to top, #1b96ff 60%, transparent 60%),
+                linear-gradient(to top, #0070d2 70%, transparent 70%),
+                linear-gradient(to top, #056ecf 40%, transparent 40%),
+                linear-gradient(to top, #004080 65%, transparent 65%);
+            background-size: 20% 100%;
+            background-repeat: no-repeat;
+            background-position: 0% 100%, 25% 100%, 50% 100%, 75% 100%, 100% 100%;
+            border-radius: 8px;
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.05);
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .chart-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 11px;
+            font-weight: 500;
+            color: #16325c;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .notes {
+            background: #eef4ff;
+            border-left: 4px solid #0070d2;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #16325c;
+            margin-top: 12px;
+        }
+
+        /* News Section Styling */
+        .news-section {
+            margin-top: 20px;
+            font-size: 14px;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            background-color: #f7faff;
+            padding: 16px 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+        }
+
+        .news-section h3 {
+            margin-bottom: 10px;
+            color: #1a237e;
+            font-size: 16px;
+            /* Removed flex display and gap since no logo */
+        }
+
+        .news-section h3 span.currensee {
+            color: #0070d2;
+            font-weight: 600;
+        }
+
+        .news-section ul {
+            list-style-type: disc;
+            margin: 0 0 12px 20px;
+            padding: 0;
+        }
+
+        .news-section li {
+            margin-bottom: 6px;
+        }
+
+        .news-section a {
+            text-decoration: none;
+            color: #0070d2;
+            transition: color 0.2s;
+        }
+
+        .news-section a:hover {
+            color: #005fb2;
+            text-decoration: underline;
+        }
+
+        .news-disclaimer {
+            font-size: 12px;
+            color: #5c5f66;
+            border-top: 1px solid #cfd6e3;
+            padding-top: 10px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #8896a4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Walmart -->
+        <div class="holding-card">
+            <img src="https://logo.clearbit.com/walmart.com" alt="Walmart Logo" class="logo" />
+            <div class="card-content">
+                <h2>Walmart Inc <span class="badge">WMT</span></h2>
+                <table class="info-table">
+                    <tr><td class="label">Category:</td><td>Consumer Defensive - Retail</td></tr>
+                    <tr><td class="label">Expense Ratio:</td><td>N/A (Stock)</td></tr>
+                    <tr><td class="label">Founded:</td><td>1962</td></tr>
+                </table>
+                <div class="performance-card">
+                    <strong>Year-to-Date:</strong> +7.5%<br />
+                    <strong>1-Year:</strong> +12.4%<br />
+                    <strong>5-Year Avg Return:</strong> +9.6%<br />
+                    <strong>10-Year Avg Return:</strong> +7.8%
+                </div>
+                <div class="chart-placeholder">
+                    <span class="chart-text">Chart Place Holder</span>
+                </div>
+                <div class="notes">
+                    Walmart Inc operates a chain of hypermarkets, discount department stores, and grocery stores across the globe.
+                </div>
+                <div class="news-section">
+                    <h3><span class="currensee">CurrenSee</span> News</h3>
+                    <ul>
+                        <li><a href="report.html?holding=WMT">Walmart announces Q2 earnings beat expectations</a></li>
+                        <li><a href="report.html?holding=WMT">Walmart expands drone delivery program</a></li>
+                    </ul>
+                    <div class="news-disclaimer">
+                        This information is generated by CurrenSee. CurrenSee can make mistakes. Please check important info.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amazon -->
+        <div class="holding-card">
+            <img src="https://logo.clearbit.com/amazon.com" alt="Amazon Logo" class="logo" />
+            <div class="card-content">
+                <h2>Amazon.com Inc <span class="badge">AMZN</span></h2>
+                <table class="info-table">
+                    <tr><td class="label">Category:</td><td>Consumer Cyclical - Internet Retail</td></tr>
+                    <tr><td class="label">Expense Ratio:</td><td>N/A (Stock)</td></tr>
+                    <tr><td class="label">Founded:</td><td>1994</td></tr>
+                </table>
+                <div class="performance-card">
+                    <strong>Year-to-Date:</strong> +22.8%<br />
+                    <strong>1-Year:</strong> +30.1%<br />
+                    <strong>5-Year Avg Return:</strong> +11.2%<br />
+                    <strong>10-Year Avg Return:</strong> +15.5%
+                </div>
+                <div class="chart-placeholder">
+                    <span class="chart-text">Chart Place Holder</span>
+                </div>
+                <div class="notes">
+                    Amazon.com is the world's largest online retailer and a prominent cloud services provider through AWS.
+                </div>
+                <div class="news-section">
+                    <h3><span class="currensee">CurrenSee</span> News</h3>
+                    <ul>
+                        <li><a href="report.html?holding=AMZN">Amazon Q3 growth beats analyst estimates</a></li>
+                        <li><a href="report.html?holding=AMZN">Amazon launches new cloud service</a></li>
+                    </ul>
+                    <div class="news-disclaimer">
+                        This information is generated by CurrenSee. CurrenSee can make mistakes. Please check important info.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Intel -->
+        <div class="holding-card">
+            <img src="https://logo.clearbit.com/intel.com" alt="Intel Logo" class="logo" />
+            <div class="card-content">
+                <h2>Intel Corp <span class="badge">INTC</span></h2>
+                <table class="info-table">
+                    <tr><td class="label">Category:</td><td>Technology - Semiconductors</td></tr>
+                    <tr><td class="label">Expense Ratio:</td><td>N/A (Stock)</td></tr>
+                    <tr><td class="label">Founded:</td><td>1968</td></tr>
+                </table>
+                <div class="performance-card">
+                    <strong>Year-to-Date:</strong> -5.2%<br />
+                    <strong>1-Year:</strong> +4.8%<br />
+                    <strong>5-Year Avg Return:</strong> -0.6%<br />
+                    <strong>10-Year Avg Return:</strong> +5.0%
+                </div>
+                <div class="chart-placeholder">
+                    <span class="chart-text">Chart Place Holder</span>
+                </div>
+                <div class="notes">
+                    Intel is a global leader in semiconductor manufacturing, best known for its computer processors and chips.
+                </div>
+                <div class="news-section">
+                    <h3><span class="currensee">CurrenSee</span> News</h3>
+                    <ul>
+                        <li><a href="report.html?holding=INTC">Intel unveils next-gen semiconductor technology</a></li>
+                        <li><a href="report.html?holding=INTC">Intel partners with major automakers for AI chips</a></li>
+                    </ul>
+                    <div class="news-disclaimer">
+                        This information is generated by CurrenSee. CurrenSee can make mistakes. Please check important info.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meta -->
+        <div class="holding-card">
+            <img src="https://logo.clearbit.com/meta.com" alt="Meta Logo" class="logo" />
+            <div class="card-content">
+                <h2>Meta Platforms Inc <span class="badge">META</span></h2>
+                <table class="info-table">
+                    <tr><td class="label">Category:</td><td>Communication Services - Internet Content</td></tr>
+                    <tr><td class="label">Expense Ratio:</td><td>N/A (Stock)</td></tr>
+                    <tr><td class="label">Founded:</td><td>2004</td></tr>
+                </table>
+                <div class="performance-card">
+                    <strong>Year-to-Date:</strong> +18.1%<br />
+                    <strong>1-Year:</strong> +36.9%<br />
+                    <strong>5-Year Avg Return:</strong> +17.0%<br />
+                    <strong>10-Year Avg Return:</strong> +23.2%
+                </div>
+                <div class="chart-placeholder">
+                    <span class="chart-text">Chart Place Holder</span>
+                </div>
+                <div class="notes">
+                    Meta Platforms, formerly Facebook, owns and operates social media platforms and develops AR/VR technology.
+                </div>
+                <div class="news-section">
+                    <h3><span class="currensee">CurrenSee</span> News</h3>
+                    <ul>
+                        <li><a href="report.html?holding=META">Meta introduces new VR headset with enhanced features</a></li>
+                        <li><a href="report.html?holding=META">Meta faces regulatory challenges in EU</a></li>
+                    </ul>
+                    <div class="news-disclaimer">
+                        This information is generated by CurrenSee. CurrenSee can make mistakes. Please check important info.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Microsoft -->
+        <div class="holding-card">
+            <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft Logo" class="logo" />
+            <div class="card-content">
+                <h2>Microsoft Corp <span class="badge">MSFT</span></h2>
+                <table class="info-table">
+                    <tr><td class="label">Category:</td><td>Technology - Software Infrastructure</td></tr>
+                    <tr><td class="label">Expense Ratio:</td><td>N/A (Stock)</td></tr>
+                    <tr><td class="label">Founded:</td><td>1975</td></tr>
+                </table>
+                <div class="performance-card">
+                    <strong>Year-to-Date:</strong> +10.3%<br />
+                    <strong>1-Year:</strong> +21.0%<br />
+                    <strong>5-Year Avg Return:</strong> +24.5%<br />
+                    <strong>10-Year Avg Return:</strong> +20.1%
+                </div>
+                <div class="chart-placeholder">
+                    <span class="chart-text">Chart Place Holder</span>
+                </div>
+                <div class="notes">
+                    Microsoft is a global technology company best known for Windows OS, Office software, Azure cloud, and LinkedIn.
+                </div>
+                <div class="news-section">
+                    <h3><span class="currensee">CurrenSee</span> News</h3>
+                    <ul>
+                        <li><a href="report.html?holding=MSFT">Microsoft announces major Windows update rollout</a></li>
+                        <li><a href="report.html?holding=MSFT">Microsoft Teams adds new collaboration features</a></li>
+                    </ul>
+                    <div class="news-disclaimer">
+                        This information is generated by CurrenSee. CurrenSee can make mistakes. Please check important info.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 CurrenSee Platform • Internal Advisor Use Only
+        </div>
+    </div>
+</body>
+</html>

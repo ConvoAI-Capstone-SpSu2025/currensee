@@ -234,7 +234,7 @@ def generate_long_report(result):
             <tr>
                 <td>Client Holdings:</td>
                 <td>
-                    <div class="client-holdings-container">
+                    <div class="client-holdings-container" onclick="openClientHoldingsPage()" style="cursor: pointer;">
                         {client_holdings_html}
                     </div>
                 </td>
@@ -583,6 +583,10 @@ def generate_long_report(result):
               message.style.display = 'none';
             }}, 5000);
           }}
+
+          function openClientHoldingsPage() {{
+            window.open('/static/client_holding.html', '_blank');
+          }}
         </script>
         
     </body>    
@@ -845,7 +849,11 @@ def generate_short_report(result):
                     message.style.display = 'none';
                 }}, 5000);
             }}
+            
             </script>
+
+
+            
     </head>
     <body>
         <div class="header-container">
