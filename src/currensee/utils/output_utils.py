@@ -468,6 +468,52 @@ def generate_long_report(result):
                 background-color: #1f6392;
             }}
 
+            .feedback-buttons button {{
+              border: none;
+              color: white;
+              padding: 3px 8px;
+              margin-right: 6px;
+              border-radius: 8px;
+              cursor: pointer;
+              font-size: 0.7rem;
+              font-weight: 500;
+              white-space: nowrap;
+              box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+              transition: background-color 0.25s ease, box-shadow 0.25s ease;
+            }}
+            
+            .feedback-buttons .btn-more {{
+              background-color: #60c18e;  /* Softer green */
+            }}
+            
+            .feedback-buttons .btn-more:hover {{
+              background-color: #4caf7d;  /* Slightly darker on hover */
+              box-shadow: 0 2px 6px rgba(76, 175, 125, 0.3);
+            }}
+            
+            .feedback-buttons .btn-more:active {{
+              background-color: #3d9b68;
+              box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            }}
+            
+            .feedback-buttons .btn-less {{
+              background-color: #f67280;  /* Softer red/pink */
+            }}
+            
+            .feedback-buttons .btn-less:hover {{
+              background-color: #ec5c6a;
+              box-shadow: 0 2px 6px rgba(236, 92, 106, 0.3);
+            }}
+            
+            .feedback-buttons .btn-less:active {{
+              background-color: #d94b59;
+              box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            }}
+            
+            .feedback-buttons button:focus {{
+              outline: none;
+              box-shadow: 0 0 0 2px rgba(96, 193, 142, 0.4);  /* soft green glow */
+            }}
         </style>
     </head>
     <body>
@@ -479,20 +525,31 @@ def generate_long_report(result):
         <h2>Meeting Information</h2>
         {meeting_info_html}
 
-
-        {html_linked_summary}
-        <div class="feedback-buttons">
-            <button onclick="handleFeedback(this, 'more')">I want to see more of this</button>
-            <button onclick="handleFeedback(this, 'less')">I do not want to see this</button>
+        <div class="box-content">
+            {html_linked_summary}
+            <div class="feedback-section">
+                <div class="feedback-buttons" style="margin-top: 10px; text-align: right;">
+                    <button class="btn-more" onclick="handleFeedback(this, 'more')">I want to see more of this</button>
+                    <button class="btn-less" onclick="handleFeedback(this, 'less')">&#10006; I do not want to see this</button>
+                </div>
+                <div class="feedback-message" style="display:none; margin-top:5px; color: green;">
+                    Got it! We'll remember it next time.
+                </div>
+            </div>
         </div>
-        <div class="feedback-message" style="display:none; margin-top:5px; color: green;">
-            Got it! We'll remember it next time.
-        </div>
-            
 
         <h2>Macro-Economic Snapshot</h2>
         <div class="box-content">
             {financial_snapshot_html}
+            <div class="feedback-section">
+                <div class="feedback-buttons" style="margin-top: 10px; text-align: right;">
+                    <button class="btn-more" onclick="handleFeedback(this, 'more')">I want to see more of this</button>
+                    <button class="btn-less" onclick="handleFeedback(this, 'less')">&#10006; I do not want to see this</button>
+                </div>
+                <div class="feedback-message" style="display:none; margin-top:5px; color: green;">
+                    Got it! We'll remember it next time.
+                </div>
+            </div>
         </div>
 
         <h2>Resources</h2>
@@ -500,25 +557,35 @@ def generate_long_report(result):
             {html_client_industry_sources}
             {html_client_holdings_sources}
             {html_macro_news_sources}
+            <div class="feedback-section">
+                <div class="feedback-buttons" style="margin-top: 10px; text-align: right;">
+                    <button class="btn-more" onclick="handleFeedback(this, 'more')">I want to see more of this</button>
+                    <button class="btn-less" onclick="handleFeedback(this, 'less')">&#10006; I do not want to see this</button>
+                </div>
+                <div class="feedback-message" style="display:none; margin-top:5px; color: green;">
+                    Got it! We'll remember it next time.
+                </div>
+            </div>
         </div>
 
-    </body>
-    <script>
-    function handleFeedback(button, type) {
-        const feedbackSection = button.closest('.feedback-section');
-        const buttons = feedbackSection.querySelector('.feedback-buttons');
-        const message = feedbackSection.querySelector('.feedback-message');
-    
-        buttons.style.display = 'none';
-        message.style.display = 'block';
-    
-        setTimeout(() => {
-            message.style.display = 'none';
-        }, 5000);
-    }
-    </script>
-
-    
+        <script>
+          function handleFeedback(button, type) {{
+            const feedbackSection = button.closest('.feedback-section');
+            const buttons = feedbackSection.querySelector('.feedback-buttons');
+            const message = feedbackSection.querySelector('.feedback-message');
+        
+            // Hide buttons only when clicked
+            buttons.style.display = 'none';
+            message.style.display = 'block';
+        
+            // Hide message after 5 seconds
+            setTimeout(() => {{
+              message.style.display = 'none';
+            }}, 5000);
+          }}
+        </script>
+        
+    </body>    
     </html>
     """
 
@@ -765,16 +832,20 @@ def generate_short_report(result):
             }}
 
         </style>
-        <script>
-            function toggleResources() {{
-                var content = document.getElementById('resources-content');
-                if (content.style.display === 'none') {{
-                    content.style.display = 'block';
-                }} else {{
-                    content.style.display = 'none';
-                }}
+            <script>
+            function handleFeedback(button, type) {{
+                const feedbackSection = button.closest('.feedback-section');
+                const buttons = feedbackSection.querySelector('.feedback-buttons');
+                const message = feedbackSection.querySelector('.feedback-message');
+        
+                buttons.style.display = 'none';
+                message.style.display = 'block';
+        
+                setTimeout(() => {{
+                    message.style.display = 'none';
+                }}, 5000);
             }}
-        </script>
+            </script>
     </head>
     <body>
         <div class="header-container">
