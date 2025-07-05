@@ -7,6 +7,7 @@ class SupervisorState(TypedDict):
 
     # initial state attributes from
     # meeting invite
+    user_email: str
     client_name: str
     client_email: str
 
@@ -32,12 +33,19 @@ class SupervisorState(TypedDict):
     client_holdings_sources: Optional[list[dict]]
     finnews_summary: Optional[str]  # final finnews output
 
+    # Preference Data
+    finance_detail: Optional[str]
+    news_detail: Optional[str]
+    macro_news_detail: Optional[str]
+    past_meeting_detail: Optional[str]
+
     # Complete response
     final_summary: Optional[str]
     report_length: Optional[str]  # Controls report format: 'short', 'medium', or 'long'
 
     # final summary with links for sourcing
     final_summary_sourced: Optional[str]
+
 
     # Processing metadata
     messages: List[Dict[str, Any]]  # Track conversation with LLM for analysis
