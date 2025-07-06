@@ -190,12 +190,14 @@ def render_article_html(article):
 
 
 def generate_long_report(result):
+    
     meeting_title = result.get("meeting_description", "") + " : Briefing Document"
     client_holdings_sources = result.get("client_holdings_sources", list())
     client_industry_sources = result.get("client_industry_sources", list())
     macro_news_sources = result.get("macro_news_sources", list())
-    # final_summary = result.get('final_summary', '')
-    linked_summary = result.get("final_summary_sourced", "")
+    comms_summary = result.get("summary_client_comms", "")
+    holdings_summary = result.get("fin_hold_summary_sourced", "")
+    news_summary = result.get("client_news_summary_sourced", "")
     client_company = result.get("client_company", "")
     client_name = result.get("client_name", "")
     meeting_time = result.get("meeting_timestamp", "")
@@ -243,9 +245,8 @@ def generate_long_report(result):
     </div>
     """
 
-    # Email Summary Section
-    html_summary = markdown.markdown(linked_summary)
-    html_summary_split = re.split(r"\n", html_summary)
+    # Client Comms & News Summary Section
+    linked_summary = "\n\n".join([comms_summary, news_summary, holdings_summary])
     html_summary_final = format_paragraph_summary_to_html(linked_summary)
     html_linked_summary = convert_markdown_links_to_html(html_summary_final)
 
@@ -598,7 +599,9 @@ def generate_long_report(result):
 
 def generate_short_report(result):
     meeting_title = result.get("meeting_description", "") + " : Briefing Document"
-    final_summary = result.get("final_summary_sourced", "")
+    comms_summary = result.get("summary_client_comms", "")
+    holdings_summary = result.get("fin_hold_summary_sourced", "")
+    news_summary = result.get("client_news_summary_sourced", "")
     client_holdings_sources = result.get("client_holdings_sources", list())
     client_industry_sources = result.get("client_industry_sources", list())
     macro_news_sources = result.get("macro_news_sources", list())
@@ -650,9 +653,10 @@ def generate_short_report(result):
     """
 
     # Summary section
-    bullet_points = final_summary.strip().split("•")
+    linked_summary = "\n\n".join([comms_summary, news_summary, holdings_summary])
+    bullet_points = linked_summary.strip().split("•")
     bullet_points = [point.strip() for point in bullet_points if point.strip()]
-    html_bullets = "".join(f"<li>{point}</li>" for point in bullet_points)
+    html_bullets = "".join(f"<li>{format_paragraph_summary_to_html(point)}</li>" for point in bullet_points)
 
     # Format source sections
     html_client_industry_sources = format_sources_to_html(
@@ -879,7 +883,11 @@ def generate_med_report(result):
     client_holdings_sources = result.get("client_holdings_sources", list())
     client_industry_sources = result.get("client_industry_sources", list())
     macro_news_sources = result.get("macro_news_sources", list())
-    final_summary = result.get("final_summary_sourced", "")
+    
+    comms_summary = result.get("summary_client_comms", "")
+    holdings_summary = result.get("fin_hold_summary_sourced", "")
+    news_summary = result.get("client_news_summary_sourced", "")
+    
     client_company = result.get("client_company", "")
     client_name = result.get("client_name", "")
     meeting_time = result.get("meeting_timestamp", "")
@@ -889,17 +897,6 @@ def generate_med_report(result):
     email_summary = result.get("email_summary", "")
     recent_email_summary = result.get("recent_email_summary", "")
     recent_client_questions = result.get("recent_client_questions", "")
-
-    # Extract the summary into two
-    split_sections = re.split(
-        r"\n*\*\*2\. Financial Overview\*\*\n*", final_summary, maxsplit=1
-    )
-    email_sec = split_sections[0].strip()
-    finance_sec = (
-        "**2. Financial Overview**\n" + split_sections[1].strip()
-        if len(split_sections) > 1
-        else ""
-    )
 
     # Format bullet point
     # Format recent email summary as <ul>
@@ -1024,8 +1021,11 @@ def generate_med_report(result):
     """
 
     # Summary Section
-    html_email_section = format_paragraph_summary_to_html(email_sec)
-    html_fin_section = format_paragraph_summary_to_html(finance_sec)
+    html_email_section = format_paragraph_summary_to_html(comms_summary)
+    html_fin_section = format_paragraph_summary_to_html(holdings_summary)
+
+    print("COMMS SUMM", comms_summary)
+    print("EMAIL SECTION", html_email_section)
 
     # Toggle boxes for "Email Summary" section
     email_section_full = f"""

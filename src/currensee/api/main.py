@@ -43,6 +43,7 @@ app.add_middleware(
 class ClientRequest(BaseModel):
     """Request model for client meeting preparation"""
 
+    user_email: str = Field(...,description="Email address of the user")
     client_name: str = Field(..., description="Name of the client", min_length=1)
     client_email: str = Field(..., description="Email address of the client")
     meeting_timestamp: str = Field(
@@ -55,7 +56,7 @@ class ClientRequest(BaseModel):
         default="long", description="Length of the report: 'short', 'medium', or 'long'"
     )
 
-    @validator("client_email")
+    @validator("client_email", "user_email")
     def validate_email(cls, v):
         """Basic email validation"""
         if "@" not in v or "." not in v:
@@ -129,6 +130,7 @@ async def generate_report(request: ClientRequest):
 
         # Prepare the initial state for the graph
         init_state = {
+            "user_email": request.user_email,
             "client_name": request.client_name,
             "client_email": request.client_email,
             "meeting_timestamp": request.meeting_timestamp,
@@ -171,6 +173,7 @@ async def generate_report(request: ClientRequest):
 async def generate_report_html(request: ClientRequest):
     try:
         init_state = {
+            "user_email": request.user_email,
             "client_name": request.client_name,
             "client_email": request.client_email,
             "meeting_timestamp": request.meeting_timestamp,
@@ -203,6 +206,7 @@ async def generate_report_pdf(request: ClientRequest):
     try:
         # Prepare the initial state for the graph
         init_state = {
+            "user_email": request.user_email,
             "client_name": request.client_name,
             "client_email": request.client_email,
             "meeting_timestamp": request.meeting_timestamp,
@@ -268,6 +272,7 @@ async def demo_endpoint():
     try:
         # Sample data similar to the main() function in complete_graph.py
         demo_request = ClientRequest(
+            user_email="jane.moneypenny1@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
@@ -288,6 +293,7 @@ async def demo_html():
     """
     try:
         demo_request = ClientRequest(
+            user_email="jane.moneypenny1@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
@@ -308,6 +314,7 @@ async def demo_pdf():
     """
     try:
         demo_request = ClientRequest(
+            user_email="jane.moneypenny1@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
