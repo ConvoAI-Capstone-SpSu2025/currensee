@@ -43,6 +43,9 @@ Follow the instructions here:
 - The `/32` ensures only that single IP is allowed
 - Click **Save**
 
+### Step 3: Install `gcloud` on your local machine
+
+- Follow the instructions here to set up [gcloud](https://cloud.google.com/sdk/docs/install)
 
 ## Running the Server
 
