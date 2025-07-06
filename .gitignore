@@ -172,4 +172,8 @@ cython_debug/
 data/
 !data/README.md
 *.pdf
-*.html
+
+# html files outside of the ui
+notebooks/*.html
+
+

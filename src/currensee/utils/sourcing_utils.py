@@ -157,34 +157,30 @@ def insert_links_into_summary(
     summary: str, claim_url_pairs: list[tuple[str, list[str]]]
 ) -> str:
     """
-    Inserts Markdown-style [Source] links after corresponding claims in the summary.
-    Only includes up to 3 sources per claim (truncates any extra).
+    Inserts superscript-style 🔗 links after corresponding claims but before trailing period.
+    Keeps layout clean and avoids 'Source 1, 2' text.
+    Up to 3 links per claims 
     """
     updated_summary = summary
 
     for claim, urls in claim_url_pairs:
-        truncated_urls = urls[:3]  # Truncate to at most 3 URLs
+        truncated_urls = urls[:3]
 
-        if len(truncated_urls) == 1:
-            link_text = f" ([Source]({truncated_urls[0]}))"
-        else:
-            link_text = (
-                " ("
-                + ", ".join(
-                    f"[Source {i+1}]({url})" for i, url in enumerate(truncated_urls)
-                )
-                + ")"
-            )
+        link_text = "".join(
+            f'<sup><a href="{url}" target="_blank" '
+            f'title="Open Source" style="text-decoration:none; font-size:0.6em; color:inherit; margin-left:0.5px;">🔗</a></sup>'
+            for url in truncated_urls
+        )
 
-        pattern = re.escape(claim)
-        replacement = f"{claim}{link_text}"
+        pattern = re.escape(claim) + r"([.?!])?"
 
-        updated_summary, count = re.subn(pattern, replacement, updated_summary, count=1)
-    #  if count == 0:
-    #     print(f" Could not find claim in summary: '{claim}'")
+        def replacer(match):
+            punctuation = match.group(1) or ""
+            return f"{claim}{link_text}{punctuation}"
+
+        updated_summary, count = re.subn(pattern, replacer, updated_summary, count=1)
 
     return updated_summary
-
 
 def get_fin_linked_summary(state: SupervisorState) -> str:
     prompt = get_soucing_prompt(state)

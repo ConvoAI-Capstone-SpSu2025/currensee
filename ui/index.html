@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currensee Email Summary</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #0072C6;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar h2 {
+            margin-top: 16px;
+            font-size: 18px;
+        }
+
+        .sidebar .nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            text-align: left;
+            padding-top: 50px;
+        }
+
+        .sidebar .nav a {
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .sidebar .nav a:hover {
+            background-color: #005497;
+        }
+
+        .main {
+            flex-grow: 1;
+            background-color: #f4f6f8;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .main h1 {
+            color: #0072C6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0072C6;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005497;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .status.loading {
+            background-color: #e8f4f8;
+            color: #0072C6;
+            border: 1px solid #0072C6;
+        }
+
+        .status.success {
+            background-color: #d5f4e6;
+            color: #27ae60;
+            border: 1px solid #27ae60;
+        }
+
+        .status.error {
+            background-color: #fadbd8;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Currensee</h2>
+        <nav class="nav">
+            <a href="#">Dashboard</a>
+            <a href="#">Email Summaries</a>
+            <a href="#">Reports</a>
+            <a href="#">Settings</a>
+        </nav>
+    </div>
+    <div class="main">
+        <h1>Client Email Summary</h1>
+        <div class="form-group">
+            <label for="clientName">Client Name</label>
+            <input type="text" id="clientName" value="Adam Clay" required>
+        </div>
+        <div class="form-group">
+            <label for="clientEmail">Client Email</label>
+            <input type="email" id="clientEmail" value="adam.clay@compass.com" required>
+        </div>
+        <div class="form-group">
+            <label for="meetingTimestamp">Meeting Timestamp</label>
+            <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00" required>
+        </div>
+        <div class="form-group">
+            <label for="meetingDescription">Meeting Description</label>
+            <textarea id="meetingDescription"
+                required>Compass - Annual Credit Facility Review Meeting</textarea>
+        </div>
+        <div class="form-group">
+            <label for="reportLength">Report Length</label>
+            <select id="reportLength">
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long" selected>Long</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button onclick="generateReport('json')">Generate JSON Report</button>
+            <button onclick="generateReport('html')">View HTML Report</button>
+            <button onclick="generateReport('pdf')">Download PDF Report</button>
+        </div>
+        <div id="status" class="status"></div>
+    </div>
+    <script>
+        function getFormData() {
+            return {
+                client_name: document.getElementById('clientName').value,
+                client_email: document.getElementById('clientEmail').value,
+                meeting_timestamp: document.getElementById('meetingTimestamp').value,
+                meeting_description: document.getElementById('meetingDescription').value,
+                report_length: document.getElementById('reportLength').value
+            };
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.style.display = 'block';
+        }
+
+        function hideStatus() {
+            document.getElementById('status').style.display = 'none';
+        }
+
+        async function generateReport(format) {
+            const data = getFormData();
+            const apiUrl = "http://localhost:8000";
+            let endpoint;
+            switch(format) {
+                case 'json':
+                    endpoint = '/generate-report';
+                    break;
+                case 'html':
+                    endpoint = '/generate-report/html';
+                    break;
+                case 'pdf':
+                    endpoint = '/generate-report/pdf';
+                    break;
+                default:
+                    showStatus('Invalid format specified', 'error');
+                    return;
+            }
+
+            showStatus(`Generating ${format.toUpperCase()} report...`, 'loading');
+
+            try {
+                const response = await fetch(`${apiUrl}${endpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+                    throw new Error(errorData.detail || `HTTP ${response.status}`);
+                }
+
+                if (format === 'json') {
+                    const result = await response.json();
+                    showStatus('JSON report generated successfully!', 'success');
+                    console.log('Report result:', result);
+                } else if (format === 'html') {
+                    const html = await response.text();
+                    showStatus('HTML report generated successfully!', 'success');
+                    const newWindow = window.open();
+                    newWindow.document.write(html);
+                    newWindow.document.close();
+                } else if (format === 'pdf') {
+                    const blob = await response.blob();
+                    showStatus('PDF report generated successfully!', 'success');
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `currensee_report_${new Date().toISOString()}.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                }
+
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+        }
+    </script>
+</body>
+</html>
+

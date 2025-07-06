@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currensee API Test Client</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2980B9;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-primary {
+            background-color: #2980B9;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #1f6392;
+        }
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+        .btn-success {
+            background-color: #27ae60;
+            color: white;
+        }
+        .btn-success:hover {
+            background-color: #229954;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .status.loading {
+            background-color: #e8f4f8;
+            color: #2980B9;
+            border: 1px solid #2980B9;
+        }
+        .status.success {
+            background-color: #d5f4e6;
+            color: #27ae60;
+            border: 1px solid #27ae60;
+        }
+        .status.error {
+            background-color: #fadbd8;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+        .api-url {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏦 Currensee API Test Client</h1>
+        
+        <div class="form-group">
+            <label for="apiUrl">API Base URL:</label>
+            <input type="text" id="apiUrl" value="http://localhost:8000" placeholder="http://localhost:8000">
+        </div>
+
+        <form id="clientForm">
+            <div class="form-group">
+                <label for="clientName">Client Name *</label>
+                <input type="text" id="clientName" name="clientName" value="Adam Clay" required>
+            </div>
+
+            <div class="form-group">
+                <label for="clientEmail">Client Email *</label>
+                <input type="email" id="clientEmail" name="clientEmail" value="adam.clay@compass.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="meetingTimestamp">Meeting Timestamp *</label>
+                <input type="text" id="meetingTimestamp" name="meetingTimestamp" 
+                       value="2024-03-26 11:00:00" placeholder="YYYY-MM-DD HH:MM:SS" required>
+            </div>
+
+            <div class="form-group">
+                <label for="meetingDescription">Meeting Description *</label>
+                <textarea id="meetingDescription" name="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="reportLength">Report Length</label>
+                <select id="reportLength" name="reportLength">
+                    <option value="short">Short</option>
+                    <option value="medium">Medium</option>
+                    <option value="long" selected>Long</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-primary" onclick="generateReport('json')">
+                    📊 Generate JSON Report
+                </button>
+                <button type="button" class="btn-secondary" onclick="generateReport('html')">
+                    📄 View HTML Report
+                </button>
+                <button type="button" class="btn-success" onclick="generateReport('pdf')">
+                    📁 Download PDF Report
+                </button>
+            </div>
+        </form>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function getFormData() {
+            return {
+                client_name: document.getElementById('clientName').value,
+                client_email: document.getElementById('clientEmail').value,
+                meeting_timestamp: document.getElementById('meetingTimestamp').value,
+                meeting_description: document.getElementById('meetingDescription').value,
+                report_length: document.getElementById('reportLength').value
+            };
+        }
+
+        function getApiUrl() {
+            return document.getElementById('apiUrl').value.replace(/\/$/, '');
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.style.display = 'block';
+        }
+
+        function hideStatus() {
+            document.getElementById('status').style.display = 'none';
+        }
+
+        async function generateReport(format) {
+            const data = getFormData();
+            const apiUrl = getApiUrl();
+            
+            // Validate required fields
+            if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
+                showStatus('Please fill in all required fields', 'error');
+                return;
+            }
+
+            let endpoint;
+            switch(format) {
+                case 'json':
+                    endpoint = '/generate-report';
+                    break;
+                case 'html':
+                    endpoint = '/generate-report/html';
+                    break;
+                case 'pdf':
+                    endpoint = '/generate-report/pdf';
+                    break;
+                default:
+                    showStatus('Invalid format specified', 'error');
+                    return;
+            }
+
+            showStatus(`Generating ${format.toUpperCase()} report... This may take a few minutes.`, 'loading');
+
+            try {
+                const response = await fetch(`${apiUrl}${endpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+                    throw new Error(errorData.detail || `HTTP ${response.status}`);
+                }
+
+                if (format === 'json') {
+                    const result = await response.json();
+                    showStatus('JSON report generated successfully!', 'success');
+                    console.log('Report result:', result);
+                    
+                    // Show execution time if available
+                    if (result.execution_time) {
+                        showStatus(`JSON report generated successfully in ${result.execution_time.toFixed(2)} seconds!`, 'success');
+                    }
+                } else if (format === 'html') {
+                    const html = await response.text();
+                    showStatus('HTML report generated successfully! Opening in new window...', 'success');
+                    
+                    // Open HTML in new window
+                    const newWindow = window.open();
+                    newWindow.document.write(html);
+                    newWindow.document.close();
+                } else if (format === 'pdf') {
+                    const blob = await response.blob();
+                    showStatus('PDF report generated successfully! Downloading...', 'success');
+                    
+                    // Download PDF
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `currensee_report_${new Date().toISOString().slice(0,19).replace(/[:-]/g, '')}.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                }
+
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('API Error:', error);
+            }
+        }
+
+        // Test API connection on page load
+        window.addEventListener('load', async function() {
+            try {
+                const apiUrl = getApiUrl();
+                const response = await fetch(`${apiUrl}/health`);
+                if (response.ok) {
+                    showStatus('✅ Connected to Currensee API', 'success');
+                    setTimeout(hideStatus, 3000);
+                } else {
+                    showStatus('⚠️ API connection failed. Please check the URL.', 'error');
+                }
+            } catch (error) {
+                showStatus('⚠️ Cannot connect to API. Make sure the server is running.', 'error');
+            }
+        });
+    </script>
+</body>
+</html>
