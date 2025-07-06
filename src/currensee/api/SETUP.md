@@ -46,6 +46,13 @@ Follow the instructions here:
 ### Step 3: Install `gcloud` on your local machine
 
 - Follow the instructions here to set up [gcloud](https://cloud.google.com/sdk/docs/install)
+- On your home terminal ensure gcloud is properly installed in the home directory, you may need to manually update the path in the .zshrc file:
+```bash
+sudo vi ~/.zshrc
+#paste into the file this line:
+export PATH=$HOME/google-cloud-sdk/bin:$PATH
+
+```
 
 ## Running the Server
 
