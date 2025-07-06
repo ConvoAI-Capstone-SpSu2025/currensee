@@ -36,7 +36,7 @@ engine = create_pg_engine(db_name=DB_NAME)
 
 #     return result.response
 
-
+###################### LILY: this is overriding meeting timestamp in the graph ####################################
 def find_last_meeting_date(all_client_emails: list[str]) -> dict:
     """
     Find the last meeting date that was held with any of the

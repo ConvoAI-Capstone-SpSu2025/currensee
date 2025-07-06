@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 from langgraph.graph import END, START, StateGraph
 
-from currensee.agents.agent_utils import summarize_all_outputs
+from currensee.agents.agent_utils_pref import summarize_all_outputs
 from currensee.agents.tools.base import SupervisorState
 from currensee.agents.tools.crm_tools import retrieve_client_metadata
 from currensee.agents.tools.finance_tools import (
@@ -70,7 +70,6 @@ def main():
         "client_email": "adam.clay@compass.com",
         "meeting_timestamp": "2024-03-26 11:00:00",
         "meeting_description": "Compass - Annual Credit Facility Review Meeting",
-        "report_length": "long",  # Set to 'short', 'medium', or 'long'
     }
 
     # print(f"\n=== INITIALIZING GRAPH WITH REPORT LENGTH: {init_state.get('report_length', 'long')} ===")
@@ -78,7 +77,11 @@ def main():
     result = compiled_graph.invoke(init_state)
 
     # print(result['final_summary'])
-    print(result["final_summary_sourced"])
+    #print(result["final_summary_sourced"])
+    print(result["summary_client_comms"])
+    print(result["fin_hold_summary_sourced"])
+    print(result["client_news_summary_sourced"])
+    
 
 
 if __name__ == "__main__":

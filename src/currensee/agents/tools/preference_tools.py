@@ -26,14 +26,13 @@ def retrieve_current_formatt_preferences(state: SupervisorState) -> dict:
     Find the current user preferences for the length and formatt of the report pieces
     """
     user_email = state["user_email"]
+    meeting_timestamp = state["meeting_timestamp"]
 
     mx_dt_df = pd.read_sql(f"""
     SELECT max(p.as_of_date) as as_of_date
     FROM preferences p
-    inner join employees e
-    on p.employee_first_name = e.first_name 
-    and p.employee_last_name = e.last_name 
-    where e.email = '{user_email}'
+    where p.email = '{user_email}'
+    and as_of_date <= '{meeting_timestamp}'
     """, con=engine)
     
     max_dt = mx_dt_df['as_of_date'][0]
@@ -46,12 +45,9 @@ def retrieve_current_formatt_preferences(state: SupervisorState) -> dict:
     , p.news_detail
     , p.macro_news_detail
     , p.past_meeting_detail 
-    , e.email	
+    , p.email	
     FROM preferences p
-    inner join employees e
-    on p.employee_first_name = e.first_name 
-    and p.employee_last_name = e.last_name 
-    where e.email = '{user_email}' and p.as_of_date = '{max_dt}'
+    where p.email = '{user_email}' and p.as_of_date = '{max_dt}'
     """
 
     pref_df = pd.read_sql(query_str, con=engine)

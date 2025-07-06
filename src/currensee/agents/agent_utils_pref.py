@@ -44,10 +44,10 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     meeting_description = state["meeting_description"]
     recent_email_summary = state["recent_email_summary"]
     recent_client_questions = state["recent_client_questions"]
-    finance_detail = new_state["finance_detail"] 
-    news_detail = new_state["news_detail"]
-    macro_news_detail = new_state["macro_news_detail"]
-    past_meeting_detail = new_state["past_meeting_detail"]
+    finance_detail = state["finance_detail"] 
+    news_detail = state["news_detail"]
+    macro_news_detail = state["macro_news_detail"]
+    past_meeting_detail = state["past_meeting_detail"]
 
 
 
@@ -91,10 +91,10 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     Inputs:
     Client Holdings: {client_holdings}
      """,
-    "none": f"""  """      
+    "none": f""" DO NOT write anything, return blank """      
     }
     
-    finance_news_formats = {
+    client_news_formats = {
         "full": f"""You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. Your job is to write a report section that summarizes recent news about {company_name}. The meeting will focus on: {meeting_description}.
 
     Use {client_industry_sources} to write a paragraph summarizing relevant news, including:
@@ -108,7 +108,7 @@ def summarize_all_outputs(state: SupervisorState) -> str:
 
          """
         , 
-        "none": f"""  """    
+        "none": f""" DO NOT write anything, return blank """    
     }
 
     client_comm_formats = {
@@ -165,13 +165,13 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     Recent client questions: {recent_client_questions}
     """
     ,
-  "none": f"""  """       
+  "none": f""" DO NOT write anything, return blank """       
     }
     
 
     # Select the appropriate prompts based on preferences
     finance_holdings_prompt = finance_holdings_formats.get(finance_detail.lower(), finance_holdings_formats["full"])
-    client_news_prompt = finance_news_formats.get(news_detail.lower(), finance_news_formats["full"])
+    client_news_prompt = client_news_formats.get(news_detail.lower(), client_news_formats["full"])
     client_comm_prompt = client_comm_formats.get(past_meeting_detail.lower(), client_comm_formats["full"])
 
     

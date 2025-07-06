@@ -40,12 +40,18 @@ class SupervisorState(TypedDict):
     past_meeting_detail: Optional[str]
 
     # Complete response
-    final_summary: Optional[str]
-    report_length: Optional[str]  # Controls report format: 'short', 'medium', or 'long'
+   # final_summary: Optional[str]
+    #report_length: Optional[str]  # Controls report format: 'short', 'medium', or 'long'
 
     # final summary with links for sourcing
-    final_summary_sourced: Optional[str]
+   # final_summary_sourced: Optional[str]
 
+    # modular responses
+    summary_fin_hold: Optional[str]
+    summary_client_news: Optional[str]
+    summary_client_comms: Optional[str]
+    fin_hold_summary_sourced: Optional[str]
+    client_news_summary_sourced: Optional[str]
 
     # Processing metadata
     messages: List[Dict[str, Any]]  # Track conversation with LLM for analysis
