@@ -43,6 +43,20 @@ Follow the instructions here:
 - The `/32` ensures only that single IP is allowed
 - Click **Save**
 
+### Step 3: Install `gcloud` on your local machine
+
+- Follow the instructions here to set up [gcloud](https://cloud.google.com/sdk/docs/install)
+- I recommend untaring the file it prompts you to downloaded into your home directory (if it's in downloads you will need to move it to the home folder)
+- During setup it will ask you to sign in (use your uchicago email)
+- During setup it will ask for the project-id, paste in adsp-34002-on02-sopho-scribe
+- On your local terminal ensure gcloud is properly installed in the home directory. To test type 'gcloud version' to make sure you don't get an error message.
+- If the gcloud comand isnt found/you get an error - you may need to manually update the path in the .zshrc file:
+```bash
+sudo vi ~/.zshrc
+#paste into the file this line:
+export PATH=$HOME/google-cloud-sdk/bin:$PATH
+```
+
 
 ## Running the Server
 
