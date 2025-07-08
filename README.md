@@ -102,18 +102,17 @@ This repository follows a structure inspired by the [Cookiecutter Data Science](
 │   ├── core/              <- Core logic and utilities
 │   ├── schema/            <- Data schemas and validation
 │   ├── utils/             <- Utility functions
-│   ├── workflows/         <- Workflow definitions
 │   └── README.md
 ├── data/                  <- Data storage (external, interim, processed, raw, etc.)
 ├── images/                <- Project images and logos
-├── notebooks/             <- Jupyter notebooks for exploration and workflows
+├── notebooks/             <- Jupyter notebooks for exploration and demonstration
 ├── utils/                 <- Additional utility scripts unrelated to agent operation
 ├── .gitignore
 ```
 
 **Key files and directories:**
 - [`pyproject.toml`](pyproject.toml): Poetry configuration and dependencies.
-- [`currensee/`](currensee/): Main Python package with submodules for agents, core logic, schemas, utilities, and workflows.
+- [`currensee/`](currensee/): Main Python package with submodules for agents, core logic, schemas, and utilities.
 - [`data/`](data/): Data storage for CRM and generated reports.
 - [`notebooks/`](notebooks/): Jupyter notebooks for data exploration and workflow prototyping.
 

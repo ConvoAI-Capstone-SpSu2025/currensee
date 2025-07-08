@@ -4,9 +4,6 @@ from sqlalchemy import text
 
 from currensee.agents.tools.base import SupervisorState
 from currensee.utils.db_utils import create_pg_engine
-from currensee.workflows.sql_workflow.utils import create_sql_workflow
-from currensee.workflows.workflow_descriptions import \
-    crm_table_description_mapping
 
 DB_NAME = "crm"
 engine = create_pg_engine(db_name=DB_NAME)

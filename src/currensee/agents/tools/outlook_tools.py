@@ -7,9 +7,6 @@ from sqlalchemy import text
 from currensee.agents.tools.base import SupervisorState
 from currensee.core import get_model, settings
 from currensee.utils.db_utils import create_pg_engine
-from currensee.workflows.sql_workflow.utils import create_sql_workflow
-from currensee.workflows.workflow_descriptions import \
-    outlook_table_description_mapping
 
 load_dotenv()
 
