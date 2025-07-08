@@ -23,7 +23,7 @@ def generate_employee_data(num_employees=10, ourcompany_name="bankwell"):
             "FirstName": "Jane",
             "LastName": "Moneypenny",
             "Title": "Relationship Manager",
-            "Email": "jane.moneypenny1@bankwell.com",
+            "Email": "jane.moneypenny@bankwell.com",
             "Phone": fake.phone_number(),
             "HireDate": fake.date_this_decade(),
             "Department": "Enterprise Investment",

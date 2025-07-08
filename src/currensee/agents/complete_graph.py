@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 from langgraph.graph import END, START, StateGraph
 
-from currensee.agents.agent_utils_pref import summarize_all_outputs
+from currensee.agents.agent_utils import summarize_all_outputs
 from currensee.agents.tools.base import SupervisorState
 from currensee.agents.tools.crm_tools import retrieve_client_metadata
 from currensee.agents.tools.finance_tools import (
@@ -65,7 +65,7 @@ def main():
     # Example demonstrating different report lengths
     # You can specify 'short', 'medium', or 'long' (default is 'long' if not specified)
     init_state = {
-        "user_email": "jane.moneypenny1@bankwell.com",
+        "user_email": "jane.moneypenny@bankwell.com",
         "client_name": "Adam Clay",
         "client_email": "adam.clay@compass.com",
         "meeting_timestamp": "2024-03-26 11:00:00",

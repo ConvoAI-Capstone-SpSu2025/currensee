@@ -272,7 +272,7 @@ async def demo_endpoint():
     try:
         # Sample data similar to the main() function in complete_graph.py
         demo_request = ClientRequest(
-            user_email="jane.moneypenny1@bankwell.com",
+            user_email="jane.moneypenny@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
@@ -293,7 +293,7 @@ async def demo_html():
     """
     try:
         demo_request = ClientRequest(
-            user_email="jane.moneypenny1@bankwell.com",
+            user_email="jane.moneypenny@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
@@ -314,7 +314,7 @@ async def demo_pdf():
     """
     try:
         demo_request = ClientRequest(
-            user_email="jane.moneypenny1@bankwell.com",
+            user_email="jane.moneypenny@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
