@@ -34,16 +34,17 @@ engine = create_pg_engine(db_name=DB_NAME)
 #     return result.response
 
 ###################### LILY: this is overriding meeting timestamp in the graph ####################################
-def find_last_meeting_date(all_client_emails: list[str]) -> dict:
+def find_last_meeting_date(all_client_emails: list[str],  user_email: str, meeting_timestamp: str) -> dict:
     """
     Find the last meeting date that was held with any of the
     client emails listed above.
     """
-
     query_str = f"""
         SELECT  meeting_timestamp
         FROM  meeting_data
         WHERE  invitee_emails ~* '{'|'.join(all_client_emails)}'
+        and host_email = '{user_email}'
+        and meeting_timestamp < '{meeting_timestamp}'
         ORDER BY meeting_timestamp DESC
         LIMIT 1;
 
@@ -63,8 +64,9 @@ def produce_client_email_summary(state: SupervisorState) -> dict:
     all_client_emails = state["all_client_emails"]
     meeting_timestamp = state["meeting_timestamp"]
     meeting_description = state["meeting_description"]
+    user_email = state["user_email"]
 
-    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails)
+    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails, user_email = user_email, meeting_timestamp = meeting_timestamp)
 
     ## NOTE: I currently removed the meeting timestamp restrictions, because
     ## it wasn't returning any emails.
@@ -72,14 +74,9 @@ def produce_client_email_summary(state: SupervisorState) -> dict:
     query_str = f"""
         SELECT email_body
         FROM email_data
-        WHERE
-        -- email_timestamp <= '{meeting_timestamp}' AND email_timestamp >= '{last_meeting_date}'
-        -- AND
-        (
-            to_emails ~* '{'|'.join(all_client_emails)}'
-            OR
-            from_email ~* '{'|'.join(all_client_emails)}'
-        )
+        WHERE email_timestamp <= '{meeting_timestamp}'
+        AND (to_emails ~* '{'|'.join(all_client_emails)}' OR from_email ~* '{'|'.join(all_client_emails)}')
+        and (to_emails = '{user_email}' or from_email = '{user_email}')
     """
 
     result = pd.read_sql(query_str, con=engine)
@@ -127,18 +124,16 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
     all_client_emails = state["all_client_emails"]
     meeting_timestamp = state["meeting_timestamp"]
     meeting_description = state["meeting_description"]
+    user_email = state["user_email"]
 
-    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails)
+    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails, user_email = user_email, meeting_timestamp = meeting_timestamp)
 
     query_str = f"""
         SELECT email_body
         FROM email_data
-        WHERE
-        (
-            to_emails ~* '{'|'.join(all_client_emails)}'
-            OR
-            from_email ~* '{'|'.join(all_client_emails)}'
-        )
+        WHERE email_timestamp <= '{meeting_timestamp}'
+        AND (to_emails ~* '{'|'.join(all_client_emails)}' OR from_email ~* '{'|'.join(all_client_emails)}')
+        and (to_emails = '{user_email}' or from_email = '{user_email}')
         order by email_timestamp desc
         limit 5
     """
@@ -198,18 +193,16 @@ def produce_recent_client_questions(state: SupervisorState) -> dict:
     all_client_emails = state["all_client_emails"]
     meeting_timestamp = state["meeting_timestamp"]
     meeting_description = state["meeting_description"]
+    user_email = state["user_email"]
 
-    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails)
+    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails, user_email = user_email, meeting_timestamp = meeting_timestamp)
 
     query_str = f"""
         SELECT email_body
         FROM email_data
-        WHERE
-        (
-            to_emails ~* '{'|'.join(all_client_emails)}'
-            OR
-            from_email ~* '{'|'.join(all_client_emails)}'
-        )
+        WHERE email_timestamp <= '{meeting_timestamp}'
+        AND (to_emails ~* '{'|'.join(all_client_emails)}' OR from_email ~* '{'|'.join(all_client_emails)}')
+        and (to_emails = '{user_email}' or from_email = '{user_email}')
         order by email_timestamp desc
         limit 5
     """
