@@ -26,6 +26,9 @@ class SupervisorState(TypedDict):
     email_summary: Optional[str]  # final outlook output 1
     recent_email_summary: Optional[str]  # final outlook output 2
     recent_client_questions: Optional[str]  # final outlook output 3
+    recent_all_emails_dict: Optional[dict]
+    recent_client_emails_dict: Optional[dict]
+
 
     # Finnews response generation
     macro_news_sources: Optional[list[dict]]

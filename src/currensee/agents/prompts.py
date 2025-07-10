@@ -12,7 +12,7 @@ full_holdings_prompt = """
     Your job is to write a report section that details information about the client {client_name}'s financial holdings.
         
      Use {finnews_summary} to write a paragraph summarizing relevant financial data, including:
-     - Performance of the client's holdings
+     - Performance of {client_holdings}, which are the client's holdings.
      - Broader economic indicators
     
     Important Instructions:
@@ -26,19 +26,24 @@ full_holdings_prompt = """
 """
 
 short_holdings_prompt = """ 
-     You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. Your job is to write a formatted list of the client {client_name}'s financial holdings.
+     You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. 
+    The meeting will focus on: {meeting_description}. 
+    Your job is to write a report section that details information about the client {client_name}'s financial holdings. 
     
-    Write a list bullet point list of the holdings in {client_holdings}.
+    Use {finnews_summary} to write a bullet point list of relevant financial data, including:
+     - Performance of {client_holdings}, which are the client's holdings.
+     - Broader economic indicators
       
       Important Instructions:
     1. DO NOT use any section headings or titles
     2. DO NOT return a multi-section report
-    3. Return a single flat list of 5-7 bullet points total
+    3. Return a single flat list of 3-4 bullet points total
     4. Each bullet point should begin with a • or - symbol
     5. DO NOT number your points
     
     Inputs:
     Client Holdings: {client_holdings}
+    Financial summary: {finnews_summary}
  """
 
 
