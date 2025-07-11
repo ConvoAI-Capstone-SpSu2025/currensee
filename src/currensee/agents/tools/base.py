@@ -42,6 +42,9 @@ class SupervisorState(TypedDict):
     macro_news_detail: Optional[str]
     past_meeting_detail: Optional[str]
 
+    #Meeting Topic
+    meeting_category: Optional[str]
+
     # Complete response
    # final_summary: Optional[str]
     #report_length: Optional[str]  # Controls report format: 'short', 'medium', or 'long'

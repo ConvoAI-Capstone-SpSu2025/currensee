@@ -12,6 +12,7 @@ from currensee.agents.tools.outlook_tools import (
     produce_client_email_summary, produce_recent_client_email_summary,
     produce_recent_client_questions, pull_recent_client_emails)
 from currensee.agents.tools.preference_tools import retrieve_current_formatt_preferences
+from currensee.agents.tools.meeting_categorization_tool import categorize_meeting_topic
 from currensee.core import get_model, settings
 from currensee.utils.sourcing_utils import get_fin_linked_summary
 
@@ -35,6 +36,7 @@ complete_graph.add_node("produce_outlook_summary", produce_client_email_summary)
 complete_graph.add_node("produce_recent_outlook_summary", produce_recent_client_email_summary)
 complete_graph.add_node("produce_recent_client_questions", produce_recent_client_questions)
 complete_graph.add_node("pull_recent_client_emails", pull_recent_client_emails)
+complete_graph.add_node("categorize_meeting_topic", categorize_meeting_topic)
 
 complete_graph.add_node("run_client_holdings_agent", retrieve_holdings_news)
 complete_graph.add_node("run_client_industry_agent", retrieve_client_industry_news)
@@ -51,7 +53,8 @@ complete_graph.add_edge(
     "produce_recent_outlook_summary", "produce_recent_client_questions"
 )
 complete_graph.add_edge("produce_recent_client_questions", "pull_recent_client_emails")
-complete_graph.add_edge("pull_recent_client_emails", "run_macro_finnews_agent")
+complete_graph.add_edge("pull_recent_client_emails", "categorize_meeting_topic")
+complete_graph.add_edge("categorize_meeting_topic", "run_macro_finnews_agent")
 complete_graph.add_edge("run_macro_finnews_agent", "run_client_industry_agent")
 complete_graph.add_edge("run_client_industry_agent", "run_client_holdings_agent")
 complete_graph.add_edge("run_client_holdings_agent", "finance_summarizer_agent")
