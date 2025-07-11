@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currensee - Email Summary & Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            height: 100vh;
+            overflow: hidden;
+            background: #1f1f1f;
+            color: #ffffff;
+        }
+
+        /* Top Bar */
+    .top-bar {
+        background: #252525;
+        color: white;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+    
+    .top-bar .logo {
+        font-size: 18px;
+        font-weight: 600;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .search-box {
+        flex: 1;
+        max-width: 400px;
+        margin-left: 40px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: none;
+        font-size: 14px;
+        background-color: rgba(255,255,255,0.9);
+        color: #323130;
+    }
+    
+    .top-bar .user-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-left: auto;
+    }
+    
+    .top-bar .user-info i {
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    
+    .top-bar .user-info i:hover {
+        color: #aad8ff;
+    }
+    
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        background-color: #106ebe;
+        color:white;
+        font-weight: bold;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
+        /* Ribbon */
+        .ribbon {
+            background: #2a2a2a;
+            border-bottom: 1px solid  #444;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 20px;
+        }
+
+        .ribbon-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .ribbon-section:hover {
+            background: #3a3a3a;
+        }
+
+        .ribbon-section.active {
+            background: #106ebe;
+            color: #1f1f1f;
+        }
+
+        .ribbon-icon {
+            font-size: 24px;
+        }
+
+        .ribbon-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            height: calc(100vh - 138px);
+        }
+
+        /* Navigation Pane */
+        .nav-pane {
+            width: 250px;
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-section {
+            padding: 12px 16px;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-section h3 {
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 2px;
+            transition: background-color 0.2s;
+            color: #e1e1e1;
+        }
+
+        .nav-item:hover {
+            background: #2a2a2a;
+        }
+
+        .nav-item.active {
+            background: #106ebe;
+            color: #1f1f1f;
+             color: white;
+        }
+
+        .nav-item i {
+            width: 16px;
+            margin-right: 8px;
+        }
+
+        /* Email List Pane */
+        .email-list-pane {
+            width: 350px;
+            background: #1f1f1f;
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .email-list-header {
+            background: #2b2b2b;
+            border-bottom: 1px solid #444;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .email-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .email-item:hover {
+            background: #2a2a2a;
+        }
+
+        .email-item.selected {
+            background: #004578;
+            border-left: 3px solid #106ebe;
+        }
+
+        .email-sender {
+            font-weight: 600;
+            color: #323130;
+            margin-bottom: 4px;
+        }
+
+        .email-subject {
+            color: #605e5c;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+
+        .email-preview {
+            color: #8a8886;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .email-date {
+            font-size: 12px;
+            color: #cccccc;
+            float: right;
+        }
+
+        /* Main Content Pane */
+        .content-pane {
+            flex: 1;
+            background: #1f1f1f;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .content-header {
+            background:  #2b2b2b;
+            border-bottom: 1px solid #444;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .content-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .content-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+
+        /* Forms */
+        .form-section {
+            background: #2b2b2b;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-section h3 {
+            color: #323130;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #555;
+            border-radius: 3px;
+            font-size: 14px;
+            font-family: inherit;
+            background: #1f1f1f;
+            color: #ffffff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #106ebe;
+            box-shadow: 0 0 0 1px #106ebe;
+        }
+
+        .form-group textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #106ebe;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #005a9e;
+        }
+
+        .btn-secondary {
+            background: #3a3a3a;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #2a2a2a;
+        }
+
+        .btn-success {
+           background: #107c10;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #0e5c0e;
+        }
+
+        /* Status Messages */
+        .status-message {
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-top: 16px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .status-message.loading {
+            background: #deecf9;
+            color: #106ebe;
+            border: 1px solid #106ebe;
+        }
+
+        .status-message.success {
+            background: #dff6dd;
+            color: #107c10;
+            border: 1px solid #107c10;
+        }
+
+        .status-message.error {
+            background: #fde7e9;
+            color: #a80000;
+            border: 1px solid #a80000;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background:#2a2a2a;
+            border-radius: 3px;
+            height: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #106ebe;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* API Status Indicator */
+        .api-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .api-status.connected {
+            background: #dff6dd;
+            color: #107c10;
+        }
+
+        .api-status.disconnected {
+            background: #fde7e9;
+            color: #a80000;
+        }
+
+        /* Report Options */
+        .report-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .report-option {
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #1f1f1f;
+        }
+
+        .report-option:hover {
+            border-color: #106ebe;
+            box-shadow: 0 2px 8px rgba(16, 110, 190, 0.1);
+        }
+
+        .report-option h4 {
+            color: #323130;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .report-option p {
+            color: #605e5c;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+         /* Change User Input to Readonly */
+        .form-section.read-only {
+            opacity: 0.6;
+            font-size: 13px;
+        }        
+
+        .form-section.read-only input,
+        .form-section.read-only textarea,
+        .form-section.read-only select {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #888;
+            pointer-events: none;
+        }        
+
+        
+    </style>
+</head>
+<body>
+    
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">
+            <i class="fas fa-envelope-open-text"></i> OutlookMail
+        </div>
+    
+        <input type="text" class="search-box" placeholder="Search mail and people">
+    
+        <div class="user-info">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-question-circle"></i>
+            <i class="fas fa-cog"></i>
+            <div class="user-avatar">
+                <span>H</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ribbon -->
+    <div class="ribbon">
+        <div class="ribbon-section active">
+            <i class="fas fa-inbox ribbon-icon"></i>
+            <span class="ribbon-text">Mail</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-calendar-alt ribbon-icon"></i>
+            <span class="ribbon-text">Calendar</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-user-friends ribbon-icon"></i>
+            <span class="ribbon-text">People</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-tasks ribbon-icon"></i>
+            <span class="ribbon-text">Tasks</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-file-alt ribbon-icon"></i>
+            <span class="ribbon-text">Files</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-chart-line ribbon-icon"></i>
+            <span class="ribbon-text">Insights</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-cog ribbon-icon"></i>
+            <span class="ribbon-text">Settings</span>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Navigation Pane -->
+    <div class="nav-pane">
+        <div class="nav-section main-folders">
+            <h3>Mail Folders</h3>
+            <div class="nav-item active">
+                <i class="fas fa-inbox"></i>
+                Inbox
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-paper-plane"></i>
+                Sent
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                Drafts
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-star"></i>
+                Important
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-trash-alt"></i>
+                Deleted Items
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-archive"></i>
+                Archive
+            </div>
+        </div>
+    
+        <!-- Currensee New Add On -->
+        <div class="nav-section recent-clients">
+            <h3>Recent Clients</h3>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                Compass Inc.
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                TechCorp Ltd.
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                Global Finance
+            </div>
+        </div>
+    </div>
+
+        <!-- Email List Pane -->
+        <div class="email-list-pane">
+            <div class="email-list-header">
+                <span>Recent Emails</span>
+                <i class="fas fa-sync-alt" style="cursor: pointer;"></i>
+            </div>
+            <div class="email-item selected">
+                <div class="email-date">Mar 26</div>
+                <div class="email-sender">Adam Clay</div>
+                <div class="email-subject">Re: Annual Credit Facility Review</div>
+                <div class="email-preview">Looking forward to our meeting to discuss the annual credit facility review...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-date">Mar 25</div>
+                <div class="email-sender">Sarah Johnson</div>
+                <div class="email-subject">Q1 Financial Review</div>
+                <div class="email-preview">Please find attached the Q1 financial statements for review...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-date">Mar 24</div>
+                <div class="email-sender">Michael Chen</div>
+                <div class="email-subject">Investment Portfolio Update</div>
+                <div class="email-preview">The portfolio has shown significant growth this quarter...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-date">Mar 23</div>
+                <div class="email-sender">Lisa Rodriguez</div>
+                <div class="email-subject">Market Analysis Request</div>
+                <div class="email-preview">Could you provide analysis on the recent market trends...</div>
+            </div>
+        </div>
+
+        <!-- Main Content Pane -->
+        <div class="content-pane">
+        <div class="content-header" style="display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-chart-line" style="font-size: 28px; color: #106ebe;"></i>
+            <h1 class="content-title" style="margin: 0;">Currensee Client Summary & Email Report</h1>
+        </div>
+            <div class="content-body">
+                <!-- Client Information (Read-Only) -->
+             <h3><i class="fas fa-user"></i> Client Information</h3>
+                <div class="form-section read-only">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clientName">Client Name</label>
+                            <input type="text" id="clientName" value="Adam Clay" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">Client Email</label>
+                            <input type="email" id="clientEmail" value="adam.clay@compass.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="meetingTimestamp">Meeting Date & Time</label>
+                            <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00"
+                                   placeholder="YYYY-MM-DD HH:MM:SS" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="meetingDescription">Meeting Description</label>
+                        <textarea id="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
+                    </div>
+                </div>
+        
+                <!-- NEW: Report Type Selector -->
+                <div class="form-section">
+                    <h3><i class="fas fa-sliders-h"></i> Report Type</h3>
+                    <div class="form-group">
+                        <label for="reportLength">Select Report Length</label>
+                            <select id="reportLength">
+                                <option value="short">Snapshot</option>
+                                <option value="medium">Interactive Report</option>
+                                <option value="long" selected>Full Report</option>
+                                <option value="customized" selected> Customized Report</option>
+                            </select>
+                    </div>
+                </div>
+
+                <!-- Report Generation Options -->
+                <div class="form-section">
+                    <h3><i class="fas fa-file-alt"></i> Generate Reports</h3>
+                    <div class="report-options">
+                        <div class="report-option" onclick="generateReport('html')">
+                            <h4><i class="fas fa-globe"></i> HTML Preview</h4>
+                            <p>View a formatted HTML report in a new window for review before generating PDF.</p>
+                        </div>
+                        <div class="report-option" onclick="generateReport('pdf')">
+                            <h4><i class="fas fa-file-pdf"></i> PDF Download</h4>
+                            <p>Generate and download a professional PDF report ready for client presentation.</p>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="generateReport('html')">
+                            <i class="fas fa-eye"></i> Preview HTML
+                        </button>
+                        <button class="btn btn-success" onclick="generateReport('pdf')">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Status Messages -->
+                <div id="statusMessage" class="status-message"></div>
+                <div id="progressContainer" class="progress-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000';
+
+        // Check API connection on page load
+        async function checkApiConnection() {
+            const statusElement = document.getElementById('apiStatus');
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                if (response.ok) {
+                    statusElement.textContent = 'API Connected';
+                    statusElement.className = 'api-status connected';
+                } else {
+                    throw new Error('API not responding');
+                }
+            } catch (error) {
+                statusElement.textContent = 'API Disconnected';
+                statusElement.className = 'api-status disconnected';
+            }
+        }
+
+        function getFormData() {
+            return {
+                client_name: document.getElementById('clientName').value,
+                client_email: document.getElementById('clientEmail').value,
+                meeting_timestamp: document.getElementById('meetingTimestamp').value,
+                meeting_description: document.getElementById('meetingDescription').value,
+                report_length: document.getElementById('reportLength').value
+            };
+        }
+
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('statusMessage');
+            const progressContainer = document.getElementById('progressContainer');
+
+            statusElement.textContent = message;
+            statusElement.className = `status-message ${type}`;
+            statusElement.style.display = 'block';
+
+            if (type === 'loading') {
+                progressContainer.style.display = 'block';
+                animateProgress();
+            } else {
+                progressContainer.style.display = 'none';
+            }
+        }
+
+        function hideStatus() {
+            document.getElementById('statusMessage').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'none';
+        }
+
+        function animateProgress() {
+            const progressBar = document.getElementById('progressBar');
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 90) {
+                    clearInterval(interval);
+                } else {
+                    width += Math.random() * 10;
+                    progressBar.style.width = Math.min(width, 90) + '%';
+                }
+            }, 500);
+        }
+
+        async function generateReport(format) {
+            const data = getFormData();
+
+            // Validate required fields
+            if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
+                showStatus('Please fill in all required fields', 'error');
+                return;
+            }
+
+            let endpoint;
+            let buttonText;
+            switch(format) {
+                case 'html':
+                    endpoint = '/generate-report/html';
+                    buttonText = 'HTML report';
+                    break;
+                case 'pdf':
+                    endpoint = '/generate-report/pdf';
+                    buttonText = 'PDF report';
+                    break;
+                default:
+                    showStatus('Invalid format specified', 'error');
+                    return;
+            }
+
+            showStatus(`Generating ${buttonText}... This may take several minutes.`, 'loading');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Complete the progress bar
+                document.getElementById('progressBar').style.width = '100%';
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+                    throw new Error(errorData.detail || `HTTP ${response.status}`);
+                }
+
+                if (format === 'json') {
+                    const result = await response.json();
+                    showStatus(`JSON report generated successfully! ${result.execution_time ? `Completed in ${result.execution_time.toFixed(2)} seconds.` : ''}`, 'success');
+                    console.log('Report result:', result);
+
+                    // Optionally display some key metrics
+                    if (result.data && result.data.final_summary_sourced) {
+                        // You could show a preview of the summary here
+                    }
+                } else if (format === 'html') {
+                    const html = await response.text();
+                    showStatus('HTML report generated successfully! Opening in new window...', 'success');
+
+                    const newWindow = window.open('', '_blank');
+                    newWindow.document.write(html);
+                    newWindow.document.close();
+                } else if (format === 'pdf') {
+                    const blob = await response.blob();
+                    showStatus('PDF report generated successfully! Download started.', 'success');
+
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+
+                    // Generate a more descriptive filename
+                    const clientName = data.client_name.replace(/[^a-zA-Z0-9]/g, '_');
+                    const timestamp = new Date().toISOString().slice(0,19).replace(/[:-]/g, '');
+                    a.download = `currensee_${clientName}_${timestamp}.pdf`;
+
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                }
+
+                // Auto-hide success message after 5 seconds
+                setTimeout(() => {
+                    if (document.getElementById('statusMessage').className.includes('success')) {
+                        hideStatus();
+                    }
+                }, 5000);
+
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('API Error:', error);
+            }
+        }
+
+        // Add click handlers for ribbon sections
+        document.querySelectorAll('.ribbon-section').forEach(section => {
+            section.addEventListener('click', () => {
+                document.querySelectorAll('.ribbon-section').forEach(s => s.classList.remove('active'));
+                section.classList.add('active');
+            });
+        });
+
+        // Add click handlers for navigation items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        // Add click handlers for email items
+        document.querySelectorAll('.email-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.email-item').forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+
+                // You could populate the form with email data here
+                const sender = item.querySelector('.email-sender').textContent;
+                const subject = item.querySelector('.email-subject').textContent;
+
+                if (sender === 'Adam Clay') {
+                    document.getElementById('clientName').value = 'Adam Clay';
+                    document.getElementById('clientEmail').value = 'adam.clay@compass.com';
+                    document.getElementById('meetingDescription').value = 'Compass - Annual Credit Facility Review Meeting';
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            checkApiConnection();
+        });
+
+        // Refresh API connection every 30 seconds
+        setInterval(checkApiConnection, 30000);
+    </script>
+</body>
+</html>
