@@ -300,7 +300,7 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 8px 12px;
+            padding: 5px 10px;
             border: 1px solid #d1d1d1;
             border-radius: 3px;
             font-size: 14px;
@@ -316,7 +316,7 @@
         }
 
         .form-group textarea {
-            height: 80px;
+            height: 60px;
             resize: vertical;
         }
 
@@ -468,7 +468,28 @@
             font-size: 13px;
             line-height: 1.4;
         }
-
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        
+        .custom-checkbox input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 6px;
+        }
+        
+        .form-section h3 {
+            margin-bottom: 12px;
+        }
+        
+        .form-group label {
+            font-size: 14px;
+            margin-bottom: 4px;
+            display: block;
+        }
          /* Change User Input to Readonly */
         .form-section.read-only {
             opacity: 0.6;
@@ -482,7 +503,66 @@
             border-color: #d1d1d1;
             color: #605e5c;
             pointer-events: none;
-        }        
+        }
+        .report-type-options {
+            display: flex;
+            gap: 32px;
+            margin-top: 8px;
+        }
+        .custom-checkbox {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            font-size: 15px;
+            user-select: none;
+            color: #e1e1e1;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0; width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            height: 18px;
+            width: 18px;
+            background-color: white;
+            border: 2px solid #106ebe;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #106ebe;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+        .custom-suboptions {
+            display: flex;
+            gap: 32px;
+            margin-top: 8px;
+        }
+
 
         
     </style>
@@ -628,69 +708,223 @@
             <h1 class="content-title" style="margin: 0;">Currensee Client Summary & Email Report</h1>
         </div>
             <div class="content-body">
-                <!-- Client Information (Read-Only) -->
-             <h3><i class="fas fa-user"></i> Client Information</h3>
-                <div class="form-section read-only">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="clientName">Client Name</label>
-                            <input type="text" id="clientName" value="Adam Clay" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="clientEmail">Client Email</label>
-                            <input type="email" id="clientEmail" value="adam.clay@compass.com" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="meetingTimestamp">Meeting Date & Time</label>
-                            <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00"
-                                   placeholder="YYYY-MM-DD HH:MM:SS" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="meetingDescription">Meeting Description</label>
-                        <textarea id="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
-                    </div>
+
+                
+<!-- Client Information Section -->
+<h3>
+  <i class="fas fa-user"></i> Client Information
+  <i id="editClientInfo" class="fas fa-cog"
+     style="float: right; cursor: pointer; color: #106ebe;"
+     title="Click to edit client info"></i>
+</h3>
+
+<div id="clientInfoSection" class="form-section read-only">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="clientName">Client Name</label>
+      <input type="text" id="clientName" value="Adam Clay" required>
+    </div>
+    <div class="form-group">
+      <label for="clientEmail">Client Email</label>
+      <input type="email" id="clientEmail" value="adam.clay@compass.com" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="meetingTimestamp">Meeting Date & Time</label>
+      <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00"
+             placeholder="YYYY-MM-DD HH:MM:SS" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="meetingDescription">Meeting Description</label>
+    <textarea id="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
+  </div>
+
+  <!-- Save button (hidden by default) -->
+  <button id="saveClientInfoBtn" style="display: none; margin-top: 10px;">Save</button>
+</div>
+
+<!-- Script for toggling and saving -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const editBtn = document.getElementById('editClientInfo');
+    const saveBtn = document.getElementById('saveClientInfoBtn');
+    const section = document.getElementById('clientInfoSection');
+
+    editBtn.addEventListener('click', () => {
+      section.classList.toggle('read-only');
+      saveBtn.style.display = section.classList.contains('read-only') ? 'none' : 'inline-block';
+    });
+
+    saveBtn.addEventListener('click', () => {
+      const data = {
+        clientName: document.getElementById('clientName').value,
+        clientEmail: document.getElementById('clientEmail').value,
+        meetingTimestamp: document.getElementById('meetingTimestamp').value,
+        meetingDescription: document.getElementById('meetingDescription').value,
+      };
+
+      fetch('/api/save_client_info', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Client info saved successfully');
+          section.classList.add('read-only');
+          saveBtn.style.display = 'none';
+        } else {
+          alert('Failed to save client info');
+        }
+      })
+      .catch(err => {
+        console.error('Error saving client info:', err);
+        alert('Error saving client info');
+      });
+    });
+  });
+</script>
+
+        
+<!-- Report Generation Options -->
+<div class="form-section">
+    <h3><i class="fas fa-file-alt"></i> Select Your Report Type </h3>
+    <div class="form-group" style="margin-bottom: 16px;">
+        <label style="font-weight:600;">Report Type</label>
+        <div class="report-type-options">
+            <label class="custom-checkbox">
+                <input type="checkbox" id="autoReport" name="reportType" value="auto" checked>
+                <span class="checkmark"></span>
+                Auto Report
+            </label>
+            <label class="custom-checkbox">
+                <input type="checkbox" id="customReport" name="reportType" value="custom">
+                <span class="checkmark"></span>
+                Customized Report
+            </label>
+        </div>
+        <div id="customOptions" class="custom-suboptions" style="margin-left: 24px; margin-top: 8px; display: none; flex-direction: column; gap: 12px;">
+            <!-- Email Summary Option -->
+            <label class="custom-checkbox" style="margin-bottom: 0;">
+                <input type="checkbox" id="emailSummary" name="customOption" value="emailSummary">
+                <span class="checkmark"></span>
+                Email Summary
+            </label>
+            <div id="emailSummarySub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="overallEmailSummary" name="emailSummaryOption" value="overall">
+                    <span class="checkmark"></span>
+                    Overall Email Summary
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="recentEmailSummary" name="emailSummaryOption" value="recent">
+                    <span class="checkmark"></span>
+                    Recent Email Summary
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="recentQuestions" name="emailSummaryOption" value="questions">
+                    <span class="checkmark"></span>
+                    Recent Questions
+                </label>
+            </div>
+            <!-- Financial News Option -->
+            <label class="custom-checkbox" style="margin-bottom: 0;">
+                <input type="checkbox" id="financialNews" name="customOption" value="financialNews">
+                <span class="checkmark"></span>
+                Financial News
+            </label>
+            <div id="financialNewsSub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="clientIndustryNews" name="financialNewsOption" value="industry">
+                    <span class="checkmark"></span>
+                    Client Industry News
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="holdingNews" name="financialNewsOption" value="holding">
+                    <span class="checkmark"></span>
+                    Holding News
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="macroeconomyNews" name="financialNewsOption" value="macro">
+                    <span class="checkmark"></span>
+                    Macroeconomy News
+                </label>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const autoReport = document.getElementById('autoReport');
+            const customReport = document.getElementById('customReport');
+            const customOptions = document.getElementById('customOptions');
+            const emailSummary = document.getElementById('emailSummary');
+            const emailSummarySub = document.getElementById('emailSummarySub');
+            const financialNews = document.getElementById('financialNews');
+            const financialNewsSub = document.getElementById('financialNewsSub');
+
+            // Only one main report type can be selected
+            autoReport.addEventListener('change', function() {
+                if (autoReport.checked) {
+                    customReport.checked = false;
+                    customOptions.style.display = 'none';
+                }
+            });
+            customReport.addEventListener('change', function() {
+                if (customReport.checked) {
+                    autoReport.checked = false;
+                    customOptions.style.display = 'flex';
+                } else {
+                    customOptions.style.display = 'none';
+                }
+            });
+
+            emailSummary.addEventListener('change', function() {
+                emailSummarySub.style.display = emailSummary.checked ? 'flex' : 'none';
+            });
+
+            financialNews.addEventListener('change', function() {
+                financialNewsSub.style.display = financialNews.checked ? 'flex' : 'none';
+            });
+
+            // On page load, show/hide custom options based on initial state
+            if (customReport.checked) {
+                customOptions.style.display = 'flex';
+            } else {
+                customOptions.style.display = 'none';
+            }
+        });
+    </script>
+    
+    <!-- Generate Report Option -->
+        <div class="form-section">
+            <h3><i class="fas fa-file-alt" style="color: #106ebe;"></i> Generate Reports</h3>
+        
+            <div class="button-group" style="display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap;">
+                <!-- HTML Preview Button -->
+                <div class="report-option" style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <button class="btn btn-primary" onclick="generateReport('html')">
+                        <i class="fas fa-eye"></i> Preview HTML
+                    </button>
+                    <p style="margin: 8px 0 0 2px; font-size: 13px; color: #555;">
+                        View an interactive HTML in a new window.
+                    </p>
                 </div>
         
-                <!-- NEW: Report Type Selector -->
-                <div class="form-section">
-                    <h3><i class="fas fa-sliders-h"></i> Report Type</h3>
-                    <div class="form-group">
-                        <label for="reportLength">Select Report Length</label>
-                            <select id="reportLength">
-                                <option value="short">Snapshot</option>
-                                <option value="medium">Interactive Report</option>
-                                <option value="long" selected>Full Report</option>
-                                <option value="customized" selected> Customized Report</option>
-                            </select>
-                    </div>
+                <!-- PDF Download Button -->
+                <div class="report-option" style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <button class="btn btn-primary" onclick="generateReport('pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                    <p style="margin: 8px 0 0 2px; font-size: 13px; color: #555;">
+                        Generate and download a professional PDF report.
+                    </p>
                 </div>
-
-                <!-- Report Generation Options -->
-                <div class="form-section">
-                    <h3><i class="fas fa-file-alt"></i> Generate Reports</h3>
-                    <div class="report-options">
-                        <div class="report-option" onclick="generateReport('html')">
-                            <h4><i class="fas fa-globe"></i> HTML Preview</h4>
-                            <p>View a formatted HTML report in a new window for review before generating PDF.</p>
-                        </div>
-                        <div class="report-option" onclick="generateReport('pdf')">
-                            <h4><i class="fas fa-file-pdf"></i> PDF Download</h4>
-                            <p>Generate and download a professional PDF report ready for client presentation.</p>
-                        </div>
-                    </div>
-
-                    <div class="button-group">
-                        <button class="btn btn-secondary" onclick="generateReport('html')">
-                            <i class="fas fa-eye"></i> Preview HTML
-                        </button>
-                        <button class="btn btn-success" onclick="generateReport('pdf')">
-                            <i class="fas fa-download"></i> Download PDF
-                        </button>
-                    </div>
-                </div>
+            </div>
+        </div>
 
                 <!-- Status Messages -->
                 <div id="statusMessage" class="status-message"></div>
