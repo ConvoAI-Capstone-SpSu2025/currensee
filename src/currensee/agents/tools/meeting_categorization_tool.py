@@ -36,7 +36,7 @@ def categorize_meeting_topic(state: SupervisorState) -> dict:
     prompt = f"""
     PROMPT
 
-   Classify the meeting topic into one of the following categories ["Customer Relationship", "Finance", "Annual Review", "Regulatory"] using the guidance below. Use the Meeting Description and Recent Email Summary to do this.
+   Classify the meeting topic into one of the following categories ["Customer Relationship", "Finance", "Annual Review", "Regulatory", ] using the guidance below. Use the Meeting Description and Recent Email Summary to do this.
 
    Guidance:
    - Categorize as "Annual Review" if description focuses on topics such as: portfolio review or annual review 
