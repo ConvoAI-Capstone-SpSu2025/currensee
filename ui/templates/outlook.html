@@ -765,86 +765,71 @@
             }, 500);
         }
 
-        async function generateReport(format) {
-            const data = getFormData();
 
-            // Validate required fields
-            if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
-                showStatus('Please fill in all required fields', 'error');
-                return;
-            }
+    async function generateReport(format) {
+        const data = getFormData();
 
-            let endpoint;
-            let buttonText;
-            switch(format) {
-                case 'html':
-                    endpoint = '/generate-report/html';
-                    buttonText = 'HTML report';
-                    break;
-                case 'pdf':
-                    endpoint = '/generate-report/pdf';
-                    buttonText = 'PDF report';
-                    break;
-                default:
-                    showStatus('Invalid format specified', 'error');
-                    return;
-            }
+        // Validate required fields
+        if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
+            showStatus('Please fill in all required fields', 'error');
+            return;
+        }
 
-            showStatus(`Generating ${buttonText}... This may take several minutes.`, 'loading');
-
+        if (format === 'html') {
+            showStatus('Generating HTML report... This may take several minutes.', 'loading');
             try {
-                const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+                const response = await fetch(`${API_BASE_URL}/generate-report/html`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.detail || `HTTP ${response.status}`);
+                }
+                showStatus('Report generated successfully! Redirecting...', 'success');
 
-                // Complete the progress bar
+                // Redirect to report.html to display the report dynamically
+                setTimeout(() => {
+                    window.location.href = `${API_BASE_URL}/report`;
+                }, 1000);
+
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('API error:', error);
+            }
+        }
+        else if (format === 'pdf') {
+            showStatus('Generating PDF report... This may take several minutes.', 'loading');
+            try {
+                const response = await fetch(`${API_BASE_URL}/generate-report/pdf`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
                 document.getElementById('progressBar').style.width = '100%';
 
                 if (!response.ok) {
-                    const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
-                    throw new Error(errorData.detail || `HTTP ${response.status}`);
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.detail || `HTTP ${response.status}`);
                 }
 
-                if (format === 'json') {
-                    const result = await response.json();
-                    showStatus(`JSON report generated successfully! ${result.execution_time ? `Completed in ${result.execution_time.toFixed(2)} seconds.` : ''}`, 'success');
-                    console.log('Report result:', result);
+                const blob = await response.blob();
+                showStatus('PDF report generated successfully! Download started.', 'success');
 
-                    // Optionally display some key metrics
-                    if (result.data && result.data.final_summary_sourced) {
-                        // You could show a preview of the summary here
-                    }
-                } else if (format === 'html') {
-                    const html = await response.text();
-                    showStatus('HTML report generated successfully! Opening in new window...', 'success');
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
 
-                    const newWindow = window.open('', '_blank');
-                    newWindow.document.write(html);
-                    newWindow.document.close();
-                } else if (format === 'pdf') {
-                    const blob = await response.blob();
-                    showStatus('PDF report generated successfully! Download started.', 'success');
+                const clientName = data.client_name.replace(/[^a-zA-Z0-9]/g, '_');
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
+                a.download = `currensee_${clientName}_${timestamp}.pdf`;
 
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
 
-                    // Generate a more descriptive filename
-                    const clientName = data.client_name.replace(/[^a-zA-Z0-9]/g, '_');
-                    const timestamp = new Date().toISOString().slice(0,19).replace(/[:-]/g, '');
-                    a.download = `currensee_${clientName}_${timestamp}.pdf`;
-
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                    document.body.removeChild(a);
-                }
-
-                // Auto-hide success message after 5 seconds
                 setTimeout(() => {
                     if (document.getElementById('statusMessage').className.includes('success')) {
                         hideStatus();
@@ -853,9 +838,13 @@
 
             } catch (error) {
                 showStatus(`Error: ${error.message}`, 'error');
-                console.error('API Error:', error);
+                console.error('API error:', error);
             }
         }
+        else {
+            showStatus('Invalid format specified', 'error');
+        }
+    }
 
         // Add click handlers for ribbon sections
         document.querySelectorAll('.ribbon-section').forEach(section => {
@@ -879,7 +868,7 @@
                 document.querySelectorAll('.email-item').forEach(i => i.classList.remove('selected'));
                 item.classList.add('selected');
 
-                // You could populate the form with email data here
+                // Populate email here
                 const sender = item.querySelector('.email-sender').textContent;
                 const subject = item.querySelector('.email-subject').textContent;
 
