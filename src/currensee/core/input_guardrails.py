@@ -43,8 +43,10 @@ class CurrenSeeInputGuardrails:
         
         # Common disposable/suspicious email domains to flag
         self.suspicious_email_domains = {
-            "10minutemail.com", "tempmail.org", "guerrillamail.com", 
-            "mailinator.com", "yopmail.com", "temp-mail.org"
+            "10minutemail.com", "tempmail.org", "tempmail.com", "guerrillamail.com", 
+            "mailinator.com", "yopmail.com", "temp-mail.org", "throwaway.email",
+            "maildrop.cc", "sharklasers.com", "grr.la", "dispostable.com",
+            "tempail.com", "getnada.com", "emkei.cf", "fakeinbox.com"
         }
         
         # Expected business domains patterns (can be configured)
