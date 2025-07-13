@@ -18,18 +18,19 @@
             font-size: 14px;
             height: 100vh;
             overflow: hidden;
-            background: #f3f2f1;
+            background: #1f1f1f;
+            color: #e6e6e6;
         }
 
         /* Top Bar */
     .top-bar {
-        background: #0078d4;
+        background: #252525;
         color: white;
         height: 48px;
         display: flex;
         align-items: center;
         padding: 0 16px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.6);
     }
     
     .top-bar .logo {
@@ -67,14 +68,14 @@
     }
     
     .top-bar .user-info i:hover {
-        color: #d0e7ff;
+        color: #aad8ff;
     }
     
     .user-avatar {
         width: 28px;
         height: 28px;
         background-color: #106ebe;
-        color: white;
+        color:white;
         font-weight: bold;
         border-radius: 50%;
         display: flex;
@@ -84,8 +85,8 @@
     }
         /* Ribbon */
         .ribbon {
-            background: #f3f2f1;
-            border-bottom: 1px solid #d1d1d1;
+            background: #2a2a2a;
+            border-bottom: 1px solid  #444;
             height: 90px;
             display: flex;
             align-items: center;
@@ -105,12 +106,12 @@
         }
 
         .ribbon-section:hover {
-            background: #e1dfdd;
+            background: #3a3a3a;
         }
 
         .ribbon-section.active {
             background: #106ebe;
-            color: white;
+            color: #1f1f1f;
         }
 
         .ribbon-icon {
@@ -131,20 +132,19 @@
         /* Navigation Pane */
         .nav-pane {
             width: 250px;
-            background: white;
-            border-right: 1px solid #d1d1d1;
+            border-right: 1px solid #ac8c8c;
             display: flex;
             flex-direction: column;
         }
 
         .nav-section {
             padding: 12px 16px;
-            border-bottom: 1px solid #edebe9;
+            border-bottom: 1px solid #333;
         }
 
         .nav-section h3 {
             font-size: 14px;
-            color: #323130;
+            color: #ffffff;
             margin-bottom: 8px;
         }
 
@@ -156,15 +156,17 @@
             cursor: pointer;
             margin-bottom: 2px;
             transition: background-color 0.2s;
+            color: #e1e1e1;
         }
 
         .nav-item:hover {
-            background: #f3f2f1;
+            background: #2a2a2a;
         }
 
         .nav-item.active {
             background: #106ebe;
-            color: white;
+            color: #1f1f1f;
+             color: white;
         }
 
         .nav-item i {
@@ -175,18 +177,18 @@
         /* Email List Pane */
         .email-list-pane {
             width: 350px;
-            background: white;
-            border-right: 1px solid #d1d1d1;
+            background: #1f1f1f;
+            border-right: 1px solid #333;
             display: flex;
             flex-direction: column;
         }
 
         .email-list-header {
-            background: #faf9f8;
-            border-bottom: 1px solid #edebe9;
+            background: #2b2b2b;
+            border-bottom: 1px solid #444;
             padding: 12px 16px;
             font-weight: 600;
-            color: #323130;
+            color: #ffffff;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -194,23 +196,23 @@
 
         .email-item {
             padding: 12px 16px;
-            border-bottom: 1px solid #f3f2f1;
+            border-bottom: 1px solid #333;
             cursor: pointer;
             transition: background-color 0.2s;
         }
 
         .email-item:hover {
-            background: #f8f7f6;
+            background: #2a2a2a;
         }
 
         .email-item.selected {
-            background: #deecf9;
+            background: #004578;
             border-left: 3px solid #106ebe;
         }
 
         .email-sender {
             font-weight: 600;
-            color: #323130;
+            color: #e6e6e6;
             margin-bottom: 4px;
         }
 
@@ -228,22 +230,22 @@
 
         .email-date {
             font-size: 12px;
-            color: #8a8886;
+            color: #cccccc;
             float: right;
         }
 
         /* Main Content Pane */
         .content-pane {
             flex: 1;
-            background: white;
+            background: #1f1f1f;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
         .content-header {
-            background: #faf9f8;
-            border-bottom: 1px solid #edebe9;
+            background:  #2b2b2b;
+            border-bottom: 1px solid #444;
             padding: 16px 20px;
             display: flex;
             justify-content: flex-start;
@@ -253,7 +255,7 @@
         .content-title {
             font-size: 18px;
             font-weight: 600;
-            color: #323130;
+            color: #ffffff;
         }
 
         .content-body {
@@ -265,17 +267,18 @@
 
         /* Forms */
         .form-section {
-            background: white;
-            border: 1px solid #edebe9;
+            background: #2b2b2b;
+            border: 1px solid #444;
             border-radius: 4px;
             padding: 20px;
             margin-bottom: 20px;
         }
 
         .form-section h3 {
-            color: #323130;
+            color: #ffffff; /* Match Client Information heading */
             margin-bottom: 16px;
             font-size: 16px;
+            font-weight: 600;
         }
 
         .form-row {
@@ -291,7 +294,7 @@
         .form-group label {
             display: block;
             margin-bottom: 4px;
-            color: #323130;
+            color: #ffffff;
             font-weight: 500;
             font-size: 13px;
         }
@@ -301,18 +304,20 @@
         .form-group textarea {
             width: 100%;
             padding: 8px 12px;
-            border: 1px solid #d1d1d1;
+            border: 1px solid #555;
             border-radius: 3px;
             font-size: 14px;
             font-family: inherit;
+            background: #252525;
+            color: #f3f3f3;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #106ebe;
-            box-shadow: 0 0 0 1px #106ebe;
+            border-color: #0078d4;
+            box-shadow: 0 0 0 1px #0078d4;
         }
 
         .form-group textarea {
@@ -323,8 +328,9 @@
         /* Buttons */
         .button-group {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 16px;
+            margin-top: 12px;
+            justify-content: flex-start;
         }
 
         .btn {
@@ -349,22 +355,21 @@
             background: #005a9e;
         }
 
-        .btn-secondary {
-            background: #8a8886;
-            color: white;
+        .btn-secondary, .btn-success {
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(16,110,190,0.12);
+            border: 2px solid #106ebe;
+            background: linear-gradient(90deg, #106ebe 0%, #005a9e 100%);
+            color: #fff;
+            padding: 12px 28px;
+            transition: box-shadow 0.2s, border-color 0.2s;
         }
 
-        .btn-secondary:hover {
-            background: #6d6a67;
-        }
-
-        .btn-success {
-            background: #107c10;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #0e5c0e;
+        .btn-secondary:hover, .btn-success:hover {
+            border-color: #aad8ff;
+            box-shadow: 0 4px 16px rgba(16,110,190,0.18);
+            background: linear-gradient(90deg, #005a9e 0%, #106ebe 100%);
         }
 
         /* Status Messages */
@@ -397,7 +402,7 @@
         /* Progress Bar */
         .progress-container {
             width: 100%;
-            background: #f3f2f1;
+            background:#2a2a2a;
             border-radius: 3px;
             height: 6px;
             margin-top: 8px;
@@ -436,37 +441,32 @@
         /* Report Options */
         .report-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* smaller min width */
+            gap: 12px;
+            margin-top: 16px;
         }
 
         .report-option {
             border: 1px solid #d1d1d1;
             border-radius: 4px;
-            padding: 16px;
+            padding: 10px 8px; /* smaller padding */
             cursor: pointer;
             transition: all 0.2s;
-            background: white;
-        }
-
-        .report-option:hover {
-            border-color: #106ebe;
-            box-shadow: 0 2px 8px rgba(16, 110, 190, 0.1);
+            background: #23272f;
+            font-size: 13px;
+            min-width: 0;
         }
 
         .report-option h4 {
-            color: #323130;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #aad8ff;
         }
 
         .report-option p {
-            color: #605e5c;
-            font-size: 13px;
-            line-height: 1.4;
+            color: #cccccc;
+            font-size: 12px;
+            line-height: 1.3;
         }
 
          /* Change User Input to Readonly */
@@ -478,13 +478,106 @@
         .form-section.read-only input,
         .form-section.read-only textarea,
         .form-section.read-only select {
-            background-color: #f3f2f1;
-            border-color: #d1d1d1;
-            color: #605e5c;
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #888;
             pointer-events: none;
         }        
 
+        .report-type-options {
+            display: flex;
+            gap: 32px;
+            margin-top: 8px;
+        }
+        .custom-checkbox {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            font-size: 15px;
+            user-select: none;
+            color: #e6e6e6;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0; width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            height: 18px;
+            width: 18px;
+            background-color: #252525;
+            border: 2px solid #0078d4;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #0078d4;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+        .custom-suboptions {
+            display: flex;
+            gap: 32px;
+            margin-top: 8px;
+        }
         
+        .report-info-texts {
+            display: flex;
+            gap: 32px;
+            margin-top: 10px;
+        }
+        .report-info {
+            font-size: 13px;
+            color: #cccccc;
+            pointer-events: none;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            max-width: 260px;
+        }
+        .report-info strong {
+            color: #aad8ff;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        /* Add to your <style> section for a prettier label */
+// filepath: c:\Users\Jingf\Code\currensee\currensee\ui\outlook_RH.html
+.report-type-label {
+    font-size: 28px;
+    font-weight: 700;
+    color: #aad8ff;
+    background: #23272f;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    display: block;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(16,110,190,0.07);
+    letter-spacing: 0.5px;
+}
     </style>
 </head>
 <body>
@@ -502,7 +595,7 @@
             <i class="fas fa-question-circle"></i>
             <i class="fas fa-cog"></i>
             <div class="user-avatar">
-                <span>J</span>
+                <span>H</span>
             </div>
         </div>
     </div>
@@ -653,34 +746,118 @@
                         <textarea id="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
                     </div>
                 </div>
-        
-                <!-- NEW: Report Type Selector -->
-                <div class="form-section">
-                    <h3><i class="fas fa-sliders-h"></i> Report Type</h3>
-                    <div class="form-group">
-                        <label for="reportLength">Select Report Length</label>
-                            <select id="reportLength">
-                                <option value="short">Snapshot</option>
-                                <option value="medium">Interactive Report</option>
-                                <option value="long" selected>Full Report</option>
-                                <option value="customized" selected> Customized Report</option>
-                            </select>
-                    </div>
-                </div>
 
                 <!-- Report Generation Options -->
                 <div class="form-section">
                     <h3><i class="fas fa-file-alt"></i> Generate Reports</h3>
-                    <div class="report-options">
-                        <div class="report-option" onclick="generateReport('html')">
-                            <h4><i class="fas fa-globe"></i> HTML Preview</h4>
-                            <p>View a formatted HTML report in a new window for review before generating PDF.</p>
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <div class="report-type-label">
+    Please select your report type
+</div>
+                        <div class="report-type-options">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="autoReport" name="reportType" value="auto" checked>
+                                <span class="checkmark"></span>
+                                Auto Report
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="customReport" name="reportType" value="custom">
+                                <span class="checkmark"></span>
+                                Customized Report
+                            </label>
                         </div>
-                        <div class="report-option" onclick="generateReport('pdf')">
-                            <h4><i class="fas fa-file-pdf"></i> PDF Download</h4>
-                            <p>Generate and download a professional PDF report ready for client presentation.</p>
+                        <div id="customOptions" class="custom-suboptions" style="margin-left: 24px; margin-top: 8px; display: none; flex-direction: column; gap: 12px;">
+                            <!-- Email Summary Option -->
+                            <label class="custom-checkbox" style="margin-bottom: 0;">
+                                <input type="checkbox" id="emailSummary" name="customOption" value="emailSummary">
+                                <span class="checkmark"></span>
+                                Email Summary
+                            </label>
+                            <div id="emailSummarySub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="overallEmailSummary" name="emailSummaryOption" value="overall">
+                                    <span class="checkmark"></span>
+                                    Overall Email Summary
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="recentEmailSummary" name="emailSummaryOption" value="recent">
+                                    <span class="checkmark"></span>
+                                    Recent Email Summary
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="recentQuestions" name="emailSummaryOption" value="questions">
+                                    <span class="checkmark"></span>
+                                    Recent Questions
+                                </label>
+                            </div>
+                            <!-- Financial News Option -->
+                            <label class="custom-checkbox" style="margin-bottom: 0;">
+                                <input type="checkbox" id="financialNews" name="customOption" value="financialNews">
+                                <span class="checkmark"></span>
+                                Financial News
+                            </label>
+                            <div id="financialNewsSub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="clientIndustryNews" name="financialNewsOption" value="industry">
+                                    <span class="checkmark"></span>
+                                    Client Industry News
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="holdingNews" name="financialNewsOption" value="holding">
+                                    <span class="checkmark"></span>
+                                    Holding News
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="macroeconomyNews" name="financialNewsOption" value="macro">
+                                    <span class="checkmark"></span>
+                                    Macroeconomy News
+                                </label>
+                            </div>
                         </div>
                     </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const autoReport = document.getElementById('autoReport');
+                            const customReport = document.getElementById('customReport');
+                            const customOptions = document.getElementById('customOptions');
+                            const emailSummary = document.getElementById('emailSummary');
+                            const emailSummarySub = document.getElementById('emailSummarySub');
+                            const financialNews = document.getElementById('financialNews');
+                            const financialNewsSub = document.getElementById('financialNewsSub');
+
+                            // Only one main report type can be selected
+                            autoReport.addEventListener('change', function() {
+                                if (autoReport.checked) {
+                                    customReport.checked = false;
+                                    customOptions.style.display = 'none';
+                                }
+                            });
+                            customReport.addEventListener('change', function() {
+                                if (customReport.checked) {
+                                    autoReport.checked = false;
+                                    customOptions.style.display = 'flex';
+                                } else {
+                                    customOptions.style.display = 'none';
+                                }
+                            });
+
+                            emailSummary.addEventListener('change', function() {
+                                emailSummarySub.style.display = emailSummary.checked ? 'flex' : 'none';
+                            });
+
+                            financialNews.addEventListener('change', function() {
+                                financialNewsSub.style.display = financialNews.checked ? 'flex' : 'none';
+                            });
+
+                            // On page load, show/hide custom options based on initial state
+                            if (customReport.checked) {
+                                customOptions.style.display = 'flex';
+                            } else {
+                                customOptions.style.display = 'none';
+                            }
+                        });
+                    </script>
+                    <!-- End New Report Type Options -->
 
                     <div class="button-group">
                         <button class="btn btn-secondary" onclick="generateReport('html')">
@@ -689,6 +866,21 @@
                         <button class="btn btn-success" onclick="generateReport('pdf')">
                             <i class="fas fa-download"></i> Download PDF
                         </button>
+                    </div>
+                    <div class="report-info-texts">
+                        <div class="report-info">
+                            <strong>HTML Preview:</strong>
+                            <span>View a formatted HTML report in a new window for review before generating PDF.</span>
+                        </div>
+                        <div class="report-info">
+                            <strong>PDF Download:</strong>
+                            <span>Generate and download a professional PDF report ready for client presentation.</span>
+                        </div>
+                    </div>
+
+                    <div class="status-message" id="statusMessage" style="display:none;"></div>
+                    <div class="progress-container" id="progressContainer" style="display:none;">
+                        <div class="progress-bar" id="progressBar"></div>
                     </div>
                 </div>
 

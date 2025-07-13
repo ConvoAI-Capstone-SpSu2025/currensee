@@ -21,7 +21,7 @@ model = get_model(settings.DEFAULT_MODEL)
 def format_google_date(date_str):
 
     parts = date_str.split()[0].split("-")
-    return f"{parts[0]}{parts[1].zfill(2)}{parts[0].zfill(2)}"
+    return f"{parts[0]}{parts[1].zfill(2)}{parts[2].zfill(2)}"
 
 
 def score_result(result):
@@ -111,8 +111,8 @@ query_ch = "{site_filter} news about any of these top holdings:{largest_holdings
 def retrieve_client_industry_news(state: SupervisorState) -> str:
     """Return the most relevant news about the client and its industry."""
 
-    start_date = state["meeting_timestamp"]
-    end_date = state["last_meeting_timestamp"]
+    start_date = state["last_meeting_timestamp"]
+    end_date = state["meeting_timestamp"]
     client_company = state["client_company"]
     industry = state["client_industry"]
 
@@ -146,8 +146,8 @@ def retrieve_client_industry_news(state: SupervisorState) -> str:
 def retrieve_macro_news(state: SupervisorState) -> str:
     """Return the most relevant macroeconomic news based on the query."""
 
-    start_date = state["meeting_timestamp"]
-    end_date = state["last_meeting_timestamp"]
+    start_date = state["last_meeting_timestamp"]
+    end_date = state["meeting_timestamp"]
 
     google_start = format_google_date(start_date)
     google_end = format_google_date(end_date)
@@ -175,8 +175,8 @@ def retrieve_macro_news(state: SupervisorState) -> str:
 def retrieve_holdings_news(state: SupervisorState) -> str:
     """Return a raw list of relevant news dictionaries for each holding separately."""
 
-    start_date = state["meeting_timestamp"]
-    end_date = state["last_meeting_timestamp"]
+    start_date = state["last_meeting_timestamp"]
+    end_date = state["meeting_timestamp"]
     client_holdings = state["client_holdings"]
 
     google_start = format_google_date(start_date)
@@ -254,6 +254,8 @@ def summarize_finance_outputs(state: SupervisorState) -> str:
 
     # Access the message content correctly
     return new_state
+
+    
 
 
 # MACRO TABLE
@@ -412,3 +414,5 @@ def generate_macro_table() -> str:
     )
 
     return df
+
+    

@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currensee - Email Summary & Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            height: 100vh;
+            overflow: hidden;
+            background: #f3f2f1;
+        }
+
+        /* Top Bar */
+    .top-bar {
+        background: #0078d4;
+        color: white;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .top-bar .logo {
+        font-size: 18px;
+        font-weight: 600;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .search-box {
+        flex: 1;
+        max-width: 400px;
+        margin-left: 40px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: none;
+        font-size: 14px;
+        background-color: rgba(255,255,255,0.9);
+        color: #323130;
+    }
+    
+    .top-bar .user-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-left: auto;
+    }
+    
+    .top-bar .user-info i {
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    
+    .top-bar .user-info i:hover {
+        color: #d0e7ff;
+    }
+    
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        background-color: #106ebe;
+        color: white;
+        font-weight: bold;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
+        /* Ribbon */
+        .ribbon {
+            background: #f3f2f1;
+            border-bottom: 1px solid #d1d1d1;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 20px;
+        }
+
+        .ribbon-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .ribbon-section:hover {
+            background: #e1dfdd;
+        }
+
+        .ribbon-section.active {
+            background: #106ebe;
+            color: white;
+        }
+
+        .ribbon-icon {
+            font-size: 24px;
+        }
+
+        .ribbon-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            height: calc(100vh - 138px);
+        }
+
+        /* Navigation Pane */
+        .nav-pane {
+            width: 250px;
+            background: white;
+            border-right: 1px solid #d1d1d1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-section {
+            padding: 12px 16px;
+            border-bottom: 1px solid #edebe9;
+        }
+
+        .nav-section h3 {
+            font-size: 14px;
+            color: #323130;
+            margin-bottom: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 2px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item:hover {
+            background: #f3f2f1;
+        }
+
+        .nav-item.active {
+            background: #106ebe;
+            color: white;
+        }
+
+        .nav-item i {
+            width: 16px;
+            margin-right: 8px;
+        }
+
+        /* Email List Pane */
+        .email-list-pane {
+            width: 350px;
+            background: white;
+            border-right: 1px solid #d1d1d1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .email-list-header {
+            background: #faf9f8;
+            border-bottom: 1px solid #edebe9;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: #323130;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .email-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f2f1;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .email-item:hover {
+            background: #f8f7f6;
+        }
+
+        .email-item.selected {
+            background: #deecf9;
+            border-left: 3px solid #106ebe;
+        }
+
+        .email-sender {
+            font-weight: 600;
+            color: #323130;
+            margin-bottom: 4px;
+        }
+
+        .email-subject {
+            color: #605e5c;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+
+        .email-preview {
+            color: #8a8886;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .email-date {
+            font-size: 12px;
+            color: #8a8886;
+            float: right;
+        }
+
+        /* Main Content Pane */
+        .content-pane {
+            flex: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .content-header {
+            background: #faf9f8;
+            border-bottom: 1px solid #edebe9;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .content-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #323130;
+        }
+
+        .content-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+
+        /* Forms */
+        .form-section {
+            background: white;
+            border: 1px solid #edebe9;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-section h3 {
+            color: #323130;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            color: #323130;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 5px 10px;
+            border: 1px solid #d1d1d1;
+            border-radius: 3px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #106ebe;
+            box-shadow: 0 0 0 1px #106ebe;
+        }
+
+        .form-group textarea {
+            height: 60px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #106ebe;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #005a9e;
+        }
+
+        .btn-secondary {
+            background: #8a8886;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #6d6a67;
+        }
+
+        .btn-success {
+            background: #107c10;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #0e5c0e;
+        }
+
+        /* Status Messages */
+        .status-message {
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-top: 16px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .status-message.loading {
+            background: #deecf9;
+            color: #106ebe;
+            border: 1px solid #106ebe;
+        }
+
+        .status-message.success {
+            background: #dff6dd;
+            color: #107c10;
+            border: 1px solid #107c10;
+        }
+
+        .status-message.error {
+            background: #fde7e9;
+            color: #a80000;
+            border: 1px solid #a80000;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: #f3f2f1;
+            border-radius: 3px;
+            height: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #106ebe;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* API Status Indicator */
+        .api-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .api-status.connected {
+            background: #dff6dd;
+            color: #107c10;
+        }
+
+        .api-status.disconnected {
+            background: #fde7e9;
+            color: #a80000;
+        }
+
+        /* Report Options */
+        .report-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .report-option {
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .report-option:hover {
+            border-color: #106ebe;
+            box-shadow: 0 2px 8px rgba(16, 110, 190, 0.1);
+        }
+
+        .report-option h4 {
+            color: #323130;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .report-option p {
+            color: #605e5c;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        
+        .custom-checkbox input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 6px;
+        }
+        
+        .form-section h3 {
+            margin-bottom: 12px;
+        }
+        
+        .form-group label {
+            font-size: 14px;
+            margin-bottom: 4px;
+            display: block;
+        }
+         /* Change User Input to Readonly */
+        .form-section.read-only {
+            opacity: 0.6;
+            font-size: 13px;
+        }        
+
+        .form-section.read-only input,
+        .form-section.read-only textarea,
+        .form-section.read-only select {
+            background-color: #f3f2f1;
+            border-color: #d1d1d1;
+            color: #605e5c;
+            pointer-events: none;
+        }
+        .report-type-options {
+            display: flex;
+            gap: 32px;
+            margin-top: 8px;
+        }
+        .custom-checkbox {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            font-size: 15px;
+            user-select: none;
+            color: #e1e1e1;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0; width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            height: 18px;
+            width: 18px;
+            background-color: white;
+            border: 2px solid #106ebe;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #106ebe;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+        .custom-suboptions {
+            display: flex;
+            gap: 32px;
+            margin-top: 8px;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">
+            <i class="fas fa-envelope-open-text"></i> OutlookMail
+        </div>
+    
+        <input type="text" class="search-box" placeholder="Search mail and people">
+    
+        <div class="user-info">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-question-circle"></i>
+            <i class="fas fa-cog"></i>
+            <div class="user-avatar">
+                <span>J</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ribbon -->
+    <div class="ribbon">
+        <div class="ribbon-section active">
+            <i class="fas fa-inbox ribbon-icon"></i>
+            <span class="ribbon-text">Mail</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-calendar-alt ribbon-icon"></i>
+            <span class="ribbon-text">Calendar</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-user-friends ribbon-icon"></i>
+            <span class="ribbon-text">People</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-tasks ribbon-icon"></i>
+            <span class="ribbon-text">Tasks</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-file-alt ribbon-icon"></i>
+            <span class="ribbon-text">Files</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-chart-line ribbon-icon"></i>
+            <span class="ribbon-text">Insights</span>
+        </div>
+        <div class="ribbon-section">
+            <i class="fas fa-cog ribbon-icon"></i>
+            <span class="ribbon-text">Settings</span>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Navigation Pane -->
+    <div class="nav-pane">
+        <div class="nav-section main-folders">
+            <h3>Mail Folders</h3>
+            <div class="nav-item active">
+                <i class="fas fa-inbox"></i>
+                Inbox
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-paper-plane"></i>
+                Sent
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                Drafts
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-star"></i>
+                Important
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-trash-alt"></i>
+                Deleted Items
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-archive"></i>
+                Archive
+            </div>
+        </div>
+    
+        <!-- Currensee New Add On -->
+        <div class="nav-section recent-clients">
+            <h3>Recent Clients</h3>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                Compass Inc.
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                TechCorp Ltd.
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-building"></i>
+                Global Finance
+            </div>
+        </div>
+    </div>
+
+        <!-- Email List Pane -->
+        <div class="email-list-pane">
+            <div class="email-list-header">
+                <span>Recent Emails</span>
+                <i class="fas fa-sync-alt" style="cursor: pointer;"></i>
+            </div>
+            <div class="email-item selected">
+                <div class="email-date">Mar 26</div>
+                <div class="email-sender">Adam Clay</div>
+                <div class="email-subject">Re: Annual Credit Facility Review</div>
+                <div class="email-preview">Looking forward to our meeting to discuss the annual credit facility review...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-date">Mar 25</div>
+                <div class="email-sender">Sarah Johnson</div>
+                <div class="email-subject">Q1 Financial Review</div>
+                <div class="email-preview">Please find attached the Q1 financial statements for review...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-date">Mar 24</div>
+                <div class="email-sender">Michael Chen</div>
+                <div class="email-subject">Investment Portfolio Update</div>
+                <div class="email-preview">The portfolio has shown significant growth this quarter...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-date">Mar 23</div>
+                <div class="email-sender">Lisa Rodriguez</div>
+                <div class="email-subject">Market Analysis Request</div>
+                <div class="email-preview">Could you provide analysis on the recent market trends...</div>
+            </div>
+        </div>
+
+        <!-- Main Content Pane -->
+        <div class="content-pane">
+        <div class="content-header" style="display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-chart-line" style="font-size: 28px; color: #106ebe;"></i>
+            <h1 class="content-title" style="margin: 0;">Currensee Client Summary & Email Report</h1>
+        </div>
+            <div class="content-body">
+
+                
+<!-- Client Information Section -->
+<h3>
+  <i class="fas fa-user"></i> Client Information
+  <i id="editClientInfo" class="fas fa-cog"
+     style="float: right; cursor: pointer; color: #106ebe;"
+     title="Click to edit client info"></i>
+</h3>
+
+<div id="clientInfoSection" class="form-section read-only">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="clientName">Client Name</label>
+      <input type="text" id="clientName" value="Adam Clay" required>
+    </div>
+    <div class="form-group">
+      <label for="clientEmail">Client Email</label>
+      <input type="email" id="clientEmail" value="adam.clay@compass.com" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="meetingTimestamp">Meeting Date & Time</label>
+      <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00"
+             placeholder="YYYY-MM-DD HH:MM:SS" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="meetingDescription">Meeting Description</label>
+    <textarea id="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
+  </div>
+
+  <!-- Save button (hidden by default) -->
+  <button id="saveClientInfoBtn" style="display: none; margin-top: 10px;">Save</button>
+</div>
+
+<!-- Script for toggling and saving -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const editBtn = document.getElementById('editClientInfo');
+    const saveBtn = document.getElementById('saveClientInfoBtn');
+    const section = document.getElementById('clientInfoSection');
+
+    editBtn.addEventListener('click', () => {
+      section.classList.toggle('read-only');
+      saveBtn.style.display = section.classList.contains('read-only') ? 'none' : 'inline-block';
+    });
+
+    saveBtn.addEventListener('click', () => {
+      const data = {
+        clientName: document.getElementById('clientName').value,
+        clientEmail: document.getElementById('clientEmail').value,
+        meetingTimestamp: document.getElementById('meetingTimestamp').value,
+        meetingDescription: document.getElementById('meetingDescription').value,
+      };
+
+      fetch('/api/save_client_info', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Client info saved successfully');
+          section.classList.add('read-only');
+          saveBtn.style.display = 'none';
+        } else {
+          alert('Failed to save client info');
+        }
+      })
+      .catch(err => {
+        console.error('Error saving client info:', err);
+        alert('Error saving client info');
+      });
+    });
+  });
+</script>
+
+        
+<!-- Report Generation Options -->
+<div class="form-section">
+    <h3><i class="fas fa-file-alt"></i> Select Your Report Type </h3>
+    <div class="form-group" style="margin-bottom: 16px;">
+        <label style="font-weight:600;">Report Type</label>
+        <div class="report-type-options">
+            <label class="custom-checkbox">
+                <input type="checkbox" id="autoReport" name="reportType" value="auto" checked>
+                <span class="checkmark"></span>
+                Auto Report
+            </label>
+            <label class="custom-checkbox">
+                <input type="checkbox" id="customReport" name="reportType" value="custom">
+                <span class="checkmark"></span>
+                Customized Report
+            </label>
+        </div>
+        <div id="customOptions" class="custom-suboptions" style="margin-left: 24px; margin-top: 8px; display: none; flex-direction: column; gap: 12px;">
+            <!-- Email Summary Option -->
+            <label class="custom-checkbox" style="margin-bottom: 0;">
+                <input type="checkbox" id="emailSummary" name="customOption" value="emailSummary">
+                <span class="checkmark"></span>
+                Email Summary
+            </label>
+            <div id="emailSummarySub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="overallEmailSummary" name="emailSummaryOption" value="overall">
+                    <span class="checkmark"></span>
+                    Overall Email Summary
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="recentEmailSummary" name="emailSummaryOption" value="recent">
+                    <span class="checkmark"></span>
+                    Recent Email Summary
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="recentQuestions" name="emailSummaryOption" value="questions">
+                    <span class="checkmark"></span>
+                    Recent Questions
+                </label>
+            </div>
+            <!-- Financial News Option -->
+            <label class="custom-checkbox" style="margin-bottom: 0;">
+                <input type="checkbox" id="financialNews" name="customOption" value="financialNews">
+                <span class="checkmark"></span>
+                Financial News
+            </label>
+            <div id="financialNewsSub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="clientIndustryNews" name="financialNewsOption" value="industry">
+                    <span class="checkmark"></span>
+                    Client Industry News
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="holdingNews" name="financialNewsOption" value="holding">
+                    <span class="checkmark"></span>
+                    Holding News
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="macroeconomyNews" name="financialNewsOption" value="macro">
+                    <span class="checkmark"></span>
+                    Macroeconomy News
+                </label>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const autoReport = document.getElementById('autoReport');
+            const customReport = document.getElementById('customReport');
+            const customOptions = document.getElementById('customOptions');
+            const emailSummary = document.getElementById('emailSummary');
+            const emailSummarySub = document.getElementById('emailSummarySub');
+            const financialNews = document.getElementById('financialNews');
+            const financialNewsSub = document.getElementById('financialNewsSub');
+
+            // Only one main report type can be selected
+            autoReport.addEventListener('change', function() {
+                if (autoReport.checked) {
+                    customReport.checked = false;
+                    customOptions.style.display = 'none';
+                }
+            });
+            customReport.addEventListener('change', function() {
+                if (customReport.checked) {
+                    autoReport.checked = false;
+                    customOptions.style.display = 'flex';
+                } else {
+                    customOptions.style.display = 'none';
+                }
+            });
+
+            emailSummary.addEventListener('change', function() {
+                emailSummarySub.style.display = emailSummary.checked ? 'flex' : 'none';
+            });
+
+            financialNews.addEventListener('change', function() {
+                financialNewsSub.style.display = financialNews.checked ? 'flex' : 'none';
+            });
+
+            // On page load, show/hide custom options based on initial state
+            if (customReport.checked) {
+                customOptions.style.display = 'flex';
+            } else {
+                customOptions.style.display = 'none';
+            }
+        });
+    </script>
+    
+    <!-- Generate Report Option -->
+        <div class="form-section">
+            <h3><i class="fas fa-file-alt" style="color: #106ebe;"></i> Generate Reports</h3>
+        
+            <div class="button-group" style="display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap;">
+                <!-- HTML Preview Button -->
+                <div class="report-option" style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <button class="btn btn-primary" onclick="generateReport('html')">
+                        <i class="fas fa-eye"></i> Preview HTML
+                    </button>
+                    <p style="margin: 8px 0 0 2px; font-size: 13px; color: #555;">
+                        View an interactive HTML in a new window.
+                    </p>
+                </div>
+        
+                <!-- PDF Download Button -->
+                <div class="report-option" style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <button class="btn btn-primary" onclick="generateReport('pdf')">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                    <p style="margin: 8px 0 0 2px; font-size: 13px; color: #555;">
+                        Generate and download a professional PDF report.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+                <!-- Status Messages -->
+                <div id="statusMessage" class="status-message"></div>
+                <div id="progressContainer" class="progress-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000';
+
+        // Check API connection on page load
+        async function checkApiConnection() {
+            const statusElement = document.getElementById('apiStatus');
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                if (response.ok) {
+                    statusElement.textContent = 'API Connected';
+                    statusElement.className = 'api-status connected';
+                } else {
+                    throw new Error('API not responding');
+                }
+            } catch (error) {
+                statusElement.textContent = 'API Disconnected';
+                statusElement.className = 'api-status disconnected';
+            }
+        }
+
+        function getFormData() {
+            return {
+                client_name: document.getElementById('clientName').value,
+                client_email: document.getElementById('clientEmail').value,
+                meeting_timestamp: document.getElementById('meetingTimestamp').value,
+                meeting_description: document.getElementById('meetingDescription').value,
+                report_length: document.getElementById('reportLength').value
+            };
+        }
+
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('statusMessage');
+            const progressContainer = document.getElementById('progressContainer');
+
+            statusElement.textContent = message;
+            statusElement.className = `status-message ${type}`;
+            statusElement.style.display = 'block';
+
+            if (type === 'loading') {
+                progressContainer.style.display = 'block';
+                animateProgress();
+            } else {
+                progressContainer.style.display = 'none';
+            }
+        }
+
+        function hideStatus() {
+            document.getElementById('statusMessage').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'none';
+        }
+
+        function animateProgress() {
+            const progressBar = document.getElementById('progressBar');
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 90) {
+                    clearInterval(interval);
+                } else {
+                    width += Math.random() * 10;
+                    progressBar.style.width = Math.min(width, 90) + '%';
+                }
+            }, 500);
+        }
+
+
+    async function generateReport(format) {
+        const data = getFormData();
+
+        // Validate required fields
+        if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
+            showStatus('Please fill in all required fields', 'error');
+            return;
+        }
+
+        if (format === 'html') {
+            showStatus('Generating HTML report... This may take several minutes.', 'loading');
+            try {
+                const response = await fetch(`${API_BASE_URL}/generate-report/html`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.detail || `HTTP ${response.status}`);
+                }
+                showStatus('Report generated successfully! Redirecting...', 'success');
+
+                // Redirect to report.html to display the report dynamically
+                setTimeout(() => {
+                    window.location.href = `${API_BASE_URL}/report`;
+                }, 1000);
+
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('API error:', error);
+            }
+        }
+        else if (format === 'pdf') {
+            showStatus('Generating PDF report... This may take several minutes.', 'loading');
+            try {
+                const response = await fetch(`${API_BASE_URL}/generate-report/pdf`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                document.getElementById('progressBar').style.width = '100%';
+
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.detail || `HTTP ${response.status}`);
+                }
+
+                const blob = await response.blob();
+                showStatus('PDF report generated successfully! Download started.', 'success');
+
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+
+                const clientName = data.client_name.replace(/[^a-zA-Z0-9]/g, '_');
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
+                a.download = `currensee_${clientName}_${timestamp}.pdf`;
+
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+
+                setTimeout(() => {
+                    if (document.getElementById('statusMessage').className.includes('success')) {
+                        hideStatus();
+                    }
+                }, 5000);
+
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('API error:', error);
+            }
+        }
+        else {
+            showStatus('Invalid format specified', 'error');
+        }
+    }
+
+        // Add click handlers for ribbon sections
+        document.querySelectorAll('.ribbon-section').forEach(section => {
+            section.addEventListener('click', () => {
+                document.querySelectorAll('.ribbon-section').forEach(s => s.classList.remove('active'));
+                section.classList.add('active');
+            });
+        });
+
+        // Add click handlers for navigation items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        // Add click handlers for email items
+        document.querySelectorAll('.email-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.email-item').forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+
+                // Populate email here
+                const sender = item.querySelector('.email-sender').textContent;
+                const subject = item.querySelector('.email-subject').textContent;
+
+                if (sender === 'Adam Clay') {
+                    document.getElementById('clientName').value = 'Adam Clay';
+                    document.getElementById('clientEmail').value = 'adam.clay@compass.com';
+                    document.getElementById('meetingDescription').value = 'Compass - Annual Credit Facility Review Meeting';
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            checkApiConnection();
+        });
+
+        // Refresh API connection every 30 seconds
+        setInterval(checkApiConnection, 30000);
+    </script>
+</body>
+</html>

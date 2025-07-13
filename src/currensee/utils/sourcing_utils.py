@@ -103,14 +103,14 @@ def format_holdings_sources(raw_sources):
     return formatted
 
 
-def get_soucing_prompt(state: SupervisorState) -> str:
+def get_soucing_prompt(smmry_section, state: SupervisorState) -> str:
     sources = {
         # "Client Industry Summary": result.get("client_industry_sources", []),
         "Client Industry Summary": state["client_industry_sources"],
         "Holdings Summary": format_holdings_sources(state["client_holdings_sources"]),
         "Macro Summary": state["macro_news_sources"],
     }
-    summary = state["final_summary"]
+    summary = smmry_section 
     chunked_sources = chunk_sources_with_metadata(sources)
 
     # Step 2: Compose prompt and ask LLM
@@ -183,13 +183,20 @@ def insert_links_into_summary(
     return updated_summary
 
 def get_fin_linked_summary(state: SupervisorState) -> str:
-    prompt = get_soucing_prompt(state)
-    response = model.invoke([HumanMessage(content=prompt)])
-    filtered_output = filter_empty_sources(response.content)
-    claim_url_pairs = extract_claim_url_pairs(filtered_output)
-    summary = state["final_summary"]
-    linked_summary = insert_links_into_summary(summary, claim_url_pairs)
+    summary_fin_hold = state["summary_fin_hold"]
+    summary_client_news = state["summary_client_news"]
+    prompt_hold = get_soucing_prompt(summary_fin_hold,  state)
+    prompt_client_news = get_soucing_prompt(summary_client_news,  state)
+    response_hold = model.invoke([HumanMessage(content=prompt_hold)])
+    response_client = model.invoke([HumanMessage(content=prompt_client_news)])
+    filtered_output_hold = filter_empty_sources(response_hold.content)
+    filtered_output_client = filter_empty_sources(response_client.content)
+    claim_url_pairs_hold = extract_claim_url_pairs(filtered_output_hold) 
+    claim_url_pairs_client = extract_claim_url_pairs(filtered_output_client)  
+    linked_fin_hold_summary = insert_links_into_summary(summary_fin_hold, claim_url_pairs_hold)
+    linked_client_news_summary = insert_links_into_summary(summary_client_news, claim_url_pairs_client)
 
     new_state = state.copy()
-    new_state["final_summary_sourced"] = linked_summary
+    new_state["fin_hold_summary_sourced"] = linked_fin_hold_summary
+    new_state["client_news_summary_sourced"] = linked_client_news_summary 
     return new_state

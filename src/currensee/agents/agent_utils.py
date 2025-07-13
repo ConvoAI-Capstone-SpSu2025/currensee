@@ -6,6 +6,7 @@ from langchain_core.messages import HumanMessage
 from langgraph.graph.state import CompiledStateGraph
 
 from currensee.agents.tools.base import SupervisorState
+from currensee.agents.prompts import comms_prompts, news_prompts, holdings_prompts
 from currensee.core import get_model, settings
 from currensee.schema import AgentInfo
 
@@ -21,8 +22,7 @@ class Agent:
     graph: CompiledStateGraph
 
 
-## Graph-specific utils
-
+# # Graph-specific utils
 
 def summarize_all_outputs(state: SupervisorState) -> str:
     """
@@ -35,130 +35,60 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     - A modified state with the final summary added
     """
 
-    finance_summary = state["finnews_summary"]
-    email_summary = state["email_summary"]
-    company_name = state["client_company"]
-    client_name = state["client_name"]
-    meeting_description = state["meeting_description"]
-    recent_email_summary = state["recent_email_summary"]
-    recent_client_questions = state["recent_client_questions"]
 
-    # Get report_length from state, default to 'long' if not specified
-    report_length = state.get("report_length", "long")
+    finance_detail = state["finance_detail"] 
+    news_detail = state["news_detail"]
+    macro_news_detail = state["macro_news_detail"]
+    past_meeting_detail = state["past_meeting_detail"]
+
+
 
     # Log the report length being used
     print(f"\n===============================")
-    print(f"Generating report with length: {report_length}")
+    print(f"Generating report with the following preferences: ")
+    print(f" Finance Detail: {finance_detail} ")
+    print(f" News Detail: {news_detail} ")
+    print(f" Macro News Detail: {macro_news_detail}")
+    print(f" Past Meeting Detail: {past_meeting_detail}")
     print(f"===============================\n")
 
-    # Define different report formats based on length
-    report_formats = {
-        "short": f"""PROMPT
+    
 
-You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on: {meeting_description}.
-
-Important Instructions:
-1. DO NOT use any section headings or titles
-2. DO NOT return a multi-section report
-3. ONLY return a single flat list of 5-7 bullet points total
-4. Each bullet point should begin with a • or - symbol
-5. DO NOT number your points
-6. Keep each bullet to 1-2 sentences maximum
-
-Your response should ONLY contain bullets covering the most critical points from these categories. List bullet points in the order below:
-- Past email key information
-- Recent communication highlights
-- Any critical client questions (If there were no questions provided in {recent_client_questions}, then do not state whether client questions were asked and skip this point)
-- Most relevant financial data
-
-Combine all information into JUST ONE bullet list with NO section headers or other text.
-
-Inputs:
-Past email summary: {email_summary}
-Recent email summary: {recent_email_summary}
-Recent client questions: {recent_client_questions}
-Financial summary: {finance_summary}
-""",
-        "medium": f"""PROMPT
-
-You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on: {meeting_description}.
-
-Your task:
-Create a condensed briefing document (about 2 paragraphs total) for internal use, covering only the most relevant points.
-
-Format the report into two main sections:
-
-1. Client Communication Summary
- - Combine past and recent email topics into one concise paragraph
- - Include any critical client questions (excluding logistics questions). If there were no questions provided in {recent_client_questions}, then do not state whether client questions were asked.
-
-2. Financial Overview
- - Write a concise paragraph summarizing the most important financial data points
-
-Keep each paragraph focused and brief.
-
-Inputs:
-Past email summary: {email_summary}
-Recent email summary: {recent_email_summary}
-Recent client questions: {recent_client_questions}
-Financial summary: {finance_summary}
-""",
-        "long": f"""PROMPT
-
-You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {company_name}. The meeting will focus on the following topic: {meeting_description}.
-
-Below is compiled input from multiple sources:
-- Past email summaries
-- Recent email discussion points
-- Recent client questions
-- Relevant financial data (industry performance, client holdings, overall economic conditions)
-
-Your task:
-Create a comprehensive briefing document for internal use, to help prepare the meeting attendees. The briefing should include only relevant content and exclude any discussion about scheduling, availability, or meeting logistics.
-
-Format the report using the following structure:
-
-1. Past Email Summary
- - Write a concise paragraph summarizing earlier correspondence from {email_summary}.
-
-2. Recent Email Topics
- - Present the content of {recent_email_summary} as a bullet-point list, focusing on key updates and discussion items.
-
-3. Recent Client Questions
- - Use the list in {recent_client_questions}.
- - Present as a numbered list.
- - Exclude any questions related to logistics, availability, or scheduling.
- - If there were no questions provided in {recent_client_questions}, then omit this section. If no client questions were asked, then skip the section and do not state whether client questions were asked.
-
-4. Financial Overview
- Use {finance_summary} to write a paragraph summarizing relevant financial data, including:
- - Industry trends
- - Performance of the client's holdings
- - Broader economic indicators
-
-Inputs:
-
-Past email summary: {email_summary}
-
-Recent email summary: {recent_email_summary}
-
-Recent client questions: {recent_client_questions}
-
-Financial summary: {finance_summary}
-""",
-    }
-
-    # Select the appropriate prompt based on report_length
-    combined_prompt = report_formats.get(report_length.lower(), report_formats["long"])
-
-    # Create the messages to pass to the model
-    messages = [HumanMessage(content=combined_prompt)]
-
-    # Use the 'invoke' method for summarization
-    summary = model.invoke(messages)
+    # Select the appropriate prompts based on preferences
+    finance_holdings_prompt = holdings_prompts.get(finance_detail.lower(), holdings_prompts["full"])
+    client_news_prompt = news_prompts.get(news_detail.lower(), news_prompts["full"])
+    client_comms_prompt = comms_prompts.get(past_meeting_detail.lower(), comms_prompts["full"])
 
     new_state = state.copy()
-    new_state["final_summary"] = summary.content
+    
+    if finance_holdings_prompt:
+        # Pass the entire state to the prompt for formatting
+        # It will only use the variables declared in brackets
+        # in the given prompt.
+        formatted_prompt = finance_holdings_prompt.format(**state)
+        # Create the messages to pass to the model
+        messages_fin_hold = [HumanMessage(content=formatted_prompt)]
+        # Produce the summary
+        summary_fin_hold = model.invoke(messages_fin_hold)
+        # Assign the summary to the state
+        new_state["summary_fin_hold"] = summary_fin_hold.content
+    else:
+        new_state["summary_fin_hold"] = ""
 
-    # Access the message content correctly
+    if client_news_prompt:
+        formatted_prompt = client_news_prompt.format(**state)
+        messages_client_news = [HumanMessage(content=formatted_prompt)] 
+        summary_client_news = model.invoke(messages_client_news)
+        new_state["summary_client_news"] = summary_client_news.content
+    else:
+        new_state["summary_client_news"] = ""
+
+    if client_comms_prompt:
+        formatted_prompt = client_comms_prompt.format(**state)
+        messages_client_comms = [HumanMessage(content=formatted_prompt)] 
+        summary_client_comms = model.invoke(messages_client_comms)
+        new_state["summary_client_comms"] = summary_client_comms.content
+    else:
+        new_state["summary_client_comms"] = ""
+
     return new_state

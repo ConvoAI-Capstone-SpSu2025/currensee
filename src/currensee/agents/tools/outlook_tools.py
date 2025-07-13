@@ -7,9 +7,6 @@ from sqlalchemy import text
 from currensee.agents.tools.base import SupervisorState
 from currensee.core import get_model, settings
 from currensee.utils.db_utils import create_pg_engine
-from currensee.workflows.sql_workflow.utils import create_sql_workflow
-from currensee.workflows.workflow_descriptions import \
-    outlook_table_description_mapping
 
 load_dotenv()
 
@@ -36,17 +33,17 @@ engine = create_pg_engine(db_name=DB_NAME)
 
 #     return result.response
 
-
-def find_last_meeting_date(all_client_emails: list[str]) -> dict:
+def find_last_meeting_date(all_client_emails: list[str],  user_email: str, meeting_timestamp: str) -> dict:
     """
     Find the last meeting date that was held with any of the
     client emails listed above.
     """
-
     query_str = f"""
         SELECT  meeting_timestamp
         FROM  meeting_data
         WHERE  invitee_emails ~* '{'|'.join(all_client_emails)}'
+        and host_email = '{user_email}'
+        and meeting_timestamp < '{meeting_timestamp}'
         ORDER BY meeting_timestamp DESC
         LIMIT 1;
 
@@ -66,8 +63,9 @@ def produce_client_email_summary(state: SupervisorState) -> dict:
     all_client_emails = state["all_client_emails"]
     meeting_timestamp = state["meeting_timestamp"]
     meeting_description = state["meeting_description"]
+    user_email = state["user_email"]
 
-    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails)
+    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails, user_email = user_email, meeting_timestamp = meeting_timestamp)
 
     ## NOTE: I currently removed the meeting timestamp restrictions, because
     ## it wasn't returning any emails.
@@ -75,14 +73,9 @@ def produce_client_email_summary(state: SupervisorState) -> dict:
     query_str = f"""
         SELECT email_body
         FROM email_data
-        WHERE
-        -- email_timestamp <= '{meeting_timestamp}' AND email_timestamp >= '{last_meeting_date}'
-        -- AND
-        (
-            to_emails ~* '{'|'.join(all_client_emails)}'
-            OR
-            from_email ~* '{'|'.join(all_client_emails)}'
-        )
+        WHERE email_timestamp <= '{meeting_timestamp}'
+        AND (to_emails ~* '{'|'.join(all_client_emails)}' OR from_email ~* '{'|'.join(all_client_emails)}')
+        and (to_emails = '{user_email}' or from_email = '{user_email}')
     """
 
     result = pd.read_sql(query_str, con=engine)
@@ -130,18 +123,16 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
     all_client_emails = state["all_client_emails"]
     meeting_timestamp = state["meeting_timestamp"]
     meeting_description = state["meeting_description"]
+    user_email = state["user_email"]
 
-    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails)
+    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails, user_email = user_email, meeting_timestamp = meeting_timestamp)
 
     query_str = f"""
         SELECT email_body
         FROM email_data
-        WHERE
-        (
-            to_emails ~* '{'|'.join(all_client_emails)}'
-            OR
-            from_email ~* '{'|'.join(all_client_emails)}'
-        )
+        WHERE email_timestamp <= '{meeting_timestamp}'
+        AND (to_emails ~* '{'|'.join(all_client_emails)}' OR from_email ~* '{'|'.join(all_client_emails)}')
+        and (to_emails = '{user_email}' or from_email = '{user_email}')
         order by email_timestamp desc
         limit 5
     """
@@ -201,18 +192,16 @@ def produce_recent_client_questions(state: SupervisorState) -> dict:
     all_client_emails = state["all_client_emails"]
     meeting_timestamp = state["meeting_timestamp"]
     meeting_description = state["meeting_description"]
+    user_email = state["user_email"]
 
-    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails)
+    last_meeting_date = find_last_meeting_date(all_client_emails=all_client_emails, user_email = user_email, meeting_timestamp = meeting_timestamp)
 
     query_str = f"""
         SELECT email_body
         FROM email_data
-        WHERE
-        (
-            to_emails ~* '{'|'.join(all_client_emails)}'
-            OR
-            from_email ~* '{'|'.join(all_client_emails)}'
-        )
+        WHERE email_timestamp <= '{meeting_timestamp}'
+        AND (to_emails ~* '{'|'.join(all_client_emails)}' OR from_email ~* '{'|'.join(all_client_emails)}')
+        and (to_emails = '{user_email}' or from_email = '{user_email}')
         order by email_timestamp desc
         limit 5
     """
@@ -260,4 +249,54 @@ def produce_recent_client_questions(state: SupervisorState) -> dict:
     new_state["last_meeting_timestamp"] = last_meeting_date
     new_state["recent_client_questions"] = recent_client_questions.content
 
+    return new_state
+
+
+############## Pull recent emails sent to the user to add to graph ##########################
+
+def pull_recent_client_emails(state: SupervisorState) -> dict:
+    all_client_emails = state["all_client_emails"]
+    meeting_timestamp = state["meeting_timestamp"]
+    user_email = state["user_email"]
+# All recent emails to the user sent
+    query_str_all = f"""
+    SELECT email_timestamp
+        , to_names	
+        , to_emails
+        , from_name
+        , from_email
+        , email_subject
+        , email_body
+        FROM email_data
+        WHERE email_timestamp < '{meeting_timestamp}'
+        and to_emails = '{user_email}'
+        order by email_timestamp desc
+        limit 20
+    """
+    result_all = pd.read_sql(query_str_all, con=engine)
+    recent_all_emails_dict = result_all.to_dict()
+    
+# recent emails to the user sent from the client
+    query_str_client = f"""
+    SELECT email_timestamp
+        , to_names	
+        , to_emails
+        , from_name
+        , from_email
+        , email_subject
+        , email_body
+        FROM email_data
+        WHERE email_timestamp < '{meeting_timestamp}'
+        and to_emails = '{user_email}' 
+        AND from_email ~* '{'|'.join(all_client_emails)}'
+        order by email_timestamp desc
+        limit 20
+    """
+    result_client = pd.read_sql(query_str_client, con=engine)
+    recent_client_emails_dict = result_client.to_dict()
+    
+    new_state = state.copy()
+    new_state["recent_all_emails_dict"] = recent_all_emails_dict
+    new_state["recent_client_emails_dict"] = recent_client_emails_dict
+    
     return new_state

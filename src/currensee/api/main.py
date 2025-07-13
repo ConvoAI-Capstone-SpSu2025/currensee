@@ -14,10 +14,10 @@ from pydantic import BaseModel, Field, validator
 
 from currensee.agents.complete_graph import compiled_graph
 from currensee.api.config import settings
-from currensee.utils.output_utils import (convert_html_to_pdf,
-                                          generate_long_report,
-                                          generate_med_report,
-                                          generate_short_report)
+#from currensee.utils.output_utils import (convert_html_to_pdf,
+#                                          generate_long_report,
+#                                          generate_med_report,
+#                                          generate_short_report)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -43,6 +43,7 @@ app.add_middleware(
 class ClientRequest(BaseModel):
     """Request model for client meeting preparation"""
 
+    user_email: str = Field(...,description="Email address of the user")
     client_name: str = Field(..., description="Name of the client", min_length=1)
     client_email: str = Field(..., description="Email address of the client")
     meeting_timestamp: str = Field(
@@ -51,25 +52,25 @@ class ClientRequest(BaseModel):
     meeting_description: str = Field(
         ..., description="Description of the meeting", min_length=1
     )
-    report_length: Optional[str] = Field(
-        default="long", description="Length of the report: 'short', 'medium', or 'long'"
-    )
+    #report_length: Optional[str] = Field(
+    #    default="long", description="Length of the report: 'short', 'medium', or 'long'"
+    #)
 
-    @validator("client_email")
+    @validator("client_email", "user_email")
     def validate_email(cls, v):
         """Basic email validation"""
         if "@" not in v or "." not in v:
             raise ValueError("Invalid email format")
         return v
 
-    @validator("report_length")
-    def validate_report_length(cls, v):
-        """Validate report length is one of allowed values"""
-        if v and v not in settings.ALLOWED_REPORT_LENGTHS:
-            raise ValueError(
-                f"Report length must be one of: {settings.ALLOWED_REPORT_LENGTHS}"
-            )
-        return v or settings.DEFAULT_REPORT_LENGTH
+   # @validator("report_length")
+   # def validate_report_length(cls, v):
+   #     """Validate report length is one of allowed values"""
+   #     if v and v not in settings.ALLOWED_REPORT_LENGTHS:
+    #        raise ValueError(
+    #            f"Report length must be one of: {settings.ALLOWED_REPORT_LENGTHS}"
+    #        )
+     #   return v or settings.DEFAULT_REPORT_LENGTH
 
     @validator("meeting_timestamp")
     def validate_timestamp(cls, v):
@@ -92,10 +93,17 @@ class GraphResponse(BaseModel):
 
 # Access outlook.html tempalate
 BASE_DIR = Path(__file__).resolve().parents[3]
+templates = Jinja2Templates(directory=BASE_DIR / "ui" / "templates")
 
 # Mount static files from ui folder
 app.mount("/static", StaticFiles(directory=BASE_DIR / "ui"), name="static")
 
+#Take user input
+@app.post("/api/save_client_info")
+async def save_client_info(info: ClientInfo):
+    # JING- SAVE IT TO DATABASE??
+    print("Received client info:", info)
+    return {"status": "success"}
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_notification():
@@ -117,6 +125,14 @@ async def health_check():
         "timestamp": datetime.now().isoformat(),
     }
 
+@app.get("/report", response_class=HTMLResponse)
+async def get_report(request: Request):
+    context = {
+        "request": request,
+    #Needs to work more on the report call logic 
+    }
+    return templates.TemplateResponse("report.html", context)
+
 
 @app.post("/generate-report", response_model=GraphResponse)
 async def generate_report(request: ClientRequest):
@@ -129,11 +145,12 @@ async def generate_report(request: ClientRequest):
 
         # Prepare the initial state for the graph
         init_state = {
+            "user_email": request.user_email,
             "client_name": request.client_name,
             "client_email": request.client_email,
             "meeting_timestamp": request.meeting_timestamp,
             "meeting_description": request.meeting_description,
-            "report_length": request.report_length or "long",
+            "report_length": request.report_length or "long",#Needs to update this with Report Type
         }
 
         # Execute the compiled graph with timeout
@@ -168,32 +185,54 @@ async def generate_report(request: ClientRequest):
 
 
 @app.post("/generate-report/html")
-async def generate_report_html(request: ClientRequest):
+async def generate_report_html(request: Request, client_req: ClientRequest):
     try:
         init_state = {
-            "client_name": request.client_name,
-            "client_email": request.client_email,
-            "meeting_timestamp": request.meeting_timestamp,
-            "meeting_description": request.meeting_description,
-            "report_length": request.report_length or "medium",
+            "user_email": client_req.user_email,
+            "client_name": client_req.client_name,
+            "client_email": client_req.client_email,
+            "meeting_timestamp": client_req.meeting_timestamp,
+            "meeting_description": client_req.meeting_description,
         }
 
+        # Call graph and get results dict
         result = compiled_graph.invoke(init_state)
 
-        report_length = request.report_length or "medium"
+        # Extract fields with defaults - (JING-need to match updated graph)
+        email_summary = result.get("email_summary", "").strip()
+        recent_email = result.get("recent_email", "").strip()
+        client_questions = result.get("client_questions", "").strip()
 
-        if report_length == "short":
-            html_content = generate_short_report(result)
-        elif report_length == "long":
-            html_content = generate_long_report(result)
-        else:
-            html_content = generate_med_report(result)
+        financial_news = result.get("financial_news", "").strip()
+        macro_snapshot = result.get("macro_snapshot", "").strip()
+        holding_resources = result.get("holding_resources", "").strip()
 
-        return HTMLResponse(content=html_content)
+        client_company = result.get("client_company", "Unknown Company")
+        client_name = result.get("client_name", "Unknown Client")
+        meeting_time = result.get("meeting_time", "Unknown Time")
+        last_meeting_time = result.get("last_meeting_time", "Unknown Last Time")
+        holdings = result.get("holdings", [])
+
+        context = {
+            "request": request,
+            "client_company": client_company,
+            "client_name": client_name,
+            "meeting_time": meeting_time,
+            "last_meeting_time": last_meeting_time,
+            "holdings": holdings,
+            "email_summary": email_summary,
+            "recent_email": recent_email,
+            "client_questions": client_questions,
+            "financial_news": financial_news,
+            "macro_snapshot": macro_snapshot,
+            "holding_resources": holding_resources,
+        }
+
+        return templates.TemplateResponse("report.html", context)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
+        
 
 @app.post("/generate-report/pdf")
 async def generate_report_pdf(request: ClientRequest):
@@ -203,6 +242,7 @@ async def generate_report_pdf(request: ClientRequest):
     try:
         # Prepare the initial state for the graph
         init_state = {
+            "user_email": request.user_email,
             "client_name": request.client_name,
             "client_email": request.client_email,
             "meeting_timestamp": request.meeting_timestamp,
@@ -268,6 +308,7 @@ async def demo_endpoint():
     try:
         # Sample data similar to the main() function in complete_graph.py
         demo_request = ClientRequest(
+            user_email="jane.moneypenny@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
@@ -288,6 +329,7 @@ async def demo_html():
     """
     try:
         demo_request = ClientRequest(
+            user_email="jane.moneypenny@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
@@ -308,6 +350,7 @@ async def demo_pdf():
     """
     try:
         demo_request = ClientRequest(
+            user_email="jane.moneypenny@bankwell.com",
             client_name="Adam Clay",
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",

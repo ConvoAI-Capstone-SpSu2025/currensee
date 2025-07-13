@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Annual Credit Facility Review Meeting</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            background: #f3f6fb;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header-container {
+            background: #0078d4;
+            color: #fff;
+            padding: 2vw 0 2vw 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,120,212,0.08);
+            width: 100vw;
+            box-sizing: border-box;
+        }
+        .logo {
+            height: 48px;
+            margin-bottom: 8px;
+            max-width: 90vw;
+        }
+        h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+            word-break: break-word;
+        }
+        .box-content,
+        .box-section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,120,212,0.07);
+            padding: 2vw 4vw;
+            margin: 2vw auto;
+            max-width: 900px;
+            width: 96vw;
+            box-sizing: border-box;
+            min-width: 260px;
+        }
+        .meeting-info-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 5px;
+            font-size: 1.08em;
+        }
+        .meeting-info-table td {
+            padding: 4px 10px;
+            vertical-align: top;
+            word-break: break-word;
+        }
+        .meeting-info-table tr td:first-child {
+            font-weight: 600;
+            color: #0078d4;
+            width: 180px;
+        }
+        .client-holdings-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .client-holding-pill {
+            background: #e6f0fa;
+            color: #0078d4;
+            border-radius: 16px;
+            padding: 2px 10px;
+            font-size: 0.98em;
+            font-weight: 500;
+            border: 1px solid #b3d6f5;
+        }
+        h2 {
+            color: #0078d4;
+            font-size: 1.45em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            margin-top: 0;
+            letter-spacing: 0.2px;
+            word-break: break-word;
+        }
+        .box-main {
+            background: #f7fbff;
+            border-radius: 8px;
+            padding: 2vw 2vw;
+            margin-bottom: 10px;
+            border: 1px solid #e1eaf4;
+            width: 100%;
+            box-sizing: border-box;
+            min-width: 200px;
+        }
+        button {
+            background: linear-gradient(90deg, #0078d4 0%, #619bc7 100%);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 1em;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,120,212,0.09);
+            transition: background 0.2s, box-shadow 0.2s;
+            max-width: 100%;
+            word-break: break-word;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #005a9e 0%, #0078d4 100%);
+            box-shadow: 0 4px 1px rgba(0,120,212,0.15);
+        }
+        .toggle-box {
+            background: #fff;
+            border-radius: 6px;
+            border: 1px solid #e1eaf4;
+            padding: 14px 18px;
+            margin-top: 8px;
+            box-shadow: 0 1px 4px rgba(0,120,212,0.04);
+            width: 100%;
+            box-sizing: border-box;
+            min-width: 180px;
+        }
+        .feedback-section {
+            position: relative;
+            margin-top: 18px;
+            min-height: 32px;
+        }
+        .feedback-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+        .feedback-buttons button {
+            background: #d6d9df;
+            color: #106ebe;
+            border: 1px solid #619ccf;
+            border-radius: 16px;
+            font-size: 0.85em;
+            font-weight: 500;
+            padding: 3px 10px;
+            margin: 0;
+            cursor: pointer;
+            box-shadow: 0 1px 4px rgba(0,120,212,0.07);
+            transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .feedback-buttons button:hover {
+            background: #106ebe;
+            color: #ffffff;
+            border-color: #106ebe;
+            box-shadow: 0 2px 8px rgba(16,110,190,0.15);
+        }
+        .feedback-buttons button:first-child::before {
+            content: "👍";
+            font-size: 1em;
+            margin-right: 3px;
+            color: #162d4a; 
+            filter: grayscale(1) brightness(1.5) sepia(1) hue-rotate(180deg) saturate(8);
+        }
+        .feedback-buttons button:last-child::before {
+            content: "👎";
+            font-size: 1em;
+            margin-right: 3px;
+            color: #4c6c92; 
+            filter: grayscale(1) brightness(1.5) sepia(1) hue-rotate(180deg) saturate(8);
+        }
+        .feedback-buttons button:hover::before {
+            color: #ffffff;
+            filter: none;
+        }
+        .feedback-message {
+            color: #0078d4;
+            font-size: 1em;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-right: 120px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            margin-top: 0;
+        }
+        .section-header-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,120,212,0.08);
+            background: #e6f0fa;
+            padding: 4px;
+        }
+        .section-header-title {
+            color: #0078d4;
+            font-size: 1.15em;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            background: linear-gradient(90deg, #e6f0fa 0%, #f3f6fb 100%);
+            padding: 8px 16px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,120,212,0.05);
+            border-left: 4px solid #0078d4;
+            display: inline-block;
+            margin: 0;
+        }
+        @media (max-width: 1200px) {
+            .box-content, .box-section {
+                max-width: 98vw;
+                width: 98vw;
+                padding: 12px 2vw;
+            }
+        }
+        @media (max-width: 800px) {
+            .section-header-title {
+                font-size: 1em;
+                padding: 6px 10px;
+            }
+            .section-header-img {
+                width: 22px;
+                height: 22px;
+                padding: 2px;
+            }
+            .box-content,
+            .box-section,
+            .box-main,
+            .toggle-box {
+                padding: 8px 1vw;
+            }
+        }
+    </style>
+    <script>
+        function toggleBox(id) {
+            var el = document.getElementById(id);
+            if (el.style.display === "none" || el.style.display === "") {
+                el.style.display = "block";
+            } else {
+                el.style.display = "none";
+            }
+        }
+        function handleFeedback(btn, type) {
+            var msg = btn.parentElement.nextElementSibling;
+            msg.style.display = "block";
+            setTimeout(function() { msg.style.display = "none"; }, 2000);
+        }
+    </script>
+</head>
+<body>
+
+    <div class="header-container">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo" />
+        <h1>Annual Credit Facility Review Meeting</h1>
+    </div>
+
+    <div class="box-content" id="client-info">
+        <table class="meeting-info-table">
+            <tr><td>Client Company:</td><td>Contoso Ltd.</td></tr>
+            <tr><td>Client Name:</td><td>Adam Clay</td></tr>
+            <tr><td>Meeting Time:</td><td>2025-07-11 11:00:00</td></tr>
+            <tr><td>Last Meeting Time:</td><td>2024-07-11 11:00:00</td></tr>
+            <tr>
+                <td>Client Holdings:</td>
+                <td>
+                    <div class="client-holdings-container">
+                        <span class="client-holding-pill">💼Equities</span>
+                        <span class="client-holding-pill">💼Bonds</span>
+                        <span class="client-holding-pill">💼Real Estate</span>
+                        <span class="client-holding-pill">💼Commodities</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Email Summary Section -->
+    <div id="email-summary" class="box-section">
+        <div class="box-main box-content">
+            <div class="section-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email Graph" class="section-header-img" />
+                <h2 class="section-header-title">Email Summary</h2>
+            </div>
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur cursus, nisl erat dictum enim, nec cursus erat enim euismod nisi.
+            </div>
+        </div>
+
+        <div class="box-main box-content" style="margin-top: 12px;">
+            <button onclick="toggleBox('recent-email-box')">Recent Email</button>
+            <button onclick="toggleBox('client-questions-box')">Client Questions</button>
+
+            <div id="recent-email-box" class="toggle-box" style="display:none;">
+                <strong>Recent Email Summary:</strong> <br>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+            </div>
+            <div id="client-questions-box" class="toggle-box" style="display:none;">
+                <strong>Recent Questions:</strong> <br>
+                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.
+            </div>
+        </div>
+
+        <div class="feedback-section">
+            <div class="feedback-buttons">
+                <button onclick="handleFeedback(this, 'more')">More Next Time</button>
+                <button onclick="handleFeedback(this, 'less')">Less Next Time</button>
+            </div>
+            <div class="feedback-message" style="display:none;">
+                Got it! We will remember it next time
+            </div>
+        </div>
+    </div>
+
+    <!-- Financial News Summary Section -->
+    <div id="financial-summary" class="box-section">
+        <div class="box-main box-content">
+            <div class="section-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Finance Report Icon" class="section-header-img" />
+                <h2 class="section-header-title">Financial News Summary</h2>
+            </div>
+            <div>
+
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.
+            </div>
+        </div>
+
+        <div class="box-main box-content" style="margin-top: 12px;">
+            <button onclick="toggleBox('industry')">Client Industry News</button>
+            <button onclick="toggleBox('macro-snap')">Macro-Economic Snapshot</button>
+            <button onclick="toggleBox('resources')">Resources</button>
+            
+            <div id="industry" class="toggle-box" style="display:none;">
+                <strong>Client Industry News:</strong> <br>
+                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+            </div>
+            <div id="macro-snap" class="toggle-box" style="display:none;">
+                <strong>Macroeconomy News:</strong> <br>
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </div>
+            <div id="resources" class="toggle-box" style="display:none;">
+                <strong>Holding News:</strong> <br>
+                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+            </div>
+            
+        </div>
+
+        <div class="feedback-section">
+            <div class="feedback-buttons">
+                <button onclick="handleFeedback(this, 'more')">More Next Time</button>
+                <button onclick="handleFeedback(this, 'less')">Less Next Time</button>
+            </div>
+            <div class="feedback-message" style="display:none;">
+                Got it! We will remember it next time
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
