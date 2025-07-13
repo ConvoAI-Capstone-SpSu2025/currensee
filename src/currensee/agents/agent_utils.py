@@ -36,8 +36,8 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     """
 
 
-    finance_detail = state["finance_detail"] 
-    news_detail = state["news_detail"]
+    holdings_detail = state["holdings_detail"] 
+    client_news_detail = state["client_news_detail"]
     macro_news_detail = state["macro_news_detail"]
     past_meeting_detail = state["past_meeting_detail"]
 
@@ -46,8 +46,8 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     # Log the report length being used
     print(f"\n===============================")
     print(f"Generating report with the following preferences: ")
-    print(f" Finance Detail: {finance_detail} ")
-    print(f" News Detail: {news_detail} ")
+    print(f" Holdings Detail: {holdings_detail} ")
+    print(f" Client News Detail: {client_news_detail} ")
     print(f" Macro News Detail: {macro_news_detail}")
     print(f" Past Meeting Detail: {past_meeting_detail}")
     print(f"===============================\n")
@@ -55,8 +55,8 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     
 
     # Select the appropriate prompts based on preferences
-    finance_holdings_prompt = holdings_prompts.get(finance_detail.lower(), holdings_prompts["full"])
-    client_news_prompt = news_prompts.get(news_detail.lower(), news_prompts["full"])
+    finance_holdings_prompt = holdings_prompts.get(holdings_detail.lower(), holdings_prompts["full"])
+    client_news_prompt = news_prompts.get(client_news_detail.lower(), news_prompts["full"])
     client_comms_prompt = comms_prompts.get(past_meeting_detail.lower(), comms_prompts["full"])
 
     new_state = state.copy()

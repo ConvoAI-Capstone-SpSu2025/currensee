@@ -48,15 +48,15 @@ def retrieve_current_formatt_preferences(state: SupervisorState) -> dict:
     """
 
     pref_df = pd.read_sql(query_str, con=engine)
-    fin_detail = pref_df["finance_detail"][0]
-    news_detail = pref_df["news_detail"][0]
+    holdings_detail = pref_df["finance_detail"][0]
+    client_news_detail = pref_df["news_detail"][0]
     macro_news_detail = pref_df["macro_news_detail"][0]
     past_meeting_detail = pref_df["past_meeting_detail"][0]
 
 
     new_state = state.copy()
-    new_state["finance_detail"] = fin_detail
-    new_state["news_detail"] = news_detail
+    new_state["holdings_detail"] = holdings_detail
+    new_state["client_news_detail"] = client_news_detail
     new_state["macro_news_detail"] = macro_news_detail
     new_state["past_meeting_detail"] = past_meeting_detail
     return new_state
