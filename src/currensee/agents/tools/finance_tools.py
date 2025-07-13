@@ -21,7 +21,7 @@ model = get_model(settings.DEFAULT_MODEL)
 def format_google_date(date_str):
 
     parts = date_str.split()[0].split("-")
-    return f"{parts[0]}{parts[1].zfill(2)}{parts[0].zfill(2)}"
+    return f"{parts[0]}{parts[1].zfill(2)}{parts[2].zfill(2)}"
 
 
 def score_result(result):
