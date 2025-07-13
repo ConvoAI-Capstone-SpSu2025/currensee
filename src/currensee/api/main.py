@@ -123,6 +123,13 @@ templates = Jinja2Templates(directory=BASE_DIR / "ui" / "templates")
 # Mount static files from ui folder
 app.mount("/static", StaticFiles(directory=BASE_DIR / "ui"), name="static")
 
+# Define ClientInfo class for the save endpoint
+class ClientInfo(BaseModel):
+    """Model for saving client information"""
+    client_name: str
+    client_email: str
+    additional_info: Optional[str] = None
+
 #Take user input
 @app.post("/api/save_client_info")
 async def save_client_info(info: ClientInfo):
