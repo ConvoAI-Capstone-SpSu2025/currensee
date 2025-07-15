@@ -376,8 +376,8 @@ def generate_report(result):
                     {recent_email_summary}
                     <div class="feedback-section" style="margin-top: 12px;">
                         <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                            <button onclick="handleFeedback(this, 'more')">I want to see MORE recent email</button>
-                            <button onclick="handleFeedback(this, 'less')">I want LESS recent email</button>
+                            <button onclick="handleFeedback(this, 'more')">I want more recent email</button>
+                            <button onclick="handleFeedback(this, 'less')">I want less recent email</button>
                         </div>
                         <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
                             Got it! We will remember it next time
@@ -389,8 +389,8 @@ def generate_report(result):
                     {recent_client_questions}
                     <div class="feedback-section" style="margin-top: 12px;">
                         <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                            <button onclick="handleFeedback(this, 'more')">I want to see MORE client questions</button>
-                            <button onclick="handleFeedback(this, 'less')">I want LESS client questions</button>
+                            <button onclick="handleFeedback(this, 'more')">I want more client questions</button>
+                            <button onclick="handleFeedback(this, 'less')">I want less client questions</button>
                         </div>
                         <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
                             Got it! We will remember it next time
@@ -401,8 +401,8 @@ def generate_report(result):
     
             <div class="feedback-section" style="margin-top: 14px;">
                 <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                    <button onclick="handleFeedback(this, 'more')">I want LONGER summary</button>
-                    <button onclick="handleFeedback(this, 'less')">I want SHORTER summary</button>
+                    <button onclick="handleFeedback(this, 'more')">I want longer summary</button>
+                    <button onclick="handleFeedback(this, 'less')">I want shorter summary</button>
                 </div>
                 <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
                     Got it! We will remember it next time
@@ -441,7 +441,7 @@ def generate_report(result):
                         <div class="feedback-section" style="margin-top: 12px;">
                             <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
                                 <button onclick="handleFeedback(this, 'more')">I want more resources</button>
-                                <button onclick="handleFeedback(this, 'less')">I want fewer resources</button>
+                                <button onclick="handleFeedback(this, 'less')">I want less resources</button>
                             </div>
                             <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
                                 Got it! We will remember it next time
@@ -461,8 +461,8 @@ def generate_report(result):
     
                 <div class="feedback-section" style="margin-top: 12px;">
                     <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want to see LONGER financial summary</button>
-                        <button onclick="handleFeedback(this, 'less')">I want to see SHORTER financial summary</button>
+                        <button onclick="handleFeedback(this, 'more')">I want longer financial summary</button>
+                        <button onclick="handleFeedback(this, 'less')">I want shorter financial summary</button>
                     </div>
                     <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
                         Got it! We will remember it next time
