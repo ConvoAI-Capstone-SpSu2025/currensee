@@ -26,10 +26,12 @@ def retrieve_current_formatt_preferences(state: SupervisorState) -> dict:
     meeting_timestamp = state["meeting_timestamp"]
 
     mx_dt_df = pd.read_sql(f"""
+    select coalesce(as_of_date, '2023-01-23 10:00:00') as as_of_date
+    from (
     SELECT max(p.as_of_date) as as_of_date
     FROM preferences p
     where p.email = '{user_email}'
-    and as_of_date <= '{meeting_timestamp}'
+    and as_of_date <= '{meeting_timestamp}')a
     """, con=engine)
     
     max_dt = mx_dt_df['as_of_date'][0]

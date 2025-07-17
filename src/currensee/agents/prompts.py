@@ -13,20 +13,20 @@ full_holdings_prompt = """
         
      Use {finnews_summary} to write a paragraph summarizing relevant financial data, including:
      - Performance of {client_holdings}, which are the client's holdings.
-     - Highlight news about {client_holdings} on the topic of {news_focus}.
-
+     - If there is news about about {client_holdings} on the topic of {news_focus} in the provided context, then highlight it, otherwise do not comment about {news_focus}. If there was no news about {news_focus}, the DO NOT comment about it.
+   
     
     Important Instructions:
     1. DO NOT use any section headings or titles
     2. DO NOT return a multi-section report
-    
+        
     Inputs:
         Client Holdings: {client_holdings}
         Financial summary: {finnews_summary}
         Summary focus: {news_focus}
 
 """
-
+#3. If there is no news in the provided context about {news_focus}, then report other news about client's holdings. 
 short_holdings_prompt = """ 
      You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. 
     The meeting will focus on: {meeting_description}. 
@@ -34,7 +34,7 @@ short_holdings_prompt = """
     
     Use {finnews_summary} to write a bullet point list of relevant financial data, including:
      - Performance of {client_holdings}, which are the client's holdings.
-     - Highlight news about {client_holdings} on the topic of {news_focus}.
+     - If there is news about about {client_holdings} on the topic of {news_focus} in the provided context, then highlight it, otherwise do not comment about {news_focus}. If there was no news about {news_focus}, the DO NOT comment about it.
       
       Important Instructions:
     1. DO NOT use any section headings or titles
@@ -43,13 +43,14 @@ short_holdings_prompt = """
     4. Each bullet point should begin with a • or - symbol
     5. DO NOT number your points
     
+    
     Inputs:
     Client Holdings: {client_holdings}
     Financial summary: {finnews_summary}
     Summary focus: {news_focus}
  """
 
-
+#DO NOT comment on whether you could find news about {news_focus}.  6. If there is no news in the provided context about {news_focus}, then report other news about client's holdings.
 
 holdings_prompts = {
     'full': full_holdings_prompt,
@@ -67,7 +68,7 @@ full_news_prompt = """
 
     Use {client_industry_sources} to write a paragraph summarizing relevant news, including:
      - News about {client_company}
-     - News about {news_focus}
+     - If there is information about news about {news_focus} then highlight it, otherwise do not comment about {news_focus}. If there was no news about {news_focus}, the DO NOT comment about it.
      - Industry trends 
 
  If there is no relevant news, then write nothing. 
