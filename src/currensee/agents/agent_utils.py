@@ -40,6 +40,8 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     client_news_detail = state["client_news_detail"]
     macro_news_detail = state["macro_news_detail"]
     past_meeting_detail = state["past_meeting_detail"]
+    meeting_category = state["meeting_category"]
+    news_focus = state["news_focus"]
 
 
 
@@ -50,6 +52,7 @@ def summarize_all_outputs(state: SupervisorState) -> str:
     print(f" Client News Detail: {client_news_detail} ")
     print(f" Macro News Detail: {macro_news_detail}")
     print(f" Past Meeting Detail: {past_meeting_detail}")
+    print(f" Meeting topic: {meeting_category}")
     print(f"===============================\n")
 
     

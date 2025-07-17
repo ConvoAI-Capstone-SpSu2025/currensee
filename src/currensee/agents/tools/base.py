@@ -44,6 +44,7 @@ class SupervisorState(TypedDict):
 
     #Meeting Topic
     meeting_category: Optional[str]
+    news_focus: Optional[str]
 
     # Complete response
    # final_summary: Optional[str]
