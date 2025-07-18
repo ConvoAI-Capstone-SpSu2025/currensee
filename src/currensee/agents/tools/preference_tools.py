@@ -34,7 +34,8 @@ def retrieve_current_formatt_preferences(state: SupervisorState) -> dict:
     and as_of_date <= '{meeting_timestamp}')a
     """, con=engine)
     
-    max_dt = mx_dt_df['as_of_date'][0]
+    #max_dt = mx_dt_df['as_of_date'][0]
+    max_dt = mx_dt_df['as_of_date'].iloc[0]
     
     query_str = f"""
     SELECT p.as_of_date
@@ -50,10 +51,15 @@ def retrieve_current_formatt_preferences(state: SupervisorState) -> dict:
     """
 
     pref_df = pd.read_sql(query_str, con=engine)
-    holdings_detail = pref_df["finance_detail"][0]
-    client_news_detail = pref_df["news_detail"][0]
-    macro_news_detail = pref_df["macro_news_detail"][0]
-    past_meeting_detail = pref_df["past_meeting_detail"][0]
+    #holdings_detail = pref_df["finance_detail"][0]
+    #client_news_detail = pref_df["news_detail"][0]
+    #macro_news_detail = pref_df["macro_news_detail"][0]
+    #past_meeting_detail = pref_df["past_meeting_detail"][0]
+
+    holdings_detail = pref_df["finance_detail"].iloc[0]
+    client_news_detail = pref_df["news_detail"].iloc[0]
+    macro_news_detail = pref_df["macro_news_detail"].iloc[0]
+    past_meeting_detail = pref_df["past_meeting_detail"].iloc[0]
 
 
     new_state = state.copy()
