@@ -9,32 +9,31 @@
 full_holdings_prompt = """
     You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. 
     The meeting will focus on: {meeting_description}.
-    Your job is to write a report section that details information about the client {client_name}'s financial holdings. When possible, highlight information on {news_focus}.
+    Your job is to write a report section that details information about the client {client_name}'s financial holdings. When available in the context, highlight information on {news_focus}. Write nothing about the availability of news in the context if no information about a topic is found.
         
      Use {finnews_summary} to write a paragraph summarizing relevant financial data, including:
      - Performance of {client_holdings}, which are the client's holdings.
-     - If there is news about about {client_holdings} on the topic of {news_focus} in the provided context, then highlight it, otherwise do not comment about {news_focus}. If there was no news about {news_focus}, the DO NOT comment about it.
-   
-    
+     - General market trends
+
     Important Instructions:
     1. DO NOT use any section headings or titles
     2. DO NOT return a multi-section report
+    3. DO NOT comment on the availability of news in the context.
         
     Inputs:
         Client Holdings: {client_holdings}
         Financial summary: {finnews_summary}
-        Summary focus: {news_focus}
 
 """
-#3. If there is no news in the provided context about {news_focus}, then report other news about client's holdings. 
+
 short_holdings_prompt = """ 
      You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. 
     The meeting will focus on: {meeting_description}. 
-    Your job is to write a report section that details information about the client {client_name}'s financial holdings. When possible, highlight information on {news_focus}. 
+    Your job is to write a report section that details information about the client {client_name}'s financial holdings. When available in the context, highlight information on {news_focus}.  Write nothing about the availability of news in the context if no information about a topic is found.
     
     Use {finnews_summary} to write a bullet point list of relevant financial data, including:
      - Performance of {client_holdings}, which are the client's holdings.
-     - If there is news about about {client_holdings} on the topic of {news_focus} in the provided context, then highlight it, otherwise do not comment about {news_focus}. If there was no news about {news_focus}, the DO NOT comment about it.
+     - General market trends
       
       Important Instructions:
     1. DO NOT use any section headings or titles
@@ -42,15 +41,15 @@ short_holdings_prompt = """
     3. Return a single flat list of 3-4 bullet points total
     4. Each bullet point should begin with a • or - symbol
     5. DO NOT number your points
+    6. DO NOT comment on the availability of news in the context.
     
     
     Inputs:
     Client Holdings: {client_holdings}
     Financial summary: {finnews_summary}
-    Summary focus: {news_focus}
+
  """
 
-#DO NOT comment on whether you could find news about {news_focus}.  6. If there is no news in the provided context about {news_focus}, then report other news about client's holdings.
 
 holdings_prompts = {
     'full': full_holdings_prompt,
@@ -64,21 +63,18 @@ holdings_prompts = {
 ################
 full_news_prompt = """
 
-    You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. Your job is to write a report section that summarizes recent news about {client_company}. The meeting will focus on: {meeting_description}. When possible, highlight information on {news_focus} that you can find in Client News.
+    You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. Your job is to write a report section that summarizes recent news about {client_company}. The meeting will focus on: {meeting_description}. When available in the context, highlight information on {news_focus}. 
 
     Use {client_industry_sources} to write a paragraph summarizing relevant news, including:
      - News about {client_company}
-     - If there is information about news about {news_focus} then highlight it, otherwise do not comment about {news_focus}. If there was no news about {news_focus}, the DO NOT comment about it.
      - Industry trends 
 
- If there is no relevant news, then write nothing. 
+ If there is no relevant news, then write nothing. DO NOT comment on the availability of news in the context.
 
     Inputs:
     Client News:  {client_industry_sources}
-    Summary focus: {news_focus}
-
 """
-
+# 
 
 news_prompts = {
     'full': full_news_prompt,
