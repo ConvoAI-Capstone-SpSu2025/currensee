@@ -37,13 +37,14 @@ class SupervisorState(TypedDict):
     finnews_summary: Optional[str]  # final finnews output
 
     # Preference Data
-    finance_detail: Optional[str]
-    news_detail: Optional[str]
+    holdings_detail: Optional[str]
+    client_news_detail: Optional[str]
     macro_news_detail: Optional[str]
     past_meeting_detail: Optional[str]
 
     #Meeting Topic
     meeting_category: Optional[str]
+    news_focus: Optional[str]
 
     # Complete response
    # final_summary: Optional[str]

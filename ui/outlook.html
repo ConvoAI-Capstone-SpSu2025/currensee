@@ -791,141 +791,146 @@
 
         
 <!-- Report Generation Options -->
-<div class="form-section">
-    <h3><i class="fas fa-file-alt"></i> Select Your Report Type </h3>
-    <div class="form-group" style="margin-bottom: 16px;">
-        <label style="font-weight:600;">Report Type</label>
-        <div class="report-type-options">
-            <label class="custom-checkbox">
-                <input type="checkbox" id="autoReport" name="reportType" value="auto" checked>
-                <span class="checkmark"></span>
-                Auto Report
-            </label>
-            <label class="custom-checkbox">
-                <input type="checkbox" id="customReport" name="reportType" value="custom">
-                <span class="checkmark"></span>
-                Customized Report
-            </label>
-        </div>
-        <div id="customOptions" class="custom-suboptions" style="margin-left: 24px; margin-top: 8px; display: none; flex-direction: column; gap: 12px;">
-            <!-- Email Summary Option -->
-            <label class="custom-checkbox" style="margin-bottom: 0;">
-                <input type="checkbox" id="emailSummary" name="customOption" value="emailSummary">
-                <span class="checkmark"></span>
-                Email Summary
-            </label>
-            <div id="emailSummarySub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
-                <label class="custom-checkbox">
-                    <input type="checkbox" id="overallEmailSummary" name="emailSummaryOption" value="overall">
-                    <span class="checkmark"></span>
-                    Overall Email Summary
-                </label>
-                <label class="custom-checkbox">
-                    <input type="checkbox" id="recentEmailSummary" name="emailSummaryOption" value="recent">
-                    <span class="checkmark"></span>
-                    Recent Email Summary
-                </label>
-                <label class="custom-checkbox">
-                    <input type="checkbox" id="recentQuestions" name="emailSummaryOption" value="questions">
-                    <span class="checkmark"></span>
-                    Recent Questions
-                </label>
-            </div>
-            <!-- Financial News Option -->
-            <label class="custom-checkbox" style="margin-bottom: 0;">
-                <input type="checkbox" id="financialNews" name="customOption" value="financialNews">
-                <span class="checkmark"></span>
-                Financial News
-            </label>
-            <div id="financialNewsSub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
-                <label class="custom-checkbox">
-                    <input type="checkbox" id="clientIndustryNews" name="financialNewsOption" value="industry">
-                    <span class="checkmark"></span>
-                    Client Industry News
-                </label>
-                <label class="custom-checkbox">
-                    <input type="checkbox" id="holdingNews" name="financialNewsOption" value="holding">
-                    <span class="checkmark"></span>
-                    Holding News
-                </label>
-                <label class="custom-checkbox">
-                    <input type="checkbox" id="macroeconomyNews" name="financialNewsOption" value="macro">
-                    <span class="checkmark"></span>
-                    Macroeconomy News
-                </label>
-            </div>
-        </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const autoReport = document.getElementById('autoReport');
-            const customReport = document.getElementById('customReport');
-            const customOptions = document.getElementById('customOptions');
-            const emailSummary = document.getElementById('emailSummary');
-            const emailSummarySub = document.getElementById('emailSummarySub');
-            const financialNews = document.getElementById('financialNews');
-            const financialNewsSub = document.getElementById('financialNewsSub');
+                <div class="form-section">
+                    <h3><i class="fas fa-file-alt"></i> Generate Reports</h3>
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <div class="report-type-label">
+    Please select your report type
+</div>
+                        <div class="report-type-options">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="autoReport" name="reportType" value="auto" checked>
+                                <span class="checkmark"></span>
+                                Auto Report
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="customReport" name="reportType" value="custom">
+                                <span class="checkmark"></span>
+                                Customized Report
+                            </label>
+                        </div>
+                        <div id="customOptions" class="custom-suboptions" style="margin-left: 24px; margin-top: 8px; display: none; flex-direction: column; gap: 12px;">
+                            <!-- Email Summary Option -->
+                            <label class="custom-checkbox" style="margin-bottom: 0;">
+                                <input type="checkbox" id="emailSummary" name="customOption" value="emailSummary">
+                                <span class="checkmark"></span>
+                                Email Summary
+                            </label>
+                            <div id="emailSummarySub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="overallEmailSummary" name="emailSummaryOption" value="overall">
+                                    <span class="checkmark"></span>
+                                    Overall Email Summary
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="recentEmailSummary" name="emailSummaryOption" value="recent">
+                                    <span class="checkmark"></span>
+                                    Recent Email Summary
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="recentQuestions" name="emailSummaryOption" value="questions">
+                                    <span class="checkmark"></span>
+                                    Recent Questions
+                                </label>
+                            </div>
+                            <!-- Financial News Option -->
+                            <label class="custom-checkbox" style="margin-bottom: 0;">
+                                <input type="checkbox" id="financialNews" name="customOption" value="financialNews">
+                                <span class="checkmark"></span>
+                                Financial News
+                            </label>
+                            <div id="financialNewsSub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="clientIndustryNews" name="financialNewsOption" value="industry">
+                                    <span class="checkmark"></span>
+                                    Client Industry News
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="holdingNews" name="financialNewsOption" value="holding">
+                                    <span class="checkmark"></span>
+                                    Holding News
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="macroeconomyNews" name="financialNewsOption" value="macro">
+                                    <span class="checkmark"></span>
+                                    Macroeconomy News
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const autoReport = document.getElementById('autoReport');
+                            const customReport = document.getElementById('customReport');
+                            const customOptions = document.getElementById('customOptions');
+                            const emailSummary = document.getElementById('emailSummary');
+                            const emailSummarySub = document.getElementById('emailSummarySub');
+                            const financialNews = document.getElementById('financialNews');
+                            const financialNewsSub = document.getElementById('financialNewsSub');
 
-            // Only one main report type can be selected
-            autoReport.addEventListener('change', function() {
-                if (autoReport.checked) {
-                    customReport.checked = false;
-                    customOptions.style.display = 'none';
-                }
-            });
-            customReport.addEventListener('change', function() {
-                if (customReport.checked) {
-                    autoReport.checked = false;
-                    customOptions.style.display = 'flex';
-                } else {
-                    customOptions.style.display = 'none';
-                }
-            });
+                            // Only one main report type can be selected
+                            autoReport.addEventListener('change', function() {
+                                if (autoReport.checked) {
+                                    customReport.checked = false;
+                                    customOptions.style.display = 'none';
+                                }
+                            });
+                            customReport.addEventListener('change', function() {
+                                if (customReport.checked) {
+                                    autoReport.checked = false;
+                                    customOptions.style.display = 'flex';
+                                } else {
+                                    customOptions.style.display = 'none';
+                                }
+                            });
 
-            emailSummary.addEventListener('change', function() {
-                emailSummarySub.style.display = emailSummary.checked ? 'flex' : 'none';
-            });
+                            emailSummary.addEventListener('change', function() {
+                                emailSummarySub.style.display = emailSummary.checked ? 'flex' : 'none';
+                            });
 
-            financialNews.addEventListener('change', function() {
-                financialNewsSub.style.display = financialNews.checked ? 'flex' : 'none';
-            });
+                            financialNews.addEventListener('change', function() {
+                                financialNewsSub.style.display = financialNews.checked ? 'flex' : 'none';
+                            });
 
-            // On page load, show/hide custom options based on initial state
-            if (customReport.checked) {
-                customOptions.style.display = 'flex';
-            } else {
-                customOptions.style.display = 'none';
-            }
-        });
-    </script>
-    
-    <!-- Generate Report Option -->
-        <div class="form-section">
-            <h3><i class="fas fa-file-alt" style="color: #106ebe;"></i> Generate Reports</h3>
-        
-            <div class="button-group" style="display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap;">
-                <!-- HTML Preview Button -->
-                <div class="report-option" style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <button class="btn btn-primary" onclick="generateReport('html')">
-                        <i class="fas fa-eye"></i> Preview HTML
-                    </button>
-                    <p style="margin: 8px 0 0 2px; font-size: 13px; color: #555;">
-                        View an interactive HTML in a new window.
-                    </p>
+                            // On page load, show/hide custom options based on initial state
+                            if (customReport.checked) {
+                                customOptions.style.display = 'flex';
+                            } else {
+                                customOptions.style.display = 'none';
+                            }
+                        });
+                    </script>
+                    
+                    <!-- End New Report Type Options -->
+
+        <!-- Generate Report Option -->
+            <div class="form-section">
+                <h3><i class="fas fa-file-alt" style="color: #106ebe;"></i> Generate Reports</h3>
+            
+                <div class="button-group" style="display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap;">
+                    <!-- HTML Preview Button -->
+                    <div class="report-option" style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <button type="button" class="btn btn-primary" onclick="generateReport('html')">
+                            <i class="fas fa-eye"></i> Preview HTML
+                        </button>
+                        <p style="margin: 8px 0 0 2px; font-size: 13px; color: #555;">
+                            View an interactive HTML in a new window.
+                        </p>
+                    </div>
+            
+                    <!-- PDF Download Button -->
+                    <div class="report-option" style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <button class="btn btn-primary" onclick="generateReport('pdf')">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <p style="margin: 8px 0 0 2px; font-size: 13px; color: #555;">
+                            Generate and download a professional PDF report.
+                        </p>
+                    </div>
                 </div>
-        
-                <!-- PDF Download Button -->
-                <div class="report-option" style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <button class="btn btn-primary" onclick="generateReport('pdf')">
-                        <i class="fas fa-download"></i> Download PDF
-                    </button>
-                    <p style="margin: 8px 0 0 2px; font-size: 13px; color: #555;">
-                        Generate and download a professional PDF report.
-                    </p>
-                </div>
             </div>
-        </div>
 
+ 
                 <!-- Status Messages -->
                 <div id="statusMessage" class="status-message"></div>
                 <div id="progressContainer" class="progress-container">
@@ -961,7 +966,6 @@
                 client_email: document.getElementById('clientEmail').value,
                 meeting_timestamp: document.getElementById('meetingTimestamp').value,
                 meeting_description: document.getElementById('meetingDescription').value,
-                report_length: document.getElementById('reportLength').value
             };
         }
 
@@ -1000,94 +1004,65 @@
         }
 
 
-    async function generateReport(format) {
-        const data = getFormData();
+async function generateReport(format) {
+    const data = getFormData();
 
-        // Validate required fields
-        if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
-            showStatus('Please fill in all required fields', 'error');
+    if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
+        showStatus('Please fill in all required fields', 'error');
+        return;
+    }
+
+    if (format === 'html') {
+        showStatus('Generating HTML report...', 'loading');
+
+        // Open popup window immediately
+        const newWindow = window.open('', '_blank', 'width=1000,height=800');
+        if (!newWindow) {
+            showStatus('Popup blocked! Please allow popups for this site.', 'error');
             return;
         }
 
-        if (format === 'html') {
-            showStatus('Generating HTML report... This may take several minutes.', 'loading');
-            try {
-                const response = await fetch(`${API_BASE_URL}/generate-report/html`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                if (!response.ok) {
-                    const errData = await response.json().catch(() => ({}));
-                    throw new Error(errData.detail || `HTTP ${response.status}`);
-                }
-                showStatus('Report generated successfully! Redirecting...', 'success');
+        try {
+            const response = await fetch(`${API_BASE_URL}/report-html`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ...data,
+                    user_email: "demo@currensee.ai"
+                }),
+            });
 
-                // Redirect to report.html to display the report dynamically
-                setTimeout(() => {
-                    window.location.href = `${API_BASE_URL}/report`;
-                }, 1000);
-
-            } catch (error) {
-                showStatus(`Error: ${error.message}`, 'error');
-                console.error('API error:', error);
+            if (!response.ok) {
+                const err = await response.text();
+                throw new Error(err || 'Failed to generate HTML report');
             }
-        }
-        else if (format === 'pdf') {
-            showStatus('Generating PDF report... This may take several minutes.', 'loading');
-            try {
-                const response = await fetch(`${API_BASE_URL}/generate-report/pdf`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                document.getElementById('progressBar').style.width = '100%';
 
-                if (!response.ok) {
-                    const errData = await response.json().catch(() => ({}));
-                    throw new Error(errData.detail || `HTTP ${response.status}`);
-                }
+            const html = await response.text();
 
-                const blob = await response.blob();
-                showStatus('PDF report generated successfully! Download started.', 'success');
+            // Write the HTML into the new window
+            newWindow.document.open();
+            newWindow.document.write(html);
+            newWindow.document.close();
 
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
+            hideStatus();
 
-                const clientName = data.client_name.replace(/[^a-zA-Z0-9]/g, '_');
-                const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
-                a.download = `currensee_${clientName}_${timestamp}.pdf`;
-
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-
-                setTimeout(() => {
-                    if (document.getElementById('statusMessage').className.includes('success')) {
-                        hideStatus();
-                    }
-                }, 5000);
-
-            } catch (error) {
-                showStatus(`Error: ${error.message}`, 'error');
-                console.error('API error:', error);
-            }
-        }
-        else {
-            showStatus('Invalid format specified', 'error');
+        } catch (error) {
+            showStatus(`Error: ${error.message}`, 'error');
+            console.error('Error generating report:', error);
+            newWindow.close();
         }
     }
-
-        // Add click handlers for ribbon sections
-        document.querySelectorAll('.ribbon-section').forEach(section => {
-            section.addEventListener('click', () => {
-                document.querySelectorAll('.ribbon-section').forEach(s => s.classList.remove('active'));
-                section.classList.add('active');
+}
+        
+            // Add click handlers for ribbon sections
+            document.querySelectorAll('.ribbon-section').forEach(section => {
+                section.addEventListener('click', () => {
+                    document.querySelectorAll('.ribbon-section').forEach(s => s.classList.remove('active'));
+                    section.classList.add('active');
+                });
             });
-        });
 
+        
         // Add click handlers for navigation items
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', () => {
