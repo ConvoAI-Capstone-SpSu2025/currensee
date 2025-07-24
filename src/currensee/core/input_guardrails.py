@@ -25,7 +25,7 @@ class CurrenSeeInputGuardrails:
     def __init__(self):
         # Suspicious patterns that could indicate injection attempts
         self.sql_injection_patterns = [
-            r"('|(\\x27)|(\\x2D))",  # Single quotes and hex equivalents
+            r"('|(\\x27))",  # Single quotes and hex equivalents
             r"(\"|(\\x22))",         # Double quotes and hex equivalents  
             r"(;|\\x3B)",            # Semicolons
             r"(--|#|\\x23)",         # SQL comments

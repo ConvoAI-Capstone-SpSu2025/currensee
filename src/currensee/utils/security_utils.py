@@ -111,7 +111,7 @@ def process_validation_results(validation_results: Dict, client_email: str) -> N
     
     if validation_results["overall_valid"]:
         # Log successful validation
-        validation_types = list(validation_results["validations"].keys())
+        validation_types = list(validation_results["validation_details"].keys())
         security_logger.log_validation_success(client_email, validation_types)
         return
     
@@ -119,7 +119,7 @@ def process_validation_results(validation_results: Dict, client_email: str) -> N
     risk_level = validation_results["risk_level"]
     all_issues = []
     
-    for validation_type, results in validation_results["validations"].items():
+    for validation_type, results in validation_results["validation_details"].items():
         if not results["valid"]:
             all_issues.extend(results["issues"])
             security_logger.log_validation_failure(
@@ -182,9 +182,9 @@ def log_security_metrics(validation_results: Dict, execution_time_ms: float):
         "validation_time_ms": execution_time_ms,
         "overall_valid": validation_results["overall_valid"],
         "risk_level": validation_results["risk_level"],
-        "validation_count": len(validation_results["validations"]),
+        "validation_count": len(validation_results["validation_details"]),
         "failed_validations": [
-            name for name, result in validation_results["validations"].items() 
+            name for name, result in validation_results["validation_details"].items() 
             if not result["valid"]
         ]
     }
