@@ -20,10 +20,13 @@ from currensee.utils.security_utils import (
     get_sanitized_inputs,
     log_security_metrics
 )
-#from currensee.utils.output_utils import (convert_html_to_pdf,
-#                                          generate_long_report,
-#                                          generate_med_report,
-#                                          generate_short_report)
+from currensee.utils.output_utils_dynamic import (
+    generate_report,
+    format_news_summary_to_html,
+    format_paragraph_summary_to_html,
+    save_html_to_file,
+    convert_html_to_pdf,
+)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -118,7 +121,7 @@ class GraphResponse(BaseModel):
 
 # Access outlook.html tempalate
 BASE_DIR = Path(__file__).resolve().parents[3]
-templates = Jinja2Templates(directory=BASE_DIR / "ui" / "templates")
+#templates = Jinja2Templates(directory=BASE_DIR / "ui" / "templates")
 
 # Mount static files from ui folder
 app.mount("/static", StaticFiles(directory=BASE_DIR / "ui"), name="static")
@@ -148,6 +151,7 @@ async def serve_notification():
     content = notification_path.read_text(encoding="utf-8")
     return HTMLResponse(content=content)
 
+
 @app.get("/health")
 async def health_check():
     """Health check endpoint for monitoring"""
@@ -157,13 +161,28 @@ async def health_check():
         "timestamp": datetime.now().isoformat(),
     }
 
-@app.get("/report", response_class=HTMLResponse)
-async def get_report(request: Request):
-    context = {
-        "request": request,
-    #Needs to work more on the report call logic 
-    }
-    return templates.TemplateResponse("report.html", context)
+
+#@app.get("/report", response_class=HTMLResponse)
+#async def serve_html_report(
+#    client_name: str = Query(...),
+#    client_email: str = Query(...),
+#    meeting_timestamp: str = Query(...),
+#    meeting_description: str = Query(...),
+#    user_email: str = "placeholder@demo.com", 
+#):
+#    try:
+#        init_state = {
+#            "user_email": user_email,
+#            "client_name": client_name,
+#            "client_email": client_email,
+#            "meeting_timestamp": meeting_timestamp,
+#            "meeting_description": meeting_description,
+#        }
+#        result = compiled_graph.invoke(init_state)
+#        html_content = generate_report(result)
+#        return HTMLResponse(content=html_content)
+#    except Exception as e:
+#        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/generate-report", response_model=GraphResponse)
@@ -225,8 +244,8 @@ async def generate_report(request: ClientRequest):
         return GraphResponse(success=False, error=str(e))
 
 
-@app.post("/generate-report/html")
-async def generate_report_html(request: Request, client_req: ClientRequest):
+@app.post("/report-html")
+async def generate_report_html(request: ClientRequest):
     try:
         # Run comprehensive security validation
         validation_results = client_req.validate_with_guardrails()
@@ -245,43 +264,32 @@ async def generate_report_html(request: Request, client_req: ClientRequest):
             "meeting_description": sanitized_inputs.get("meeting_description", client_req.meeting_description),
         }
 
-        # Call graph and get results dict
+
+        logger.info(f"Running compiled_graph with init_state: {init_state}")
+        
         result = compiled_graph.invoke(init_state)
 
-        # Extract fields with defaults - (JING-need to match updated graph)
-        email_summary = result.get("email_summary", "").strip()
-        recent_email = result.get("recent_email", "").strip()
-        client_questions = result.get("client_questions", "").strip()
+        html_content = generate_report(result)
+        
+        logger.info(f"Compiled graph returned result: {result}")
 
-        financial_news = result.get("financial_news", "").strip()
-        macro_snapshot = result.get("macro_snapshot", "").strip()
-        holding_resources = result.get("holding_resources", "").strip()
+#        report_length = request.report_length or "medium"
 
-        client_company = result.get("client_company", "Unknown Company")
-        client_name = result.get("client_name", "Unknown Client")
-        meeting_time = result.get("meeting_time", "Unknown Time")
-        last_meeting_time = result.get("last_meeting_time", "Unknown Last Time")
-        holdings = result.get("holdings", [])
+#        if report_length == "short":
+#            html_content = generate_short_report(result)
+#        elif report_length == "long":
+#            html_content = generate_long_report(result)
+#        else:
+#            html_content = generate_med_report(result)
 
-        context = {
-            "request": request,
-            "client_company": client_company,
-            "client_name": client_name,
-            "meeting_time": meeting_time,
-            "last_meeting_time": last_meeting_time,
-            "holdings": holdings,
-            "email_summary": email_summary,
-            "recent_email": recent_email,
-            "client_questions": client_questions,
-            "financial_news": financial_news,
-            "macro_snapshot": macro_snapshot,
-            "holding_resources": holding_resources,
-        }
-
-        return templates.TemplateResponse("report.html", context)
+        return HTMLResponse(content=html_content)
+        
 
     except Exception as e:
+        logger.exception("Error in generate_report_html")
         raise HTTPException(status_code=500, detail=str(e))
+
+        
         
 
 @app.post("/generate-report/pdf")

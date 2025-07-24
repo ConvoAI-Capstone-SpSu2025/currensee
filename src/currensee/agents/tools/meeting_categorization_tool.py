@@ -39,13 +39,18 @@ def categorize_meeting_topic(state: SupervisorState) -> dict:
    Classify the meeting topic into one of the following categories ["Customer Relationship", "Finance", "Annual Review", "Regulatory", ] using the guidance below. Use the Meeting Description and Recent Email Summary to do this.
 
    Guidance:
-   - Categorize as "Annual Review" if description focuses on topics such as: portfolio review or annual review 
-   - Categorize as "Finance" if description focuses on topics such as: hedging strategy, markets, performance, diversification
-   - Categorize as "Customer Relationship" if description focuses on topics such as: onboarding, product needs, relationship review, introduction to bankwell
-   - Categorize as "Regulatory" if description focuses on topics such as: insider trading, regulatory, regulations, SCC, 
-
+   - Categorize as "Annual Review" if description focuses on topics such as: portfolio review, annual review, goals, year ahead, or broad objectives
+   - Categorize as "Customer Relationship" if description focuses on topics such as: onboarding, product needs, relationship review, or introduction to bankwell
+   - Categorize as "Regulatory" if description focuses on topics such as: insider trading, regulatory, regulations, SCC, FINRA, or compliance
+   - Categorize as "Benchmark Change" if description focuses on topics such as: benchmark changed, reporting, re-alignment, or transition
+   - Categorize as "ESG Investing" if description focuses on topics such as: ESG, environmental, green investing, Carbon score, climate, or sustainability
+   - Categorize as "Risk Management" if description focuses on topics such as: risk, stress testing, hedging, diversification, or exposure
+   - Categorize as "Tax Optimization" if description focuses on topics such as: tax, charitable deductions, capital gains, loss realization, or IRS
+   - Categorize as "New Funds Offerings" if description focuses on topics such as: fund launch, fund enhancements, new fund allocation, or innovative funds
+   - Categorize as "Macro Update" if description focuses on topics such as: macro, headwinds, federal reserve, fed policy, central bank, geopolitical, political, commodity trends, currency trends, or market conditions
+     
     Important Instructions:
-    1. Only return a categorization from this list ["Customer Relationship", "Finance", "Annual Review", "Regulatory"]
+    1. Only return a categorization from this list ["Customer Relationship", "Benchmark Change", "Annual Review", "Regulatory", "ESG Investing", "Risk Management", "Tax Optimization", "New Funds Offerings", "Macro Update"]
     2. If the categorization is not clear based on the Meeting Description, then refer to the Recent Email Summary.
 
  Inputs:
@@ -66,3 +71,32 @@ def categorize_meeting_topic(state: SupervisorState) -> dict:
     new_state["meeting_category"] = meeting_category.content
 
     return new_state
+
+def determine_topic_of_news(state: SupervisorState) -> dict:
+    meeting_category = state["meeting_category"]
+    
+    holdings_news_pref = state["holdings_detail"]
+    client_news_pref = state["client_news_detail"]
+    macro_pref = state["macro_news_detail"]
+    comms_dtl_pref = state["past_meeting_detail"]
+    
+    news_topic = "Finance"
+    if meeting_category == "Regulatory":
+        news_topic = "Regulatory, SEC, SCC, FINRA"
+    elif meeting_category == "ESG Investing":
+        news_topic = "ESG Investing, Sustainability"
+    elif meeting_category == "Tax Optimization":
+        news_topic = "Taxes, IRS"
+    elif meeting_category == "Macro Update":
+        news_topic = "Federal Reserve Bank, Interest Rates, politics, market conditions"
+    
+    new_state = state.copy()
+    new_state["news_focus"] = news_topic
+    return new_state
+
+    
+        
+
+    
+
+    

@@ -1027,38 +1027,102 @@ def generate_med_report(result):
     print("COMMS SUMM", comms_summary)
     print("EMAIL SECTION", html_email_section)
 
-    # Toggle boxes for "Email Summary" section
-    email_section_full = f"""
-    <div class="box-main box-content" style="margin-bottom: 8px;">
-        <div style="position: relative; margin-bottom: 12px;">
-            <div>{html_email_section}</div>
-        </div>
-        <div>
-            <button onclick="toggleBox('overall-box')">Overall</button>
-            <button onclick="toggleBox('recent-email-box')">Recent Email</button>
-            <button onclick="toggleBox('client-questions-box')">Client Questions</button>
-        </div>
-        <div style="margin-top: 12px;">
-            <div id='overall-box' class='toggle-box' style='display:none;'>{email_summary}</div>
-            <div id='recent-email-box' class='toggle-box' style='display:none;'>{recent_email_summary}</div>
-            <div id='client-questions-box' class='toggle-box' style='display:none;'>{recent_client_questions}</div>
-        </div>
-    </div>
-    """
+    #Condition Check - only show email section when where's content in that section
+    has_email_summary = bool(email_summary.strip())
+    has_recent_email_summary = bool(recent_email_summary.strip())
+    has_recent_client_questions = bool(recent_client_questions.strip())
+    
+    has_holdings_summary = bool(holdings_summary.strip())
+    has_news_summary = bool(news_summary.strip())
+    has_client_holdings_sources = bool(client_holdings_sources)
+    has_client_industry_sources = bool(client_industry_sources)
+    has_macro_news_sources = bool(macro_news_sources)
 
-    # Toggle boxes for "Financial News" section
-    financial_section_full = f"""
-    <div class="box-main box-content" style="margin-bottom: 8px;">
-        <div style="position: relative; margin-bottom: 12px;">
-            {html_fin_section}
-            <button onclick="toggleBox('macro-snap')">Macro-Economic Snapshot</button>
-            <button onclick="toggleBox('resources')">Resources</button>
+    #Email Summary section summary with toggle box
+    email_section_full = ""
+    if has_email_summary or has_recent_email_summary or has_recent_client_questions:
+        buttons_html = ""
+        if has_recent_email_summary:
+            buttons_html += "<button onclick=\"toggleBox('recent-email-box')\">Recent Email</button>"
+        if has_recent_client_questions:
+            buttons_html += "<button onclick=\"toggleBox('client-questions-box')\">Client Questions</button>"
+    
+        recent_email_box = f"<div id='recent-email-box' class='toggle-box' style='display:none;'>{recent_email_summary}</div>" if has_recent_email_summary else ""
+        client_questions_box = f"<div id='client-questions-box' class='toggle-box' style='display:none;'>{recent_client_questions}</div>" if has_recent_client_questions else ""
+    
+        email_section_full = f"""
+        <div id="email-summary" class="box-section">
+            <h2>Email Summary</h2>
+            <div class="box-main box-content" style="margin-top: 8px;">
+                <div style="position: relative; margin-bottom: 12px;">
+                    <div>{email_summary}</div>
+                </div>
+                <div class="box-main box-content" style="margin-top: 12px;">
+                    {buttons_html}
+                    {recent_email_box}
+                    {client_questions_box}
+                </div>
+                <div class="feedback-section" style="margin-top: 12px;">
+                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                        <button onclick="handleFeedback(this, 'more')">I want to see more of this</button>
+                        <button onclick="handleFeedback(this, 'less')">I do not want to see this</button>
+                    </div>
+                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                        Got it! We will remember it next time
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id='macro-snap' class='toggle-box' style='display:none;'>{financial_snapshot_html}</div>
-        <div id='resources' class='toggle-box' style='display:none;'> {resources_html}</div>
-    </div>
-    """
+        """
 
+    #Financial Section
+    financial_section_full = ""
+    macro_snap_box = f"<div id='macro-snap' class='toggle-box' style='display:none;'>{financial_snapshot_html}</div>" if has_macro_news_sources else ""
+    
+    resources_blocks = []
+    if has_client_industry_sources:
+        resources_blocks.append(format_sources_to_html(client_industry_sources, "Client Industry News"))
+    if has_client_holdings_sources:
+        resources_blocks.append(format_holdings_to_html(client_holdings_sources, "Client Holdings News"))
+    if has_macro_news_sources:
+        resources_blocks.append(format_sources_to_html(macro_news_sources, "Macro Economic News"))
+    
+    resources_html = f"<div id='resources' class='toggle-box' style='display:none;'>{''.join(resources_blocks)}</div>" if resources_blocks else ""
+    
+    buttons_html = ""
+    if macro_snap_box:
+        buttons_html += "<button onclick=\"toggleBox('macro-snap')\">Macro-Economic Snapshot</button>"
+    if resources_html:
+        buttons_html += "<button onclick=\"toggleBox('resources')\">Resources</button>"
+    
+    # Only render full section if there’s anything to show
+    if has_holdings_summary or buttons_html:
+        financial_section_full = f"""
+        <div id="financial-summary" class="box-section">
+            <h2>Financial News Summary</h2>
+            <div class="box-main box-content" style="margin-bottom: 8px;">
+                <div style="position: relative; margin-bottom: 12px;">
+                    <div>{holdings_summary}</div>
+                </div>
+                <div>{buttons_html}</div>
+                <div style="margin-top: 12px;">
+                    {macro_snap_box}
+                    {resources_html}
+                </div>
+                <div class="feedback-section" style="margin-top: 12px;">
+                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                        <button onclick="handleFeedback(this, 'more')">I want to see more of this</button>
+                        <button onclick="handleFeedback(this, 'less')">I do not want to see this</button>
+                    </div>
+                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                        Got it! We will remember it next time
+                    </div>
+                </div>
+            </div>
+        </div>
+        """
+
+    
     # Full HTML document
     full_html = f"""
     <html>
@@ -1281,8 +1345,8 @@ def generate_med_report(result):
         {meeting_info_html}
 
         {email_section_full}
+    
         {financial_section_full}
-
 
     </body>
     </html>

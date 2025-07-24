@@ -197,6 +197,7 @@ def generate_report(result):
     client_name = result.get("client_name", "")
     meeting_time = result.get("meeting_timestamp", "")
     last_meeting_time = result.get("last_meeting_timestamp", "")
+    
 
     #Summary Section
     email_summary = result.get("email_summary", "")
@@ -211,8 +212,17 @@ def generate_report(result):
     macro_news_sources = result.get("macro_news_sources", list())
     client_holdings = result.get("client_holdings", "")
     client_holdings_list = [str(h).strip() for h in client_holdings if str(h).strip()]
+    client_news_summary = result.get("summary_client_news", "")
+    client_holding_summary = result.get("summary_fin_hold", "")
     logo_str = get_logo()
 
+    #Preference Conditions
+    past_meeting_detail = result.get("past_meeting_detail", "")
+    holdings_detail = result.get("holdings_detail", "")
+    macro_news_detail = result.get("macro_news_detail", "")
+    client_news_detail = result.get("client_news_detail", "")
+    
+    
     
     # Format bullet point
     # Format recent email summary as <ul>
@@ -311,6 +321,7 @@ def generate_report(result):
     <tbody>
     """
 
+
     for _, row in macro_news_df.iterrows():
         financial_snapshot_html += f"""
         <tr>
@@ -347,88 +358,151 @@ def generate_report(result):
 
 
     # Toggle boxes for "Email Summary" section
-    email_section_full = f"""
-    <div class="box-main box-content" style="margin-top: 8px;">
-        <div style="position: relative; margin-bottom: 12px;">
-            <div>{email_summary}</div>
-        </div>
-        <div class="box-main box-content" style="margin-top: 12px;">
-            <button onclick="toggleBox('recent-email-box')">Recent Email</button>
-            <button onclick="toggleBox('client-questions-box')">Client Questions</button>
-            <div id='recent-email-box' class='toggle-box' style='display:none;'>{recent_email_summary}</div>
-            <div id='client-questions-box' class='toggle-box' style='display:none;'>{recent_client_questions}</div>
-        </div>
+    email_section_full = ""
+    if past_meeting_detail.lower() != "none":
+        email_section_full = f"""
+        <div class="box-main box-content" style="margin-top: 8px;">
+            <h2 style="margin-bottom: 10px;">Client Communication Summary</h2>
+            
+            <div style="position: relative; margin-bottom: 12px;">
+                <div>{email_summary}</div>
+            </div>
+            
+            <div class="box-main box-content" style="margin-top: 14px;">
+                <button onclick="toggleBox('recent-email-box')">Recent Email</button>
+                <button onclick="toggleBox('client-questions-box')">Client Questions</button>
+                
+                <div id='recent-email-box' class='toggle-box' style='display:none; margin-top: 10px;'>
+                    {recent_email_summary}
+                    <div class="feedback-section" style="margin-top: 12px;">
+                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                            <button onclick="handleFeedback(this, 'more')">I want more recent email</button>
+                            <button onclick="handleFeedback(this, 'less')">I want less recent email</button>
+                        </div>
+                        <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                            Got it! We will remember it next time
+                        </div>
+                    </div>
+                </div>
+                
+                <div id='client-questions-box' class='toggle-box' style='display:none; margin-top: 10px;'>
+                    {recent_client_questions}
+                    <div class="feedback-section" style="margin-top: 12px;">
+                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                            <button onclick="handleFeedback(this, 'more')">I want more client questions</button>
+                            <button onclick="handleFeedback(this, 'less')">I want less client questions</button>
+                        </div>
+                        <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                            Got it! We will remember it next time
+                        </div>
+                    </div>
+                </div>
+            </div>
     
-        <div class="feedback-section" style="margin-top: 12px;">
-            <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                <button onclick="handleFeedback(this, 'more')">I want to see more of this</button>
-                <button onclick="handleFeedback(this, 'less')">I do not want to see this</button>
-            </div>
-            <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                Got it! We will remember it next time
+            <div class="feedback-section" style="margin-top: 14px;">
+                <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                    <button onclick="handleFeedback(this, 'more')">I want longer summary</button>
+                    <button onclick="handleFeedback(this, 'less')">I want shorter summary</button>
+                </div>
+                <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                    Got it! We will remember it next time
+                </div>
             </div>
         </div>
-    </div>
-    """
+        """
 
     # Toggle boxes for "Financial News" section
-    financial_section_full = f"""
-    <div class="box-main box-content" style="margin-bottom: 8px;">
-        <div style="position: relative; margin-bottom: 12px;">
-            <div>{holdings_summary}</div>
-        </div>
-        <div>            
-            <button onclick="toggleBox('macro-snap')">Macro-Economic Snapshot</button>
-            <button onclick="toggleBox('resources')">Resources</button>
-        </div>
-        <div style="margin-top: 12px;">
-            <div id='macro-snap' class='toggle-box' style='display:none;'>{financial_snapshot_html}</div>
-            <div id='resources' class='toggle-box' style='display:none;'> {resources_html}</div>
-        </div>
+    financial_section_full = ""
+    
+    if holdings_detail.lower() != "none":
+        macro_section = ""
+        if macro_news_detail.lower() != "none":
+            macro_section = f"""
+                <div>            
+                    <button onclick="toggleBox('macro-snap')">Macro-Economic Snapshot</button>
+                    <button onclick="toggleBox('resources')">Resources</button>
+                </div>
+                <div style="margin-top: 12px;">
+                    <div id='macro-snap' class='toggle-box' style='display:none;'>
+                        {financial_snapshot_html}
+                        <div class="feedback-section" style="margin-top: 12px;">
+                            <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                                <button onclick="handleFeedback(this, 'more')">I want more macro analysis</button>
+                                <button onclick="handleFeedback(this, 'less')">I want less macro analysis</button>
+                            </div>
+                            <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                                Got it! We will remember it next time
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id='resources' class='toggle-box' style='display:none; margin-top: 12px;'>
+                        {resources_html}
+                        <div class="feedback-section" style="margin-top: 12px;">
+                            <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                                <button onclick="handleFeedback(this, 'more')">I want more resources</button>
+                                <button onclick="handleFeedback(this, 'less')">I want less resources</button>
+                            </div>
+                            <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                                Got it! We will remember it next time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            """
+    
+        financial_section_full = f"""
+            <div class="box-main box-content" style="margin-bottom: 8px;">
+                <h2 style="margin-bottom: 10px;">Financial Overview</h2>
+                <div style="position: relative; margin-bottom: 12px;">
+                    <div>{holdings_summary}</div>
+                </div>
+                {macro_section}
+    
                 <div class="feedback-section" style="margin-top: 12px;">
-            <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                <button onclick="handleFeedback(this, 'more')">I want to see more of this</button>
-                <button onclick="handleFeedback(this, 'less')">I do not want to see this</button>
+                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                        <button onclick="handleFeedback(this, 'more')">I want longer financial summary</button>
+                        <button onclick="handleFeedback(this, 'less')">I want shorter financial summary</button>
+                    </div>
+                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                        Got it! We will remember it next time
+                    </div>
+                </div>
             </div>
-            <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                Got it! We will remember it next time
-            </div>
-        </div>
-    </div>
-    """
+        """
 
 
     # Check if there's meaningful email summary content
-    email_content_exists = any([
-        email_summary.strip(),
-        recent_email_summary.strip(),
-        recent_client_questions.strip()
-    ])
+    #email_content_exists = any([
+    #    email_summary.strip(),
+    #    recent_email_summary.strip(),
+    #    recent_client_questions.strip()
+    #])
     
     # Check if there's meaningful financial summary content
-    financial_content_exists = any([
-        holdings_summary.strip(),
-        news_summary.strip(),
-        client_holdings_sources,
-        client_industry_sources,
-        macro_news_sources
-    ])
+    #financial_content_exists = any([
+    #    holdings_summary.strip(),
+    #    news_summary.strip(),
+    #    client_holdings_sources,
+    #    client_industry_sources,
+    #    macro_news_sources
+    #])
     
     # Conditionally showing summary sections only if there's meaningful content
     
-    email_summary_section = f"""
-    <div id="email-summary" class="box-section {'hidden-section' if not email_content_exists else ''}">
-        <h2>Email Summary</h2>
-        {email_section_full}
-    </div>
-    """
+    #email_summary_section = f"""
+    #<div id="email-summary" class="box-section {'hidden-section' if not email_content_exists else ''}">
+    #    <h2>Email Summary</h2>
+    #    {email_section_full}
+    #</div>
+    #"""
     
-    financial_news_section = f"""
-    <div id="financial-summary" class="box-section {'hidden-section' if not financial_content_exists else ''}">
-        <h2>Financial News Summary</h2>
-        {financial_section_full}
-    </div>
-    """
+    #financial_news_section = f"""
+    #<div id="financial-summary" class="box-section {'hidden-section' if not financial_content_exists else ''}">
+     #   <h2>Financial News Summary</h2>
+     #   {financial_section_full}
+    #</div>
+    #"""
 
     
     # Full HTML document
@@ -734,9 +808,9 @@ def generate_report(result):
 
             {meeting_info_html}
         
-            {email_summary_section}
+            {email_section_full}
         
-            {financial_news_section}
+            {financial_section_full}
 
     </body>
     </html>

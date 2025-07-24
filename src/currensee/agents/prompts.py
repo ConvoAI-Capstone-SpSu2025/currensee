@@ -8,17 +8,18 @@
 ####################
 full_holdings_prompt = """
     You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. 
-    The meeting will focus on: {meeting_description}. 
-    Your job is to write a report section that details information about the client {client_name}'s financial holdings.
+    The meeting will focus on: {meeting_description}.
+    Your job is to write a report section that details information about the client {client_name}'s financial holdings. When available in the context, highlight information on {news_focus}. Write nothing about the availability of news in the context if no information about a topic is found.
         
      Use {finnews_summary} to write a paragraph summarizing relevant financial data, including:
      - Performance of {client_holdings}, which are the client's holdings.
-     - Broader economic indicators
-    
+     - General market trends
+
     Important Instructions:
     1. DO NOT use any section headings or titles
     2. DO NOT return a multi-section report
-    
+    3. DO NOT comment on the availability of news in the context.
+        
     Inputs:
         Client Holdings: {client_holdings}
         Financial summary: {finnews_summary}
@@ -28,11 +29,11 @@ full_holdings_prompt = """
 short_holdings_prompt = """ 
      You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. 
     The meeting will focus on: {meeting_description}. 
-    Your job is to write a report section that details information about the client {client_name}'s financial holdings. 
+    Your job is to write a report section that details information about the client {client_name}'s financial holdings. When available in the context, highlight information on {news_focus}.  Write nothing about the availability of news in the context if no information about a topic is found.
     
     Use {finnews_summary} to write a bullet point list of relevant financial data, including:
      - Performance of {client_holdings}, which are the client's holdings.
-     - Broader economic indicators
+     - General market trends
       
       Important Instructions:
     1. DO NOT use any section headings or titles
@@ -40,12 +41,14 @@ short_holdings_prompt = """
     3. Return a single flat list of 3-4 bullet points total
     4. Each bullet point should begin with a • or - symbol
     5. DO NOT number your points
+    6. DO NOT comment on the availability of news in the context.
+    
     
     Inputs:
     Client Holdings: {client_holdings}
     Financial summary: {finnews_summary}
- """
 
+ """
 
 
 holdings_prompts = {
@@ -60,19 +63,18 @@ holdings_prompts = {
 ################
 full_news_prompt = """
 
-    You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. Your job is to write a report section that summarizes recent news about {client_company}. The meeting will focus on: {meeting_description}.
+    You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. Your job is to write a report section that summarizes recent news about {client_company}. The meeting will focus on: {meeting_description}. When available in the context, highlight information on {news_focus}. 
 
     Use {client_industry_sources} to write a paragraph summarizing relevant news, including:
      - News about {client_company}
      - Industry trends 
 
- If there is no relevant news, then write nothing.
+ If there is no relevant news, then write nothing. DO NOT comment on the availability of news in the context.
 
-     Inputs:
+    Inputs:
     Client News:  {client_industry_sources}
-
 """
-
+# 
 
 news_prompts = {
     'full': full_news_prompt,
@@ -85,7 +87,7 @@ news_prompts = {
 ################
 full_comms_prompt = """
 
-    You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. The meeting will focus on the following topic: {meeting_description}.
+    You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. The meeting will focus on the following topic: {meeting_description}. 
     
     Below is compiled input from multiple sources:
     - Past email summaries
@@ -93,7 +95,7 @@ full_comms_prompt = """
     - Recent client questions
     
     Your task:
-    Create a comprehensive briefing document for internal use, to help prepare the meeting attendees. The briefing should include only relevant content and exclude any discussion about scheduling, availability, or meeting logistics.
+    Create a comprehensive briefing document for internal use, to help prepare the meeting attendees. The briefing should include only relevant content and exclude any discussion about scheduling, availability, or meeting logistics. When possible, focus on communications about {meeting_category}.
     
     Format the report using the following structure:
     
@@ -120,7 +122,7 @@ full_comms_prompt = """
 short_comms_prompt = """ 
     You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. The meeting will focus on: {meeting_description}.
         
-        Your task: Write a bullet point list of key discussion topics from recent client emails. Your response should ONLY contain bullets covering the most critical points from these categories. 
+        Your task: Write a bullet point list of key discussion topics from recent client emails. Your response should ONLY contain bullets covering the most critical points from these categories. When possible, focus on communications about {meeting_category}.
         
         List bullet points in the order below:
     - Recent communication highlights from {recent_email_summary}
