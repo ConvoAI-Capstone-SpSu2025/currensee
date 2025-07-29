@@ -670,44 +670,70 @@
     </div>
 
         <!-- Email List Pane -->
-        <div class="email-list-pane">
-            <div class="email-list-header">
-                <span>Recent Emails</span>
-                <i class="fas fa-sync-alt" style="cursor: pointer;"></i>
-            </div>
-            <div class="email-item selected">
-                <div class="email-date">Mar 26</div>
-                <div class="email-sender">Adam Clay</div>
-                <div class="email-subject">Re: Annual Credit Facility Review</div>
-                <div class="email-preview">Looking forward to our meeting to discuss the annual credit facility review...</div>
-            </div>
-            <div class="email-item">
-                <div class="email-date">Mar 25</div>
-                <div class="email-sender">Sarah Johnson</div>
-                <div class="email-subject">Q1 Financial Review</div>
-                <div class="email-preview">Please find attached the Q1 financial statements for review...</div>
-            </div>
-            <div class="email-item">
-                <div class="email-date">Mar 24</div>
-                <div class="email-sender">Michael Chen</div>
-                <div class="email-subject">Investment Portfolio Update</div>
-                <div class="email-preview">The portfolio has shown significant growth this quarter...</div>
-            </div>
-            <div class="email-item">
-                <div class="email-date">Mar 23</div>
-                <div class="email-sender">Lisa Rodriguez</div>
-                <div class="email-subject">Market Analysis Request</div>
-                <div class="email-preview">Could you provide analysis on the recent market trends...</div>
-            </div>
+    <div class="email-list-pane">
+        <div class="email-list-header">
+            <span>Recent Emails</span>
+            <i class="fas fa-sync-alt" style="cursor: pointer;"></i>
         </div>
-
-        <!-- Main Content Pane -->
-        <div class="content-pane">
-        <div class="content-header" style="display: flex; align-items: center; gap: 12px;">
-            <i class="fas fa-chart-line" style="font-size: 28px; color: #106ebe;"></i>
-            <h1 class="content-title" style="margin: 0;">Currensee Client Summary & Email Report</h1>
+    
+        <div class="email-item selected">
+            <div class="email-date">Mar 26</div>
+            <div class="email-sender">Adam Clay</div>
+            <div class="email-subject">Re: Annual Credit Facility Review</div>
+            <div class="email-preview">Looking forward to our meeting to discuss the annual credit facility review...</div>
         </div>
-            <div class="content-body">
+    
+        <div class="email-item">
+            <div class="email-date">Mar 25</div>
+            <div class="email-sender">Sarah Johnson</div>
+            <div class="email-subject">Q1 Financial Review</div>
+            <div class="email-preview">Please find attached the Q1 financial statements for review...</div>
+        </div>
+    
+        <div class="email-item">
+            <div class="email-date">Mar 24</div>
+            <div class="email-sender">Michael Chen</div>
+            <div class="email-subject">Investment Portfolio Update</div>
+            <div class="email-preview">The portfolio has shown significant growth this quarter...</div>
+        </div>
+    
+        <div class="email-item">
+            <div class="email-date">Mar 23</div>
+            <div class="email-sender">Lisa Rodriguez</div>
+            <div class="email-subject">Market Analysis Request</div>
+            <div class="email-preview">Could you provide analysis on the recent market trends...</div>
+        </div>
+        
+        <div class="email-item">
+            <div class="email-date">Jun 18</div>
+            <div class="email-sender">Thomas Grady</div>
+            <div class="email-subject">Re: Q2 Compliance Dashboard Updates</div>
+            <div class="email-preview">Noted on the KYC trigger thresholds — will revise accordingly.</div>
+        </div>
+        
+        <div class="email-item">
+            <div class="email-date">Jun 17</div>
+            <div class="email-sender">Rachel Kim</div>
+            <div class="email-subject">SEC Filing Timeline Review</div>
+            <div class="email-preview">Can we confirm the updated 10-Q filing schedule by Friday?</div>
+        </div>
+        
+        <div class="email-item">
+            <div class="email-date">Jun 15</div>
+            <div class="email-sender">David Zhang</div>
+            <div class="email-subject">Re: Investment Strategy Adjustment - Midyear Outlook</div>
+            <div class="email-preview">Agree on reducing exposure to EM debt — will draft new weightings.</div>
+        </div>
+        
+        <div class="email-item">
+            <div class="email-date">Jun 13</div>
+            <div class="email-sender">Samantha Lee</div>
+            <div class="email-subject">M&A Diligence Follow-up</div>
+            <div class="email-preview">Attached is the updated diligence tracker for the acquisition target.</div>
+        </div>
+    
+            </div>
+                <div class="content-body">
 
                 
 <!-- Client Information Section -->
@@ -732,7 +758,7 @@
   <div class="form-row">
     <div class="form-group">
       <label for="meetingTimestamp">Meeting Date & Time</label>
-      <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00"
+      <input type="text" id="meetingTimestamp" value="2025-03-26 11:00:00"
              placeholder="YYYY-MM-DD HH:MM:SS" required>
     </div>
   </div>
@@ -1015,20 +1041,13 @@ async function generateReport(format) {
     if (format === 'html') {
         showStatus('Generating HTML report...', 'loading');
 
-        // Open popup window immediately
-        const newWindow = window.open('', '_blank', 'width=1000,height=800');
-        if (!newWindow) {
-            showStatus('Popup blocked! Please allow popups for this site.', 'error');
-            return;
-        }
-
         try {
             const response = await fetch(`${API_BASE_URL}/report-html`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...data,
-                    user_email: "demo@currensee.ai"
+                    user_email: "jane.moneypenny@bankwell.com"
                 }),
             });
 
@@ -1040,6 +1059,11 @@ async function generateReport(format) {
             const html = await response.text();
 
             // Write the HTML into the new window
+            const newWindow = window.open('', '_blank', 'width=1000,height=800');
+            if (!newWindow) {
+                showStatus('Popup blocked! Please allow popups for this site.', 'error');
+                return;
+            }
             newWindow.document.open();
             newWindow.document.write(html);
             newWindow.document.close();

@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field, validator
 from currensee.agents.complete_graph import compiled_graph
 from currensee.api.config import settings
 from currensee.utils.output_utils_dynamic import (
-    generate_report,
+    generate_report as generate_report_html_content,
     format_news_summary_to_html,
     format_paragraph_summary_to_html,
     save_html_to_file,
@@ -206,34 +206,18 @@ async def generate_report_html(request: ClientRequest):
             "client_email": request.client_email,
             "meeting_timestamp": request.meeting_timestamp,
             "meeting_description": request.meeting_description,
- #           "report_length": request.report_length or "medium",
         }
 
-
-        logger.info(f"Running compiled_graph with init_state: {init_state}")
-        
-        result = compiled_graph.invoke(init_state)
-
-        html_content = generate_report(result)
-        
-        logger.info(f"Compiled graph returned result: {result}")
-
-#        report_length = request.report_length or "medium"
-
-#        if report_length == "short":
-#            html_content = generate_short_report(result)
-#        elif report_length == "long":
-#            html_content = generate_long_report(result)
-#        else:
-#            html_content = generate_med_report(result)
+        result = compiled_graph.invoke(init_state) 
+        html_content = generate_report_html_content(result)
+        print(f"html_content type: {type(html_content)}") 
 
         return HTMLResponse(content=html_content)
-        
 
     except Exception as e:
-        logger.exception("Error in generate_report_html")
-        raise HTTPException(status_code=500, detail=str(e))
-
+        logger.exception("Error in generate_report_html")  # logs full traceback
+        traceback_str = ''.join(traceback.format_exception(None, e, e.__traceback__))
+        return JSONResponse(status_code=500, content={"detail": str(e), "trace": traceback_str})
         
         
 

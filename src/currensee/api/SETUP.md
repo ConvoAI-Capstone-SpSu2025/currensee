@@ -112,11 +112,11 @@ All POST endpoints expect a JSON payload with the following structure:
 
 ```json
 {
-  "client_name": "John Doe",
-  "client_email": "john.doe@company.com",
-  "meeting_timestamp": "2024-03-26 11:00:00",
-  "meeting_description": "Annual Credit Facility Review Meeting",
-  "report_length": "long"
+    "user_email" : "jane.moneypenny@bankwell.com",
+    "client_name": "Adam Clay",
+    "client_email": "adam.clay@compass.com",
+    "meeting_timestamp": "2024-03-26 11:00:00",
+    "meeting_description": "Compass - Annual Credit Facility Review Meeting",
 }
 ```
 
@@ -227,11 +227,11 @@ Open `api/test_client.html` in a web browser to test all functionality interacti
 curl -X POST http://localhost:8000/generate-report/pdf \
   -H "Content-Type: application/json" \
   -d '{
-    "client_name": "John Doe",
-    "client_email": "john.doe@company.com",
+    "user_email" : "jane.moneypenny@bankwell.com",
+    "client_name": "Adam Clay",
+    "client_email": "adam.clay@compass.com",
     "meeting_timestamp": "2024-03-26 11:00:00",
-    "meeting_description": "Annual Review Meeting",
-    "report_length": "long"
+    "meeting_description": "Compass - Annual Credit Facility Review Meeting",
   }' \
   --output report.pdf
 ```
