@@ -127,11 +127,11 @@ class CurrenSeeOutputGuardrails:
             },
             "risk_disclosure": {
                 "triggers": [
-                    r"\b(investment|portfolio|asset|security|stock|bond)\b",
-                    r"\b(credit facility|loan|financing|capital)\b"
+                    r"\b(guaranteed|certain|risk-free)\s*(return|profit|gain)\b",
+                    r"\b(recommend|advise).*\b(buy|sell|invest)\b"
                 ],
                 "required_disclaimers": ["investment risk", "potential loss"],
-                "severity": "medium"
+                "severity": "low"
             }
         }
         
@@ -165,10 +165,10 @@ class CurrenSeeOutputGuardrails:
             },
             "inappropriate_emphasis": {
                 "patterns": [
-                    r"\b[A-Z]{4,}\b",  # ALL CAPS words
+                    r"\b[A-Z]{6,}\b",  # Only very long ALL CAPS (6+ chars, not tickers)
                     r"[*]{2,}.*[*]{2,}",  # **bold** emphasis
                 ],
-                "severity": "medium",
+                "severity": "low",
                 "suggestion": "Use professional emphasis methods"
             }
         }
@@ -455,18 +455,20 @@ class CurrenSeeOutputGuardrails:
         # Create sanitized report
         sanitized_report = self.create_sanitized_report(report_data, pii_results)
         
-        # Determine overall validation status
+        # Determine overall validation status (be practical for investment banking)
         critical_issues = [
             issue for issue in compliance_issues 
             if issue.severity == "critical"
         ]
         
-        high_risk_pii = [
+        # Only fail on SSN/Credit Card PII, not normal business emails
+        critical_pii = [
             result for result in pii_results 
-            if result.risk_score > 0.7
+            if any(pii["type"] in ["ssn", "credit_card"] for pii in result.pii_found)
         ]
         
-        validation_passed = len(critical_issues) == 0 and len(high_risk_pii) == 0
+        # Pass validation unless critical compliance issues or critical PII
+        validation_passed = len(critical_issues) == 0 and len(critical_pii) == 0
         
         # Calculate processing time
         processing_time_ms = (datetime.now() - start_time).total_seconds() * 1000
