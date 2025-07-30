@@ -736,87 +736,182 @@
                 <div class="content-body">
 
                 
-<!-- Client Information Section -->
-<h3>
-  <i class="fas fa-user"></i> Client Information
-  <i id="editClientInfo" class="fas fa-cog"
-     style="float: right; cursor: pointer; color: #106ebe;"
-     title="Click to edit client info"></i>
-</h3>
-
-<div id="clientInfoSection" class="form-section read-only">
-  <div class="form-row">
-    <div class="form-group">
-      <label for="clientName">Client Name</label>
-      <input type="text" id="clientName" value="Adam Clay" required>
-    </div>
-    <div class="form-group">
-      <label for="clientEmail">Client Email</label>
-      <input type="email" id="clientEmail" value="adam.clay@compass.com" required>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group">
-      <label for="meetingTimestamp">Meeting Date & Time</label>
-      <input type="text" id="meetingTimestamp" value="2025-03-26 11:00:00"
-             placeholder="YYYY-MM-DD HH:MM:SS" required>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="meetingDescription">Meeting Description</label>
-    <textarea id="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
-  </div>
-
-  <!-- Save button (hidden by default) -->
-  <button id="saveClientInfoBtn" style="display: none; margin-top: 10px;">Save</button>
-</div>
-
-<!-- Script for toggling and saving -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const editBtn = document.getElementById('editClientInfo');
-    const saveBtn = document.getElementById('saveClientInfoBtn');
-    const section = document.getElementById('clientInfoSection');
-
-    editBtn.addEventListener('click', () => {
-      section.classList.toggle('read-only');
-      saveBtn.style.display = section.classList.contains('read-only') ? 'none' : 'inline-block';
-    });
-
-    saveBtn.addEventListener('click', () => {
-      const data = {
-        clientName: document.getElementById('clientName').value,
-        clientEmail: document.getElementById('clientEmail').value,
-        meetingTimestamp: document.getElementById('meetingTimestamp').value,
-        meetingDescription: document.getElementById('meetingDescription').value,
-      };
-
-      fetch('/api/save_client_info', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then(response => {
-        if (response.ok) {
-          alert('Client info saved successfully');
-          section.classList.add('read-only');
-          saveBtn.style.display = 'none';
-        } else {
-          alert('Failed to save client info');
-        }
-      })
-      .catch(err => {
-        console.error('Error saving client info:', err);
-        alert('Error saving client info');
-      });
-    });
-  });
-</script>
+        <!-- Client Information Section -->
+        <h3>
+          <i class="fas fa-user"></i> Client Information
+          <i id="editClientInfo" class="fas fa-cog"
+             style="float: right; cursor: pointer; color: #106ebe;"
+             title="Click to edit client info"></i>
+        </h3>
+        
+        <div id="clientInfoSection" class="form-section read-only">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="clientName">Client Name</label>
+              <input type="text" id="clientName" value="" required>
+            </div>
+            <div class="form-group">
+              <label for="clientEmail">Client Email</label>
+              <select id="clientEmail" required>
+                <option value="adam.clay@compass.com">adam.clay@compass.com</option>
+                <option value="cynthia.hobbs@abbvie.com">cynthia.hobbs@abbvie.com</option>
+                <option value="ryan.holloway@bankwell.com">ryan.holloway@bankwell.com</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="meetingTimestamp">Meeting Date & Time</label>
+              <input type="text" id="meetingTimestamp" value=""
+                     placeholder="YYYY-MM-DD HH:MM:SS" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="meetingDescription">Meeting Description</label>
+            <textarea id="meetingDescription" required></textarea>
+          </div>
+        
+          <button id="saveClientInfoBtn" style="display: none; margin-top: 10px;">Save</button>
+        </div>
+        
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const editBtn = document.getElementById('editClientInfo');
+            const saveBtn = document.getElementById('saveClientInfoBtn');
+            const section = document.getElementById('clientInfoSection');
+            const emailSelect = document.getElementById('clientEmail');
+        
+            const clientData = {
+              "adam.clay@compass.com": {
+                name: "Adam Clay",
+                timestamp: "2025-03-26 11:00:00",
+                description: "Compass - Annual Credit Facility Review Meeting"
+              },
+              "cynthia.hobbs@abbvie.com": {
+                name: "Cynthia Hobbs",
+                timestamp: "2025-03-27 14:00:00",
+                description: "Venture Capital Quarterly Update"
+              },
+              "marco.diaz@horizon.com": {
+                name: "Marco Diaz",
+                timestamp: "2025-03-28 10:00:00",
+                description: "Horizon Fund Allocation Review"
+              }
+            };
+        
+            function updateClientFields(email) {
+              fetch(`/api/get_client_info?email=${encodeURIComponent(email)}`)
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error("Client not found");
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  document.getElementById('clientName').value = data.name || '';
+                  document.getElementById('meetingTimestamp').value = data.timestamp || '';
+                  document.getElementById('meetingDescription').value = data.description || '';
+                })
+                .catch(error => {
+                  console.error("Error fetching client info:", error);
+                  alert("Client info could not be loaded.");
+                });
+            }
+                    
+            // Initial population
+            updateClientFields(emailSelect.value);
+        
+            // On email change
+            emailSelect.addEventListener('change', (e) => {
+              updateClientFields(e.target.value);
+            });
+        
+            editBtn.addEventListener('click', () => {
+              section.classList.toggle('read-only');
+              saveBtn.style.display = section.classList.contains('read-only') ? 'none' : 'inline-block';
+            });
+        
+            saveBtn.addEventListener('click', () => {
+              const data = {
+                clientName: document.getElementById('clientName').value,
+                clientEmail: emailSelect.value,
+                meetingTimestamp: document.getElementById('meetingTimestamp').value,
+                meetingDescription: document.getElementById('meetingDescription').value,
+              };
+        
+              fetch('/api/save_client_info', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              })
+              .then(response => {
+                if (response.ok) {
+                  alert('Client info saved successfully');
+                  section.classList.add('read-only');
+                  saveBtn.style.display = 'none';
+                } else {
+                  alert('Failed to save client info');
+                }
+              })
+              .catch(err => {
+                console.error('Error saving client info:', err);
+                alert('Error saving client info');
+              });
+            });
+          });
+        </script>
+        
+        <!-- Script for toggling and saving -->
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const editBtn = document.getElementById('editClientInfo');
+            const saveBtn = document.getElementById('saveClientInfoBtn');
+            const section = document.getElementById('clientInfoSection');
+        
+            editBtn.addEventListener('click', () => {
+              section.classList.toggle('read-only');
+              saveBtn.style.display = section.classList.contains('read-only') ? 'none' : 'inline-block';
+            });
+        
+            editBtn.addEventListener('click', () => {
+              const isReadOnly = section.classList.toggle('read-only');
+              const inputs = section.querySelectorAll('input, textarea, select');
+            
+              inputs.forEach(input => {
+                input.disabled = isReadOnly;  // or input.readOnly = isReadOnly if you prefer
+              });
+            
+              saveBtn.style.display = isReadOnly ? 'none' : 'inline-block';
+            });
+        
+              fetch('/api/save_client_info', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              })
+              .then(response => {
+                if (response.ok) {
+                  alert('Client info saved successfully');
+                  section.classList.add('read-only');
+                  saveBtn.style.display = 'none';
+                } else {
+                  alert('Failed to save client info');
+                }
+              })
+              .catch(err => {
+                console.error('Error saving client info:', err);
+                alert('Error saving client info');
+              });
+            });
+          });
+        </script>
 
         
-<!-- Report Generation Options -->
+            <!-- Report Generation Options -->
                 <div class="form-section">
                     <h3><i class="fas fa-file-alt"></i> Generate Reports</h3>
                     <div class="form-group" style="margin-bottom: 16px;">
@@ -1029,54 +1124,87 @@
             }, 500);
         }
 
-
-async function generateReport(format) {
-    const data = getFormData();
-
-    if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
-        showStatus('Please fill in all required fields', 'error');
-        return;
-    }
-
-    if (format === 'html') {
-        showStatus('Generating HTML report...', 'loading');
-
-        try {
-            const response = await fetch(`${API_BASE_URL}/report-html`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ...data,
-                    user_email: "jane.moneypenny@bankwell.com"
-                }),
-            });
-
-            if (!response.ok) {
-                const err = await response.text();
-                throw new Error(err || 'Failed to generate HTML report');
+    
+    async function generateReport(format) {
+        const data = getFormData();
+    
+        if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
+            showStatus('Please fill in all required fields', 'error');
+            return;
+        }
+    
+        if (format === 'html') {
+            showStatus('Generating your HTML report. This may take a minute...', 'loading');
+    
+            try {
+                const response = await fetch(`${API_BASE_URL}/generate-report/html`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ...data,
+                        user_email: "jane.moneypenny@bankwell.com"
+                    }),
+                });
+    
+                if (!response.ok) {
+                    const err = await response.text();
+                    throw new Error(err || 'Failed to generate HTML report');
+                }
+    
+                const html = await response.text();
+    
+                const newWindow = window.open('', '_blank', 'width=1000,height=800');
+                if (!newWindow) {
+                    showStatus('Popup blocked! Please allow popups for this site.', 'error');
+                    return;
+                }
+                newWindow.document.open();
+                newWindow.document.write(html);
+                newWindow.document.close();
+    
+                hideStatus();
+    
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('Error generating report:', error);
             }
-
-            const html = await response.text();
-
-            // Write the HTML into the new window
-            const newWindow = window.open('', '_blank', 'width=1000,height=800');
-            if (!newWindow) {
-                showStatus('Popup blocked! Please allow popups for this site.', 'error');
-                return;
+    
+        } else if (format === 'pdf') {
+            showStatus('Downloading your PDF report. This may take a minute...', 'loading');
+    
+            try {
+                const response = await fetch(`${API_BASE_URL}/generate-report/pdf`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ...data,
+                        user_email: "jane.moneypenny@bankwell.com"
+                    }),
+                });
+    
+                if (!response.ok) {
+                    const err = await response.text();
+                    throw new Error(err || 'Failed to generate PDF report');
+                }
+    
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Client_Report_${data.client_email}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+    
+                hideStatus();
+    
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('Error generating report:', error);
             }
-            newWindow.document.open();
-            newWindow.document.write(html);
-            newWindow.document.close();
-
-            hideStatus();
-
-        } catch (error) {
-            showStatus(`Error: ${error.message}`, 'error');
-            console.error('Error generating report:', error);
-            newWindow.close();
         }
     }
-}
         
             // Add click handlers for ribbon sections
             document.querySelectorAll('.ribbon-section').forEach(section => {
