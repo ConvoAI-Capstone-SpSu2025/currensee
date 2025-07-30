@@ -192,50 +192,55 @@ def render_article_html(article):
     """
 
 
-def generate_report(result):
+def generate_report(result, enable_guardrails=True):
     """
-    Generate HTML report with integrated output guardrails validation.
+    Generate HTML report with optional output guardrails validation.
     
     Args:
         result: Dictionary containing report data from secure_graph_invoke()
+        enable_guardrails: Boolean flag to enable/disable output validation (default: True)
+                          Set to False to bypass guardrails for debugging
         
     Returns:
         HTML string for the complete report
     """
     logger = logging.getLogger(__name__)
     
-    # STEP 1: Validate output with guardrails before rendering
-    try:
-        validation_result = validate_output_before_rendering(result)
-        
-        if validation_result["validation_passed"]:
-            logger.info("✅ Output validation passed - proceeding with report generation")
+    # STEP 1: Optional output guardrails validation before rendering
+    if enable_guardrails:
+        try:
+            validation_result = validate_output_before_rendering(result)
             
-            # Log validation summary with details
-            pii_count = validation_result.get("pii_detected", 0)
-            compliance_count = validation_result.get("compliance_issues", 0)
-            tone_count = validation_result.get("tone_issues", 0)
-            processing_time = validation_result.get("processing_time_ms", 0)
-            
-            if pii_count > 0:
-                logger.warning(f"🛡️ {pii_count} PII instances detected and redacted")
-            if compliance_count > 0:
-                logger.warning(f"⚖️ {compliance_count} compliance issues detected")
-            if tone_count > 0:
-                logger.info(f"📝 {tone_count} tone suggestions identified")
-            
-            logger.info(f"⚡ Output validation completed in {processing_time:.1f}ms")
-            
-            # Use sanitized report data for rendering
-            result = validation_result.get("sanitized_report", result)
-        else:
-            error_msg = validation_result.get("error", "Unknown validation error")
-            logger.error(f"❌ Output validation failed: {error_msg}")
-            # Continue with original data but log the issue
-            
-    except Exception as e:
-        logger.error(f"🔥 Output guardrails error: {str(e)} - continuing without validation")
-        # Continue with original data if guardrails fail
+            if validation_result["validation_passed"]:
+                logger.info("✅ Output validation passed - proceeding with report generation")
+                
+                # Log validation summary with details
+                pii_count = validation_result.get("pii_detected", 0)
+                compliance_count = validation_result.get("compliance_issues", 0)
+                tone_count = validation_result.get("tone_issues", 0)
+                processing_time = validation_result.get("processing_time_ms", 0)
+                
+                if pii_count > 0:
+                    logger.warning(f"🛡️ {pii_count} PII instances detected and redacted")
+                if compliance_count > 0:
+                    logger.warning(f"⚖️ {compliance_count} compliance issues detected")
+                if tone_count > 0:
+                    logger.info(f"📝 {tone_count} tone suggestions identified")
+                
+                logger.info(f"⚡ Output validation completed in {processing_time:.1f}ms")
+                
+                # Use sanitized report data for rendering
+                result = validation_result.get("sanitized_report", result)
+            else:
+                error_msg = validation_result.get("error", "Unknown validation error")
+                logger.error(f"❌ Output validation failed: {error_msg}")
+                # Continue with original data but log the issue
+                
+        except Exception as e:
+            logger.error(f"🔥 Output guardrails error: {str(e)} - continuing without validation")
+            # Continue with original data if guardrails fail
+    else:
+        logger.info("⚠️ Output guardrails disabled - generating report without validation")
     
     #Meeting info section
     meeting_title = result.get("meeting_description", "") + " : Briefing Document"
