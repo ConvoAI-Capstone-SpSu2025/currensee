@@ -14,7 +14,7 @@ readme = "README.md"
 requires-python = ">=3.11,<3.13"
 
 dependencies = [
-    "faker>=37.1.0,<38.0.0",
+    "faker>=25.2.0,<38.0.0",
     "pandas>=2.2.3,<3.0.0",
     "o365>=2.1.2,<3.0.0",
     "langchain-community>=0.3.21,<0.4.0",
@@ -45,6 +45,7 @@ dependencies = [
     "markdown>=3.8,<4.0",
     "weasyprint>=65.1,<66.0",
     "uvicorn>=0.32.1,<0.33.0",
+    "guardrails-ai>=0.4.0,<0.5.0",
     "pre-commit (>=4.2.0,<5.0.0)"
 ]
 

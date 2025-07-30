@@ -4,10 +4,13 @@ import re
 import webbrowser
 from typing import Any, Dict, List, Optional, TypedDict
 
+import base64
 import markdown
 import matplotlib.pyplot as plt
-import weasyprint
-from weasyprint import HTML
+import logging
+
+# Import output guardrails for validation
+from ..core.output_guardrails import validate_output_before_rendering
 
 from currensee.agents.tools.finance_tools import generate_macro_table
 from currensee.utils.get_logo_utils import get_logo
@@ -190,7 +193,45 @@ def render_article_html(article):
 
 
 def generate_report(result):
-
+    """
+    Generate HTML report with integrated output guardrails validation.
+    
+    Args:
+        result: Dictionary containing report data from secure_graph_invoke()
+        
+    Returns:
+        HTML string for the complete report
+    """
+    logger = logging.getLogger(__name__)
+    
+    # STEP 1: Validate output with guardrails before rendering
+    try:
+        validation_result = validate_output_before_rendering(result)
+        
+        if validation_result["validation_passed"]:
+            logger.info("✅ Output validation passed - proceeding with report generation")
+            
+            # Log PII and compliance summary
+            if "pii_detected" in validation_result:
+                pii_count = validation_result["pii_detected"]["total_pii_instances"]
+                if pii_count > 0:
+                    logger.warning(f"⚠️ {pii_count} PII instances detected and sanitized")
+            
+            if "compliance_issues" in validation_result:
+                compliance_count = len(validation_result["compliance_issues"])
+                if compliance_count > 0:
+                    logger.warning(f"⚖️ {compliance_count} compliance issues found and handled")
+            
+            # Use sanitized report data for rendering
+            result = validation_result.get("sanitized_report", result)
+        else:
+            logger.error(f"❌ Output validation failed: {validation_result.get('error', 'Unknown error')}")
+            # Continue with original data but log the issue
+            
+    except Exception as e:
+        logger.error(f"🔥 Output guardrails error: {str(e)} - continuing without validation")
+        # Continue with original data if guardrails fail
+    
     #Meeting info section
     meeting_title = result.get("meeting_description", "") + " : Briefing Document"
     client_company = result.get("client_company", "")
