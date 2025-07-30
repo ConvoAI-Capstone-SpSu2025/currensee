@@ -211,21 +211,26 @@ def generate_report(result):
         if validation_result["validation_passed"]:
             logger.info("✅ Output validation passed - proceeding with report generation")
             
-            # Log PII and compliance summary
-            if "pii_detected" in validation_result:
-                pii_count = validation_result["pii_detected"]["total_pii_instances"]
-                if pii_count > 0:
-                    logger.warning(f"⚠️ {pii_count} PII instances detected and sanitized")
+            # Log validation summary with details
+            pii_count = validation_result.get("pii_detected", 0)
+            compliance_count = validation_result.get("compliance_issues", 0)
+            tone_count = validation_result.get("tone_issues", 0)
+            processing_time = validation_result.get("processing_time_ms", 0)
             
-            if "compliance_issues" in validation_result:
-                compliance_count = len(validation_result["compliance_issues"])
-                if compliance_count > 0:
-                    logger.warning(f"⚖️ {compliance_count} compliance issues found and handled")
+            if pii_count > 0:
+                logger.warning(f"🛡️ {pii_count} PII instances detected and redacted")
+            if compliance_count > 0:
+                logger.warning(f"⚖️ {compliance_count} compliance issues detected")
+            if tone_count > 0:
+                logger.info(f"📝 {tone_count} tone suggestions identified")
+            
+            logger.info(f"⚡ Output validation completed in {processing_time:.1f}ms")
             
             # Use sanitized report data for rendering
             result = validation_result.get("sanitized_report", result)
         else:
-            logger.error(f"❌ Output validation failed: {validation_result.get('error', 'Unknown error')}")
+            error_msg = validation_result.get("error", "Unknown validation error")
+            logger.error(f"❌ Output validation failed: {error_msg}")
             # Continue with original data but log the issue
             
     except Exception as e:

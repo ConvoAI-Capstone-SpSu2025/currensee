@@ -1,356 +1,572 @@
 """
-CurrenSee Output Guardrails - Investment Banking Report Validation
+CurrenSee Output Guardrails - Custom Lightweight Validation for Investment Banking Reports
 
-This module provides comprehensive output validation for CurrenSee's investment banking 
-reports using Guardrails AI for schema-based validation, PII detection, and compliance checking.
+This module provides fast, lightweight output validation for CurrenSee's investment banking 
+reports using custom regex patterns and rule-based validation. Designed to match the 
+proven architecture of input_guardrails.py.
+
+Features:
+- PII detection and redaction (emails, phones, account numbers)
+- Financial compliance validation (SEC/FINRA requirements)  
+- Professional tone validation (banking language standards)
+- Content structure validation
+- Zero external dependencies for maximum performance and reliability
 """
 
-from typing import Dict, Any, List, Optional
 import logging
-from pydantic import BaseModel, Field, validator
 import re
-
-try:
-    import guardrails as gd
-    from guardrails import Guard
-    from guardrails.validators import ValidatorError
-    GUARDRAILS_AVAILABLE = True
-except ImportError:
-    GUARDRAILS_AVAILABLE = False
-    print("⚠️ Guardrails AI not installed. Install with: pip install guardrails-ai")
+from datetime import datetime
+from typing import Dict, List, Optional, Set, Any, Union
+from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
 
 
-class InvestmentReportContent(BaseModel):
-    """
-    Pydantic model defining the structure and validation rules for CurrenSee investment reports.
-    Designed to match the actual output structure from secure_graph_invoke().
-    """
-    
-    # Core content fields that need validation
-    summary_fin_hold: str = Field(
-        description="Financial holdings summary with market analysis",
-        validators=["no-pii", "financial-compliance", "professional-tone"]
-    )
-    
-    summary_client_comms: str = Field(
-        description="Client communications briefing document",
-        validators=["no-pii", "professional-tone", "structured-content"]
-    )
-    
-    fin_hold_summary_sourced: str = Field(
-        description="Financial holdings summary with HTML source links",
-        validators=["no-pii", "financial-compliance", "valid-html-links"]
-    )
-    
-    finnews_summary: str = Field(
-        description="Macro financial news analysis",
-        validators=["no-pii", "factual-accuracy", "professional-tone"]
-    )
-    
-    # Optional fields that may be present
-    summary_client_news: Optional[str] = Field(
-        default="",
-        description="Client-specific news summary",
-        validators=["no-pii", "professional-tone"]
-    )
-    
-    client_news_summary_sourced: Optional[str] = Field(
-        default="",
-        description="Client news with source links",
-        validators=["no-pii", "valid-html-links"]
-    )
-    
-    email_summary: Optional[str] = Field(
-        default="",
-        description="Email communication summary",
-        validators=["no-pii", "professional-tone"]
-    )
-    
-    recent_email_summary: Optional[str] = Field(
-        default="",
-        description="Recent email bullet points",
-        validators=["no-pii", "professional-tone"]
-    )
+@dataclass
+class PIIDetectionResult:
+    """Result of PII detection analysis."""
+    field_name: str
+    pii_found: List[Dict[str, Any]]
+    redacted_text: str
+    risk_score: float
 
-    @validator("summary_fin_hold")
-    def validate_financial_content(cls, v):
-        """Custom validation for financial content compliance."""
-        if not v:
-            return v
-            
-        # Check for investment advice without proper disclaimers
-        investment_keywords = ['should invest', 'recommend buying', 'guaranteed returns', 'will perform']
-        disclaimers = ['past performance', 'investment risk', 'not investment advice']
-        
-        has_investment_language = any(keyword in v.lower() for keyword in investment_keywords)
-        has_disclaimer = any(disclaimer in v.lower() for disclaimer in disclaimers)
-        
-        if has_investment_language and not has_disclaimer:
-            raise ValidatorError("Financial content contains investment advice without required disclaimers")
-        
-        return v
 
-    @validator("*", pre=True)
-    def validate_no_pii(cls, v, field):
-        """Validate that content doesn't contain obvious PII patterns."""
-        if not isinstance(v, str) or not v:
-            return v
-            
-        # Basic PII patterns (Guardrails AI will do more comprehensive detection)
-        pii_patterns = [
-            r'\b\d{3}-\d{2}-\d{4}\b',  # SSN
-            r'\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b',  # Credit card
-            r'\b\d{10,16}\b',  # Account numbers
-        ]
-        
-        for pattern in pii_patterns:
-            if re.search(pattern, v):
-                logger.warning(f"Potential PII detected in {field.name}: {pattern}")
-                # Don't raise error - let Guardrails AI handle this more sophisticatedly
-        
-        return v
+@dataclass
+class ComplianceIssue:
+    """Financial compliance issue detected."""
+    field_name: str
+    issue_type: str
+    description: str
+    severity: str  # 'critical', 'high', 'medium', 'low'
+    suggested_action: str
+
+
+@dataclass
+class ValidationResult:
+    """Complete validation result for output guardrails."""
+    validation_passed: bool
+    pii_results: List[PIIDetectionResult]
+    compliance_issues: List[ComplianceIssue]
+    tone_issues: List[Dict[str, str]]
+    sanitized_report: Dict[str, Any]
+    processing_time_ms: float
+    validation_summary: str
 
 
 class CurrenSeeOutputGuardrails:
     """
-    Main class for CurrenSee output validation using Guardrails AI.
+    Custom output validation and security guardrails for CurrenSee investment banking reports.
     
-    Validates investment banking reports for:
+    Designed for high performance and zero dependencies, following the proven pattern
+    of input_guardrails.py. Provides comprehensive validation for:
     - PII detection and redaction
-    - Financial compliance (SEC/FINRA requirements)
-    - Professional tone and formatting
-    - Content accuracy and consistency
+    - Financial compliance (SEC/FINRA) 
+    - Professional tone validation
+    - Content structure validation
     """
     
     def __init__(self):
-        if not GUARDRAILS_AVAILABLE:
-            raise ImportError("Guardrails AI is required but not installed. Run: pip install guardrails-ai")
+        """Initialize output guardrails with investment banking specific patterns."""
         
-        # Create guard with our custom Pydantic model
-        self.guard = Guard.from_pydantic(
-            output_class=InvestmentReportContent,
-            prompt=self._get_validation_prompt()
-        )
+        # PII detection patterns (investment banking specific)
+        self.pii_patterns = {
+            "email": {
+                "pattern": r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',
+                "replacement": "[EMAIL_REDACTED]",
+                "risk_weight": 0.8
+            },
+            "phone": {
+                "pattern": r'\b(?:\+?1[-.\s]?)?\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}\b',
+                "replacement": "[PHONE_REDACTED]", 
+                "risk_weight": 0.7
+            },
+            "ssn": {
+                "pattern": r'\b\d{3}-\d{2}-\d{4}\b',
+                "replacement": "[SSN_REDACTED]",
+                "risk_weight": 1.0
+            },
+            "account_number": {
+                "pattern": r'\b\d{8,16}\b',
+                "replacement": "[ACCOUNT_REDACTED]",
+                "risk_weight": 0.9
+            },
+            "credit_card": {
+                "pattern": r'\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b',
+                "replacement": "[CARD_REDACTED]",
+                "risk_weight": 1.0
+            },
+            "routing_number": {
+                "pattern": r'\b\d{9}\b',
+                "replacement": "[ROUTING_REDACTED]",
+                "risk_weight": 0.8
+            }
+        }
         
-        # Financial compliance patterns
-        self.compliance_patterns = {
-            "investment_disclaimers": [
-                "past performance is not indicative of future results",
-                "all investments carry risk",
-                "this is not investment advice"
-            ],
-            "risk_disclosures": [
-                "market volatility",
-                "investment risk",
-                "potential for loss"
-            ]
+        # Financial compliance patterns (SEC/FINRA requirements)
+        self.compliance_checks = {
+            "investment_advice": {
+                "triggers": [
+                    r"\b(should|must|recommend|advise).*\b(buy|sell|invest|purchase|divest)\b",
+                    r"\b(guaranteed|risk-free|always profitable|certain return)\b",
+                    r"\b(best investment|top pick|sure thing)\b"
+                ],
+                "required_disclaimers": [
+                    "past performance", "investment risk", "may lose value", 
+                    "not guaranteed", "consult advisor"
+                ],
+                "severity": "high"
+            },
+            "performance_claims": {
+                "triggers": [
+                    r"\b(will|going to|guaranteed to)\s*(gain|profit|increase|return)\b",
+                    r"\b(outperform|beat the market|superior returns)\b",
+                    r"\b\d+%\s*(return|gain|profit)\s*(guaranteed|certain)\b"
+                ],
+                "required_disclaimers": ["past performance", "no guarantee"],
+                "severity": "critical"
+            },
+            "risk_disclosure": {
+                "triggers": [
+                    r"\b(investment|portfolio|asset|security|stock|bond)\b",
+                    r"\b(credit facility|loan|financing|capital)\b"
+                ],
+                "required_disclaimers": ["investment risk", "potential loss"],
+                "severity": "medium"
+            }
+        }
+        
+        # Professional tone validation patterns
+        self.tone_issues = {
+            "informal_language": {
+                "patterns": [
+                    r"\b(awesome|cool|amazing|super|totally|really)\b",
+                    r"\b(gonna|wanna|gotta|yeah|yep|nope)\b",
+                    r"\b(btw|fyi|lol|omg|tbh)\b"
+                ],
+                "severity": "medium",
+                "suggestion": "Use formal business language"
+            },
+            "contractions": {
+                "patterns": [
+                    r"\b(can't|won't|don't|doesn't|isn't|aren't|wasn't|weren't)\b",
+                    r"\b(haven't|hasn't|hadn't|wouldn't|couldn't|shouldn't)\b"
+                ],
+                "severity": "low", 
+                "suggestion": "Expand contractions for formal tone"
+            },
+            "excessive_punctuation": {
+                "patterns": [
+                    r"[!]{2,}",
+                    r"[?]{2,}",
+                    r"[.]{3,}"
+                ],
+                "severity": "low",
+                "suggestion": "Use single punctuation marks"
+            },
+            "inappropriate_emphasis": {
+                "patterns": [
+                    r"\b[A-Z]{4,}\b",  # ALL CAPS words
+                    r"[*]{2,}.*[*]{2,}",  # **bold** emphasis
+                ],
+                "severity": "medium",
+                "suggestion": "Use professional emphasis methods"
+            }
+        }
+        
+        # Content structure validation
+        self.structure_requirements = {
+            "email_summary": {
+                "min_length": 50,
+                "max_length": 2000,
+                "required_elements": ["email", "summary"]
+            },
+            "summary_fin_hold": {
+                "min_length": 100,
+                "max_length": 1500,
+                "required_elements": ["holdings", "financial"]
+            },
+            "summary_client_comms": {
+                "min_length": 50,
+                "max_length": 1000,
+                "required_elements": ["client", "communication"]
+            }
         }
         
         logger.info("CurrenSee output guardrails initialized successfully")
 
-    def _get_validation_prompt(self) -> str:
-        """Get the validation prompt for Guardrails AI."""
-        return """
-        You are validating an investment banking briefing document for compliance and safety.
-        
-        Key requirements:
-        1. NO personally identifiable information (PII) should be present
-        2. Financial analysis must include appropriate risk disclaimers
-        3. Investment-related content must not constitute financial advice
-        4. Professional tone and language must be maintained
-        5. All claims must be properly sourced
-        
-        Ensure the content meets investment banking professional standards and regulatory compliance.
+    def detect_pii(self, content: Dict[str, str]) -> List[PIIDetectionResult]:
         """
-
-    def validate_report(self, report_data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Validate a complete CurrenSee report using Guardrails AI.
+        Detect and catalog PII across all content fields.
         
         Args:
-            report_data: Dictionary containing the report data (output from secure_graph_invoke)
+            content: Dictionary of field names to text content
             
         Returns:
-            Dict containing validation results and sanitized content
+            List of PII detection results for each field
         """
-        try:
-            # Extract key content fields for validation
-            content_to_validate = {
-                "summary_fin_hold": report_data.get("summary_fin_hold", ""),
-                "summary_client_comms": report_data.get("summary_client_comms", ""),
-                "fin_hold_summary_sourced": report_data.get("fin_hold_summary_sourced", ""),
-                "finnews_summary": report_data.get("finnews_summary", ""),
-                "summary_client_news": report_data.get("summary_client_news", ""),
-                "client_news_summary_sourced": report_data.get("client_news_summary_sourced", ""),
-                "email_summary": report_data.get("email_summary", ""),
-                "recent_email_summary": report_data.get("recent_email_summary", "")
-            }
-            
-            # Run Guardrails validation
-            validated_output = self.guard(
-                content_to_validate,
-                metadata={"report_type": "investment_banking_briefing"}
-            )
-            
-            # Additional custom validation
-            compliance_issues = self._check_financial_compliance(content_to_validate)
-            pii_summary = self._detect_pii_summary(content_to_validate)
-            
-            return {
-                "validation_passed": True,
-                "validated_content": validated_output.validated_output,
-                "compliance_issues": compliance_issues,
-                "pii_detected": pii_summary,
-                "guardrails_metadata": validated_output.validation_log,
-                "sanitized_report": self._create_sanitized_report(report_data, validated_output.validated_output)
-            }
-            
-        except Exception as e:
-            logger.error(f"Output validation failed: {str(e)}")
-            return {
-                "validation_passed": False,
-                "error": str(e),
-                "original_content": report_data,
-                "sanitized_report": None
-            }
-
-    def _check_financial_compliance(self, content: Dict[str, str]) -> List[Dict]:
-        """Check for financial compliance issues."""
-        issues = []
+        pii_results = []
         
         for field_name, text in content.items():
-            if not text:
+            if not isinstance(text, str) or not text.strip():
+                continue
+                
+            field_pii = []
+            redacted_text = text
+            total_risk = 0.0
+            
+            # Check each PII pattern
+            for pii_type, config in self.pii_patterns.items():
+                matches = list(re.finditer(config["pattern"], text, re.IGNORECASE))
+                
+                if matches:
+                    # Record PII findings
+                    field_pii.append({
+                        "type": pii_type,
+                        "count": len(matches),
+                        "positions": [(m.start(), m.end()) for m in matches],
+                        "risk_weight": config["risk_weight"]
+                    })
+                    
+                    # Redact PII from text
+                    redacted_text = re.sub(
+                        config["pattern"], 
+                        config["replacement"], 
+                        redacted_text, 
+                        flags=re.IGNORECASE
+                    )
+                    
+                    # Calculate cumulative risk
+                    total_risk += len(matches) * config["risk_weight"]
+            
+            # Create result for this field
+            pii_results.append(PIIDetectionResult(
+                field_name=field_name,
+                pii_found=field_pii,
+                redacted_text=redacted_text,
+                risk_score=min(total_risk, 1.0)  # Cap at 1.0
+            ))
+            
+            if field_pii:
+                logger.warning(f"PII detected in field '{field_name}': {len(field_pii)} types")
+        
+        return pii_results
+
+    def validate_financial_compliance(self, content: Dict[str, str]) -> List[ComplianceIssue]:
+        """
+        Validate content for financial compliance issues (SEC/FINRA).
+        
+        Args:
+            content: Dictionary of field names to text content
+            
+        Returns:
+            List of compliance issues found
+        """
+        compliance_issues = []
+        
+        for field_name, text in content.items():
+            if not isinstance(text, str) or not text.strip():
                 continue
                 
             text_lower = text.lower()
             
-            # Check for investment advice without disclaimers
-            advice_keywords = ['should invest', 'recommend', 'buy', 'sell', 'guaranteed']
-            has_advice = any(keyword in text_lower for keyword in advice_keywords)
-            
-            if has_advice:
-                has_disclaimer = any(
-                    disclaimer in text_lower 
-                    for disclaimer in self.compliance_patterns["investment_disclaimers"]
-                )
+            # Check each compliance category
+            for check_type, config in self.compliance_checks.items():
+                triggered = False
                 
-                if not has_disclaimer:
-                    issues.append({
-                        "field": field_name,
-                        "type": "missing_investment_disclaimer",
-                        "description": "Investment-related content without required disclaimers"
-                    })
+                # Check if any trigger patterns match
+                for trigger_pattern in config["triggers"]:
+                    if re.search(trigger_pattern, text_lower, re.IGNORECASE):
+                        triggered = True
+                        break
+                
+                if triggered:
+                    # Check if required disclaimers are present
+                    missing_disclaimers = []
+                    for disclaimer in config["required_disclaimers"]:
+                        if disclaimer.lower() not in text_lower:
+                            missing_disclaimers.append(disclaimer)
+                    
+                    if missing_disclaimers:
+                        compliance_issues.append(ComplianceIssue(
+                            field_name=field_name,
+                            issue_type=check_type,
+                            description=f"Missing required disclaimers: {', '.join(missing_disclaimers)}",
+                            severity=config["severity"],
+                            suggested_action=f"Add disclaimers: {', '.join(missing_disclaimers)}"
+                        ))
+                        
+                        logger.warning(f"Compliance issue in '{field_name}': {check_type}")
         
-        return issues
+        return compliance_issues
 
-    def _detect_pii_summary(self, content: Dict[str, str]) -> Dict:
-        """Provide summary of PII detection across all content."""
-        pii_count = 0
-        fields_with_pii = []
+    def validate_professional_tone(self, content: Dict[str, str]) -> List[Dict[str, str]]:
+        """
+        Validate content for professional tone and language.
+        
+        Args:
+            content: Dictionary of field names to text content
+            
+        Returns:
+            List of tone issues found
+        """
+        tone_issues = []
         
         for field_name, text in content.items():
-            if not text:
+            if not isinstance(text, str) or not text.strip():
+                continue
+            
+            # Check each tone category
+            for issue_type, config in self.tone_issues.items():
+                for pattern in config["patterns"]:
+                    matches = list(re.finditer(pattern, text, re.IGNORECASE))
+                    
+                    if matches:
+                        tone_issues.append({
+                            "field_name": field_name,
+                            "issue_type": issue_type,
+                            "severity": config["severity"],
+                            "suggestion": config["suggestion"],
+                            "match_count": len(matches),
+                            "examples": [text[m.start():m.end()] for m in matches[:3]]  # First 3 examples
+                        })
+                        
+                        logger.info(f"Tone issue in '{field_name}': {issue_type} ({len(matches)} instances)")
+        
+        return tone_issues
+
+    def validate_content_structure(self, content: Dict[str, str]) -> List[Dict[str, str]]:
+        """
+        Validate content structure and format requirements.
+        
+        Args:
+            content: Dictionary of field names to text content
+            
+        Returns:
+            List of structure issues found
+        """
+        structure_issues = []
+        
+        for field_name, text in content.items():
+            if field_name not in self.structure_requirements:
                 continue
                 
-            # Basic PII detection (Guardrails will do more comprehensive)
-            pii_patterns = [
-                (r'\b\d{3}-\d{2}-\d{4}\b', 'SSN'),
-                (r'\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b', 'Credit Card'),
-                (r'\b\d{10,16}\b', 'Account Number'),
-                (r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', 'Email'),
-                (r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b', 'Phone Number')
-            ]
+            if not isinstance(text, str):
+                structure_issues.append({
+                    "field_name": field_name,
+                    "issue": "Non-string content",
+                    "severity": "high"
+                })
+                continue
             
-            field_pii = []
-            for pattern, pii_type in pii_patterns:
-                matches = re.findall(pattern, text)
-                if matches:
-                    field_pii.append({"type": pii_type, "count": len(matches)})
-                    pii_count += len(matches)
+            requirements = self.structure_requirements[field_name]
+            text_length = len(text.strip())
             
-            if field_pii:
-                fields_with_pii.append({"field": field_name, "pii_found": field_pii})
+            # Check length requirements
+            if text_length < requirements["min_length"]:
+                structure_issues.append({
+                    "field_name": field_name,
+                    "issue": f"Content too short ({text_length} < {requirements['min_length']} chars)",
+                    "severity": "medium"
+                })
+                
+            if text_length > requirements["max_length"]:
+                structure_issues.append({
+                    "field_name": field_name,
+                    "issue": f"Content too long ({text_length} > {requirements['max_length']} chars)",
+                    "severity": "low"
+                })
+            
+            # Check required elements
+            text_lower = text.lower()
+            for required_element in requirements["required_elements"]:
+                if required_element.lower() not in text_lower:
+                    structure_issues.append({
+                        "field_name": field_name,
+                        "issue": f"Missing required element: '{required_element}'",
+                        "severity": "medium"
+                    })
         
-        return {
-            "total_pii_instances": pii_count,
-            "fields_with_pii": fields_with_pii,
-            "requires_sanitization": pii_count > 0
-        }
+        return structure_issues
 
-    def _create_sanitized_report(self, original_report: Dict, validated_content: Dict) -> Dict:
-        """Create a sanitized version of the report with validated content."""
+    def create_sanitized_report(self, original_report: Dict[str, Any], 
+                              pii_results: List[PIIDetectionResult]) -> Dict[str, Any]:
+        """
+        Create a sanitized version of the report with PII redacted.
+        
+        Args:
+            original_report: Original report data
+            pii_results: PII detection results with redacted content
+            
+        Returns:
+            Sanitized report with PII redacted
+        """
         sanitized_report = original_report.copy()
         
-        # Replace validated content fields
-        for field_name, validated_text in validated_content.items():
-            if field_name in sanitized_report:
-                sanitized_report[field_name] = validated_text
+        # Replace content with redacted versions
+        for pii_result in pii_results:
+            if pii_result.field_name in sanitized_report:
+                sanitized_report[pii_result.field_name] = pii_result.redacted_text
+        
+        # Add sanitization metadata
+        sanitized_report["__sanitization_metadata__"] = {
+            "timestamp": datetime.now().isoformat(),
+            "pii_redacted": sum(len(result.pii_found) for result in pii_results),
+            "fields_processed": len(pii_results)
+        }
         
         return sanitized_report
 
-    def get_validation_summary(self, validation_result: Dict) -> str:
-        """Get a human-readable summary of validation results."""
-        if not validation_result["validation_passed"]:
-            return f"❌ Validation FAILED: {validation_result.get('error', 'Unknown error')}"
+    def validate_comprehensive(self, report_data: Dict[str, Any]) -> ValidationResult:
+        """
+        Run all validation checks and return comprehensive results.
         
-        pii_count = validation_result["pii_detected"]["total_pii_instances"]
-        compliance_issues = len(validation_result["compliance_issues"])
+        Args:
+            report_data: Complete report data to validate
+            
+        Returns:
+            ValidationResult with all validation findings
+        """
+        start_time = datetime.now()
         
-        summary = "✅ Validation PASSED\n"
-        summary += f"🛡️ PII instances detected and handled: {pii_count}\n"
-        summary += f"⚖️ Compliance issues: {compliance_issues}\n"
+        # Extract text content for validation
+        text_content = {}
+        for key, value in report_data.items():
+            if isinstance(value, str) and value.strip():
+                text_content[key] = value
         
-        if compliance_issues > 0:
-            summary += "⚠️ Compliance issues found:\n"
-            for issue in validation_result["compliance_issues"]:
-                summary += f"  - {issue['field']}: {issue['description']}\n"
+        if not text_content:
+            logger.warning("No text content found for validation")
+            return ValidationResult(
+                validation_passed=True,
+                pii_results=[],
+                compliance_issues=[],
+                tone_issues=[],
+                sanitized_report=report_data,
+                processing_time_ms=0.0,
+                validation_summary="No text content to validate"
+            )
+        
+        # Run all validation checks
+        pii_results = self.detect_pii(text_content)
+        compliance_issues = self.validate_financial_compliance(text_content)
+        tone_issues = self.validate_professional_tone(text_content)
+        structure_issues = self.validate_content_structure(text_content)
+        
+        # Create sanitized report
+        sanitized_report = self.create_sanitized_report(report_data, pii_results)
+        
+        # Determine overall validation status
+        critical_issues = [
+            issue for issue in compliance_issues 
+            if issue.severity == "critical"
+        ]
+        
+        high_risk_pii = [
+            result for result in pii_results 
+            if result.risk_score > 0.7
+        ]
+        
+        validation_passed = len(critical_issues) == 0 and len(high_risk_pii) == 0
+        
+        # Calculate processing time
+        processing_time_ms = (datetime.now() - start_time).total_seconds() * 1000
+        
+        # Generate validation summary
+        validation_summary = self._generate_validation_summary(
+            pii_results, compliance_issues, tone_issues, structure_issues, validation_passed
+        )
+        
+        result = ValidationResult(
+            validation_passed=validation_passed,
+            pii_results=pii_results,
+            compliance_issues=compliance_issues,
+            tone_issues=tone_issues,
+            sanitized_report=sanitized_report,
+            processing_time_ms=processing_time_ms,
+            validation_summary=validation_summary
+        )
+        
+        logger.info(f"Output validation completed in {processing_time_ms:.1f}ms - {'PASSED' if validation_passed else 'FAILED'}")
+        return result
+
+    def _generate_validation_summary(self, pii_results: List[PIIDetectionResult], 
+                                   compliance_issues: List[ComplianceIssue],
+                                   tone_issues: List[Dict[str, str]], 
+                                   structure_issues: List[Dict[str, str]],
+                                   validation_passed: bool) -> str:
+        """Generate human-readable validation summary."""
+        
+        total_pii = sum(len(result.pii_found) for result in pii_results)
+        critical_compliance = len([i for i in compliance_issues if i.severity == "critical"])
+        high_compliance = len([i for i in compliance_issues if i.severity == "high"])
+        
+        if validation_passed:
+            summary = "✅ OUTPUT VALIDATION PASSED\n"
+        else:
+            summary = "❌ OUTPUT VALIDATION FAILED\n"
+        
+        summary += f"🛡️ PII Detection: {total_pii} instances found and redacted\n"
+        summary += f"⚖️ Compliance Issues: {len(compliance_issues)} total ({critical_compliance} critical, {high_compliance} high)\n"
+        summary += f"📝 Tone Issues: {len(tone_issues)} suggestions\n"
+        summary += f"📋 Structure Issues: {len(structure_issues)} format issues\n"
+        
+        if critical_compliance > 0:
+            summary += "\n🚨 CRITICAL COMPLIANCE ISSUES:\n"
+            for issue in compliance_issues:
+                if issue.severity == "critical":
+                    summary += f"  - {issue.field_name}: {issue.description}\n"
+        
+        if total_pii > 0:
+            summary += f"\n🔒 PII REDACTED: {total_pii} instances across {len(pii_results)} fields\n"
         
         return summary
 
 
-# Integration function for generate_report()
+# Integration function for output_utils_dynamic.py
 def validate_output_before_rendering(report_data: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Convenience function to validate report data before HTML rendering.
+    Main integration function to validate report data before HTML rendering.
     
-    This is the main integration point for output_utils_dynamic.py
+    This is the primary integration point for output_utils_dynamic.py
     
     Args:
-        report_data: Complete report data from secure_graph_invoke()
+        report_data: Complete report data from the agent pipeline
         
     Returns:
-        Validation results with sanitized content
+        Dict containing validation results and sanitized report data
     """
     try:
         guardrails = CurrenSeeOutputGuardrails()
-        return guardrails.validate_report(report_data)
-    except ImportError:
-        # Fallback if Guardrails AI not available
-        logger.warning("Guardrails AI not available - skipping output validation")
+        validation_result = guardrails.validate_comprehensive(report_data)
+        
         return {
-            "validation_passed": True,
-            "sanitized_report": report_data,
-            "guardrails_available": False
+            "validation_passed": validation_result.validation_passed,
+            "sanitized_report": validation_result.sanitized_report,
+            "pii_detected": len([r for r in validation_result.pii_results if r.pii_found]),
+            "compliance_issues": len(validation_result.compliance_issues),
+            "tone_issues": len(validation_result.tone_issues),
+            "processing_time_ms": validation_result.processing_time_ms,
+            "validation_summary": validation_result.validation_summary,
+            "guardrails_version": "custom_v1.0"
         }
+        
     except Exception as e:
-        logger.error(f"Output guardrails error: {str(e)}")
+        logger.error(f"Output guardrails validation error: {str(e)}")
         return {
             "validation_passed": False,
             "error": str(e),
-            "sanitized_report": report_data
+            "sanitized_report": report_data,
+            "guardrails_version": "custom_v1.0"
         }
 
 
 if __name__ == "__main__":
-    # Test with sample data
+    # Test with sample investment banking data
     sample_data = {
-        "summary_fin_hold": "TSMC shows strong performance with $1 trillion market cap.",
-        "summary_client_comms": "Meeting scheduled with Adam Clay regarding credit facility.",
-        "email_summary": "Recent communications about the $25M credit facility."
+        "summary_fin_hold": "TSMC shows strong performance with $1 trillion market cap. Client should definitely invest immediately for guaranteed 20% returns.",
+        "email_summary": "Recent communications with john.doe@compass.com about the $25M credit facility. His phone is 555-123-4567.",
+        "summary_client_comms": "Meeting scheduled with Adam Clay regarding credit expansion. This is an awesome opportunity!"
     }
     
     result = validate_output_before_rendering(sample_data)
-    guardrails = CurrenSeeOutputGuardrails()
-    print(guardrails.get_validation_summary(result))
+    print(result["validation_summary"])
