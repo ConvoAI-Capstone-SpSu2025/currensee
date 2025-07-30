@@ -54,7 +54,12 @@ def secure_graph_invoke(init_state: Dict[str, Any]) -> Dict[str, Any]:
     if missing_fields:
         error_msg = f"Missing required fields: {missing_fields}"
         logger.error(error_msg)
-        security_logger.log_validation_failure("missing_fields", init_state.get("user_email", "unknown"), "high")
+        security_logger.log_validation_failure(
+            "missing_fields", 
+            init_state.get("user_email", "unknown"), 
+            [f"Missing: {', '.join(missing_fields)}"], 
+            "high"
+        )
         raise ValueError(error_msg)
     
     logger.info(f"Starting secure graph execution for user: {init_state['user_email']}, client: {init_state['client_name']}")
@@ -82,6 +87,7 @@ def secure_graph_invoke(init_state: Dict[str, Any]) -> Dict[str, Any]:
             security_logger.log_validation_failure(
                 "comprehensive_validation", 
                 init_state["user_email"], 
+                [str(e)], 
                 validation_results.get("risk_level", "high")
             )
             raise e
@@ -119,6 +125,7 @@ def secure_graph_invoke(init_state: Dict[str, Any]) -> Dict[str, Any]:
         security_logger.log_validation_failure(
             "graph_execution", 
             init_state.get("user_email", "unknown"), 
+            [str(e)], 
             "high"
         )
         raise

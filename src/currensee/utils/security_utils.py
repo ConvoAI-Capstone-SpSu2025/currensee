@@ -177,16 +177,24 @@ def log_security_metrics(validation_results: Dict, execution_time_ms: float):
     """
     metrics_logger = logging.getLogger("currensee.security.metrics")
     
+    # Fixed: Check the correct key structure
+    failed_validations = []
+    if "validation_details" in validation_results:
+        for name, result in validation_results["validation_details"].items():
+            # Some results have 'valid' key, others might have different structure
+            if isinstance(result, dict):
+                if "valid" in result and not result["valid"]:
+                    failed_validations.append(name)
+                elif "issues" in result and len(result.get("issues", [])) > 0:
+                    failed_validations.append(name)
+    
     metrics = {
         "timestamp": datetime.now().isoformat(),
         "validation_time_ms": execution_time_ms,
-        "overall_valid": validation_results["overall_valid"],
-        "risk_level": validation_results["risk_level"],
-        "validation_count": len(validation_results["validation_details"]),
-        "failed_validations": [
-            name for name, result in validation_results["validation_details"].items() 
-            if not result["valid"]
-        ]
+        "overall_valid": validation_results.get("overall_valid", False),
+        "risk_level": validation_results.get("risk_level", "unknown"),
+        "validation_count": len(validation_results.get("validation_details", {})),
+        "failed_validations": failed_validations
     }
     
     metrics_logger.info(f"Security validation metrics: {metrics}")
