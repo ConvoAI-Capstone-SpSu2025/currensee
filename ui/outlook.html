@@ -179,6 +179,9 @@
             border-right: 1px solid #d1d1d1;
             display: flex;
             flex-direction: column;
+            /* --- Add these two lines --- */
+            height: 100%; 
+            overflow-y: auto; 
         }
 
         .email-list-header {
@@ -504,6 +507,16 @@
             color: #605e5c;
             pointer-events: none;
         }
+        .report-type-label {
+          display: flex;
+          gap: 24px; 
+          margin-top: 12px; 
+          font-size: 15px;
+          font-weight: 500; 
+          color: #333; 
+          align-items: center; 
+          line-height: 1.4; 
+        }
         .report-type-options {
             display: flex;
             gap: 32px;
@@ -561,6 +574,13 @@
             display: flex;
             gap: 32px;
             margin-top: 8px;
+        }
+
+        .resizer {
+        width: 8px; 
+        background: #e0e0e0;
+        cursor: ew-resize; 
+        flex-shrink: 0;
         }
 
 
@@ -668,7 +688,8 @@
             </div>
         </div>
     </div>
-
+    <div class="resizer" id="resizer"></div>
+        
         <!-- Email List Pane -->
     <div class="email-list-pane">
         <div class="email-list-header">
@@ -736,187 +757,124 @@
                 <div class="content-body">
 
                 
-        <!-- Client Information Section -->
-        <h3>
-          <i class="fas fa-user"></i> Client Information
-          <i id="editClientInfo" class="fas fa-cog"
-             style="float: right; cursor: pointer; color: #106ebe;"
-             title="Click to edit client info"></i>
-        </h3>
-        
-        <div id="clientInfoSection" class="form-section read-only">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="clientName">Client Name</label>
-              <input type="text" id="clientName" value="" required>
+            <!-- Client Information Section -->
+            <h3>
+              <i class="fas fa-user"></i> Client Information
+              <i id="editClientInfo" class="fas fa-cog"
+                 style="float: right; cursor: pointer; color: #106ebe;"
+                 title="Click to edit client info"></i>
+            </h3>
+            
+            <div id="clientInfoSection" class="form-section read-only">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="clientName">Client Name</label>
+                  <input type="text" id="clientName" value="" required disabled>
+                </div>
+                <div class="form-group">
+                  <label for="clientEmail">Client Email</label>
+                  <select id="clientEmail" required disabled>
+                    <!-- 👇 Add or update email options here -->
+                    <option value="adam.clay@compass.com">adam.clay@compass.com</option>
+                    <option value="cynthia.hobbs@abbvie.com">cynthia.hobbs@abbvie.com</option>
+                    <option value="ryan.holloway@bankwell.com">ryan.holloway@bankwell.com</option>
+                    <option value="marco.diaz@horizon.com">marco.diaz@horizon.com</option>
+                    <!-- ☝️ End of email options -->
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="meetingTimestamp">Meeting Date & Time</label>
+                  <input type="text" id="meetingTimestamp" value="" placeholder="YYYY-MM-DD HH:MM:SS" required disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="meetingDescription">Meeting Description</label>
+                <textarea id="meetingDescription" required disabled></textarea>
+              </div>
+            
+              <button id="saveClientInfoBtn" style="display: none; margin-top: 10px;">Save</button>
             </div>
-            <div class="form-group">
-              <label for="clientEmail">Client Email</label>
-              <select id="clientEmail" required>
-                <option value="adam.clay@compass.com">adam.clay@compass.com</option>
-                <option value="cynthia.hobbs@abbvie.com">cynthia.hobbs@abbvie.com</option>
-                <option value="ryan.holloway@bankwell.com">ryan.holloway@bankwell.com</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="meetingTimestamp">Meeting Date & Time</label>
-              <input type="text" id="meetingTimestamp" value=""
-                     placeholder="YYYY-MM-DD HH:MM:SS" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="meetingDescription">Meeting Description</label>
-            <textarea id="meetingDescription" required></textarea>
-          </div>
-        
-          <button id="saveClientInfoBtn" style="display: none; margin-top: 10px;">Save</button>
-        </div>
-        
-        <script>
-          document.addEventListener('DOMContentLoaded', () => {
-            const editBtn = document.getElementById('editClientInfo');
-            const saveBtn = document.getElementById('saveClientInfoBtn');
-            const section = document.getElementById('clientInfoSection');
-            const emailSelect = document.getElementById('clientEmail');
-        
-            const clientData = {
-              "adam.clay@compass.com": {
-                name: "Adam Clay",
-                timestamp: "2025-03-26 11:00:00",
-                description: "Compass - Annual Credit Facility Review Meeting"
-              },
-              "cynthia.hobbs@abbvie.com": {
-                name: "Cynthia Hobbs",
-                timestamp: "2025-03-27 14:00:00",
-                description: "Venture Capital Quarterly Update"
-              },
-              "marco.diaz@horizon.com": {
-                name: "Marco Diaz",
-                timestamp: "2025-03-28 10:00:00",
-                description: "Horizon Fund Allocation Review"
-              }
-            };
-        
-            function updateClientFields(email) {
-              fetch(`/api/get_client_info?email=${encodeURIComponent(email)}`)
-                .then(response => {
-                  if (!response.ok) {
-                    throw new Error("Client not found");
+            
+            <script>
+              document.addEventListener('DOMContentLoaded', () => {
+                const editBtn = document.getElementById('editClientInfo');
+                const saveBtn = document.getElementById('saveClientInfoBtn');
+                const section = document.getElementById('clientInfoSection');
+                const emailSelect = document.getElementById('clientEmail');
+            
+                const clientData = {
+                  // 👇 Add or update client data here
+                  "adam.clay@compass.com": {
+                    name: "Adam Clay",
+                    timestamp: "2025-03-26 11:00:00",
+                    description: "Compass - Annual Credit Facility Review Meeting"
+                  },
+                  "cynthia.hobbs@abbvie.com": {
+                    name: "Cynthia Hobbs",
+                    timestamp: "2025-03-27 14:00:00",
+                    description: "Venture Capital Quarterly Update"
+                  },
+                  "ryan.holloway@bankwell.com": {
+                    name: "Ryan Holloway",
+                    timestamp: "2025-03-28 09:00:00",
+                    description: "Bankwell Investment Strategy Discussion"
+                  },
+                  "marco.diaz@horizon.com": {
+                    name: "Marco Diaz",
+                    timestamp: "2025-03-28 10:00:00",
+                    description: "Horizon Fund Allocation Review"
                   }
-                  return response.json();
-                })
-                .then(data => {
+                  // ☝️ End of client data block
+                };
+            
+                function updateClientFields(email) {
+                  const data = clientData[email] || {};
                   document.getElementById('clientName').value = data.name || '';
                   document.getElementById('meetingTimestamp').value = data.timestamp || '';
                   document.getElementById('meetingDescription').value = data.description || '';
-                })
-                .catch(error => {
-                  console.error("Error fetching client info:", error);
-                  alert("Client info could not be loaded.");
+                }
+            
+                // Initial fill
+                updateClientFields(emailSelect.value);
+            
+                // On email change
+                emailSelect.addEventListener('change', (e) => {
+                  updateClientFields(e.target.value);
                 });
-            }
-                    
-            // Initial population
-            updateClientFields(emailSelect.value);
-        
-            // On email change
-            emailSelect.addEventListener('change', (e) => {
-              updateClientFields(e.target.value);
-            });
-        
-            editBtn.addEventListener('click', () => {
-              section.classList.toggle('read-only');
-              saveBtn.style.display = section.classList.contains('read-only') ? 'none' : 'inline-block';
-            });
-        
-            saveBtn.addEventListener('click', () => {
-              const data = {
-                clientName: document.getElementById('clientName').value,
-                clientEmail: emailSelect.value,
-                meetingTimestamp: document.getElementById('meetingTimestamp').value,
-                meetingDescription: document.getElementById('meetingDescription').value,
-              };
-        
-              fetch('/api/save_client_info', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-              })
-              .then(response => {
-                if (response.ok) {
-                  alert('Client info saved successfully');
-                  section.classList.add('read-only');
-                  saveBtn.style.display = 'none';
-                } else {
-                  alert('Failed to save client info');
-                }
-              })
-              .catch(err => {
-                console.error('Error saving client info:', err);
-                alert('Error saving client info');
-              });
-            });
-          });
-        </script>
-        
-        <!-- Script for toggling and saving -->
-        <script>
-          document.addEventListener('DOMContentLoaded', () => {
-            const editBtn = document.getElementById('editClientInfo');
-            const saveBtn = document.getElementById('saveClientInfoBtn');
-            const section = document.getElementById('clientInfoSection');
-        
-            editBtn.addEventListener('click', () => {
-              section.classList.toggle('read-only');
-              saveBtn.style.display = section.classList.contains('read-only') ? 'none' : 'inline-block';
-            });
-        
-            editBtn.addEventListener('click', () => {
-              const isReadOnly = section.classList.toggle('read-only');
-              const inputs = section.querySelectorAll('input, textarea, select');
             
-              inputs.forEach(input => {
-                input.disabled = isReadOnly;  // or input.readOnly = isReadOnly if you prefer
-              });
+                // Toggle edit mode
+                editBtn.addEventListener('click', () => {
+                  const isReadOnly = section.classList.toggle('read-only');
+                  const inputs = section.querySelectorAll('input, textarea, select');
+                  inputs.forEach(input => input.disabled = isReadOnly);
+                  saveBtn.style.display = isReadOnly ? 'none' : 'inline-block';
+                });
             
-              saveBtn.style.display = isReadOnly ? 'none' : 'inline-block';
-            });
-        
-              fetch('/api/save_client_info', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-              })
-              .then(response => {
-                if (response.ok) {
-                  alert('Client info saved successfully');
+                // 
+                saveBtn.addEventListener('click', () => {
+                  const data = {
+                    clientName: document.getElementById('clientName').value,
+                    clientEmail: emailSelect.value,
+                    meetingTimestamp: document.getElementById('meetingTimestamp').value,
+                    meetingDescription: document.getElementById('meetingDescription').value,
+                  };
+                  console.log("Saved (locally):", data);
+                  alert("Client info 'saved' (no DB used)");
                   section.classList.add('read-only');
+                  section.querySelectorAll('input, textarea, select').forEach(input => input.disabled = true);
                   saveBtn.style.display = 'none';
-                } else {
-                  alert('Failed to save client info');
-                }
-              })
-              .catch(err => {
-                console.error('Error saving client info:', err);
-                alert('Error saving client info');
+                });
               });
-            });
-          });
-        </script>
-
+            </script>
         
             <!-- Report Generation Options -->
                 <div class="form-section">
                     <h3><i class="fas fa-file-alt"></i> Generate Reports</h3>
                     <div class="form-group" style="margin-bottom: 16px;">
                         <div class="report-type-label">
-    Please select your report type
+            Please select your report type
 </div>
                         <div class="report-type-options">
                             <label class="custom-checkbox">
