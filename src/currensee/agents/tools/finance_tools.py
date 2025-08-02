@@ -20,6 +20,7 @@ from dateutil import parser as date_parser
 from langchain_community.utilities import GoogleSerperAPIWrapper
 from langchain_core.messages import HumanMessage
 from tabulate import tabulate
+import re
 
 from currensee.agents.tools.base import SupervisorState
 from currensee.core import get_model, settings
@@ -28,7 +29,34 @@ from currensee.core import get_model, settings
 model = get_model(settings.DEFAULT_MODEL)
 
 
+
 # definitions
+
+
+# function to parse dates in various string formatt
+def parse_flexible_date(date_str):
+    try:
+        # Try parsing with dateutil first
+        return date_parser.parse(date_str).replace(tzinfo=None)
+    except (ValueError, TypeError):
+        pass
+
+    # Normalize and parse relative dates
+    now = datetime.now()
+
+    # Match 'X days ago' or 'X hours ago'
+    day_match = re.match(r'(\d+)\s+day[s]?\s+ago', date_str)
+    hour_match = re.match(r'(\d+)\s+hour[s]?\s+ago', date_str)
+
+    if day_match:
+        days = int(day_match.group(1))
+        return now - timedelta(days=days)
+    elif hour_match:
+        hours = int(hour_match.group(1))
+        return now - timedelta(hours=hours)
+
+    raise ValueError(f"Unrecognized date format: {date_str}")
+
 
 
 def format_google_date(date_obj):
@@ -194,11 +222,15 @@ def retrieve_client_industry_news(state: SupervisorState) -> dict:
         if "date" in result:
             try:
                 if isinstance(result["date"], str):
-                    result_date = date_parser.parse(result["date"]).replace(tzinfo=None)
+                    result_date = parse_flexible_date(result["date"])
+                    #result_date = date_parser.parse(result["date"]).replace(tzinfo=None)
+                   # print(f"DEBUG: good date: '{result.get('date')}', formated to: {result_date } ")
+
                 else:
                     result_date = result["date"]
             except (ValueError, TypeError) as e:
                 print(f"DEBUG: Could not parse date '{result.get('date')}': {e}")
+                print(f"DEBUG: Bad date: '{result.get('date')}' ")
                 # For articles without valid dates, include if high relevance score
                 if score >= 4:
                     result_date = end_date  # Treat as recent
@@ -274,7 +306,8 @@ def retrieve_macro_news(state: SupervisorState) -> dict:
         if "date" in result:
             try:
                 if isinstance(result["date"], str):
-                    result_date = date_parser.parse(result["date"]).replace(tzinfo=None)
+                    result_date = parse_flexible_date(result["date"])
+                    #result_date = date_parser.parse(result["date"]).replace(tzinfo=None)
                 else:
                     result_date = result["date"]
             except (ValueError, TypeError) as e:
@@ -362,7 +395,8 @@ def retrieve_holdings_news(state: SupervisorState) -> dict:
             if "date" in result:
                 try:
                     if isinstance(result["date"], str):
-                        result_date = date_parser.parse(result["date"]).replace(tzinfo=None)
+                        result_date = parse_flexible_date(result["date"])
+                        #result_date = date_parser.parse(result["date"]).replace(tzinfo=None)
                     else:
                         result_date = result["date"]
                 except (ValueError, TypeError) as e:
@@ -415,16 +449,22 @@ def summarize_finance_outputs(state: SupervisorState):
     
     client_industry_output = state.get("client_industry_sources", [])
     client_holdings_output = state.get("client_holdings_sources", [])
+    print(f"DEBUG: Retrieved holdings output length{len(client_holdings_output)}, type: {type(client_holdings_output)} ")
     macro_finnews_output = state.get("macro_news_sources", [])
     
-    # Enhanced robustness: check what data we actually have
-    has_industry = isinstance(client_industry_output, list) and len(client_industry_output) > 0
-    has_holdings = isinstance(client_holdings_output, list) and len(client_holdings_output) > 0
-    has_macro = isinstance(macro_finnews_output, list) and len(macro_finnews_output) > 0
+
+    has_industry = len(client_industry_output) > 0
+    print(f"DEBUG: has_industry: {has_industry}")
+    has_holdings = len(client_holdings_output) > 0
+    print(f"DEBUG: has_holdings: {has_holdings}")
+    has_macro = len(macro_finnews_output) > 0
+    print(f"DEBUG: has_macro: {has_macro}")
     
     print(f"DEBUG: Summarizer input - Industry: {len(client_industry_output) if has_industry else 0} articles")
     print(f"DEBUG: Summarizer input - Holdings: {len(client_holdings_output) if has_holdings else 0} articles")
     print(f"DEBUG: Summarizer input - Macro: {len(macro_finnews_output) if has_macro else 0} articles")
+
+   # print(f"holdings output : {client_holdings_output}")
     
     # If we have NO data at all, provide a helpful fallback
     if not (has_industry or has_holdings or has_macro):
@@ -469,10 +509,9 @@ def summarize_finance_outputs(state: SupervisorState):
     - Focus on the available data and clearly note any missing categories
     - Organize the summary into key themes and highlight important developments
     - Provide actionable insights and identify potential risks or opportunities
-    - If data is limited, acknowledge this and focus on what IS available
     - Maintain professional tone suitable for client meeting preparation
     """
-    
+
     try:
         messages = [HumanMessage(content=prompt)]
         result = model.invoke(messages)
