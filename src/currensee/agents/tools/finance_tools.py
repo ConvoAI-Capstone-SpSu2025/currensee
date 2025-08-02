@@ -1,15 +1,25 @@
+"""Financial news retrieval and analysis tools.
+
+This module provides comprehensive financial news gathering capabilities for:
+- Client industry news and company-specific information
+- Macroeconomic events and market indicators  
+- Client holdings and investment portfolio news
+- Financial data summarization and analysis
+
+Designed for enterprise-grade financial intelligence gathering.
+"""
+
+from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional, TypedDict
+import pprint
 
 import matplotlib.pyplot as plt
-# import yfinance as yf
 import pandas as pd
 import pandas_datareader.data as web
+from dateutil import parser as date_parser
 from langchain_community.utilities import GoogleSerperAPIWrapper
 from langchain_core.messages import HumanMessage
 from tabulate import tabulate
-from datetime import datetime
-from dateutil import parser as date_parser
-import pprint
 
 from currensee.agents.tools.base import SupervisorState
 from currensee.core import get_model, settings
@@ -117,21 +127,27 @@ def retrieve_client_industry_news(state: SupervisorState) -> dict:
     It performs a broad search and then filters by date and trusted sources.
     """
     
+    # Enhanced date handling with fallback logic
     try:
-        start_date = datetime.strptime(state["last_meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
         end_date = datetime.strptime(state["meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
-    except ValueError as e:
+        # Use last_meeting_timestamp if available, otherwise use 90 days before meeting
+        if state.get("last_meeting_timestamp"):
+            start_date = datetime.strptime(state["last_meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
+        else:
+            # Fallback: 90 days before meeting for comprehensive news coverage
+            start_date = end_date - timedelta(days=90)
+            print(f"INFO: Using 90-day lookback as last_meeting_timestamp not available")
+    except (ValueError, KeyError) as e:
         print(f"ERROR: Invalid date format in state. Details: {e}")
         return state
 
-    
     client_company = state["client_company"]
     industry = state["client_industry"]
     
     print(f"DEBUG: Filtering date range is from {start_date.date()} to {end_date.date()}")
 
-    # --- Step 1: Perform the simplest possible API search ---
-    filled_query = query_ci.format(site_filter= "site_filter", client_company=client_company, industry=industry)
+    # --- Step 1: Fix site_filter query construction ---
+    filled_query = query_ci.format(site_filter=site_filter, client_company=client_company, industry=industry)
     print(f"DEBUG: Sending query to API: '{filled_query}'")
     
     search = GoogleSerperAPIWrapper(k=30)
@@ -141,20 +157,18 @@ def retrieve_client_industry_news(state: SupervisorState) -> dict:
     pprint.pprint(results.get("organic"))
     print("--------------------------------------------------\n")
 
-    # --- Step 2: Manually filter the results (filters: dates)---
+    # --- Step 2: Enhanced filtering with relaxed date requirements ---
     filtered_results = []
     if results.get("organic"):
         for result in results["organic"]:
             date_str = result.get("date")
             link = result.get("link", "")
-
-            
             
             # Check if the result is from an allowed site
             is_from_trusted_source = any(site in link for site in allowed_sites)
 
-            #check date
-            is_within_date_range = False
+            # Enhanced date checking with flexible logic
+            is_recent_or_relevant = False
             if date_str:
                 try:
                     article_date = date_parser.parse(date_str, fuzzy=True)
@@ -185,25 +199,25 @@ def retrieve_macro_news(state: SupervisorState) -> dict:
     Return the most relevant macroeconomic news based on the query.
     Filters by date range and trusted sources.
     """
-
+    
+    # Enhanced date handling with fallback logic
     try:
-        start_date = datetime.strptime(state["last_meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
         end_date = datetime.strptime(state["meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
-    except ValueError as e:
+        if state.get("last_meeting_timestamp"):
+            start_date = datetime.strptime(state["last_meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
+        else:
+            start_date = end_date - timedelta(days=30)  # 30-day lookback for macro news
+            print(f"INFO: Using 30-day lookback for macro news")
+    except (ValueError, KeyError) as e:
         print(f"ERROR: Invalid date format in state. Details: {e}")
         return state
 
-    print(f"DEBUG: Filtering macro news from {start_date.date()} to {end_date.date()}")
-
-
-    google_start = format_google_date(start_date)
-    google_end = format_google_date(end_date)
-    sort_param = f"date:r:{google_start}:{google_end}"
-
-    # --- Step 1: Query all API ---
-    filled_query = query_mn.format(site_filter="site_filter")
+    print(f"DEBUG: Filtering date range is from {start_date.date()} to {end_date.date()}")
+    
+    # --- Step 1: Fix site_filter query construction ---
+    filled_query = query_mn.format(site_filter=site_filter)
     print(f"DEBUG: Sending macro query to API: '{filled_query}'")
-
+    
     search = GoogleSerperAPIWrapper(k=30)
     results = search.results(filled_query)
 
@@ -223,13 +237,25 @@ def retrieve_macro_news(state: SupervisorState) -> dict:
 
             if date_str:
                 try:
-                    article_date = date_parser.parse(date_str, fuzzy=True)
-                    if start_date <= article_date <= end_date:
-                        is_within_date_range = True
-                except (TypeError, ValueError):
-                    continue
-
-            if is_from_trusted_source and is_within_date_range:
+                    parsed_date = date_parser.parse(date_str, fuzzy=True)
+                    # More flexible date logic: recent articles OR articles in meeting window
+                    if start_date <= parsed_date <= end_date:
+                        is_recent_or_relevant = True
+                    # Also include recent articles (within last 30 days)
+                    elif (end_date - parsed_date).days <= 30:
+                        is_recent_or_relevant = True
+                except (ValueError, TypeError):
+                    # If we can't parse date, still consider if from trusted source
+                    is_recent_or_relevant = True
+            else:
+                # If no date info, still consider if from trusted source
+                is_recent_or_relevant = True
+            
+            # Include article if it's from trusted source AND (recent OR no filtering issues)
+            if is_from_trusted_source and is_recent_or_relevant:
+                filtered_results.append(result)
+            # Fallback: include high-scoring articles even if not from trusted sources
+            elif not is_from_trusted_source and score_result(result) >= 4:
                 filtered_results.append(result)
 
     print(f"DEBUG: Found {len(filtered_results)} macro articles after filtering.")
@@ -245,13 +271,18 @@ def retrieve_macro_news(state: SupervisorState) -> dict:
 def retrieve_holdings_news(state: SupervisorState) -> dict:
     """
     Return a raw list of relevant news dictionaries for each holding.
-    Filters by date range and trusted sources.
+    Filters by date range and trusted sources with enhanced flexibility.
     """
 
+    # Enhanced date handling with fallback logic
     try:
-        start_date = datetime.strptime(state["last_meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
         end_date = datetime.strptime(state["meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
-    except ValueError as e:
+        if state.get("last_meeting_timestamp"):
+            start_date = datetime.strptime(state["last_meeting_timestamp"], "%Y-%m-%d %H:%M:%S")
+        else:
+            start_date = end_date - timedelta(days=60)  # 60-day lookback for holdings
+            print(f"INFO: Using 60-day lookback for holdings news")
+    except (ValueError, KeyError) as e:
         print(f"ERROR: Invalid date format in state. Details: {e}")
         return state
 
@@ -262,7 +293,8 @@ def retrieve_holdings_news(state: SupervisorState) -> dict:
     holdings_news = {}
 
     for holding in holdings:
-        query = query_ch.format(site_filter="site_filter", largest_holdings=holding)
+        # Fix site_filter query construction
+        query = query_ch.format(site_filter=site_filter, largest_holdings=holding)
         print(f"DEBUG: Sending query for holding '{holding}': '{query}'")
 
         results = search.results(query)
@@ -280,17 +312,29 @@ def retrieve_holdings_news(state: SupervisorState) -> dict:
                 # Check source
                 is_trusted = any(site in link for site in allowed_sites)
 
-                # Check date
-                is_within_date_range = False
+                # Enhanced date checking with flexible logic
+                is_recent_or_relevant = False
                 if date_str:
                     try:
                         parsed_date = date_parser.parse(date_str, fuzzy=True)
+                        # Include articles in meeting window OR recent articles
                         if start_date <= parsed_date <= end_date:
-                            is_within_date_range = True
+                            is_recent_or_relevant = True
+                        # Also include recent articles (within last 45 days)
+                        elif (end_date - parsed_date).days <= 45:
+                            is_recent_or_relevant = True
                     except (ValueError, TypeError):
-                        continue
+                        # If we can't parse date, still consider if from trusted source
+                        is_recent_or_relevant = True
+                else:
+                    # If no date info, still consider if from trusted source
+                    is_recent_or_relevant = True
 
-                if is_trusted and is_within_date_range:
+                # Include article if it's from trusted source AND recent/relevant
+                if is_trusted and is_recent_or_relevant:
+                    filtered_results.append(result)
+                # Fallback: include high-scoring articles from any source
+                elif score_result(result) >= 3:
                     filtered_results.append(result)
 
         print(f"DEBUG: Found {len(filtered_results)} articles for holding '{holding}' after filtering.")
