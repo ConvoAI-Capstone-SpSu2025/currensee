@@ -328,7 +328,7 @@ def retrieve_holdings_news(state: SupervisorState) -> dict:
 
     holdings = state.get("client_holdings", [])
     search = GoogleSerperAPIWrapper()
-    all_holdings_news = []
+    holdings_news_by_ticker = {}
 
     for holding in holdings:
         print(f"DEBUG: Processing holding '{holding}'")
@@ -384,17 +384,19 @@ def retrieve_holdings_news(state: SupervisorState) -> dict:
             if (is_trusted and is_recent_or_relevant) or score >= 4:
                 filtered_results.append(result)
         
+        # Sort by relevance score for this holding
+        filtered_results.sort(key=lambda x: x.get("relevance_score", 0), reverse=True)
+        
         print(f"DEBUG: After filtering: {len(filtered_results)} articles for holding '{holding}'")
         
-        # Add to overall results
-        all_holdings_news.extend(filtered_results)
+        # Group by ticker as expected by sourcing utility
+        holdings_news_by_ticker[holding] = filtered_results
     
-    # Sort all holdings news by relevance score (highest first)
-    all_holdings_news.sort(key=lambda x: x.get("relevance_score", 0), reverse=True)
+    # Calculate total for logging
+    total_articles = sum(len(articles) for articles in holdings_news_by_ticker.values())
+    print(f"DEBUG: Total holdings news articles after all filtering: {total_articles}")
     
-    print(f"DEBUG: Total holdings news articles after all filtering: {len(all_holdings_news)}")
-    
-    state["client_holdings_sources"] = all_holdings_news
+    state["client_holdings_sources"] = holdings_news_by_ticker
     return state
 
 
