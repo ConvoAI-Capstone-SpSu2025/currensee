@@ -221,8 +221,8 @@ def retrieve_client_industry_news(state: SupervisorState) -> dict:
     
     print(f"DEBUG: After filtering: {len(filtered_results)} articles remain")
     
-    state["client_industry_news"] = filtered_results
-    return state or "No relevant news in date range."
+    state["client_industry_sources"] = filtered_results
+    return state
 
 
 
@@ -301,7 +301,7 @@ def retrieve_macro_news(state: SupervisorState) -> dict:
     
     print(f"DEBUG: After filtering: {len(filtered_results)} macro articles remain")
     
-    state["macro_finnews"] = filtered_results
+    state["macro_news_sources"] = filtered_results
     return state
 
 
@@ -394,7 +394,7 @@ def retrieve_holdings_news(state: SupervisorState) -> dict:
     
     print(f"DEBUG: Total holdings news articles after all filtering: {len(all_holdings_news)}")
     
-    state["client_holdings_news"] = all_holdings_news
+    state["client_holdings_sources"] = all_holdings_news
     return state
 
 
@@ -411,9 +411,9 @@ def summarize_finance_outputs(state: SupervisorState):
     - Updated state with financial summary, even if some sources are empty
     """
     
-    client_industry_output = state.get("client_industry_news", [])
-    client_holdings_output = state.get("client_holdings_news", [])
-    macro_finnews_output = state.get("macro_finnews", [])
+    client_industry_output = state.get("client_industry_sources", [])
+    client_holdings_output = state.get("client_holdings_sources", [])
+    macro_finnews_output = state.get("macro_news_sources", [])
     
     # Enhanced robustness: check what data we actually have
     has_industry = isinstance(client_industry_output, list) and len(client_industry_output) > 0
