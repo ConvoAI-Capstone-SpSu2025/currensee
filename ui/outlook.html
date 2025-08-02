@@ -575,7 +575,28 @@
             gap: 32px;
             margin-top: 8px;
         }
-
+        .button-container {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 10px;
+        }
+        
+        .outlook-clear-btn {
+          background-color: #0078d4; /* Outlook blue */
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          font-size: 14px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          border-radius: 4px;
+          cursor: pointer;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          transition: background-color 0.2s ease;
+        }
+        
+        .outlook-clear-btn:hover {
+          background-color: #005a9e;
+        }
         .resizer {
         width: 8px; 
         background: #e0e0e0;
@@ -760,7 +781,36 @@
           <div class="email-subject">Re: Hasbro - Operational Risk Case Study Analysis</div>
           <div class="email-preview">Dear Jane, Thank you for your email. Hi Jane...</div>
         </div>
+        
+            <div class="email-item">
+              <div class="email-date">Jun 26</div>
+              <div class="email-sender">Carlos Mendez</div>
+              <div class="email-subject">Trinity - Yield Spread Alert Follow-Up</div>
+              <div class="email-preview">Jane, The widening in June’s yield spread is already triggering client flags. Let’s discuss mitigation options today? CM</div>
+            </div>
 
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">Jun 25</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - Emerging Market Growth vs. Headwinds</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Jane, Geopolitical risk implications? Best, Jessica Palmer</div>
+        </div>
+    
+        <div class="email-item">
+          <div class="email-date">Jul 24</div>
+          <div class="email-sender">Kevin Frost</div>
+          <div class="email-subject">Black Harbor - New Alternatives Opportunity</div>
+          <div class="email-preview">Jane, Quick ping — are you open to exploring a small-cap alt fund with 30-day liquidity? Happy to send performance deck. –Kevin</div>
+        </div>
+
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">Jun 24</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - Liquidity & Daily Redemption Strategies</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Hi Jane, Details on growth fund launches? Thanks, Jessica Palmer</div>
+        </div>
+        
+                
         <div class="email-item" data-client="denise.moore@celestica.com">
           <div class="email-date">Jun 21</div>
           <div class="email-sender">Denise Moore</div>
@@ -860,6 +910,13 @@
           <div class="email-subject">Re: Celestica - Sector Weight Shift & Exposure Review</div>
           <div class="email-preview">Sector weight changes?</div>
         </div>
+
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">May 17</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - ESG Integration Framework & Screening</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Dear Jane, Insights on sustainability mandates? Regards, Jessica Palmer</div>
+        </div>
         
         <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
           <div class="email-date">May 17</div>
@@ -867,6 +924,14 @@
           <div class="email-subject">Re: AbbVie - Proposed Benchmark Re-alignment Overview</div>
           <div class="email-preview">Impacts of benchmark realignment?</div>
         </div>
+
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">May 16</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - Fit vs. Mandate: Benchmark Transition</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Hello Jane, Comparison of new vs old benchmarks? Thanks, Jessica Palmer</div>
+        </div>
+
         
         <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
           <div class="email-date">May 12</div>
@@ -939,7 +1004,10 @@
                     <option value="cynthia.hobbs@abbvie.com">cynthia.hobbs@abbvie.com</option>
                     <!-- ☝️ End of email options -->
                   </select>
-                        <button id="clearSelectionBtn">Clear</button>
+                    
+                   <div class="button-container">
+                      <button id="clearSelectionBtn" class="outlook-clear-btn">Clear</button>
+                    </div>
                 </div>
               </div>
               <div class="form-row">
@@ -1269,11 +1337,13 @@
         }
 
         function getFormData() {
+            const timestampSelect = document.getElementById('meetingTimestamp');
+            const selectedOption = timestampSelect.selectedOptions[0];
             return {
                 client_name: document.getElementById('clientName').value,
                 client_email: document.getElementById('clientEmail').value,
-                meeting_timestamp: document.getElementById('meetingTimestamp').value,
-                meeting_description: document.getElementById('meetingDescription').value,
+                meeting_timestamp: timestampSelect.value,
+                meeting_description: selectedOption ? selectedOption.dataset.description : '',
             };
         }
 
@@ -1428,13 +1498,13 @@
 
                 if (sender === 'Jessica Palmer') {
                     document.getElementById('clientName').value = 'Jessica Palmer';
-                    document.getElementById('clientEmail').value = 'jessica.palmer@hasbro.com;
+                    document.getElementById('clientEmail').value = 'jessica.palmer@hasbro.com';
                     document.getElementById('meetingDescription').value = 'Hasbro - Discuss Portfolio Diversification and Risk Strategy';
                 }
 
                 if (sender === 'Cynthia Hobbs') {
                     document.getElementById('clientName').value = 'Cynthia Hobbs';
-                    document.getElementById('clientEmail').value = 'cynthia.hobbs@abbvie.com;
+                    document.getElementById('clientEmail').value = 'cynthia.hobbs@abbvie.com';
                     document.getElementById('meetingDescription').value = 'AbbVie - Annual Plan & Strategic Priorities';
                 }
 
@@ -1451,6 +1521,7 @@
             // Clear all input fields
             document.getElementById('clientName').value = '';
             document.getElementById('clientEmail').value = '';
+            document.getElementById('meetingTimestamp').value = '';
             document.getElementById('meetingDescription').value = '';
         });
 
