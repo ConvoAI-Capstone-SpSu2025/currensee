@@ -437,7 +437,7 @@ def summarize_finance_outputs(state: SupervisorState):
             "**Recommendation:** Consider expanding the date range or checking alternative news sources "
             "for the most current market developments affecting the client's portfolio."
         )
-        state["summary_finance_outputs"] = fallback_summary
+        state["finnews_summary"] = fallback_summary
         return state
     
     # Build summary with available data
@@ -474,7 +474,7 @@ def summarize_finance_outputs(state: SupervisorState):
     try:
         messages = [HumanMessage(content=prompt)]
         result = model.invoke(messages)
-        state["summary_finance_outputs"] = result.content
+        state["finnews_summary"] = result.content
     except Exception as e:
         print(f"ERROR: Summarization failed: {e}")
         # Provide basic fallback even if LLM fails
@@ -488,7 +488,7 @@ def summarize_finance_outputs(state: SupervisorState):
         
         Note: Automated summarization temporarily unavailable. Please review individual news items above.
         """
-        state["summary_finance_outputs"] = basic_summary
+        state["finnews_summary"] = basic_summary
     
     return state
 
