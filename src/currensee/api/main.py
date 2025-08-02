@@ -85,36 +85,6 @@ class ClientRequest(BaseModel):
         return v
 
 
-#Pending DB update
-db_name = "crm_outlook"
-engine = create_pg_engine(db_name)
-settings = Settings()
-
-@app.get("/api/get_client_info")
-async def get_client_info(email: str = Query(..., description="Client email to look up")):
-    try:
-        #Lily, could you help me calling the following info from our DB?
-        conn = sqlite3.connect("crm_outlook.db")
-        cursor = conn.cursor()
-        cursor.execute(
-            "SELECT client_name, meeting_timestamp, meeting_description FROM clients WHERE email = ?",
-            (email,)
-        )
-        row = cursor.fetchone()
-        conn.close()
-
-        if row:
-            return {
-                "name": row[0],
-                "timestamp": row[1],
-                "description": row[2]
-            }
-        else:
-            raise HTTPException(status_code=404, detail="Client not found")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 
 
         
