@@ -169,24 +169,19 @@ def generate_report(result):
     
 
     #Summary Section
-    #-- Client Interaction--
     email_summary = result.get("summary_client_comms", "")
     recent_email_summary = result.get("recent_email_summary", "")
     recent_client_questions = result.get("recent_client_questions", "")
 
-    # -- Client News & Development--  
-    client_news_summary_sourced = result.get("client_news_summary_sourced", "")
-
-
-    # -- Portfolio & Market Overview --
-    holdings_summary = result.get("fin_hold_summary_sourced", "")
-
-    #Source
+    #Financial Section
     client_holdings_sources = result.get("client_holdings_sources", list())
+    client_news_summary_sources = result.get("client_news_summary_sourced", list())
     client_holdings = result.get("client_holdings", "")
     client_industry_sources = result.get("client_industry_sources", list())
 
-
+    #Summary
+    holdings_summary = result.get("fin_hold_summary_sourced", "")
+    client_news_summary = result.get("client_news_summary_sourced", "")
 
     macro_news_sources = result.get("macro_news_sources", list())
     
@@ -291,14 +286,33 @@ def generate_report(result):
             <h2 style="margin-bottom: 10px;">Client News & Developments</h2>
             
             <div style="position: relative; margin-bottom: 12px;">
-                <div>{client_news_summary_sourced}</div>
+                <div>{client_news_summary}</div>
+            </div>
+    
+            <div class="box-main box-content" style="margin-top: 14px;">
+                <button onclick="toggleBox('client-industry-news-box')">Client News</button>
+                
+                <div id='client-industry-news-box' class='toggle-box' style='display:none; margin-top: 10px;'>
+                    {format_sources_to_html(client_industry_sources, "Client News")}
                     <div class="feedback-section" style="margin-top: 12px;">
                         <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                            <button onclick="handleFeedback(this, 'more')">I want more client news</button>
-                            <button onclick="handleFeedback(this, 'less')">I want less client news</button>
+                            <button onclick="handleFeedback(this, 'more')">I want more client industry news</button>
+                            <button onclick="handleFeedback(this, 'less')">I want less client industry news</button>
                         </div>
                         <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
                             Got it! We will remember it next time
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="feedback-section" style="margin-top: 12px;">
+                <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                    <button onclick="handleFeedback(this, 'more')">I want more Client News</button>
+                    <button onclick="handleFeedback(this, 'less')">I want less Client News</button>
+                </div>
+                <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                    Got it! We will remember it next time
                 </div>
             </div>
         </div>
@@ -340,6 +354,7 @@ def generate_report(result):
     financial_snapshot_html += "</tbody></table>"
 
     # News Resource Section
+
     html_client_holdings_sources = format_holdings_to_html(
         client_holdings_sources, "Client Holdings News"
     )
@@ -347,6 +362,12 @@ def generate_report(result):
         macro_news_sources, "Macro Economic News"
     )
 
+    resources_html = f"""
+    <div id="resources-content" class="box-content">
+        {html_client_holdings_sources}
+        {html_macro_news_sources}
+    </div>
+    """
 
 
     # Toggle boxes for "Email Summary" section
@@ -403,74 +424,53 @@ def generate_report(result):
         </div>
         """
 
-    # Toggle boxes for "Portofolio" section
-    portfolio_buttons = []
-    portfolio_sections = []
+    # Toggle boxes for "Financial News" section
+    financial_section_full = ""
     
     if holdings_detail.lower() != "none":
-        portfolio_buttons.append("<button onclick=\"toggleBox('client-holdings')\"> Holdings News</button>")
-        portfolio_sections.append(f"""
-            <div id='client-holdings' class='toggle-box' style='display:none; margin-top: 12px;'>
-                {html_client_holdings_sources}
-                <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more holdings news</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less holdings news</button>
+        macro_section = ""
+        if macro_news_detail.lower() != "none":
+            macro_section = f"""
+                <div>            
+                    <button onclick="toggleBox('macro-snap')">Macro Snapshot</button>
+                    <button onclick="toggleBox('resources')">Macro Resources</button>
+                </div>
+                <div style="margin-top: 12px;">
+                    <div id='macro-snap' class='toggle-box' style='display:none;'>
+                        {financial_snapshot_html}
+                        <div class="feedback-section" style="margin-top: 12px;">
+                            <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                                <button onclick="handleFeedback(this, 'more')">I want more macro analysis</button>
+                                <button onclick="handleFeedback(this, 'less')">I want less macro analysis</button>
+                            </div>
+                            <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                                Got it! We will remember it next time
+                            </div>
+                        </div>
                     </div>
-                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
+                    
+                    <div id='resources' class='toggle-box' style='display:none; margin-top: 12px;'>
+                        {resources_html}
+                        <div class="feedback-section" style="margin-top: 12px;">
+                            <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                                <button onclick="handleFeedback(this, 'more')">I want more resources</button>
+                                <button onclick="handleFeedback(this, 'less')">I want less resources</button>
+                            </div>
+                            <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                                Got it! We will remember it next time
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        """)
+            """
     
-    if macro_news_detail.lower() != "none":
-        portfolio_buttons.append("<button onclick=\"toggleBox('macro-snap')\">Macro Snapshot</button>")
-        portfolio_buttons.append("<button onclick=\"toggleBox('resources')\">Macro News</button>")
-        
-        portfolio_sections.append(f"""
-            <div id='macro-snap' class='toggle-box' style='display:none; margin-top: 12px;'>
-                {financial_snapshot_html}
-                <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more macro data</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less macro data</button>
-                    </div>
-                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
-                    </div>
-                </div>
-            </div>
-        """)
-    
-        portfolio_sections.append(f"""
-            <div id='resources' class='toggle-box' style='display:none; margin-top: 12px;'>
-                {html_macro_news_sources}
-                <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more macro news</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less macro news</button>
-                    </div>
-                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
-                    </div>
-                </div>
-            </div>
-        """)
-    
-    # Combine final financial section if either part exists
-    financial_section_full = ""
-    if holdings_detail.lower() != "none" or macro_news_detail.lower() != "none":
         financial_section_full = f"""
             <div class="box-main box-content" style="margin-bottom: 8px;">
                 <h2 style="margin-bottom: 10px;">Portfolio & Market Overview</h2>
-    
-                {"<div style='position: relative; margin-bottom: 12px;'>" + holdings_summary + "</div>" if holdings_detail.lower() != "none" else ""}
-    
-                {f"<div>{''.join(portfolio_buttons)}</div>" if portfolio_buttons else ""}
-                <div style="margin-top: 12px;">
-                    {''.join(portfolio_sections)}
+                <div style="position: relative; margin-bottom: 12px;">
+                    <div>{holdings_summary}</div>
                 </div>
+                {macro_section}
     
                 <div class="feedback-section" style="margin-top: 12px;">
                     <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
