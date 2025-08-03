@@ -134,7 +134,7 @@ def produce_recent_client_email_summary(state: SupervisorState) -> dict:
         AND (to_emails ~* '{'|'.join(all_client_emails)}' OR from_email ~* '{'|'.join(all_client_emails)}')
         and (to_emails = '{user_email}' or from_email = '{user_email}')
         order by email_timestamp desc
-        limit 5
+        limit 7
     """
 
     result = pd.read_sql(query_str, con=engine)
