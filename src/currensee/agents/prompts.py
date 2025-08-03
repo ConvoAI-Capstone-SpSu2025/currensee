@@ -69,7 +69,7 @@ full_news_prompt = """
      - News about {client_company}
      - Industry trends 
 
- If there is no relevant news, then write nothing. DO NOT comment on the availability of news in the context.
+ If there is no relevant news, then write nothing. DO NOT comment on the availability of news in the context. Write about 5-7 sentences.
 
     Inputs:
     Client News:  {client_industry_sources}
@@ -88,34 +88,12 @@ news_prompts = {
 full_comms_prompt = """
 
     You are a skilled financial advisor preparing for an upcoming meeting with {client_name}, who works at {client_company}. The meeting will focus on the following topic: {meeting_description}. 
-    
-    Below is compiled input from multiple sources:
-    - Past email summaries
-    - Recent email discussion points
-    - Recent client questions
-    
-    Your task:
-    Create a comprehensive briefing document for internal use, to help prepare the meeting attendees. The briefing should include only relevant content and exclude any discussion about scheduling, availability, or meeting logistics. When possible, focus on communications about {meeting_category}.
-    
-    Format the report using the following structure:
-    
-    1. Past Email Summary
-     - Write a concise paragraph summarizing earlier correspondence from {email_summary}.
-    
-    2. Recent Email Topics
-     - Present the content of {recent_email_summary} as a bullet-point list, focusing on key updates and discussion items.
-    
-    3. Recent Client Questions
-     - Use the list in {recent_client_questions}.
-     - Present as a numbered list.
-     - Exclude any questions related to logistics, availability, or scheduling.
-     - Exclude any questions asked by Bankwell Financial
-     - If there were no questions provided in {recent_client_questions}, then omit this section. If no client questions were asked, then skip the section and do not state whether client questions were asked.
-    
+
+     Instructions: Write a concise paragraph summarizing earlier correspondence from {recent_email_summary}. The briefing should include only relevant content and exclude any discussion about scheduling, availability, or meeting logistics. When possible, focus on communications about {meeting_category}. If content about a particular topic is NOT available, then ignore it. Focus particular attention to content in {recent_email_summary}.
+      
     Inputs:
-    Past email summary: {email_summary}
     Recent email summary: {recent_email_summary}
-    Recent client questions: {recent_client_questions}
+    Past email summary: {email_summary}
 """
 
 
@@ -126,19 +104,18 @@ short_comms_prompt = """
         
         List bullet points in the order below:
     - Recent communication highlights from {recent_email_summary}
-    - Any critical client questions (If there were no questions provided in {recent_client_questions}, then do not state whether client questions were asked and skip this point). Exclude any questions asked by Bankwell Financial.
+
      
      Important Instructions:
     1. DO NOT use any section headings or titles
     2. DO NOT return a multi-section report
-    3. ONLY return a single flat list of 3-5 bullet points total
-    4. Each bullet point should begin with a • or - symbol
+    3. ONLY return a single flat list of 2-3 bullet points total
+    4. Each bullet point should begin with a * or - symbol
     5. DO NOT number your points
     6. Keep each bullet to 1-2 sentences maximum
     
     Inputs:
     Recent email summary: {recent_email_summary}
-    Recent client questions: {recent_client_questions}
 """
 
 
