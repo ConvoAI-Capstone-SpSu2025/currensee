@@ -1182,7 +1182,6 @@
                 meetingDescription: descriptionField.value,
               };
               console.log("Saved (locally):", data);
-              alert("Client info 'saved' (no DB used)");
               section.classList.add('read-only');
               section.querySelectorAll('input, textarea, select').forEach(input => input.disabled = true);
               saveBtn.style.display = 'none';
