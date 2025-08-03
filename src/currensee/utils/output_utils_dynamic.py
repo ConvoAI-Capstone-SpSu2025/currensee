@@ -139,37 +139,6 @@ def format_paragraph_summary_to_html(summary: str) -> str:
     return f"<div class='box-content'>{full_body}</div>"
 
 
-def thumbs_buttons(section_id):
-    return f"""
-    <div style="
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        cursor: pointer;
-        display: flex;
-        gap: 8px;
-        ">
-        <svg onclick="toggleThumb(this, '{section_id}', true)" title="Thumbs Up"
-             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
-             fill="#2980B9" style="user-select:none;">
-            <path d="M2 21h4V9H2v12zM23 10c0-1.1-0.9-2-2-2h-6.31l0.95-4.57
-                     0.03-0.32c0-0.41-0.17-0.79-0.44-1.06L14.17 2 7.59 8.59
-                     C7.22 8.95 7 9.45 7 10v9c0 1.1 0.9 2 2 2h7c0.83 0 1.54-0.5
-                     1.84-1.22l3.02-7.05c0.09-0.23 0.14-0.47 0.14-0.73v-1z"/>
-        </svg>
-
-        <svg onclick="toggleThumb(this, '{section_id}', false)" title="Thumbs Down"
-             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
-             fill="#2980B9" style="user-select:none;">
-            <path d="M22 3h-4v12h4V3zM2 14c0 1.1 0.9 2 2 2h6.31l-0.95 4.57
-                     -0.03 0.32c0 0.41 0.17 0.79 0.44 1.06L9.83 22 16.41 15.41
-                     C16.78 15.05 17 14.55 17 14v-9c0-1.1-0.9-2-2-2H8c-0.83 0-1.54 0.5
-                     -1.84 1.22L3.14 12.27C3.05 12.5 3 12.74 3 13v1z"/>
-        </svg>
-    </div>
-    """
-
-
 
 def render_article_html(article):
     title = article.get("title", "No Title")
@@ -200,17 +169,22 @@ def generate_report(result):
     
 
     #Summary Section
-    email_summary = result.get("email_summary", "")
+    email_summary = result.get("summary_client_comms", "")
     recent_email_summary = result.get("recent_email_summary", "")
     recent_client_questions = result.get("recent_client_questions", "")
 
     #Financial Section
-    holdings_summary = result.get("fin_hold_summary_sourced", "")
-    news_summary = result.get("client_news_summary_sourced", "")
     client_holdings_sources = result.get("client_holdings_sources", list())
-    client_industry_sources = result.get("client_industry_sources", list())
-    macro_news_sources = result.get("macro_news_sources", list())
+    client_news_summary_sources = result.get("client_news_summary_sourced", list())
     client_holdings = result.get("client_holdings", "")
+    client_industry_sources = result.get("client_industry_sources", list())
+
+    #Summary
+    holdings_summary = result.get("fin_hold_summary_sourced", "")
+    client_news_summary = result.get("client_news_summary_sourced", "")
+
+    macro_news_sources = result.get("macro_news_sources", list())
+    
     client_holdings_list = [str(h).strip() for h in client_holdings if str(h).strip()]
     client_news_summary = result.get("summary_client_news", "")
     client_holding_summary = result.get("summary_fin_hold", "")
@@ -303,6 +277,48 @@ def generate_report(result):
     </div>
     """
 
+    #Client News & Developments Section:
+
+    client_update_section_full = ""
+    if client_news_detail.lower() != "none":
+        client_update_section_full = f"""
+        <div class="box-main box-content" style="margin-bottom: 8px;">
+            <h2 style="margin-bottom: 10px;">Client News & Developments</h2>
+            
+            <div style="position: relative; margin-bottom: 12px;">
+                <div>{client_news_summary}</div>
+            </div>
+    
+            <div class="box-main box-content" style="margin-top: 14px;">
+                <button onclick="toggleBox('client-industry-news-box')">Client News</button>
+                
+                <div id='client-industry-news-box' class='toggle-box' style='display:none; margin-top: 10px;'>
+                    {format_sources_to_html(client_industry_sources, "Client News")}
+                    <div class="feedback-section" style="margin-top: 12px;">
+                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                            <button onclick="handleFeedback(this, 'more')">I want more client industry news</button>
+                            <button onclick="handleFeedback(this, 'less')">I want less client industry news</button>
+                        </div>
+                        <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                            Got it! We will remember it next time
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="feedback-section" style="margin-top: 12px;">
+                <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                    <button onclick="handleFeedback(this, 'more')">I want more Client News</button>
+                    <button onclick="handleFeedback(this, 'less')">I want less Client News</button>
+                </div>
+                <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                    Got it! We will remember it next time
+                </div>
+            </div>
+        </div>
+        """
+
+    
     # Macro Table section
     macro_news_df = generate_macro_table()
     financial_snapshot_html = "<table class='financial-snapshot'>"
@@ -338,9 +354,7 @@ def generate_report(result):
     financial_snapshot_html += "</tbody></table>"
 
     # News Resource Section
-    html_client_industry_sources = format_sources_to_html(
-        client_industry_sources, "Client Industry News"
-    )
+
     html_client_holdings_sources = format_holdings_to_html(
         client_holdings_sources, "Client Holdings News"
     )
@@ -350,7 +364,6 @@ def generate_report(result):
 
     resources_html = f"""
     <div id="resources-content" class="box-content">
-        {html_client_industry_sources}
         {html_client_holdings_sources}
         {html_macro_news_sources}
     </div>
@@ -362,7 +375,7 @@ def generate_report(result):
     if past_meeting_detail.lower() != "none":
         email_section_full = f"""
         <div class="box-main box-content" style="margin-top: 8px;">
-            <h2 style="margin-bottom: 10px;">Client Communication Summary</h2>
+            <h2 style="margin-bottom: 10px;">Client Interactions</h2>
             
             <div style="position: relative; margin-bottom: 12px;">
                 <div>{email_summary}</div>
@@ -419,8 +432,8 @@ def generate_report(result):
         if macro_news_detail.lower() != "none":
             macro_section = f"""
                 <div>            
-                    <button onclick="toggleBox('macro-snap')">Macro-Economic Snapshot</button>
-                    <button onclick="toggleBox('resources')">Resources</button>
+                    <button onclick="toggleBox('macro-snap')">Macro Snapshot</button>
+                    <button onclick="toggleBox('resources')">Macro Resources</button>
                 </div>
                 <div style="margin-top: 12px;">
                     <div id='macro-snap' class='toggle-box' style='display:none;'>
@@ -453,7 +466,7 @@ def generate_report(result):
     
         financial_section_full = f"""
             <div class="box-main box-content" style="margin-bottom: 8px;">
-                <h2 style="margin-bottom: 10px;">Financial Overview</h2>
+                <h2 style="margin-bottom: 10px;">Portfolio & Market Overview</h2>
                 <div style="position: relative; margin-bottom: 12px;">
                     <div>{holdings_summary}</div>
                 </div>
@@ -471,40 +484,6 @@ def generate_report(result):
             </div>
         """
 
-
-    # Check if there's meaningful email summary content
-    #email_content_exists = any([
-    #    email_summary.strip(),
-    #    recent_email_summary.strip(),
-    #    recent_client_questions.strip()
-    #])
-    
-    # Check if there's meaningful financial summary content
-    #financial_content_exists = any([
-    #    holdings_summary.strip(),
-    #    news_summary.strip(),
-    #    client_holdings_sources,
-    #    client_industry_sources,
-    #    macro_news_sources
-    #])
-    
-    # Conditionally showing summary sections only if there's meaningful content
-    
-    #email_summary_section = f"""
-    #<div id="email-summary" class="box-section {'hidden-section' if not email_content_exists else ''}">
-    #    <h2>Email Summary</h2>
-    #    {email_section_full}
-    #</div>
-    #"""
-    
-    #financial_news_section = f"""
-    #<div id="financial-summary" class="box-section {'hidden-section' if not financial_content_exists else ''}">
-     #   <h2>Financial News Summary</h2>
-     #   {financial_section_full}
-    #</div>
-    #"""
-
-    
     # Full HTML document
     full_html = f"""
     <html>
@@ -807,9 +786,8 @@ def generate_report(result):
         </div>
 
             {meeting_info_html}
-        
             {email_section_full}
-        
+            {client_update_section_full}
             {financial_section_full}
 
     </body>
