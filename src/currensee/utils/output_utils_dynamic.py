@@ -172,6 +172,16 @@ def generate_report(result):
     email_summary = result.get("summary_client_comms", "")
     recent_email_summary = result.get("recent_email_summary", "")
     recent_client_questions = result.get("recent_client_questions", "")
+    
+    # Enterprise-level content sanitization: Remove leading asterisks from email summary
+    if email_summary:
+        # Remove leading asterisks and whitespace from the beginning of the summary
+        email_summary = re.sub(r'^\s*\*+\s*', '', email_summary.strip(), flags=re.MULTILINE)
+        # Also handle cases where each line starts with asterisk
+        email_summary = '\n'.join(
+            re.sub(r'^\s*\*+\s*', '', line) if line.strip().startswith('*') else line
+            for line in email_summary.split('\n')
+        )
 
     # -- Client News & Development--  
     client_news_summary_sourced = result.get("client_news_summary_sourced", "")
@@ -361,8 +371,8 @@ def generate_report(result):
             </div>
             
             <div class="box-main box-content" style="margin-top: 14px;">
-                <button onclick="toggleBox('recent-email-box')">Recent Email</button>
-                <button onclick="toggleBox('client-questions-box')">Client Questions</button>
+                <button class="toggle-btn" onclick="toggleBox('recent-email-box')">Recent Email</button>
+                <button class="toggle-btn" onclick="toggleBox('client-questions-box')">Client Questions</button>
                 
                 <div id='recent-email-box' class='toggle-box' style='display:none; margin-top: 10px;'>
                     {recent_email_summary}
@@ -409,7 +419,7 @@ def generate_report(result):
     portfolio_sections = []
     
     if holdings_detail.lower() != "none":
-        portfolio_buttons.append("<button onclick=\"toggleBox('client-holdings')\"> Holdings News</button>")
+        portfolio_buttons.append("<button class='toggle-btn' onclick=\"toggleBox('client-holdings')\">Holdings News</button>")
         portfolio_sections.append(f"""
             <div id='client-holdings' class='toggle-box' style='display:none; margin-top: 12px;'>
                 {html_client_holdings_sources}
@@ -426,8 +436,8 @@ def generate_report(result):
         """)
     
     if macro_news_detail.lower() != "none":
-        portfolio_buttons.append("<button onclick=\"toggleBox('macro-snap')\">Macro Snapshot</button>")
-        portfolio_buttons.append("<button onclick=\"toggleBox('resources')\">Macro News</button>")
+        portfolio_buttons.append("<button class='toggle-btn' onclick=\"toggleBox('macro-snap')\">Macro Snapshot</button>")
+        portfolio_buttons.append("<button class='toggle-btn' onclick=\"toggleBox('resources')\">Macro News</button>")
         
         portfolio_sections.append(f"""
             <div id='macro-snap' class='toggle-box' style='display:none; margin-top: 12px;'>
@@ -548,9 +558,50 @@ def generate_report(result):
                 border: none;
                 border-radius: 4px;
                 cursor: pointer;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 13px;
+                font-weight: 500;
+                transition: all 0.2s ease;
             }}
             button:hover {{
                 background-color: #1A5276;
+                transform: translateY(-1px);
+                box-shadow: 0 2px 8px rgba(41, 128, 185, 0.3);
+            }}
+            
+            /* Enterprise-grade toggle button styling for consistent UI */
+            .toggle-btn {{
+                padding: 8px 16px;
+                background-color: #2980B9;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 13px;
+                font-weight: 500;
+                margin-right: 8px;
+                margin-bottom: 6px;
+                transition: all 0.25s ease;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                min-width: 120px;
+                text-align: center;
+            }}
+            
+            .toggle-btn:hover {{
+                background-color: #1A5276;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(41, 128, 185, 0.4);
+            }}
+            
+            .toggle-btn:active {{
+                transform: translateY(0);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            }}
+            
+            .toggle-btn:focus {{
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.3);
             }}
             tr:nth-child(even) {{
                 background-color: #f9f9f9;
