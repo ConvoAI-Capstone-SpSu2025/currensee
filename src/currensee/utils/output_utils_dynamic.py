@@ -166,7 +166,6 @@ def generate_report(result):
     client_name = result.get("client_name", "")
     meeting_time = result.get("meeting_timestamp", "")
     last_meeting_time = result.get("last_meeting_timestamp", "")
-    
 
     #Summary Section
     #-- Client Interaction--
@@ -299,6 +298,7 @@ def generate_report(result):
                         </div>
                         <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
                             Got it! We will remember it next time
+                        </div>
                 </div>
             </div>
         </div>
@@ -403,6 +403,7 @@ def generate_report(result):
         </div>
         """
 
+    
     # Toggle boxes for "Portofolio" section
     portfolio_buttons = []
     portfolio_sections = []
@@ -461,8 +462,9 @@ def generate_report(result):
     # Combine final financial section if either part exists
     financial_section_full = ""
     if holdings_detail.lower() != "none" or macro_news_detail.lower() != "none":
+        # Note: Added a more substantial margin-top here for separation
         financial_section_full = f"""
-            <div class="box-main box-content" style="margin-bottom: 8px;">
+            <div class="box-main box-content" style="margin-top: 20px; margin-bottom: 8px;">
                 <h2 style="margin-bottom: 10px;">Portfolio & Market Overview</h2>
     
                 {"<div style='position: relative; margin-bottom: 12px;'>" + holdings_summary + "</div>" if holdings_detail.lower() != "none" else ""}
@@ -711,7 +713,7 @@ def generate_report(result):
             
             .feedback-buttons button:focus {{
               outline: none;
-              box-shadow: 0 0 0 2px rgba(16, 110, 190, 0.4); 
+              box-shadow: 0 0 0 2px rgba(16, 110, 190, 0.4);  
             }}
 
         </style>
@@ -719,8 +721,8 @@ def generate_report(result):
         <script>
             function toggleBox(id) {{
                 const allBoxes = [
-                  'recent-email-box', 'client-questions-box',
-                  'macro-snap', 'resources'
+                    'recent-email-box', 'client-questions-box',
+                    'macro-snap', 'resources', 'client-holdings'
                 ];
                 allBoxes.forEach(boxId => {{
                     document.getElementById(boxId).style.display = (boxId === id) ?
@@ -746,10 +748,10 @@ def generate_report(result):
                 const feedbackSection = button.closest('.feedback-section');
                 const buttons = feedbackSection.querySelector('.feedback-buttons');
                 const message = feedbackSection.querySelector('.feedback-message');
-        
+    
                 buttons.style.display = 'none';
                 message.style.display = 'block';
-        
+    
                 setTimeout(() => {{
                     message.style.display = 'none';
                 }}, 5000);
@@ -760,11 +762,11 @@ def generate_report(result):
             const feedbackSection = button.closest('.feedback-section');
             const buttons = feedbackSection.querySelector('.feedback-buttons');
             const message = feedbackSection.querySelector('.feedback-message');
-        
+    
             // Hide buttons only when clicked
             buttons.style.display = 'none';
             message.style.display = 'block';
-        
+    
             // Hide message after 5 seconds
             setTimeout(() => {{
               message.style.display = 'none';
