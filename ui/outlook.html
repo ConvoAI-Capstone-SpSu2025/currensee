@@ -179,6 +179,9 @@
             border-right: 1px solid #d1d1d1;
             display: flex;
             flex-direction: column;
+            /* --- Add these two lines --- */
+            height: 100%; 
+            overflow-y: auto; 
         }
 
         .email-list-header {
@@ -504,6 +507,16 @@
             color: #605e5c;
             pointer-events: none;
         }
+        .report-type-label {
+          display: flex;
+          gap: 24px; 
+          margin-top: 12px; 
+          font-size: 15px;
+          font-weight: 500; 
+          color: #333; 
+          align-items: center; 
+          line-height: 1.4; 
+        }
         .report-type-options {
             display: flex;
             gap: 32px;
@@ -562,9 +575,64 @@
             gap: 32px;
             margin-top: 8px;
         }
-
-
+        .button-container {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 10px;
+        }
         
+        .outlook-clear-btn {
+          background-color: #0078d4; /* Outlook blue */
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          font-size: 14px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          border-radius: 4px;
+          cursor: pointer;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          transition: background-color 0.2s ease;
+        }
+        
+        .outlook-clear-btn:hover {
+          background-color: #005a9e;
+        }
+        .resizer {
+        width: 8px; 
+        background: #e0e0e0;
+        cursor: ew-resize; 
+        flex-shrink: 0;
+        }
+#saveClientInfoBtn {
+    background-color: #0078D4; /* Fluent UI blue */
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: none; /* Hidden by default — can be toggled by JS */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+    
+    #saveClientInfoBtn:hover {
+        background-color: #106EBE;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    
+    #saveClientInfoBtn:active {
+        background-color: #005A9E;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    
+    #saveClientInfoBtn:focus {
+        outline: 2px solid #605E5C;
+        outline-offset: 2px;
+    }
     </style>
 </head>
 <body>
@@ -668,240 +736,547 @@
             </div>
         </div>
     </div>
-
+    <div class="resizer" id="resizer"></div>
+        
         <!-- Email List Pane -->
-        <div class="email-list-pane">
-            <div class="email-list-header">
-                <span>Recent Emails</span>
-                <i class="fas fa-sync-alt" style="cursor: pointer;"></i>
-            </div>
-            <div class="email-item selected">
-                <div class="email-date">Mar 26</div>
-                <div class="email-sender">Adam Clay</div>
-                <div class="email-subject">Re: Annual Credit Facility Review</div>
-                <div class="email-preview">Looking forward to our meeting to discuss the annual credit facility review...</div>
-            </div>
-            <div class="email-item">
-                <div class="email-date">Mar 25</div>
-                <div class="email-sender">Sarah Johnson</div>
-                <div class="email-subject">Q1 Financial Review</div>
-                <div class="email-preview">Please find attached the Q1 financial statements for review...</div>
-            </div>
-            <div class="email-item">
-                <div class="email-date">Mar 24</div>
-                <div class="email-sender">Michael Chen</div>
-                <div class="email-subject">Investment Portfolio Update</div>
-                <div class="email-preview">The portfolio has shown significant growth this quarter...</div>
-            </div>
-            <div class="email-item">
-                <div class="email-date">Mar 23</div>
-                <div class="email-sender">Lisa Rodriguez</div>
-                <div class="email-subject">Market Analysis Request</div>
-                <div class="email-preview">Could you provide analysis on the recent market trends...</div>
-            </div>
+    <div class="email-list-pane">
+        <div class="email-list-header">
+            <span>Recent Emails</span>
+            <i class="fas fa-sync-alt" style="cursor: pointer;"></i>
         </div>
 
-        <!-- Main Content Pane -->
-        <div class="content-pane">
-        <div class="content-header" style="display: flex; align-items: center; gap: 12px;">
-            <i class="fas fa-chart-line" style="font-size: 28px; color: #106ebe;"></i>
-            <h1 class="content-title" style="margin: 0;">Currensee Client Summary & Email Report</h1>
+        <!-- Emails -->
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">Jul 09</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Hasbro - Post Divestiture Strategy Adjustments</div>
+          <div class="email-preview">Hi Jane, Yes, this needs further thought...</div>
         </div>
-            <div class="content-body">
 
+        <div class="email-item">
+          <div class="email-date">Jul 09</div>
+          <div class="email-sender">Thomas Grady</div>
+          <div class="email-subject">Re: Q2 Compliance Dashboard Updates</div>
+          <div class="email-preview">Noted on the KYC trigger thresholds...</div>
+        </div>
+        
+        
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">Jul 08</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Hasbro - Post Divestiture Strategy Adjustments</div>
+          <div class="email-preview">Thanks Jane, Thank you for the update...</div>
+        </div>
+
+        <div class="email-item">
+          <div class="email-date">Jul 05</div>
+          <div class="email-sender">Rachel Kim</div>
+          <div class="email-subject">SEC Filing Timeline Review</div>
+          <div class="email-preview">Can we confirm the updated 10-Q filing schedule?</div>
+        </div>
+        
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">Jun 29</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - Operational Risk Case Study Analysis</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Hi Jane...</div>
+        </div>
+        
+            <div class="email-item">
+              <div class="email-date">Jun 26</div>
+              <div class="email-sender">Carlos Mendez</div>
+              <div class="email-subject">Trinity - Yield Spread Alert Follow-Up</div>
+              <div class="email-preview">Jane, The widening in June’s yield spread is already triggering client flags. Let’s discuss mitigation options today? CM</div>
+            </div>
+
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">Jun 25</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - Emerging Market Growth vs. Headwinds</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Jane, Geopolitical risk implications? Best, Jessica Palmer</div>
+        </div>
+    
+        <div class="email-item">
+          <div class="email-date">Jul 24</div>
+          <div class="email-sender">Kevin Frost</div>
+          <div class="email-subject">Black Harbor - New Alternatives Opportunity</div>
+          <div class="email-preview">Jane, Quick ping — are you open to exploring a small-cap alt fund with 30-day liquidity? Happy to send performance deck. –Kevin</div>
+        </div>
+
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">Jun 24</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - Liquidity & Daily Redemption Strategies</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Hi Jane, Details on growth fund launches? Thanks, Jessica Palmer</div>
+        </div>
+        
                 
-<!-- Client Information Section -->
-<h3>
-  <i class="fas fa-user"></i> Client Information
-  <i id="editClientInfo" class="fas fa-cog"
-     style="float: right; cursor: pointer; color: #106ebe;"
-     title="Click to edit client info"></i>
-</h3>
+        <div class="email-item" data-client="denise.moore@celestica.com">
+          <div class="email-date">Jun 21</div>
+          <div class="email-sender">Denise Moore</div>
+          <div class="email-subject">Re: Celestica - Mid-Year Objective Adjustment Review</div>
+          <div class="email-preview">Jane, Could we involve long-term capital planning?...</div>
+        </div>
+        
+        
+        <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
+          <div class="email-date">Jun 13</div>
+          <div class="email-sender">Cynthia Hobbs</div>
+          <div class="email-subject">Re: AbbVie - Annual Plan & Strategic Priorities</div>
+          <div class="email-preview">Hi Jane, Can we discuss quarterly targets aligned with liquidity goals?...</div>
+        </div>
+        
+        <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
+          <div class="email-date">Jun 06</div>
+          <div class="email-sender">Cynthia Hobbs</div>
+          <div class="email-subject">Re: AbbVie - Global Macro Outlook & Policy Impact</div>
+          <div class="email-preview">Dear Jane, Thoughts on Fed policy trajectory?...</div>
+        </div>
+        
 
-<div id="clientInfoSection" class="form-section read-only">
-  <div class="form-row">
-    <div class="form-group">
-      <label for="clientName">Client Name</label>
-      <input type="text" id="clientName" value="Adam Clay" required>
-    </div>
-    <div class="form-group">
-      <label for="clientEmail">Client Email</label>
-      <input type="email" id="clientEmail" value="adam.clay@compass.com" required>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group">
-      <label for="meetingTimestamp">Meeting Date & Time</label>
-      <input type="text" id="meetingTimestamp" value="2024-03-26 11:00:00"
-             placeholder="YYYY-MM-DD HH:MM:SS" required>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="meetingDescription">Meeting Description</label>
-    <textarea id="meetingDescription" required>Compass - Annual Credit Facility Review Meeting</textarea>
-  </div>
+        <div class="email-item">
+          <div class="email-date">Jun 18</div>
+          <div class="email-sender">Thomas Grady</div>
+          <div class="email-subject">Re: Q2 Compliance Dashboard Updates</div>
+          <div class="email-preview">Noted on the KYC trigger thresholds...</div>
+        </div>
 
-  <!-- Save button (hidden by default) -->
-  <button id="saveClientInfoBtn" style="display: none; margin-top: 10px;">Save</button>
-</div>
+        <div class="email-item">
+          <div class="email-date">June 17</div>
+          <div class="email-sender">Sarah Johnson</div>
+          <div class="email-subject">Q1 Financial Review</div>
+          <div class="email-preview">Q1 financial statements for review...</div>
+        </div>
+        
+        <div class="email-item">
+          <div class="email-date">June 17</div>
+          <div class="email-sender">Michael Chen</div>
+          <div class="email-subject">Investment Portfolio Update</div>
+          <div class="email-preview">Portfolio has shown significant growth...</div>
+        </div>
+        
+        <div class="email-item">
+          <div class="email-date">Jun 17</div>
+          <div class="email-sender">Rachel Kim</div>
+          <div class="email-subject">SEC Filing Timeline Review</div>
+          <div class="email-preview">Can we confirm the updated 10-Q filing schedule?</div>
+        </div>
+        
+        <div class="email-item" data-client="denise.moore@celestica.com">
+          <div class="email-date">Jun 15</div>
+          <div class="email-sender">Denise Moore</div>
+          <div class="email-subject">Re: Celestica - Alternative Credit & Private Credit Strategy</div>
+          <div class="email-preview">Sustainable yield fund insights?...</div>
+        </div>
+        
+        <div class="email-item">
+          <div class="email-date">Jun 15</div>
+          <div class="email-sender">David Zhang</div>
+          <div class="email-subject">Re: Investment Strategy Adjustment - Midyear Outlook</div>
+          <div class="email-preview">Reducing exposure to EM debt...</div>
+        </div>
+        
+        <div class="email-item">
+          <div class="email-date">Jun 13</div>
+          <div class="email-sender">Samantha Lee</div>
+          <div class="email-subject">M&A Diligence Follow-up</div>
+          <div class="email-preview">Updated diligence tracker attached...</div>
+        </div>
+        
+        <div class="email-item" data-client="denise.moore@celestica.com">
+          <div class="email-date">Jun 09</div>
+          <div class="email-sender">Denise Moore</div>
+          <div class="email-subject">Re: Celestica - Counterparty Risk Assessment Update</div>
+          <div class="email-preview">Include counterparty risk position...</div>
+        </div>
+        
+        <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
+          <div class="email-date">May 24</div>
+          <div class="email-sender">Cynthia Hobbs</div>
+          <div class="email-subject">Re: AbbVie - Growth & Fixed Income Launch Overview</div>
+          <div class="email-preview">Private credit options?</div>
+        </div>
+        
+        <div class="email-item" data-client="denise.moore@celestica.com">
+          <div class="email-date">May 24</div>
+          <div class="email-sender">Denise Moore</div>
+          <div class="email-subject">Re: Celestica - Cross-Border Regulation & Jurisdiction Briefing</div>
+          <div class="email-preview">Cross-border disclosure rule changes?</div>
+        </div>
+        
+        <div class="email-item" data-client="denise.moore@celestica.com">
+          <div class="email-date">May 24</div>
+          <div class="email-sender">Denise Moore</div>
+          <div class="email-subject">Re: Celestica - Sector Weight Shift & Exposure Review</div>
+          <div class="email-preview">Sector weight changes?</div>
+        </div>
 
-<!-- Script for toggling and saving -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const editBtn = document.getElementById('editClientInfo');
-    const saveBtn = document.getElementById('saveClientInfoBtn');
-    const section = document.getElementById('clientInfoSection');
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">May 17</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - ESG Integration Framework & Screening</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Dear Jane, Insights on sustainability mandates? Regards, Jessica Palmer</div>
+        </div>
+        
+        <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
+          <div class="email-date">May 17</div>
+          <div class="email-sender">Cynthia Hobbs</div>
+          <div class="email-subject">Re: AbbVie - Proposed Benchmark Re-alignment Overview</div>
+          <div class="email-preview">Impacts of benchmark realignment?</div>
+        </div>
 
-    editBtn.addEventListener('click', () => {
-      section.classList.toggle('read-only');
-      saveBtn.style.display = section.classList.contains('read-only') ? 'none' : 'inline-block';
-    });
-
-    saveBtn.addEventListener('click', () => {
-      const data = {
-        clientName: document.getElementById('clientName').value,
-        clientEmail: document.getElementById('clientEmail').value,
-        meetingTimestamp: document.getElementById('meetingTimestamp').value,
-        meetingDescription: document.getElementById('meetingDescription').value,
-      };
-
-      fetch('/api/save_client_info', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then(response => {
-        if (response.ok) {
-          alert('Client info saved successfully');
-          section.classList.add('read-only');
-          saveBtn.style.display = 'none';
-        } else {
-          alert('Failed to save client info');
-        }
-      })
-      .catch(err => {
-        console.error('Error saving client info:', err);
-        alert('Error saving client info');
-      });
-    });
-  });
-</script>
+        <div class="email-item" data-client="jessica.palmer@hasbro.com">
+          <div class="email-date">May 16</div>
+          <div class="email-sender">Jessica Palmer</div>
+          <div class="email-subject">Re: Hasbro - Fit vs. Mandate: Benchmark Transition</div>
+          <div class="email-preview">Dear Jane, Thank you for your email. Hello Jane, Comparison of new vs old benchmarks? Thanks, Jessica Palmer</div>
+        </div>
 
         
-<!-- Report Generation Options -->
-                <div class="form-section">
-                    <h3><i class="fas fa-file-alt"></i> Generate Reports</h3>
-                    <div class="form-group" style="margin-bottom: 16px;">
-                        <div class="report-type-label">
-    Please select your report type
-</div>
-                        <div class="report-type-options">
-                            <label class="custom-checkbox">
-                                <input type="checkbox" id="autoReport" name="reportType" value="auto" checked>
-                                <span class="checkmark"></span>
-                                Auto Report
-                            </label>
-                            <label class="custom-checkbox">
-                                <input type="checkbox" id="customReport" name="reportType" value="custom">
-                                <span class="checkmark"></span>
-                                Customized Report
-                            </label>
-                        </div>
-                        <div id="customOptions" class="custom-suboptions" style="margin-left: 24px; margin-top: 8px; display: none; flex-direction: column; gap: 12px;">
-                            <!-- Email Summary Option -->
-                            <label class="custom-checkbox" style="margin-bottom: 0;">
-                                <input type="checkbox" id="emailSummary" name="customOption" value="emailSummary">
-                                <span class="checkmark"></span>
-                                Email Summary
-                            </label>
-                            <div id="emailSummarySub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="overallEmailSummary" name="emailSummaryOption" value="overall">
-                                    <span class="checkmark"></span>
-                                    Overall Email Summary
-                                </label>
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="recentEmailSummary" name="emailSummaryOption" value="recent">
-                                    <span class="checkmark"></span>
-                                    Recent Email Summary
-                                </label>
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="recentQuestions" name="emailSummaryOption" value="questions">
-                                    <span class="checkmark"></span>
-                                    Recent Questions
-                                </label>
-                            </div>
-                            <!-- Financial News Option -->
-                            <label class="custom-checkbox" style="margin-bottom: 0;">
-                                <input type="checkbox" id="financialNews" name="customOption" value="financialNews">
-                                <span class="checkmark"></span>
-                                Financial News
-                            </label>
-                            <div id="financialNewsSub" style="margin-left: 28px; margin-top: 4px; display: none; flex-direction: column; gap: 8px;">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="clientIndustryNews" name="financialNewsOption" value="industry">
-                                    <span class="checkmark"></span>
-                                    Client Industry News
-                                </label>
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="holdingNews" name="financialNewsOption" value="holding">
-                                    <span class="checkmark"></span>
-                                    Holding News
-                                </label>
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="macroeconomyNews" name="financialNewsOption" value="macro">
-                                    <span class="checkmark"></span>
-                                    Macroeconomy News
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const autoReport = document.getElementById('autoReport');
-                            const customReport = document.getElementById('customReport');
-                            const customOptions = document.getElementById('customOptions');
-                            const emailSummary = document.getElementById('emailSummary');
-                            const emailSummarySub = document.getElementById('emailSummarySub');
-                            const financialNews = document.getElementById('financialNews');
-                            const financialNewsSub = document.getElementById('financialNewsSub');
+        <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
+          <div class="email-date">May 12</div>
+          <div class="email-sender">Cynthia Hobbs</div>
+          <div class="email-subject">Re: AbbVie - Tax Deferral Strategy & Harvesting</div>
+          <div class="email-preview">IRS guidance updates?</div>
+        </div>
+        
+        <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
+          <div class="email-date">May 09</div>
+          <div class="email-sender">Cynthia Hobbs</div>
+          <div class="email-subject">Re: AbbVie - SEC Policy Briefing & Discussion</div>
+          <div class="email-preview">Compliance updates?</div>
+        </div>
+        
+        <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
+          <div class="email-date">May 09</div>
+          <div class="email-sender">Cynthia Hobbs</div>
+          <div class="email-subject">Re: AbbVie - Risk Exposure & Counterparty Controls</div>
+          <div class="email-preview">Review interest rate hedges?</div>
+        </div>
+        
+        <div class="email-item" data-client="cynthia.hobbs@abbvie.com">
+          <div class="email-date">May 03</div>
+          <div class="email-sender">Cynthia Hobbs</div>
+          <div class="email-subject">Re: AbbVie - ESG Fund Portfolio & Benchmark Review</div>
+          <div class="email-preview">Updates on ESG rating methodologies?</div>
+        </div>
+        
+        <div class="email-item" data-client="denise.moore@celestica.com">
+          <div class="email-date">May 20</div>
+          <div class="email-sender">Denise Moore</div>
+          <div class="email-subject">Re: Celestica - Commodity Trends & Forecast Update</div>
+          <div class="email-preview">Currency market outlook?</div>
+        </div>
+        
 
-                            // Only one main report type can be selected
-                            autoReport.addEventListener('change', function() {
-                                if (autoReport.checked) {
-                                    customReport.checked = false;
-                                    customOptions.style.display = 'none';
-                                }
-                            });
-                            customReport.addEventListener('change', function() {
-                                if (customReport.checked) {
-                                    autoReport.checked = false;
-                                    customOptions.style.display = 'flex';
-                                } else {
-                                    customOptions.style.display = 'none';
-                                }
-                            });
+        
+        <div class="email-item">
+          <div class="email-date">Mar 23</div>
+          <div class="email-sender">Lisa Rodriguez</div>
+          <div class="email-subject">Market Analysis Request</div>
+          <div class="email-preview">Analysis on recent market trends...</div>
+        </div>
+    
+            </div>
+                <div class="content-body">
 
-                            emailSummary.addEventListener('change', function() {
-                                emailSummarySub.style.display = emailSummary.checked ? 'flex' : 'none';
-                            });
-
-                            financialNews.addEventListener('change', function() {
-                                financialNewsSub.style.display = financialNews.checked ? 'flex' : 'none';
-                            });
-
-                            // On page load, show/hide custom options based on initial state
-                            if (customReport.checked) {
-                                customOptions.style.display = 'flex';
-                            } else {
-                                customOptions.style.display = 'none';
-                            }
-                        });
-                    </script>
+                
+            <!-- Client Information Section -->
+            <h3>
+              <i class="fas fa-user"></i> Client Information
+              <i id="editClientInfo" class="fas fa-cog"
+                 style="float: right; cursor: pointer; color: #106ebe;"
+                 title="Click to edit client info"></i>
+            </h3>
+            
+            <div id="clientInfoSection" class="form-section read-only">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="clientName">Client Name</label>
+                  <input type="text" id="clientName" value="" required disabled>
+                </div>
+                <div class="form-group">
+                  <label for="clientEmail">Client Email</label>
+                  <select id="clientEmail" required disabled>
+                    <!-- 👇 Add or update email options here -->
+                    <option value="jessica.palmer@hasbro.com">jessica.palmer@hasbro.com</option>
+                    <option value="denise.moore@celestica.com">denise.moore@celestica.com</option>
+                    <option value="cynthia.hobbs@abbvie.com">cynthia.hobbs@abbvie.com</option>
+                    <!-- ☝️ End of email options -->
+                  </select>
                     
-                    <!-- End New Report Type Options -->
+                   <div class="button-container">
+                      <button id="clearSelectionBtn" class="outlook-clear-btn">Clear</button>
+                    </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="meetingTimestamp">Meeting Date & Time</label>
+                  <select id="meetingTimestamp" required disabled></select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="meetingDescription">Meeting Description</label>
+                <textarea id="meetingDescription" required disabled></textarea>
+              </div>
+            
+              <button id="saveClientInfoBtn" style="display: none; margin-top: 10px;">Save</button>
+            </div>
+            
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const editBtn = document.getElementById('editClientInfo');
+            const saveBtn = document.getElementById('saveClientInfoBtn');
+            const section = document.getElementById('clientInfoSection');
+            const emailSelect = document.getElementById('clientEmail');
+            const meetingSelect = document.getElementById('meetingTimestamp');
+            const descriptionField = document.getElementById('meetingDescription');
+        
+
+              
+            const clientData = {
+              "denise.moore@celestica.com": [
+                {
+                  name: "Denise Moore",
+                  timestamp: "2025-06-22 16:00:00",
+                  description: "Celestica - Mid-Year Objective Adjustment Review"
+                },
+                {
+                  name: "Denise Moore",
+                  timestamp: "2025-05-25 10:00:00",
+                  description: "Celestica - Cross-Border Regulation & Jurisdiction Briefing"
+                },
+                {
+                  name: "Denise Moore",
+                  timestamp: "2025-05-18 10:00:00",
+                  description: "Celestica - Carbon Score & ESG Exclusion Analysis"
+                },
+                  
+              ],
+              "jessica.palmer@hasbro.com": [
+                {
+                  name: "Jessica Palmer",
+                  timestamp: "2025-07-10 14:30:00",
+                  description: "Hasbro - Discuss Portfolio Diversification and Risk Strategy"
+                },
+                {
+                  name: "Jessica Palmer",
+                  timestamp: "2025-05-17 14:00:00",
+                  description: "Hasbro - ESG Integration Framework & Screening"
+                },
+                {
+                  name: "Jessica Palmer",
+                  timestamp: "2025-05-01 11:00:00",
+                  description: "Hasbro - Strategic Targets Rollout Discussion"
+                },
+                
+                  
+              ],
+
+              "cynthia.hobbs@abbvie.com": [
+                {
+                  name: "Cynthia Hobbs",
+                  timestamp: "2025-06-13 16:00:00",
+                  description: "AbbVie - Annual Plan & Strategic Priorities"
+                },
+                {
+                  name: "Cynthia Hobbs",
+                  timestamp: "2025-05-24 15:00:00",
+                  description: "Growth & Fixed Income Launch Overview"
+                },
+                {
+                  name: "Cynthia Hobbs",
+                  timestamp: "2025-05-03 10:00:00",
+                  description: "ESG Fund Portfolio & Benchmark Review"
+                },
+
+                  
+              ],
+              "ryan.holloway@bankwell.com": [
+                {
+                  name: "Ryan Holloway",
+                  timestamp: "2025-03-28 09:00:00",
+                  description: "Bankwell Investment Strategy Discussion"
+                }
+              ],
+              "marco.diaz@horizon.com": [
+                {
+                  name: "Marco Diaz",
+                  timestamp: "2025-03-28 10:00:00",
+                  description: "Horizon Fund Allocation Review"
+                }
+              ]
+            };
+        
+            function updateClientFields(email) {
+              const meetings = clientData[email] || [];
+        
+              // Clear old meeting options
+              meetingSelect.innerHTML = '';
+        
+              if (meetings.length > 0) {
+                document.getElementById('clientName').value = meetings[0].name || '';
+        
+                meetings.forEach((entry, index) => {
+                  const option = document.createElement('option');
+                  option.value = entry.timestamp;
+                  option.textContent = entry.timestamp;
+                  option.dataset.description = entry.description;
+                  meetingSelect.appendChild(option);
+                });
+        
+                // Set initial description from first meeting
+                descriptionField.value = meetings[0].description || '';
+        
+                // Update description on timestamp change
+                meetingSelect.addEventListener('change', (e) => {
+                  const selectedOption = e.target.selectedOptions[0];
+                  descriptionField.value = selectedOption.dataset.description || '';
+                });
+              } else {
+                document.getElementById('clientName').value = '';
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'No meetings';
+                meetingSelect.appendChild(option);
+                descriptionField.value = '';
+              }
+            }
+        
+            // Initial fill
+            updateClientFields(emailSelect.value);
+        
+            // On email change
+        emailSelect.addEventListener('change', (e) => {
+          const selectedEmail = e.target.value;
+          updateClientFields(selectedEmail);
+          filterEmailsByClient(selectedEmail); // 👈 This line filters emails
+        });
+              
+            function filterEmailsByClient(email) {
+              const allEmails = document.querySelectorAll('.email-item');
+              allEmails.forEach(item => {
+                if (!email || item.dataset.client === email) {
+                  item.style.display = 'block';
+                } else {
+                  item.style.display = 'none';
+                }
+              });
+            }
+              
+        
+            // Toggle edit mode
+            editBtn.addEventListener('click', () => {
+              const isReadOnly = section.classList.toggle('read-only');
+              const inputs = section.querySelectorAll('input, textarea, select');
+              inputs.forEach(input => input.disabled = isReadOnly);
+              saveBtn.style.display = isReadOnly ? 'none' : 'inline-block';
+            });
+        
+            saveBtn.addEventListener('click', () => {
+              const data = {
+                clientName: document.getElementById('clientName').value,
+                clientEmail: emailSelect.value,
+                meetingTimestamp: meetingSelect.value,
+                meetingDescription: descriptionField.value,
+              };
+              console.log("Saved (locally):", data);
+              section.classList.add('read-only');
+              section.querySelectorAll('input, textarea, select').forEach(input => input.disabled = true);
+              saveBtn.style.display = 'none';
+            });
+          });
+        </script>
+
+                    
+    <!-- Outlook-Styled Report Generation -->
+    <div class="form-section" style="font-family: 'Segoe UI', sans-serif; max-width: 600px;">
+      <h3 style="font-size: 16px; font-weight: 600; color: #2e2e2e; margin-bottom: 12px;">
+        <i class="fas fa-file-alt" style="margin-right: 6px; color: #0078D4;"></i>
+        Report Preferences
+      </h3>
+    
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <!-- Radio Group -->
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <label style="display: flex; align-items: start; gap: 12px; cursor: pointer; background-color: #f3f9ff; border-left: 4px solid #0078D4; padding: 12px 8px; border-radius: 4px;">
+        <input type="radio" name="reportType" id="autoReport" value="auto" checked style="accent-color: #0078D4; margin-top: 4px;">
+        <div>
+          <div style="font-size: 16px; font-weight: 700; color: #1a1a1a;">
+            Smart Report <span style="color: #0078D4; font-weight: 600;">(Recommended)</span>
+          </div>
+          <div style="font-size: 13px; color: #555;">
+            Automatically generates a meeting-ready summary with insights.
+          </div>
+        </div>
+      </label>
+          <label style="display: flex; align-items: start; gap: 12px; cursor: pointer;">
+            <input type="radio" name="reportType" id="customReport" value="custom" style="accent-color: #0078D4;">
+            <div>
+              <div style="font-weight: 600;">Manual Report</div>
+              <div style="font-size: 13px; color: #555;">Select specific content to include in the report manually.</div>
+            </div>
+          </label>
+        </div>
+    
+        <!-- Custom Options -->
+        <div id="customOptions" style="display: none; flex-direction: column; gap: 12px; padding-left: 24px; border-left: 2px solid #eee; margin-top: 4px;">
+          <!-- Email Summary -->
+          <label style="font-weight: 500; font-size: 14px; color: #2e2e2e;">
+            <input type="checkbox" id="emailSummary" style="margin-right: 8px;"> Include Email Summary
+          </label>
+          <div id="emailSummarySub" style="display: none; flex-direction: column; gap: 8px; padding-left: 20px;">
+            <label><input type="checkbox" id="overallEmailSummary" style="margin-right: 8px;"> Overall Summary</label>
+            <label><input type="checkbox" id="recentEmailSummary" style="margin-right: 8px;"> Recent Emails</label>
+            <label><input type="checkbox" id="recentQuestions" style="margin-right: 8px;"> Recent Questions</label>
+          </div>
+    
+          <!-- Financial News -->
+          <label style="font-weight: 500; font-size: 14px; color: #2e2e2e;">
+            <input type="checkbox" id="financialNews" style="margin-right: 8px;"> Include Financial News
+          </label>
+          <div id="financialNewsSub" style="display: none; flex-direction: column; gap: 8px; padding-left: 20px;">
+            <label><input type="checkbox" id="clientIndustryNews" style="margin-right: 8px;"> Client Industry News</label>
+            <label><input type="checkbox" id="holdingNews" style="margin-right: 8px;"> Holdings</label>
+            <label><input type="checkbox" id="macroeconomyNews" style="margin-right: 8px;"> Macroeconomy</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const autoReport = document.getElementById('autoReport');
+        const customReport = document.getElementById('customReport');
+        const customOptions = document.getElementById('customOptions');
+    
+        const emailSummary = document.getElementById('emailSummary');
+        const emailSummarySub = document.getElementById('emailSummarySub');
+        const financialNews = document.getElementById('financialNews');
+        const financialNewsSub = document.getElementById('financialNewsSub');
+    
+        function toggleCustomOptions() {
+          customOptions.style.display = customReport.checked ? 'flex' : 'none';
+        }
+    
+        autoReport.addEventListener('change', toggleCustomOptions);
+        customReport.addEventListener('change', toggleCustomOptions);
+    
+        emailSummary.addEventListener('change', () => {
+          emailSummarySub.style.display = emailSummary.checked ? 'flex' : 'none';
+        });
+    
+        financialNews.addEventListener('change', () => {
+          financialNewsSub.style.display = financialNews.checked ? 'flex' : 'none';
+        });
+    
+        toggleCustomOptions(); // initialize on load
+      });
+    </script>
+                        
+    <!-- End New Report Type Options -->
 
         <!-- Generate Report Option -->
             <div class="form-section">
@@ -961,11 +1336,13 @@
         }
 
         function getFormData() {
+            const timestampSelect = document.getElementById('meetingTimestamp');
+            const selectedOption = timestampSelect.selectedOptions[0];
             return {
                 client_name: document.getElementById('clientName').value,
                 client_email: document.getElementById('clientEmail').value,
-                meeting_timestamp: document.getElementById('meetingTimestamp').value,
-                meeting_description: document.getElementById('meetingDescription').value,
+                meeting_timestamp: timestampSelect.value,
+                meeting_description: selectedOption ? selectedOption.dataset.description : '',
             };
         }
 
@@ -1003,56 +1380,87 @@
             }, 500);
         }
 
-
-async function generateReport(format) {
-    const data = getFormData();
-
-    if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
-        showStatus('Please fill in all required fields', 'error');
-        return;
-    }
-
-    if (format === 'html') {
-        showStatus('Generating HTML report...', 'loading');
-
-        // Open popup window immediately
-        const newWindow = window.open('', '_blank', 'width=1000,height=800');
-        if (!newWindow) {
-            showStatus('Popup blocked! Please allow popups for this site.', 'error');
+    
+    async function generateReport(format) {
+        const data = getFormData();
+    
+        if (!data.client_name || !data.client_email || !data.meeting_timestamp || !data.meeting_description) {
+            showStatus('Please fill in all required fields', 'error');
             return;
         }
-
-        try {
-            const response = await fetch(`${API_BASE_URL}/report-html`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ...data,
-                    user_email: "demo@currensee.ai"
-                }),
-            });
-
-            if (!response.ok) {
-                const err = await response.text();
-                throw new Error(err || 'Failed to generate HTML report');
+    
+        if (format === 'html') {
+            showStatus('Generating your HTML report. This may take a minute...', 'loading');
+    
+            try {
+                const response = await fetch(`${API_BASE_URL}/generate-report/html`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ...data,
+                        user_email: "jane.moneypenny@bankwell.com"
+                    }),
+                });
+    
+                if (!response.ok) {
+                    const err = await response.text();
+                    throw new Error(err || 'Failed to generate HTML report');
+                }
+    
+                const html = await response.text();
+    
+                const newWindow = window.open('', '_blank', 'width=1000,height=800');
+                if (!newWindow) {
+                    showStatus('Popup blocked! Please allow popups for this site.', 'error');
+                    return;
+                }
+                newWindow.document.open();
+                newWindow.document.write(html);
+                newWindow.document.close();
+    
+                hideStatus();
+    
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('Error generating report:', error);
             }
-
-            const html = await response.text();
-
-            // Write the HTML into the new window
-            newWindow.document.open();
-            newWindow.document.write(html);
-            newWindow.document.close();
-
-            hideStatus();
-
-        } catch (error) {
-            showStatus(`Error: ${error.message}`, 'error');
-            console.error('Error generating report:', error);
-            newWindow.close();
+    
+        } else if (format === 'pdf') {
+            showStatus('Downloading your PDF report. This may take a minute...', 'loading');
+    
+            try {
+                const response = await fetch(`${API_BASE_URL}/generate-report/pdf`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ...data,
+                        user_email: "jane.moneypenny@bankwell.com"
+                    }),
+                });
+    
+                if (!response.ok) {
+                    const err = await response.text();
+                    throw new Error(err || 'Failed to generate PDF report');
+                }
+    
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Client_Report_${data.client_email}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+    
+                hideStatus();
+    
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                console.error('Error generating report:', error);
+            }
         }
     }
-}
         
             // Add click handlers for ribbon sections
             document.querySelectorAll('.ribbon-section').forEach(section => {
@@ -1081,12 +1489,39 @@ async function generateReport(format) {
                 const sender = item.querySelector('.email-sender').textContent;
                 const subject = item.querySelector('.email-subject').textContent;
 
-                if (sender === 'Adam Clay') {
-                    document.getElementById('clientName').value = 'Adam Clay';
-                    document.getElementById('clientEmail').value = 'adam.clay@compass.com';
-                    document.getElementById('meetingDescription').value = 'Compass - Annual Credit Facility Review Meeting';
+                if (sender === 'Denise Moore') {
+                    document.getElementById('clientName').value = 'Denise Moore';
+                    document.getElementById('clientEmail').value = 'denise.moore@celestica.com';
+                    document.getElementById('meetingDescription').value = 'Celestica - Mid-Year Objective Adjustment Review';
                 }
+
+                if (sender === 'Jessica Palmer') {
+                    document.getElementById('clientName').value = 'Jessica Palmer';
+                    document.getElementById('clientEmail').value = 'jessica.palmer@hasbro.com';
+                    document.getElementById('meetingDescription').value = 'Hasbro - Discuss Portfolio Diversification and Risk Strategy';
+                }
+
+                if (sender === 'Cynthia Hobbs') {
+                    document.getElementById('clientName').value = 'Cynthia Hobbs';
+                    document.getElementById('clientEmail').value = 'cynthia.hobbs@abbvie.com';
+                    document.getElementById('meetingDescription').value = 'AbbVie - Annual Plan & Strategic Priorities';
+                }
+
+
+                
             });
+        });
+
+        // Clear function on button click
+        document.getElementById('clearSelectionBtn').addEventListener('click', () => {
+            // Remove selection highlight from all email items
+            document.querySelectorAll('.email-item').forEach(i => i.classList.remove('selected'));
+        
+            // Clear all input fields
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientEmail').value = '';
+            document.getElementById('meetingTimestamp').value = '';
+            document.getElementById('meetingDescription').value = '';
         });
 
         // Initialize

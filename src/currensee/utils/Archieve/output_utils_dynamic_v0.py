@@ -4,13 +4,10 @@ import re
 import webbrowser
 from typing import Any, Dict, List, Optional, TypedDict
 
-import base64
 import markdown
 import matplotlib.pyplot as plt
-import logging
-
-# Import output guardrails for validation
-from ..core.output_guardrails import validate_output_before_rendering
+import weasyprint
+from weasyprint import HTML
 
 from currensee.agents.tools.finance_tools import generate_macro_table
 from currensee.utils.get_logo_utils import get_logo
@@ -161,92 +158,30 @@ def render_article_html(article):
     """
 
 
-def generate_report(result, enable_guardrails=True):
-    """
-    Generate HTML report with optional output guardrails validation.
-    
-    Args:
-        result: Dictionary containing report data from secure_graph_invoke()
-        enable_guardrails: Boolean flag to enable/disable output validation (default: True)
-                          Set to False to bypass guardrails for debugging
-        
-    Returns:
-        HTML string for the complete report
-    """
-    logger = logging.getLogger(__name__)
-    
-    # STEP 1: Optional output guardrails validation before rendering
-    if enable_guardrails:
-        try:
-            validation_result = validate_output_before_rendering(result)
-            
-            if validation_result["validation_passed"]:
-                logger.info("✅ Output validation passed - proceeding with report generation")
-                
-                # Log validation summary with details
-                pii_count = validation_result.get("pii_detected", 0)
-                compliance_count = validation_result.get("compliance_issues", 0)
-                tone_count = validation_result.get("tone_issues", 0)
-                processing_time = validation_result.get("processing_time_ms", 0)
-                
-                if pii_count > 0:
-                    logger.warning(f"🛡️ {pii_count} PII instances detected and redacted")
-                if compliance_count > 0:
-                    logger.warning(f"⚖️ {compliance_count} compliance issues detected")
-                if tone_count > 0:
-                    logger.info(f"📝 {tone_count} tone suggestions identified")
-                
-                logger.info(f"⚡ Output validation completed in {processing_time:.1f}ms")
-                
-                # Use sanitized report data for rendering
-                result = validation_result.get("sanitized_report", result)
-            else:
-                error_msg = validation_result.get("error", "Unknown validation error")
-                logger.error(f"❌ Output validation failed: {error_msg}")
-                # Continue with original data but log the issue
-                
-        except Exception as e:
-            logger.error(f"🔥 Output guardrails error: {str(e)} - continuing without validation")
-            # Continue with original data if guardrails fail
-    else:
-        logger.info("⚠️ Output guardrails disabled - generating report without validation")
-    
+def generate_report(result):
+
     #Meeting info section
     meeting_title = result.get("meeting_description", "") + " : Briefing Document"
     client_company = result.get("client_company", "")
     client_name = result.get("client_name", "")
     meeting_time = result.get("meeting_timestamp", "")
     last_meeting_time = result.get("last_meeting_timestamp", "")
+    
 
     #Summary Section
-    #-- Client Interaction--
     email_summary = result.get("summary_client_comms", "")
     recent_email_summary = result.get("recent_email_summary", "")
     recent_client_questions = result.get("recent_client_questions", "")
-    
-    # Enterprise-level content sanitization: Remove leading asterisks from email summary
-    if email_summary:
-        # Remove leading asterisks and whitespace from the beginning of the summary
-        email_summary = re.sub(r'^\s*\*+\s*', '', email_summary.strip(), flags=re.MULTILINE)
-        # Also handle cases where each line starts with asterisk
-        email_summary = '\n'.join(
-            re.sub(r'^\s*\*+\s*', '', line) if line.strip().startswith('*') else line
-            for line in email_summary.split('\n')
-        )
 
-    # -- Client News & Development--  
-    client_news_summary_sourced = result.get("client_news_summary_sourced", "")
-
-
-    # -- Portfolio & Market Overview --
-    holdings_summary = result.get("fin_hold_summary_sourced", "")
-
-    #Source
+    #Financial Section
     client_holdings_sources = result.get("client_holdings_sources", list())
+    client_news_summary_sources = result.get("client_news_summary_sourced", list())
     client_holdings = result.get("client_holdings", "")
     client_industry_sources = result.get("client_industry_sources", list())
 
-
+    #Summary
+    holdings_summary = result.get("fin_hold_summary_sourced", "")
+    client_news_summary = result.get("client_news_summary_sourced", "")
 
     macro_news_sources = result.get("macro_news_sources", list())
     
@@ -351,15 +286,33 @@ def generate_report(result, enable_guardrails=True):
             <h2 style="margin-bottom: 10px;">Client News & Developments</h2>
             
             <div style="position: relative; margin-bottom: 12px;">
-                <div>{client_news_summary_sourced}</div>
+                <div>{client_news_summary}</div>
+            </div>
+    
+            <div class="box-main box-content" style="margin-top: 14px;">
+                <button onclick="toggleBox('client-industry-news-box')">Client News</button>
+                
+                <div id='client-industry-news-box' class='toggle-box' style='display:none; margin-top: 10px;'>
+                    {format_sources_to_html(client_industry_sources, "Client News")}
                     <div class="feedback-section" style="margin-top: 12px;">
                         <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                            <button onclick="handleFeedback(this, 'more')">I want more client news</button>
-                            <button onclick="handleFeedback(this, 'less')">I want less client news</button>
+                            <button onclick="handleFeedback(this, 'more')">I want more client industry news</button>
+                            <button onclick="handleFeedback(this, 'less')">I want less client industry news</button>
                         </div>
                         <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
                             Got it! We will remember it next time
                         </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="feedback-section" style="margin-top: 12px;">
+                <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                    <button onclick="handleFeedback(this, 'more')">I want more Client News</button>
+                    <button onclick="handleFeedback(this, 'less')">I want less Client News</button>
+                </div>
+                <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                    Got it! We will remember it next time
                 </div>
             </div>
         </div>
@@ -401,6 +354,7 @@ def generate_report(result, enable_guardrails=True):
     financial_snapshot_html += "</tbody></table>"
 
     # News Resource Section
+
     html_client_holdings_sources = format_holdings_to_html(
         client_holdings_sources, "Client Holdings News"
     )
@@ -408,6 +362,12 @@ def generate_report(result, enable_guardrails=True):
         macro_news_sources, "Macro Economic News"
     )
 
+    resources_html = f"""
+    <div id="resources-content" class="box-content">
+        {html_client_holdings_sources}
+        {html_macro_news_sources}
+    </div>
+    """
 
 
     # Toggle boxes for "Email Summary" section
@@ -422,8 +382,8 @@ def generate_report(result, enable_guardrails=True):
             </div>
             
             <div class="box-main box-content" style="margin-top: 14px;">
-                <button class="toggle-btn" onclick="toggleBox('recent-email-box')">Recent Email</button>
-                <button class="toggle-btn" onclick="toggleBox('client-questions-box')">Client Questions</button>
+                <button onclick="toggleBox('recent-email-box')">Recent Email</button>
+                <button onclick="toggleBox('client-questions-box')">Client Questions</button>
                 
                 <div id='recent-email-box' class='toggle-box' style='display:none; margin-top: 10px;'>
                     {recent_email_summary}
@@ -464,76 +424,53 @@ def generate_report(result, enable_guardrails=True):
         </div>
         """
 
-    
-    # Toggle boxes for "Portofolio" section
-    portfolio_buttons = []
-    portfolio_sections = []
+    # Toggle boxes for "Financial News" section
+    financial_section_full = ""
     
     if holdings_detail.lower() != "none":
-        portfolio_buttons.append("<button class='toggle-btn' onclick=\"toggleBox('client-holdings')\">Holdings News</button>")
-        portfolio_sections.append(f"""
-            <div id='client-holdings' class='toggle-box' style='display:none; margin-top: 12px;'>
-                {html_client_holdings_sources}
-                <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more holdings news</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less holdings news</button>
-                    </div>
-                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
-                    </div>
+        macro_section = ""
+        if macro_news_detail.lower() != "none":
+            macro_section = f"""
+                <div>            
+                    <button onclick="toggleBox('macro-snap')">Macro Snapshot</button>
+                    <button onclick="toggleBox('resources')">Macro Resources</button>
                 </div>
-            </div>
-        """)
-    
-    if macro_news_detail.lower() != "none":
-        portfolio_buttons.append("<button class='toggle-btn' onclick=\"toggleBox('macro-snap')\">Macro Snapshot</button>")
-        portfolio_buttons.append("<button class='toggle-btn' onclick=\"toggleBox('resources')\">Macro News</button>")
-        
-        portfolio_sections.append(f"""
-            <div id='macro-snap' class='toggle-box' style='display:none; margin-top: 12px;'>
-                {financial_snapshot_html}
-                <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more macro data</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less macro data</button>
-                    </div>
-                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
-                    </div>
-                </div>
-            </div>
-        """)
-    
-        portfolio_sections.append(f"""
-            <div id='resources' class='toggle-box' style='display:none; margin-top: 12px;'>
-                {html_macro_news_sources}
-                <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more macro news</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less macro news</button>
-                    </div>
-                    <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
-                    </div>
-                </div>
-            </div>
-        """)
-    
-    # Combine final financial section if either part exists
-    financial_section_full = ""
-    if holdings_detail.lower() != "none" or macro_news_detail.lower() != "none":
-        # Note: Added a more substantial margin-top here for separation
-        financial_section_full = f"""
-            <div class="box-main box-content" style="margin-top: 20px; margin-bottom: 8px;">
-                <h2 style="margin-bottom: 10px;">Portfolio & Market Overview</h2>
-    
-                {"<div style='position: relative; margin-bottom: 12px;'>" + holdings_summary + "</div>" if holdings_detail.lower() != "none" else ""}
-    
-                {f"<div>{''.join(portfolio_buttons)}</div>" if portfolio_buttons else ""}
                 <div style="margin-top: 12px;">
-                    {''.join(portfolio_sections)}
+                    <div id='macro-snap' class='toggle-box' style='display:none;'>
+                        {financial_snapshot_html}
+                        <div class="feedback-section" style="margin-top: 12px;">
+                            <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                                <button onclick="handleFeedback(this, 'more')">I want more macro analysis</button>
+                                <button onclick="handleFeedback(this, 'less')">I want less macro analysis</button>
+                            </div>
+                            <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                                Got it! We will remember it next time
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id='resources' class='toggle-box' style='display:none; margin-top: 12px;'>
+                        {resources_html}
+                        <div class="feedback-section" style="margin-top: 12px;">
+                            <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
+                                <button onclick="handleFeedback(this, 'more')">I want more resources</button>
+                                <button onclick="handleFeedback(this, 'less')">I want less resources</button>
+                            </div>
+                            <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
+                                Got it! We will remember it next time
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            """
+    
+        financial_section_full = f"""
+            <div class="box-main box-content" style="margin-bottom: 8px;">
+                <h2 style="margin-bottom: 10px;">Portfolio & Market Overview</h2>
+                <div style="position: relative; margin-bottom: 12px;">
+                    <div>{holdings_summary}</div>
+                </div>
+                {macro_section}
     
                 <div class="feedback-section" style="margin-top: 12px;">
                     <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
@@ -609,50 +546,9 @@ def generate_report(result, enable_guardrails=True):
                 border: none;
                 border-radius: 4px;
                 cursor: pointer;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                font-size: 13px;
-                font-weight: 500;
-                transition: all 0.2s ease;
             }}
             button:hover {{
                 background-color: #1A5276;
-                transform: translateY(-1px);
-                box-shadow: 0 2px 8px rgba(41, 128, 185, 0.3);
-            }}
-            
-            /* Enterprise-grade toggle button styling for consistent UI */
-            .toggle-btn {{
-                padding: 8px 16px;
-                background-color: #2980B9;
-                color: white;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                font-size: 13px;
-                font-weight: 500;
-                margin-right: 8px;
-                margin-bottom: 6px;
-                transition: all 0.25s ease;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                min-width: 120px;
-                text-align: center;
-            }}
-            
-            .toggle-btn:hover {{
-                background-color: #1A5276;
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(41, 128, 185, 0.4);
-            }}
-            
-            .toggle-btn:active {{
-                transform: translateY(0);
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-            }}
-            
-            .toggle-btn:focus {{
-                outline: none;
-                box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.3);
             }}
             tr:nth-child(even) {{
                 background-color: #f9f9f9;
@@ -815,7 +711,7 @@ def generate_report(result, enable_guardrails=True):
             
             .feedback-buttons button:focus {{
               outline: none;
-              box-shadow: 0 0 0 2px rgba(16, 110, 190, 0.4);  
+              box-shadow: 0 0 0 2px rgba(16, 110, 190, 0.4); 
             }}
 
         </style>
@@ -823,8 +719,8 @@ def generate_report(result, enable_guardrails=True):
         <script>
             function toggleBox(id) {{
                 const allBoxes = [
-                    'recent-email-box', 'client-questions-box',
-                    'macro-snap', 'resources', 'client-holdings'
+                  'recent-email-box', 'client-questions-box',
+                  'macro-snap', 'resources'
                 ];
                 allBoxes.forEach(boxId => {{
                     document.getElementById(boxId).style.display = (boxId === id) ?
@@ -850,10 +746,10 @@ def generate_report(result, enable_guardrails=True):
                 const feedbackSection = button.closest('.feedback-section');
                 const buttons = feedbackSection.querySelector('.feedback-buttons');
                 const message = feedbackSection.querySelector('.feedback-message');
-    
+        
                 buttons.style.display = 'none';
                 message.style.display = 'block';
-    
+        
                 setTimeout(() => {{
                     message.style.display = 'none';
                 }}, 5000);
@@ -864,11 +760,11 @@ def generate_report(result, enable_guardrails=True):
             const feedbackSection = button.closest('.feedback-section');
             const buttons = feedbackSection.querySelector('.feedback-buttons');
             const message = feedbackSection.querySelector('.feedback-message');
-    
+        
             // Hide buttons only when clicked
             buttons.style.display = 'none';
             message.style.display = 'block';
-    
+        
             // Hide message after 5 seconds
             setTimeout(() => {{
               message.style.display = 'none';

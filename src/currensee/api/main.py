@@ -21,7 +21,7 @@ from currensee.utils.security_utils import (
     log_security_metrics
 )
 from currensee.utils.output_utils_dynamic import (
-    generate_report,
+    generate_report as generate_report_html_content,
     format_news_summary_to_html,
     format_paragraph_summary_to_html,
     save_html_to_file,
@@ -110,6 +110,9 @@ class ClientRequest(BaseModel):
         return validation_results
 
 
+
+
+        
 class GraphResponse(BaseModel):
     """Response model for graph execution results"""
 
@@ -244,7 +247,9 @@ async def generate_report(request: ClientRequest):
         return GraphResponse(success=False, error=str(e))
 
 
-@app.post("/report-html")
+
+
+@app.post("/generate-report/html")
 async def generate_report_html(request: ClientRequest):
     try:
         # Run comprehensive security validation
@@ -257,38 +262,23 @@ async def generate_report_html(request: ClientRequest):
         sanitized_inputs = get_sanitized_inputs(validation_results)
         
         init_state = {
-            "user_email": client_req.user_email,  # User email already validated
-            "client_name": sanitized_inputs.get("client_name", client_req.client_name),
-            "client_email": client_req.client_email,  # Email format already validated
-            "meeting_timestamp": client_req.meeting_timestamp,  # Timestamp validated
-            "meeting_description": sanitized_inputs.get("meeting_description", client_req.meeting_description),
+            "user_email": request.user_email,
+            "client_name": request.client_name,
+            "client_email": request.client_email,
+            "meeting_timestamp": request.meeting_timestamp,
+            "meeting_description": request.meeting_description,
         }
 
-
-        logger.info(f"Running compiled_graph with init_state: {init_state}")
-        
-        result = compiled_graph.invoke(init_state)
-
-        html_content = generate_report(result)
-        
-        logger.info(f"Compiled graph returned result: {result}")
-
-#        report_length = request.report_length or "medium"
-
-#        if report_length == "short":
-#            html_content = generate_short_report(result)
-#        elif report_length == "long":
-#            html_content = generate_long_report(result)
-#        else:
-#            html_content = generate_med_report(result)
+        result = compiled_graph.invoke(init_state) 
+        html_content = generate_report_html_content(result)
+        print(f"html_content type: {type(html_content)}") 
 
         return HTMLResponse(content=html_content)
-        
 
     except Exception as e:
-        logger.exception("Error in generate_report_html")
-        raise HTTPException(status_code=500, detail=str(e))
-
+        logger.exception("Error in generate_report_html")  # logs full traceback
+        traceback_str = ''.join(traceback.format_exception(None, e, e.__traceback__))
+        return JSONResponse(status_code=500, content={"detail": str(e), "trace": traceback_str})
         
         
 
@@ -380,7 +370,7 @@ async def demo_endpoint():
             client_email="adam.clay@compass.com",
             meeting_timestamp="2024-03-26 11:00:00",
             meeting_description="Compass - Annual Credit Facility Review Meeting",
-            report_length="long",
+            #report_length="long",
         )
 
         return await generate_report(demo_request)
