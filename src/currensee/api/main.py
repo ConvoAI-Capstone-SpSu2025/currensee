@@ -14,6 +14,12 @@ from pydantic import BaseModel, Field, validator
 
 from currensee.agents.complete_graph import compiled_graph
 from currensee.api.config import settings
+from currensee.core.input_guardrails import CurrenSeeInputGuardrails
+from currensee.utils.security_utils import (
+    process_validation_results,
+    get_sanitized_inputs,
+    log_security_metrics
+)
 from currensee.utils.output_utils_dynamic import (
     generate_report as generate_report_html_content,
     format_news_summary_to_html,
@@ -83,6 +89,25 @@ class ClientRequest(BaseModel):
         except ValueError:
             raise ValueError("Timestamp must be in format YYYY-MM-DD HH:MM:SS")
         return v
+    
+    def validate_with_guardrails(self) -> dict:
+        """Run comprehensive security validation using CurrenSee guardrails"""
+        import time
+        guardrails = CurrenSeeInputGuardrails()
+        start_time = time.time()
+        
+        validation_results = guardrails.validate_comprehensive(
+            user_email=self.user_email,
+            client_name=self.client_name,
+            client_email=self.client_email,
+            meeting_timestamp=self.meeting_timestamp,
+            meeting_description=self.meeting_description
+        )
+        
+        execution_time_ms = (time.time() - start_time) * 1000
+        log_security_metrics(validation_results, execution_time_ms)
+        
+        return validation_results
 
 
 
@@ -104,6 +129,19 @@ BASE_DIR = Path(__file__).resolve().parents[3]
 # Mount static files from ui folder
 app.mount("/static", StaticFiles(directory=BASE_DIR / "ui"), name="static")
 
+# Define ClientInfo class for the save endpoint
+class ClientInfo(BaseModel):
+    """Model for saving client information"""
+    client_name: str
+    client_email: str
+    additional_info: Optional[str] = None
+
+#Take user input
+@app.post("/api/save_client_info")
+async def save_client_info(info: ClientInfo):
+    # JING- SAVE IT TO DATABASE??
+    print("Received client info:", info)
+    return {"status": "success"}
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_notification():
@@ -159,14 +197,23 @@ async def generate_report(request: ClientRequest):
         start_time = datetime.now()
         logger.info(f"Starting report generation for client: {request.client_name}")
 
-        # Prepare the initial state for the graph
+        # Run comprehensive security validation
+        validation_results = request.validate_with_guardrails()
+        
+        # Process validation results (raises HTTPException if validation fails)
+        process_validation_results(validation_results, request.client_email)
+        
+        # Get sanitized inputs for safe processing
+        sanitized_inputs = get_sanitized_inputs(validation_results)
+        
+        # Prepare the initial state for the graph using sanitized inputs
         init_state = {
-            "user_email": request.user_email,
-            "client_name": request.client_name,
-            "client_email": request.client_email,
-            "meeting_timestamp": request.meeting_timestamp,
-            "meeting_description": request.meeting_description,
-            #"report_length": request.report_length or "long",
+            "user_email": request.user_email,  # User email already validated
+            "client_name": sanitized_inputs.get("client_name", request.client_name),
+            "client_email": request.client_email,  # Email format already validated
+            "meeting_timestamp": request.meeting_timestamp,  # Timestamp format validated
+            "meeting_description": sanitized_inputs.get("meeting_description", request.meeting_description),
+            "report_length": "long",
         }
 
         # Execute the compiled graph with timeout
@@ -205,6 +252,15 @@ async def generate_report(request: ClientRequest):
 @app.post("/generate-report/html")
 async def generate_report_html(request: ClientRequest):
     try:
+        # Run comprehensive security validation
+        validation_results = client_req.validate_with_guardrails()
+        
+        # Process validation results (raises HTTPException if validation fails)
+        process_validation_results(validation_results, client_req.client_email)
+        
+        # Get sanitized inputs for safe processing
+        sanitized_inputs = get_sanitized_inputs(validation_results)
+        
         init_state = {
             "user_email": request.user_email,
             "client_name": request.client_name,
@@ -232,14 +288,23 @@ async def generate_report_pdf(request: ClientRequest):
     Generate and return PDF report for the given client meeting
     """
     try:
+        # Run comprehensive security validation
+        validation_results = request.validate_with_guardrails()
+        
+        # Process validation results (raises HTTPException if validation fails)
+        process_validation_results(validation_results, request.client_email)
+        
+        # Get sanitized inputs for safe processing
+        sanitized_inputs = get_sanitized_inputs(validation_results)
+        
         # Prepare the initial state for the graph
         init_state = {
-            "user_email": request.user_email,
-            "client_name": request.client_name,
-            "client_email": request.client_email,
-            "meeting_timestamp": request.meeting_timestamp,
-            "meeting_description": request.meeting_description,
-            "report_length": request.report_length or "long",
+            "user_email": request.user_email,  # User email already validated
+            "client_name": sanitized_inputs.get("client_name", request.client_name),
+            "client_email": request.client_email,  # Email format already validated
+            "meeting_timestamp": request.meeting_timestamp,  # Timestamp validated
+            "meeting_description": sanitized_inputs.get("meeting_description", request.meeting_description),
+            "report_length": "long",  # Using fixed report length for PDF
         }
 
         # Execute the compiled graph
