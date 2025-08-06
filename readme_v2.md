@@ -4,7 +4,7 @@
   <img src="images/currensee.png" alt="CurrenSee Logo" width="300"/>
 </p>
 
-In the fast-paced world of financial advisory services, information overload threatens the quality of client relationships. CurrenSee transforms the chaos of scattered data sources—emails, CRM systems, financial news, and market reports—into clear, actionable intelligence. Our conversational AI interface leverages advanced multi-agent orchestration to deliver personalized meeting preparation reports, empowering financial advisors to focus on what matters most: building stronger client relationships.
+In the fast-paced world of financial advisory services, information overload threatens the quality of client relationships. CurrenSee transforms the chaos of scattered data sources-emails, CRM systems, financial news, and market reports-into clear, actionable intelligence. Our conversational AI interface leverages advanced multi-agent orchestration to deliver personalized meeting preparation reports, empowering financial advisors to focus on what matters most: building stronger client relationships.
 
 ---
 
