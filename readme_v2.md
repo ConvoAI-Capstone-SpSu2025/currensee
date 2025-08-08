@@ -96,10 +96,12 @@ Our adaptive AI system learns from every interaction:
   <img src="[Placeholder for the interactive report screenshot from page 10]" alt="Interactive Report Customization" width="700"/>
 </p>
 
+For each meeting that the user has, Currensee first determines the **Meeting Focus** that will be discussed in the meeting based upon the meeting description and recent past emails. The Meeting Focus could range from an Annual Financial Review, Risk Analysis, Sustainability, to Relationship Building. Based on the Meeting Focus, Currensee curates the most relevant information from each data source to include in its report. In addition, Currensee incorporates click data from the user to learn which parts of the report are most useful to the user for the topic.
+
 - **Interactive Feedback Loop**: Users can request longer/shorter summaries with immediate adaptation
 - **Preference Learning**: System remembers individual advisor preferences for report style and content depth
 - **Client-Specific Intelligence**: Tailored insights based on client industry, portfolio, and communication history
-- **Meeting Type Optimization**: Different templates for annual reviews, check-ins, and crisis management calls
+- **Meeting Type Optimization**: Different focus for annual reviews, check-ins, and crisis management calls
 
 ### **3. Enterprise-Grade Security Guardrails**
 
