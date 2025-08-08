@@ -917,13 +917,13 @@ def generate_report(result, enable_guardrails=True):
               box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
             }}
             
-            .feedback-buttons button:focus {
+            .feedback-buttons button:focus {{
               outline: none;
               box-shadow: 0 0 0 2px rgba(16, 110, 190, 0.4);  
-            }
+            }}
 
             /* Thumbs up/down button styling */
-            .thumb-btn {
+            .thumb-btn {{
                 background: none;
                 border: 2px solid #ddd;
                 border-radius: 50%;
@@ -937,36 +937,36 @@ def generate_report(result, enable_guardrails=True):
                 justify-content: center;
                 padding: 0;
                 margin: 0;
-            }
+            }}
             
-            .thumb-btn:hover {
+            .thumb-btn:hover {{
                 border-color: #2980B9;
                 transform: scale(1.1);
                 background-color: #f8f9fa;
-            }
+            }}
             
-            .thumb-btn.active-up {
+            .thumb-btn.active-up {{
                 border-color: #28a745;
                 background-color: #d4edda;
                 color: #155724;
-            }
+            }}
             
-            .thumb-btn.active-down {
+            .thumb-btn.active-down {{
                 border-color: #dc3545;
                 background-color: #f8d7da;
                 color: #721c24;
-            }
+            }}
             
-            .feedback-text-area {
+            .feedback-text-area {{
                 background-color: #f8f9fa;
                 border: 1px solid #dee2e6;
                 border-radius: 6px;
                 padding: 12px;
-            }
+            }}
             
-            .feedback-text-area textarea {
+            .feedback-text-area textarea {{
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
+            }}
 
         </style>
 
