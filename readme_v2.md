@@ -36,7 +36,7 @@ In the fast-paced world of financial advisory services, information overload thr
 Meet Jane, a seasoned relationship manager at a top-tier investment bank. Every morning, she faces an overwhelming tsunami of information: 50-150 active client relationships, 1,000+ daily financial news articles, 500+ emails flooding her inbox, and countless CRM updates scattered across multiple systems. The pressure to stay informed while maintaining personalized service for each client creates an impossible balancing act.
 
 <p align="center">
-  <img src="images/drowning_news.png" alt="The problem of information overload" width="600"/>
+  <img src="images/drowning_news.png" alt="The problem of information overload" width="400"/>
 </p>
 
 Jane's story mirrors that of thousands of financial advisors worldwide. Research shows that relationship managers spend up to 60% of their time on information gathering and synthesis rather than client-facing activities. The cost? Missed opportunities, decreased client satisfaction, and advisor burnout in an increasingly competitive market.
