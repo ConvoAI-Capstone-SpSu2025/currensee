@@ -11,7 +11,7 @@ from currensee.agents.tools.finance_tools import (
 from currensee.agents.tools.outlook_tools import (
     produce_client_email_summary, produce_recent_client_email_summary,
     produce_recent_client_questions, pull_recent_client_emails)
-from currensee.agents.tools.preference_tools import retrieve_current_formatt_preferences
+from currensee.agents.tools.user_preferences_tool import retrieve_current_user_preferences
 from currensee.agents.tools.meeting_categorization_tool import categorize_meeting_topic, determine_topic_of_news
 from currensee.core import get_model, settings
 from currensee.utils.sourcing_utils import get_fin_linked_summary
@@ -31,7 +31,7 @@ model = get_model(settings.DEFAULT_MODEL)
 complete_graph = StateGraph(SupervisorState)
 
 complete_graph.add_node("retrieve_client_metadata", retrieve_client_metadata)
-complete_graph.add_node("retrieve_current_formatt_preferences", retrieve_current_formatt_preferences)
+complete_graph.add_node("retrieve_current_user_preferences", retrieve_current_user_preferences)
 complete_graph.add_node("produce_outlook_summary", produce_client_email_summary)
 complete_graph.add_node("produce_recent_outlook_summary", produce_recent_client_email_summary)
 complete_graph.add_node("produce_recent_client_questions", produce_recent_client_questions)
@@ -47,8 +47,8 @@ complete_graph.add_node("final_summarizer_agent", summarize_all_outputs)
 complete_graph.add_node("add_sourcing_agent", get_fin_linked_summary)
 
 complete_graph.add_edge(START, "retrieve_client_metadata")
-complete_graph.add_edge("retrieve_client_metadata", "retrieve_current_formatt_preferences")
-complete_graph.add_edge("retrieve_current_formatt_preferences", "produce_outlook_summary")
+complete_graph.add_edge("retrieve_client_metadata", "retrieve_current_user_preferences")
+complete_graph.add_edge("retrieve_current_user_preferences", "produce_outlook_summary")
 complete_graph.add_edge("produce_outlook_summary", "produce_recent_outlook_summary")
 complete_graph.add_edge(
     "produce_recent_outlook_summary", "produce_recent_client_questions"

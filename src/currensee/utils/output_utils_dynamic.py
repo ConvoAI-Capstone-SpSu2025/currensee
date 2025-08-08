@@ -353,12 +353,25 @@ def generate_report(result, enable_guardrails=True):
             <div style="position: relative; margin-bottom: 12px;">
                 <div>{client_news_summary_sourced}</div>
                     <div class="feedback-section" style="margin-top: 12px;">
-                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                            <button onclick="handleFeedback(this, 'more')">I want more client news</button>
-                            <button onclick="handleFeedback(this, 'less')">I want less client news</button>
+                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                            <span style="font-size: 0.9em; margin-right: 8px;">Rate this section:</span>
+                            <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'client-news', true)" title="Thumbs up - I like this">
+                                👍
+                            </button>
+                            <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'client-news', false)" title="Thumbs down - I don't like this">
+                                👎
+                            </button>
+                        </div>
+                        <div class="feedback-text-area" id="client-news-feedback" style="display:none; margin-top: 10px;">
+                            <textarea placeholder="Please tell us what you'd like to see more or less of in client news coverage..." 
+                                      style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em; resize: vertical;"></textarea>
+                            <div style="margin-top: 5px; display: flex; gap: 8px;">
+                                <button onclick="submitFeedback('client-news')" style="background-color: #2980B9; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Submit</button>
+                                <button onclick="cancelFeedback('client-news')" style="background-color: #95a5a6; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Cancel</button>
+                            </div>
                         </div>
                         <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                            Got it! We will remember it next time
+                            Thank you for your feedback! We'll use this to improve future reports.
                         </div>
                 </div>
             </div>
@@ -428,12 +441,25 @@ def generate_report(result, enable_guardrails=True):
                 <div id='recent-email-box' class='toggle-box' style='display:none; margin-top: 10px;'>
                     {recent_email_summary}
                     <div class="feedback-section" style="margin-top: 12px;">
-                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                            <button onclick="handleFeedback(this, 'more')">I want more recent email</button>
-                            <button onclick="handleFeedback(this, 'less')">I want less recent email</button>
+                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                            <span style="font-size: 0.9em; margin-right: 8px;">Rate this section:</span>
+                            <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'recent-email', true)" title="Thumbs up - I like this">
+                                👍
+                            </button>
+                            <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'recent-email', false)" title="Thumbs down - I don't like this">
+                                👎
+                            </button>
+                        </div>
+                        <div class="feedback-text-area" id="recent-email-feedback" style="display:none; margin-top: 10px;">
+                            <textarea placeholder="Please tell us what you'd like to see more or less of in recent email coverage..." 
+                                      style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em; resize: vertical;"></textarea>
+                            <div style="margin-top: 5px; display: flex; gap: 8px;">
+                                <button onclick="submitFeedback('recent-email')" style="background-color: #2980B9; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Submit</button>
+                                <button onclick="cancelFeedback('recent-email')" style="background-color: #95a5a6; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Cancel</button>
+                            </div>
                         </div>
                         <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                            Got it! We will remember it next time
+                            Thank you for your feedback! We'll use this to improve future reports.
                         </div>
                     </div>
                 </div>
@@ -441,24 +467,50 @@ def generate_report(result, enable_guardrails=True):
                 <div id='client-questions-box' class='toggle-box' style='display:none; margin-top: 10px;'>
                     {recent_client_questions}
                     <div class="feedback-section" style="margin-top: 12px;">
-                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                            <button onclick="handleFeedback(this, 'more')">I want more client questions</button>
-                            <button onclick="handleFeedback(this, 'less')">I want less client questions</button>
+                        <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                            <span style="font-size: 0.9em; margin-right: 8px;">Rate this section:</span>
+                            <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'client-questions', true)" title="Thumbs up - I like this">
+                                👍
+                            </button>
+                            <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'client-questions', false)" title="Thumbs down - I don't like this">
+                                👎
+                            </button>
+                        </div>
+                        <div class="feedback-text-area" id="client-questions-feedback" style="display:none; margin-top: 10px;">
+                            <textarea placeholder="Please tell us what you'd like to see more or less of in client questions coverage..." 
+                                      style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em; resize: vertical;"></textarea>
+                            <div style="margin-top: 5px; display: flex; gap: 8px;">
+                                <button onclick="submitFeedback('client-questions')" style="background-color: #2980B9; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Submit</button>
+                                <button onclick="cancelFeedback('client-questions')" style="background-color: #95a5a6; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Cancel</button>
+                            </div>
                         </div>
                         <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                            Got it! We will remember it next time
+                            Thank you for your feedback! We'll use this to improve future reports.
                         </div>
                     </div>
                 </div>
             </div>
     
             <div class="feedback-section" style="margin-top: 14px;">
-                <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                    <button onclick="handleFeedback(this, 'more')">I want longer summary</button>
-                    <button onclick="handleFeedback(this, 'less')">I want shorter summary</button>
+                <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                    <span style="font-size: 0.9em; margin-right: 8px;">Rate this section:</span>
+                    <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'client-interactions', true)" title="Thumbs up - I like this">
+                        👍
+                    </button>
+                    <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'client-interactions', false)" title="Thumbs down - I don't like this">
+                        👎
+                    </button>
+                </div>
+                <div class="feedback-text-area" id="client-interactions-feedback" style="display:none; margin-top: 10px;">
+                    <textarea placeholder="Please tell us what you'd like to see more or less of in client interactions summary..." 
+                              style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em; resize: vertical;"></textarea>
+                    <div style="margin-top: 5px; display: flex; gap: 8px;">
+                        <button onclick="submitFeedback('client-interactions')" style="background-color: #2980B9; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Submit</button>
+                        <button onclick="cancelFeedback('client-interactions')" style="background-color: #95a5a6; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Cancel</button>
+                    </div>
                 </div>
                 <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                    Got it! We will remember it next time
+                    Thank you for your feedback! We'll use this to improve future reports.
                 </div>
             </div>
         </div>
@@ -475,12 +527,25 @@ def generate_report(result, enable_guardrails=True):
             <div id='client-holdings' class='toggle-box' style='display:none; margin-top: 12px;'>
                 {html_client_holdings_sources}
                 <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more holdings news</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less holdings news</button>
+                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                        <span style="font-size: 0.9em; margin-right: 8px;">Rate this section:</span>
+                        <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'holdings-news', true)" title="Thumbs up - I like this">
+                            👍
+                        </button>
+                        <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'holdings-news', false)" title="Thumbs down - I don't like this">
+                            👎
+                        </button>
+                    </div>
+                    <div class="feedback-text-area" id="holdings-news-feedback" style="display:none; margin-top: 10px;">
+                        <textarea placeholder="Please tell us what you'd like to see more or less of in holdings news coverage..." 
+                                  style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em; resize: vertical;"></textarea>
+                        <div style="margin-top: 5px; display: flex; gap: 8px;">
+                            <button onclick="submitFeedback('holdings-news')" style="background-color: #2980B9; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Submit</button>
+                            <button onclick="cancelFeedback('holdings-news')" style="background-color: #95a5a6; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Cancel</button>
+                        </div>
                     </div>
                     <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
+                        Thank you for your feedback! We'll use this to improve future reports.
                     </div>
                 </div>
             </div>
@@ -494,12 +559,25 @@ def generate_report(result, enable_guardrails=True):
             <div id='macro-snap' class='toggle-box' style='display:none; margin-top: 12px;'>
                 {financial_snapshot_html}
                 <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more macro data</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less macro data</button>
+                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                        <span style="font-size: 0.9em; margin-right: 8px;">Rate this section:</span>
+                        <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'macro-data', true)" title="Thumbs up - I like this">
+                            👍
+                        </button>
+                        <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'macro-data', false)" title="Thumbs down - I don't like this">
+                            👎
+                        </button>
+                    </div>
+                    <div class="feedback-text-area" id="macro-data-feedback" style="display:none; margin-top: 10px;">
+                        <textarea placeholder="Please tell us what you'd like to see more or less of in macro data coverage..." 
+                                  style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em; resize: vertical;"></textarea>
+                        <div style="margin-top: 5px; display: flex; gap: 8px;">
+                            <button onclick="submitFeedback('macro-data')" style="background-color: #2980B9; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Submit</button>
+                            <button onclick="cancelFeedback('macro-data')" style="background-color: #95a5a6; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Cancel</button>
+                        </div>
                     </div>
                     <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
+                        Thank you for your feedback! We'll use this to improve future reports.
                     </div>
                 </div>
             </div>
@@ -509,12 +587,25 @@ def generate_report(result, enable_guardrails=True):
             <div id='resources' class='toggle-box' style='display:none; margin-top: 12px;'>
                 {html_macro_news_sources}
                 <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want more macro news</button>
-                        <button onclick="handleFeedback(this, 'less')">I want less macro news</button>
+                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                        <span style="font-size: 0.9em; margin-right: 8px;">Rate this section:</span>
+                        <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'macro-news', true)" title="Thumbs up - I like this">
+                            👍
+                        </button>
+                        <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'macro-news', false)" title="Thumbs down - I don't like this">
+                            👎
+                        </button>
+                    </div>
+                    <div class="feedback-text-area" id="macro-news-feedback" style="display:none; margin-top: 10px;">
+                        <textarea placeholder="Please tell us what you'd like to see more or less of in macro news coverage..." 
+                                  style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em; resize: vertical;"></textarea>
+                        <div style="margin-top: 5px; display: flex; gap: 8px;">
+                            <button onclick="submitFeedback('macro-news')" style="background-color: #2980B9; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Submit</button>
+                            <button onclick="cancelFeedback('macro-news')" style="background-color: #95a5a6; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Cancel</button>
+                        </div>
                     </div>
                     <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
+                        Thank you for your feedback! We'll use this to improve future reports.
                     </div>
                 </div>
             </div>
@@ -536,12 +627,25 @@ def generate_report(result, enable_guardrails=True):
                 </div>
     
                 <div class="feedback-section" style="margin-top: 12px;">
-                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 6px;">
-                        <button onclick="handleFeedback(this, 'more')">I want longer financial summary</button>
-                        <button onclick="handleFeedback(this, 'less')">I want shorter financial summary</button>
+                    <div class="feedback-buttons" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                        <span style="font-size: 0.9em; margin-right: 8px;">Rate this section:</span>
+                        <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'financial-summary', true)" title="Thumbs up - I like this">
+                            👍
+                        </button>
+                        <button class="thumb-btn" onclick="toggleThumbFeedback(this, 'financial-summary', false)" title="Thumbs down - I don't like this">
+                            👎
+                        </button>
+                    </div>
+                    <div class="feedback-text-area" id="financial-summary-feedback" style="display:none; margin-top: 10px;">
+                        <textarea placeholder="Please tell us what you'd like to see more or less of in financial summary coverage..." 
+                                  style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em; resize: vertical;"></textarea>
+                        <div style="margin-top: 5px; display: flex; gap: 8px;">
+                            <button onclick="submitFeedback('financial-summary')" style="background-color: #2980B9; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Submit</button>
+                            <button onclick="cancelFeedback('financial-summary')" style="background-color: #95a5a6; color: white; padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.8em;">Cancel</button>
+                        </div>
                     </div>
                     <div class="feedback-message" style="display:none; color: green; font-size: 0.9em; margin-top: 5px;">
-                        Got it! We will remember it next time
+                        Thank you for your feedback! We'll use this to improve future reports.
                     </div>
                 </div>
             </div>
@@ -813,10 +917,56 @@ def generate_report(result, enable_guardrails=True):
               box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
             }}
             
-            .feedback-buttons button:focus {{
+            .feedback-buttons button:focus {
               outline: none;
               box-shadow: 0 0 0 2px rgba(16, 110, 190, 0.4);  
-            }}
+            }
+
+            /* Thumbs up/down button styling */
+            .thumb-btn {
+                background: none;
+                border: 2px solid #ddd;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .thumb-btn:hover {
+                border-color: #2980B9;
+                transform: scale(1.1);
+                background-color: #f8f9fa;
+            }
+            
+            .thumb-btn.active-up {
+                border-color: #28a745;
+                background-color: #d4edda;
+                color: #155724;
+            }
+            
+            .thumb-btn.active-down {
+                border-color: #dc3545;
+                background-color: #f8d7da;
+                color: #721c24;
+            }
+            
+            .feedback-text-area {
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 6px;
+                padding: 12px;
+            }
+            
+            .feedback-text-area textarea {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
 
         </style>
 
@@ -877,6 +1027,100 @@ def generate_report(result, enable_guardrails=True):
 
           function openClientHoldingsPage() {{
             window.open('/static/client_holding.html', '_blank');
+          }}
+          
+          // New function to handle thumbs up/down feedback
+          function toggleThumbFeedback(button, sectionId, isThumbsUp) {{
+            const feedbackSection = button.closest('.feedback-section');
+            const allThumbs = feedbackSection.querySelectorAll('.thumb-btn');
+            const textArea = document.getElementById(sectionId + '-feedback');
+            
+            // Remove active state from all thumbs
+            allThumbs.forEach(thumb => {{
+                thumb.classList.remove('active-up', 'active-down');
+            }});
+            
+            // Add active state to clicked thumb
+            if (isThumbsUp) {{
+                button.classList.add('active-up');
+            }} else {{
+                button.classList.add('active-down');
+            }}
+            
+            // Show text area
+            textArea.style.display = 'block';
+            
+            // Focus on textarea
+            const textarea = textArea.querySelector('textarea');
+            textarea.focus();
+            
+            // Update placeholder based on thumbs up/down
+            if (isThumbsUp) {{
+                textarea.placeholder = "Great! Please tell us what you especially liked about this section so we can include more of it...";
+            }} else {{
+                textarea.placeholder = "Thanks for the feedback! Please tell us what you'd like to see changed or improved in this section...";
+            }}
+          }}
+          
+          function submitFeedback(sectionId) {{
+            const textArea = document.getElementById(sectionId + '-feedback');
+            const textarea = textArea.querySelector('textarea');
+            const feedbackSection = textArea.closest('.feedback-section');
+            const message = feedbackSection.querySelector('.feedback-message');
+            const buttons = feedbackSection.querySelector('.feedback-buttons');
+            
+            const feedbackText = textarea.value.trim();
+            
+            if (feedbackText === '') {{
+                alert('Please enter some feedback before submitting.');
+                return;
+            }}
+            
+            // Get thumb selection
+            const activeThumb = feedbackSection.querySelector('.thumb-btn.active-up, .thumb-btn.active-down');
+            const isPositive = activeThumb && activeThumb.classList.contains('active-up');
+            
+            // Here you would typically send the feedback to your backend
+            // For now, we'll just show a confirmation message
+            console.log('Feedback submitted for section:', sectionId);
+            console.log('Positive feedback:', isPositive);
+            console.log('Feedback text:', feedbackText);
+            
+            // TODO: Send to LLM processing endpoint
+            // This is where you would call your LLM analysis endpoint
+            // Example: await processFeedbackWithLLM(sectionId, isPositive, feedbackText);
+            
+            // Hide feedback area and show confirmation
+            textArea.style.display = 'none';
+            buttons.style.display = 'none';
+            message.style.display = 'block';
+            
+            // Reset form
+            textarea.value = '';
+            feedbackSection.querySelectorAll('.thumb-btn').forEach(thumb => {{
+                thumb.classList.remove('active-up', 'active-down');
+            }});
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {{
+                message.style.display = 'none';
+                buttons.style.display = 'flex';
+            }}, 5000);
+          }}
+          
+          function cancelFeedback(sectionId) {{
+            const textArea = document.getElementById(sectionId + '-feedback');
+            const textarea = textArea.querySelector('textarea');
+            const feedbackSection = textArea.closest('.feedback-section');
+            
+            // Hide feedback area
+            textArea.style.display = 'none';
+            
+            // Reset form
+            textarea.value = '';
+            feedbackSection.querySelectorAll('.thumb-btn').forEach(thumb => {{
+                thumb.classList.remove('active-up', 'active-down');
+            }});
           }}
           
 
