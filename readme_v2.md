@@ -36,7 +36,7 @@ In the fast-paced world of financial advisory services, information overload thr
 Meet Jane, a seasoned relationship manager at a top-tier investment bank. Every morning, she faces an overwhelming tsunami of information: 50-150 active client relationships, 1,000+ daily financial news articles, 500+ emails flooding her inbox, and countless CRM updates scattered across multiple systems. The pressure to stay informed while maintaining personalized service for each client creates an impossible balancing act.
 
 <p align="center">
-  <img src="[Placeholder for the 'drowning in news' image from page 2 of the presentation]" alt="The problem of information overload" width="600"/>
+  <img src="images/drowning_news.png" alt="The problem of information overload" width="600"/>
 </p>
 
 Jane's story mirrors that of thousands of financial advisors worldwide. Research shows that relationship managers spend up to 60% of their time on information gathering and synthesis rather than client-facing activities. The cost? Missed opportunities, decreased client satisfaction, and advisor burnout in an increasingly competitive market.
@@ -54,7 +54,7 @@ CurrenSee transforms Jane's workflow from reactive information hunting to proact
 CurrenSee follows an intuitive end-to-end workflow that transforms meeting notifications into actionable intelligence:
 
 <p align="center">
-  <img src="[Placeholder for Project Workflow Diagram from page 11]" alt="Project Workflow" width="800"/>
+  <img src="images/system_overview.png" alt="Project Workflow" width="800"/>
 </p>
 
 **1. Meeting Notification** → **2. Agentic Data Retrieval** → **3. User Preference Response Tuning** → **4. Report Generation** → **5. User Feedback**
@@ -82,6 +82,9 @@ CurrenSee is built on three foundational pillars that ensure reliability, person
 ### **1. Unified Data Integration**
 
 CurrenSee connects seamlessly to your existing technology stack:
+<p align="center">
+  <img src="images/data_integration.png" alt="Internal and External Data Integration" width="700"/>
+</p>
 
 - **Internal Sources**: Salesforce CRM, Microsoft Outlook
 - **External Sources**: Financial news via Serper API (accessing WSJ, Yahoo Finance, and other major sources)
@@ -236,7 +239,7 @@ class ClientRequest(BaseModel):
 ## **📊 Evaluation & Results**
 
 <p align="center">
-  <img src="[Placeholder for the Risk Classification Bar Chart from page 17]" alt="Risk Classification Performance" width="500"/>
+  <img src="images/risk_evaluation.png" alt="Risk Classification Performance" width="500"/>
 </p>
 
 ### **Security Performance**
@@ -291,7 +294,7 @@ Unlike existing solutions such as Jump and Zocks, CurrenSee offers:
 
 ### **Market Opportunity**
 <p align="center">
-  <img src="[Placeholder for the Annual Value Calculation from page 19]" alt="CurrenSee's Annual Value Proposition" width="600"/>
+  <img src="images/market_valuation.png" alt="CurrenSee's Annual Value Proposition" width="600"/>
 </p>
 
 **Raymond James Case Study**: 
