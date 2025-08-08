@@ -1097,9 +1097,9 @@ def generate_report(result, enable_guardrails=True):
             try {{
                 const response = await fetch('/submit-feedback', {{
                     method: 'POST',
-                    headers: {
+                    headers: {{
                         'Content-Type': 'application/json',
-                    },
+                    }},
                     body: JSON.stringify(payload),
                 }});
 
