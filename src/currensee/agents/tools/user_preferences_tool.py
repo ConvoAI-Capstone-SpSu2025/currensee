@@ -12,6 +12,7 @@ import logging
 import pandas as pd
 from typing import Dict, Any, Optional, Tuple
 from datetime import datetime
+from sqlalchemy import insert
 
 from currensee.core import get_model, settings
 from currensee.agents.tools.base import SupervisorState
@@ -88,10 +89,10 @@ def retrieve_current_user_preferences(state: SupervisorState) -> dict:
         logger.error(f"❌ Error retrieving user preferences: {str(e)}")
         # Return default preferences if retrieval fails
         new_state = state.copy()
-        new_state["holdings_detail"] = "medium"
-        new_state["client_news_detail"] = "medium"
-        new_state["macro_news_detail"] = "medium"
-        new_state["past_meeting_detail"] = "medium"
+        new_state["holdings_detail"] = "full"
+        new_state["client_news_detail"] = "full"
+        new_state["macro_news_detail"] = "full"
+        new_state["past_meeting_detail"] = "full"
         return new_state
 
 
@@ -101,7 +102,6 @@ def analyze_feedback_with_llm(
     feedback_text: str,
     user_email: str,
     current_preferences: Optional[Dict[str, str]] = None,
-    report_context: Optional[Dict[str, Any]] = None
 ) -> Dict[str, Any]:
     """
     Analyze user feedback using LLM to determine preference changes.
@@ -112,7 +112,6 @@ def analyze_feedback_with_llm(
         feedback_text: User's detailed feedback text
         user_email: Email of the user providing feedback
         current_preferences: Current user preference settings
-        report_context: Optional context about the current report structure
         
     Returns:
         Dictionary containing analysis results and recommended preference changes
@@ -137,7 +136,7 @@ def analyze_feedback_with_llm(
     
     # Create LLM prompt for feedback analysis
     sentiment = "positive" if is_positive else "negative"
-    current_level = current_preferences.get(preference_column, "medium") if current_preferences else "medium"
+    current_level = current_preferences.get(preference_column, "none") if current_preferences else "none"
     
     prompt = f"""
     You are analyzing user feedback for a financial reporting system. The user has provided {sentiment} feedback about the "{section_id.replace('-', ' ')}" section of their report.
@@ -153,9 +152,8 @@ def analyze_feedback_with_llm(
 
     The system has these preference levels for each section:
     - "none": Don't include this section
-    - "low": Minimal content (previously "short")
-    - "medium": Standard content (previously "full")  
-    - "high": Detailed content with extra analysis
+    - "short": Minimal content
+    - "full": Detailed content with extra analysis
 
     Please analyze the feedback and provide:
     1. What specifically the user liked or disliked
@@ -168,7 +166,7 @@ def analyze_feedback_with_llm(
         "analysis_summary": "Brief summary of what user wants",
         "content_preference": "MORE|LESS|DIFFERENT|NO_CHANGE",
         "current_level": "{current_level}",
-        "recommended_level": "none|low|medium|high",
+        "recommended_level": "none|short|full",
         "specific_recommendations": ["list", "of", "specific", "recommendations"],
         "confidence_score": 0.8,
         "reasoning": "Explanation of why this change is recommended"
@@ -200,8 +198,8 @@ def analyze_feedback_with_llm(
             "preference_column": preference_column,
             "user_email": user_email,
             "feedback_text": feedback_text,
-            "is_positive": is_positive,
-            "llm_analysis": llm_analysis,
+            "current_level": current_level,
+            "recommended_level": llm_analysis.get('recommended_level', 'unknown'),
             "raw_llm_response": response.content,
             "timestamp": datetime.now().isoformat()
         }
@@ -214,41 +212,13 @@ def analyze_feedback_with_llm(
         return {"error": str(e)}
 
 
-def store_feedback_analysis(analysis_result: Dict[str, Any]) -> bool:
-    """
-    Store the feedback analysis results in the database.
-    
-    Args:
-        analysis_result: Results from analyze_feedback_with_llm
-        
-    Returns:
-        Boolean indicating success
-    """
-    try:
-        # For now, just log the analysis
-        # In production, you would store this in a feedback_analysis table
-        logger.info(f"📊 Storing feedback analysis: {analysis_result['section_id']} -> {analysis_result.get('llm_analysis', {}).get('recommended_level', 'unknown')}")
-        
-        # TODO: Implement actual database storage
-        # Example SQL:
-        """
-        INSERT INTO user_feedback_analysis 
-        (user_email, section_id, preference_column, is_positive, feedback_text, llm_analysis, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-        """
-        
-        return True
-        
-    except Exception as e:
-        logger.error(f"❌ Error storing feedback analysis: {str(e)}")
-        return False
-
 
 def update_user_preferences_from_feedback(
+    preference_update_timestamp: str,
     user_email: str,
     preference_column: str,
     new_preference_level: str,
-    current_preferences: Dict[str, str]
+    current_preferences: dict
 ) -> bool:
     """
     Update user preferences based on feedback analysis.
@@ -263,37 +233,27 @@ def update_user_preferences_from_feedback(
         Boolean indicating success
     """
     try:
-        # Create new preference record with updated values
-        current_time = datetime.now()
-        
+
         # Update the specific preference
         updated_preferences = current_preferences.copy()
         updated_preferences[preference_column] = new_preference_level
         
         logger.info(f"🔄 Updating {preference_column} preference for {user_email}: {current_preferences.get(preference_column)} -> {new_preference_level}")
-        
-        # TODO: Insert new preference record into database
-        # This would involve creating a new row in the preferences table with:
-        # - as_of_date: current_time
-        # - email: user_email  
-        # - all preference columns with updated values
-        # - employee info (would need to look up from existing records)
-        
-        # Example implementation:
-        """
+
         new_pref_record = {
-            'as_of_date': current_time,
+            'as_of_date': preference_update_timestamp,
             'email': user_email,
-            'finance_detail': updated_preferences.get('finance_detail', 'medium'),
+            'employee_first_name': updated_preferences.get('employee_first_name'),
+            'employee_last_name': updated_preferences.get('employee_last_name'),
+            'finance_detail': updated_preferences.get('finance_detail'),
             'news_detail': updated_preferences.get('news_detail', 'medium'),
             'macro_news_detail': updated_preferences.get('macro_news_detail', 'medium'),
             'past_meeting_detail': updated_preferences.get('past_meeting_detail', 'medium'),
-            # employee info would be copied from most recent record
+    
         }
         
         df = pd.DataFrame([new_pref_record])
         df.to_sql('preferences', engine, if_exists='append', index=False)
-        """
         
         return True
         
@@ -333,6 +293,33 @@ def process_user_feedback(
     """
     
     logger.info(f"🔄 Processing feedback from {user_email} for section {section_id}")
+
+    # Get the most recent preferences as of the meeting timestamp
+    mx_dt_df = pd.read_sql(f"""
+    select coalesce(as_of_date, '2023-01-23 10:00:00') as as_of_date
+    from (
+    SELECT max(p.as_of_date) as as_of_date
+    FROM preferences p
+    where p.email = '{user_email}'
+    and as_of_date <= '{meeting_timestamp}')a
+    """, con=engine)
+    
+    max_dt = mx_dt_df['as_of_date'].iloc[0]
+    
+    query_str = f"""
+    SELECT p.as_of_date
+    , p.employee_first_name
+    , p.employee_last_name
+    , p.finance_detail
+    , p.news_detail
+    , p.macro_news_detail
+    , p.past_meeting_detail 
+    , p.email    
+    FROM preferences p
+    where p.email = '{user_email}' and p.as_of_date = '{max_dt}'
+    """
+    pref_df = pd.read_sql(query_str, con=engine)
+    current_preferences = pref_df.iloc[0]
     
     # Step 1: Analyze feedback with LLM
     analysis = analyze_feedback_with_llm(
@@ -346,13 +333,7 @@ def process_user_feedback(
     if "error" in analysis:
         return {"success": False, "error": analysis["error"]}
     
-    # Step 2: Store the analysis
-    stored = store_feedback_analysis(analysis)
-    
-    if not stored:
-        return {"success": False, "error": "Failed to store analysis"}
-    
-    # Step 3: Apply preference changes if recommended and auto-update is enabled
+    # Step 2: Apply preference changes if recommended and auto-update is enabled
     llm_analysis = analysis.get("llm_analysis", {})
     recommended_level = llm_analysis.get("recommended_level")
     current_level = llm_analysis.get("current_level")
@@ -368,6 +349,7 @@ def process_user_feedback(
         preference_column = analysis.get("preference_column")
         if preference_column:
             updated = update_user_preferences_from_feedback(
+                preference_update_timestamp=analysis['timestamp'],
                 user_email=user_email,
                 preference_column=preference_column,
                 new_preference_level=recommended_level,
@@ -384,10 +366,6 @@ def process_user_feedback(
         "recommended_change": f"{current_level} -> {recommended_level}" if recommended_level != current_level else "No change recommended",
         "confidence_score": confidence_score
     }
-
-
-# Alias for backward compatibility with existing preference_tools.py
-retrieve_current_formatt_preferences = retrieve_current_user_preferences
 
 
 # Example web endpoint integration:

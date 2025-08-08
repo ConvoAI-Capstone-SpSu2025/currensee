@@ -212,6 +212,7 @@ def generate_report(result, enable_guardrails=True):
         logger.info("⚠️ Output guardrails disabled - generating report without validation")
     
     #Meeting info section
+    user_email = result.get("user_email", "")
     meeting_title = result.get("meeting_description", "") + " : Briefing Document"
     client_company = result.get("client_company", "")
     client_name = result.get("client_name", "")
@@ -917,13 +918,13 @@ def generate_report(result, enable_guardrails=True):
               box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
             }}
             
-            .feedback-buttons button:focus {
+            .feedback-buttons button:focus {{
               outline: none;
               box-shadow: 0 0 0 2px rgba(16, 110, 190, 0.4);  
-            }
+            }}
 
             /* Thumbs up/down button styling */
-            .thumb-btn {
+            .thumb-btn {{
                 background: none;
                 border: 2px solid #ddd;
                 border-radius: 50%;
@@ -937,36 +938,36 @@ def generate_report(result, enable_guardrails=True):
                 justify-content: center;
                 padding: 0;
                 margin: 0;
-            }
+            }}
             
-            .thumb-btn:hover {
+            .thumb-btn:hover {{
                 border-color: #2980B9;
                 transform: scale(1.1);
                 background-color: #f8f9fa;
-            }
+            }}
             
-            .thumb-btn.active-up {
+            .thumb-btn.active-up {{
                 border-color: #28a745;
                 background-color: #d4edda;
                 color: #155724;
-            }
+            }}
             
-            .thumb-btn.active-down {
+            .thumb-btn.active-down {{
                 border-color: #dc3545;
                 background-color: #f8d7da;
                 color: #721c24;
-            }
+            }}
             
-            .feedback-text-area {
+            .feedback-text-area {{
                 background-color: #f8f9fa;
                 border: 1px solid #dee2e6;
                 border-radius: 6px;
                 padding: 12px;
-            }
+            }}
             
-            .feedback-text-area textarea {
+            .feedback-text-area textarea {{
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
+            }}
 
         </style>
 
@@ -1062,7 +1063,7 @@ def generate_report(result, enable_guardrails=True):
             }}
           }}
           
-          function submitFeedback(sectionId) {{
+          async function submitFeedback(sectionId) {{
             const textArea = document.getElementById(sectionId + '-feedback');
             const textarea = textArea.querySelector('textarea');
             const feedbackSection = textArea.closest('.feedback-section');
@@ -1078,34 +1079,56 @@ def generate_report(result, enable_guardrails=True):
             
             // Get thumb selection
             const activeThumb = feedbackSection.querySelector('.thumb-btn.active-up, .thumb-btn.active-down');
-            const isPositive = activeThumb && activeThumb.classList.contains('active-up');
+            const isPositive = activeThumb ? activeThumb.classList.contains('active-up') : null;
+
+            if (isPositive === null) {{
+                alert('Please select thumbs up or down before submitting.');
+                return;
+            }}
+
+            const payload = {{
+                section_id: sectionId,
+                is_positive: isPositive,
+                feedback_text: feedbackText,
+                user_email: '{user_email}', 
+                meeting_timestamp: '{meeting_time}'
+            }};
             
-            // Here you would typically send the feedback to your backend
-            // For now, we'll just show a confirmation message
-            console.log('Feedback submitted for section:', sectionId);
-            console.log('Positive feedback:', isPositive);
-            console.log('Feedback text:', feedbackText);
-            
-            // TODO: Send to LLM processing endpoint
-            // This is where you would call your LLM analysis endpoint
-            // Example: await processFeedbackWithLLM(sectionId, isPositive, feedbackText);
-            
-            // Hide feedback area and show confirmation
-            textArea.style.display = 'none';
-            buttons.style.display = 'none';
-            message.style.display = 'block';
-            
-            // Reset form
-            textarea.value = '';
-            feedbackSection.querySelectorAll('.thumb-btn').forEach(thumb => {{
-                thumb.classList.remove('active-up', 'active-down');
-            }});
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {{
-                message.style.display = 'none';
-                buttons.style.display = 'flex';
-            }}, 5000);
+            try {{
+                const response = await fetch('/submit-feedback', {{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                }});
+
+                if (!response.ok) {{
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'Failed to submit feedback');
+                }}
+
+                // Hide feedback area and show confirmation
+                textArea.style.display = 'none';
+                buttons.style.display = 'none';
+                message.style.display = 'block';
+                
+                // Reset form
+                textarea.value = '';
+                feedbackSection.querySelectorAll('.thumb-btn').forEach(thumb => {{
+                    thumb.classList.remove('active-up', 'active-down');
+                }});
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {{
+                    message.style.display = 'none';
+                    buttons.style.display = 'flex';
+                }}, 5000);
+
+            }} catch (error) {{
+                console.error('Error submitting feedback:', error);
+                alert('There was an error submitting your feedback. Please try again. ' + error.message);
+            }}
           }}
           
           function cancelFeedback(sectionId) {{
