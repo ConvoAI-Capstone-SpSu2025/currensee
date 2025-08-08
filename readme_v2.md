@@ -93,10 +93,10 @@ CurrenSee connects seamlessly to your existing technology stack:
 Our adaptive AI system learns from every interaction:
 
 <p align="center">
-  <img src="[Placeholder for the interactive report screenshot from page 10]" alt="Interactive Report Customization" width="700"/>
+  <img src="images/dynamic_learning.png" alt="Interactive Report Customization" width="700"/>
 </p>
 
-For each meeting that the user has, Currensee first determines the **Meeting Focus** that will be discussed in the meeting based upon the meeting description and recent past emails. The Meeting Focus could range from an Annual Financial Review, Risk Analysis, Sustainability, to Relationship Building. Based on the Meeting Focus, Currensee curates the most relevant information from each data source to include in its report. In addition, Currensee incorporates click data from the user to learn which parts of the report are most useful to the user for the topic.
+For each meeting that the user has, Currensee first determines the **Meeting Focus** that will be discussed in the meeting based upon the meeting description and recent past emails. The Meeting Focus could range from an Annual Financial Review, Risk Analysis, Sustainability, to Relationship Building. Based on the Meeting Focus, Currensee curates the most relevant information from each data source to include in its report. In addition, Currensee incorporates **User Interactions** with the report to learn which sections are most useful to the user for the topic.
 
 - **Interactive Feedback Loop**: Users can request longer/shorter summaries with immediate adaptation
 - **Preference Learning**: System remembers individual advisor preferences for report style and content depth
@@ -426,7 +426,7 @@ As financial markets become increasingly complex and client expectations continu
 
 * **👩 [Lily Campbell](https://www.linkedin.com/in/lily-campbell)** - *Industry SME*
   - University of Chicago MADS student with deep financial services expertise
-  - Led industry requirements gathering and product strategy
+  - Led industry requirements gathering, product strategy and Dynamic Learning
 
 * **👩 [Xiaojing Fang](https://www.linkedin.com/in/xiaojing-fang)** - *UI/UX Designer*  
   - University of Chicago MADS student specializing in user experience design
