@@ -39,6 +39,11 @@ Meet Jane, a seasoned relationship manager at a top-tier investment bank. Every 
   <img src="images/drowning_news.png" alt="The problem of information overload" width="300"/>
 </p>
 
+<p float="left">
+  <img src="images/drowning_news.png" alt="The problem of information overload" width="300"/>
+  <img src="images/crowded calander.png" alt="The problem of information overload" width="300"/>
+</p>
+
 Jane's story mirrors that of thousands of financial advisors worldwide. Research shows that relationship managers spend up to 60% of their time on information gathering and synthesis rather than client-facing activities. The cost? Missed opportunities, decreased client satisfaction, and advisor burnout in an increasingly competitive market.
 
 ### **How CurrenSee Makes a Difference**
