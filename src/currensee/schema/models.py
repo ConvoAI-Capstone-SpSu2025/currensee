@@ -1,5 +1,6 @@
 from enum import StrEnum, auto
-from typing import TypeAlias
+from typing import TypeAlias, Optional
+from pydantic import BaseModel
 
 
 class Provider(StrEnum):
@@ -21,3 +22,19 @@ class FakeModelName(StrEnum):
 
 
 AllModelEnum: TypeAlias = GoogleModelName | FakeModelName
+
+
+class ClientRequest(BaseModel):
+    user_email: str
+    client_name: str
+    client_email: str
+    meeting_timestamp: str
+    meeting_description: str
+
+
+class FeedbackRequest(BaseModel):
+    section_id: str
+    is_positive: bool
+    feedback_text: str
+    user_email: str
+    meeting_timestamp: Optional[str] = None

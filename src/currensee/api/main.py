@@ -27,6 +27,8 @@ from currensee.utils.output_utils_dynamic import (
     save_html_to_file,
     convert_html_to_pdf,
 )
+from currensee.agents.tools.user_preferences_tool import process_user_feedback
+from currensee.schema.models import FeedbackRequest
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -278,9 +280,32 @@ async def generate_report_html(request: ClientRequest):
     except Exception as e:
         logger.exception("Error in generate_report_html")  # logs full traceback
         traceback_str = ''.join(traceback.format_exception(None, e, e.__traceback__))
-        return JSONResponse(status_code=500, content={"detail": str(e), "trace": traceback_str})
+        return HTMLResponse(content=f"<html><body><h1>Error</h1><pre>{traceback_str}</pre></body></html>", status_code=500)
+
+@app.post("/submit-feedback")
+async def submit_feedback(feedback: FeedbackRequest):
+    """
+    Endpoint to receive and process user feedback from the report.
+    """
+    try:
+        logger.info(f"Received feedback for section '{feedback.section_id}' from user '{feedback.user_email}'")
         
+        # Call the existing feedback processing function
+        result = process_user_feedback(
+            section_id=feedback.section_id,
+            is_positive=feedback.is_positive,
+            feedback_text=feedback.feedback_text,
+            user_email=feedback.user_email,
+            meeting_timestamp=feedback.meeting_timestamp,
+            auto_update_preferences=True # Or configure as needed
+        )
         
+        logger.info(f"Feedback processed successfully for user '{feedback.user_email}'. Result: {result}")
+        return {"status": "success", "message": "Feedback received and processed.", "data": result}
+
+    except Exception as e:
+        logger.exception(f"Error processing feedback for user '{feedback.user_email}'")
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {str(e)}")
 
 @app.post("/generate-report/pdf")
 async def generate_report_pdf(request: ClientRequest):
