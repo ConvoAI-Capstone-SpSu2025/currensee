@@ -335,10 +335,8 @@ These enhancements represent our planned development focus based on user feedbac
 
 ## **🎬 Demo**
 
-<video controls width="800">
-  <source src="https://convoai-capstone-spsu2025.github.io/currensee/docs/CurrenSee_Video.mp4" type="video/mp4" />
-  Your browser doesn’t support HTML5 video. 
-  <a href="https://convoai-capstone-spsu2025.github.io/currensee/docs/CurrenSee_Video.mp4">Download the video</a>.
+<video controls width="720" >
+  <source src="https://convoai-capstone-spsu2025.github.io/currensee/CurrenSee_Video.mp4" type="video/mp4">
 </video>
 
 ### **Demo Highlights**
