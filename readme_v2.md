@@ -335,9 +335,11 @@ These enhancements represent our planned development focus based on user feedbac
 
 ## **🎬 Demo**
 
-**[🎥 Watch the Demo Video]([Link to your video on YouTube/Google Drive])**
-
-<video src="https://github.com/ConvoAI-Capstone-SpSu2025/currensee/blob/133a859e081f01313ba24fb1efdc1815b8518138/images/CurrenSee%20Video.mp4" controls="controls" style="max-width: 100%;">
+<video controls width="800">
+  <source src="https://convoai-capstone-spsu2025.github.io/currensee/docs/CurrenSee_Video.mp4" type="video/mp4" />
+  Your browser doesn’t support HTML5 video. 
+  <a href="https://convoai-capstone-spsu2025.github.io/currensee/docs/CurrenSee_Video.mp4">Download the video</a>.
+</video>
 
 ### **Demo Highlights**
 - Real-time report generation in <2 minutes
