@@ -337,9 +337,7 @@ These enhancements represent our planned development focus based on user feedbac
 
 **[🎥 Watch the Demo Video]([Link to your video on YouTube/Google Drive])**
 
-<p align="center">
-  <img src="images/Currensee_GIF.gif" alt="Demo GIF" width="800"/>
-</p>
+<video src="https://github.com/ConvoAI-Capstone-SpSu2025/currensee/blob/133a859e081f01313ba24fb1efdc1815b8518138/images/CurrenSee%20Video.mp4" controls="controls" style="max-width: 100%;">
 
 ### **Demo Highlights**
 - Real-time report generation in <2 minutes
