@@ -252,14 +252,14 @@ class ClientRequest(BaseModel):
 - **Compliance Coverage**: 100% of major financial regulations
 
 ### **User Impact**
-- **Time Savings**: 75% reduction in meeting preparation time
+- **Time Savings**: 25% reduction in meeting preparation time
 - **Report Quality**: 40% improvement in client satisfaction scores
 - **Advisor Productivity**: 3x increase in client-facing time
 
 ### **Industry Validation**
 > *"CurrenSee has transformed how our relationship managers approach client meetings. The quality of insights and time savings are remarkable."*
 >
-> **— Cassandra Flanagan, CFA**, Senior Portfolio Manager
+> **— Cassandra Flanagan, CFA**, Investment Officer
 
 ---
 
@@ -465,7 +465,7 @@ We extend our sincere gratitude to our advisors and industry experts who provide
   - Guided technical implementation and best practices
 
 * **Cassandra Flanagan, CFA** - *Industry Expert & Beta Tester*
-  - Senior Portfolio Manager who provided real-world validation
+  - Investment Officer who provided real-world validation
   - Critical feedback that shaped our security and compliance approach
 
 ### **University of Chicago Support**
