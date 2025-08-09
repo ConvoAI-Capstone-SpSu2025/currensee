@@ -49,6 +49,9 @@ Jane's story mirrors that of thousands of financial advisors worldwide. Research
 CurrenSee transforms Jane's workflow from reactive information hunting to proactive intelligence delivery. By automatically aggregating data from internal systems (CRM, email) and external sources (financial news APIs), our platform reduces preparation time by **25%** while improving report quality. Jane can now focus on strategic advisory conversations, armed with comprehensive, personalized client intelligence delivered in minutes, not hours.
 
 ---
+<p align="center">
+  <img src="images/Currensee_GIF.gif" alt="Demo GIF" width="800"/>
+</p>
 
 ## **🚀 Overview of CurrenSee**
 
@@ -335,9 +338,7 @@ These enhancements represent our planned development focus based on user feedbac
 **[🎥 Watch the Demo Video]([Link to your video on YouTube/Google Drive])**
 
 <p align="center">
-  <a href="[Link to your deployed app]">
-    <img src="[Placeholder for a compelling GIF of your app in action]" alt="CurrenSee Demo GIF" width="800"/>
-  </a>
+  <img src="images/Currensee_GIF.gif" alt="Demo GIF" width="800"/>
 </p>
 
 ### **Demo Highlights**
