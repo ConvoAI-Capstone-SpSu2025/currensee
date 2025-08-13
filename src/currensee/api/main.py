@@ -253,10 +253,10 @@ async def generate_report(request: ClientRequest):
 async def generate_report_html(request: ClientRequest):
     try:
         # Run comprehensive security validation
-        validation_results = client_req.validate_with_guardrails()
+        validation_results = request.validate_with_guardrails()
         
         # Process validation results (raises HTTPException if validation fails)
-        process_validation_results(validation_results, client_req.client_email)
+        process_validation_results(validation_results, request.client_email)
         
         # Get sanitized inputs for safe processing
         sanitized_inputs = get_sanitized_inputs(validation_results)
