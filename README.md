@@ -72,7 +72,7 @@ The system begins when a meeting invitation is received, automatically triggerin
 CurrenSee is built on three foundational pillars that ensure reliability, personalization, and security:
 
 <p align="center">
-  <img src="[Placeholder for System Architecture Diagram, possibly combining the pillar icons]" alt="System Architecture" width="800"/>
+  <img src="images/three_pillars.png" alt="sThree pillars" width="800"/>
 </p>
 
 **🔗 Pillar 1: Internal and External Data Integration** - Seamless connection to internal (CRM, Outlook) and external (financial news APIs) data sources
