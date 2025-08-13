@@ -39,7 +39,7 @@ Meet Jane, a seasoned relationship manager at a top-tier investment bank. Every 
 
 <p float="center">
   <img src="images/drowning_news.png" alt="The problem of information overload" width="300"/>
-  <img src="images/crowded calander.png" alt="The problem of information overload" width="500"/>
+    <img src="images/crowded_calendar.png" alt="Crowded calendar illustrating information overload" width="500"/>
 </p>
 
 Jane's story mirrors that of thousands of financial advisors worldwide. Research shows that relationship managers spend up to 60% of their time on information gathering and synthesis rather than client-facing activities. The cost? Missed opportunities, decreased client satisfaction, and advisor burnout in an increasingly competitive market.
@@ -72,7 +72,7 @@ The system begins when a meeting invitation is received, automatically triggerin
 CurrenSee is built on three foundational pillars that ensure reliability, personalization, and security:
 
 <p align="center">
-  <img src="images/three_pillars.png" alt="sThree pillars" width="800"/>
+  <img src="images/three_pillars.png" alt="Three pillars" width="800"/>
 </p>
 
 **🔗 Pillar 1: Internal and External Data Integration** - Seamless connection to internal (CRM, Outlook) and external (financial news APIs) data sources
@@ -387,9 +387,9 @@ These enhancements represent our planned development focus based on user feedbac
    ```
 
 5. **Access the application**
-   - API: http://localhost:8000
-   - Interactive UI: http://localhost:8000/outlook
-   - API Documentation: http://localhost:8000/docs
+  - API: [http://localhost:8000](http://localhost:8000)
+  - Interactive UI: [http://localhost:8000/outlook](http://localhost:8000/outlook)
+  - API Documentation: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 
 

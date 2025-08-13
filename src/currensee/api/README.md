@@ -1,10 +1,13 @@
-# Currensee API
 
-A FastAPI server that provides HTTP endpoints for executing the Currensee agent graph and generating PDF reports for client meetings.
+# CurrenSee API
+
+A FastAPI server that provides HTTP endpoints for executing the CurrenSee agent graph and generating PDF reports for client meetings.
 
 ## Overview
 
-This API serves as a bridge between Outlook add-ins or other UI applications and the Currensee agent system. It executes the compiled graph from `currensee.agents.complete_graph` and can return results in JSON, HTML, or PDF format.
+This API serves as a bridge between Outlook add-ins or other UI applications and the CurrenSee agent system. It executes the compiled graph from `currensee.agents.complete_graph` and can return results in JSON, HTML, or PDF format.
+
+**Note:** This API is part of the `currensee` Python package. All commands should be run from the project root directory.
 
 ## Features
 
@@ -32,12 +35,9 @@ poetry install
 python api/server.py
 ```
 
-### Option 2: Using uvicorn directly
+### Option 2: Using uvicorn directly (preferred import path)
 ```bash
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
-
 uvicorn currensee.api.main:app --host 0.0.0.0 --port 8000 --reload
-
 ```
 
 ### Option 3: Environment variables
@@ -48,7 +48,7 @@ export DEBUG=true
 python api/server.py
 ```
 
-The server will start on `http://localhost:8000` by default.
+The server will start on [http://localhost:8000](http://localhost:8000) by default.
 
 ## API Endpoints
 
@@ -222,6 +222,7 @@ To extend the API:
 
 ## Production Deployment
 
+
 For production deployment:
 
 1. Set `DEBUG=false`
@@ -234,5 +235,9 @@ For production deployment:
 
 Example production command:
 ```bash
-gunicorn api.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+gunicorn currensee.api.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
 ```
+
+---
+
+For a full project overview and development guidelines, see the main [CurrenSee README](../../../README.md).
