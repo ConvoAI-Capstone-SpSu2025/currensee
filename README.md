@@ -463,9 +463,6 @@ We extend our sincere gratitude to our advisors and industry experts who provide
   - Former University of Chicago MADS student and current TA
   - Guided technical implementation and best practices
 
-* **Cassandra Flanagan, CFA** - *Industry Expert & Beta Tester*
-  - Investment Officer who provided real-world validation
-  - Critical feedback that shaped our security and compliance approach
 
 ### **University of Chicago Support**
 
